@@ -17,13 +17,14 @@ class GridGameGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		val GridGame gg = resource.allContents.filter(typeof(GridGame)).head;
-		fsa.generateFile('''«gg.game.name.toFirstUpper»Model.java''', generateFieldModel(gg));
+		fsa.generateFile('''«generateModelClassName(gg)».java''', generateFieldModel(gg));
 	}
 
 	def generateFieldModel(GridGame gg) '''
-		public class «gg.game.name.toFirstUpper»Model {
+		public class «generateModelClassName(gg)»{
 			
-		}
-	'''
+		}'''
 
+	def generateModelClassName(GridGame gg) '''«gg.game.name.toFirstUpper»Field'''
+	
 }

@@ -29,11 +29,9 @@ public class GridGameGenerator implements IGenerator {
     Iterator<GridGame> _filter = Iterators.<GridGame>filter(_allContents, GridGame.class);
     final GridGame gg = IteratorExtensions.<GridGame>head(_filter);
     StringConcatenation _builder = new StringConcatenation();
-    GameSpecification _game = gg.getGame();
-    String _name = _game.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
-    _builder.append("Model.java");
+    CharSequence _generateModelClassName = this.generateModelClassName(gg);
+    _builder.append(_generateModelClassName, "");
+    _builder.append(".java");
     CharSequence _generateFieldModel = this.generateFieldModel(gg);
     fsa.generateFile(_builder.toString(), _generateFieldModel);
   }
@@ -41,16 +39,23 @@ public class GridGameGenerator implements IGenerator {
   public CharSequence generateFieldModel(final GridGame gg) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public class ");
-    GameSpecification _game = gg.getGame();
-    String _name = _game.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
-    _builder.append("Model {");
+    CharSequence _generateModelClassName = this.generateModelClassName(gg);
+    _builder.append(_generateModelClassName, "");
+    _builder.append("{");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("}");
-    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateModelClassName(final GridGame gg) {
+    StringConcatenation _builder = new StringConcatenation();
+    GameSpecification _game = gg.getGame();
+    String _name = _game.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("Field");
     return _builder;
   }
 }
