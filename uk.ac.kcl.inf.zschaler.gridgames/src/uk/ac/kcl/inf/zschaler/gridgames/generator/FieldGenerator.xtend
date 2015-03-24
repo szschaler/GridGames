@@ -62,7 +62,7 @@ class FieldGenerator extends CommonGenerator {
 		}
 		
 		@Override
-		public Object getValueAt(int row, int col) {
+		public Cell getValueAt(int row, int col) {
 			if ((row >= 0) && (col >= 0) && (row < height) && (col < width)) {
 				return field[col][row];
 			} else {

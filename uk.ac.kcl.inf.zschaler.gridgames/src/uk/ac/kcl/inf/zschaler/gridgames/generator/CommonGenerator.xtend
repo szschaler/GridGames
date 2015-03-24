@@ -24,4 +24,6 @@ class CommonGenerator {
 
 	def generateFieldClassFileName() '''«generateModelPackageFolder»/«generateFieldClassName()».java'''
 
+	def generateCellClassFileName() '''«generateCellPackageFolder»/Cell.java'''
+
 }

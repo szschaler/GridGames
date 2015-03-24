@@ -18,6 +18,7 @@ class GridGameGenerator implements IGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		val GridGame gg = resource.allContents.filter(typeof(GridGame)).head;
 		new FieldGenerator (gg).generate(fsa);
+		new CellGenerator (gg).generate (fsa);
 	}
 
 }

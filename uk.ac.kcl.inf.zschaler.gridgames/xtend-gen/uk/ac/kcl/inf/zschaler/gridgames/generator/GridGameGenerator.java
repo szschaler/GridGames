@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import uk.ac.kcl.inf.zschaler.gridgames.generator.CellGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.FieldGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 
@@ -28,5 +29,7 @@ public class GridGameGenerator implements IGenerator {
     final GridGame gg = IteratorExtensions.<GridGame>head(_filter);
     FieldGenerator _fieldGenerator = new FieldGenerator(gg);
     _fieldGenerator.generate(fsa);
+    CellGenerator _cellGenerator = new CellGenerator(gg);
+    _cellGenerator.generate(fsa);
   }
 }

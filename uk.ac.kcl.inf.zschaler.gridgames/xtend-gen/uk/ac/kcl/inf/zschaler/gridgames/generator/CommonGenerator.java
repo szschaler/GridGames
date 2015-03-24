@@ -70,4 +70,12 @@ public class CommonGenerator {
     _builder.append(".java");
     return _builder;
   }
+  
+  public CharSequence generateCellClassFileName() {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateCellPackageFolder = this.generateCellPackageFolder();
+    _builder.append(_generateCellPackageFolder, "");
+    _builder.append("/Cell.java");
+    return _builder;
+  }
 }

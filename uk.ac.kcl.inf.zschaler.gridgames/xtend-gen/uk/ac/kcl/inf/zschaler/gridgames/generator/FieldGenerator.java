@@ -158,7 +158,7 @@ public class FieldGenerator extends CommonGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public Object getValueAt(int row, int col) {");
+    _builder.append("public Cell getValueAt(int row, int col) {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("if ((row >= 0) && (col >= 0) && (row < height) && (col < width)) {");
