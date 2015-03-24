@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/uk.ac.kcl.inf.zschaler.gridgames/src-gen" editDirectory="/uk.ac.kcl.inf.zschaler.gridgames.edit/src"
+    editorDirectory="/uk.ac.kcl.inf.zschaler.gridgames.editor/src" modelPluginID="uk.ac.kcl.inf.zschaler.gridgames"
+    forceOverwrite="true" modelName="GridGame" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="6.0" copyrightFields="false" editPluginID="uk.ac.kcl.inf.zschaler.gridgames.edit"
+    editorPluginID="uk.ac.kcl.inf.zschaler.gridgames.editor" runtimeVersion="2.10">
+  <genPackages prefix="GridGame" basePackage="uk.ac.kcl.inf.zschaler.gridgames" disposableProviderFactory="true"
+      fileExtensions="ggame" ecorePackage="GridGame.ecore#/">
+    <genClasses ecoreClass="GridGame.ecore#//GridGame">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/fields"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/cells"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GridGame/field_initialisation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/game"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//FieldSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/height"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//CellSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellSpecification/name"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//GameSpecification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GameSpecification/options"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//OptionSpecification"/>
+    <genClasses ecoreClass="GridGame.ecore#//AllowRestartMenu"/>
+    <genClasses ecoreClass="GridGame.ecore#//StartFieldDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//StartFieldDeclaration/field_name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
