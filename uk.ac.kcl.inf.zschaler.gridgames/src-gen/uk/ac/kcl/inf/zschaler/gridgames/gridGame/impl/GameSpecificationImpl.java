@@ -4,6 +4,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -11,6 +12,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -27,6 +29,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GameSpecificationImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GameSpecificationImpl#getOptions <em>Options</em>}</li>
  * </ul>
  * </p>
@@ -35,6 +38,26 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
  */
 public class GameSpecificationImpl extends MinimalEObjectImpl.Container implements GameSpecification
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getOptions() <em>Options</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -64,6 +87,29 @@ public class GameSpecificationImpl extends MinimalEObjectImpl.Container implemen
   protected EClass eStaticClass()
   {
     return GridGamePackage.Literals.GAME_SPECIFICATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.GAME_SPECIFICATION__NAME, oldName, name));
   }
 
   /**
@@ -106,6 +152,8 @@ public class GameSpecificationImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case GridGamePackage.GAME_SPECIFICATION__NAME:
+        return getName();
       case GridGamePackage.GAME_SPECIFICATION__OPTIONS:
         return getOptions();
     }
@@ -123,6 +171,9 @@ public class GameSpecificationImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case GridGamePackage.GAME_SPECIFICATION__NAME:
+        setName((String)newValue);
+        return;
       case GridGamePackage.GAME_SPECIFICATION__OPTIONS:
         getOptions().clear();
         getOptions().addAll((Collection<? extends OptionSpecification>)newValue);
@@ -141,6 +192,9 @@ public class GameSpecificationImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case GridGamePackage.GAME_SPECIFICATION__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case GridGamePackage.GAME_SPECIFICATION__OPTIONS:
         getOptions().clear();
         return;
@@ -158,10 +212,29 @@ public class GameSpecificationImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case GridGamePackage.GAME_SPECIFICATION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GridGamePackage.GAME_SPECIFICATION__OPTIONS:
         return options != null && !options.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //GameSpecificationImpl

@@ -3,9 +3,18 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
+import com.google.common.collect.Iterators;
+import java.util.Iterator;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 
 /**
  * Generates code from your model files on save.
@@ -16,5 +25,32 @@ import org.eclipse.xtext.generator.IGenerator;
 public class GridGameGenerator implements IGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterator<GridGame> _filter = Iterators.<GridGame>filter(_allContents, GridGame.class);
+    final GridGame gg = IteratorExtensions.<GridGame>head(_filter);
+    StringConcatenation _builder = new StringConcatenation();
+    GameSpecification _game = gg.getGame();
+    String _name = _game.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("Model.java");
+    CharSequence _generateFieldModel = this.generateFieldModel(gg);
+    fsa.generateFile(_builder.toString(), _generateFieldModel);
+  }
+  
+  public CharSequence generateFieldModel(final GridGame gg) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public class ");
+    GameSpecification _game = gg.getGame();
+    String _name = _game.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("Model {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
   }
 }

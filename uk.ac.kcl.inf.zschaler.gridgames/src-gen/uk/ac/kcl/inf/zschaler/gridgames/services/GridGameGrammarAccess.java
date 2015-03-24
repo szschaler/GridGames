@@ -179,32 +179,40 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GameSpecification");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cGameKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cOptionsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cOptionsOptionSpecificationParserRuleCall_2_0 = (RuleCall)cOptionsAssignment_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cOptionsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cOptionsOptionSpecificationParserRuleCall_3_0 = (RuleCall)cOptionsAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//GameSpecification:
-		//	"game" "{" options+=OptionSpecification+ "}";
+		//	"game" name=ID "{" options+=OptionSpecification+ "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"game" "{" options+=OptionSpecification+ "}"
+		//"game" name=ID "{" options+=OptionSpecification+ "}"
 		public Group getGroup() { return cGroup; }
 
 		//"game"
 		public Keyword getGameKeyword_0() { return cGameKeyword_0; }
 
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
 		//options+=OptionSpecification+
-		public Assignment getOptionsAssignment_2() { return cOptionsAssignment_2; }
+		public Assignment getOptionsAssignment_3() { return cOptionsAssignment_3; }
 
 		//OptionSpecification
-		public RuleCall getOptionsOptionSpecificationParserRuleCall_2_0() { return cOptionsOptionSpecificationParserRuleCall_2_0; }
+		public RuleCall getOptionsOptionSpecificationParserRuleCall_3_0() { return cOptionsOptionSpecificationParserRuleCall_3_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 
 	public class OptionSpecificationElements extends AbstractParserRuleElementFinder {
@@ -382,7 +390,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//GameSpecification:
-	//	"game" "{" options+=OptionSpecification+ "}";
+	//	"game" name=ID "{" options+=OptionSpecification+ "}";
 	public GameSpecificationElements getGameSpecificationAccess() {
 		return pGameSpecification;
 	}

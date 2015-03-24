@@ -26,7 +26,7 @@ CellSpecification :
                         "}";
 
 GameSpecification :
-	"game" "{" options += OptionSpecification+ "}";
+	"game" name=ID "{" options += OptionSpecification+ "}";
                        
 OptionSpecification :
 	StartFieldDeclaration | 

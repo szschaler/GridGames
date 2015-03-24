@@ -332,31 +332,49 @@ ruleGameSpecification returns [EObject current=null]
     {
     	newLeafNode(otherlv_0, grammarAccess.getGameSpecificationAccess().getGameKeyword_0());
     }
-	otherlv_1='{' 
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getGameSpecificationAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getGameSpecificationRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_2='{' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getGameSpecificationAccess().getLeftCurlyBracketKeyword_1());
+    	newLeafNode(otherlv_2, grammarAccess.getGameSpecificationAccess().getLeftCurlyBracketKeyword_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGameSpecificationAccess().getOptionsOptionSpecificationParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getGameSpecificationAccess().getOptionsOptionSpecificationParserRuleCall_3_0()); 
 	    }
-		lv_options_2_0=ruleOptionSpecification		{
+		lv_options_3_0=ruleOptionSpecification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGameSpecificationRule());
 	        }
        		add(
        			$current, 
        			"options",
-        		lv_options_2_0, 
+        		lv_options_3_0, 
         		"OptionSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)+	otherlv_3='}' 
+)+	otherlv_4='}' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getGameSpecificationAccess().getRightCurlyBracketKeyword_3());
+    	newLeafNode(otherlv_4, grammarAccess.getGameSpecificationAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;

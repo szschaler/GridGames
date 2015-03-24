@@ -264,9 +264,19 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getGameSpecification_Name()
+  {
+    return (EAttribute)gameSpecificationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getGameSpecification_Options()
   {
-    return (EReference)gameSpecificationEClass.getEStructuralFeatures().get(0);
+    return (EReference)gameSpecificationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -354,6 +364,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEAttribute(cellSpecificationEClass, CELL_SPECIFICATION__NAME);
 
     gameSpecificationEClass = createEClass(GAME_SPECIFICATION);
+    createEAttribute(gameSpecificationEClass, GAME_SPECIFICATION__NAME);
     createEReference(gameSpecificationEClass, GAME_SPECIFICATION__OPTIONS);
 
     optionSpecificationEClass = createEClass(OPTION_SPECIFICATION);
@@ -412,6 +423,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEAttribute(getCellSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, CellSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gameSpecificationEClass, GameSpecification.class, "GameSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGameSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSpecification_Options(), this.getOptionSpecification(), null, "options", null, 0, -1, GameSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(optionSpecificationEClass, OptionSpecification.class, "OptionSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -105,7 +105,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     options+=OptionSpecification+
+	 *     (name=ID options+=OptionSpecification+)
 	 */
 	protected void sequence_GameSpecification(EObject context, GameSpecification semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

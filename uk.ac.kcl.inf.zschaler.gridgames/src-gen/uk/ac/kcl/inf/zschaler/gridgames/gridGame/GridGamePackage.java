@@ -196,13 +196,22 @@ public interface GridGamePackage extends EPackage
   int GAME_SPECIFICATION = 3;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPECIFICATION__NAME = 0;
+
+  /**
    * The feature id for the '<em><b>Options</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPECIFICATION__OPTIONS = 0;
+  int GAME_SPECIFICATION__OPTIONS = 1;
 
   /**
    * The number of structural features of the '<em>Game Specification</em>' class.
@@ -211,7 +220,7 @@ public interface GridGamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPECIFICATION_FEATURE_COUNT = 1;
+  int GAME_SPECIFICATION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.OptionSpecificationImpl <em>Option Specification</em>}' class.
@@ -409,6 +418,17 @@ public interface GridGamePackage extends EPackage
   EClass getGameSpecification();
 
   /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification#getName()
+   * @see #getGameSpecification()
+   * @generated
+   */
+  EAttribute getGameSpecification_Name();
+
+  /**
    * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification#getOptions <em>Options</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -586,6 +606,14 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EClass GAME_SPECIFICATION = eINSTANCE.getGameSpecification();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPECIFICATION__NAME = eINSTANCE.getGameSpecification_Name();
 
     /**
      * The meta object literal for the '<em><b>Options</b></em>' containment reference list feature.
