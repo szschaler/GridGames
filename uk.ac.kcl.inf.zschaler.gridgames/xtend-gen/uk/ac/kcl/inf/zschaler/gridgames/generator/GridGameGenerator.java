@@ -29,6 +29,7 @@ public class GridGameGenerator implements IGenerator {
     Iterator<GridGame> _filter = Iterators.<GridGame>filter(_allContents, GridGame.class);
     final GridGame gg = IteratorExtensions.<GridGame>head(_filter);
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("model/");
     CharSequence _generateModelClassName = this.generateModelClassName(gg);
     _builder.append(_generateModelClassName, "");
     _builder.append(".java");
@@ -38,10 +39,13 @@ public class GridGameGenerator implements IGenerator {
   
   public CharSequence generateFieldModel(final GridGame gg) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package model;");
+    _builder.newLine();
+    _builder.newLine();
     _builder.append("public class ");
     CharSequence _generateModelClassName = this.generateModelClassName(gg);
     _builder.append(_generateModelClassName, "");
-    _builder.append("{");
+    _builder.append(" {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
