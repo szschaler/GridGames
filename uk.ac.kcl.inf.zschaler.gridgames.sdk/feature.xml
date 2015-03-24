@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="uk.ac.kcl.inf.zschaler.gridgames.sdk"
+	label="GridGame SDK Feature "
+	version="1.0.0.qualifier">
+	<plugin
+			id="uk.ac.kcl.inf.zschaler.gridgames"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="uk.ac.kcl.inf.zschaler.gridgames.ui"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+</feature>

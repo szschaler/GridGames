@@ -1,0 +1,34 @@
+grammar uk.ac.kcl.inf.zschaler.gridgames.GridGame with org.eclipse.xtext.common.Terminals
+
+generate gridGame "http://www.inf.kcl.ac.uk/zschaler/gridgames/GridGame"
+
+/* 
+ * This language is meant to serve as a high-level modelling language for arcade-style games with a grid playing field
+ * 
+ * Just a bit of fun, really :-)
+ * 
+ * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
+*/
+
+GridGame : 
+	fields += FieldSpecification+
+	cells += CellSpecification+
+	field_initialisation = FieldInitialisationSpecification // Possibly cleverly tie this in with the field spec above?
+	game = GameSpecification
+;
+              
+FieldSpecification :
+	"field_type" name=ID "{" "width" "=" width=INT "," "height" "=" height=INT "}";
+
+CellSpecification :
+	"cell_type" name=ID "{" 
+//                         Provide cell type properties here...
+                        "}";
+
+GameSpecification :
+	"game" "{" options += OptionSpecification+ "}";
+                       
+OptionSpecification :
+	StartFieldDeclaration | 
+	AllowRestartMenu
+;
