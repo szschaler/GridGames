@@ -2,60 +2,53 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 
+/**
+ * Generates the field class.
+ */
 @SuppressWarnings("all")
-public class FieldGenerator {
-  private final GridGame gg;
-  
-  public FieldGenerator(final GridGame game) {
-    this.gg = game;
+public class FieldGenerator extends CommonGenerator {
+  public FieldGenerator(final GridGame gg) {
+    super(gg);
   }
   
   public void generate(final IFileSystemAccess fsa) {
     StringConcatenation _builder = new StringConcatenation();
-    GameSpecification _game = this.gg.getGame();
-    String _name = _game.getName();
-    _builder.append(_name, "");
-    _builder.append("/model/");
-    CharSequence _generateModelClassName = this.generateModelClassName(this.gg);
-    _builder.append(_generateModelClassName, "");
-    _builder.append(".java");
-    CharSequence _generateFieldModel = this.generateFieldModel(this.gg);
+    CharSequence _generateFieldClassFileName = this.generateFieldClassFileName();
+    _builder.append(_generateFieldClassFileName, "");
+    CharSequence _generateFieldModel = this.generateFieldModel();
     fsa.generateFile(_builder.toString(), _generateFieldModel);
   }
   
-  public CharSequence generateFieldModel(final GridGame gg) {
+  public CharSequence generateFieldModel() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
-    GameSpecification _game = gg.getGame();
-    String _name = _game.getName();
-    _builder.append(_name, "");
-    _builder.append(".model;");
+    CharSequence _generateModelPackage = this.generateModelPackage();
+    _builder.append(_generateModelPackage, "");
+    _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("import javax.swing.table.AbstractTableModel;");
     _builder.newLine();
+    _builder.append("\t");
     _builder.newLine();
     _builder.append("import ");
-    GameSpecification _game_1 = gg.getGame();
-    String _name_1 = _game_1.getName();
-    _builder.append(_name_1, "");
-    _builder.append(".model.cells.Cell;");
+    CharSequence _generateCellPackage = this.generateCellPackage();
+    _builder.append(_generateCellPackage, "");
+    _builder.append(".Cell;");
     _builder.newLineIfNotEmpty();
     _builder.append("import ");
-    GameSpecification _game_2 = gg.getGame();
-    String _name_2 = _game_2.getName();
-    _builder.append(_name_2, "");
-    _builder.append(".model.cells.CellFactory;");
+    CharSequence _generateCellPackage_1 = this.generateCellPackage();
+    _builder.append(_generateCellPackage_1, "");
+    _builder.append(".CellFactory;");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.newLine();
     _builder.append("public class ");
-    CharSequence _generateModelClassName = this.generateModelClassName(gg);
-    _builder.append(_generateModelClassName, "");
+    CharSequence _generateFieldClassName = this.generateFieldClassName();
+    _builder.append(_generateFieldClassName, "");
     _builder.append(" extends AbstractTableModel {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -94,8 +87,8 @@ public class FieldGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public ");
-    CharSequence _generateModelClassName_1 = this.generateModelClassName(gg);
-    _builder.append(_generateModelClassName_1, "\t");
+    CharSequence _generateFieldClassName_1 = this.generateFieldClassName();
+    _builder.append(_generateFieldClassName_1, "\t");
     _builder.append("(int width, int height, CellFactory cellFactory) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -125,7 +118,7 @@ public class FieldGenerator {
     _builder.append("private void initField() {");
     _builder.newLine();
     _builder.append("\t\t");
-    CharSequence _generateFieldInitialisation = this.generateFieldInitialisation(gg);
+    CharSequence _generateFieldInitialisation = this.generateFieldInitialisation(this.gg);
     _builder.append(_generateFieldInitialisation, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -226,16 +219,6 @@ public class FieldGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("throw new UnsupportedOperationException(\"TODO: auto-generated method stub\");");
     _builder.newLine();
-    return _builder;
-  }
-  
-  public CharSequence generateModelClassName(final GridGame gg) {
-    StringConcatenation _builder = new StringConcatenation();
-    GameSpecification _game = gg.getGame();
-    String _name = _game.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
-    _builder.append("Field");
     return _builder;
   }
 }

@@ -3,27 +3,29 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 
-class FieldGenerator {
-	val GridGame gg;
+/**
+ * Generates the field class.
+ */
+class FieldGenerator extends CommonGenerator {
 
-	new(GridGame game) {
-		gg = game
+	new(GridGame gg) {
+		super(gg)
 	}
 
 	def generate(IFileSystemAccess fsa) {
-		fsa.generateFile('''«gg.game.name»/model/«generateModelClassName(gg)».java''', generateFieldModel(gg));
+		fsa.generateFile('''«generateFieldClassFileName()»''', generateFieldModel());
 	}
 
-	def generateFieldModel(GridGame gg) '''
-	package «gg.game.name».model;
+	def generateFieldModel() '''
+	package «generateModelPackage()»;
 	
 	import javax.swing.table.AbstractTableModel;
+		
+	import «generateCellPackage».Cell;
+	import «generateCellPackage».CellFactory;
 	
-	import «gg.game.name».model.cells.Cell;
-	import «gg.game.name».model.cells.CellFactory;
 	
-	
-	public class «generateModelClassName(gg)» extends AbstractTableModel {
+	public class «generateFieldClassName()» extends AbstractTableModel {
 		
 		private int width, height;
 		private Cell[][] field;
@@ -36,7 +38,7 @@ class FieldGenerator {
 		    * @param height
 		    * @param cellFactory
 		 */
-		public «generateModelClassName(gg)»(int width, int height, CellFactory cellFactory) {
+		public «generateFieldClassName()»(int width, int height, CellFactory cellFactory) {
 			super();
 			this.width = width;
 			this.height = height;
@@ -79,12 +81,10 @@ class FieldGenerator {
 			fireTableCellUpdated(row, col);
 		}
 		
-	}'''
+	}'''	
 
 	def generateFieldInitialisation(GridGame game) '''
 		throw new UnsupportedOperationException("TODO: auto-generated method stub");
 	'''
-
-	def generateModelClassName(GridGame gg) '''«gg.game.name.toFirstUpper»Field'''
 
 }
