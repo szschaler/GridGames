@@ -32,3 +32,15 @@ OptionSpecification :
 	StartFieldDeclaration | 
 	AllowRestartMenu
 ;
+
+AllowRestartMenu:
+	"allow_restart" {AllowRestartMenu}
+;
+
+StartFieldDeclaration:
+	"start" "=" field_name = ID
+;
+
+FieldInitialisationSpecification : 
+	"INIT"
+;
