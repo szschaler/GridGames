@@ -1,6 +1,5 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
-import java.util.LinkedList
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
@@ -44,16 +43,9 @@ class FieldGenerator extends CommonGenerator {
 		    * @param height
 		    * @param cellFactory
 		 */
-		public «generateFieldClassName()»(int width, int height, CellFactory cellFactory) {
+		public «generateFieldClassName()»(CellFactory cellFactory) {
 			super();
-			this.width = width;
-			this.height = height;
 			this.cellFactory = cellFactory;
-			field = new Cell[width][height];
-			initField();
-		}
-		
-		private void initField() {
 			«generateFieldInitialisation()»
 		}
 		
@@ -106,8 +98,13 @@ class FieldGenerator extends CommonGenerator {
 	}
 
 	def generateFieldInitialiserFor(FieldSpecification f) '''
-		public void initialise«f.name.toFirstUpper»Field() {
+		public final void initialise«f.name.toFirstUpper»Field() {
+			width = «f.width»;
+			height = «f.height»;
+			field = new Cell[width][height];
 			«f.field_initialisation.initialisations.join(" ", [i | i.generateInitCode()])»
+			
+			fireTableStructureChanged();
 		}
 	'''
 

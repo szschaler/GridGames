@@ -45,7 +45,7 @@ class FrameGenerator extends CommonGenerator {
 			setLayout(new FlowLayout());
 			setResizable(false);
 
-			jtDisplay = new JTable();
+			jtDisplay = new JTable(field);
 			//jtDisplay.setDefaultRenderer(Cell.class, new MineCellRenderer());
 
 			jtDisplay.setRowHeight(cellSize);
