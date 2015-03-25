@@ -1,6 +1,7 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import org.eclipse.xtext.generator.IFileSystemAccess
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 
 class FrameGenerator extends CommonGenerator {
@@ -21,8 +22,12 @@ class FrameGenerator extends CommonGenerator {
 		import javax.swing.event.TableModelEvent;
 		import javax.swing.event.TableModelListener;
 		import javax.swing.table.TableColumn;
+		import javax.swing.JMenu;
+		import javax.swing.JMenuBar;
+		import javax.swing.JMenuItem;
+		import javax.swing.AbstractAction;
 		
-		
+		import java.awt.event.ActionEvent;
 		import java.awt.FlowLayout;
 		
 		import java.util.Enumeration;
@@ -68,6 +73,30 @@ class FrameGenerator extends CommonGenerator {
 				jtDisplay.setCellSelectionEnabled(true);
 		
 				add(jtDisplay);
+				
+				JMenuBar jmb = new JMenuBar();
+				setJMenuBar(jmb);
+				
+				JMenu jmFile = new JMenu("File");
+				jmb.add(jmFile);
+				
+				«if (gg.options.exists[o | o instanceof AllowRestartMenu]) {
+					gg.fields.join(" ", [f | '''
+					jmFile.add(new JMenuItem(new AbstractAction("«f.name.toFirstUpper»") {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							field.«f.generateFieldInitialiserName»();
+						}
+					}));
+					'''])
+				}»
+				
+				jmFile.add(new JMenuItem(new AbstractAction("Exit") {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.exit(0);
+					}
+				}));
 				
 				relayoutTable();
 			}

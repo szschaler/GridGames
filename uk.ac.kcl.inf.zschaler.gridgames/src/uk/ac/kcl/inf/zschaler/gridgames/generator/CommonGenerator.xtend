@@ -2,6 +2,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
 
 /**
  * Common generator bits.
@@ -42,4 +43,6 @@ class CommonGenerator {
 	def generateFrameClassFileName() '''«generateViewPackageFolder»/«generateFrameClassName()».java'''
 	
 	def generateCellFactoryMethodName (String cellName) '''create«cellName.toFirstUpper»Field'''
+	
+	def generateFieldInitialiserName (FieldSpecification f) '''initialise«f.name.toFirstUpper»Field'''
 }

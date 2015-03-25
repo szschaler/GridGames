@@ -3,6 +3,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 
 /**
@@ -144,6 +145,16 @@ public class CommonGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("create");
     String _firstUpper = StringExtensions.toFirstUpper(cellName);
+    _builder.append(_firstUpper, "");
+    _builder.append("Field");
+    return _builder;
+  }
+  
+  public CharSequence generateFieldInitialiserName(final FieldSpecification f) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("initialise");
+    String _name = f.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
     _builder.append(_firstUpper, "");
     _builder.append("Field");
     return _builder;

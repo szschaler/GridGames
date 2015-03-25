@@ -98,7 +98,7 @@ class FieldGenerator extends CommonGenerator {
 	}
 
 	def generateFieldInitialiserFor(FieldSpecification f) '''
-		public final void initialise«f.name.toFirstUpper»Field() {
+		public final void «f.generateFieldInitialiserName»() {
 			width = «f.width»;
 			height = «f.height»;
 			field = new Cell[width][height];

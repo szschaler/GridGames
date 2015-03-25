@@ -277,11 +277,10 @@ public class FieldGenerator extends CommonGenerator {
   
   public CharSequence generateFieldInitialiserFor(final FieldSpecification f) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public final void initialise");
-    String _name = f.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
-    _builder.append("Field() {");
+    _builder.append("public final void ");
+    CharSequence _generateFieldInitialiserName = this.generateFieldInitialiserName(f);
+    _builder.append(_generateFieldInitialiserName, "");
+    _builder.append("() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("width = ");

@@ -1,10 +1,16 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 
 @SuppressWarnings("all")
 public class FrameGenerator extends CommonGenerator {
@@ -40,7 +46,16 @@ public class FrameGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("import javax.swing.table.TableColumn;");
     _builder.newLine();
+    _builder.append("import javax.swing.JMenu;");
     _builder.newLine();
+    _builder.append("import javax.swing.JMenuBar;");
+    _builder.newLine();
+    _builder.append("import javax.swing.JMenuItem;");
+    _builder.newLine();
+    _builder.append("import javax.swing.AbstractAction;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("import java.awt.event.ActionEvent;");
     _builder.newLine();
     _builder.append("import java.awt.FlowLayout;");
     _builder.newLine();
@@ -171,6 +186,90 @@ public class FrameGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("add(jtDisplay);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("JMenuBar jmb = new JMenuBar();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("setJMenuBar(jmb);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("JMenu jmFile = new JMenu(\"File\");");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("jmb.add(jmFile);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    String _xifexpression = null;
+    EList<OptionSpecification> _options = this.gg.getOptions();
+    final Function1<OptionSpecification, Boolean> _function = new Function1<OptionSpecification, Boolean>() {
+      @Override
+      public Boolean apply(final OptionSpecification o) {
+        return Boolean.valueOf((o instanceof AllowRestartMenu));
+      }
+    };
+    boolean _exists = IterableExtensions.<OptionSpecification>exists(_options, _function);
+    if (_exists) {
+      EList<FieldSpecification> _fields = this.gg.getFields();
+      final Function1<FieldSpecification, CharSequence> _function_1 = new Function1<FieldSpecification, CharSequence>() {
+        @Override
+        public CharSequence apply(final FieldSpecification f) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("jmFile.add(new JMenuItem(new AbstractAction(\"");
+          String _name = f.getName();
+          String _firstUpper = StringExtensions.toFirstUpper(_name);
+          _builder.append(_firstUpper, "");
+          _builder.append("\") {");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t");
+          _builder.append("@Override");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("public void actionPerformed(ActionEvent e) {");
+          _builder.newLine();
+          _builder.append("\t\t");
+          _builder.append("field.");
+          CharSequence _generateFieldInitialiserName = FrameGenerator.this.generateFieldInitialiserName(f);
+          _builder.append(_generateFieldInitialiserName, "\t\t");
+          _builder.append("();");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t");
+          _builder.append("}");
+          _builder.newLine();
+          _builder.append("}));");
+          _builder.newLine();
+          return _builder.toString();
+        }
+      };
+      _xifexpression = IterableExtensions.<FieldSpecification>join(_fields, " ", _function_1);
+    }
+    _builder.append(_xifexpression, "\t\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("jmFile.add(new JMenuItem(new AbstractAction(\"Exit\") {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("public void actionPerformed(ActionEvent e) {");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("System.exit(0);");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}));");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.newLine();
