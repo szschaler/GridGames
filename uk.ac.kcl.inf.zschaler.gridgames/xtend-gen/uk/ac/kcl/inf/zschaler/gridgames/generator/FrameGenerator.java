@@ -139,9 +139,6 @@ public class FrameGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("jtDisplay = new JTable(field);");
-    _builder.newLine();
-    _builder.append("\t\t");
     _builder.append("field.addTableModelListener(new TableModelListener() {");
     _builder.newLine();
     _builder.append("\t\t\t");
@@ -164,6 +161,9 @@ public class FrameGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("});");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("jtDisplay = new JTable(field);");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.newLine();

@@ -55,7 +55,6 @@ class FrameGenerator extends CommonGenerator {
 				setLayout(new FlowLayout());
 				setResizable(false);
 		
-				jtDisplay = new JTable(field);
 				field.addTableModelListener(new TableModelListener() {
 					@Override
 					public void tableChanged(TableModelEvent e) {
@@ -64,6 +63,7 @@ class FrameGenerator extends CommonGenerator {
 						}
 					}
 				});
+				jtDisplay = new JTable(field);
 				
 				//jtDisplay.setDefaultRenderer(Cell.class, new MineCellRenderer());
 		
