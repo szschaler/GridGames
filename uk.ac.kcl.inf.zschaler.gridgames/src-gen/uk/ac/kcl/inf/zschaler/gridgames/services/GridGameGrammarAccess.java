@@ -25,15 +25,13 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cFieldsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cFieldsFieldSpecificationParserRuleCall_3_0 = (RuleCall)cFieldsAssignment_3.eContents().get(0);
-		private final Assignment cCellsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cCellsCellSpecificationParserRuleCall_4_0 = (RuleCall)cCellsAssignment_4.eContents().get(0);
-		private final Assignment cField_initialisationAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cField_initialisationFieldInitialisationSpecificationParserRuleCall_5_0 = (RuleCall)cField_initialisationAssignment_5.eContents().get(0);
-		private final Assignment cOptionsAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cOptionsOptionSpecificationParserRuleCall_6_0 = (RuleCall)cOptionsAssignment_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cCellsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCellsCellSpecificationParserRuleCall_3_0 = (RuleCall)cCellsAssignment_3.eContents().get(0);
+		private final Assignment cFieldsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cFieldsFieldSpecificationParserRuleCall_4_0 = (RuleCall)cFieldsAssignment_4.eContents().get(0);
+		private final Assignment cOptionsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cOptionsOptionSpecificationParserRuleCall_5_0 = (RuleCall)cOptionsAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		/// * 
 		// * This language is meant to serve as a high-level modelling language for arcade-style games with a grid playing field
@@ -42,12 +40,10 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		// * 
 		// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 		// * / GridGame:
-		//	"game" name=ID "{" fields+=FieldSpecification+ cells+=CellSpecification+ field_initialisation= // Possibly cleverly tie this in with the field spec above?
-		//	FieldInitialisationSpecification options+=OptionSpecification* "}";
+		//	"game" name=ID "{" cells+=CellSpecification+ fields+=FieldSpecification+ options+=OptionSpecification* "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"game" name=ID "{" fields+=FieldSpecification+ cells+=CellSpecification+ field_initialisation= // Possibly cleverly tie this in with the field spec above?
-		//FieldInitialisationSpecification options+=OptionSpecification* "}"
+		//"game" name=ID "{" cells+=CellSpecification+ fields+=FieldSpecification+ options+=OptionSpecification* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"game"
@@ -62,102 +58,26 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//fields+=FieldSpecification+
-		public Assignment getFieldsAssignment_3() { return cFieldsAssignment_3; }
-
-		//FieldSpecification
-		public RuleCall getFieldsFieldSpecificationParserRuleCall_3_0() { return cFieldsFieldSpecificationParserRuleCall_3_0; }
-
 		//cells+=CellSpecification+
-		public Assignment getCellsAssignment_4() { return cCellsAssignment_4; }
+		public Assignment getCellsAssignment_3() { return cCellsAssignment_3; }
 
 		//CellSpecification
-		public RuleCall getCellsCellSpecificationParserRuleCall_4_0() { return cCellsCellSpecificationParserRuleCall_4_0; }
+		public RuleCall getCellsCellSpecificationParserRuleCall_3_0() { return cCellsCellSpecificationParserRuleCall_3_0; }
 
-		//field_initialisation= // Possibly cleverly tie this in with the field spec above?
-		//FieldInitialisationSpecification
-		public Assignment getField_initialisationAssignment_5() { return cField_initialisationAssignment_5; }
+		//fields+=FieldSpecification+
+		public Assignment getFieldsAssignment_4() { return cFieldsAssignment_4; }
 
-		//// Possibly cleverly tie this in with the field spec above?
-		//FieldInitialisationSpecification
-		public RuleCall getField_initialisationFieldInitialisationSpecificationParserRuleCall_5_0() { return cField_initialisationFieldInitialisationSpecificationParserRuleCall_5_0; }
+		//FieldSpecification
+		public RuleCall getFieldsFieldSpecificationParserRuleCall_4_0() { return cFieldsFieldSpecificationParserRuleCall_4_0; }
 
 		//options+=OptionSpecification*
-		public Assignment getOptionsAssignment_6() { return cOptionsAssignment_6; }
+		public Assignment getOptionsAssignment_5() { return cOptionsAssignment_5; }
 
 		//OptionSpecification
-		public RuleCall getOptionsOptionSpecificationParserRuleCall_6_0() { return cOptionsOptionSpecificationParserRuleCall_6_0; }
+		public RuleCall getOptionsOptionSpecificationParserRuleCall_5_0() { return cOptionsOptionSpecificationParserRuleCall_5_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
-	}
-
-	public class FieldSpecificationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FieldSpecification");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cField_typeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cWidthKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cEqualsSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cWidthAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cWidthINTTerminalRuleCall_5_0 = (RuleCall)cWidthAssignment_5.eContents().get(0);
-		private final Keyword cCommaKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cHeightKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cEqualsSignKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cHeightAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cHeightINTTerminalRuleCall_9_0 = (RuleCall)cHeightAssignment_9.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		
-		//FieldSpecification:
-		//	"field_type" name=ID "{" "width" "=" width=INT "," "height" "=" height=INT "}";
-		@Override public ParserRule getRule() { return rule; }
-
-		//"field_type" name=ID "{" "width" "=" width=INT "," "height" "=" height=INT "}"
-		public Group getGroup() { return cGroup; }
-
-		//"field_type"
-		public Keyword getField_typeKeyword_0() { return cField_typeKeyword_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-
-		//"width"
-		public Keyword getWidthKeyword_3() { return cWidthKeyword_3; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_4() { return cEqualsSignKeyword_4; }
-
-		//width=INT
-		public Assignment getWidthAssignment_5() { return cWidthAssignment_5; }
-
-		//INT
-		public RuleCall getWidthINTTerminalRuleCall_5_0() { return cWidthINTTerminalRuleCall_5_0; }
-
-		//","
-		public Keyword getCommaKeyword_6() { return cCommaKeyword_6; }
-
-		//"height"
-		public Keyword getHeightKeyword_7() { return cHeightKeyword_7; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_8() { return cEqualsSignKeyword_8; }
-
-		//height=INT
-		public Assignment getHeightAssignment_9() { return cHeightAssignment_9; }
-
-		//INT
-		public RuleCall getHeightINTTerminalRuleCall_9_0() { return cHeightINTTerminalRuleCall_9_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 
 	public class CellSpecificationElements extends AbstractParserRuleElementFinder {
@@ -193,6 +113,79 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		////                         Provide cell type properties here...
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+	}
+
+	public class FieldSpecificationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FieldSpecification");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cField_typeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cWidthKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cEqualsSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cWidthAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cWidthINTTerminalRuleCall_5_0 = (RuleCall)cWidthAssignment_5.eContents().get(0);
+		private final Keyword cHeightKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cEqualsSignKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cHeightAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cHeightINTTerminalRuleCall_8_0 = (RuleCall)cHeightAssignment_8.eContents().get(0);
+		private final Assignment cField_initialisationAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cField_initialisationFieldInitialisationsParserRuleCall_9_0 = (RuleCall)cField_initialisationAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		
+		//FieldSpecification:
+		//	"field_type" name=ID "{" "width" "=" width=INT "height" "=" height=INT field_initialisation=FieldInitialisations?
+		//	"}";
+		@Override public ParserRule getRule() { return rule; }
+
+		//"field_type" name=ID "{" "width" "=" width=INT "height" "=" height=INT field_initialisation=FieldInitialisations? "}"
+		public Group getGroup() { return cGroup; }
+
+		//"field_type"
+		public Keyword getField_typeKeyword_0() { return cField_typeKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//"width"
+		public Keyword getWidthKeyword_3() { return cWidthKeyword_3; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_4() { return cEqualsSignKeyword_4; }
+
+		//width=INT
+		public Assignment getWidthAssignment_5() { return cWidthAssignment_5; }
+
+		//INT
+		public RuleCall getWidthINTTerminalRuleCall_5_0() { return cWidthINTTerminalRuleCall_5_0; }
+
+		//"height"
+		public Keyword getHeightKeyword_6() { return cHeightKeyword_6; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_7() { return cEqualsSignKeyword_7; }
+
+		//height=INT
+		public Assignment getHeightAssignment_8() { return cHeightAssignment_8; }
+
+		//INT
+		public RuleCall getHeightINTTerminalRuleCall_8_0() { return cHeightINTTerminalRuleCall_8_0; }
+
+		//field_initialisation=FieldInitialisations?
+		public Assignment getField_initialisationAssignment_9() { return cField_initialisationAssignment_9; }
+
+		//FieldInitialisations
+		public RuleCall getField_initialisationFieldInitialisationsParserRuleCall_9_0() { return cField_initialisationFieldInitialisationsParserRuleCall_9_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
 	}
 
 	public class OptionSpecificationElements extends AbstractParserRuleElementFinder {
@@ -263,26 +256,129 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getField_nameIDTerminalRuleCall_2_0() { return cField_nameIDTerminalRuleCall_2_0; }
 	}
 
-	public class FieldInitialisationSpecificationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FieldInitialisationSpecification");
-		private final Keyword cINITKeyword = (Keyword)rule.eContents().get(1);
+	public class FieldInitialisationsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FieldInitialisations");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cInitKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cInitialisationsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cInitialisationsFieldInitialisationParserRuleCall_1_0 = (RuleCall)cInitialisationsAssignment_1.eContents().get(0);
 		
-		//FieldInitialisationSpecification:
-		//	"INIT";
+		//FieldInitialisations:
+		//	"init" initialisations+=FieldInitialisation+;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"INIT"
-		public Keyword getINITKeyword() { return cINITKeyword; }
+		//"init" initialisations+=FieldInitialisation+
+		public Group getGroup() { return cGroup; }
+
+		//"init"
+		public Keyword getInitKeyword_0() { return cInitKeyword_0; }
+
+		//initialisations+=FieldInitialisation+
+		public Assignment getInitialisationsAssignment_1() { return cInitialisationsAssignment_1; }
+
+		//FieldInitialisation
+		public RuleCall getInitialisationsFieldInitialisationParserRuleCall_1_0() { return cInitialisationsFieldInitialisationParserRuleCall_1_0; }
+	}
+
+	public class FieldInitialisationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FieldInitialisation");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cDefaultFieldInitialisationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cRandomInitialisationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//FieldInitialisation:
+		//	DefaultFieldInitialisation | RandomInitialisation;
+		@Override public ParserRule getRule() { return rule; }
+
+		//DefaultFieldInitialisation | RandomInitialisation
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//DefaultFieldInitialisation
+		public RuleCall getDefaultFieldInitialisationParserRuleCall_0() { return cDefaultFieldInitialisationParserRuleCall_0; }
+
+		//RandomInitialisation
+		public RuleCall getRandomInitialisationParserRuleCall_1() { return cRandomInitialisationParserRuleCall_1; }
+	}
+
+	public class DefaultFieldInitialisationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DefaultFieldInitialisation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cDefaultKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cCellAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCellIDTerminalRuleCall_2_0 = (RuleCall)cCellAssignment_2.eContents().get(0);
+		
+		//DefaultFieldInitialisation:
+		//	"default" ":" cell=ID;
+		@Override public ParserRule getRule() { return rule; }
+
+		//"default" ":" cell=ID
+		public Group getGroup() { return cGroup; }
+
+		//"default"
+		public Keyword getDefaultKeyword_0() { return cDefaultKeyword_0; }
+
+		//":"
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+
+		//cell=ID
+		public Assignment getCellAssignment_2() { return cCellAssignment_2; }
+
+		//ID
+		public RuleCall getCellIDTerminalRuleCall_2_0() { return cCellIDTerminalRuleCall_2_0; }
+	}
+
+	public class RandomInitialisationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RandomInitialisation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRandomKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cCellAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCellIDTerminalRuleCall_2_0 = (RuleCall)cCellAssignment_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cCountAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cCountINTTerminalRuleCall_4_0 = (RuleCall)cCountAssignment_4.eContents().get(0);
+		
+		//RandomInitialisation:
+		//	"random" ":" cell=ID "=" count=INT;
+		@Override public ParserRule getRule() { return rule; }
+
+		//"random" ":" cell=ID "=" count=INT
+		public Group getGroup() { return cGroup; }
+
+		//"random"
+		public Keyword getRandomKeyword_0() { return cRandomKeyword_0; }
+
+		//":"
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+
+		//cell=ID
+		public Assignment getCellAssignment_2() { return cCellAssignment_2; }
+
+		//ID
+		public RuleCall getCellIDTerminalRuleCall_2_0() { return cCellIDTerminalRuleCall_2_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
+
+		//count=INT
+		public Assignment getCountAssignment_4() { return cCountAssignment_4; }
+
+		//INT
+		public RuleCall getCountINTTerminalRuleCall_4_0() { return cCountINTTerminalRuleCall_4_0; }
 	}
 	
 	
 	private final GridGameElements pGridGame;
-	private final FieldSpecificationElements pFieldSpecification;
 	private final CellSpecificationElements pCellSpecification;
+	private final FieldSpecificationElements pFieldSpecification;
 	private final OptionSpecificationElements pOptionSpecification;
 	private final AllowRestartMenuElements pAllowRestartMenu;
 	private final StartFieldDeclarationElements pStartFieldDeclaration;
-	private final FieldInitialisationSpecificationElements pFieldInitialisationSpecification;
+	private final FieldInitialisationsElements pFieldInitialisations;
+	private final FieldInitialisationElements pFieldInitialisation;
+	private final DefaultFieldInitialisationElements pDefaultFieldInitialisation;
+	private final RandomInitialisationElements pRandomInitialisation;
 	
 	private final Grammar grammar;
 
@@ -294,12 +390,15 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pGridGame = new GridGameElements();
-		this.pFieldSpecification = new FieldSpecificationElements();
 		this.pCellSpecification = new CellSpecificationElements();
+		this.pFieldSpecification = new FieldSpecificationElements();
 		this.pOptionSpecification = new OptionSpecificationElements();
 		this.pAllowRestartMenu = new AllowRestartMenuElements();
 		this.pStartFieldDeclaration = new StartFieldDeclarationElements();
-		this.pFieldInitialisationSpecification = new FieldInitialisationSpecificationElements();
+		this.pFieldInitialisations = new FieldInitialisationsElements();
+		this.pFieldInitialisation = new FieldInitialisationElements();
+		this.pDefaultFieldInitialisation = new DefaultFieldInitialisationElements();
+		this.pRandomInitialisation = new RandomInitialisationElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -336,24 +435,13 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	// * 
 	// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 	// * / GridGame:
-	//	"game" name=ID "{" fields+=FieldSpecification+ cells+=CellSpecification+ field_initialisation= // Possibly cleverly tie this in with the field spec above?
-	//	FieldInitialisationSpecification options+=OptionSpecification* "}";
+	//	"game" name=ID "{" cells+=CellSpecification+ fields+=FieldSpecification+ options+=OptionSpecification* "}";
 	public GridGameElements getGridGameAccess() {
 		return pGridGame;
 	}
 	
 	public ParserRule getGridGameRule() {
 		return getGridGameAccess().getRule();
-	}
-
-	//FieldSpecification:
-	//	"field_type" name=ID "{" "width" "=" width=INT "," "height" "=" height=INT "}";
-	public FieldSpecificationElements getFieldSpecificationAccess() {
-		return pFieldSpecification;
-	}
-	
-	public ParserRule getFieldSpecificationRule() {
-		return getFieldSpecificationAccess().getRule();
 	}
 
 	//CellSpecification:
@@ -365,6 +453,17 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getCellSpecificationRule() {
 		return getCellSpecificationAccess().getRule();
+	}
+
+	//FieldSpecification:
+	//	"field_type" name=ID "{" "width" "=" width=INT "height" "=" height=INT field_initialisation=FieldInitialisations?
+	//	"}";
+	public FieldSpecificationElements getFieldSpecificationAccess() {
+		return pFieldSpecification;
+	}
+	
+	public ParserRule getFieldSpecificationRule() {
+		return getFieldSpecificationAccess().getRule();
 	}
 
 	//OptionSpecification:
@@ -397,14 +496,44 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		return getStartFieldDeclarationAccess().getRule();
 	}
 
-	//FieldInitialisationSpecification:
-	//	"INIT";
-	public FieldInitialisationSpecificationElements getFieldInitialisationSpecificationAccess() {
-		return pFieldInitialisationSpecification;
+	//FieldInitialisations:
+	//	"init" initialisations+=FieldInitialisation+;
+	public FieldInitialisationsElements getFieldInitialisationsAccess() {
+		return pFieldInitialisations;
 	}
 	
-	public ParserRule getFieldInitialisationSpecificationRule() {
-		return getFieldInitialisationSpecificationAccess().getRule();
+	public ParserRule getFieldInitialisationsRule() {
+		return getFieldInitialisationsAccess().getRule();
+	}
+
+	//FieldInitialisation:
+	//	DefaultFieldInitialisation | RandomInitialisation;
+	public FieldInitialisationElements getFieldInitialisationAccess() {
+		return pFieldInitialisation;
+	}
+	
+	public ParserRule getFieldInitialisationRule() {
+		return getFieldInitialisationAccess().getRule();
+	}
+
+	//DefaultFieldInitialisation:
+	//	"default" ":" cell=ID;
+	public DefaultFieldInitialisationElements getDefaultFieldInitialisationAccess() {
+		return pDefaultFieldInitialisation;
+	}
+	
+	public ParserRule getDefaultFieldInitialisationRule() {
+		return getDefaultFieldInitialisationAccess().getRule();
+	}
+
+	//RandomInitialisation:
+	//	"random" ":" cell=ID "=" count=INT;
+	public RandomInitialisationElements getRandomInitialisationAccess() {
+		return pRandomInitialisation;
+	}
+	
+	public ParserRule getRandomInitialisationRule() {
+		return getRandomInitialisationAccess().getRule();
 	}
 
 	//terminal ID:

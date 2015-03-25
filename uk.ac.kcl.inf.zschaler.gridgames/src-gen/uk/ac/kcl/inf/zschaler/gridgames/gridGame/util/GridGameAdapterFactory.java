@@ -80,14 +80,14 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createGridGameAdapter();
       }
       @Override
-      public Adapter caseFieldSpecification(FieldSpecification object)
-      {
-        return createFieldSpecificationAdapter();
-      }
-      @Override
       public Adapter caseCellSpecification(CellSpecification object)
       {
         return createCellSpecificationAdapter();
+      }
+      @Override
+      public Adapter caseFieldSpecification(FieldSpecification object)
+      {
+        return createFieldSpecificationAdapter();
       }
       @Override
       public Adapter caseOptionSpecification(OptionSpecification object)
@@ -103,6 +103,26 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
       public Adapter caseStartFieldDeclaration(StartFieldDeclaration object)
       {
         return createStartFieldDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseFieldInitialisations(FieldInitialisations object)
+      {
+        return createFieldInitialisationsAdapter();
+      }
+      @Override
+      public Adapter caseFieldInitialisation(FieldInitialisation object)
+      {
+        return createFieldInitialisationAdapter();
+      }
+      @Override
+      public Adapter caseDefaultFieldInitialisation(DefaultFieldInitialisation object)
+      {
+        return createDefaultFieldInitialisationAdapter();
+      }
+      @Override
+      public Adapter caseRandomInitialisation(RandomInitialisation object)
+      {
+        return createRandomInitialisationAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -142,21 +162,6 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification <em>Field Specification</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
-   * @generated
-   */
-  public Adapter createFieldSpecificationAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification <em>Cell Specification</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -167,6 +172,21 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCellSpecificationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification <em>Field Specification</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
+   * @generated
+   */
+  public Adapter createFieldSpecificationAdapter()
   {
     return null;
   }
@@ -212,6 +232,66 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStartFieldDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations <em>Field Initialisations</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations
+   * @generated
+   */
+  public Adapter createFieldInitialisationsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation <em>Field Initialisation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation
+   * @generated
+   */
+  public Adapter createFieldInitialisationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultFieldInitialisation <em>Default Field Initialisation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultFieldInitialisation
+   * @generated
+   */
+  public Adapter createDefaultFieldInitialisationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation <em>Random Initialisation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation
+   * @generated
+   */
+  public Adapter createRandomInitialisationAdapter()
   {
     return null;
   }

@@ -32,15 +32,6 @@ public interface GridGameFactory extends EFactory
   GridGame createGridGame();
 
   /**
-   * Returns a new object of class '<em>Field Specification</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Field Specification</em>'.
-   * @generated
-   */
-  FieldSpecification createFieldSpecification();
-
-  /**
    * Returns a new object of class '<em>Cell Specification</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -48,6 +39,15 @@ public interface GridGameFactory extends EFactory
    * @generated
    */
   CellSpecification createCellSpecification();
+
+  /**
+   * Returns a new object of class '<em>Field Specification</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Field Specification</em>'.
+   * @generated
+   */
+  FieldSpecification createFieldSpecification();
 
   /**
    * Returns a new object of class '<em>Option Specification</em>'.
@@ -75,6 +75,42 @@ public interface GridGameFactory extends EFactory
    * @generated
    */
   StartFieldDeclaration createStartFieldDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Field Initialisations</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Field Initialisations</em>'.
+   * @generated
+   */
+  FieldInitialisations createFieldInitialisations();
+
+  /**
+   * Returns a new object of class '<em>Field Initialisation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Field Initialisation</em>'.
+   * @generated
+   */
+  FieldInitialisation createFieldInitialisation();
+
+  /**
+   * Returns a new object of class '<em>Default Field Initialisation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Default Field Initialisation</em>'.
+   * @generated
+   */
+  DefaultFieldInitialisation createDefaultFieldInitialisation();
+
+  /**
+   * Returns a new object of class '<em>Random Initialisation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Random Initialisation</em>'.
+   * @generated
+   */
+  RandomInitialisation createRandomInitialisation();
 
   /**
    * Returns the package supported by this factory.

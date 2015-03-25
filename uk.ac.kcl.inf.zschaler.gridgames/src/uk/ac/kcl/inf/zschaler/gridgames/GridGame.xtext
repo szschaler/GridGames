@@ -12,20 +12,24 @@ generate gridGame "http://www.inf.kcl.ac.uk/zschaler/gridgames/GridGame"
 
 GridGame : 
 	"game" name=ID "{"
-		fields += FieldSpecification+
 		cells += CellSpecification+
-		field_initialisation = FieldInitialisationSpecification // Possibly cleverly tie this in with the field spec above?
+		fields += FieldSpecification+
 		options += OptionSpecification*
 	"}"
 ;
               
-FieldSpecification :
-	"field_type" name=ID "{" "width" "=" width=INT "," "height" "=" height=INT "}";
-
 CellSpecification :
 	"cell_type" name=ID "{" 
 //                         Provide cell type properties here...
                         "}";
+
+FieldSpecification :
+	"field_type" name=ID "{" 
+		"width" "=" width=INT  
+		"height" "=" height=INT 
+		field_initialisation = FieldInitialisations? 
+    "}"
+;
 
 OptionSpecification :
 	StartFieldDeclaration | 
@@ -40,6 +44,19 @@ StartFieldDeclaration:
 	"start" "=" field_name = ID
 ;
 
-FieldInitialisationSpecification : 
-	"INIT"
+FieldInitialisations :
+	"init" initialisations += FieldInitialisation+ 
+;
+
+FieldInitialisation :
+	DefaultFieldInitialisation |
+	RandomInitialisation
+;
+
+DefaultFieldInitialisation :
+	"default" ":" cell=ID
+;
+
+RandomInitialisation :
+	"random" ":" cell=ID "=" count=INT
 ;

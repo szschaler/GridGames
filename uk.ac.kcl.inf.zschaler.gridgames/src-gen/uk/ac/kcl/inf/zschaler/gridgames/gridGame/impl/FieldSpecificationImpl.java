@@ -3,12 +3,15 @@
 package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 
@@ -22,6 +25,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl#getField_initialisation <em>Field initialisation</em>}</li>
  * </ul>
  * </p>
  *
@@ -88,6 +92,16 @@ public class FieldSpecificationImpl extends MinimalEObjectImpl.Container impleme
    * @ordered
    */
   protected int height = HEIGHT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getField_initialisation() <em>Field initialisation</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getField_initialisation()
+   * @generated
+   * @ordered
+   */
+  protected FieldInitialisations field_initialisation;
 
   /**
    * <!-- begin-user-doc -->
@@ -184,6 +198,70 @@ public class FieldSpecificationImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
+  public FieldInitialisations getField_initialisation()
+  {
+    return field_initialisation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetField_initialisation(FieldInitialisations newField_initialisation, NotificationChain msgs)
+  {
+    FieldInitialisations oldField_initialisation = field_initialisation;
+    field_initialisation = newField_initialisation;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GridGamePackage.FIELD_SPECIFICATION__FIELD_INITIALISATION, oldField_initialisation, newField_initialisation);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setField_initialisation(FieldInitialisations newField_initialisation)
+  {
+    if (newField_initialisation != field_initialisation)
+    {
+      NotificationChain msgs = null;
+      if (field_initialisation != null)
+        msgs = ((InternalEObject)field_initialisation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GridGamePackage.FIELD_SPECIFICATION__FIELD_INITIALISATION, null, msgs);
+      if (newField_initialisation != null)
+        msgs = ((InternalEObject)newField_initialisation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GridGamePackage.FIELD_SPECIFICATION__FIELD_INITIALISATION, null, msgs);
+      msgs = basicSetField_initialisation(newField_initialisation, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.FIELD_SPECIFICATION__FIELD_INITIALISATION, newField_initialisation, newField_initialisation));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case GridGamePackage.FIELD_SPECIFICATION__FIELD_INITIALISATION:
+        return basicSetField_initialisation(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -195,6 +273,8 @@ public class FieldSpecificationImpl extends MinimalEObjectImpl.Container impleme
         return getWidth();
       case GridGamePackage.FIELD_SPECIFICATION__HEIGHT:
         return getHeight();
+      case GridGamePackage.FIELD_SPECIFICATION__FIELD_INITIALISATION:
+        return getField_initialisation();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -217,6 +297,9 @@ public class FieldSpecificationImpl extends MinimalEObjectImpl.Container impleme
         return;
       case GridGamePackage.FIELD_SPECIFICATION__HEIGHT:
         setHeight((Integer)newValue);
+        return;
+      case GridGamePackage.FIELD_SPECIFICATION__FIELD_INITIALISATION:
+        setField_initialisation((FieldInitialisations)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -241,6 +324,9 @@ public class FieldSpecificationImpl extends MinimalEObjectImpl.Container impleme
       case GridGamePackage.FIELD_SPECIFICATION__HEIGHT:
         setHeight(HEIGHT_EDEFAULT);
         return;
+      case GridGamePackage.FIELD_SPECIFICATION__FIELD_INITIALISATION:
+        setField_initialisation((FieldInitialisations)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -261,6 +347,8 @@ public class FieldSpecificationImpl extends MinimalEObjectImpl.Container impleme
         return width != WIDTH_EDEFAULT;
       case GridGamePackage.FIELD_SPECIFICATION__HEIGHT:
         return height != HEIGHT_EDEFAULT;
+      case GridGamePackage.FIELD_SPECIFICATION__FIELD_INITIALISATION:
+        return field_initialisation != null;
     }
     return super.eIsSet(featureID);
   }

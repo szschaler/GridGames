@@ -9,23 +9,33 @@
       fileExtensions="ggame" ecorePackage="GridGame.ecore#/">
     <genClasses ecoreClass="GridGame.ecore#//GridGame">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GridGame/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/fields"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/cells"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GridGame/field_initialisation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/fields"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/options"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//CellSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellSpecification/name"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//FieldSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/height"/>
-    </genClasses>
-    <genClasses ecoreClass="GridGame.ecore#//CellSpecification">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellSpecification/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//FieldSpecification/field_initialisation"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//OptionSpecification"/>
     <genClasses ecoreClass="GridGame.ecore#//AllowRestartMenu"/>
     <genClasses ecoreClass="GridGame.ecore#//StartFieldDeclaration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//StartFieldDeclaration/field_name"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//FieldInitialisations">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//FieldInitialisations/initialisations"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//FieldInitialisation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldInitialisation/cell"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//DefaultFieldInitialisation"/>
+    <genClasses ecoreClass="GridGame.ecore#//RandomInitialisation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//RandomInitialisation/count"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

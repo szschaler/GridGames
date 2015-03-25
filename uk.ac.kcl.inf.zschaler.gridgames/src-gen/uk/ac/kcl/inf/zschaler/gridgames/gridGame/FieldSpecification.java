@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification#getWidth <em>Width</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification#getHeight <em>Height</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification#getField_initialisation <em>Field initialisation</em>}</li>
  * </ul>
  * </p>
  *
@@ -101,5 +102,31 @@ public interface FieldSpecification extends EObject
    * @generated
    */
   void setHeight(int value);
+
+  /**
+   * Returns the value of the '<em><b>Field initialisation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Field initialisation</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Field initialisation</em>' containment reference.
+   * @see #setField_initialisation(FieldInitialisations)
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getFieldSpecification_Field_initialisation()
+   * @model containment="true"
+   * @generated
+   */
+  FieldInitialisations getField_initialisation();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification#getField_initialisation <em>Field initialisation</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Field initialisation</em>' containment reference.
+   * @see #getField_initialisation()
+   * @generated
+   */
+  void setField_initialisation(FieldInitialisations value);
 
 } // FieldSpecification

@@ -38,21 +38,29 @@ public class GridGameParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getOptionSpecificationAccess().getAlternatives(), "rule__OptionSpecification__Alternatives");
+					put(grammarAccess.getFieldInitialisationAccess().getAlternatives(), "rule__FieldInitialisation__Alternatives");
 					put(grammarAccess.getGridGameAccess().getGroup(), "rule__GridGame__Group__0");
-					put(grammarAccess.getFieldSpecificationAccess().getGroup(), "rule__FieldSpecification__Group__0");
 					put(grammarAccess.getCellSpecificationAccess().getGroup(), "rule__CellSpecification__Group__0");
+					put(grammarAccess.getFieldSpecificationAccess().getGroup(), "rule__FieldSpecification__Group__0");
 					put(grammarAccess.getAllowRestartMenuAccess().getGroup(), "rule__AllowRestartMenu__Group__0");
 					put(grammarAccess.getStartFieldDeclarationAccess().getGroup(), "rule__StartFieldDeclaration__Group__0");
+					put(grammarAccess.getFieldInitialisationsAccess().getGroup(), "rule__FieldInitialisations__Group__0");
+					put(grammarAccess.getDefaultFieldInitialisationAccess().getGroup(), "rule__DefaultFieldInitialisation__Group__0");
+					put(grammarAccess.getRandomInitialisationAccess().getGroup(), "rule__RandomInitialisation__Group__0");
 					put(grammarAccess.getGridGameAccess().getNameAssignment_1(), "rule__GridGame__NameAssignment_1");
-					put(grammarAccess.getGridGameAccess().getFieldsAssignment_3(), "rule__GridGame__FieldsAssignment_3");
-					put(grammarAccess.getGridGameAccess().getCellsAssignment_4(), "rule__GridGame__CellsAssignment_4");
-					put(grammarAccess.getGridGameAccess().getField_initialisationAssignment_5(), "rule__GridGame__Field_initialisationAssignment_5");
-					put(grammarAccess.getGridGameAccess().getOptionsAssignment_6(), "rule__GridGame__OptionsAssignment_6");
+					put(grammarAccess.getGridGameAccess().getCellsAssignment_3(), "rule__GridGame__CellsAssignment_3");
+					put(grammarAccess.getGridGameAccess().getFieldsAssignment_4(), "rule__GridGame__FieldsAssignment_4");
+					put(grammarAccess.getGridGameAccess().getOptionsAssignment_5(), "rule__GridGame__OptionsAssignment_5");
+					put(grammarAccess.getCellSpecificationAccess().getNameAssignment_1(), "rule__CellSpecification__NameAssignment_1");
 					put(grammarAccess.getFieldSpecificationAccess().getNameAssignment_1(), "rule__FieldSpecification__NameAssignment_1");
 					put(grammarAccess.getFieldSpecificationAccess().getWidthAssignment_5(), "rule__FieldSpecification__WidthAssignment_5");
-					put(grammarAccess.getFieldSpecificationAccess().getHeightAssignment_9(), "rule__FieldSpecification__HeightAssignment_9");
-					put(grammarAccess.getCellSpecificationAccess().getNameAssignment_1(), "rule__CellSpecification__NameAssignment_1");
+					put(grammarAccess.getFieldSpecificationAccess().getHeightAssignment_8(), "rule__FieldSpecification__HeightAssignment_8");
+					put(grammarAccess.getFieldSpecificationAccess().getField_initialisationAssignment_9(), "rule__FieldSpecification__Field_initialisationAssignment_9");
 					put(grammarAccess.getStartFieldDeclarationAccess().getField_nameAssignment_2(), "rule__StartFieldDeclaration__Field_nameAssignment_2");
+					put(grammarAccess.getFieldInitialisationsAccess().getInitialisationsAssignment_1(), "rule__FieldInitialisations__InitialisationsAssignment_1");
+					put(grammarAccess.getDefaultFieldInitialisationAccess().getCellAssignment_2(), "rule__DefaultFieldInitialisation__CellAssignment_2");
+					put(grammarAccess.getRandomInitialisationAccess().getCellAssignment_2(), "rule__RandomInitialisation__CellAssignment_2");
+					put(grammarAccess.getRandomInitialisationAccess().getCountAssignment_4(), "rule__RandomInitialisation__CountAssignment_4");
 				}
 			};
 		}

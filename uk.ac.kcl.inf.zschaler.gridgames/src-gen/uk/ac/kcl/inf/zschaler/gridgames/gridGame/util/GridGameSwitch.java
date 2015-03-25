@@ -79,17 +79,17 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GridGamePackage.FIELD_SPECIFICATION:
-      {
-        FieldSpecification fieldSpecification = (FieldSpecification)theEObject;
-        T result = caseFieldSpecification(fieldSpecification);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case GridGamePackage.CELL_SPECIFICATION:
       {
         CellSpecification cellSpecification = (CellSpecification)theEObject;
         T result = caseCellSpecification(cellSpecification);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.FIELD_SPECIFICATION:
+      {
+        FieldSpecification fieldSpecification = (FieldSpecification)theEObject;
+        T result = caseFieldSpecification(fieldSpecification);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -116,6 +116,36 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.FIELD_INITIALISATIONS:
+      {
+        FieldInitialisations fieldInitialisations = (FieldInitialisations)theEObject;
+        T result = caseFieldInitialisations(fieldInitialisations);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.FIELD_INITIALISATION:
+      {
+        FieldInitialisation fieldInitialisation = (FieldInitialisation)theEObject;
+        T result = caseFieldInitialisation(fieldInitialisation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.DEFAULT_FIELD_INITIALISATION:
+      {
+        DefaultFieldInitialisation defaultFieldInitialisation = (DefaultFieldInitialisation)theEObject;
+        T result = caseDefaultFieldInitialisation(defaultFieldInitialisation);
+        if (result == null) result = caseFieldInitialisation(defaultFieldInitialisation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.RANDOM_INITIALISATION:
+      {
+        RandomInitialisation randomInitialisation = (RandomInitialisation)theEObject;
+        T result = caseRandomInitialisation(randomInitialisation);
+        if (result == null) result = caseFieldInitialisation(randomInitialisation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -137,22 +167,6 @@ public class GridGameSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Field Specification</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Field Specification</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFieldSpecification(FieldSpecification object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Cell Specification</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -164,6 +178,22 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCellSpecification(CellSpecification object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Field Specification</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Field Specification</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFieldSpecification(FieldSpecification object)
   {
     return null;
   }
@@ -212,6 +242,70 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseStartFieldDeclaration(StartFieldDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Field Initialisations</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Field Initialisations</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFieldInitialisations(FieldInitialisations object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Field Initialisation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Field Initialisation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFieldInitialisation(FieldInitialisation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Default Field Initialisation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Default Field Initialisation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDefaultFieldInitialisation(DefaultFieldInitialisation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Random Initialisation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Random Initialisation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRandomInitialisation(RandomInitialisation object)
   {
     return null;
   }

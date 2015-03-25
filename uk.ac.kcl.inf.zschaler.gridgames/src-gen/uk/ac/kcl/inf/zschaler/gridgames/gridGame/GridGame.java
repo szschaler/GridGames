@@ -15,9 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getName <em>Name</em>}</li>
- *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getFields <em>Fields</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getCells <em>Cells</em>}</li>
- *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getField_initialisation <em>Field initialisation</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getFields <em>Fields</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getOptions <em>Options</em>}</li>
  * </ul>
  * </p>
@@ -55,22 +54,6 @@ public interface GridGame extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Fields</b></em>' containment reference list.
-   * The list contents are of type {@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Fields</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Fields</em>' containment reference list.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getGridGame_Fields()
-   * @model containment="true"
-   * @generated
-   */
-  EList<FieldSpecification> getFields();
-
-  /**
    * Returns the value of the '<em><b>Cells</b></em>' containment reference list.
    * The list contents are of type {@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification}.
    * <!-- begin-user-doc -->
@@ -87,30 +70,20 @@ public interface GridGame extends EObject
   EList<CellSpecification> getCells();
 
   /**
-   * Returns the value of the '<em><b>Field initialisation</b></em>' attribute.
+   * Returns the value of the '<em><b>Fields</b></em>' containment reference list.
+   * The list contents are of type {@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Field initialisation</em>' attribute isn't clear,
+   * If the meaning of the '<em>Fields</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Field initialisation</em>' attribute.
-   * @see #setField_initialisation(String)
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getGridGame_Field_initialisation()
-   * @model
+   * @return the value of the '<em>Fields</em>' containment reference list.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getGridGame_Fields()
+   * @model containment="true"
    * @generated
    */
-  String getField_initialisation();
-
-  /**
-   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getField_initialisation <em>Field initialisation</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Field initialisation</em>' attribute.
-   * @see #getField_initialisation()
-   * @generated
-   */
-  void setField_initialisation(String value);
+  EList<FieldSpecification> getFields();
 
   /**
    * Returns the value of the '<em><b>Options</b></em>' containment reference list.

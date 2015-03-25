@@ -65,11 +65,15 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
     switch (eClass.getClassifierID())
     {
       case GridGamePackage.GRID_GAME: return createGridGame();
-      case GridGamePackage.FIELD_SPECIFICATION: return createFieldSpecification();
       case GridGamePackage.CELL_SPECIFICATION: return createCellSpecification();
+      case GridGamePackage.FIELD_SPECIFICATION: return createFieldSpecification();
       case GridGamePackage.OPTION_SPECIFICATION: return createOptionSpecification();
       case GridGamePackage.ALLOW_RESTART_MENU: return createAllowRestartMenu();
       case GridGamePackage.START_FIELD_DECLARATION: return createStartFieldDeclaration();
+      case GridGamePackage.FIELD_INITIALISATIONS: return createFieldInitialisations();
+      case GridGamePackage.FIELD_INITIALISATION: return createFieldInitialisation();
+      case GridGamePackage.DEFAULT_FIELD_INITIALISATION: return createDefaultFieldInitialisation();
+      case GridGamePackage.RANDOM_INITIALISATION: return createRandomInitialisation();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -91,10 +95,10 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FieldSpecification createFieldSpecification()
+  public CellSpecification createCellSpecification()
   {
-    FieldSpecificationImpl fieldSpecification = new FieldSpecificationImpl();
-    return fieldSpecification;
+    CellSpecificationImpl cellSpecification = new CellSpecificationImpl();
+    return cellSpecification;
   }
 
   /**
@@ -102,10 +106,10 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public CellSpecification createCellSpecification()
+  public FieldSpecification createFieldSpecification()
   {
-    CellSpecificationImpl cellSpecification = new CellSpecificationImpl();
-    return cellSpecification;
+    FieldSpecificationImpl fieldSpecification = new FieldSpecificationImpl();
+    return fieldSpecification;
   }
 
   /**
@@ -139,6 +143,50 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     StartFieldDeclarationImpl startFieldDeclaration = new StartFieldDeclarationImpl();
     return startFieldDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FieldInitialisations createFieldInitialisations()
+  {
+    FieldInitialisationsImpl fieldInitialisations = new FieldInitialisationsImpl();
+    return fieldInitialisations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FieldInitialisation createFieldInitialisation()
+  {
+    FieldInitialisationImpl fieldInitialisation = new FieldInitialisationImpl();
+    return fieldInitialisation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DefaultFieldInitialisation createDefaultFieldInitialisation()
+  {
+    DefaultFieldInitialisationImpl defaultFieldInitialisation = new DefaultFieldInitialisationImpl();
+    return defaultFieldInitialisation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RandomInitialisation createRandomInitialisation()
+  {
+    RandomInitialisationImpl randomInitialisation = new RandomInitialisationImpl();
+    return randomInitialisation;
   }
 
   /**

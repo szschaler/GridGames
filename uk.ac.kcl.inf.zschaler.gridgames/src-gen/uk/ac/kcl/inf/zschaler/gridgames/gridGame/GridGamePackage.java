@@ -76,31 +76,22 @@ public interface GridGamePackage extends EPackage
   int GRID_GAME__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Fields</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GRID_GAME__FIELDS = 1;
-
-  /**
    * The feature id for the '<em><b>Cells</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GRID_GAME__CELLS = 2;
+  int GRID_GAME__CELLS = 1;
 
   /**
-   * The feature id for the '<em><b>Field initialisation</b></em>' attribute.
+   * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GRID_GAME__FIELD_INITIALISATION = 3;
+  int GRID_GAME__FIELDS = 2;
 
   /**
    * The feature id for the '<em><b>Options</b></em>' containment reference list.
@@ -109,7 +100,7 @@ public interface GridGamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GRID_GAME__OPTIONS = 4;
+  int GRID_GAME__OPTIONS = 3;
 
   /**
    * The number of structural features of the '<em>Grid Game</em>' class.
@@ -118,7 +109,35 @@ public interface GridGamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GRID_GAME_FEATURE_COUNT = 5;
+  int GRID_GAME_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellSpecificationImpl <em>Cell Specification</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellSpecificationImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCellSpecification()
+   * @generated
+   */
+  int CELL_SPECIFICATION = 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CELL_SPECIFICATION__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Cell Specification</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CELL_SPECIFICATION_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl <em>Field Specification</em>}' class.
@@ -128,7 +147,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldSpecification()
    * @generated
    */
-  int FIELD_SPECIFICATION = 1;
+  int FIELD_SPECIFICATION = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -158,41 +177,22 @@ public interface GridGamePackage extends EPackage
   int FIELD_SPECIFICATION__HEIGHT = 2;
 
   /**
+   * The feature id for the '<em><b>Field initialisation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_SPECIFICATION__FIELD_INITIALISATION = 3;
+
+  /**
    * The number of structural features of the '<em>Field Specification</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD_SPECIFICATION_FEATURE_COUNT = 3;
-
-  /**
-   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellSpecificationImpl <em>Cell Specification</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellSpecificationImpl
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCellSpecification()
-   * @generated
-   */
-  int CELL_SPECIFICATION = 2;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CELL_SPECIFICATION__NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Cell Specification</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CELL_SPECIFICATION_FEATURE_COUNT = 1;
+  int FIELD_SPECIFICATION_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.OptionSpecificationImpl <em>Option Specification</em>}' class.
@@ -260,6 +260,127 @@ public interface GridGamePackage extends EPackage
    */
   int START_FIELD_DECLARATION_FEATURE_COUNT = OPTION_SPECIFICATION_FEATURE_COUNT + 1;
 
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldInitialisationsImpl <em>Field Initialisations</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldInitialisationsImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldInitialisations()
+   * @generated
+   */
+  int FIELD_INITIALISATIONS = 6;
+
+  /**
+   * The feature id for the '<em><b>Initialisations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_INITIALISATIONS__INITIALISATIONS = 0;
+
+  /**
+   * The number of structural features of the '<em>Field Initialisations</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_INITIALISATIONS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldInitialisationImpl <em>Field Initialisation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldInitialisationImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldInitialisation()
+   * @generated
+   */
+  int FIELD_INITIALISATION = 7;
+
+  /**
+   * The feature id for the '<em><b>Cell</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_INITIALISATION__CELL = 0;
+
+  /**
+   * The number of structural features of the '<em>Field Initialisation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_INITIALISATION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultFieldInitialisationImpl <em>Default Field Initialisation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultFieldInitialisationImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getDefaultFieldInitialisation()
+   * @generated
+   */
+  int DEFAULT_FIELD_INITIALISATION = 8;
+
+  /**
+   * The feature id for the '<em><b>Cell</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEFAULT_FIELD_INITIALISATION__CELL = FIELD_INITIALISATION__CELL;
+
+  /**
+   * The number of structural features of the '<em>Default Field Initialisation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEFAULT_FIELD_INITIALISATION_FEATURE_COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.RandomInitialisationImpl <em>Random Initialisation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.RandomInitialisationImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getRandomInitialisation()
+   * @generated
+   */
+  int RANDOM_INITIALISATION = 9;
+
+  /**
+   * The feature id for the '<em><b>Cell</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RANDOM_INITIALISATION__CELL = FIELD_INITIALISATION__CELL;
+
+  /**
+   * The feature id for the '<em><b>Count</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RANDOM_INITIALISATION__COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Random Initialisation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RANDOM_INITIALISATION_FEATURE_COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 1;
+
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame <em>Grid Game</em>}'.
@@ -283,17 +404,6 @@ public interface GridGamePackage extends EPackage
   EAttribute getGridGame_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getFields <em>Fields</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Fields</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getFields()
-   * @see #getGridGame()
-   * @generated
-   */
-  EReference getGridGame_Fields();
-
-  /**
    * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getCells <em>Cells</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -305,15 +415,15 @@ public interface GridGamePackage extends EPackage
   EReference getGridGame_Cells();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getField_initialisation <em>Field initialisation</em>}'.
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getFields <em>Fields</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Field initialisation</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getField_initialisation()
+   * @return the meta object for the containment reference list '<em>Fields</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getFields()
    * @see #getGridGame()
    * @generated
    */
-  EAttribute getGridGame_Field_initialisation();
+  EReference getGridGame_Fields();
 
   /**
    * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getOptions <em>Options</em>}'.
@@ -325,6 +435,27 @@ public interface GridGamePackage extends EPackage
    * @generated
    */
   EReference getGridGame_Options();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification <em>Cell Specification</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Cell Specification</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
+   * @generated
+   */
+  EClass getCellSpecification();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getName()
+   * @see #getCellSpecification()
+   * @generated
+   */
+  EAttribute getCellSpecification_Name();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification <em>Field Specification</em>}'.
@@ -370,25 +501,15 @@ public interface GridGamePackage extends EPackage
   EAttribute getFieldSpecification_Height();
 
   /**
-   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification <em>Cell Specification</em>}'.
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification#getField_initialisation <em>Field initialisation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Cell Specification</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
+   * @return the meta object for the containment reference '<em>Field initialisation</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification#getField_initialisation()
+   * @see #getFieldSpecification()
    * @generated
    */
-  EClass getCellSpecification();
-
-  /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getName()
-   * @see #getCellSpecification()
-   * @generated
-   */
-  EAttribute getCellSpecification_Name();
+  EReference getFieldSpecification_Field_initialisation();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification <em>Option Specification</em>}'.
@@ -432,6 +553,79 @@ public interface GridGamePackage extends EPackage
   EAttribute getStartFieldDeclaration_Field_name();
 
   /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations <em>Field Initialisations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Field Initialisations</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations
+   * @generated
+   */
+  EClass getFieldInitialisations();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations#getInitialisations <em>Initialisations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Initialisations</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations#getInitialisations()
+   * @see #getFieldInitialisations()
+   * @generated
+   */
+  EReference getFieldInitialisations_Initialisations();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation <em>Field Initialisation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Field Initialisation</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation
+   * @generated
+   */
+  EClass getFieldInitialisation();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation#getCell <em>Cell</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Cell</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation#getCell()
+   * @see #getFieldInitialisation()
+   * @generated
+   */
+  EAttribute getFieldInitialisation_Cell();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultFieldInitialisation <em>Default Field Initialisation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Default Field Initialisation</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultFieldInitialisation
+   * @generated
+   */
+  EClass getDefaultFieldInitialisation();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation <em>Random Initialisation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Random Initialisation</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation
+   * @generated
+   */
+  EClass getRandomInitialisation();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation#getCount <em>Count</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Count</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation#getCount()
+   * @see #getRandomInitialisation()
+   * @generated
+   */
+  EAttribute getRandomInitialisation_Count();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -473,14 +667,6 @@ public interface GridGamePackage extends EPackage
     EAttribute GRID_GAME__NAME = eINSTANCE.getGridGame_Name();
 
     /**
-     * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference GRID_GAME__FIELDS = eINSTANCE.getGridGame_Fields();
-
-    /**
      * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -489,12 +675,12 @@ public interface GridGamePackage extends EPackage
     EReference GRID_GAME__CELLS = eINSTANCE.getGridGame_Cells();
 
     /**
-     * The meta object literal for the '<em><b>Field initialisation</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GRID_GAME__FIELD_INITIALISATION = eINSTANCE.getGridGame_Field_initialisation();
+    EReference GRID_GAME__FIELDS = eINSTANCE.getGridGame_Fields();
 
     /**
      * The meta object literal for the '<em><b>Options</b></em>' containment reference list feature.
@@ -503,6 +689,24 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EReference GRID_GAME__OPTIONS = eINSTANCE.getGridGame_Options();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellSpecificationImpl <em>Cell Specification</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellSpecificationImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCellSpecification()
+     * @generated
+     */
+    EClass CELL_SPECIFICATION = eINSTANCE.getCellSpecification();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CELL_SPECIFICATION__NAME = eINSTANCE.getCellSpecification_Name();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl <em>Field Specification</em>}' class.
@@ -539,22 +743,12 @@ public interface GridGamePackage extends EPackage
     EAttribute FIELD_SPECIFICATION__HEIGHT = eINSTANCE.getFieldSpecification_Height();
 
     /**
-     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellSpecificationImpl <em>Cell Specification</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellSpecificationImpl
-     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCellSpecification()
-     * @generated
-     */
-    EClass CELL_SPECIFICATION = eINSTANCE.getCellSpecification();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Field initialisation</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CELL_SPECIFICATION__NAME = eINSTANCE.getCellSpecification_Name();
+    EReference FIELD_SPECIFICATION__FIELD_INITIALISATION = eINSTANCE.getFieldSpecification_Field_initialisation();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.OptionSpecificationImpl <em>Option Specification</em>}' class.
@@ -593,6 +787,70 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EAttribute START_FIELD_DECLARATION__FIELD_NAME = eINSTANCE.getStartFieldDeclaration_Field_name();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldInitialisationsImpl <em>Field Initialisations</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldInitialisationsImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldInitialisations()
+     * @generated
+     */
+    EClass FIELD_INITIALISATIONS = eINSTANCE.getFieldInitialisations();
+
+    /**
+     * The meta object literal for the '<em><b>Initialisations</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FIELD_INITIALISATIONS__INITIALISATIONS = eINSTANCE.getFieldInitialisations_Initialisations();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldInitialisationImpl <em>Field Initialisation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldInitialisationImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldInitialisation()
+     * @generated
+     */
+    EClass FIELD_INITIALISATION = eINSTANCE.getFieldInitialisation();
+
+    /**
+     * The meta object literal for the '<em><b>Cell</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FIELD_INITIALISATION__CELL = eINSTANCE.getFieldInitialisation_Cell();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultFieldInitialisationImpl <em>Default Field Initialisation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultFieldInitialisationImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getDefaultFieldInitialisation()
+     * @generated
+     */
+    EClass DEFAULT_FIELD_INITIALISATION = eINSTANCE.getDefaultFieldInitialisation();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.RandomInitialisationImpl <em>Random Initialisation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.RandomInitialisationImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getRandomInitialisation()
+     * @generated
+     */
+    EClass RANDOM_INITIALISATION = eINSTANCE.getRandomInitialisation();
+
+    /**
+     * The meta object literal for the '<em><b>Count</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RANDOM_INITIALISATION__COUNT = eINSTANCE.getRandomInitialisation_Count();
 
   }
 

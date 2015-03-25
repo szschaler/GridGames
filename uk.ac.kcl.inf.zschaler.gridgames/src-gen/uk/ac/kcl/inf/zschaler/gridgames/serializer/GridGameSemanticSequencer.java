@@ -18,9 +18,12 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultFieldInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
 import uk.ac.kcl.inf.zschaler.gridgames.services.GridGameGrammarAccess;
 
@@ -39,11 +42,20 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case GridGamePackage.CELL_SPECIFICATION:
 				sequence_CellSpecification(context, (CellSpecification) semanticObject); 
 				return; 
+			case GridGamePackage.DEFAULT_FIELD_INITIALISATION:
+				sequence_DefaultFieldInitialisation(context, (DefaultFieldInitialisation) semanticObject); 
+				return; 
+			case GridGamePackage.FIELD_INITIALISATIONS:
+				sequence_FieldInitialisations(context, (FieldInitialisations) semanticObject); 
+				return; 
 			case GridGamePackage.FIELD_SPECIFICATION:
 				sequence_FieldSpecification(context, (FieldSpecification) semanticObject); 
 				return; 
 			case GridGamePackage.GRID_GAME:
 				sequence_GridGame(context, (GridGame) semanticObject); 
+				return; 
+			case GridGamePackage.RANDOM_INITIALISATION:
+				sequence_RandomInitialisation(context, (RandomInitialisation) semanticObject); 
 				return; 
 			case GridGamePackage.START_FIELD_DECLARATION:
 				sequence_StartFieldDeclaration(context, (StartFieldDeclaration) semanticObject); 
@@ -79,38 +91,63 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID width=INT height=INT)
+	 *     cell=ID
 	 */
-	protected void sequence_FieldSpecification(EObject context, FieldSpecification semanticObject) {
+	protected void sequence_DefaultFieldInitialisation(EObject context, DefaultFieldInitialisation semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_SPECIFICATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_SPECIFICATION__NAME));
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_SPECIFICATION__WIDTH) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_SPECIFICATION__WIDTH));
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_SPECIFICATION__HEIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_SPECIFICATION__HEIGHT));
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFieldSpecificationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getFieldSpecificationAccess().getWidthINTTerminalRuleCall_5_0(), semanticObject.getWidth());
-		feeder.accept(grammarAccess.getFieldSpecificationAccess().getHeightINTTerminalRuleCall_9_0(), semanticObject.getHeight());
+		feeder.accept(grammarAccess.getDefaultFieldInitialisationAccess().getCellIDTerminalRuleCall_2_0(), semanticObject.getCell());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         fields+=FieldSpecification+ 
-	 *         cells+=CellSpecification+ 
-	 *         field_initialisation=FieldInitialisationSpecification 
-	 *         options+=OptionSpecification*
-	 *     )
+	 *     initialisations+=FieldInitialisation+
+	 */
+	protected void sequence_FieldInitialisations(EObject context, FieldInitialisations semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID width=INT height=INT field_initialisation=FieldInitialisations?)
+	 */
+	protected void sequence_FieldSpecification(EObject context, FieldSpecification semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID cells+=CellSpecification+ fields+=FieldSpecification+ options+=OptionSpecification*)
 	 */
 	protected void sequence_GridGame(EObject context, GridGame semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (cell=ID count=INT)
+	 */
+	protected void sequence_RandomInitialisation(EObject context, RandomInitialisation semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL));
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.RANDOM_INITIALISATION__COUNT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.RANDOM_INITIALISATION__COUNT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getRandomInitialisationAccess().getCellIDTerminalRuleCall_2_0(), semanticObject.getCell());
+		feeder.accept(grammarAccess.getRandomInitialisationAccess().getCountINTTerminalRuleCall_4_0(), semanticObject.getCount());
+		feeder.finish();
 	}
 	
 	
