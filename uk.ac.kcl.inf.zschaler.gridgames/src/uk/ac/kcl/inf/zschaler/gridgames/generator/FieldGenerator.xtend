@@ -7,6 +7,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration
 
+
 /**
  * Generates the field class.
  */
@@ -31,7 +32,6 @@ class FieldGenerator extends CommonGenerator {
 	
 	
 	public class «generateFieldClassName()» extends AbstractTableModel {
-		
 		private int width, height;
 		private Cell[][] field;
 		private CellFactory cellFactory;

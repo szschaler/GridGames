@@ -26,18 +26,45 @@ class FrameGenerator extends CommonGenerator {
 		import javax.swing.JMenuBar;
 		import javax.swing.JMenuItem;
 		import javax.swing.AbstractAction;
+		import javax.swing.JLabel;
+		import javax.swing.JButton;
+
+		import javax.swing.table.TableCellRenderer;
 		
 		import java.awt.event.ActionEvent;
 		import java.awt.FlowLayout;
+		import java.awt.Component;
+		import java.awt.Insets;
 		
 		import java.util.Enumeration;
-		
+
 		import «generateModelPackage».«generateFieldClassName»;
 		
 		import «generateCellPackage».CellFactory;
+		import «generateCellPackage».Cell;
 		
 		public class «generateFrameClassName» extends JFrame {
-		
+			private static class CellRenderer implements TableCellRenderer {
+				private final JButton jb = new JButton();
+				private final JLabel  jl = new JLabel();
+				
+				public CellRenderer() {
+					// Ensure labels are shown even for relatively small-sized buttons
+					jb.setMargin(new Insets(0, 0, 0, 0));
+				}
+				
+				@Override
+				public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+					if (value != null) {
+						jb.getModel().setPressed(isSelected);
+						return ((Cell) value).formatUIRepresentation(jb, jl);
+					} else {
+						jl.setText(" ");
+						return jl;
+					}
+				}
+			}
+			
 			private «generateFieldClassName» field;
 			private JTable jtDisplay;
 			private static final int cellSize = 20;
@@ -65,7 +92,7 @@ class FrameGenerator extends CommonGenerator {
 				});
 				jtDisplay = new JTable(field);
 				
-				//jtDisplay.setDefaultRenderer(Cell.class, new MineCellRenderer());
+				jtDisplay.setDefaultRenderer(Cell.class, new CellRenderer());
 		
 				jtDisplay.setRowHeight(cellSize);
 				jtDisplay.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

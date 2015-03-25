@@ -28,8 +28,13 @@ class CellGenerator extends CommonGenerator {
 	def generateCellClass() '''
 		package «generateCellPackage»;
 		
+		import javax.swing.JButton;
+		import javax.swing.JLabel;
+		
+		import java.awt.Component;
+		
 		public abstract class Cell {
-			
+			public abstract Component formatUIRepresentation(JButton jb, JLabel jl);
 		}
 	'''
 
@@ -39,8 +44,30 @@ class CellGenerator extends CommonGenerator {
 	def generateCellClass(CellSpecification c) '''
 		package «generateCellPackage»;
 		
+		import javax.swing.JButton;
+		import javax.swing.JLabel;
+		
+		import java.awt.Component;
+		
 		public class «c.generateCellClassName» extends Cell {
-			
+			@Override
+			public Component formatUIRepresentation(JButton jb, JLabel jl) {
+				«if (c.display_type != null) {
+					if (c.display_type.equals ("button")) {
+						'''
+						jb.setText ("«c.text»");
+						return jb;
+						'''
+					} else {
+						'''
+						jl.setText ("«c.text»");
+						return jl;
+						'''
+					}
+				} else {
+					'''return jb;'''
+				}»
+			}
 		}
 	'''
 	

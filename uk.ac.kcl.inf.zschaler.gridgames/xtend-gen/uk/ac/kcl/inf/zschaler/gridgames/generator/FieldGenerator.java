@@ -71,8 +71,6 @@ public class FieldGenerator extends CommonGenerator {
     _builder.append(" extends AbstractTableModel {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
     _builder.append("private int width, height;");
     _builder.newLine();
     _builder.append("\t");
