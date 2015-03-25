@@ -2,6 +2,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 
@@ -76,6 +77,18 @@ public class CommonGenerator {
     CharSequence _generateCellPackageFolder = this.generateCellPackageFolder();
     _builder.append(_generateCellPackageFolder, "");
     _builder.append("/Cell.java");
+    return _builder;
+  }
+  
+  public CharSequence generateCellClassFileName(final CellSpecification c) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateCellPackageFolder = this.generateCellPackageFolder();
+    _builder.append(_generateCellPackageFolder, "");
+    _builder.append("/");
+    String _name = c.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("Cell.java");
     return _builder;
   }
 }

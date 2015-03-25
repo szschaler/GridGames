@@ -1,5 +1,6 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 
 /**
@@ -25,5 +26,7 @@ class CommonGenerator {
 	def generateFieldClassFileName() '''«generateModelPackageFolder»/«generateFieldClassName()».java'''
 
 	def generateCellClassFileName() '''«generateCellPackageFolder»/Cell.java'''
+	
+	def generateCellClassFileName(CellSpecification c) '''«generateCellPackageFolder»/«c.name.toFirstUpper»Cell.java'''
 
 }
