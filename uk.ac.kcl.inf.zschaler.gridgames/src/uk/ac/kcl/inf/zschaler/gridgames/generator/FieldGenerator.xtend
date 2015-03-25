@@ -1,12 +1,13 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import org.eclipse.xtext.generator.IFileSystemAccess
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration
-
 
 /**
  * Generates the field class.
@@ -93,10 +94,10 @@ class FieldGenerator extends CommonGenerator {
 		"java.util.Random"
 	}
 
-	def dispatch getImportsRequired(DefaultInitialisation di) {
+	def dispatch getImportsRequired(FieldInitialisation di) {
 		""
 	}
-
+	
 	def generateFieldInitialiserFor(FieldSpecification f) '''
 		public final void «f.generateFieldInitialiserName»() {
 			width = «f.width»;
@@ -139,7 +140,11 @@ class FieldGenerator extends CommonGenerator {
 			}
 		}
 	'''
-
+	
+	def dispatch generateInitCode(ContextInitialisation ci) '''
+	  // TODO: Extend context initialisation stuff to include ability to check stuff. Otherwise, how would we know which cells to even put something in?
+	'''
+	
 	def generateFieldInitialisation() {
 		gg.options.filter(StartFieldDeclaration).join(" ", [o|'''initialise«o.field_name.toFirstUpper»Field();'''])
 

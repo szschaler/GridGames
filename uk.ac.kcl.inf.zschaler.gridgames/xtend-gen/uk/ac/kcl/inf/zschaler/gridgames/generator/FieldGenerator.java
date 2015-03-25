@@ -12,6 +12,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
@@ -269,7 +270,7 @@ public class FieldGenerator extends CommonGenerator {
     return "java.util.Random";
   }
   
-  protected String _getImportsRequired(final DefaultInitialisation di) {
+  protected String _getImportsRequired(final FieldInitialisation di) {
     return "";
   }
   
@@ -410,6 +411,13 @@ public class FieldGenerator extends CommonGenerator {
     return _builder;
   }
   
+  protected CharSequence _generateInitCode(final ContextInitialisation ci) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("// TODO: Extend context initialisation stuff to include ability to check stuff. Otherwise, how would we know which cells to even put something in?");
+    _builder.newLine();
+    return _builder;
+  }
+  
   public String generateFieldInitialisation() {
     EList<OptionSpecification> _options = this.gg.getOptions();
     Iterable<StartFieldDeclaration> _filter = Iterables.<StartFieldDeclaration>filter(_options, StartFieldDeclaration.class);
@@ -428,25 +436,27 @@ public class FieldGenerator extends CommonGenerator {
     return IterableExtensions.<StartFieldDeclaration>join(_filter, " ", _function);
   }
   
-  public String getImportsRequired(final FieldInitialisation di) {
-    if (di instanceof DefaultInitialisation) {
-      return _getImportsRequired((DefaultInitialisation)di);
-    } else if (di instanceof RandomInitialisation) {
-      return _getImportsRequired((RandomInitialisation)di);
+  public String getImportsRequired(final FieldInitialisation ri) {
+    if (ri instanceof RandomInitialisation) {
+      return _getImportsRequired((RandomInitialisation)ri);
+    } else if (ri != null) {
+      return _getImportsRequired(ri);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(di).toString());
+        Arrays.<Object>asList(ri).toString());
     }
   }
   
-  public CharSequence generateInitCode(final FieldInitialisation dfi) {
-    if (dfi instanceof DefaultInitialisation) {
-      return _generateInitCode((DefaultInitialisation)dfi);
-    } else if (dfi instanceof RandomInitialisation) {
-      return _generateInitCode((RandomInitialisation)dfi);
+  public CharSequence generateInitCode(final FieldInitialisation ci) {
+    if (ci instanceof ContextInitialisation) {
+      return _generateInitCode((ContextInitialisation)ci);
+    } else if (ci instanceof DefaultInitialisation) {
+      return _generateInitCode((DefaultInitialisation)ci);
+    } else if (ci instanceof RandomInitialisation) {
+      return _generateInitCode((RandomInitialisation)ci);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(dfi).toString());
+        Arrays.<Object>asList(ci).toString());
     }
   }
 }
