@@ -72,7 +72,7 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.START_FIELD_DECLARATION: return createStartFieldDeclaration();
       case GridGamePackage.FIELD_INITIALISATIONS: return createFieldInitialisations();
       case GridGamePackage.FIELD_INITIALISATION: return createFieldInitialisation();
-      case GridGamePackage.DEFAULT_FIELD_INITIALISATION: return createDefaultFieldInitialisation();
+      case GridGamePackage.DEFAULT_INITIALISATION: return createDefaultInitialisation();
       case GridGamePackage.RANDOM_INITIALISATION: return createRandomInitialisation();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -172,10 +172,10 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public DefaultFieldInitialisation createDefaultFieldInitialisation()
+  public DefaultInitialisation createDefaultInitialisation()
   {
-    DefaultFieldInitialisationImpl defaultFieldInitialisation = new DefaultFieldInitialisationImpl();
-    return defaultFieldInitialisation;
+    DefaultInitialisationImpl defaultInitialisation = new DefaultInitialisationImpl();
+    return defaultInitialisation;
   }
 
   /**

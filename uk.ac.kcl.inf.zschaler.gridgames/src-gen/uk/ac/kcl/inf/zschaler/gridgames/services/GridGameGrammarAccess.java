@@ -283,32 +283,32 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	public class FieldInitialisationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FieldInitialisation");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cDefaultFieldInitialisationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDefaultInitialisationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cRandomInitialisationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//FieldInitialisation:
-		//	DefaultFieldInitialisation | RandomInitialisation;
+		//	DefaultInitialisation | RandomInitialisation;
 		@Override public ParserRule getRule() { return rule; }
 
-		//DefaultFieldInitialisation | RandomInitialisation
+		//DefaultInitialisation | RandomInitialisation
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//DefaultFieldInitialisation
-		public RuleCall getDefaultFieldInitialisationParserRuleCall_0() { return cDefaultFieldInitialisationParserRuleCall_0; }
+		//DefaultInitialisation
+		public RuleCall getDefaultInitialisationParserRuleCall_0() { return cDefaultInitialisationParserRuleCall_0; }
 
 		//RandomInitialisation
 		public RuleCall getRandomInitialisationParserRuleCall_1() { return cRandomInitialisationParserRuleCall_1; }
 	}
 
-	public class DefaultFieldInitialisationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DefaultFieldInitialisation");
+	public class DefaultInitialisationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DefaultInitialisation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDefaultKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cCellAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cCellIDTerminalRuleCall_2_0 = (RuleCall)cCellAssignment_2.eContents().get(0);
 		
-		//DefaultFieldInitialisation:
+		//DefaultInitialisation:
 		//	"default" ":" cell=ID;
 		@Override public ParserRule getRule() { return rule; }
 
@@ -377,7 +377,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final StartFieldDeclarationElements pStartFieldDeclaration;
 	private final FieldInitialisationsElements pFieldInitialisations;
 	private final FieldInitialisationElements pFieldInitialisation;
-	private final DefaultFieldInitialisationElements pDefaultFieldInitialisation;
+	private final DefaultInitialisationElements pDefaultInitialisation;
 	private final RandomInitialisationElements pRandomInitialisation;
 	
 	private final Grammar grammar;
@@ -397,7 +397,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pStartFieldDeclaration = new StartFieldDeclarationElements();
 		this.pFieldInitialisations = new FieldInitialisationsElements();
 		this.pFieldInitialisation = new FieldInitialisationElements();
-		this.pDefaultFieldInitialisation = new DefaultFieldInitialisationElements();
+		this.pDefaultInitialisation = new DefaultInitialisationElements();
 		this.pRandomInitialisation = new RandomInitialisationElements();
 	}
 	
@@ -507,7 +507,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FieldInitialisation:
-	//	DefaultFieldInitialisation | RandomInitialisation;
+	//	DefaultInitialisation | RandomInitialisation;
 	public FieldInitialisationElements getFieldInitialisationAccess() {
 		return pFieldInitialisation;
 	}
@@ -516,14 +516,14 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		return getFieldInitialisationAccess().getRule();
 	}
 
-	//DefaultFieldInitialisation:
+	//DefaultInitialisation:
 	//	"default" ":" cell=ID;
-	public DefaultFieldInitialisationElements getDefaultFieldInitialisationAccess() {
-		return pDefaultFieldInitialisation;
+	public DefaultInitialisationElements getDefaultInitialisationAccess() {
+		return pDefaultInitialisation;
 	}
 	
-	public ParserRule getDefaultFieldInitialisationRule() {
-		return getDefaultFieldInitialisationAccess().getRule();
+	public ParserRule getDefaultInitialisationRule() {
+		return getDefaultInitialisationAccess().getRule();
 	}
 
 	//RandomInitialisation:

@@ -95,13 +95,13 @@ public interface GridGameFactory extends EFactory
   FieldInitialisation createFieldInitialisation();
 
   /**
-   * Returns a new object of class '<em>Default Field Initialisation</em>'.
+   * Returns a new object of class '<em>Default Initialisation</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Default Field Initialisation</em>'.
+   * @return a new object of class '<em>Default Initialisation</em>'.
    * @generated
    */
-  DefaultFieldInitialisation createDefaultFieldInitialisation();
+  DefaultInitialisation createDefaultInitialisation();
 
   /**
    * Returns a new object of class '<em>Random Initialisation</em>'.

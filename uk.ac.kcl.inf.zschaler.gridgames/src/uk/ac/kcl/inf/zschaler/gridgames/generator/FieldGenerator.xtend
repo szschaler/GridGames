@@ -1,7 +1,12 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
+import java.util.LinkedList
 import org.eclipse.xtext.generator.IFileSystemAccess
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration
 
 /**
  * Generates the field class.
@@ -23,6 +28,7 @@ class FieldGenerator extends CommonGenerator {
 		
 	import «generateCellPackage».Cell;
 	import «generateCellPackage».CellFactory;
+	«generateImports»
 	
 	
 	public class «generateFieldClassName()» extends AbstractTableModel {
@@ -48,8 +54,10 @@ class FieldGenerator extends CommonGenerator {
 		}
 		
 		private void initField() {
-			«generateFieldInitialisation(gg)»
+			«generateFieldInitialisation()»
 		}
+		
+		«gg.fields.join (" ", [f | generateFieldInitialiserFor(f)])»
 		
 		@Override
 		public int getColumnCount() {
@@ -81,10 +89,63 @@ class FieldGenerator extends CommonGenerator {
 			fireTableCellUpdated(row, col);
 		}
 		
-	}'''	
+	}'''
 
-	def generateFieldInitialisation(GridGame game) '''
-		throw new UnsupportedOperationException("TODO: auto-generated method stub");
+	def generateImports() {
+		gg.fields.map[f|f.field_initialisation.initialisations.map[getImportsRequired]]
+			.flatten.toSet.filter[imp | !imp.equals("")]
+			.join("\n", [ imp | '''import «imp»;'''])
+	}
+
+	def dispatch getImportsRequired(RandomInitialisation ri) {
+		"java.util.Random"
+	}
+
+	def dispatch getImportsRequired(DefaultInitialisation di) {
+		""
+	}
+
+	def generateFieldInitialiserFor(FieldSpecification f) '''
+		public void initialise«f.name.toFirstUpper»Field() {
+			«f.field_initialisation.initialisations.join(" ", [i | i.generateInitCode()])»
+		}
 	'''
+
+	def dispatch generateInitCode(DefaultInitialisation dfi) '''
+		// Fill the rest of the field with «dfi.cell» cells
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; y < height; y++) {
+				if (field[x][y] == null) {
+					field[x][y] = cellFactory.create«dfi.cell.toFirstUpper»Field();
+				}
+			}
+		}
+	'''
+
+	def dispatch generateInitCode(RandomInitialisation rfi) '''
+		// Randomly allocate «rfi.cell» cells
+		{
+			Random r = new Random();
+		
+			for (int i = 0; i < «rfi.count»; i++) {
+			boolean fSet = false;
+			do {
+				int x = r.nextInt(width);
+				int y = r.nextInt(height);
+		
+					if (field[x][y] == null) {
+			field[x][y] = cellFactory.create«rfi.cell.toFirstUpper»Field();
+		
+						fSet = true;
+					}
+				} while (!fSet);
+			}
+		}
+	'''
+
+	def generateFieldInitialisation() {
+		gg.options.filter(StartFieldDeclaration).join(" ", [o|'''initialise«o.field_name.toFirstUpper»Field();'''])
+
+	}
 
 }

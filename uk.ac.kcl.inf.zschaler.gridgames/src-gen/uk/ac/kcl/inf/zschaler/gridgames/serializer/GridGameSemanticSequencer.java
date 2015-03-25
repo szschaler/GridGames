@@ -18,7 +18,7 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultFieldInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
@@ -42,8 +42,8 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case GridGamePackage.CELL_SPECIFICATION:
 				sequence_CellSpecification(context, (CellSpecification) semanticObject); 
 				return; 
-			case GridGamePackage.DEFAULT_FIELD_INITIALISATION:
-				sequence_DefaultFieldInitialisation(context, (DefaultFieldInitialisation) semanticObject); 
+			case GridGamePackage.DEFAULT_INITIALISATION:
+				sequence_DefaultInitialisation(context, (DefaultInitialisation) semanticObject); 
 				return; 
 			case GridGamePackage.FIELD_INITIALISATIONS:
 				sequence_FieldInitialisations(context, (FieldInitialisations) semanticObject); 
@@ -93,14 +93,14 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 * Constraint:
 	 *     cell=ID
 	 */
-	protected void sequence_DefaultFieldInitialisation(EObject context, DefaultFieldInitialisation semanticObject) {
+	protected void sequence_DefaultInitialisation(EObject context, DefaultInitialisation semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getDefaultFieldInitialisationAccess().getCellIDTerminalRuleCall_2_0(), semanticObject.getCell());
+		feeder.accept(grammarAccess.getDefaultInitialisationAccess().getCellIDTerminalRuleCall_2_0(), semanticObject.getCell());
 		feeder.finish();
 	}
 	

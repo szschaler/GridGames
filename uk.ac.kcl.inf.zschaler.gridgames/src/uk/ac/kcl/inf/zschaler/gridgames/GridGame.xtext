@@ -49,11 +49,11 @@ FieldInitialisations :
 ;
 
 FieldInitialisation :
-	DefaultFieldInitialisation |
+	DefaultInitialisation |
 	RandomInitialisation
 ;
 
-DefaultFieldInitialisation :
+DefaultInitialisation :
 	"default" ":" cell=ID
 ;
 

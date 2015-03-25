@@ -517,11 +517,11 @@ ruleFieldInitialisation returns [EObject current=null]
     @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getFieldInitialisationAccess().getDefaultFieldInitialisationParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getFieldInitialisationAccess().getDefaultInitialisationParserRuleCall_0()); 
     }
-    this_DefaultFieldInitialisation_0=ruleDefaultFieldInitialisation
+    this_DefaultInitialisation_0=ruleDefaultInitialisation
     { 
-        $current = $this_DefaultFieldInitialisation_0.current; 
+        $current = $this_DefaultInitialisation_0.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -541,37 +541,37 @@ ruleFieldInitialisation returns [EObject current=null]
 
 
 
-// Entry rule entryRuleDefaultFieldInitialisation
-entryRuleDefaultFieldInitialisation returns [EObject current=null] 
+// Entry rule entryRuleDefaultInitialisation
+entryRuleDefaultInitialisation returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getDefaultFieldInitialisationRule()); }
-	 iv_ruleDefaultFieldInitialisation=ruleDefaultFieldInitialisation 
-	 { $current=$iv_ruleDefaultFieldInitialisation.current; } 
+	{ newCompositeNode(grammarAccess.getDefaultInitialisationRule()); }
+	 iv_ruleDefaultInitialisation=ruleDefaultInitialisation 
+	 { $current=$iv_ruleDefaultInitialisation.current; } 
 	 EOF 
 ;
 
-// Rule DefaultFieldInitialisation
-ruleDefaultFieldInitialisation returns [EObject current=null] 
+// Rule DefaultInitialisation
+ruleDefaultInitialisation returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 (	otherlv_0='default' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getDefaultFieldInitialisationAccess().getDefaultKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getDefaultInitialisationAccess().getDefaultKeyword_0());
     }
 	otherlv_1=':' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getDefaultFieldInitialisationAccess().getColonKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getDefaultInitialisationAccess().getColonKeyword_1());
     }
 (
 (
 		lv_cell_2_0=RULE_ID
 		{
-			newLeafNode(lv_cell_2_0, grammarAccess.getDefaultFieldInitialisationAccess().getCellIDTerminalRuleCall_2_0()); 
+			newLeafNode(lv_cell_2_0, grammarAccess.getDefaultInitialisationAccess().getCellIDTerminalRuleCall_2_0()); 
 		}
 		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getDefaultFieldInitialisationRule());
+	            $current = createModelElement(grammarAccess.getDefaultInitialisationRule());
 	        }
        		setWithLastConsumed(
        			$current, 

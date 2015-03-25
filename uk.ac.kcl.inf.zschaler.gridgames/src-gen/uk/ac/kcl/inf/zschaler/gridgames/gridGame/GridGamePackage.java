@@ -317,14 +317,14 @@ public interface GridGamePackage extends EPackage
   int FIELD_INITIALISATION_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultFieldInitialisationImpl <em>Default Field Initialisation</em>}' class.
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultInitialisationImpl <em>Default Initialisation</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultFieldInitialisationImpl
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getDefaultFieldInitialisation()
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultInitialisationImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getDefaultInitialisation()
    * @generated
    */
-  int DEFAULT_FIELD_INITIALISATION = 8;
+  int DEFAULT_INITIALISATION = 8;
 
   /**
    * The feature id for the '<em><b>Cell</b></em>' attribute.
@@ -333,16 +333,16 @@ public interface GridGamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFAULT_FIELD_INITIALISATION__CELL = FIELD_INITIALISATION__CELL;
+  int DEFAULT_INITIALISATION__CELL = FIELD_INITIALISATION__CELL;
 
   /**
-   * The number of structural features of the '<em>Default Field Initialisation</em>' class.
+   * The number of structural features of the '<em>Default Initialisation</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEFAULT_FIELD_INITIALISATION_FEATURE_COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 0;
+  int DEFAULT_INITIALISATION_FEATURE_COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.RandomInitialisationImpl <em>Random Initialisation</em>}' class.
@@ -595,14 +595,14 @@ public interface GridGamePackage extends EPackage
   EAttribute getFieldInitialisation_Cell();
 
   /**
-   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultFieldInitialisation <em>Default Field Initialisation</em>}'.
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation <em>Default Initialisation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Default Field Initialisation</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultFieldInitialisation
+   * @return the meta object for class '<em>Default Initialisation</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation
    * @generated
    */
-  EClass getDefaultFieldInitialisation();
+  EClass getDefaultInitialisation();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation <em>Random Initialisation</em>}'.
@@ -825,14 +825,14 @@ public interface GridGamePackage extends EPackage
     EAttribute FIELD_INITIALISATION__CELL = eINSTANCE.getFieldInitialisation_Cell();
 
     /**
-     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultFieldInitialisationImpl <em>Default Field Initialisation</em>}' class.
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultInitialisationImpl <em>Default Initialisation</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultFieldInitialisationImpl
-     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getDefaultFieldInitialisation()
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultInitialisationImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getDefaultInitialisation()
      * @generated
      */
-    EClass DEFAULT_FIELD_INITIALISATION = eINSTANCE.getDefaultFieldInitialisation();
+    EClass DEFAULT_INITIALISATION = eINSTANCE.getDefaultInitialisation();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.RandomInitialisationImpl <em>Random Initialisation</em>}' class.

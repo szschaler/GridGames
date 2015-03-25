@@ -115,9 +115,9 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createFieldInitialisationAdapter();
       }
       @Override
-      public Adapter caseDefaultFieldInitialisation(DefaultFieldInitialisation object)
+      public Adapter caseDefaultInitialisation(DefaultInitialisation object)
       {
-        return createDefaultFieldInitialisationAdapter();
+        return createDefaultInitialisationAdapter();
       }
       @Override
       public Adapter caseRandomInitialisation(RandomInitialisation object)
@@ -267,16 +267,16 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultFieldInitialisation <em>Default Field Initialisation</em>}'.
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation <em>Default Initialisation</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultFieldInitialisation
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation
    * @generated
    */
-  public Adapter createDefaultFieldInitialisationAdapter()
+  public Adapter createDefaultInitialisationAdapter()
   {
     return null;
   }

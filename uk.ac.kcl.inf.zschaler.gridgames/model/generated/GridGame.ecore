@@ -33,7 +33,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="FieldInitialisation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cell" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DefaultFieldInitialisation" eSuperTypes="#//FieldInitialisation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DefaultInitialisation" eSuperTypes="#//FieldInitialisation"/>
   <eClassifiers xsi:type="ecore:EClass" name="RandomInitialisation" eSuperTypes="#//FieldInitialisation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>

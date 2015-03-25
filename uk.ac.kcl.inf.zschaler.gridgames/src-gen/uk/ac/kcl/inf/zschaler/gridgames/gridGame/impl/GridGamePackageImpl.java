@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultFieldInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
@@ -91,7 +91,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass defaultFieldInitialisationEClass = null;
+  private EClass defaultInitialisationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -368,9 +368,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDefaultFieldInitialisation()
+  public EClass getDefaultInitialisation()
   {
-    return defaultFieldInitialisationEClass;
+    return defaultInitialisationEClass;
   }
 
   /**
@@ -451,7 +451,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     fieldInitialisationEClass = createEClass(FIELD_INITIALISATION);
     createEAttribute(fieldInitialisationEClass, FIELD_INITIALISATION__CELL);
 
-    defaultFieldInitialisationEClass = createEClass(DEFAULT_FIELD_INITIALISATION);
+    defaultInitialisationEClass = createEClass(DEFAULT_INITIALISATION);
 
     randomInitialisationEClass = createEClass(RANDOM_INITIALISATION);
     createEAttribute(randomInitialisationEClass, RANDOM_INITIALISATION__COUNT);
@@ -488,7 +488,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     // Add supertypes to classes
     allowRestartMenuEClass.getESuperTypes().add(this.getOptionSpecification());
     startFieldDeclarationEClass.getESuperTypes().add(this.getOptionSpecification());
-    defaultFieldInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
+    defaultInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
     randomInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
 
     // Initialize classes and features; add operations and parameters
@@ -520,7 +520,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEClass(fieldInitialisationEClass, FieldInitialisation.class, "FieldInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFieldInitialisation_Cell(), ecorePackage.getEString(), "cell", null, 0, 1, FieldInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(defaultFieldInitialisationEClass, DefaultFieldInitialisation.class, "DefaultFieldInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(defaultInitialisationEClass, DefaultInitialisation.class, "DefaultInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(randomInitialisationEClass, RandomInitialisation.class, "RandomInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRandomInitialisation_Count(), ecorePackage.getEInt(), "count", null, 0, 1, RandomInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

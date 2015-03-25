@@ -1193,11 +1193,11 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFieldInitialisation"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:514:1: ruleFieldInitialisation returns [EObject current=null] : (this_DefaultFieldInitialisation_0= ruleDefaultFieldInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:514:1: ruleFieldInitialisation returns [EObject current=null] : (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation ) ;
     public final EObject ruleFieldInitialisation() throws RecognitionException {
         EObject current = null;
 
-        EObject this_DefaultFieldInitialisation_0 = null;
+        EObject this_DefaultInitialisation_0 = null;
 
         EObject this_RandomInitialisation_1 = null;
 
@@ -1205,10 +1205,10 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:517:28: ( (this_DefaultFieldInitialisation_0= ruleDefaultFieldInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:518:1: (this_DefaultFieldInitialisation_0= ruleDefaultFieldInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:517:28: ( (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:518:1: (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:518:1: (this_DefaultFieldInitialisation_0= ruleDefaultFieldInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:518:1: (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1226,18 +1226,18 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
             }
             switch (alt7) {
                 case 1 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:519:5: this_DefaultFieldInitialisation_0= ruleDefaultFieldInitialisation
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:519:5: this_DefaultInitialisation_0= ruleDefaultInitialisation
                     {
                      
-                            newCompositeNode(grammarAccess.getFieldInitialisationAccess().getDefaultFieldInitialisationParserRuleCall_0()); 
+                            newCompositeNode(grammarAccess.getFieldInitialisationAccess().getDefaultInitialisationParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleDefaultFieldInitialisation_in_ruleFieldInitialisation1132);
-                    this_DefaultFieldInitialisation_0=ruleDefaultFieldInitialisation();
+                    pushFollow(FOLLOW_ruleDefaultInitialisation_in_ruleFieldInitialisation1132);
+                    this_DefaultInitialisation_0=ruleDefaultInitialisation();
 
                     state._fsp--;
 
                      
-                            current = this_DefaultFieldInitialisation_0; 
+                            current = this_DefaultInitialisation_0; 
                             afterParserOrEnumRuleCall();
                         
 
@@ -1281,26 +1281,26 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleFieldInitialisation"
 
 
-    // $ANTLR start "entryRuleDefaultFieldInitialisation"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:545:1: entryRuleDefaultFieldInitialisation returns [EObject current=null] : iv_ruleDefaultFieldInitialisation= ruleDefaultFieldInitialisation EOF ;
-    public final EObject entryRuleDefaultFieldInitialisation() throws RecognitionException {
+    // $ANTLR start "entryRuleDefaultInitialisation"
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:545:1: entryRuleDefaultInitialisation returns [EObject current=null] : iv_ruleDefaultInitialisation= ruleDefaultInitialisation EOF ;
+    public final EObject entryRuleDefaultInitialisation() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleDefaultFieldInitialisation = null;
+        EObject iv_ruleDefaultInitialisation = null;
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:546:2: (iv_ruleDefaultFieldInitialisation= ruleDefaultFieldInitialisation EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:547:2: iv_ruleDefaultFieldInitialisation= ruleDefaultFieldInitialisation EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:546:2: (iv_ruleDefaultInitialisation= ruleDefaultInitialisation EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:547:2: iv_ruleDefaultInitialisation= ruleDefaultInitialisation EOF
             {
-             newCompositeNode(grammarAccess.getDefaultFieldInitialisationRule()); 
-            pushFollow(FOLLOW_ruleDefaultFieldInitialisation_in_entryRuleDefaultFieldInitialisation1194);
-            iv_ruleDefaultFieldInitialisation=ruleDefaultFieldInitialisation();
+             newCompositeNode(grammarAccess.getDefaultInitialisationRule()); 
+            pushFollow(FOLLOW_ruleDefaultInitialisation_in_entryRuleDefaultInitialisation1194);
+            iv_ruleDefaultInitialisation=ruleDefaultInitialisation();
 
             state._fsp--;
 
-             current =iv_ruleDefaultFieldInitialisation; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDefaultFieldInitialisation1204); 
+             current =iv_ruleDefaultInitialisation; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDefaultInitialisation1204); 
 
             }
 
@@ -1314,12 +1314,12 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleDefaultFieldInitialisation"
+    // $ANTLR end "entryRuleDefaultInitialisation"
 
 
-    // $ANTLR start "ruleDefaultFieldInitialisation"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:554:1: ruleDefaultFieldInitialisation returns [EObject current=null] : (otherlv_0= 'default' otherlv_1= ':' ( (lv_cell_2_0= RULE_ID ) ) ) ;
-    public final EObject ruleDefaultFieldInitialisation() throws RecognitionException {
+    // $ANTLR start "ruleDefaultInitialisation"
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:554:1: ruleDefaultInitialisation returns [EObject current=null] : (otherlv_0= 'default' otherlv_1= ':' ( (lv_cell_2_0= RULE_ID ) ) ) ;
+    public final EObject ruleDefaultInitialisation() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -1335,13 +1335,13 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
             // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:558:1: (otherlv_0= 'default' otherlv_1= ':' ( (lv_cell_2_0= RULE_ID ) ) )
             // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:558:3: otherlv_0= 'default' otherlv_1= ':' ( (lv_cell_2_0= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,22,FOLLOW_22_in_ruleDefaultFieldInitialisation1241); 
+            otherlv_0=(Token)match(input,22,FOLLOW_22_in_ruleDefaultInitialisation1241); 
 
-                	newLeafNode(otherlv_0, grammarAccess.getDefaultFieldInitialisationAccess().getDefaultKeyword_0());
+                	newLeafNode(otherlv_0, grammarAccess.getDefaultInitialisationAccess().getDefaultKeyword_0());
                 
-            otherlv_1=(Token)match(input,23,FOLLOW_23_in_ruleDefaultFieldInitialisation1253); 
+            otherlv_1=(Token)match(input,23,FOLLOW_23_in_ruleDefaultInitialisation1253); 
 
-                	newLeafNode(otherlv_1, grammarAccess.getDefaultFieldInitialisationAccess().getColonKeyword_1());
+                	newLeafNode(otherlv_1, grammarAccess.getDefaultInitialisationAccess().getColonKeyword_1());
                 
             // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:566:1: ( (lv_cell_2_0= RULE_ID ) )
             // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:567:1: (lv_cell_2_0= RULE_ID )
@@ -1349,13 +1349,13 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
             // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:567:1: (lv_cell_2_0= RULE_ID )
             // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:568:3: lv_cell_2_0= RULE_ID
             {
-            lv_cell_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDefaultFieldInitialisation1270); 
+            lv_cell_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDefaultInitialisation1270); 
 
-            			newLeafNode(lv_cell_2_0, grammarAccess.getDefaultFieldInitialisationAccess().getCellIDTerminalRuleCall_2_0()); 
+            			newLeafNode(lv_cell_2_0, grammarAccess.getDefaultInitialisationAccess().getCellIDTerminalRuleCall_2_0()); 
             		
 
             	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getDefaultFieldInitialisationRule());
+            	            current = createModelElement(grammarAccess.getDefaultInitialisationRule());
             	        }
                    		setWithLastConsumed(
                    			current, 
@@ -1386,7 +1386,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleDefaultFieldInitialisation"
+    // $ANTLR end "ruleDefaultInitialisation"
 
 
     // $ANTLR start "entryRuleRandomInitialisation"
@@ -1579,13 +1579,13 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleFieldInitialisation_in_ruleFieldInitialisations1038 = new BitSet(new long[]{0x0000000001400002L});
     public static final BitSet FOLLOW_ruleFieldInitialisation_in_entryRuleFieldInitialisation1075 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFieldInitialisation1085 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDefaultFieldInitialisation_in_ruleFieldInitialisation1132 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDefaultInitialisation_in_ruleFieldInitialisation1132 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRandomInitialisation_in_ruleFieldInitialisation1159 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDefaultFieldInitialisation_in_entryRuleDefaultFieldInitialisation1194 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDefaultFieldInitialisation1204 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_ruleDefaultFieldInitialisation1241 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_23_in_ruleDefaultFieldInitialisation1253 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleDefaultFieldInitialisation1270 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDefaultInitialisation_in_entryRuleDefaultInitialisation1194 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDefaultInitialisation1204 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_ruleDefaultInitialisation1241 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_ruleDefaultInitialisation1253 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleDefaultInitialisation1270 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRandomInitialisation_in_entryRuleRandomInitialisation1311 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleRandomInitialisation1321 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_24_in_ruleRandomInitialisation1358 = new BitSet(new long[]{0x0000000000800000L});
