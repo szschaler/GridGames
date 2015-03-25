@@ -85,6 +85,16 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createCellSpecificationAdapter();
       }
       @Override
+      public Adapter caseCellMember(CellMember object)
+      {
+        return createCellMemberAdapter();
+      }
+      @Override
+      public Adapter caseCellDisplaySpec(CellDisplaySpec object)
+      {
+        return createCellDisplaySpecAdapter();
+      }
+      @Override
       public Adapter caseFieldSpecification(FieldSpecification object)
       {
         return createFieldSpecificationAdapter();
@@ -172,6 +182,36 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCellSpecificationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember <em>Cell Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember
+   * @generated
+   */
+  public Adapter createCellMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec <em>Cell Display Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec
+   * @generated
+   */
+  public Adapter createCellDisplaySpecAdapter()
   {
     return null;
   }

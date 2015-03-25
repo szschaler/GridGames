@@ -15,8 +15,12 @@
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//CellSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellSpecification/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellSpecification/display_type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellSpecification/text"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//CellSpecification/members"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//CellMember"/>
+    <genClasses ecoreClass="GridGame.ecore#//CellDisplaySpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellDisplaySpec/display_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellDisplaySpec/text"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//FieldSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/name"/>

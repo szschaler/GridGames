@@ -86,6 +86,21 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.CELL_MEMBER:
+      {
+        CellMember cellMember = (CellMember)theEObject;
+        T result = caseCellMember(cellMember);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.CELL_DISPLAY_SPEC:
+      {
+        CellDisplaySpec cellDisplaySpec = (CellDisplaySpec)theEObject;
+        T result = caseCellDisplaySpec(cellDisplaySpec);
+        if (result == null) result = caseCellMember(cellDisplaySpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GridGamePackage.FIELD_SPECIFICATION:
       {
         FieldSpecification fieldSpecification = (FieldSpecification)theEObject;
@@ -178,6 +193,38 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCellSpecification(CellSpecification object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cell Member</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cell Member</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCellMember(CellMember object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cell Display Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cell Display Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCellDisplaySpec(CellDisplaySpec object)
   {
     return null;
   }

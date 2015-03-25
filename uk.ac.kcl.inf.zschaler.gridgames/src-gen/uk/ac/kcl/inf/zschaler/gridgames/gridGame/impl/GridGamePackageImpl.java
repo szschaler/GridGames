@@ -10,6 +10,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
@@ -43,6 +45,20 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass cellSpecificationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cellMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cellDisplaySpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -238,9 +254,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCellSpecification_Display_type()
+  public EReference getCellSpecification_Members()
   {
-    return (EAttribute)cellSpecificationEClass.getEStructuralFeatures().get(1);
+    return (EReference)cellSpecificationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -248,9 +264,39 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCellSpecification_Text()
+  public EClass getCellMember()
   {
-    return (EAttribute)cellSpecificationEClass.getEStructuralFeatures().get(2);
+    return cellMemberEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCellDisplaySpec()
+  {
+    return cellDisplaySpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCellDisplaySpec_Display_type()
+  {
+    return (EAttribute)cellDisplaySpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCellDisplaySpec_Text()
+  {
+    return (EAttribute)cellDisplaySpecEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -451,8 +497,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     cellSpecificationEClass = createEClass(CELL_SPECIFICATION);
     createEAttribute(cellSpecificationEClass, CELL_SPECIFICATION__NAME);
-    createEAttribute(cellSpecificationEClass, CELL_SPECIFICATION__DISPLAY_TYPE);
-    createEAttribute(cellSpecificationEClass, CELL_SPECIFICATION__TEXT);
+    createEReference(cellSpecificationEClass, CELL_SPECIFICATION__MEMBERS);
+
+    cellMemberEClass = createEClass(CELL_MEMBER);
+
+    cellDisplaySpecEClass = createEClass(CELL_DISPLAY_SPEC);
+    createEAttribute(cellDisplaySpecEClass, CELL_DISPLAY_SPEC__DISPLAY_TYPE);
+    createEAttribute(cellDisplaySpecEClass, CELL_DISPLAY_SPEC__TEXT);
 
     fieldSpecificationEClass = createEClass(FIELD_SPECIFICATION);
     createEAttribute(fieldSpecificationEClass, FIELD_SPECIFICATION__NAME);
@@ -508,6 +559,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    cellDisplaySpecEClass.getESuperTypes().add(this.getCellMember());
     allowRestartMenuEClass.getESuperTypes().add(this.getOptionSpecification());
     startFieldDeclarationEClass.getESuperTypes().add(this.getOptionSpecification());
     defaultInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
@@ -522,8 +574,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     initEClass(cellSpecificationEClass, CellSpecification.class, "CellSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCellSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, CellSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCellSpecification_Display_type(), ecorePackage.getEString(), "display_type", null, 0, 1, CellSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCellSpecification_Text(), ecorePackage.getEString(), "text", null, 0, 1, CellSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCellSpecification_Members(), this.getCellMember(), null, "members", null, 0, -1, CellSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(cellMemberEClass, CellMember.class, "CellMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(cellDisplaySpecEClass, CellDisplaySpec.class, "CellDisplaySpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCellDisplaySpec_Display_type(), ecorePackage.getEString(), "display_type", null, 0, 1, CellDisplaySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCellDisplaySpec_Text(), ecorePackage.getEString(), "text", null, 0, 1, CellDisplaySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldSpecificationEClass, FieldSpecification.class, "FieldSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFieldSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, FieldSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

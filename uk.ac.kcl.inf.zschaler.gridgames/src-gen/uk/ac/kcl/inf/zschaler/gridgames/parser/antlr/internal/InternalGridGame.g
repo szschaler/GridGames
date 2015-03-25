@@ -208,77 +208,146 @@ ruleCellSpecification returns [EObject current=null]
     {
     	newLeafNode(otherlv_2, grammarAccess.getCellSpecificationAccess().getLeftCurlyBracketKeyword_2());
     }
-(	otherlv_3='display' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getCellSpecificationAccess().getDisplayKeyword_3_0());
-    }
-	otherlv_4='{' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getCellSpecificationAccess().getLeftCurlyBracketKeyword_3_1());
-    }
-	otherlv_5='as' 
-    {
-    	newLeafNode(otherlv_5, grammarAccess.getCellSpecificationAccess().getAsKeyword_3_2());
-    }
 (
 (
-(
-		lv_display_type_6_1=	'label' 
-    {
-        newLeafNode(lv_display_type_6_1, grammarAccess.getCellSpecificationAccess().getDisplay_typeLabelKeyword_3_3_0_0());
-    }
- 
-	    {
+		{ 
+	        newCompositeNode(grammarAccess.getCellSpecificationAccess().getMembersCellMemberParserRuleCall_3_0()); 
+	    }
+		lv_members_3_0=ruleCellMember		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getCellSpecificationRule());
+	            $current = createModelElementForParent(grammarAccess.getCellSpecificationRule());
 	        }
-       		setWithLastConsumed($current, "display_type", lv_display_type_6_1, null);
+       		add(
+       			$current, 
+       			"members",
+        		lv_members_3_0, 
+        		"CellMember");
+	        afterParserOrEnumRuleCall();
 	    }
 
-    |		lv_display_type_6_2=	'button' 
+)
+)*	otherlv_4='}' 
     {
-        newLeafNode(lv_display_type_6_2, grammarAccess.getCellSpecificationAccess().getDisplay_typeButtonKeyword_3_3_0_1());
+    	newLeafNode(otherlv_4, grammarAccess.getCellSpecificationAccess().getRightCurlyBracketKeyword_4());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleCellMember
+entryRuleCellMember returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getCellMemberRule()); }
+	 iv_ruleCellMember=ruleCellMember 
+	 { $current=$iv_ruleCellMember.current; } 
+	 EOF 
+;
+
+// Rule CellMember
+ruleCellMember returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+
+    { 
+        newCompositeNode(grammarAccess.getCellMemberAccess().getCellDisplaySpecParserRuleCall()); 
+    }
+    this_CellDisplaySpec_0=ruleCellDisplaySpec
+    { 
+        $current = $this_CellDisplaySpec_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+;
+
+
+
+
+
+// Entry rule entryRuleCellDisplaySpec
+entryRuleCellDisplaySpec returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getCellDisplaySpecRule()); }
+	 iv_ruleCellDisplaySpec=ruleCellDisplaySpec 
+	 { $current=$iv_ruleCellDisplaySpec.current; } 
+	 EOF 
+;
+
+// Rule CellDisplaySpec
+ruleCellDisplaySpec returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='display' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getCellDisplaySpecAccess().getDisplayKeyword_0());
+    }
+	otherlv_1='{' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getCellDisplaySpecAccess().getLeftCurlyBracketKeyword_1());
+    }
+	otherlv_2='as' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getCellDisplaySpecAccess().getAsKeyword_2());
+    }
+(
+(
+(
+		lv_display_type_3_1=	'label' 
+    {
+        newLeafNode(lv_display_type_3_1, grammarAccess.getCellDisplaySpecAccess().getDisplay_typeLabelKeyword_3_0_0());
     }
  
 	    {
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getCellSpecificationRule());
+	            $current = createModelElement(grammarAccess.getCellDisplaySpecRule());
 	        }
-       		setWithLastConsumed($current, "display_type", lv_display_type_6_2, null);
+       		setWithLastConsumed($current, "display_type", lv_display_type_3_1, null);
+	    }
+
+    |		lv_display_type_3_2=	'button' 
+    {
+        newLeafNode(lv_display_type_3_2, grammarAccess.getCellDisplaySpecAccess().getDisplay_typeButtonKeyword_3_0_1());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellDisplaySpecRule());
+	        }
+       		setWithLastConsumed($current, "display_type", lv_display_type_3_2, null);
 	    }
 
 )
 
 )
-)	otherlv_7='text' 
+)	otherlv_4='text' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getCellSpecificationAccess().getTextKeyword_3_4());
+    	newLeafNode(otherlv_4, grammarAccess.getCellDisplaySpecAccess().getTextKeyword_4());
     }
 (
 (
-		lv_text_8_0=RULE_STRING
+		lv_text_5_0=RULE_STRING
 		{
-			newLeafNode(lv_text_8_0, grammarAccess.getCellSpecificationAccess().getTextSTRINGTerminalRuleCall_3_5_0()); 
+			newLeafNode(lv_text_5_0, grammarAccess.getCellDisplaySpecAccess().getTextSTRINGTerminalRuleCall_5_0()); 
 		}
 		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getCellSpecificationRule());
+	            $current = createModelElement(grammarAccess.getCellDisplaySpecRule());
 	        }
        		setWithLastConsumed(
        			$current, 
        			"text",
-        		lv_text_8_0, 
+        		lv_text_5_0, 
         		"STRING");
 	    }
 
 )
-)	otherlv_9='}' 
+)	otherlv_6='}' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getCellSpecificationAccess().getRightCurlyBracketKeyword_3_6());
-    }
-)?	otherlv_10='}' 
-    {
-    	newLeafNode(otherlv_10, grammarAccess.getCellSpecificationAccess().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_6, grammarAccess.getCellDisplaySpecAccess().getRightCurlyBracketKeyword_6());
     }
 )
 ;

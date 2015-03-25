@@ -87,25 +87,15 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cDisplayKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Keyword cAsKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
-		private final Assignment cDisplay_typeAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
-		private final Alternatives cDisplay_typeAlternatives_3_3_0 = (Alternatives)cDisplay_typeAssignment_3_3.eContents().get(0);
-		private final Keyword cDisplay_typeLabelKeyword_3_3_0_0 = (Keyword)cDisplay_typeAlternatives_3_3_0.eContents().get(0);
-		private final Keyword cDisplay_typeButtonKeyword_3_3_0_1 = (Keyword)cDisplay_typeAlternatives_3_3_0.eContents().get(1);
-		private final Keyword cTextKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
-		private final Assignment cTextAssignment_3_5 = (Assignment)cGroup_3.eContents().get(5);
-		private final RuleCall cTextSTRINGTerminalRuleCall_3_5_0 = (RuleCall)cTextAssignment_3_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3_6 = (Keyword)cGroup_3.eContents().get(6);
+		private final Assignment cMembersAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMembersCellMemberParserRuleCall_3_0 = (RuleCall)cMembersAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//CellSpecification:
-		//	"cell" name=ID "{" ("display" "{" "as" display_type=("label" | "button") "text" text=STRING "}")? "}";
+		//	"cell" name=ID "{" members+=CellMember* "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"cell" name=ID "{" ("display" "{" "as" display_type=("label" | "button") "text" text=STRING "}")? "}"
+		//"cell" name=ID "{" members+=CellMember* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"cell"
@@ -120,44 +110,82 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//("display" "{" "as" display_type=("label" | "button") "text" text=STRING "}")?
-		public Group getGroup_3() { return cGroup_3; }
+		//members+=CellMember*
+		public Assignment getMembersAssignment_3() { return cMembersAssignment_3; }
 
-		//"display"
-		public Keyword getDisplayKeyword_3_0() { return cDisplayKeyword_3_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3_1() { return cLeftCurlyBracketKeyword_3_1; }
-
-		//"as"
-		public Keyword getAsKeyword_3_2() { return cAsKeyword_3_2; }
-
-		//display_type=("label" | "button")
-		public Assignment getDisplay_typeAssignment_3_3() { return cDisplay_typeAssignment_3_3; }
-
-		//"label" | "button"
-		public Alternatives getDisplay_typeAlternatives_3_3_0() { return cDisplay_typeAlternatives_3_3_0; }
-
-		//"label"
-		public Keyword getDisplay_typeLabelKeyword_3_3_0_0() { return cDisplay_typeLabelKeyword_3_3_0_0; }
-
-		//"button"
-		public Keyword getDisplay_typeButtonKeyword_3_3_0_1() { return cDisplay_typeButtonKeyword_3_3_0_1; }
-
-		//"text"
-		public Keyword getTextKeyword_3_4() { return cTextKeyword_3_4; }
-
-		//text=STRING
-		public Assignment getTextAssignment_3_5() { return cTextAssignment_3_5; }
-
-		//STRING
-		public RuleCall getTextSTRINGTerminalRuleCall_3_5_0() { return cTextSTRINGTerminalRuleCall_3_5_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_3_6() { return cRightCurlyBracketKeyword_3_6; }
+		//CellMember
+		public RuleCall getMembersCellMemberParserRuleCall_3_0() { return cMembersCellMemberParserRuleCall_3_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class CellMemberElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CellMember");
+		private final RuleCall cCellDisplaySpecParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//CellMember:
+		//	CellDisplaySpec;
+		@Override public ParserRule getRule() { return rule; }
+
+		//CellDisplaySpec
+		public RuleCall getCellDisplaySpecParserRuleCall() { return cCellDisplaySpecParserRuleCall; }
+	}
+
+	public class CellDisplaySpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CellDisplaySpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cDisplayKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cAsKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cDisplay_typeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Alternatives cDisplay_typeAlternatives_3_0 = (Alternatives)cDisplay_typeAssignment_3.eContents().get(0);
+		private final Keyword cDisplay_typeLabelKeyword_3_0_0 = (Keyword)cDisplay_typeAlternatives_3_0.eContents().get(0);
+		private final Keyword cDisplay_typeButtonKeyword_3_0_1 = (Keyword)cDisplay_typeAlternatives_3_0.eContents().get(1);
+		private final Keyword cTextKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cTextAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cTextSTRINGTerminalRuleCall_5_0 = (RuleCall)cTextAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//CellDisplaySpec:
+		//	"display" "{" "as" display_type=("label" | "button") "text" text=STRING "}";
+		@Override public ParserRule getRule() { return rule; }
+
+		//"display" "{" "as" display_type=("label" | "button") "text" text=STRING "}"
+		public Group getGroup() { return cGroup; }
+
+		//"display"
+		public Keyword getDisplayKeyword_0() { return cDisplayKeyword_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+
+		//"as"
+		public Keyword getAsKeyword_2() { return cAsKeyword_2; }
+
+		//display_type=("label" | "button")
+		public Assignment getDisplay_typeAssignment_3() { return cDisplay_typeAssignment_3; }
+
+		//"label" | "button"
+		public Alternatives getDisplay_typeAlternatives_3_0() { return cDisplay_typeAlternatives_3_0; }
+
+		//"label"
+		public Keyword getDisplay_typeLabelKeyword_3_0_0() { return cDisplay_typeLabelKeyword_3_0_0; }
+
+		//"button"
+		public Keyword getDisplay_typeButtonKeyword_3_0_1() { return cDisplay_typeButtonKeyword_3_0_1; }
+
+		//"text"
+		public Keyword getTextKeyword_4() { return cTextKeyword_4; }
+
+		//text=STRING
+		public Assignment getTextAssignment_5() { return cTextAssignment_5; }
+
+		//STRING
+		public RuleCall getTextSTRINGTerminalRuleCall_5_0() { return cTextSTRINGTerminalRuleCall_5_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 
 	public class FieldSpecificationElements extends AbstractParserRuleElementFinder {
@@ -415,6 +443,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final GridGameElements pGridGame;
 	private final CellSpecificationElements pCellSpecification;
+	private final CellMemberElements pCellMember;
+	private final CellDisplaySpecElements pCellDisplaySpec;
 	private final FieldSpecificationElements pFieldSpecification;
 	private final OptionSpecificationElements pOptionSpecification;
 	private final AllowRestartMenuElements pAllowRestartMenu;
@@ -435,6 +465,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaTerminals = gaTerminals;
 		this.pGridGame = new GridGameElements();
 		this.pCellSpecification = new CellSpecificationElements();
+		this.pCellMember = new CellMemberElements();
+		this.pCellDisplaySpec = new CellDisplaySpecElements();
 		this.pFieldSpecification = new FieldSpecificationElements();
 		this.pOptionSpecification = new OptionSpecificationElements();
 		this.pAllowRestartMenu = new AllowRestartMenuElements();
@@ -489,13 +521,33 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellSpecification:
-	//	"cell" name=ID "{" ("display" "{" "as" display_type=("label" | "button") "text" text=STRING "}")? "}";
+	//	"cell" name=ID "{" members+=CellMember* "}";
 	public CellSpecificationElements getCellSpecificationAccess() {
 		return pCellSpecification;
 	}
 	
 	public ParserRule getCellSpecificationRule() {
 		return getCellSpecificationAccess().getRule();
+	}
+
+	//CellMember:
+	//	CellDisplaySpec;
+	public CellMemberElements getCellMemberAccess() {
+		return pCellMember;
+	}
+	
+	public ParserRule getCellMemberRule() {
+		return getCellMemberAccess().getRule();
+	}
+
+	//CellDisplaySpec:
+	//	"display" "{" "as" display_type=("label" | "button") "text" text=STRING "}";
+	public CellDisplaySpecElements getCellDisplaySpecAccess() {
+		return pCellDisplaySpec;
+	}
+	
+	public ParserRule getCellDisplaySpecRule() {
+		return getCellDisplaySpecAccess().getRule();
 	}
 
 	//FieldSpecification:

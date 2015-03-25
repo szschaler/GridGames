@@ -1,6 +1,5 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
-import com.google.common.base.Objects;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
@@ -8,6 +7,8 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 
@@ -109,38 +110,57 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _xifexpression = null;
-    String _display_type = c.getDisplay_type();
-    boolean _notEquals = (!Objects.equal(_display_type, null));
-    if (_notEquals) {
-      CharSequence _xifexpression_1 = null;
-      String _display_type_1 = c.getDisplay_type();
-      boolean _equals = _display_type_1.equals("button");
-      if (_equals) {
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("jb.setText (\"");
-        String _text = c.getText();
-        _builder_1.append(_text, "");
-        _builder_1.append("\");");
-        _builder_1.newLineIfNotEmpty();
-        _builder_1.append("return jb;");
-        _builder_1.newLine();
-        _xifexpression_1 = _builder_1;
-      } else {
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append("jl.setText (\"");
-        String _text_1 = c.getText();
-        _builder_2.append(_text_1, "");
-        _builder_2.append("\");");
-        _builder_2.newLineIfNotEmpty();
-        _builder_2.append("return jl;");
-        _builder_2.newLine();
-        _xifexpression_1 = _builder_2;
+    EList<CellMember> _members = c.getMembers();
+    final Function1<CellMember, Boolean> _function = new Function1<CellMember, Boolean>() {
+      @Override
+      public Boolean apply(final CellMember m) {
+        return Boolean.valueOf((m instanceof CellDisplaySpec));
       }
-      _xifexpression = _xifexpression_1;
+    };
+    boolean _exists = IterableExtensions.<CellMember>exists(_members, _function);
+    if (_exists) {
+      CharSequence _xblockexpression = null;
+      {
+        EList<CellMember> _members_1 = c.getMembers();
+        final Function1<CellMember, Boolean> _function_1 = new Function1<CellMember, Boolean>() {
+          @Override
+          public Boolean apply(final CellMember m) {
+            return Boolean.valueOf((m instanceof CellDisplaySpec));
+          }
+        };
+        CellMember _findFirst = IterableExtensions.<CellMember>findFirst(_members_1, _function_1);
+        final CellDisplaySpec d = ((CellDisplaySpec) _findFirst);
+        CharSequence _xifexpression_1 = null;
+        String _display_type = d.getDisplay_type();
+        boolean _equals = _display_type.equals("button");
+        if (_equals) {
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("jb.setText (\"");
+          String _text = d.getText();
+          _builder_1.append(_text, "");
+          _builder_1.append("\");");
+          _builder_1.newLineIfNotEmpty();
+          _builder_1.append("return jb;");
+          _builder_1.newLine();
+          _xifexpression_1 = _builder_1;
+        } else {
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("jl.setText (\"");
+          String _text_1 = d.getText();
+          _builder_2.append(_text_1, "");
+          _builder_2.append("\");");
+          _builder_2.newLineIfNotEmpty();
+          _builder_2.append("return jl;");
+          _builder_2.newLine();
+          _xifexpression_1 = _builder_2;
+        }
+        _xblockexpression = _xifexpression_1;
+      }
+      _xifexpression = _xblockexpression;
     } else {
-      StringConcatenation _builder_3 = new StringConcatenation();
-      _builder_3.append("return jb;");
-      _xifexpression = _builder_3;
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("return jb;");
+      _xifexpression = _builder_1;
     }
     _builder.append(_xifexpression, "\t\t");
     _builder.newLineIfNotEmpty();

@@ -17,6 +17,7 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
@@ -38,6 +39,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		if(semanticObject.eClass().getEPackage() == GridGamePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case GridGamePackage.ALLOW_RESTART_MENU:
 				sequence_AllowRestartMenu(context, (AllowRestartMenu) semanticObject); 
+				return; 
+			case GridGamePackage.CELL_DISPLAY_SPEC:
+				sequence_CellDisplaySpec(context, (CellDisplaySpec) semanticObject); 
 				return; 
 			case GridGamePackage.CELL_SPECIFICATION:
 				sequence_CellSpecification(context, (CellSpecification) semanticObject); 
@@ -75,7 +79,16 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID ((display_type='label' | display_type='button') text=STRING)?)
+	 *     ((display_type='label' | display_type='button') text=STRING)
+	 */
+	protected void sequence_CellDisplaySpec(EObject context, CellDisplaySpec semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID members+=CellMember*)
 	 */
 	protected void sequence_CellSpecification(EObject context, CellSpecification semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

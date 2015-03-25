@@ -131,22 +131,13 @@ public interface GridGamePackage extends EPackage
   int CELL_SPECIFICATION__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Display type</b></em>' attribute.
+   * The feature id for the '<em><b>Members</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CELL_SPECIFICATION__DISPLAY_TYPE = 1;
-
-  /**
-   * The feature id for the '<em><b>Text</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CELL_SPECIFICATION__TEXT = 2;
+  int CELL_SPECIFICATION__MEMBERS = 1;
 
   /**
    * The number of structural features of the '<em>Cell Specification</em>' class.
@@ -155,7 +146,63 @@ public interface GridGamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CELL_SPECIFICATION_FEATURE_COUNT = 3;
+  int CELL_SPECIFICATION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellMemberImpl <em>Cell Member</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellMemberImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCellMember()
+   * @generated
+   */
+  int CELL_MEMBER = 2;
+
+  /**
+   * The number of structural features of the '<em>Cell Member</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CELL_MEMBER_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellDisplaySpecImpl <em>Cell Display Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellDisplaySpecImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCellDisplaySpec()
+   * @generated
+   */
+  int CELL_DISPLAY_SPEC = 3;
+
+  /**
+   * The feature id for the '<em><b>Display type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CELL_DISPLAY_SPEC__DISPLAY_TYPE = CELL_MEMBER_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CELL_DISPLAY_SPEC__TEXT = CELL_MEMBER_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Cell Display Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CELL_DISPLAY_SPEC_FEATURE_COUNT = CELL_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl <em>Field Specification</em>}' class.
@@ -165,7 +212,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldSpecification()
    * @generated
    */
-  int FIELD_SPECIFICATION = 2;
+  int FIELD_SPECIFICATION = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -220,7 +267,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getOptionSpecification()
    * @generated
    */
-  int OPTION_SPECIFICATION = 3;
+  int OPTION_SPECIFICATION = 5;
 
   /**
    * The number of structural features of the '<em>Option Specification</em>' class.
@@ -239,7 +286,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getAllowRestartMenu()
    * @generated
    */
-  int ALLOW_RESTART_MENU = 4;
+  int ALLOW_RESTART_MENU = 6;
 
   /**
    * The number of structural features of the '<em>Allow Restart Menu</em>' class.
@@ -258,7 +305,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getStartFieldDeclaration()
    * @generated
    */
-  int START_FIELD_DECLARATION = 5;
+  int START_FIELD_DECLARATION = 7;
 
   /**
    * The feature id for the '<em><b>Field name</b></em>' attribute.
@@ -286,7 +333,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldInitialisations()
    * @generated
    */
-  int FIELD_INITIALISATIONS = 6;
+  int FIELD_INITIALISATIONS = 8;
 
   /**
    * The feature id for the '<em><b>Initialisations</b></em>' containment reference list.
@@ -314,7 +361,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldInitialisation()
    * @generated
    */
-  int FIELD_INITIALISATION = 7;
+  int FIELD_INITIALISATION = 9;
 
   /**
    * The feature id for the '<em><b>Cell</b></em>' attribute.
@@ -342,7 +389,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getDefaultInitialisation()
    * @generated
    */
-  int DEFAULT_INITIALISATION = 8;
+  int DEFAULT_INITIALISATION = 10;
 
   /**
    * The feature id for the '<em><b>Cell</b></em>' attribute.
@@ -370,7 +417,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getRandomInitialisation()
    * @generated
    */
-  int RANDOM_INITIALISATION = 9;
+  int RANDOM_INITIALISATION = 11;
 
   /**
    * The feature id for the '<em><b>Cell</b></em>' attribute.
@@ -476,26 +523,57 @@ public interface GridGamePackage extends EPackage
   EAttribute getCellSpecification_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getDisplay_type <em>Display type</em>}'.
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getMembers <em>Members</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Members</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getMembers()
+   * @see #getCellSpecification()
+   * @generated
+   */
+  EReference getCellSpecification_Members();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember <em>Cell Member</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Cell Member</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember
+   * @generated
+   */
+  EClass getCellMember();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec <em>Cell Display Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Cell Display Spec</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec
+   * @generated
+   */
+  EClass getCellDisplaySpec();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getDisplay_type <em>Display type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Display type</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getDisplay_type()
-   * @see #getCellSpecification()
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getDisplay_type()
+   * @see #getCellDisplaySpec()
    * @generated
    */
-  EAttribute getCellSpecification_Display_type();
+  EAttribute getCellDisplaySpec_Display_type();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getText <em>Text</em>}'.
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getText <em>Text</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Text</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getText()
-   * @see #getCellSpecification()
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getText()
+   * @see #getCellDisplaySpec()
    * @generated
    */
-  EAttribute getCellSpecification_Text();
+  EAttribute getCellDisplaySpec_Text();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification <em>Field Specification</em>}'.
@@ -749,12 +827,40 @@ public interface GridGamePackage extends EPackage
     EAttribute CELL_SPECIFICATION__NAME = eINSTANCE.getCellSpecification_Name();
 
     /**
+     * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CELL_SPECIFICATION__MEMBERS = eINSTANCE.getCellSpecification_Members();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellMemberImpl <em>Cell Member</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellMemberImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCellMember()
+     * @generated
+     */
+    EClass CELL_MEMBER = eINSTANCE.getCellMember();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellDisplaySpecImpl <em>Cell Display Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellDisplaySpecImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCellDisplaySpec()
+     * @generated
+     */
+    EClass CELL_DISPLAY_SPEC = eINSTANCE.getCellDisplaySpec();
+
+    /**
      * The meta object literal for the '<em><b>Display type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CELL_SPECIFICATION__DISPLAY_TYPE = eINSTANCE.getCellSpecification_Display_type();
+    EAttribute CELL_DISPLAY_SPEC__DISPLAY_TYPE = eINSTANCE.getCellDisplaySpec_Display_type();
 
     /**
      * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
@@ -762,7 +868,7 @@ public interface GridGamePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CELL_SPECIFICATION__TEXT = eINSTANCE.getCellSpecification_Text();
+    EAttribute CELL_DISPLAY_SPEC__TEXT = eINSTANCE.getCellDisplaySpec_Text();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl <em>Field Specification</em>}' class.

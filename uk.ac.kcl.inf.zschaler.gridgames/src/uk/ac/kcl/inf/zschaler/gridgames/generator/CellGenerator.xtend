@@ -3,6 +3,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec
 
 /**
  * Generates all stuff to do with handling cells.
@@ -52,15 +53,16 @@ class CellGenerator extends CommonGenerator {
 		public class «c.generateCellClassName» extends Cell {
 			@Override
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
-				«if (c.display_type != null) {
-					if (c.display_type.equals ("button")) {
+				«if (c.members.exists[m | m instanceof CellDisplaySpec]) {
+					val d = c.members.findFirst[m | m instanceof CellDisplaySpec] as CellDisplaySpec
+					if (d.display_type.equals ("button")) {
 						'''
-						jb.setText ("«c.text»");
+						jb.setText ("«d.text»");
 						return jb;
 						'''
 					} else {
 						'''
-						jl.setText ("«c.text»");
+						jl.setText ("«d.text»");
 						return jl;
 						'''
 					}

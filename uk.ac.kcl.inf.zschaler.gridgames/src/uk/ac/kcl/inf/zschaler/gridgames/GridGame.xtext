@@ -20,11 +20,19 @@ GridGame :
               
 CellSpecification :
 	"cell" name=ID "{"
-		("display" "{"
-			"as" display_type=("label" | "button")
-			"text" text=STRING
-		"}")?
+		members += CellMember*
 	"}";
+	
+CellMember :
+	CellDisplaySpec
+;
+
+CellDisplaySpec :
+	"display" "{"
+		"as" display_type=("label" | "button")
+		"text" text=STRING
+	"}"
+;
 
 FieldSpecification :
 	"field" name=ID "{" 
