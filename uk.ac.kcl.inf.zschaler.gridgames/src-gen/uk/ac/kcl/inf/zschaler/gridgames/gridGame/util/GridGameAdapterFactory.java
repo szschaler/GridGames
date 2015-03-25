@@ -140,6 +140,31 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createRandomInitialisationAdapter();
       }
       @Override
+      public Adapter caseContextInitialisation(ContextInitialisation object)
+      {
+        return createContextInitialisationAdapter();
+      }
+      @Override
+      public Adapter caseContextExpression(ContextExpression object)
+      {
+        return createContextExpressionAdapter();
+      }
+      @Override
+      public Adapter caseAtomicExpression(AtomicExpression object)
+      {
+        return createAtomicExpressionAdapter();
+      }
+      @Override
+      public Adapter caseFilterExpression(FilterExpression object)
+      {
+        return createFilterExpressionAdapter();
+      }
+      @Override
+      public Adapter caseCountExpression(CountExpression object)
+      {
+        return createCountExpressionAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -352,6 +377,81 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createRandomInitialisationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation <em>Context Initialisation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation
+   * @generated
+   */
+  public Adapter createContextInitialisationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression <em>Context Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression
+   * @generated
+   */
+  public Adapter createContextExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression <em>Atomic Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression
+   * @generated
+   */
+  public Adapter createAtomicExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression <em>Filter Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
+   * @generated
+   */
+  public Adapter createFilterExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression <em>Count Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression
+   * @generated
+   */
+  public Adapter createCountExpressionAdapter()
   {
     return null;
   }

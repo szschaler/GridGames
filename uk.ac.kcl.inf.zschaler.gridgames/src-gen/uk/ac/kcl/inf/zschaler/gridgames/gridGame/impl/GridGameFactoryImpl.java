@@ -77,6 +77,11 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.FIELD_INITIALISATION: return createFieldInitialisation();
       case GridGamePackage.DEFAULT_INITIALISATION: return createDefaultInitialisation();
       case GridGamePackage.RANDOM_INITIALISATION: return createRandomInitialisation();
+      case GridGamePackage.CONTEXT_INITIALISATION: return createContextInitialisation();
+      case GridGamePackage.CONTEXT_EXPRESSION: return createContextExpression();
+      case GridGamePackage.ATOMIC_EXPRESSION: return createAtomicExpression();
+      case GridGamePackage.FILTER_EXPRESSION: return createFilterExpression();
+      case GridGamePackage.COUNT_EXPRESSION: return createCountExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -223,6 +228,61 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     RandomInitialisationImpl randomInitialisation = new RandomInitialisationImpl();
     return randomInitialisation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ContextInitialisation createContextInitialisation()
+  {
+    ContextInitialisationImpl contextInitialisation = new ContextInitialisationImpl();
+    return contextInitialisation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ContextExpression createContextExpression()
+  {
+    ContextExpressionImpl contextExpression = new ContextExpressionImpl();
+    return contextExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AtomicExpression createAtomicExpression()
+  {
+    AtomicExpressionImpl atomicExpression = new AtomicExpressionImpl();
+    return atomicExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FilterExpression createFilterExpression()
+  {
+    FilterExpressionImpl filterExpression = new FilterExpressionImpl();
+    return filterExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CountExpression createCountExpression()
+  {
+    CountExpressionImpl countExpression = new CountExpressionImpl();
+    return countExpression;
   }
 
   /**

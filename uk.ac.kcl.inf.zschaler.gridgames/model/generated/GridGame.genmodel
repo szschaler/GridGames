@@ -47,5 +47,16 @@
     <genClasses ecoreClass="GridGame.ecore#//RandomInitialisation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//RandomInitialisation/count"/>
     </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//ContextInitialisation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//ContextInitialisation/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//ContextExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//ContextExpression/sub_exp"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//AtomicExpression"/>
+    <genClasses ecoreClass="GridGame.ecore#//FilterExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FilterExpression/cell_type"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//CountExpression"/>
   </genPackages>
 </genmodel:GenModel>

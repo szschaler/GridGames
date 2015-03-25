@@ -66,7 +66,8 @@ FieldInitialisations :
 
 FieldInitialisation :
 	DefaultInitialisation |
-	RandomInitialisation
+	RandomInitialisation |
+	ContextInitialisation
 ;
 
 DefaultInitialisation :
@@ -75,4 +76,25 @@ DefaultInitialisation :
 
 RandomInitialisation :
 	"random" ":" cell=ID "=" count=INT
+;
+
+ContextInitialisation :
+	"context" ":" cell=ID "=" exp = ContextExpression
+;
+
+ContextExpression :
+	sub_exp += AtomicExpression ("." sub_exp += AtomicExpression )* 
+;
+
+AtomicExpression :
+	FilterExpression |
+	CountExpression 
+;
+
+FilterExpression :
+	"filter" "(" cell_type = ID ")"
+;
+
+CountExpression :
+	"count" "(" ")" {CountExpression}
 ;

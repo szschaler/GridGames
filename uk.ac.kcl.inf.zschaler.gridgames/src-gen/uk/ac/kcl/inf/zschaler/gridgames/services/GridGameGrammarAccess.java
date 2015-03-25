@@ -405,12 +405,13 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cDefaultInitialisationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cRandomInitialisationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cContextInitialisationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//FieldInitialisation:
-		//	DefaultInitialisation | RandomInitialisation;
+		//	DefaultInitialisation | RandomInitialisation | ContextInitialisation;
 		@Override public ParserRule getRule() { return rule; }
 
-		//DefaultInitialisation | RandomInitialisation
+		//DefaultInitialisation | RandomInitialisation | ContextInitialisation
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//DefaultInitialisation
@@ -418,6 +419,9 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//RandomInitialisation
 		public RuleCall getRandomInitialisationParserRuleCall_1() { return cRandomInitialisationParserRuleCall_1; }
+
+		//ContextInitialisation
+		public RuleCall getContextInitialisationParserRuleCall_2() { return cContextInitialisationParserRuleCall_2; }
 	}
 
 	public class DefaultInitialisationElements extends AbstractParserRuleElementFinder {
@@ -487,6 +491,162 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getCountINTTerminalRuleCall_4_0() { return cCountINTTerminalRuleCall_4_0; }
 	}
+
+	public class ContextInitialisationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ContextInitialisation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cContextKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cCellAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCellIDTerminalRuleCall_2_0 = (RuleCall)cCellAssignment_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cExpAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cExpContextExpressionParserRuleCall_4_0 = (RuleCall)cExpAssignment_4.eContents().get(0);
+		
+		//ContextInitialisation:
+		//	"context" ":" cell=ID "=" exp=ContextExpression;
+		@Override public ParserRule getRule() { return rule; }
+
+		//"context" ":" cell=ID "=" exp=ContextExpression
+		public Group getGroup() { return cGroup; }
+
+		//"context"
+		public Keyword getContextKeyword_0() { return cContextKeyword_0; }
+
+		//":"
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+
+		//cell=ID
+		public Assignment getCellAssignment_2() { return cCellAssignment_2; }
+
+		//ID
+		public RuleCall getCellIDTerminalRuleCall_2_0() { return cCellIDTerminalRuleCall_2_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
+
+		//exp=ContextExpression
+		public Assignment getExpAssignment_4() { return cExpAssignment_4; }
+
+		//ContextExpression
+		public RuleCall getExpContextExpressionParserRuleCall_4_0() { return cExpContextExpressionParserRuleCall_4_0; }
+	}
+
+	public class ContextExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ContextExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cSub_expAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cSub_expAtomicExpressionParserRuleCall_0_0 = (RuleCall)cSub_expAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cSub_expAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cSub_expAtomicExpressionParserRuleCall_1_1_0 = (RuleCall)cSub_expAssignment_1_1.eContents().get(0);
+		
+		//ContextExpression:
+		//	sub_exp+=AtomicExpression ("." sub_exp+=AtomicExpression)*;
+		@Override public ParserRule getRule() { return rule; }
+
+		//sub_exp+=AtomicExpression ("." sub_exp+=AtomicExpression)*
+		public Group getGroup() { return cGroup; }
+
+		//sub_exp+=AtomicExpression
+		public Assignment getSub_expAssignment_0() { return cSub_expAssignment_0; }
+
+		//AtomicExpression
+		public RuleCall getSub_expAtomicExpressionParserRuleCall_0_0() { return cSub_expAtomicExpressionParserRuleCall_0_0; }
+
+		//("." sub_exp+=AtomicExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+
+		//sub_exp+=AtomicExpression
+		public Assignment getSub_expAssignment_1_1() { return cSub_expAssignment_1_1; }
+
+		//AtomicExpression
+		public RuleCall getSub_expAtomicExpressionParserRuleCall_1_1_0() { return cSub_expAtomicExpressionParserRuleCall_1_1_0; }
+	}
+
+	public class AtomicExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AtomicExpression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cFilterExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCountExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//AtomicExpression:
+		//	FilterExpression | CountExpression;
+		@Override public ParserRule getRule() { return rule; }
+
+		//FilterExpression | CountExpression
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//FilterExpression
+		public RuleCall getFilterExpressionParserRuleCall_0() { return cFilterExpressionParserRuleCall_0; }
+
+		//CountExpression
+		public RuleCall getCountExpressionParserRuleCall_1() { return cCountExpressionParserRuleCall_1; }
+	}
+
+	public class FilterExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FilterExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFilterKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cCell_typeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCell_typeIDTerminalRuleCall_2_0 = (RuleCall)cCell_typeAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//FilterExpression:
+		//	"filter" "(" cell_type=ID ")";
+		@Override public ParserRule getRule() { return rule; }
+
+		//"filter" "(" cell_type=ID ")"
+		public Group getGroup() { return cGroup; }
+
+		//"filter"
+		public Keyword getFilterKeyword_0() { return cFilterKeyword_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+
+		//cell_type=ID
+		public Assignment getCell_typeAssignment_2() { return cCell_typeAssignment_2; }
+
+		//ID
+		public RuleCall getCell_typeIDTerminalRuleCall_2_0() { return cCell_typeIDTerminalRuleCall_2_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+	}
+
+	public class CountExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CountExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cCountKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Action cCountExpressionAction_3 = (Action)cGroup.eContents().get(3);
+		
+		//CountExpression:
+		//	"count" "(" ")" {CountExpression};
+		@Override public ParserRule getRule() { return rule; }
+
+		//"count" "(" ")" {CountExpression}
+		public Group getGroup() { return cGroup; }
+
+		//"count"
+		public Keyword getCountKeyword_0() { return cCountKeyword_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
+
+		//{CountExpression}
+		public Action getCountExpressionAction_3() { return cCountExpressionAction_3; }
+	}
 	
 	
 	private final GridGameElements pGridGame;
@@ -502,6 +662,11 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final FieldInitialisationElements pFieldInitialisation;
 	private final DefaultInitialisationElements pDefaultInitialisation;
 	private final RandomInitialisationElements pRandomInitialisation;
+	private final ContextInitialisationElements pContextInitialisation;
+	private final ContextExpressionElements pContextExpression;
+	private final AtomicExpressionElements pAtomicExpression;
+	private final FilterExpressionElements pFilterExpression;
+	private final CountExpressionElements pCountExpression;
 	
 	private final Grammar grammar;
 
@@ -525,6 +690,11 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pFieldInitialisation = new FieldInitialisationElements();
 		this.pDefaultInitialisation = new DefaultInitialisationElements();
 		this.pRandomInitialisation = new RandomInitialisationElements();
+		this.pContextInitialisation = new ContextInitialisationElements();
+		this.pContextExpression = new ContextExpressionElements();
+		this.pAtomicExpression = new AtomicExpressionElements();
+		this.pFilterExpression = new FilterExpressionElements();
+		this.pCountExpression = new CountExpressionElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -661,7 +831,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FieldInitialisation:
-	//	DefaultInitialisation | RandomInitialisation;
+	//	DefaultInitialisation | RandomInitialisation | ContextInitialisation;
 	public FieldInitialisationElements getFieldInitialisationAccess() {
 		return pFieldInitialisation;
 	}
@@ -688,6 +858,56 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getRandomInitialisationRule() {
 		return getRandomInitialisationAccess().getRule();
+	}
+
+	//ContextInitialisation:
+	//	"context" ":" cell=ID "=" exp=ContextExpression;
+	public ContextInitialisationElements getContextInitialisationAccess() {
+		return pContextInitialisation;
+	}
+	
+	public ParserRule getContextInitialisationRule() {
+		return getContextInitialisationAccess().getRule();
+	}
+
+	//ContextExpression:
+	//	sub_exp+=AtomicExpression ("." sub_exp+=AtomicExpression)*;
+	public ContextExpressionElements getContextExpressionAccess() {
+		return pContextExpression;
+	}
+	
+	public ParserRule getContextExpressionRule() {
+		return getContextExpressionAccess().getRule();
+	}
+
+	//AtomicExpression:
+	//	FilterExpression | CountExpression;
+	public AtomicExpressionElements getAtomicExpressionAccess() {
+		return pAtomicExpression;
+	}
+	
+	public ParserRule getAtomicExpressionRule() {
+		return getAtomicExpressionAccess().getRule();
+	}
+
+	//FilterExpression:
+	//	"filter" "(" cell_type=ID ")";
+	public FilterExpressionElements getFilterExpressionAccess() {
+		return pFilterExpression;
+	}
+	
+	public ParserRule getFilterExpressionRule() {
+		return getFilterExpressionAccess().getRule();
+	}
+
+	//CountExpression:
+	//	"count" "(" ")" {CountExpression};
+	public CountExpressionElements getCountExpressionAccess() {
+		return pCountExpression;
+	}
+	
+	public ParserRule getCountExpressionRule() {
+		return getCountExpressionAccess().getRule();
 	}
 
 	//terminal ID:

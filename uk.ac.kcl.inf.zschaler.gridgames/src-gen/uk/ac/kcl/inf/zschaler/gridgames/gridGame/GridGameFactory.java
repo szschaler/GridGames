@@ -140,6 +140,51 @@ public interface GridGameFactory extends EFactory
   RandomInitialisation createRandomInitialisation();
 
   /**
+   * Returns a new object of class '<em>Context Initialisation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Context Initialisation</em>'.
+   * @generated
+   */
+  ContextInitialisation createContextInitialisation();
+
+  /**
+   * Returns a new object of class '<em>Context Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Context Expression</em>'.
+   * @generated
+   */
+  ContextExpression createContextExpression();
+
+  /**
+   * Returns a new object of class '<em>Atomic Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Atomic Expression</em>'.
+   * @generated
+   */
+  AtomicExpression createAtomicExpression();
+
+  /**
+   * Returns a new object of class '<em>Filter Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Filter Expression</em>'.
+   * @generated
+   */
+  FilterExpression createFilterExpression();
+
+  /**
+   * Returns a new object of class '<em>Count Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Count Expression</em>'.
+   * @generated
+   */
+  CountExpression createCountExpression();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

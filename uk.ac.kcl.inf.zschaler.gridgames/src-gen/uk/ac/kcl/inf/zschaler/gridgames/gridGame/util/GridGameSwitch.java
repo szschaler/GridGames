@@ -169,6 +169,44 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.CONTEXT_INITIALISATION:
+      {
+        ContextInitialisation contextInitialisation = (ContextInitialisation)theEObject;
+        T result = caseContextInitialisation(contextInitialisation);
+        if (result == null) result = caseFieldInitialisation(contextInitialisation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.CONTEXT_EXPRESSION:
+      {
+        ContextExpression contextExpression = (ContextExpression)theEObject;
+        T result = caseContextExpression(contextExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.ATOMIC_EXPRESSION:
+      {
+        AtomicExpression atomicExpression = (AtomicExpression)theEObject;
+        T result = caseAtomicExpression(atomicExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.FILTER_EXPRESSION:
+      {
+        FilterExpression filterExpression = (FilterExpression)theEObject;
+        T result = caseFilterExpression(filterExpression);
+        if (result == null) result = caseAtomicExpression(filterExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.COUNT_EXPRESSION:
+      {
+        CountExpression countExpression = (CountExpression)theEObject;
+        T result = caseCountExpression(countExpression);
+        if (result == null) result = caseAtomicExpression(countExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -377,6 +415,86 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseRandomInitialisation(RandomInitialisation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Context Initialisation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Context Initialisation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContextInitialisation(ContextInitialisation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Context Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Context Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContextExpression(ContextExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Atomic Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Atomic Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAtomicExpression(AtomicExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Filter Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Filter Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFilterExpression(FilterExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Count Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Count Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCountExpression(CountExpression object)
   {
     return null;
   }

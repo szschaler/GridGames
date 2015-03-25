@@ -20,9 +20,13 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
@@ -50,6 +54,15 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case GridGamePackage.CELL_VAR_SPEC:
 				sequence_CellVarSpec(context, (CellVarSpec) semanticObject); 
 				return; 
+			case GridGamePackage.CONTEXT_EXPRESSION:
+				sequence_ContextExpression(context, (ContextExpression) semanticObject); 
+				return; 
+			case GridGamePackage.CONTEXT_INITIALISATION:
+				sequence_ContextInitialisation(context, (ContextInitialisation) semanticObject); 
+				return; 
+			case GridGamePackage.COUNT_EXPRESSION:
+				sequence_CountExpression(context, (CountExpression) semanticObject); 
+				return; 
 			case GridGamePackage.DEFAULT_INITIALISATION:
 				sequence_DefaultInitialisation(context, (DefaultInitialisation) semanticObject); 
 				return; 
@@ -58,6 +71,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.FIELD_SPECIFICATION:
 				sequence_FieldSpecification(context, (FieldSpecification) semanticObject); 
+				return; 
+			case GridGamePackage.FILTER_EXPRESSION:
+				sequence_FilterExpression(context, (FilterExpression) semanticObject); 
 				return; 
 			case GridGamePackage.GRID_GAME:
 				sequence_GridGame(context, (GridGame) semanticObject); 
@@ -110,6 +126,43 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
+	 *     (sub_exp+=AtomicExpression sub_exp+=AtomicExpression*)
+	 */
+	protected void sequence_ContextExpression(EObject context, ContextExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (cell=ID exp=ContextExpression)
+	 */
+	protected void sequence_ContextInitialisation(EObject context, ContextInitialisation semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL));
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__EXP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__EXP));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getContextInitialisationAccess().getCellIDTerminalRuleCall_2_0(), semanticObject.getCell());
+		feeder.accept(grammarAccess.getContextInitialisationAccess().getExpContextExpressionParserRuleCall_4_0(), semanticObject.getExp());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {CountExpression}
+	 */
+	protected void sequence_CountExpression(EObject context, CountExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     cell=ID
 	 */
 	protected void sequence_DefaultInitialisation(EObject context, DefaultInitialisation semanticObject) {
@@ -139,6 +192,22 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 */
 	protected void sequence_FieldSpecification(EObject context, FieldSpecification semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     cell_type=ID
+	 */
+	protected void sequence_FilterExpression(EObject context, FilterExpression semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FILTER_EXPRESSION__CELL_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FILTER_EXPRESSION__CELL_TYPE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getFilterExpressionAccess().getCell_typeIDTerminalRuleCall_2_0(), semanticObject.getCell_type());
+		feeder.finish();
 	}
 	
 	

@@ -10,14 +10,19 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGameFactory;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
@@ -123,6 +128,41 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass randomInitialisationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass contextInitialisationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass contextExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass atomicExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass filterExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass countExpressionEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -502,6 +542,86 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getContextInitialisation()
+  {
+    return contextInitialisationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getContextInitialisation_Exp()
+  {
+    return (EReference)contextInitialisationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getContextExpression()
+  {
+    return contextExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getContextExpression_Sub_exp()
+  {
+    return (EReference)contextExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAtomicExpression()
+  {
+    return atomicExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFilterExpression()
+  {
+    return filterExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFilterExpression_Cell_type()
+  {
+    return (EAttribute)filterExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCountExpression()
+  {
+    return countExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public GridGameFactory getGridGameFactory()
   {
     return (GridGameFactory)getEFactoryInstance();
@@ -570,6 +690,19 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     randomInitialisationEClass = createEClass(RANDOM_INITIALISATION);
     createEAttribute(randomInitialisationEClass, RANDOM_INITIALISATION__COUNT);
+
+    contextInitialisationEClass = createEClass(CONTEXT_INITIALISATION);
+    createEReference(contextInitialisationEClass, CONTEXT_INITIALISATION__EXP);
+
+    contextExpressionEClass = createEClass(CONTEXT_EXPRESSION);
+    createEReference(contextExpressionEClass, CONTEXT_EXPRESSION__SUB_EXP);
+
+    atomicExpressionEClass = createEClass(ATOMIC_EXPRESSION);
+
+    filterExpressionEClass = createEClass(FILTER_EXPRESSION);
+    createEAttribute(filterExpressionEClass, FILTER_EXPRESSION__CELL_TYPE);
+
+    countExpressionEClass = createEClass(COUNT_EXPRESSION);
   }
 
   /**
@@ -607,6 +740,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     startFieldDeclarationEClass.getESuperTypes().add(this.getOptionSpecification());
     defaultInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
     randomInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
+    contextInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
+    filterExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
+    countExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(gridGameEClass, GridGame.class, "GridGame", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -652,6 +788,19 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     initEClass(randomInitialisationEClass, RandomInitialisation.class, "RandomInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRandomInitialisation_Count(), ecorePackage.getEInt(), "count", null, 0, 1, RandomInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(contextInitialisationEClass, ContextInitialisation.class, "ContextInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getContextInitialisation_Exp(), this.getContextExpression(), null, "exp", null, 0, 1, ContextInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(contextExpressionEClass, ContextExpression.class, "ContextExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getContextExpression_Sub_exp(), this.getAtomicExpression(), null, "sub_exp", null, 0, -1, ContextExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(atomicExpressionEClass, AtomicExpression.class, "AtomicExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(filterExpressionEClass, FilterExpression.class, "FilterExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFilterExpression_Cell_type(), ecorePackage.getEString(), "cell_type", null, 0, 1, FilterExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(countExpressionEClass, CountExpression.class, "CountExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);

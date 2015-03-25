@@ -42,6 +42,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCellVarSpecAccess().getTypeAlternatives_1_0(), "rule__CellVarSpec__TypeAlternatives_1_0");
 					put(grammarAccess.getOptionSpecificationAccess().getAlternatives(), "rule__OptionSpecification__Alternatives");
 					put(grammarAccess.getFieldInitialisationAccess().getAlternatives(), "rule__FieldInitialisation__Alternatives");
+					put(grammarAccess.getAtomicExpressionAccess().getAlternatives(), "rule__AtomicExpression__Alternatives");
 					put(grammarAccess.getGridGameAccess().getGroup(), "rule__GridGame__Group__0");
 					put(grammarAccess.getCellSpecificationAccess().getGroup(), "rule__CellSpecification__Group__0");
 					put(grammarAccess.getCellDisplaySpecAccess().getGroup(), "rule__CellDisplaySpec__Group__0");
@@ -52,6 +53,11 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFieldInitialisationsAccess().getGroup(), "rule__FieldInitialisations__Group__0");
 					put(grammarAccess.getDefaultInitialisationAccess().getGroup(), "rule__DefaultInitialisation__Group__0");
 					put(grammarAccess.getRandomInitialisationAccess().getGroup(), "rule__RandomInitialisation__Group__0");
+					put(grammarAccess.getContextInitialisationAccess().getGroup(), "rule__ContextInitialisation__Group__0");
+					put(grammarAccess.getContextExpressionAccess().getGroup(), "rule__ContextExpression__Group__0");
+					put(grammarAccess.getContextExpressionAccess().getGroup_1(), "rule__ContextExpression__Group_1__0");
+					put(grammarAccess.getFilterExpressionAccess().getGroup(), "rule__FilterExpression__Group__0");
+					put(grammarAccess.getCountExpressionAccess().getGroup(), "rule__CountExpression__Group__0");
 					put(grammarAccess.getGridGameAccess().getNameAssignment_1(), "rule__GridGame__NameAssignment_1");
 					put(grammarAccess.getGridGameAccess().getCellsAssignment_3(), "rule__GridGame__CellsAssignment_3");
 					put(grammarAccess.getGridGameAccess().getFieldsAssignment_4(), "rule__GridGame__FieldsAssignment_4");
@@ -71,6 +77,11 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDefaultInitialisationAccess().getCellAssignment_2(), "rule__DefaultInitialisation__CellAssignment_2");
 					put(grammarAccess.getRandomInitialisationAccess().getCellAssignment_2(), "rule__RandomInitialisation__CellAssignment_2");
 					put(grammarAccess.getRandomInitialisationAccess().getCountAssignment_4(), "rule__RandomInitialisation__CountAssignment_4");
+					put(grammarAccess.getContextInitialisationAccess().getCellAssignment_2(), "rule__ContextInitialisation__CellAssignment_2");
+					put(grammarAccess.getContextInitialisationAccess().getExpAssignment_4(), "rule__ContextInitialisation__ExpAssignment_4");
+					put(grammarAccess.getContextExpressionAccess().getSub_expAssignment_0(), "rule__ContextExpression__Sub_expAssignment_0");
+					put(grammarAccess.getContextExpressionAccess().getSub_expAssignment_1_1(), "rule__ContextExpression__Sub_expAssignment_1_1");
+					put(grammarAccess.getFilterExpressionAccess().getCell_typeAssignment_2(), "rule__FilterExpression__Cell_typeAssignment_2");
 				}
 			};
 		}

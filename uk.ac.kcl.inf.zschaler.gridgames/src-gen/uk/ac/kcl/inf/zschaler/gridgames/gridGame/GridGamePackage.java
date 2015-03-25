@@ -483,6 +483,137 @@ public interface GridGamePackage extends EPackage
    */
   int RANDOM_INITIALISATION_FEATURE_COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 1;
 
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextInitialisationImpl <em>Context Initialisation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextInitialisationImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getContextInitialisation()
+   * @generated
+   */
+  int CONTEXT_INITIALISATION = 13;
+
+  /**
+   * The feature id for the '<em><b>Cell</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_INITIALISATION__CELL = FIELD_INITIALISATION__CELL;
+
+  /**
+   * The feature id for the '<em><b>Exp</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_INITIALISATION__EXP = FIELD_INITIALISATION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Context Initialisation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_INITIALISATION_FEATURE_COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextExpressionImpl <em>Context Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextExpressionImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getContextExpression()
+   * @generated
+   */
+  int CONTEXT_EXPRESSION = 14;
+
+  /**
+   * The feature id for the '<em><b>Sub exp</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_EXPRESSION__SUB_EXP = 0;
+
+  /**
+   * The number of structural features of the '<em>Context Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_EXPRESSION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.AtomicExpressionImpl <em>Atomic Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.AtomicExpressionImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getAtomicExpression()
+   * @generated
+   */
+  int ATOMIC_EXPRESSION = 15;
+
+  /**
+   * The number of structural features of the '<em>Atomic Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATOMIC_EXPRESSION_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FilterExpressionImpl <em>Filter Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FilterExpressionImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFilterExpression()
+   * @generated
+   */
+  int FILTER_EXPRESSION = 16;
+
+  /**
+   * The feature id for the '<em><b>Cell type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILTER_EXPRESSION__CELL_TYPE = ATOMIC_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Filter Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILTER_EXPRESSION_FEATURE_COUNT = ATOMIC_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CountExpressionImpl <em>Count Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CountExpressionImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCountExpression()
+   * @generated
+   */
+  int COUNT_EXPRESSION = 17;
+
+  /**
+   * The number of structural features of the '<em>Count Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COUNT_EXPRESSION_FEATURE_COUNT = ATOMIC_EXPRESSION_FEATURE_COUNT + 0;
+
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame <em>Grid Game</em>}'.
@@ -813,6 +944,89 @@ public interface GridGamePackage extends EPackage
   EAttribute getRandomInitialisation_Count();
 
   /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation <em>Context Initialisation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Context Initialisation</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation
+   * @generated
+   */
+  EClass getContextInitialisation();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation#getExp <em>Exp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation#getExp()
+   * @see #getContextInitialisation()
+   * @generated
+   */
+  EReference getContextInitialisation_Exp();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression <em>Context Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Context Expression</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression
+   * @generated
+   */
+  EClass getContextExpression();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression#getSub_exp <em>Sub exp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Sub exp</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression#getSub_exp()
+   * @see #getContextExpression()
+   * @generated
+   */
+  EReference getContextExpression_Sub_exp();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression <em>Atomic Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Atomic Expression</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression
+   * @generated
+   */
+  EClass getAtomicExpression();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression <em>Filter Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Filter Expression</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
+   * @generated
+   */
+  EClass getFilterExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression#getCell_type <em>Cell type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Cell type</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression#getCell_type()
+   * @see #getFilterExpression()
+   * @generated
+   */
+  EAttribute getFilterExpression_Cell_type();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression <em>Count Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Count Expression</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression
+   * @generated
+   */
+  EClass getCountExpression();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1108,6 +1322,80 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EAttribute RANDOM_INITIALISATION__COUNT = eINSTANCE.getRandomInitialisation_Count();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextInitialisationImpl <em>Context Initialisation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextInitialisationImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getContextInitialisation()
+     * @generated
+     */
+    EClass CONTEXT_INITIALISATION = eINSTANCE.getContextInitialisation();
+
+    /**
+     * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTEXT_INITIALISATION__EXP = eINSTANCE.getContextInitialisation_Exp();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextExpressionImpl <em>Context Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextExpressionImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getContextExpression()
+     * @generated
+     */
+    EClass CONTEXT_EXPRESSION = eINSTANCE.getContextExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Sub exp</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTEXT_EXPRESSION__SUB_EXP = eINSTANCE.getContextExpression_Sub_exp();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.AtomicExpressionImpl <em>Atomic Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.AtomicExpressionImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getAtomicExpression()
+     * @generated
+     */
+    EClass ATOMIC_EXPRESSION = eINSTANCE.getAtomicExpression();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FilterExpressionImpl <em>Filter Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FilterExpressionImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFilterExpression()
+     * @generated
+     */
+    EClass FILTER_EXPRESSION = eINSTANCE.getFilterExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Cell type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILTER_EXPRESSION__CELL_TYPE = eINSTANCE.getFilterExpression_Cell_type();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CountExpressionImpl <em>Count Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CountExpressionImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCountExpression()
+     * @generated
+     */
+    EClass COUNT_EXPRESSION = eINSTANCE.getCountExpression();
 
   }
 
