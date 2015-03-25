@@ -116,7 +116,7 @@ class FieldGenerator extends CommonGenerator {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				if (field[x][y] == null) {
-					field[x][y] = cellFactory.create«dfi.cell.toFirstUpper»Field();
+					field[x][y] = cellFactory.«dfi.cell.generateCellFactoryMethodName»();
 				}
 			}
 		}
@@ -134,7 +134,7 @@ class FieldGenerator extends CommonGenerator {
 				int y = r.nextInt(height);
 		
 					if (field[x][y] == null) {
-			field[x][y] = cellFactory.create«rfi.cell.toFirstUpper»Field();
+			field[x][y] = cellFactory.«rfi.cell.generateCellFactoryMethodName»();
 		
 						fSet = true;
 					}

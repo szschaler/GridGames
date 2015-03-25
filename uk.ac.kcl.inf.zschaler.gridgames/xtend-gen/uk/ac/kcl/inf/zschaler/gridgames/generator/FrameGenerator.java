@@ -60,9 +60,6 @@ public class FrameGenerator extends CommonGenerator {
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("private CellFactory cellFactory;");
-    _builder.newLine();
-    _builder.append("\t");
     _builder.append("private ");
     CharSequence _generateFieldClassName_1 = this.generateFieldClassName();
     _builder.append(_generateFieldClassName_1, "\t");
@@ -88,10 +85,6 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append(_firstUpper, "\t\t");
     _builder.append("\");");
     _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("this.cellFactory = cellFactory;");
-    _builder.newLine();
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("setDefaultCloseOperation(EXIT_ON_CLOSE);");

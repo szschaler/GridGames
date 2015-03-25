@@ -101,15 +101,31 @@ public class CommonGenerator {
     return _builder;
   }
   
+  public CharSequence generateFactoryClassFileName() {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateCellPackageFolder = this.generateCellPackageFolder();
+    _builder.append(_generateCellPackageFolder, "");
+    _builder.append("/CellFactory.java");
+    return _builder;
+  }
+  
+  public CharSequence generateCellClassName(final CellSpecification c) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = c.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("Cell");
+    return _builder;
+  }
+  
   public CharSequence generateCellClassFileName(final CellSpecification c) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _generateCellPackageFolder = this.generateCellPackageFolder();
     _builder.append(_generateCellPackageFolder, "");
     _builder.append("/");
-    String _name = c.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
-    _builder.append("Cell.java");
+    CharSequence _generateCellClassName = this.generateCellClassName(c);
+    _builder.append(_generateCellClassName, "");
+    _builder.append(".java");
     return _builder;
   }
   
@@ -121,6 +137,15 @@ public class CommonGenerator {
     CharSequence _generateFrameClassName = this.generateFrameClassName();
     _builder.append(_generateFrameClassName, "");
     _builder.append(".java");
+    return _builder;
+  }
+  
+  public CharSequence generateCellFactoryMethodName(final String cellName) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("create");
+    String _firstUpper = StringExtensions.toFirstUpper(cellName);
+    _builder.append(_firstUpper, "");
+    _builder.append("Field");
     return _builder;
   }
 }

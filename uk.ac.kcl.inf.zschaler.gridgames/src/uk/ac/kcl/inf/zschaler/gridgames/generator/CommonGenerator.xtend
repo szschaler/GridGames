@@ -33,7 +33,13 @@ class CommonGenerator {
 
 	def generateCellClassFileName() '''«generateCellPackageFolder»/Cell.java'''
 
-	def generateCellClassFileName(CellSpecification c) '''«generateCellPackageFolder»/«c.name.toFirstUpper»Cell.java'''
+	def generateFactoryClassFileName() '''«generateCellPackageFolder»/CellFactory.java'''
+
+	def generateCellClassName(CellSpecification c) '''«c.name.toFirstUpper»Cell'''
+
+	def generateCellClassFileName(CellSpecification c) '''«generateCellPackageFolder»/«c.generateCellClassName».java'''
 
 	def generateFrameClassFileName() '''«generateViewPackageFolder»/«generateFrameClassName()».java'''
+	
+	def generateCellFactoryMethodName (String cellName) '''create«cellName.toFirstUpper»Field'''
 }

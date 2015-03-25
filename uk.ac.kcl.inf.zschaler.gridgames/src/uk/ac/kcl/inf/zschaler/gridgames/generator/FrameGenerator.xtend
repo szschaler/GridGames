@@ -28,15 +28,12 @@ class FrameGenerator extends CommonGenerator {
 
 	public class «generateFrameClassName» extends JFrame {
 
-		private CellFactory cellFactory;
 		private «generateFieldClassName» field;
 		private JTable jtDisplay;
 		private static final int cellSize = 20;
 	
 		public «generateFrameClassName» (CellFactory cellFactory) {
 			super("«gg.name.toFirstUpper»");
-
-			this.cellFactory = cellFactory;
 
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 

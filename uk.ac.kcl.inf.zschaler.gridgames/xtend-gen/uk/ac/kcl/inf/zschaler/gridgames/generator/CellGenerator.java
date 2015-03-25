@@ -3,9 +3,9 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
@@ -40,6 +40,11 @@ public class CellGenerator extends CommonGenerator {
       }
     };
     IterableExtensions.<CellSpecification>forEach(_cells, _function);
+    StringConcatenation _builder_1 = new StringConcatenation();
+    CharSequence _generateFactoryClassFileName = this.generateFactoryClassFileName();
+    _builder_1.append(_generateFactoryClassFileName, "");
+    CharSequence _generateFactory = this.generateFactory();
+    fsa.generateFile(_builder_1.toString(), _generateFactory);
   }
   
   /**
@@ -73,14 +78,59 @@ public class CellGenerator extends CommonGenerator {
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("public abstract class ");
-    String _name = c.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
-    _builder.append("Cell extends Cell {");
+    _builder.append("public class ");
+    CharSequence _generateCellClassName = this.generateCellClassName(c);
+    _builder.append(_generateCellClassName, "");
+    _builder.append(" extends Cell {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateFactory() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package ");
+    CharSequence _generateCellPackage = this.generateCellPackage();
+    _builder.append(_generateCellPackage, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("public class CellFactory {");
+    _builder.newLine();
+    _builder.append("\t");
+    EList<CellSpecification> _cells = this.gg.getCells();
+    final Function1<CellSpecification, CharSequence> _function = new Function1<CellSpecification, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellSpecification c) {
+        return CellGenerator.this.generateFactoryMethod(c);
+      }
+    };
+    String _join = IterableExtensions.<CellSpecification>join(_cells, " ", _function);
+    _builder.append(_join, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateFactoryMethod(final CellSpecification cs) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public Cell ");
+    String _name = cs.getName();
+    CharSequence _generateCellFactoryMethodName = this.generateCellFactoryMethodName(_name);
+    _builder.append(_generateCellFactoryMethodName, "");
+    _builder.append("() {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("return new ");
+    CharSequence _generateCellClassName = this.generateCellClassName(cs);
+    _builder.append(_generateCellClassName, "\t");
+    _builder.append("();");
+    _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
     return _builder;
