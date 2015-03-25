@@ -182,9 +182,9 @@ ruleCellSpecification returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='cell_type' 
+(	otherlv_0='cell' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getCellSpecificationAccess().getCell_typeKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getCellSpecificationAccess().getCellKeyword_0());
     }
 (
 (
@@ -233,9 +233,9 @@ ruleFieldSpecification returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='field_type' 
+(	otherlv_0='field' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getFieldSpecificationAccess().getField_typeKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getFieldSpecificationAccess().getFieldKeyword_0());
     }
 (
 (

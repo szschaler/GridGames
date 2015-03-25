@@ -1,9 +1,9 @@
 ':'=23
 '='=17
 'allow_restart'=19
-'cell_type'=14
+'cell'=14
 'default'=22
-'field_type'=15
+'field'=15
 'game'=11
 'height'=18
 'init'=21

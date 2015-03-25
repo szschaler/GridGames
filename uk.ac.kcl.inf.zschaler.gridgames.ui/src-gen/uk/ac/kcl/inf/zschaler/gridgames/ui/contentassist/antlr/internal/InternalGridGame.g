@@ -637,11 +637,11 @@ rule__CellSpecification__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getCellSpecificationAccess().getCell_typeKeyword_0()); }
+{ before(grammarAccess.getCellSpecificationAccess().getCellKeyword_0()); }
 
-	'cell_type' 
+	'cell' 
 
-{ after(grammarAccess.getCellSpecificationAccess().getCell_typeKeyword_0()); }
+{ after(grammarAccess.getCellSpecificationAccess().getCellKeyword_0()); }
 )
 
 ;
@@ -766,11 +766,11 @@ rule__FieldSpecification__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getFieldSpecificationAccess().getField_typeKeyword_0()); }
+{ before(grammarAccess.getFieldSpecificationAccess().getFieldKeyword_0()); }
 
-	'field_type' 
+	'field' 
 
-{ after(grammarAccess.getFieldSpecificationAccess().getField_typeKeyword_0()); }
+{ after(grammarAccess.getFieldSpecificationAccess().getFieldKeyword_0()); }
 )
 
 ;

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalGridGameParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'game'", "'{'", "'}'", "'cell_type'", "'field_type'", "'width'", "'='", "'height'", "'allow_restart'", "'start'", "'init'", "'default'", "':'", "'random'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'game'", "'{'", "'}'", "'cell'", "'field'", "'width'", "'='", "'height'", "'allow_restart'", "'start'", "'init'", "'default'", "':'", "'random'"
     };
     public static final int RULE_ID=4;
     public static final int T__24=24;
@@ -1715,21 +1715,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellSpecification__Group__0__Impl"
-    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:634:1: rule__CellSpecification__Group__0__Impl : ( 'cell_type' ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:634:1: rule__CellSpecification__Group__0__Impl : ( 'cell' ) ;
     public final void rule__CellSpecification__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:638:1: ( ( 'cell_type' ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:639:1: ( 'cell_type' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:638:1: ( ( 'cell' ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:639:1: ( 'cell' )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:639:1: ( 'cell_type' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:640:1: 'cell_type'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:639:1: ( 'cell' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:640:1: 'cell'
             {
-             before(grammarAccess.getCellSpecificationAccess().getCell_typeKeyword_0()); 
+             before(grammarAccess.getCellSpecificationAccess().getCellKeyword_0()); 
             match(input,14,FOLLOW_14_in_rule__CellSpecification__Group__0__Impl1269); 
-             after(grammarAccess.getCellSpecificationAccess().getCell_typeKeyword_0()); 
+             after(grammarAccess.getCellSpecificationAccess().getCellKeyword_0()); 
 
             }
 
@@ -2020,21 +2020,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__FieldSpecification__Group__0__Impl"
-    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:763:1: rule__FieldSpecification__Group__0__Impl : ( 'field_type' ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:763:1: rule__FieldSpecification__Group__0__Impl : ( 'field' ) ;
     public final void rule__FieldSpecification__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:767:1: ( ( 'field_type' ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:768:1: ( 'field_type' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:767:1: ( ( 'field' ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:768:1: ( 'field' )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:768:1: ( 'field_type' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:769:1: 'field_type'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:768:1: ( 'field' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:769:1: 'field'
             {
-             before(grammarAccess.getFieldSpecificationAccess().getField_typeKeyword_0()); 
+             before(grammarAccess.getFieldSpecificationAccess().getFieldKeyword_0()); 
             match(input,15,FOLLOW_15_in_rule__FieldSpecification__Group__0__Impl1520); 
-             after(grammarAccess.getFieldSpecificationAccess().getField_typeKeyword_0()); 
+             after(grammarAccess.getFieldSpecificationAccess().getFieldKeyword_0()); 
 
             }
 

@@ -83,23 +83,23 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	public class CellSpecificationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CellSpecification");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cCell_typeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cCellKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//CellSpecification:
-		//	"cell_type" name=ID "{" //                         Provide cell type properties here...
+		//	"cell" name=ID "{" //                         Provide cell type properties here...
 		//	"}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"cell_type" name=ID "{" //                         Provide cell type properties here...
+		//"cell" name=ID "{" //                         Provide cell type properties here...
 		//"}"
 		public Group getGroup() { return cGroup; }
 
-		//"cell_type"
-		public Keyword getCell_typeKeyword_0() { return cCell_typeKeyword_0; }
+		//"cell"
+		public Keyword getCellKeyword_0() { return cCellKeyword_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -118,7 +118,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	public class FieldSpecificationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FieldSpecification");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cField_typeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cFieldKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -135,15 +135,14 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//FieldSpecification:
-		//	"field_type" name=ID "{" "width" "=" width=INT "height" "=" height=INT field_initialisation=FieldInitialisations?
-		//	"}";
+		//	"field" name=ID "{" "width" "=" width=INT "height" "=" height=INT field_initialisation=FieldInitialisations? "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"field_type" name=ID "{" "width" "=" width=INT "height" "=" height=INT field_initialisation=FieldInitialisations? "}"
+		//"field" name=ID "{" "width" "=" width=INT "height" "=" height=INT field_initialisation=FieldInitialisations? "}"
 		public Group getGroup() { return cGroup; }
 
-		//"field_type"
-		public Keyword getField_typeKeyword_0() { return cField_typeKeyword_0; }
+		//"field"
+		public Keyword getFieldKeyword_0() { return cFieldKeyword_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -445,7 +444,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellSpecification:
-	//	"cell_type" name=ID "{" //                         Provide cell type properties here...
+	//	"cell" name=ID "{" //                         Provide cell type properties here...
 	//	"}";
 	public CellSpecificationElements getCellSpecificationAccess() {
 		return pCellSpecification;
@@ -456,8 +455,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FieldSpecification:
-	//	"field_type" name=ID "{" "width" "=" width=INT "height" "=" height=INT field_initialisation=FieldInitialisations?
-	//	"}";
+	//	"field" name=ID "{" "width" "=" width=INT "height" "=" height=INT field_initialisation=FieldInitialisations? "}";
 	public FieldSpecificationElements getFieldSpecificationAccess() {
 		return pFieldSpecification;
 	}

@@ -19,12 +19,12 @@ GridGame :
 ;
               
 CellSpecification :
-	"cell_type" name=ID "{" 
+	"cell" name=ID "{" 
 //                         Provide cell type properties here...
                         "}";
 
 FieldSpecification :
-	"field_type" name=ID "{" 
+	"field" name=ID "{" 
 		"width" "=" width=INT  
 		"height" "=" height=INT 
 		field_initialisation = FieldInitialisations? 
