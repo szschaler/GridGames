@@ -131,13 +131,31 @@ public interface GridGamePackage extends EPackage
   int CELL_SPECIFICATION__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Display type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CELL_SPECIFICATION__DISPLAY_TYPE = 1;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CELL_SPECIFICATION__TEXT = 2;
+
+  /**
    * The number of structural features of the '<em>Cell Specification</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CELL_SPECIFICATION_FEATURE_COUNT = 1;
+  int CELL_SPECIFICATION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl <em>Field Specification</em>}' class.
@@ -458,6 +476,28 @@ public interface GridGamePackage extends EPackage
   EAttribute getCellSpecification_Name();
 
   /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getDisplay_type <em>Display type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Display type</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getDisplay_type()
+   * @see #getCellSpecification()
+   * @generated
+   */
+  EAttribute getCellSpecification_Display_type();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Text</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification#getText()
+   * @see #getCellSpecification()
+   * @generated
+   */
+  EAttribute getCellSpecification_Text();
+
+  /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification <em>Field Specification</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -707,6 +747,22 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EAttribute CELL_SPECIFICATION__NAME = eINSTANCE.getCellSpecification_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Display type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CELL_SPECIFICATION__DISPLAY_TYPE = eINSTANCE.getCellSpecification_Display_type();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CELL_SPECIFICATION__TEXT = eINSTANCE.getCellSpecification_Text();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl <em>Field Specification</em>}' class.

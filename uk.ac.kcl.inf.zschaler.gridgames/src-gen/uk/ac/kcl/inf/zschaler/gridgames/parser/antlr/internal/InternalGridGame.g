@@ -208,9 +208,77 @@ ruleCellSpecification returns [EObject current=null]
     {
     	newLeafNode(otherlv_2, grammarAccess.getCellSpecificationAccess().getLeftCurlyBracketKeyword_2());
     }
-	otherlv_3='}' 
+(	otherlv_3='display' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getCellSpecificationAccess().getRightCurlyBracketKeyword_3());
+    	newLeafNode(otherlv_3, grammarAccess.getCellSpecificationAccess().getDisplayKeyword_3_0());
+    }
+	otherlv_4='{' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getCellSpecificationAccess().getLeftCurlyBracketKeyword_3_1());
+    }
+	otherlv_5='as' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getCellSpecificationAccess().getAsKeyword_3_2());
+    }
+(
+(
+(
+		lv_display_type_6_1=	'label' 
+    {
+        newLeafNode(lv_display_type_6_1, grammarAccess.getCellSpecificationAccess().getDisplay_typeLabelKeyword_3_3_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellSpecificationRule());
+	        }
+       		setWithLastConsumed($current, "display_type", lv_display_type_6_1, null);
+	    }
+
+    |		lv_display_type_6_2=	'button' 
+    {
+        newLeafNode(lv_display_type_6_2, grammarAccess.getCellSpecificationAccess().getDisplay_typeButtonKeyword_3_3_0_1());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellSpecificationRule());
+	        }
+       		setWithLastConsumed($current, "display_type", lv_display_type_6_2, null);
+	    }
+
+)
+
+)
+)	otherlv_7='text' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getCellSpecificationAccess().getTextKeyword_3_4());
+    }
+(
+(
+		lv_text_8_0=RULE_STRING
+		{
+			newLeafNode(lv_text_8_0, grammarAccess.getCellSpecificationAccess().getTextSTRINGTerminalRuleCall_3_5_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellSpecificationRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"text",
+        		lv_text_8_0, 
+        		"STRING");
+	    }
+
+)
+)	otherlv_9='}' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getCellSpecificationAccess().getRightCurlyBracketKeyword_3_6());
+    }
+)?	otherlv_10='}' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getCellSpecificationAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;

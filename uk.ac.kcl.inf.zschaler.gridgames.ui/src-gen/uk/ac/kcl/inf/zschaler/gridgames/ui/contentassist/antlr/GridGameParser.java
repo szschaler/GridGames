@@ -37,10 +37,12 @@ public class GridGameParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getCellSpecificationAccess().getDisplay_typeAlternatives_3_3_0(), "rule__CellSpecification__Display_typeAlternatives_3_3_0");
 					put(grammarAccess.getOptionSpecificationAccess().getAlternatives(), "rule__OptionSpecification__Alternatives");
 					put(grammarAccess.getFieldInitialisationAccess().getAlternatives(), "rule__FieldInitialisation__Alternatives");
 					put(grammarAccess.getGridGameAccess().getGroup(), "rule__GridGame__Group__0");
 					put(grammarAccess.getCellSpecificationAccess().getGroup(), "rule__CellSpecification__Group__0");
+					put(grammarAccess.getCellSpecificationAccess().getGroup_3(), "rule__CellSpecification__Group_3__0");
 					put(grammarAccess.getFieldSpecificationAccess().getGroup(), "rule__FieldSpecification__Group__0");
 					put(grammarAccess.getAllowRestartMenuAccess().getGroup(), "rule__AllowRestartMenu__Group__0");
 					put(grammarAccess.getStartFieldDeclarationAccess().getGroup(), "rule__StartFieldDeclaration__Group__0");
@@ -52,6 +54,8 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGridGameAccess().getFieldsAssignment_4(), "rule__GridGame__FieldsAssignment_4");
 					put(grammarAccess.getGridGameAccess().getOptionsAssignment_5(), "rule__GridGame__OptionsAssignment_5");
 					put(grammarAccess.getCellSpecificationAccess().getNameAssignment_1(), "rule__CellSpecification__NameAssignment_1");
+					put(grammarAccess.getCellSpecificationAccess().getDisplay_typeAssignment_3_3(), "rule__CellSpecification__Display_typeAssignment_3_3");
+					put(grammarAccess.getCellSpecificationAccess().getTextAssignment_3_5(), "rule__CellSpecification__TextAssignment_3_5");
 					put(grammarAccess.getFieldSpecificationAccess().getNameAssignment_1(), "rule__FieldSpecification__NameAssignment_1");
 					put(grammarAccess.getFieldSpecificationAccess().getWidthAssignment_5(), "rule__FieldSpecification__WidthAssignment_5");
 					put(grammarAccess.getFieldSpecificationAccess().getHeightAssignment_8(), "rule__FieldSpecification__HeightAssignment_8");

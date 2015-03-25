@@ -19,9 +19,12 @@ GridGame :
 ;
               
 CellSpecification :
-	"cell" name=ID "{" 
-//                         Provide cell type properties here...
-                        "}";
+	"cell" name=ID "{"
+		("display" "{"
+			"as" display_type=("label" | "button")
+			"text" text=STRING
+		"}")?
+	"}";
 
 FieldSpecification :
 	"field" name=ID "{" 
