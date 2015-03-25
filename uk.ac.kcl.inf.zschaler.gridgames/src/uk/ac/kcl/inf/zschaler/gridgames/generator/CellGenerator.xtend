@@ -4,6 +4,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
 
 /**
  * Generates all stuff to do with handling cells.
@@ -51,6 +52,8 @@ class CellGenerator extends CommonGenerator {
 		import java.awt.Component;
 		
 		public class «c.generateCellClassName» extends Cell {
+			«c.members.filter(CellVarSpec).join(" ", [v | '''private «v.type» «v.name.toFirstLower»Variable;'''])»
+			
 			@Override
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
 				«if (c.members.exists[m | m instanceof CellDisplaySpec]) {

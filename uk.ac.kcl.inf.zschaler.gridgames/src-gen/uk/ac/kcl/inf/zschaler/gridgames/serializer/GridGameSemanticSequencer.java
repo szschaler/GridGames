@@ -101,7 +101,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     ((type='int' | type='string') name=ID)
+	 *     ((type='int' | type='String') name=ID)
 	 */
 	protected void sequence_CellVarSpec(EObject context, CellVarSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -485,7 +485,7 @@ rule__CellVarSpec__TypeAlternatives_1_0
     |(
 { before(grammarAccess.getCellVarSpecAccess().getTypeStringKeyword_1_0_1()); }
 
-	'string' 
+	'String' 
 
 { after(grammarAccess.getCellVarSpecAccess().getTypeStringKeyword_1_0_1()); }
 )

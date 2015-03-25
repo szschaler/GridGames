@@ -399,7 +399,7 @@ ruleCellVarSpec returns [EObject current=null]
        		setWithLastConsumed($current, "type", lv_type_1_1, null);
 	    }
 
-    |		lv_type_1_2=	'string' 
+    |		lv_type_1_2=	'String' 
     {
         newLeafNode(lv_type_1_2, grammarAccess.getCellVarSpecAccess().getTypeStringKeyword_1_0_1());
     }

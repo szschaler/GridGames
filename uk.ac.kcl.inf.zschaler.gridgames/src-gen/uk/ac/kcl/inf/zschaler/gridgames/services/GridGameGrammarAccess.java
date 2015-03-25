@@ -208,25 +208,25 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
 		//CellVarSpec:
-		//	"var" type=("int" | "string") name=ID;
+		//	"var" type=("int" | "String") name=ID;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"var" type=("int" | "string") name=ID
+		//"var" type=("int" | "String") name=ID
 		public Group getGroup() { return cGroup; }
 
 		//"var"
 		public Keyword getVarKeyword_0() { return cVarKeyword_0; }
 
-		//type=("int" | "string")
+		//type=("int" | "String")
 		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
 
-		//"int" | "string"
+		//"int" | "String"
 		public Alternatives getTypeAlternatives_1_0() { return cTypeAlternatives_1_0; }
 
 		//"int"
 		public Keyword getTypeIntKeyword_1_0_0() { return cTypeIntKeyword_1_0_0; }
 
-		//"string"
+		//"String"
 		public Keyword getTypeStringKeyword_1_0_1() { return cTypeStringKeyword_1_0_1; }
 
 		//name=ID
@@ -601,7 +601,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellVarSpec:
-	//	"var" type=("int" | "string") name=ID;
+	//	"var" type=("int" | "String") name=ID;
 	public CellVarSpecElements getCellVarSpecAccess() {
 		return pCellVarSpec;
 	}

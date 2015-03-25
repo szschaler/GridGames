@@ -1,5 +1,6 @@
 ':'=31
 '='=25
+'String'=14
 'allow_restart'=27
 'as'=20
 'button'=12
@@ -14,7 +15,6 @@
 'label'=11
 'random'=32
 'start'=28
-'string'=14
 'text'=21
 'var'=22
 'width'=24

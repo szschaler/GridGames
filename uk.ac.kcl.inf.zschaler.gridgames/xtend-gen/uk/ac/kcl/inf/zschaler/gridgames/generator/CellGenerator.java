@@ -1,15 +1,18 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
+import com.google.common.collect.Iterables;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 
 /**
@@ -103,6 +106,29 @@ public class CellGenerator extends CommonGenerator {
     _builder.append(" extends Cell {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
+    EList<CellMember> _members = c.getMembers();
+    Iterable<CellVarSpec> _filter = Iterables.<CellVarSpec>filter(_members, CellVarSpec.class);
+    final Function1<CellVarSpec, CharSequence> _function = new Function1<CellVarSpec, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellVarSpec v) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("private ");
+        String _type = v.getType();
+        _builder.append(_type, "");
+        _builder.append(" ");
+        String _name = v.getName();
+        String _firstLower = StringExtensions.toFirstLower(_name);
+        _builder.append(_firstLower, "");
+        _builder.append("Variable;");
+        return _builder.toString();
+      }
+    };
+    String _join = IterableExtensions.<CellVarSpec>join(_filter, " ", _function);
+    _builder.append(_join, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
@@ -110,25 +136,25 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _xifexpression = null;
-    EList<CellMember> _members = c.getMembers();
-    final Function1<CellMember, Boolean> _function = new Function1<CellMember, Boolean>() {
+    EList<CellMember> _members_1 = c.getMembers();
+    final Function1<CellMember, Boolean> _function_1 = new Function1<CellMember, Boolean>() {
       @Override
       public Boolean apply(final CellMember m) {
         return Boolean.valueOf((m instanceof CellDisplaySpec));
       }
     };
-    boolean _exists = IterableExtensions.<CellMember>exists(_members, _function);
+    boolean _exists = IterableExtensions.<CellMember>exists(_members_1, _function_1);
     if (_exists) {
       CharSequence _xblockexpression = null;
       {
-        EList<CellMember> _members_1 = c.getMembers();
-        final Function1<CellMember, Boolean> _function_1 = new Function1<CellMember, Boolean>() {
+        EList<CellMember> _members_2 = c.getMembers();
+        final Function1<CellMember, Boolean> _function_2 = new Function1<CellMember, Boolean>() {
           @Override
           public Boolean apply(final CellMember m) {
             return Boolean.valueOf((m instanceof CellDisplaySpec));
           }
         };
-        CellMember _findFirst = IterableExtensions.<CellMember>findFirst(_members_1, _function_1);
+        CellMember _findFirst = IterableExtensions.<CellMember>findFirst(_members_2, _function_2);
         final CellDisplaySpec d = ((CellDisplaySpec) _findFirst);
         CharSequence _xifexpression_1 = null;
         String _display_type = d.getDisplay_type();
