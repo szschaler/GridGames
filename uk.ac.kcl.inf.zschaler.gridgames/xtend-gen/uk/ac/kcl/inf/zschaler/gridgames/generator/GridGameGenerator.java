@@ -13,6 +13,7 @@ import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CellGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.FieldGenerator;
+import uk.ac.kcl.inf.zschaler.gridgames.generator.FrameGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 
 /**
@@ -31,5 +32,7 @@ public class GridGameGenerator implements IGenerator {
     _fieldGenerator.generate(fsa);
     CellGenerator _cellGenerator = new CellGenerator(gg);
     _cellGenerator.generate(fsa);
+    FrameGenerator _frameGenerator = new FrameGenerator(gg);
+    _frameGenerator.generate(fsa);
   }
 }

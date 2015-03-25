@@ -16,6 +16,22 @@ public class CommonGenerator {
     this.gg = gg;
   }
   
+  public CharSequence generateViewPackage() {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = this.gg.getName();
+    _builder.append(_name, "");
+    _builder.append(".view");
+    return _builder;
+  }
+  
+  public CharSequence generateViewPackageFolder() {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = this.gg.getName();
+    _builder.append(_name, "");
+    _builder.append("/view");
+    return _builder;
+  }
+  
   public CharSequence generateModelPackage() {
     StringConcatenation _builder = new StringConcatenation();
     String _name = this.gg.getName();
@@ -45,6 +61,15 @@ public class CommonGenerator {
     CharSequence _generateModelPackageFolder = this.generateModelPackageFolder();
     _builder.append(_generateModelPackageFolder, "");
     _builder.append("/cells");
+    return _builder;
+  }
+  
+  public CharSequence generateFrameClassName() {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = this.gg.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("Frame");
     return _builder;
   }
   
@@ -85,6 +110,17 @@ public class CommonGenerator {
     String _firstUpper = StringExtensions.toFirstUpper(_name);
     _builder.append(_firstUpper, "");
     _builder.append("Cell.java");
+    return _builder;
+  }
+  
+  public CharSequence generateFrameClassFileName() {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateViewPackageFolder = this.generateViewPackageFolder();
+    _builder.append(_generateViewPackageFolder, "");
+    _builder.append("/");
+    CharSequence _generateFrameClassName = this.generateFrameClassName();
+    _builder.append(_generateFrameClassName, "");
+    _builder.append(".java");
     return _builder;
   }
 }

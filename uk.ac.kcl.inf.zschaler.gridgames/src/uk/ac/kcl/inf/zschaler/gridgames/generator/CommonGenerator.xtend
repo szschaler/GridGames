@@ -13,6 +13,10 @@ class CommonGenerator {
 		this.gg = gg
 	}
 
+	def generateViewPackage() '''«gg.name».view'''
+
+	def generateViewPackageFolder() '''«gg.name»/view'''
+
 	def generateModelPackage() '''«gg.name».model'''
 
 	def generateModelPackageFolder() '''«gg.name»/model'''
@@ -21,12 +25,15 @@ class CommonGenerator {
 
 	def generateCellPackageFolder() '''«generateModelPackageFolder()»/cells'''
 
+	def generateFrameClassName() '''«gg.name.toFirstUpper»Frame'''
+
 	def generateFieldClassName() '''«gg.name.toFirstUpper»Field'''
 
 	def generateFieldClassFileName() '''«generateModelPackageFolder»/«generateFieldClassName()».java'''
 
 	def generateCellClassFileName() '''«generateCellPackageFolder»/Cell.java'''
-	
+
 	def generateCellClassFileName(CellSpecification c) '''«generateCellPackageFolder»/«c.name.toFirstUpper»Cell.java'''
 
+	def generateFrameClassFileName() '''«generateViewPackageFolder»/«generateFrameClassName()».java'''
 }

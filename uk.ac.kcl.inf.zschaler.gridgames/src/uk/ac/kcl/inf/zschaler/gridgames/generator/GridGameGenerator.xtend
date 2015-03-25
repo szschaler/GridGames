@@ -19,6 +19,7 @@ class GridGameGenerator implements IGenerator {
 		val GridGame gg = resource.allContents.filter(typeof(GridGame)).head;
 		new FieldGenerator (gg).generate(fsa);
 		new CellGenerator (gg).generate (fsa);
+		new FrameGenerator(gg).generate(fsa);
 	}
 
 }
