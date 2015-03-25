@@ -3,7 +3,6 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 
 /**
@@ -19,8 +18,7 @@ public class CommonGenerator {
   
   public CharSequence generateModelPackage() {
     StringConcatenation _builder = new StringConcatenation();
-    GameSpecification _game = this.gg.getGame();
-    String _name = _game.getName();
+    String _name = this.gg.getName();
     _builder.append(_name, "");
     _builder.append(".model");
     return _builder;
@@ -28,8 +26,7 @@ public class CommonGenerator {
   
   public CharSequence generateModelPackageFolder() {
     StringConcatenation _builder = new StringConcatenation();
-    GameSpecification _game = this.gg.getGame();
-    String _name = _game.getName();
+    String _name = this.gg.getName();
     _builder.append(_name, "");
     _builder.append("/model");
     return _builder;
@@ -53,8 +50,7 @@ public class CommonGenerator {
   
   public CharSequence generateFieldClassName() {
     StringConcatenation _builder = new StringConcatenation();
-    GameSpecification _game = this.gg.getGame();
-    String _name = _game.getName();
+    String _name = this.gg.getName();
     String _firstUpper = StringExtensions.toFirstUpper(_name);
     _builder.append(_firstUpper, "");
     _builder.append("Field");

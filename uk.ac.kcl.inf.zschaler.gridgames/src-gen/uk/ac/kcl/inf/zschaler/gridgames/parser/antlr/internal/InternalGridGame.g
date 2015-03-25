@@ -77,19 +77,45 @@ ruleGridGame returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
+(	otherlv_0='game' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getGridGameAccess().getGameKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getGridGameAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getGridGameRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_2='{' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getGridGameAccess().getLeftCurlyBracketKeyword_2());
+    }
+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_3_0()); 
 	    }
-		lv_fields_0_0=ruleFieldSpecification		{
+		lv_fields_3_0=ruleFieldSpecification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
 	        }
        		add(
        			$current, 
        			"fields",
-        		lv_fields_0_0, 
+        		lv_fields_3_0, 
         		"FieldSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -98,16 +124,16 @@ ruleGridGame returns [EObject current=null]
 )+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getCellsCellSpecificationParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getCellsCellSpecificationParserRuleCall_4_0()); 
 	    }
-		lv_cells_1_0=ruleCellSpecification		{
+		lv_cells_4_0=ruleCellSpecification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
 	        }
        		add(
        			$current, 
        			"cells",
-        		lv_cells_1_0, 
+        		lv_cells_4_0, 
         		"CellSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -116,16 +142,16 @@ ruleGridGame returns [EObject current=null]
 )+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getField_initialisationFieldInitialisationSpecificationParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getField_initialisationFieldInitialisationSpecificationParserRuleCall_5_0()); 
 	    }
-		lv_field_initialisation_2_0=ruleFieldInitialisationSpecification		{
+		lv_field_initialisation_5_0=ruleFieldInitialisationSpecification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
 	        }
        		set(
        			$current, 
        			"field_initialisation",
-        		lv_field_initialisation_2_0, 
+        		lv_field_initialisation_5_0, 
         		"FieldInitialisationSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -134,22 +160,26 @@ ruleGridGame returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getGameGameSpecificationParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_6_0()); 
 	    }
-		lv_game_3_0=ruleGameSpecification		{
+		lv_options_6_0=ruleOptionSpecification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
 	        }
-       		set(
+       		add(
        			$current, 
-       			"game",
-        		lv_game_3_0, 
-        		"GameSpecification");
+       			"options",
+        		lv_options_6_0, 
+        		"OptionSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
+)*	otherlv_7='}' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getGridGameAccess().getRightCurlyBracketKeyword_7());
+    }
+)
 ;
 
 
@@ -306,75 +336,6 @@ ruleCellSpecification returns [EObject current=null]
 	otherlv_3='}' 
     {
     	newLeafNode(otherlv_3, grammarAccess.getCellSpecificationAccess().getRightCurlyBracketKeyword_3());
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleGameSpecification
-entryRuleGameSpecification returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getGameSpecificationRule()); }
-	 iv_ruleGameSpecification=ruleGameSpecification 
-	 { $current=$iv_ruleGameSpecification.current; } 
-	 EOF 
-;
-
-// Rule GameSpecification
-ruleGameSpecification returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='game' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getGameSpecificationAccess().getGameKeyword_0());
-    }
-(
-(
-		lv_name_1_0=RULE_ID
-		{
-			newLeafNode(lv_name_1_0, grammarAccess.getGameSpecificationAccess().getNameIDTerminalRuleCall_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getGameSpecificationRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ID");
-	    }
-
-)
-)	otherlv_2='{' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getGameSpecificationAccess().getLeftCurlyBracketKeyword_2());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getGameSpecificationAccess().getOptionsOptionSpecificationParserRuleCall_3_0()); 
-	    }
-		lv_options_3_0=ruleOptionSpecification		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getGameSpecificationRule());
-	        }
-       		add(
-       			$current, 
-       			"options",
-        		lv_options_3_0, 
-        		"OptionSpecification");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)+	otherlv_4='}' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getGameSpecificationAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;

@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,10 +31,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getCells <em>Cells</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getField_initialisation <em>Field initialisation</em>}</li>
- *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getGame <em>Game</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getOptions <em>Options</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +43,26 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  */
 public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGame
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getFields() <em>Fields</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -83,14 +104,14 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
   protected String field_initialisation = FIELD_INITIALISATION_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getGame() <em>Game</em>}' containment reference.
+   * The cached value of the '{@link #getOptions() <em>Options</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getGame()
+   * @see #getOptions()
    * @generated
    * @ordered
    */
-  protected GameSpecification game;
+  protected EList<OptionSpecification> options;
 
   /**
    * <!-- begin-user-doc -->
@@ -111,6 +132,29 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
   protected EClass eStaticClass()
   {
     return GridGamePackage.Literals.GRID_GAME;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.GRID_GAME__NAME, oldName, name));
   }
 
   /**
@@ -169,47 +213,13 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
    * <!-- end-user-doc -->
    * @generated
    */
-  public GameSpecification getGame()
+  public EList<OptionSpecification> getOptions()
   {
-    return game;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetGame(GameSpecification newGame, NotificationChain msgs)
-  {
-    GameSpecification oldGame = game;
-    game = newGame;
-    if (eNotificationRequired())
+    if (options == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GridGamePackage.GRID_GAME__GAME, oldGame, newGame);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      options = new EObjectContainmentEList<OptionSpecification>(OptionSpecification.class, this, GridGamePackage.GRID_GAME__OPTIONS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setGame(GameSpecification newGame)
-  {
-    if (newGame != game)
-    {
-      NotificationChain msgs = null;
-      if (game != null)
-        msgs = ((InternalEObject)game).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GridGamePackage.GRID_GAME__GAME, null, msgs);
-      if (newGame != null)
-        msgs = ((InternalEObject)newGame).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GridGamePackage.GRID_GAME__GAME, null, msgs);
-      msgs = basicSetGame(newGame, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.GRID_GAME__GAME, newGame, newGame));
+    return options;
   }
 
   /**
@@ -226,8 +236,8 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
         return ((InternalEList<?>)getFields()).basicRemove(otherEnd, msgs);
       case GridGamePackage.GRID_GAME__CELLS:
         return ((InternalEList<?>)getCells()).basicRemove(otherEnd, msgs);
-      case GridGamePackage.GRID_GAME__GAME:
-        return basicSetGame(null, msgs);
+      case GridGamePackage.GRID_GAME__OPTIONS:
+        return ((InternalEList<?>)getOptions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -242,14 +252,16 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
   {
     switch (featureID)
     {
+      case GridGamePackage.GRID_GAME__NAME:
+        return getName();
       case GridGamePackage.GRID_GAME__FIELDS:
         return getFields();
       case GridGamePackage.GRID_GAME__CELLS:
         return getCells();
       case GridGamePackage.GRID_GAME__FIELD_INITIALISATION:
         return getField_initialisation();
-      case GridGamePackage.GRID_GAME__GAME:
-        return getGame();
+      case GridGamePackage.GRID_GAME__OPTIONS:
+        return getOptions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -265,6 +277,9 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
   {
     switch (featureID)
     {
+      case GridGamePackage.GRID_GAME__NAME:
+        setName((String)newValue);
+        return;
       case GridGamePackage.GRID_GAME__FIELDS:
         getFields().clear();
         getFields().addAll((Collection<? extends FieldSpecification>)newValue);
@@ -276,8 +291,9 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
       case GridGamePackage.GRID_GAME__FIELD_INITIALISATION:
         setField_initialisation((String)newValue);
         return;
-      case GridGamePackage.GRID_GAME__GAME:
-        setGame((GameSpecification)newValue);
+      case GridGamePackage.GRID_GAME__OPTIONS:
+        getOptions().clear();
+        getOptions().addAll((Collection<? extends OptionSpecification>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -293,6 +309,9 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
   {
     switch (featureID)
     {
+      case GridGamePackage.GRID_GAME__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case GridGamePackage.GRID_GAME__FIELDS:
         getFields().clear();
         return;
@@ -302,8 +321,8 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
       case GridGamePackage.GRID_GAME__FIELD_INITIALISATION:
         setField_initialisation(FIELD_INITIALISATION_EDEFAULT);
         return;
-      case GridGamePackage.GRID_GAME__GAME:
-        setGame((GameSpecification)null);
+      case GridGamePackage.GRID_GAME__OPTIONS:
+        getOptions().clear();
         return;
     }
     super.eUnset(featureID);
@@ -319,14 +338,16 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
   {
     switch (featureID)
     {
+      case GridGamePackage.GRID_GAME__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GridGamePackage.GRID_GAME__FIELDS:
         return fields != null && !fields.isEmpty();
       case GridGamePackage.GRID_GAME__CELLS:
         return cells != null && !cells.isEmpty();
       case GridGamePackage.GRID_GAME__FIELD_INITIALISATION:
         return FIELD_INITIALISATION_EDEFAULT == null ? field_initialisation != null : !FIELD_INITIALISATION_EDEFAULT.equals(field_initialisation);
-      case GridGamePackage.GRID_GAME__GAME:
-        return game != null;
+      case GridGamePackage.GRID_GAME__OPTIONS:
+        return options != null && !options.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -342,7 +363,9 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (field_initialisation: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", field_initialisation: ");
     result.append(field_initialisation);
     result.append(')');
     return result.toString();

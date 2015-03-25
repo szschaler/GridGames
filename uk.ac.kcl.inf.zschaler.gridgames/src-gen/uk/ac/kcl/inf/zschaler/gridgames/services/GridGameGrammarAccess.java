@@ -21,14 +21,19 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	public class GridGameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GridGame");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cFieldsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cFieldsFieldSpecificationParserRuleCall_0_0 = (RuleCall)cFieldsAssignment_0.eContents().get(0);
-		private final Assignment cCellsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cCellsCellSpecificationParserRuleCall_1_0 = (RuleCall)cCellsAssignment_1.eContents().get(0);
-		private final Assignment cField_initialisationAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cField_initialisationFieldInitialisationSpecificationParserRuleCall_2_0 = (RuleCall)cField_initialisationAssignment_2.eContents().get(0);
-		private final Assignment cGameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cGameGameSpecificationParserRuleCall_3_0 = (RuleCall)cGameAssignment_3.eContents().get(0);
+		private final Keyword cGameKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cFieldsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cFieldsFieldSpecificationParserRuleCall_3_0 = (RuleCall)cFieldsAssignment_3.eContents().get(0);
+		private final Assignment cCellsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cCellsCellSpecificationParserRuleCall_4_0 = (RuleCall)cCellsAssignment_4.eContents().get(0);
+		private final Assignment cField_initialisationAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cField_initialisationFieldInitialisationSpecificationParserRuleCall_5_0 = (RuleCall)cField_initialisationAssignment_5.eContents().get(0);
+		private final Assignment cOptionsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cOptionsOptionSpecificationParserRuleCall_6_0 = (RuleCall)cOptionsAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		/// * 
 		// * This language is meant to serve as a high-level modelling language for arcade-style games with a grid playing field
@@ -37,39 +42,54 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		// * 
 		// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 		// * / GridGame:
-		//	fields+=FieldSpecification+ cells+=CellSpecification+ field_initialisation= // Possibly cleverly tie this in with the field spec above?
-		//	FieldInitialisationSpecification game=GameSpecification;
+		//	"game" name=ID "{" fields+=FieldSpecification+ cells+=CellSpecification+ field_initialisation= // Possibly cleverly tie this in with the field spec above?
+		//	FieldInitialisationSpecification options+=OptionSpecification* "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//fields+=FieldSpecification+ cells+=CellSpecification+ field_initialisation= // Possibly cleverly tie this in with the field spec above?
-		//FieldInitialisationSpecification game=GameSpecification
+		//"game" name=ID "{" fields+=FieldSpecification+ cells+=CellSpecification+ field_initialisation= // Possibly cleverly tie this in with the field spec above?
+		//FieldInitialisationSpecification options+=OptionSpecification* "}"
 		public Group getGroup() { return cGroup; }
 
+		//"game"
+		public Keyword getGameKeyword_0() { return cGameKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
 		//fields+=FieldSpecification+
-		public Assignment getFieldsAssignment_0() { return cFieldsAssignment_0; }
+		public Assignment getFieldsAssignment_3() { return cFieldsAssignment_3; }
 
 		//FieldSpecification
-		public RuleCall getFieldsFieldSpecificationParserRuleCall_0_0() { return cFieldsFieldSpecificationParserRuleCall_0_0; }
+		public RuleCall getFieldsFieldSpecificationParserRuleCall_3_0() { return cFieldsFieldSpecificationParserRuleCall_3_0; }
 
 		//cells+=CellSpecification+
-		public Assignment getCellsAssignment_1() { return cCellsAssignment_1; }
+		public Assignment getCellsAssignment_4() { return cCellsAssignment_4; }
 
 		//CellSpecification
-		public RuleCall getCellsCellSpecificationParserRuleCall_1_0() { return cCellsCellSpecificationParserRuleCall_1_0; }
+		public RuleCall getCellsCellSpecificationParserRuleCall_4_0() { return cCellsCellSpecificationParserRuleCall_4_0; }
 
 		//field_initialisation= // Possibly cleverly tie this in with the field spec above?
 		//FieldInitialisationSpecification
-		public Assignment getField_initialisationAssignment_2() { return cField_initialisationAssignment_2; }
+		public Assignment getField_initialisationAssignment_5() { return cField_initialisationAssignment_5; }
 
 		//// Possibly cleverly tie this in with the field spec above?
 		//FieldInitialisationSpecification
-		public RuleCall getField_initialisationFieldInitialisationSpecificationParserRuleCall_2_0() { return cField_initialisationFieldInitialisationSpecificationParserRuleCall_2_0; }
+		public RuleCall getField_initialisationFieldInitialisationSpecificationParserRuleCall_5_0() { return cField_initialisationFieldInitialisationSpecificationParserRuleCall_5_0; }
 
-		//game=GameSpecification
-		public Assignment getGameAssignment_3() { return cGameAssignment_3; }
+		//options+=OptionSpecification*
+		public Assignment getOptionsAssignment_6() { return cOptionsAssignment_6; }
 
-		//GameSpecification
-		public RuleCall getGameGameSpecificationParserRuleCall_3_0() { return cGameGameSpecificationParserRuleCall_3_0; }
+		//OptionSpecification
+		public RuleCall getOptionsOptionSpecificationParserRuleCall_6_0() { return cOptionsOptionSpecificationParserRuleCall_6_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 
 	public class FieldSpecificationElements extends AbstractParserRuleElementFinder {
@@ -175,46 +195,6 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 
-	public class GameSpecificationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GameSpecification");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cGameKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cOptionsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cOptionsOptionSpecificationParserRuleCall_3_0 = (RuleCall)cOptionsAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		
-		//GameSpecification:
-		//	"game" name=ID "{" options+=OptionSpecification+ "}";
-		@Override public ParserRule getRule() { return rule; }
-
-		//"game" name=ID "{" options+=OptionSpecification+ "}"
-		public Group getGroup() { return cGroup; }
-
-		//"game"
-		public Keyword getGameKeyword_0() { return cGameKeyword_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-
-		//options+=OptionSpecification+
-		public Assignment getOptionsAssignment_3() { return cOptionsAssignment_3; }
-
-		//OptionSpecification
-		public RuleCall getOptionsOptionSpecificationParserRuleCall_3_0() { return cOptionsOptionSpecificationParserRuleCall_3_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
-	}
-
 	public class OptionSpecificationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "OptionSpecification");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -299,7 +279,6 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final GridGameElements pGridGame;
 	private final FieldSpecificationElements pFieldSpecification;
 	private final CellSpecificationElements pCellSpecification;
-	private final GameSpecificationElements pGameSpecification;
 	private final OptionSpecificationElements pOptionSpecification;
 	private final AllowRestartMenuElements pAllowRestartMenu;
 	private final StartFieldDeclarationElements pStartFieldDeclaration;
@@ -317,7 +296,6 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pGridGame = new GridGameElements();
 		this.pFieldSpecification = new FieldSpecificationElements();
 		this.pCellSpecification = new CellSpecificationElements();
-		this.pGameSpecification = new GameSpecificationElements();
 		this.pOptionSpecification = new OptionSpecificationElements();
 		this.pAllowRestartMenu = new AllowRestartMenuElements();
 		this.pStartFieldDeclaration = new StartFieldDeclarationElements();
@@ -358,8 +336,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	// * 
 	// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 	// * / GridGame:
-	//	fields+=FieldSpecification+ cells+=CellSpecification+ field_initialisation= // Possibly cleverly tie this in with the field spec above?
-	//	FieldInitialisationSpecification game=GameSpecification;
+	//	"game" name=ID "{" fields+=FieldSpecification+ cells+=CellSpecification+ field_initialisation= // Possibly cleverly tie this in with the field spec above?
+	//	FieldInitialisationSpecification options+=OptionSpecification* "}";
 	public GridGameElements getGridGameAccess() {
 		return pGridGame;
 	}
@@ -387,16 +365,6 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getCellSpecificationRule() {
 		return getCellSpecificationAccess().getRule();
-	}
-
-	//GameSpecification:
-	//	"game" name=ID "{" options+=OptionSpecification+ "}";
-	public GameSpecificationElements getGameSpecificationAccess() {
-		return pGameSpecification;
-	}
-	
-	public ParserRule getGameSpecificationRule() {
-		return getGameSpecificationAccess().getRule();
 	}
 
 	//OptionSpecification:

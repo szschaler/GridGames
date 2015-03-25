@@ -13,15 +13,15 @@ class CommonGenerator {
 		this.gg = gg
 	}
 
-	def generateModelPackage() '''«gg.game.name».model'''
+	def generateModelPackage() '''«gg.name».model'''
 
-	def generateModelPackageFolder() '''«gg.game.name»/model'''
+	def generateModelPackageFolder() '''«gg.name»/model'''
 
 	def generateCellPackage() '''«generateModelPackage()».cells'''
 
 	def generateCellPackageFolder() '''«generateModelPackageFolder()»/cells'''
 
-	def generateFieldClassName() '''«gg.game.name.toFirstUpper»Field'''
+	def generateFieldClassName() '''«gg.name.toFirstUpper»Field'''
 
 	def generateFieldClassFileName() '''«generateModelPackageFolder»/«generateFieldClassName()».java'''
 

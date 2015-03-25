@@ -19,7 +19,6 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransi
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
@@ -42,9 +41,6 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.FIELD_SPECIFICATION:
 				sequence_FieldSpecification(context, (FieldSpecification) semanticObject); 
-				return; 
-			case GridGamePackage.GAME_SPECIFICATION:
-				sequence_GameSpecification(context, (GameSpecification) semanticObject); 
 				return; 
 			case GridGamePackage.GRID_GAME:
 				sequence_GridGame(context, (GridGame) semanticObject); 
@@ -105,16 +101,13 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID options+=OptionSpecification+)
-	 */
-	protected void sequence_GameSpecification(EObject context, GameSpecification semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (fields+=FieldSpecification+ cells+=CellSpecification+ field_initialisation=FieldInitialisationSpecification game=GameSpecification)
+	 *     (
+	 *         name=ID 
+	 *         fields+=FieldSpecification+ 
+	 *         cells+=CellSpecification+ 
+	 *         field_initialisation=FieldInitialisationSpecification 
+	 *         options+=OptionSpecification*
+	 *     )
 	 */
 	protected void sequence_GridGame(EObject context, GridGame semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

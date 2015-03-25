@@ -8,10 +8,11 @@
   <genPackages prefix="GridGame" basePackage="uk.ac.kcl.inf.zschaler.gridgames" disposableProviderFactory="true"
       fileExtensions="ggame" ecorePackage="GridGame.ecore#/">
     <genClasses ecoreClass="GridGame.ecore#//GridGame">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GridGame/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/fields"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/cells"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GridGame/field_initialisation"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/game"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/options"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//FieldSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/name"/>
@@ -20,10 +21,6 @@
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//CellSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellSpecification/name"/>
-    </genClasses>
-    <genClasses ecoreClass="GridGame.ecore#//GameSpecification">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GameSpecification/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GameSpecification/options"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//OptionSpecification"/>
     <genClasses ecoreClass="GridGame.ecore#//AllowRestartMenu"/>

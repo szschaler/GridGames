@@ -3,13 +3,14 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gridGame" nsURI="http://www.inf.kcl.ac.uk/zschaler/gridgames/GridGame"
     nsPrefix="gridGame">
   <eClassifiers xsi:type="ecore:EClass" name="GridGame">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
         eType="#//FieldSpecification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
         eType="#//CellSpecification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="field_initialisation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="game" eType="#//GameSpecification"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="options" upperBound="-1"
+        eType="#//OptionSpecification" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FieldSpecification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -18,11 +19,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CellSpecification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GameSpecification">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="options" upperBound="-1"
-        eType="#//OptionSpecification" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OptionSpecification"/>
   <eClassifiers xsi:type="ecore:EClass" name="AllowRestartMenu" eSuperTypes="#//OptionSpecification"/>

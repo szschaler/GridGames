@@ -11,10 +11,12 @@ generate gridGame "http://www.inf.kcl.ac.uk/zschaler/gridgames/GridGame"
 */
 
 GridGame : 
-	fields += FieldSpecification+
-	cells += CellSpecification+
-	field_initialisation = FieldInitialisationSpecification // Possibly cleverly tie this in with the field spec above?
-	game = GameSpecification
+	"game" name=ID "{"
+		fields += FieldSpecification+
+		cells += CellSpecification+
+		field_initialisation = FieldInitialisationSpecification // Possibly cleverly tie this in with the field spec above?
+		options += OptionSpecification*
+	"}"
 ;
               
 FieldSpecification :
@@ -25,9 +27,6 @@ CellSpecification :
 //                         Provide cell type properties here...
                         "}";
 
-GameSpecification :
-	"game" name=ID "{" options += OptionSpecification+ "}";
-                       
 OptionSpecification :
 	StartFieldDeclaration | 
 	AllowRestartMenu

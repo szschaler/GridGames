@@ -41,19 +41,17 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGridGameAccess().getGroup(), "rule__GridGame__Group__0");
 					put(grammarAccess.getFieldSpecificationAccess().getGroup(), "rule__FieldSpecification__Group__0");
 					put(grammarAccess.getCellSpecificationAccess().getGroup(), "rule__CellSpecification__Group__0");
-					put(grammarAccess.getGameSpecificationAccess().getGroup(), "rule__GameSpecification__Group__0");
 					put(grammarAccess.getAllowRestartMenuAccess().getGroup(), "rule__AllowRestartMenu__Group__0");
 					put(grammarAccess.getStartFieldDeclarationAccess().getGroup(), "rule__StartFieldDeclaration__Group__0");
-					put(grammarAccess.getGridGameAccess().getFieldsAssignment_0(), "rule__GridGame__FieldsAssignment_0");
-					put(grammarAccess.getGridGameAccess().getCellsAssignment_1(), "rule__GridGame__CellsAssignment_1");
-					put(grammarAccess.getGridGameAccess().getField_initialisationAssignment_2(), "rule__GridGame__Field_initialisationAssignment_2");
-					put(grammarAccess.getGridGameAccess().getGameAssignment_3(), "rule__GridGame__GameAssignment_3");
+					put(grammarAccess.getGridGameAccess().getNameAssignment_1(), "rule__GridGame__NameAssignment_1");
+					put(grammarAccess.getGridGameAccess().getFieldsAssignment_3(), "rule__GridGame__FieldsAssignment_3");
+					put(grammarAccess.getGridGameAccess().getCellsAssignment_4(), "rule__GridGame__CellsAssignment_4");
+					put(grammarAccess.getGridGameAccess().getField_initialisationAssignment_5(), "rule__GridGame__Field_initialisationAssignment_5");
+					put(grammarAccess.getGridGameAccess().getOptionsAssignment_6(), "rule__GridGame__OptionsAssignment_6");
 					put(grammarAccess.getFieldSpecificationAccess().getNameAssignment_1(), "rule__FieldSpecification__NameAssignment_1");
 					put(grammarAccess.getFieldSpecificationAccess().getWidthAssignment_5(), "rule__FieldSpecification__WidthAssignment_5");
 					put(grammarAccess.getFieldSpecificationAccess().getHeightAssignment_9(), "rule__FieldSpecification__HeightAssignment_9");
 					put(grammarAccess.getCellSpecificationAccess().getNameAssignment_1(), "rule__CellSpecification__NameAssignment_1");
-					put(grammarAccess.getGameSpecificationAccess().getNameAssignment_1(), "rule__GameSpecification__NameAssignment_1");
-					put(grammarAccess.getGameSpecificationAccess().getOptionsAssignment_3(), "rule__GameSpecification__OptionsAssignment_3");
 					put(grammarAccess.getStartFieldDeclarationAccess().getField_nameAssignment_2(), "rule__StartFieldDeclaration__Field_nameAssignment_2");
 				}
 			};

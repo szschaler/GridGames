@@ -50,15 +50,6 @@ public interface GridGameFactory extends EFactory
   CellSpecification createCellSpecification();
 
   /**
-   * Returns a new object of class '<em>Game Specification</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Game Specification</em>'.
-   * @generated
-   */
-  GameSpecification createGameSpecification();
-
-  /**
    * Returns a new object of class '<em>Option Specification</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

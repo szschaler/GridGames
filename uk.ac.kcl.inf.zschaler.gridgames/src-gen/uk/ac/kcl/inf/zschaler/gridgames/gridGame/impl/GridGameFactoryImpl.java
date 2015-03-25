@@ -67,7 +67,6 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.GRID_GAME: return createGridGame();
       case GridGamePackage.FIELD_SPECIFICATION: return createFieldSpecification();
       case GridGamePackage.CELL_SPECIFICATION: return createCellSpecification();
-      case GridGamePackage.GAME_SPECIFICATION: return createGameSpecification();
       case GridGamePackage.OPTION_SPECIFICATION: return createOptionSpecification();
       case GridGamePackage.ALLOW_RESTART_MENU: return createAllowRestartMenu();
       case GridGamePackage.START_FIELD_DECLARATION: return createStartFieldDeclaration();
@@ -107,17 +106,6 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     CellSpecificationImpl cellSpecification = new CellSpecificationImpl();
     return cellSpecification;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GameSpecification createGameSpecification()
-  {
-    GameSpecificationImpl gameSpecification = new GameSpecificationImpl();
-    return gameSpecification;
   }
 
   /**

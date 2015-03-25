@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGameFactory;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
@@ -47,13 +46,6 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass cellSpecificationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass gameSpecificationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -154,9 +146,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGridGame_Fields()
+  public EAttribute getGridGame_Name()
   {
-    return (EReference)gridGameEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)gridGameEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -164,7 +156,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGridGame_Cells()
+  public EReference getGridGame_Fields()
   {
     return (EReference)gridGameEClass.getEStructuralFeatures().get(1);
   }
@@ -174,9 +166,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGridGame_Field_initialisation()
+  public EReference getGridGame_Cells()
   {
-    return (EAttribute)gridGameEClass.getEStructuralFeatures().get(2);
+    return (EReference)gridGameEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -184,9 +176,19 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGridGame_Game()
+  public EAttribute getGridGame_Field_initialisation()
   {
-    return (EReference)gridGameEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)gridGameEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGridGame_Options()
+  {
+    return (EReference)gridGameEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -247,36 +249,6 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
   public EAttribute getCellSpecification_Name()
   {
     return (EAttribute)cellSpecificationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getGameSpecification()
-  {
-    return gameSpecificationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getGameSpecification_Name()
-  {
-    return (EAttribute)gameSpecificationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getGameSpecification_Options()
-  {
-    return (EReference)gameSpecificationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -350,10 +322,11 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     // Create classes and their features
     gridGameEClass = createEClass(GRID_GAME);
+    createEAttribute(gridGameEClass, GRID_GAME__NAME);
     createEReference(gridGameEClass, GRID_GAME__FIELDS);
     createEReference(gridGameEClass, GRID_GAME__CELLS);
     createEAttribute(gridGameEClass, GRID_GAME__FIELD_INITIALISATION);
-    createEReference(gridGameEClass, GRID_GAME__GAME);
+    createEReference(gridGameEClass, GRID_GAME__OPTIONS);
 
     fieldSpecificationEClass = createEClass(FIELD_SPECIFICATION);
     createEAttribute(fieldSpecificationEClass, FIELD_SPECIFICATION__NAME);
@@ -362,10 +335,6 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     cellSpecificationEClass = createEClass(CELL_SPECIFICATION);
     createEAttribute(cellSpecificationEClass, CELL_SPECIFICATION__NAME);
-
-    gameSpecificationEClass = createEClass(GAME_SPECIFICATION);
-    createEAttribute(gameSpecificationEClass, GAME_SPECIFICATION__NAME);
-    createEReference(gameSpecificationEClass, GAME_SPECIFICATION__OPTIONS);
 
     optionSpecificationEClass = createEClass(OPTION_SPECIFICATION);
 
@@ -409,10 +378,11 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(gridGameEClass, GridGame.class, "GridGame", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGridGame_Name(), ecorePackage.getEString(), "name", null, 0, 1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGridGame_Fields(), this.getFieldSpecification(), null, "fields", null, 0, -1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGridGame_Cells(), this.getCellSpecification(), null, "cells", null, 0, -1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGridGame_Field_initialisation(), ecorePackage.getEString(), "field_initialisation", null, 0, 1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGridGame_Game(), this.getGameSpecification(), null, "game", null, 0, 1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGridGame_Options(), this.getOptionSpecification(), null, "options", null, 0, -1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldSpecificationEClass, FieldSpecification.class, "FieldSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFieldSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, FieldSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -421,10 +391,6 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     initEClass(cellSpecificationEClass, CellSpecification.class, "CellSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCellSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, CellSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(gameSpecificationEClass, GameSpecification.class, "GameSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGameSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGameSpecification_Options(), this.getOptionSpecification(), null, "options", null, 0, -1, GameSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(optionSpecificationEClass, OptionSpecification.class, "OptionSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

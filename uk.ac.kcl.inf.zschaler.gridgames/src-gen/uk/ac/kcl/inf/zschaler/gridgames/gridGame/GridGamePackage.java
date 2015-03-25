@@ -67,13 +67,22 @@ public interface GridGamePackage extends EPackage
   int GRID_GAME = 0;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GRID_GAME__NAME = 0;
+
+  /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GRID_GAME__FIELDS = 0;
+  int GRID_GAME__FIELDS = 1;
 
   /**
    * The feature id for the '<em><b>Cells</b></em>' containment reference list.
@@ -82,7 +91,7 @@ public interface GridGamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GRID_GAME__CELLS = 1;
+  int GRID_GAME__CELLS = 2;
 
   /**
    * The feature id for the '<em><b>Field initialisation</b></em>' attribute.
@@ -91,16 +100,16 @@ public interface GridGamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GRID_GAME__FIELD_INITIALISATION = 2;
+  int GRID_GAME__FIELD_INITIALISATION = 3;
 
   /**
-   * The feature id for the '<em><b>Game</b></em>' containment reference.
+   * The feature id for the '<em><b>Options</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GRID_GAME__GAME = 3;
+  int GRID_GAME__OPTIONS = 4;
 
   /**
    * The number of structural features of the '<em>Grid Game</em>' class.
@@ -109,7 +118,7 @@ public interface GridGamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GRID_GAME_FEATURE_COUNT = 4;
+  int GRID_GAME_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl <em>Field Specification</em>}' class.
@@ -186,43 +195,6 @@ public interface GridGamePackage extends EPackage
   int CELL_SPECIFICATION_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GameSpecificationImpl <em>Game Specification</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GameSpecificationImpl
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getGameSpecification()
-   * @generated
-   */
-  int GAME_SPECIFICATION = 3;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SPECIFICATION__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Options</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SPECIFICATION__OPTIONS = 1;
-
-  /**
-   * The number of structural features of the '<em>Game Specification</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SPECIFICATION_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.OptionSpecificationImpl <em>Option Specification</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -230,7 +202,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getOptionSpecification()
    * @generated
    */
-  int OPTION_SPECIFICATION = 4;
+  int OPTION_SPECIFICATION = 3;
 
   /**
    * The number of structural features of the '<em>Option Specification</em>' class.
@@ -249,7 +221,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getAllowRestartMenu()
    * @generated
    */
-  int ALLOW_RESTART_MENU = 5;
+  int ALLOW_RESTART_MENU = 4;
 
   /**
    * The number of structural features of the '<em>Allow Restart Menu</em>' class.
@@ -268,7 +240,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getStartFieldDeclaration()
    * @generated
    */
-  int START_FIELD_DECLARATION = 6;
+  int START_FIELD_DECLARATION = 5;
 
   /**
    * The feature id for the '<em><b>Field name</b></em>' attribute.
@@ -298,6 +270,17 @@ public interface GridGamePackage extends EPackage
    * @generated
    */
   EClass getGridGame();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getName()
+   * @see #getGridGame()
+   * @generated
+   */
+  EAttribute getGridGame_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getFields <em>Fields</em>}'.
@@ -333,15 +316,15 @@ public interface GridGamePackage extends EPackage
   EAttribute getGridGame_Field_initialisation();
 
   /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getGame <em>Game</em>}'.
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getOptions <em>Options</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Game</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getGame()
+   * @return the meta object for the containment reference list '<em>Options</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getOptions()
    * @see #getGridGame()
    * @generated
    */
-  EReference getGridGame_Game();
+  EReference getGridGame_Options();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification <em>Field Specification</em>}'.
@@ -406,38 +389,6 @@ public interface GridGamePackage extends EPackage
    * @generated
    */
   EAttribute getCellSpecification_Name();
-
-  /**
-   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification <em>Game Specification</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Game Specification</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification
-   * @generated
-   */
-  EClass getGameSpecification();
-
-  /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification#getName()
-   * @see #getGameSpecification()
-   * @generated
-   */
-  EAttribute getGameSpecification_Name();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification#getOptions <em>Options</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Options</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GameSpecification#getOptions()
-   * @see #getGameSpecification()
-   * @generated
-   */
-  EReference getGameSpecification_Options();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification <em>Option Specification</em>}'.
@@ -514,6 +465,14 @@ public interface GridGamePackage extends EPackage
     EClass GRID_GAME = eINSTANCE.getGridGame();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GRID_GAME__NAME = eINSTANCE.getGridGame_Name();
+
+    /**
      * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -538,12 +497,12 @@ public interface GridGamePackage extends EPackage
     EAttribute GRID_GAME__FIELD_INITIALISATION = eINSTANCE.getGridGame_Field_initialisation();
 
     /**
-     * The meta object literal for the '<em><b>Game</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Options</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference GRID_GAME__GAME = eINSTANCE.getGridGame_Game();
+    EReference GRID_GAME__OPTIONS = eINSTANCE.getGridGame_Options();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldSpecificationImpl <em>Field Specification</em>}' class.
@@ -596,32 +555,6 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EAttribute CELL_SPECIFICATION__NAME = eINSTANCE.getCellSpecification_Name();
-
-    /**
-     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GameSpecificationImpl <em>Game Specification</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GameSpecificationImpl
-     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getGameSpecification()
-     * @generated
-     */
-    EClass GAME_SPECIFICATION = eINSTANCE.getGameSpecification();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GAME_SPECIFICATION__NAME = eINSTANCE.getGameSpecification_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Options</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference GAME_SPECIFICATION__OPTIONS = eINSTANCE.getGameSpecification_Options();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.OptionSpecificationImpl <em>Option Specification</em>}' class.
