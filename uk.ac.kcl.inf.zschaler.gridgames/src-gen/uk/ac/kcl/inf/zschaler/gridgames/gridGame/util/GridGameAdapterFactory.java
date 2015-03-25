@@ -95,6 +95,11 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createCellDisplaySpecAdapter();
       }
       @Override
+      public Adapter caseCellVarSpec(CellVarSpec object)
+      {
+        return createCellVarSpecAdapter();
+      }
+      @Override
       public Adapter caseFieldSpecification(FieldSpecification object)
       {
         return createFieldSpecificationAdapter();
@@ -212,6 +217,21 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCellDisplaySpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec <em>Cell Var Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
+   * @generated
+   */
+  public Adapter createCellVarSpecAdapter()
   {
     return null;
   }

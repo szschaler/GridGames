@@ -251,9 +251,9 @@ ruleCellMember returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-
+(
     { 
-        newCompositeNode(grammarAccess.getCellMemberAccess().getCellDisplaySpecParserRuleCall()); 
+        newCompositeNode(grammarAccess.getCellMemberAccess().getCellDisplaySpecParserRuleCall_0()); 
     }
     this_CellDisplaySpec_0=ruleCellDisplaySpec
     { 
@@ -261,6 +261,16 @@ ruleCellMember returns [EObject current=null]
         afterParserOrEnumRuleCall();
     }
 
+    |
+    { 
+        newCompositeNode(grammarAccess.getCellMemberAccess().getCellVarSpecParserRuleCall_1()); 
+    }
+    this_CellVarSpec_1=ruleCellVarSpec
+    { 
+        $current = $this_CellVarSpec_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
 ;
 
 
@@ -350,6 +360,79 @@ ruleCellDisplaySpec returns [EObject current=null]
     	newLeafNode(otherlv_6, grammarAccess.getCellDisplaySpecAccess().getRightCurlyBracketKeyword_6());
     }
 )
+;
+
+
+
+
+
+// Entry rule entryRuleCellVarSpec
+entryRuleCellVarSpec returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getCellVarSpecRule()); }
+	 iv_ruleCellVarSpec=ruleCellVarSpec 
+	 { $current=$iv_ruleCellVarSpec.current; } 
+	 EOF 
+;
+
+// Rule CellVarSpec
+ruleCellVarSpec returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='var' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getCellVarSpecAccess().getVarKeyword_0());
+    }
+(
+(
+(
+		lv_type_1_1=	'int' 
+    {
+        newLeafNode(lv_type_1_1, grammarAccess.getCellVarSpecAccess().getTypeIntKeyword_1_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellVarSpecRule());
+	        }
+       		setWithLastConsumed($current, "type", lv_type_1_1, null);
+	    }
+
+    |		lv_type_1_2=	'string' 
+    {
+        newLeafNode(lv_type_1_2, grammarAccess.getCellVarSpecAccess().getTypeStringKeyword_1_0_1());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellVarSpecRule());
+	        }
+       		setWithLastConsumed($current, "type", lv_type_1_2, null);
+	    }
+
+)
+
+)
+)(
+(
+		lv_name_2_0=RULE_ID
+		{
+			newLeafNode(lv_name_2_0, grammarAccess.getCellVarSpecAccess().getNameIDTerminalRuleCall_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellVarSpecRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_2_0, 
+        		"ID");
+	    }
+
+)
+))
 ;
 
 

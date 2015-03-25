@@ -68,6 +68,7 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.CELL_SPECIFICATION: return createCellSpecification();
       case GridGamePackage.CELL_MEMBER: return createCellMember();
       case GridGamePackage.CELL_DISPLAY_SPEC: return createCellDisplaySpec();
+      case GridGamePackage.CELL_VAR_SPEC: return createCellVarSpec();
       case GridGamePackage.FIELD_SPECIFICATION: return createFieldSpecification();
       case GridGamePackage.OPTION_SPECIFICATION: return createOptionSpecification();
       case GridGamePackage.ALLOW_RESTART_MENU: return createAllowRestartMenu();
@@ -123,6 +124,17 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     CellDisplaySpecImpl cellDisplaySpec = new CellDisplaySpecImpl();
     return cellDisplaySpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CellVarSpec createCellVarSpec()
+  {
+    CellVarSpecImpl cellVarSpec = new CellVarSpecImpl();
+    return cellVarSpec;
   }
 
   /**

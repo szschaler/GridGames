@@ -24,7 +24,8 @@ CellSpecification :
 	"}";
 	
 CellMember :
-	CellDisplaySpec
+	CellDisplaySpec |
+	CellVarSpec 
 ;
 
 CellDisplaySpec :
@@ -32,6 +33,10 @@ CellDisplaySpec :
 		"as" display_type=("label" | "button")
 		"text" text=STRING
 	"}"
+;
+
+CellVarSpec :
+	"var" type=("int"|"string") name=ID	
 ;
 
 FieldSpecification :

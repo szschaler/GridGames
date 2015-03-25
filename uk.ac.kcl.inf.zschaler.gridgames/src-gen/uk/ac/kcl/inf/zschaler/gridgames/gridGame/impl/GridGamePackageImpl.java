@@ -13,6 +13,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
@@ -59,6 +60,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass cellDisplaySpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cellVarSpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -304,6 +312,36 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getCellVarSpec()
+  {
+    return cellVarSpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCellVarSpec_Type()
+  {
+    return (EAttribute)cellVarSpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCellVarSpec_Name()
+  {
+    return (EAttribute)cellVarSpecEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getFieldSpecification()
   {
     return fieldSpecificationEClass;
@@ -505,6 +543,10 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEAttribute(cellDisplaySpecEClass, CELL_DISPLAY_SPEC__DISPLAY_TYPE);
     createEAttribute(cellDisplaySpecEClass, CELL_DISPLAY_SPEC__TEXT);
 
+    cellVarSpecEClass = createEClass(CELL_VAR_SPEC);
+    createEAttribute(cellVarSpecEClass, CELL_VAR_SPEC__TYPE);
+    createEAttribute(cellVarSpecEClass, CELL_VAR_SPEC__NAME);
+
     fieldSpecificationEClass = createEClass(FIELD_SPECIFICATION);
     createEAttribute(fieldSpecificationEClass, FIELD_SPECIFICATION__NAME);
     createEAttribute(fieldSpecificationEClass, FIELD_SPECIFICATION__WIDTH);
@@ -560,6 +602,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     // Add supertypes to classes
     cellDisplaySpecEClass.getESuperTypes().add(this.getCellMember());
+    cellVarSpecEClass.getESuperTypes().add(this.getCellMember());
     allowRestartMenuEClass.getESuperTypes().add(this.getOptionSpecification());
     startFieldDeclarationEClass.getESuperTypes().add(this.getOptionSpecification());
     defaultInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
@@ -581,6 +624,10 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEClass(cellDisplaySpecEClass, CellDisplaySpec.class, "CellDisplaySpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCellDisplaySpec_Display_type(), ecorePackage.getEString(), "display_type", null, 0, 1, CellDisplaySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCellDisplaySpec_Text(), ecorePackage.getEString(), "text", null, 0, 1, CellDisplaySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(cellVarSpecEClass, CellVarSpec.class, "CellVarSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCellVarSpec_Type(), ecorePackage.getEString(), "type", null, 0, 1, CellVarSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCellVarSpec_Name(), ecorePackage.getEString(), "name", null, 0, 1, CellVarSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldSpecificationEClass, FieldSpecification.class, "FieldSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFieldSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, FieldSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

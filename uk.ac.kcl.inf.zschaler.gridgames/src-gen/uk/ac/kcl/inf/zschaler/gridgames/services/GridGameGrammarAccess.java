@@ -122,14 +122,22 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class CellMemberElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CellMember");
-		private final RuleCall cCellDisplaySpecParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cCellDisplaySpecParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCellVarSpecParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//CellMember:
-		//	CellDisplaySpec;
+		//	CellDisplaySpec | CellVarSpec;
 		@Override public ParserRule getRule() { return rule; }
 
+		//CellDisplaySpec | CellVarSpec
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//CellDisplaySpec
-		public RuleCall getCellDisplaySpecParserRuleCall() { return cCellDisplaySpecParserRuleCall; }
+		public RuleCall getCellDisplaySpecParserRuleCall_0() { return cCellDisplaySpecParserRuleCall_0; }
+
+		//CellVarSpec
+		public RuleCall getCellVarSpecParserRuleCall_1() { return cCellVarSpecParserRuleCall_1; }
 	}
 
 	public class CellDisplaySpecElements extends AbstractParserRuleElementFinder {
@@ -186,6 +194,46 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+	}
+
+	public class CellVarSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CellVarSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cVarKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cTypeAlternatives_1_0 = (Alternatives)cTypeAssignment_1.eContents().get(0);
+		private final Keyword cTypeIntKeyword_1_0_0 = (Keyword)cTypeAlternatives_1_0.eContents().get(0);
+		private final Keyword cTypeStringKeyword_1_0_1 = (Keyword)cTypeAlternatives_1_0.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		
+		//CellVarSpec:
+		//	"var" type=("int" | "string") name=ID;
+		@Override public ParserRule getRule() { return rule; }
+
+		//"var" type=("int" | "string") name=ID
+		public Group getGroup() { return cGroup; }
+
+		//"var"
+		public Keyword getVarKeyword_0() { return cVarKeyword_0; }
+
+		//type=("int" | "string")
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		//"int" | "string"
+		public Alternatives getTypeAlternatives_1_0() { return cTypeAlternatives_1_0; }
+
+		//"int"
+		public Keyword getTypeIntKeyword_1_0_0() { return cTypeIntKeyword_1_0_0; }
+
+		//"string"
+		public Keyword getTypeStringKeyword_1_0_1() { return cTypeStringKeyword_1_0_1; }
+
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
 
 	public class FieldSpecificationElements extends AbstractParserRuleElementFinder {
@@ -445,6 +493,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final CellSpecificationElements pCellSpecification;
 	private final CellMemberElements pCellMember;
 	private final CellDisplaySpecElements pCellDisplaySpec;
+	private final CellVarSpecElements pCellVarSpec;
 	private final FieldSpecificationElements pFieldSpecification;
 	private final OptionSpecificationElements pOptionSpecification;
 	private final AllowRestartMenuElements pAllowRestartMenu;
@@ -467,6 +516,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pCellSpecification = new CellSpecificationElements();
 		this.pCellMember = new CellMemberElements();
 		this.pCellDisplaySpec = new CellDisplaySpecElements();
+		this.pCellVarSpec = new CellVarSpecElements();
 		this.pFieldSpecification = new FieldSpecificationElements();
 		this.pOptionSpecification = new OptionSpecificationElements();
 		this.pAllowRestartMenu = new AllowRestartMenuElements();
@@ -531,7 +581,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellMember:
-	//	CellDisplaySpec;
+	//	CellDisplaySpec | CellVarSpec;
 	public CellMemberElements getCellMemberAccess() {
 		return pCellMember;
 	}
@@ -548,6 +598,16 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getCellDisplaySpecRule() {
 		return getCellDisplaySpecAccess().getRule();
+	}
+
+	//CellVarSpec:
+	//	"var" type=("int" | "string") name=ID;
+	public CellVarSpecElements getCellVarSpecAccess() {
+		return pCellVarSpec;
+	}
+	
+	public ParserRule getCellVarSpecRule() {
+		return getCellVarSpecAccess().getRule();
 	}
 
 	//FieldSpecification:

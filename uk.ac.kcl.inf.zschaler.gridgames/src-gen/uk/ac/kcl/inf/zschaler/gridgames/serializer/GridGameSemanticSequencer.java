@@ -19,6 +19,7 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransi
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
@@ -45,6 +46,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.CELL_SPECIFICATION:
 				sequence_CellSpecification(context, (CellSpecification) semanticObject); 
+				return; 
+			case GridGamePackage.CELL_VAR_SPEC:
+				sequence_CellVarSpec(context, (CellVarSpec) semanticObject); 
 				return; 
 			case GridGamePackage.DEFAULT_INITIALISATION:
 				sequence_DefaultInitialisation(context, (DefaultInitialisation) semanticObject); 
@@ -91,6 +95,15 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (name=ID members+=CellMember*)
 	 */
 	protected void sequence_CellSpecification(EObject context, CellSpecification semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((type='int' | type='string') name=ID)
+	 */
+	protected void sequence_CellVarSpec(EObject context, CellVarSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

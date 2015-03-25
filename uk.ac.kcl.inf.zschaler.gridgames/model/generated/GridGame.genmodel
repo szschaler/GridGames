@@ -22,6 +22,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellDisplaySpec/display_type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellDisplaySpec/text"/>
     </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//CellVarSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellVarSpec/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellVarSpec/name"/>
+    </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//FieldSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/width"/>

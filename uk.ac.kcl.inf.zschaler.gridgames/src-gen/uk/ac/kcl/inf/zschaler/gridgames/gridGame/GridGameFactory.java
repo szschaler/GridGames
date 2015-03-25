@@ -59,6 +59,15 @@ public interface GridGameFactory extends EFactory
   CellDisplaySpec createCellDisplaySpec();
 
   /**
+   * Returns a new object of class '<em>Cell Var Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cell Var Spec</em>'.
+   * @generated
+   */
+  CellVarSpec createCellVarSpec();
+
+  /**
    * Returns a new object of class '<em>Field Specification</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
