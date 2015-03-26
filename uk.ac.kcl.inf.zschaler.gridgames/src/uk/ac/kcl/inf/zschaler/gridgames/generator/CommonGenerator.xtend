@@ -36,7 +36,8 @@ class CommonGenerator {
 
 	def generateFactoryClassFileName() '''«generateCellPackageFolder»/CellFactory.java'''
 
-	def generateCellClassName(CellSpecification c) '''«c.name.toFirstUpper»Cell'''
+	def generateCellClassName(CellSpecification c) {generateCellClassName(c.name)}
+	def generateCellClassName(String c) '''«c.toFirstUpper»Cell'''
 
 	def generateCellClassFileName(CellSpecification c) '''«generateCellPackageFolder»/«c.generateCellClassName».java'''
 

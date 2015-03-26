@@ -111,9 +111,13 @@ public class CommonGenerator {
   }
   
   public CharSequence generateCellClassName(final CellSpecification c) {
-    StringConcatenation _builder = new StringConcatenation();
     String _name = c.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    return this.generateCellClassName(_name);
+  }
+  
+  public CharSequence generateCellClassName(final String c) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _firstUpper = StringExtensions.toFirstUpper(c);
     _builder.append(_firstUpper, "");
     _builder.append("Cell");
     return _builder;

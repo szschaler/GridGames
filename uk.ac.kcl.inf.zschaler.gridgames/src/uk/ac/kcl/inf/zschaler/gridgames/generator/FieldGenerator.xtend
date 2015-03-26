@@ -59,16 +59,24 @@ class FieldGenerator extends CommonGenerator {
 		«if (gg.fields.exists[f | f.field_initialisation.initialisations.exists[i | i instanceof ContextInitialisation]]) {
 			// Generate helper functions for context initialisation
 			'''
-			private List<Cell> getContextAt (int x, int y) {
-				ArrayList<Cell> al = new ArrayList<> (8);
-				for (int dx = -1; dx <= 1; dx ++) {
-					for (int dy = -1; dy <= 1; dy++) {
-						if ((dx != 0) || (dy != 0)) {
-							al.add (field[x][y]);
+			private CellContext getContextAt (int x, int y) {
+				return new CellContext(field, x, y);
+			}
+
+			private static class CellContext {
+				private ArrayList<Cell> al = new ArrayList<> (8);
+				
+				public CellContext (Cell[][] field, int x, int y) {
+					for (int dx = -1; dx <= 1; dx ++) {
+						for (int dy = -1; dy <= 1; dy++) {
+							if ((dx != 0) || (dy != 0)) {
+								al.add (field[x][y]);
+							}
 						}
 					}
 				}
-				return al;
+				
+				«gg.contextExpInvocations.map[e | e.generateImplementation].toSet.join(" ")»
 			}
 			'''
 		}»
@@ -104,6 +112,43 @@ class FieldGenerator extends CommonGenerator {
 		}
 		
 	}'''
+	
+	def dispatch generateImplementation(FilterExpression fe) '''
+		public CellContext filter«fe.cell_type.toFirstUpper»() {
+			ArrayList<Cell> newAL = new ArrayList<>();
+			
+			for (Cell c : al) {
+				if (c instanceof «generateCellClassName(fe.cell_type)» {
+					newAL.add (c);
+				}
+			}
+			
+			al = newAL;
+			return this;
+		}
+	'''
+	
+	def dispatch generateImplementation(NotEmptyExpression nee) '''
+		public boolean notEmpty() {
+			return al.size() > 0;
+		}
+	'''
+	
+	def dispatch generateImplementation(CountExpression ce) '''
+		public int size() {
+			return al.size();
+		}
+	'''
+	
+	def getContextExpInvocations(GridGame gg) {
+		gg.fields.map[f | 
+			f.field_initialisation.initialisations.filter(ContextInitialisation).map[ci | 
+				var checkExps = ci.check.sub_exp
+				var valExps = ci.exp.sub_exp
+				checkExps.toList.addAll (valExps)
+				checkExps].flatten]
+		  .flatten
+	}
 
 	def generateImports() {
 		var imports = gg.fields.map[f|f.field_initialisation.initialisations.map[getImportsRequired]].flatten.toSet
@@ -172,7 +217,7 @@ class FieldGenerator extends CommonGenerator {
 	  for (int x = 0; x < width; x++) {
 	  	for (int y = 0; y < height; y++) {
 	  		if (field[x][y] == null) {
-	  			List<Cell> context = getContextAt (x, y);
+	  			CellContext context = getContextAt (x, y);
 	  			if («ci.generateContextCheck») {
 	  				field[x][y] = cellFactory.«ci.cell.generateCellFactoryMethodName»(«ci.generateValue»);
 	  			}
@@ -198,10 +243,9 @@ class FieldGenerator extends CommonGenerator {
 		context.«ce.sub_exp.join(".", [se | se.generateFor])»
 	'''
 	
-	// TODO: Figure out a good way to implement filter
-	def dispatch CharSequence generateFor (FilterExpression fe) '''filter(«fe.cell_type»)'''
+	def dispatch CharSequence generateFor (FilterExpression fe) '''filter«fe.cell_type.toFirstUpper»()'''
 	
 	def dispatch CharSequence generateFor (CountExpression ce) '''size()'''
 	
-	def dispatch CharSequence generateFor (NotEmptyExpression nee)'''size() > 0'''
+	def dispatch CharSequence generateFor (NotEmptyExpression nee)'''notEmpty()'''
 }
