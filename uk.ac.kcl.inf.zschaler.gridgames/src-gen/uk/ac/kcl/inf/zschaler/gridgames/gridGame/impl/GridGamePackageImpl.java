@@ -26,6 +26,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGameFactory;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
@@ -163,6 +164,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass countExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass notEmptyExpressionEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -632,6 +640,16 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getNotEmptyExpression()
+  {
+    return notEmptyExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public GridGameFactory getGridGameFactory()
   {
     return (GridGameFactory)getEFactoryInstance();
@@ -714,6 +732,8 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEAttribute(filterExpressionEClass, FILTER_EXPRESSION__CELL_TYPE);
 
     countExpressionEClass = createEClass(COUNT_EXPRESSION);
+
+    notEmptyExpressionEClass = createEClass(NOT_EMPTY_EXPRESSION);
   }
 
   /**
@@ -754,6 +774,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     contextInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
     filterExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
     countExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
+    notEmptyExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(gridGameEClass, GridGame.class, "GridGame", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -813,6 +834,8 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEAttribute(getFilterExpression_Cell_type(), ecorePackage.getEString(), "cell_type", null, 0, 1, FilterExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(countExpressionEClass, CountExpression.class, "CountExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(notEmptyExpressionEClass, NotEmptyExpression.class, "NotEmptyExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);

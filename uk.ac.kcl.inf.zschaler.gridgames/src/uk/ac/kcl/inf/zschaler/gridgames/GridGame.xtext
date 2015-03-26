@@ -88,7 +88,8 @@ ContextExpression :
 
 AtomicExpression :
 	FilterExpression |
-	CountExpression 
+	CountExpression |
+	NotEmptyExpression 
 ;
 
 FilterExpression :
@@ -97,4 +98,8 @@ FilterExpression :
 
 CountExpression :
 	"count" "(" ")" {CountExpression}
+;
+
+NotEmptyExpression :
+	"notEmpty" "(" ")" {NotEmptyExpression}
 ;

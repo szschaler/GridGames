@@ -207,6 +207,14 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.NOT_EMPTY_EXPRESSION:
+      {
+        NotEmptyExpression notEmptyExpression = (NotEmptyExpression)theEObject;
+        T result = caseNotEmptyExpression(notEmptyExpression);
+        if (result == null) result = caseAtomicExpression(notEmptyExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -495,6 +503,22 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCountExpression(CountExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Not Empty Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Not Empty Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNotEmptyExpression(NotEmptyExpression object)
   {
     return null;
   }

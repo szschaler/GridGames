@@ -623,6 +623,25 @@ public interface GridGamePackage extends EPackage
    */
   int COUNT_EXPRESSION_FEATURE_COUNT = ATOMIC_EXPRESSION_FEATURE_COUNT + 0;
 
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NotEmptyExpressionImpl <em>Not Empty Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NotEmptyExpressionImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getNotEmptyExpression()
+   * @generated
+   */
+  int NOT_EMPTY_EXPRESSION = 18;
+
+  /**
+   * The number of structural features of the '<em>Not Empty Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT_EMPTY_EXPRESSION_FEATURE_COUNT = ATOMIC_EXPRESSION_FEATURE_COUNT + 0;
+
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame <em>Grid Game</em>}'.
@@ -1047,6 +1066,16 @@ public interface GridGamePackage extends EPackage
   EClass getCountExpression();
 
   /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression <em>Not Empty Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Not Empty Expression</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression
+   * @generated
+   */
+  EClass getNotEmptyExpression();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1424,6 +1453,16 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EClass COUNT_EXPRESSION = eINSTANCE.getCountExpression();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NotEmptyExpressionImpl <em>Not Empty Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NotEmptyExpressionImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getNotEmptyExpression()
+     * @generated
+     */
+    EClass NOT_EMPTY_EXPRESSION = eINSTANCE.getNotEmptyExpression();
 
   }
 

@@ -82,6 +82,7 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.ATOMIC_EXPRESSION: return createAtomicExpression();
       case GridGamePackage.FILTER_EXPRESSION: return createFilterExpression();
       case GridGamePackage.COUNT_EXPRESSION: return createCountExpression();
+      case GridGamePackage.NOT_EMPTY_EXPRESSION: return createNotEmptyExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -283,6 +284,17 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     CountExpressionImpl countExpression = new CountExpressionImpl();
     return countExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotEmptyExpression createNotEmptyExpression()
+  {
+    NotEmptyExpressionImpl notEmptyExpression = new NotEmptyExpressionImpl();
+    return notEmptyExpression;
   }
 
   /**

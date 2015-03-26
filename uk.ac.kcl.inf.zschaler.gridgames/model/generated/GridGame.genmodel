@@ -59,5 +59,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FilterExpression/cell_type"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//CountExpression"/>
+    <genClasses ecoreClass="GridGame.ecore#//NotEmptyExpression"/>
   </genPackages>
 </genmodel:GenModel>

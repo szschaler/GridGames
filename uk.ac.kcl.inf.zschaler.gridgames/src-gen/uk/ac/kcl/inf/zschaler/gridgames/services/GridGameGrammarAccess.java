@@ -605,12 +605,13 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cFilterExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cCountExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cNotEmptyExpressionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//AtomicExpression:
-		//	FilterExpression | CountExpression;
+		//	FilterExpression | CountExpression | NotEmptyExpression;
 		@Override public ParserRule getRule() { return rule; }
 
-		//FilterExpression | CountExpression
+		//FilterExpression | CountExpression | NotEmptyExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//FilterExpression
@@ -618,6 +619,9 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//CountExpression
 		public RuleCall getCountExpressionParserRuleCall_1() { return cCountExpressionParserRuleCall_1; }
+
+		//NotEmptyExpression
+		public RuleCall getNotEmptyExpressionParserRuleCall_2() { return cNotEmptyExpressionParserRuleCall_2; }
 	}
 
 	public class FilterExpressionElements extends AbstractParserRuleElementFinder {
@@ -679,6 +683,34 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//{CountExpression}
 		public Action getCountExpressionAction_3() { return cCountExpressionAction_3; }
 	}
+
+	public class NotEmptyExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NotEmptyExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cNotEmptyKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Action cNotEmptyExpressionAction_3 = (Action)cGroup.eContents().get(3);
+		
+		//NotEmptyExpression:
+		//	"notEmpty" "(" ")" {NotEmptyExpression};
+		@Override public ParserRule getRule() { return rule; }
+
+		//"notEmpty" "(" ")" {NotEmptyExpression}
+		public Group getGroup() { return cGroup; }
+
+		//"notEmpty"
+		public Keyword getNotEmptyKeyword_0() { return cNotEmptyKeyword_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
+
+		//{NotEmptyExpression}
+		public Action getNotEmptyExpressionAction_3() { return cNotEmptyExpressionAction_3; }
+	}
 	
 	
 	private final GridGameElements pGridGame;
@@ -699,6 +731,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final AtomicExpressionElements pAtomicExpression;
 	private final FilterExpressionElements pFilterExpression;
 	private final CountExpressionElements pCountExpression;
+	private final NotEmptyExpressionElements pNotEmptyExpression;
 	
 	private final Grammar grammar;
 
@@ -727,6 +760,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pAtomicExpression = new AtomicExpressionElements();
 		this.pFilterExpression = new FilterExpressionElements();
 		this.pCountExpression = new CountExpressionElements();
+		this.pNotEmptyExpression = new NotEmptyExpressionElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -913,7 +947,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AtomicExpression:
-	//	FilterExpression | CountExpression;
+	//	FilterExpression | CountExpression | NotEmptyExpression;
 	public AtomicExpressionElements getAtomicExpressionAccess() {
 		return pAtomicExpression;
 	}
@@ -940,6 +974,16 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getCountExpressionRule() {
 		return getCountExpressionAccess().getRule();
+	}
+
+	//NotEmptyExpression:
+	//	"notEmpty" "(" ")" {NotEmptyExpression};
+	public NotEmptyExpressionElements getNotEmptyExpressionAccess() {
+		return pNotEmptyExpression;
+	}
+	
+	public ParserRule getNotEmptyExpressionRule() {
+		return getNotEmptyExpressionAccess().getRule();
 	}
 
 	//terminal ID:

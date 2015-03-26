@@ -560,6 +560,34 @@ finally {
 
 
 
+// Entry rule entryRuleNotEmptyExpression
+entryRuleNotEmptyExpression 
+:
+{ before(grammarAccess.getNotEmptyExpressionRule()); }
+	 ruleNotEmptyExpression
+{ after(grammarAccess.getNotEmptyExpressionRule()); } 
+	 EOF 
+;
+
+// Rule NotEmptyExpression
+ruleNotEmptyExpression
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getNotEmptyExpressionAccess().getGroup()); }
+(rule__NotEmptyExpression__Group__0)
+{ after(grammarAccess.getNotEmptyExpressionAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 
 rule__CellMember__Alternatives
     @init {
@@ -700,6 +728,12 @@ rule__AtomicExpression__Alternatives
 { before(grammarAccess.getAtomicExpressionAccess().getCountExpressionParserRuleCall_1()); }
 	ruleCountExpression
 { after(grammarAccess.getAtomicExpressionAccess().getCountExpressionParserRuleCall_1()); }
+)
+
+    |(
+{ before(grammarAccess.getAtomicExpressionAccess().getNotEmptyExpressionParserRuleCall_2()); }
+	ruleNotEmptyExpression
+{ after(grammarAccess.getAtomicExpressionAccess().getNotEmptyExpressionParserRuleCall_2()); }
 )
 
 ;
@@ -3020,6 +3054,137 @@ rule__CountExpression__Group__3__Impl
 
 )
 { after(grammarAccess.getCountExpressionAccess().getCountExpressionAction_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+
+
+rule__NotEmptyExpression__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__NotEmptyExpression__Group__0__Impl
+	rule__NotEmptyExpression__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__NotEmptyExpression__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNotEmptyExpressionAccess().getNotEmptyKeyword_0()); }
+
+	'notEmpty' 
+
+{ after(grammarAccess.getNotEmptyExpressionAccess().getNotEmptyKeyword_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__NotEmptyExpression__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__NotEmptyExpression__Group__1__Impl
+	rule__NotEmptyExpression__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__NotEmptyExpression__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNotEmptyExpressionAccess().getLeftParenthesisKeyword_1()); }
+
+	'(' 
+
+{ after(grammarAccess.getNotEmptyExpressionAccess().getLeftParenthesisKeyword_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__NotEmptyExpression__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__NotEmptyExpression__Group__2__Impl
+	rule__NotEmptyExpression__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__NotEmptyExpression__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNotEmptyExpressionAccess().getRightParenthesisKeyword_2()); }
+
+	')' 
+
+{ after(grammarAccess.getNotEmptyExpressionAccess().getRightParenthesisKeyword_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__NotEmptyExpression__Group__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__NotEmptyExpression__Group__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__NotEmptyExpression__Group__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNotEmptyExpressionAccess().getNotEmptyExpressionAction_3()); }
+(
+
+)
+{ after(grammarAccess.getNotEmptyExpressionAccess().getNotEmptyExpressionAction_3()); }
 )
 
 ;

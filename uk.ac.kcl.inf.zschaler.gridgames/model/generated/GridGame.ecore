@@ -63,4 +63,5 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cell_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CountExpression" eSuperTypes="#//AtomicExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NotEmptyExpression" eSuperTypes="#//AtomicExpression"/>
 </ecore:EPackage>

@@ -185,6 +185,15 @@ public interface GridGameFactory extends EFactory
   CountExpression createCountExpression();
 
   /**
+   * Returns a new object of class '<em>Not Empty Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Not Empty Expression</em>'.
+   * @generated
+   */
+  NotEmptyExpression createNotEmptyExpression();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

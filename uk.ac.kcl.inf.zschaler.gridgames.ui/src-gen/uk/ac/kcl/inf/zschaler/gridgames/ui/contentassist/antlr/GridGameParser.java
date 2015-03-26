@@ -59,6 +59,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getContextExpressionAccess().getGroup_1(), "rule__ContextExpression__Group_1__0");
 					put(grammarAccess.getFilterExpressionAccess().getGroup(), "rule__FilterExpression__Group__0");
 					put(grammarAccess.getCountExpressionAccess().getGroup(), "rule__CountExpression__Group__0");
+					put(grammarAccess.getNotEmptyExpressionAccess().getGroup(), "rule__NotEmptyExpression__Group__0");
 					put(grammarAccess.getGridGameAccess().getNameAssignment_1(), "rule__GridGame__NameAssignment_1");
 					put(grammarAccess.getGridGameAccess().getCellsAssignment_3(), "rule__GridGame__CellsAssignment_3");
 					put(grammarAccess.getGridGameAccess().getFieldsAssignment_4(), "rule__GridGame__FieldsAssignment_4");

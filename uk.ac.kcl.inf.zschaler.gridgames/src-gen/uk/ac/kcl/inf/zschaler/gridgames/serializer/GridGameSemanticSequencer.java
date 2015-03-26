@@ -29,6 +29,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
 import uk.ac.kcl.inf.zschaler.gridgames.services.GridGameGrammarAccess;
@@ -77,6 +78,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.GRID_GAME:
 				sequence_GridGame(context, (GridGame) semanticObject); 
+				return; 
+			case GridGamePackage.NOT_EMPTY_EXPRESSION:
+				sequence_NotEmptyExpression(context, (NotEmptyExpression) semanticObject); 
 				return; 
 			case GridGamePackage.RANDOM_INITIALISATION:
 				sequence_RandomInitialisation(context, (RandomInitialisation) semanticObject); 
@@ -219,6 +223,15 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (name=ID cells+=CellSpecification+ fields+=FieldSpecification+ options+=OptionSpecification*)
 	 */
 	protected void sequence_GridGame(EObject context, GridGame semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {NotEmptyExpression}
+	 */
+	protected void sequence_NotEmptyExpression(EObject context, NotEmptyExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
