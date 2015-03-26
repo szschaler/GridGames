@@ -333,15 +333,15 @@ ruleCellDisplaySpec returns [EObject current=null]
 )
 
 )
-)	otherlv_4='text' 
+)((	otherlv_4='text' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getCellDisplaySpecAccess().getTextKeyword_4());
+    	newLeafNode(otherlv_4, grammarAccess.getCellDisplaySpecAccess().getTextKeyword_4_0_0());
     }
 (
 (
 		lv_text_5_0=RULE_STRING
 		{
-			newLeafNode(lv_text_5_0, grammarAccess.getCellDisplaySpecAccess().getTextSTRINGTerminalRuleCall_5_0()); 
+			newLeafNode(lv_text_5_0, grammarAccess.getCellDisplaySpecAccess().getTextSTRINGTerminalRuleCall_4_0_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -355,9 +355,32 @@ ruleCellDisplaySpec returns [EObject current=null]
 	    }
 
 )
-)	otherlv_6='}' 
+))
+    |(	otherlv_6='var' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getCellDisplaySpecAccess().getRightCurlyBracketKeyword_6());
+    	newLeafNode(otherlv_6, grammarAccess.getCellDisplaySpecAccess().getVarKeyword_4_1_0());
+    }
+(
+(
+		lv_var_7_0=RULE_ID
+		{
+			newLeafNode(lv_var_7_0, grammarAccess.getCellDisplaySpecAccess().getVarIDTerminalRuleCall_4_1_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellDisplaySpecRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"var",
+        		lv_var_7_0, 
+        		"ID");
+	    }
+
+)
+)))	otherlv_8='}' 
+    {
+    	newLeafNode(otherlv_8, grammarAccess.getCellDisplaySpecAccess().getRightCurlyBracketKeyword_5());
     }
 )
 ;

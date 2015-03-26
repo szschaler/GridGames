@@ -66,12 +66,12 @@ class CellGenerator extends CommonGenerator {
 					val d = c.members.findFirst[m | m instanceof CellDisplaySpec] as CellDisplaySpec
 					if (d.display_type.equals ("button")) {
 						'''
-						jb.setText ("«d.text»");
+						jb.setText («d.generateTextCalculation»);
 						return jb;
 						'''
 					} else {
 						'''
-						jl.setText ("«d.text»");
+						jl.setText («d.generateTextCalculation»);
 						return jl;
 						'''
 					}
@@ -86,6 +86,11 @@ class CellGenerator extends CommonGenerator {
 			}
 		}
 	'''
+	
+	def generateTextCalculation(CellDisplaySpec cds) {
+		if (cds.text != null) '''"«cds.text»"'''
+		else '''"" + «cds.^var»Variable'''
+	}
 	
 	def generateFactory() '''
 		package «generateCellPackage»;

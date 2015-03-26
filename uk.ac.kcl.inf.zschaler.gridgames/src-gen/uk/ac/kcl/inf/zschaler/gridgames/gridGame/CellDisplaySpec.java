@@ -13,6 +13,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getDisplay_type <em>Display type</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getText <em>Text</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getVar <em>Var</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,5 +74,31 @@ public interface CellDisplaySpec extends CellMember
    * @generated
    */
   void setText(String value);
+
+  /**
+   * Returns the value of the '<em><b>Var</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Var</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Var</em>' attribute.
+   * @see #setVar(String)
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getCellDisplaySpec_Var()
+   * @model
+   * @generated
+   */
+  String getVar();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getVar <em>Var</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Var</em>' attribute.
+   * @see #getVar()
+   * @generated
+   */
+  void setVar(String value);
 
 } // CellDisplaySpec

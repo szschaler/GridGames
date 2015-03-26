@@ -20,6 +20,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellDisplaySpecImpl#getDisplay_type <em>Display type</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellDisplaySpecImpl#getText <em>Text</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellDisplaySpecImpl#getVar <em>Var</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +67,26 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
    * @ordered
    */
   protected String text = TEXT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getVar() <em>Var</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVar()
+   * @generated
+   * @ordered
+   */
+  protected static final String VAR_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getVar() <em>Var</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVar()
+   * @generated
+   * @ordered
+   */
+  protected String var = VAR_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -139,6 +160,29 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getVar()
+  {
+    return var;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVar(String newVar)
+  {
+    String oldVar = var;
+    var = newVar;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.CELL_DISPLAY_SPEC__VAR, oldVar, var));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -148,6 +192,8 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
         return getDisplay_type();
       case GridGamePackage.CELL_DISPLAY_SPEC__TEXT:
         return getText();
+      case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
+        return getVar();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -167,6 +213,9 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
         return;
       case GridGamePackage.CELL_DISPLAY_SPEC__TEXT:
         setText((String)newValue);
+        return;
+      case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
+        setVar((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -188,6 +237,9 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
       case GridGamePackage.CELL_DISPLAY_SPEC__TEXT:
         setText(TEXT_EDEFAULT);
         return;
+      case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
+        setVar(VAR_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -206,6 +258,8 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
         return DISPLAY_TYPE_EDEFAULT == null ? display_type != null : !DISPLAY_TYPE_EDEFAULT.equals(display_type);
       case GridGamePackage.CELL_DISPLAY_SPEC__TEXT:
         return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
+      case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
+        return VAR_EDEFAULT == null ? var != null : !VAR_EDEFAULT.equals(var);
     }
     return super.eIsSet(featureID);
   }
@@ -225,6 +279,8 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
     result.append(display_type);
     result.append(", text: ");
     result.append(text);
+    result.append(", var: ");
+    result.append(var);
     result.append(')');
     return result.toString();
   }

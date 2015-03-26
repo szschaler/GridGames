@@ -150,16 +150,22 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cDisplay_typeAlternatives_3_0 = (Alternatives)cDisplay_typeAssignment_3.eContents().get(0);
 		private final Keyword cDisplay_typeLabelKeyword_3_0_0 = (Keyword)cDisplay_typeAlternatives_3_0.eContents().get(0);
 		private final Keyword cDisplay_typeButtonKeyword_3_0_1 = (Keyword)cDisplay_typeAlternatives_3_0.eContents().get(1);
-		private final Keyword cTextKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cTextAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cTextSTRINGTerminalRuleCall_5_0 = (RuleCall)cTextAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Group cGroup_4_0 = (Group)cAlternatives_4.eContents().get(0);
+		private final Keyword cTextKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
+		private final Assignment cTextAssignment_4_0_1 = (Assignment)cGroup_4_0.eContents().get(1);
+		private final RuleCall cTextSTRINGTerminalRuleCall_4_0_1_0 = (RuleCall)cTextAssignment_4_0_1.eContents().get(0);
+		private final Group cGroup_4_1 = (Group)cAlternatives_4.eContents().get(1);
+		private final Keyword cVarKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
+		private final Assignment cVarAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
+		private final RuleCall cVarIDTerminalRuleCall_4_1_1_0 = (RuleCall)cVarAssignment_4_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//CellDisplaySpec:
-		//	"display" "{" "as" display_type=("label" | "button") "text" text=STRING "}";
+		//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=ID) "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"display" "{" "as" display_type=("label" | "button") "text" text=STRING "}"
+		//"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=ID) "}"
 		public Group getGroup() { return cGroup; }
 
 		//"display"
@@ -183,17 +189,35 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"button"
 		public Keyword getDisplay_typeButtonKeyword_3_0_1() { return cDisplay_typeButtonKeyword_3_0_1; }
 
+		//"text" text=STRING | "var" var=ID
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
+
+		//"text" text=STRING
+		public Group getGroup_4_0() { return cGroup_4_0; }
+
 		//"text"
-		public Keyword getTextKeyword_4() { return cTextKeyword_4; }
+		public Keyword getTextKeyword_4_0_0() { return cTextKeyword_4_0_0; }
 
 		//text=STRING
-		public Assignment getTextAssignment_5() { return cTextAssignment_5; }
+		public Assignment getTextAssignment_4_0_1() { return cTextAssignment_4_0_1; }
 
 		//STRING
-		public RuleCall getTextSTRINGTerminalRuleCall_5_0() { return cTextSTRINGTerminalRuleCall_5_0; }
+		public RuleCall getTextSTRINGTerminalRuleCall_4_0_1_0() { return cTextSTRINGTerminalRuleCall_4_0_1_0; }
+
+		//"var" var=ID
+		public Group getGroup_4_1() { return cGroup_4_1; }
+
+		//"var"
+		public Keyword getVarKeyword_4_1_0() { return cVarKeyword_4_1_0; }
+
+		//var=ID
+		public Assignment getVarAssignment_4_1_1() { return cVarAssignment_4_1_1; }
+
+		//ID
+		public RuleCall getVarIDTerminalRuleCall_4_1_1_0() { return cVarIDTerminalRuleCall_4_1_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class CellVarSpecElements extends AbstractParserRuleElementFinder {
@@ -523,6 +547,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExpAssignment_7 = (Assignment)cGroup.eContents().get(7);
 		private final RuleCall cExpContextExpressionParserRuleCall_7_0 = (RuleCall)cExpAssignment_7.eContents().get(0);
 		
+		//// FIXME This should support a number of values, one for each variable defined for the cell type
 		//ContextInitialisation:
 		//	"context" ":" cell=ID "check" check=ContextExpression "value" "=" exp=ContextExpression;
 		@Override public ParserRule getRule() { return rule; }
@@ -827,7 +852,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellDisplaySpec:
-	//	"display" "{" "as" display_type=("label" | "button") "text" text=STRING "}";
+	//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=ID) "}";
 	public CellDisplaySpecElements getCellDisplaySpecAccess() {
 		return pCellDisplaySpec;
 	}
@@ -926,6 +951,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		return getRandomInitialisationAccess().getRule();
 	}
 
+	//// FIXME This should support a number of values, one for each variable defined for the cell type
 	//ContextInitialisation:
 	//	"context" ":" cell=ID "check" check=ContextExpression "value" "=" exp=ContextExpression;
 	public ContextInitialisationElements getContextInitialisationAccess() {

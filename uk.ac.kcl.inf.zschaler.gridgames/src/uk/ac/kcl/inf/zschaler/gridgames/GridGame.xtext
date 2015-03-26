@@ -31,7 +31,8 @@ CellMember :
 CellDisplaySpec :
 	"display" "{"
 		"as" display_type=("label" | "button")
-		"text" text=STRING
+		(("text" text=STRING) | 
+		 ("var" var=ID))
 	"}"
 ;
 

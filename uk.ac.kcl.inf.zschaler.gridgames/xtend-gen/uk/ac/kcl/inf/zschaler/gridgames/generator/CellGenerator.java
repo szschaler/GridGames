@@ -1,5 +1,6 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -230,20 +231,20 @@ public class CellGenerator extends CommonGenerator {
         boolean _equals = _display_type.equals("button");
         if (_equals) {
           StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append("jb.setText (\"");
-          String _text = d.getText();
-          _builder_1.append(_text, "");
-          _builder_1.append("\");");
+          _builder_1.append("jb.setText (");
+          CharSequence _generateTextCalculation = this.generateTextCalculation(d);
+          _builder_1.append(_generateTextCalculation, "");
+          _builder_1.append(");");
           _builder_1.newLineIfNotEmpty();
           _builder_1.append("return jb;");
           _builder_1.newLine();
           _xifexpression_1 = _builder_1;
         } else {
           StringConcatenation _builder_2 = new StringConcatenation();
-          _builder_2.append("jl.setText (\"");
-          String _text_1 = d.getText();
-          _builder_2.append(_text_1, "");
-          _builder_2.append("\");");
+          _builder_2.append("jl.setText (");
+          CharSequence _generateTextCalculation_1 = this.generateTextCalculation(d);
+          _builder_2.append(_generateTextCalculation_1, "");
+          _builder_2.append(");");
           _builder_2.newLineIfNotEmpty();
           _builder_2.append("return jl;");
           _builder_2.newLine();
@@ -283,6 +284,28 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("}");
     _builder.newLine();
     return _builder;
+  }
+  
+  public CharSequence generateTextCalculation(final CellDisplaySpec cds) {
+    CharSequence _xifexpression = null;
+    String _text = cds.getText();
+    boolean _notEquals = (!Objects.equal(_text, null));
+    if (_notEquals) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\"");
+      String _text_1 = cds.getText();
+      _builder.append(_text_1, "");
+      _builder.append("\"");
+      _xifexpression = _builder;
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("\"\" + ");
+      String _var = cds.getVar();
+      _builder_1.append(_var, "");
+      _builder_1.append("Variable");
+      _xifexpression = _builder_1;
+    }
+    return _xifexpression;
   }
   
   public CharSequence generateFactory() {
