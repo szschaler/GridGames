@@ -148,6 +148,56 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
+    _builder.append("public ");
+    CharSequence _generateCellClassName_1 = this.generateCellClassName(c);
+    _builder.append(_generateCellClassName_1, "\t");
+    _builder.append("(");
+    EList<CellMember> _members_1 = c.getMembers();
+    Iterable<CellVarSpec> _filter_1 = Iterables.<CellVarSpec>filter(_members_1, CellVarSpec.class);
+    final Function1<CellVarSpec, CharSequence> _function_1 = new Function1<CellVarSpec, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellVarSpec v) {
+        StringConcatenation _builder = new StringConcatenation();
+        String _type = v.getType();
+        _builder.append(_type, "");
+        _builder.append(" ");
+        String _name = v.getName();
+        String _firstLower = StringExtensions.toFirstLower(_name);
+        _builder.append(_firstLower, "");
+        return _builder.toString();
+      }
+    };
+    String _join_1 = IterableExtensions.<CellVarSpec>join(_filter_1, ", ", _function_1);
+    _builder.append(_join_1, "\t");
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    EList<CellMember> _members_2 = c.getMembers();
+    Iterable<CellVarSpec> _filter_2 = Iterables.<CellVarSpec>filter(_members_2, CellVarSpec.class);
+    final Function1<CellVarSpec, CharSequence> _function_2 = new Function1<CellVarSpec, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellVarSpec v) {
+        StringConcatenation _builder = new StringConcatenation();
+        String _name = v.getName();
+        String _firstLower = StringExtensions.toFirstLower(_name);
+        _builder.append(_firstLower, "");
+        _builder.append("Variable = ");
+        String _name_1 = v.getName();
+        String _firstLower_1 = StringExtensions.toFirstLower(_name_1);
+        _builder.append(_firstLower_1, "");
+        _builder.append(";");
+        return _builder.toString();
+      }
+    };
+    String _join_2 = IterableExtensions.<CellVarSpec>join(_filter_2, "; ", _function_2);
+    _builder.append(_join_2, "\t\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
@@ -155,25 +205,25 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _xifexpression = null;
-    EList<CellMember> _members_1 = c.getMembers();
-    final Function1<CellMember, Boolean> _function_1 = new Function1<CellMember, Boolean>() {
+    EList<CellMember> _members_3 = c.getMembers();
+    final Function1<CellMember, Boolean> _function_3 = new Function1<CellMember, Boolean>() {
       @Override
       public Boolean apply(final CellMember m) {
         return Boolean.valueOf((m instanceof CellDisplaySpec));
       }
     };
-    boolean _exists = IterableExtensions.<CellMember>exists(_members_1, _function_1);
+    boolean _exists = IterableExtensions.<CellMember>exists(_members_3, _function_3);
     if (_exists) {
       CharSequence _xblockexpression = null;
       {
-        EList<CellMember> _members_2 = c.getMembers();
-        final Function1<CellMember, Boolean> _function_2 = new Function1<CellMember, Boolean>() {
+        EList<CellMember> _members_4 = c.getMembers();
+        final Function1<CellMember, Boolean> _function_4 = new Function1<CellMember, Boolean>() {
           @Override
           public Boolean apply(final CellMember m) {
             return Boolean.valueOf((m instanceof CellDisplaySpec));
           }
         };
-        CellMember _findFirst = IterableExtensions.<CellMember>findFirst(_members_2, _function_2);
+        CellMember _findFirst = IterableExtensions.<CellMember>findFirst(_members_4, _function_4);
         final CellDisplaySpec d = ((CellDisplaySpec) _findFirst);
         CharSequence _xifexpression_1 = null;
         String _display_type = d.getDisplay_type();
@@ -268,13 +318,41 @@ public class CellGenerator extends CommonGenerator {
     String _name = cs.getName();
     CharSequence _generateCellFactoryMethodName = this.generateCellFactoryMethodName(_name);
     _builder.append(_generateCellFactoryMethodName, "");
-    _builder.append("() {");
+    _builder.append("(");
+    EList<CellMember> _members = cs.getMembers();
+    Iterable<CellVarSpec> _filter = Iterables.<CellVarSpec>filter(_members, CellVarSpec.class);
+    final Function1<CellVarSpec, CharSequence> _function = new Function1<CellVarSpec, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellVarSpec v) {
+        StringConcatenation _builder = new StringConcatenation();
+        String _type = v.getType();
+        _builder.append(_type, "");
+        _builder.append(" ");
+        String _name = v.getName();
+        _builder.append(_name, "");
+        return _builder.toString();
+      }
+    };
+    String _join = IterableExtensions.<CellVarSpec>join(_filter, ", ", _function);
+    _builder.append(_join, "");
+    _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("return new ");
     CharSequence _generateCellClassName = this.generateCellClassName(cs);
     _builder.append(_generateCellClassName, "\t");
-    _builder.append("();");
+    _builder.append("(");
+    EList<CellMember> _members_1 = cs.getMembers();
+    Iterable<CellVarSpec> _filter_1 = Iterables.<CellVarSpec>filter(_members_1, CellVarSpec.class);
+    final Function1<CellVarSpec, CharSequence> _function_1 = new Function1<CellVarSpec, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellVarSpec v) {
+        return v.getName();
+      }
+    };
+    String _join_1 = IterableExtensions.<CellVarSpec>join(_filter_1, ", ", _function_1);
+    _builder.append(_join_1, "\t");
+    _builder.append(");");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();

@@ -78,6 +78,7 @@ RandomInitialisation :
 	"random" ":" cell=ID "=" count=INT
 ;
 
+// FIXME This should support a number of values, one for each variable defined for the cell type
 ContextInitialisation :
 	"context" ":" cell=ID "check" check=ContextExpression "value" "=" exp=ContextExpression
 ;

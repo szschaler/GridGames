@@ -56,6 +56,10 @@ class CellGenerator extends CommonGenerator {
 		public class «c.generateCellClassName» extends Cell {
 			«c.members.filter(CellVarSpec).join(" ", [v | '''private «v.type» «v.name.toFirstLower»Variable;'''])»
 			
+			public «c.generateCellClassName»(«c.members.filter(CellVarSpec).join(", ", [v | '''«v.type» «v.name.toFirstLower»'''])») {
+				«c.members.filter(CellVarSpec).join("; ", [v | '''«v.name.toFirstLower»Variable = «v.name.toFirstLower»;'''])»
+			}
+			
 			@Override
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
 				«if (c.members.exists[m | m instanceof CellDisplaySpec]) {
@@ -92,8 +96,8 @@ class CellGenerator extends CommonGenerator {
 	'''
 	
 	def generateFactoryMethod (CellSpecification cs) '''
-		public Cell «cs.name.generateCellFactoryMethodName»() {
-			return new «cs.generateCellClassName»();
+		public Cell «cs.name.generateCellFactoryMethodName»(«cs.members.filter(CellVarSpec).join(", ", [v | '''«v.type» «v.name»'''])») {
+			return new «cs.generateCellClassName»(«cs.members.filter(CellVarSpec).join(", ", [v | v.name])»);
 		}
 	'''
 }
