@@ -60,17 +60,20 @@ class FieldGenerator extends CommonGenerator {
 			// Generate helper functions for context initialisation
 			'''
 			private CellContext getContextAt (int x, int y) {
-				return new CellContext(field, x, y);
+				return new CellContext(x, y);
 			}
 
-			private static class CellContext {
+			private class CellContext {
 				private ArrayList<Cell> al = new ArrayList<> (8);
 				
-				public CellContext (Cell[][] field, int x, int y) {
+				public CellContext (int x, int y) {
 					for (int dx = -1; dx <= 1; dx ++) {
 						for (int dy = -1; dy <= 1; dy++) {
-							if ((dx != 0) || (dy != 0)) {
-								al.add (field[x][y]);
+							if (((dx != 0) || (dy != 0)) && 
+							    ((x + dx > 0) && (x + dx < width)) &&
+							    ((y + dy > 0) && (y + dy < height)) &&
+							    (field[x + dx][y + dy] != null)) {
+								al.add (field[x + dx][y + dy]);
 							}
 						}
 					}
