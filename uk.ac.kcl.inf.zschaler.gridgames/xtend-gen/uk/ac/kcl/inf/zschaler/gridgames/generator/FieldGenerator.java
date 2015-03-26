@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -12,12 +13,17 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
@@ -494,9 +500,60 @@ public class FieldGenerator extends CommonGenerator {
   
   protected CharSequence _generateInitCode(final ContextInitialisation ci) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("// TODO: Extend context initialisation stuff to include ability to check stuff. Otherwise, how would we know which cells to even put something in?");
+    _builder.append("// Fill in ");
+    String _cell = ci.getCell();
+    _builder.append(_cell, "");
+    _builder.append(" cells where appropriate because of context");
+    _builder.newLineIfNotEmpty();
+    _builder.append("for (int x = 0; x < width; x++) {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("for (int y = 0; y < height; y++) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("if (field[x][y] == null) {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("List<Cell> context = getContextAt (x, y);");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("if (");
+    CharSequence _generateContextCheck = this.generateContextCheck(ci);
+    _builder.append(_generateContextCheck, "\t\t\t");
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t\t\t");
+    _builder.append("field[x][y] = cellFactory.");
+    String _cell_1 = ci.getCell();
+    CharSequence _generateCellFactoryMethodName = this.generateCellFactoryMethodName(_cell_1);
+    _builder.append(_generateCellFactoryMethodName, "\t\t\t\t");
+    _builder.append("(");
+    CharSequence _generateValue = this.generateValue(ci);
+    _builder.append(_generateValue, "\t\t\t\t");
+    _builder.append(");");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
     _builder.newLine();
     return _builder;
+  }
+  
+  public CharSequence generateContextCheck(final ContextInitialisation ci) {
+    ContextExpression _check = ci.getCheck();
+    return this.generateFor(_check);
+  }
+  
+  public CharSequence generateValue(final ContextInitialisation ci) {
+    ContextExpression _exp = ci.getExp();
+    return this.generateFor(_exp);
   }
   
   public String generateFieldInitialisation() {
@@ -515,6 +572,43 @@ public class FieldGenerator extends CommonGenerator {
       }
     };
     return IterableExtensions.<StartFieldDeclaration>join(_filter, " ", _function);
+  }
+  
+  protected CharSequence _generateFor(final ContextExpression ce) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("context.");
+    EList<AtomicExpression> _sub_exp = ce.getSub_exp();
+    final Function1<AtomicExpression, CharSequence> _function = new Function1<AtomicExpression, CharSequence>() {
+      @Override
+      public CharSequence apply(final AtomicExpression se) {
+        return FieldGenerator.this.generateFor(se);
+      }
+    };
+    String _join = IterableExtensions.<AtomicExpression>join(_sub_exp, ".", _function);
+    _builder.append(_join, "");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence _generateFor(final FilterExpression fe) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("filter(");
+    String _cell_type = fe.getCell_type();
+    _builder.append(_cell_type, "");
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected CharSequence _generateFor(final CountExpression ce) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("size()");
+    return _builder;
+  }
+  
+  protected CharSequence _generateFor(final NotEmptyExpression nee) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("size() > 0");
+    return _builder;
   }
   
   public String getImportsRequired(final FieldInitialisation ri) {
@@ -538,6 +632,21 @@ public class FieldGenerator extends CommonGenerator {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(ci).toString());
+    }
+  }
+  
+  public CharSequence generateFor(final EObject ce) {
+    if (ce instanceof CountExpression) {
+      return _generateFor((CountExpression)ce);
+    } else if (ce instanceof FilterExpression) {
+      return _generateFor((FilterExpression)ce);
+    } else if (ce instanceof NotEmptyExpression) {
+      return _generateFor((NotEmptyExpression)ce);
+    } else if (ce instanceof ContextExpression) {
+      return _generateFor((ContextExpression)ce);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(ce).toString());
     }
   }
 }

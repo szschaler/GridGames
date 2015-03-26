@@ -1,11 +1,15 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import org.eclipse.xtext.generator.IFileSystemAccess
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration
 
@@ -163,14 +167,41 @@ class FieldGenerator extends CommonGenerator {
 		}
 	'''
 
-	// TODO: Extend context initialisation stuff to include ability to check stuff. Otherwise, how would we know which cells to even put something in?
 	def dispatch generateInitCode(ContextInitialisation ci) '''
-	  // TODO: Extend context initialisation stuff to include ability to check stuff. Otherwise, how would we know which cells to even put something in?
+	  // Fill in «ci.cell» cells where appropriate because of context
+	  for (int x = 0; x < width; x++) {
+	  	for (int y = 0; y < height; y++) {
+	  		if (field[x][y] == null) {
+	  			List<Cell> context = getContextAt (x, y);
+	  			if («ci.generateContextCheck») {
+	  				field[x][y] = cellFactory.«ci.cell.generateCellFactoryMethodName»(«ci.generateValue»);
+	  			}
+	  		}
+	  	}
+	  }
 	'''
+	
+	def generateContextCheck(ContextInitialisation ci) {
+		ci.check.generateFor
+	}
+	
+	def generateValue (ContextInitialisation ci) {
+		ci.exp.generateFor
+	}
 	
 	def generateFieldInitialisation() {
 		gg.options.filter(StartFieldDeclaration).join(" ", [o|'''initialise«o.field_name.toFirstUpper»Field();'''])
 
 	}
-
+	
+	def dispatch CharSequence generateFor (ContextExpression ce) '''
+		context.«ce.sub_exp.join(".", [se | se.generateFor])»
+	'''
+	
+	// TODO: Figure out a good way to implement filter
+	def dispatch CharSequence generateFor (FilterExpression fe) '''filter(«fe.cell_type»)'''
+	
+	def dispatch CharSequence generateFor (CountExpression ce) '''size()'''
+	
+	def dispatch CharSequence generateFor (NotEmptyExpression nee)'''size() > 0'''
 }
