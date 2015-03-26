@@ -138,6 +138,63 @@ public class FieldGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
+    CharSequence _xifexpression = null;
+    EList<FieldSpecification> _fields_1 = this.gg.getFields();
+    final Function1<FieldSpecification, Boolean> _function_1 = new Function1<FieldSpecification, Boolean>() {
+      @Override
+      public Boolean apply(final FieldSpecification f) {
+        FieldInitialisations _field_initialisation = f.getField_initialisation();
+        EList<FieldInitialisation> _initialisations = _field_initialisation.getInitialisations();
+        final Function1<FieldInitialisation, Boolean> _function = new Function1<FieldInitialisation, Boolean>() {
+          @Override
+          public Boolean apply(final FieldInitialisation i) {
+            return Boolean.valueOf((i instanceof ContextInitialisation));
+          }
+        };
+        return Boolean.valueOf(IterableExtensions.<FieldInitialisation>exists(_initialisations, _function));
+      }
+    };
+    boolean _exists = IterableExtensions.<FieldSpecification>exists(_fields_1, _function_1);
+    if (_exists) {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("private List<Cell> getContextAt (int x, int y) {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("ArrayList<Cell> al = new ArrayList<> (8);");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("for (int dx = -1; dx <= 1; dx ++) {");
+      _builder_1.newLine();
+      _builder_1.append("\t\t");
+      _builder_1.append("for (int dy = -1; dy <= 1; dy++) {");
+      _builder_1.newLine();
+      _builder_1.append("\t\t\t");
+      _builder_1.append("if ((dx != 0) || (dy != 0)) {");
+      _builder_1.newLine();
+      _builder_1.append("\t\t\t\t");
+      _builder_1.append("al.add (field[x][y]);");
+      _builder_1.newLine();
+      _builder_1.append("\t\t\t");
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.append("\t\t");
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("return al;");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _xifexpression = _builder_1;
+    }
+    _builder.append(_xifexpression, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
@@ -227,43 +284,67 @@ public class FieldGenerator extends CommonGenerator {
   }
   
   public String generateImports() {
-    EList<FieldSpecification> _fields = this.gg.getFields();
-    final Function1<FieldSpecification, List<String>> _function = new Function1<FieldSpecification, List<String>>() {
-      @Override
-      public List<String> apply(final FieldSpecification f) {
-        FieldInitialisations _field_initialisation = f.getField_initialisation();
-        EList<FieldInitialisation> _initialisations = _field_initialisation.getInitialisations();
-        final Function1<FieldInitialisation, String> _function = new Function1<FieldInitialisation, String>() {
-          @Override
-          public String apply(final FieldInitialisation it) {
-            return FieldGenerator.this.getImportsRequired(it);
-          }
-        };
-        return ListExtensions.<FieldInitialisation, String>map(_initialisations, _function);
+    String _xblockexpression = null;
+    {
+      EList<FieldSpecification> _fields = this.gg.getFields();
+      final Function1<FieldSpecification, List<String>> _function = new Function1<FieldSpecification, List<String>>() {
+        @Override
+        public List<String> apply(final FieldSpecification f) {
+          FieldInitialisations _field_initialisation = f.getField_initialisation();
+          EList<FieldInitialisation> _initialisations = _field_initialisation.getInitialisations();
+          final Function1<FieldInitialisation, String> _function = new Function1<FieldInitialisation, String>() {
+            @Override
+            public String apply(final FieldInitialisation it) {
+              return FieldGenerator.this.getImportsRequired(it);
+            }
+          };
+          return ListExtensions.<FieldInitialisation, String>map(_initialisations, _function);
+        }
+      };
+      List<List<String>> _map = ListExtensions.<FieldSpecification, List<String>>map(_fields, _function);
+      Iterable<String> _flatten = Iterables.<String>concat(_map);
+      Set<String> imports = IterableExtensions.<String>toSet(_flatten);
+      EList<FieldSpecification> _fields_1 = this.gg.getFields();
+      final Function1<FieldSpecification, Boolean> _function_1 = new Function1<FieldSpecification, Boolean>() {
+        @Override
+        public Boolean apply(final FieldSpecification f) {
+          FieldInitialisations _field_initialisation = f.getField_initialisation();
+          EList<FieldInitialisation> _initialisations = _field_initialisation.getInitialisations();
+          final Function1<FieldInitialisation, Boolean> _function = new Function1<FieldInitialisation, Boolean>() {
+            @Override
+            public Boolean apply(final FieldInitialisation i) {
+              return Boolean.valueOf((i instanceof ContextInitialisation));
+            }
+          };
+          return Boolean.valueOf(IterableExtensions.<FieldInitialisation>exists(_initialisations, _function));
+        }
+      };
+      boolean _exists = IterableExtensions.<FieldSpecification>exists(_fields_1, _function_1);
+      if (_exists) {
+        imports.add("java.util.List");
+        imports.add("java.util.ArrayList");
       }
-    };
-    List<List<String>> _map = ListExtensions.<FieldSpecification, List<String>>map(_fields, _function);
-    Iterable<String> _flatten = Iterables.<String>concat(_map);
-    Set<String> _set = IterableExtensions.<String>toSet(_flatten);
-    final Function1<String, Boolean> _function_1 = new Function1<String, Boolean>() {
-      @Override
-      public Boolean apply(final String imp) {
-        boolean _equals = imp.equals("");
-        return Boolean.valueOf((!_equals));
-      }
-    };
-    Iterable<String> _filter = IterableExtensions.<String>filter(_set, _function_1);
-    final Function1<String, CharSequence> _function_2 = new Function1<String, CharSequence>() {
-      @Override
-      public CharSequence apply(final String imp) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("import ");
-        _builder.append(imp, "");
-        _builder.append(";");
-        return _builder.toString();
-      }
-    };
-    return IterableExtensions.<String>join(_filter, "\n", _function_2);
+      final Function1<String, Boolean> _function_2 = new Function1<String, Boolean>() {
+        @Override
+        public Boolean apply(final String imp) {
+          boolean _equals = imp.equals("");
+          return Boolean.valueOf((!_equals));
+        }
+      };
+      Iterable<String> _filter = IterableExtensions.<String>filter(imports, _function_2);
+      final Function1<String, CharSequence> _function_3 = new Function1<String, CharSequence>() {
+        @Override
+        public CharSequence apply(final String imp) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("import ");
+          _builder.append(imp, "");
+          _builder.append(";");
+          return _builder.toString();
+        }
+      };
+      _xblockexpression = IterableExtensions.<String>join(_filter, "\n", _function_3);
+    }
+    return _xblockexpression;
   }
   
   protected String _getImportsRequired(final RandomInitialisation ri) {

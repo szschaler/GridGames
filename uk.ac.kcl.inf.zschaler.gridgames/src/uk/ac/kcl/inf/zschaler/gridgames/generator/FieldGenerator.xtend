@@ -52,6 +52,23 @@ class FieldGenerator extends CommonGenerator {
 		
 		«gg.fields.join (" ", [f | generateFieldInitialiserFor(f)])»
 		
+		«if (gg.fields.exists[f | f.field_initialisation.initialisations.exists[i | i instanceof ContextInitialisation]]) {
+			// Generate helper functions for context initialisation
+			'''
+			private List<Cell> getContextAt (int x, int y) {
+				ArrayList<Cell> al = new ArrayList<> (8);
+				for (int dx = -1; dx <= 1; dx ++) {
+					for (int dy = -1; dy <= 1; dy++) {
+						if ((dx != 0) || (dy != 0)) {
+							al.add (field[x][y]);
+						}
+					}
+				}
+				return al;
+			}
+			'''
+		}»
+		
 		@Override
 		public int getColumnCount() {
 			return width;
@@ -85,9 +102,14 @@ class FieldGenerator extends CommonGenerator {
 	}'''
 
 	def generateImports() {
-		gg.fields.map[f|f.field_initialisation.initialisations.map[getImportsRequired]]
-			.flatten.toSet.filter[imp | !imp.equals("")]
-			.join("\n", [ imp | '''import «imp»;'''])
+		var imports = gg.fields.map[f|f.field_initialisation.initialisations.map[getImportsRequired]].flatten.toSet
+		
+		if (gg.fields.exists[f | f.field_initialisation.initialisations.exists[i | i instanceof ContextInitialisation]]) {
+			imports.add("java.util.List")
+			imports.add("java.util.ArrayList")			
+		}
+		
+		imports.filter[imp | !imp.equals("")].join("\n", [ imp | '''import «imp»;'''])
 	}
 
 	def dispatch getImportsRequired(RandomInitialisation ri) {
