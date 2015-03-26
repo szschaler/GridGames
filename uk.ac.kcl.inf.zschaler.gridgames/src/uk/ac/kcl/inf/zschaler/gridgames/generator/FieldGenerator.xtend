@@ -140,7 +140,8 @@ class FieldGenerator extends CommonGenerator {
 			}
 		}
 	'''
-	
+
+	// TODO: Extend context initialisation stuff to include ability to check stuff. Otherwise, how would we know which cells to even put something in?
 	def dispatch generateInitCode(ContextInitialisation ci) '''
 	  // TODO: Extend context initialisation stuff to include ability to check stuff. Otherwise, how would we know which cells to even put something in?
 	'''
