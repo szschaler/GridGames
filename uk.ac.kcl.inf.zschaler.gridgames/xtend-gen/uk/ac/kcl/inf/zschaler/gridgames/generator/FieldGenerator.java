@@ -335,11 +335,11 @@ public class FieldGenerator extends CommonGenerator {
     _builder.append("for (Cell c : al) {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("if (c instanceof ");
+    _builder.append("if (c.is");
     String _cell_type_1 = fe.getCell_type();
-    CharSequence _generateCellClassName = this.generateCellClassName(_cell_type_1);
-    _builder.append(_generateCellClassName, "\t\t");
-    _builder.append(") {");
+    String _firstUpper_1 = StringExtensions.toFirstUpper(_cell_type_1);
+    _builder.append(_firstUpper_1, "\t\t");
+    _builder.append("()) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
     _builder.append("newAL.add (c);");
@@ -439,7 +439,7 @@ public class FieldGenerator extends CommonGenerator {
       };
       List<List<String>> _map = ListExtensions.<FieldSpecification, List<String>>map(_fields, _function);
       Iterable<String> _flatten = Iterables.<String>concat(_map);
-      Set<String> imports = IterableExtensions.<String>toSet(_flatten);
+      final Set<String> imports = IterableExtensions.<String>toSet(_flatten);
       EList<FieldSpecification> _fields_1 = this.gg.getFields();
       final Function1<FieldSpecification, Boolean> _function_1 = new Function1<FieldSpecification, Boolean>() {
         @Override

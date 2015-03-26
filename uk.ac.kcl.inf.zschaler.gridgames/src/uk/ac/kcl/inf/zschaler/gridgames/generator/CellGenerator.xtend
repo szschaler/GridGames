@@ -37,6 +37,8 @@ class CellGenerator extends CommonGenerator {
 		
 		public abstract class Cell {
 			public abstract Component formatUIRepresentation(JButton jb, JLabel jl);
+			
+			«gg.cells.join(" ", [c | '''public boolean is«c.name.toFirstUpper»() { return false; }'''])»
 		}
 	'''
 
@@ -72,6 +74,11 @@ class CellGenerator extends CommonGenerator {
 				} else {
 					'''return jb;'''
 				}»
+			}
+			
+			@Override
+			public boolean is«c.name.toFirstUpper»() {
+				return true;
 			}
 		}
 	'''

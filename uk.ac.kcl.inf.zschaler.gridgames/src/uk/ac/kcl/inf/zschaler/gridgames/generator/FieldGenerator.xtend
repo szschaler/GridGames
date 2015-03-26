@@ -120,7 +120,7 @@ class FieldGenerator extends CommonGenerator {
 			ArrayList<Cell> newAL = new ArrayList<>();
 			
 			for (Cell c : al) {
-				if (c instanceof «generateCellClassName(fe.cell_type)») {
+				if (c.is«fe.cell_type.toFirstUpper»()) {
 					newAL.add (c);
 				}
 			}
@@ -153,7 +153,7 @@ class FieldGenerator extends CommonGenerator {
 	}
 
 	def generateImports() {
-		var imports = gg.fields.map[f|f.field_initialisation.initialisations.map[getImportsRequired]].flatten.toSet
+		val imports = gg.fields.map[f|f.field_initialisation.initialisations.map[getImportsRequired]].flatten.toSet
 		
 		if (gg.fields.exists[f | f.field_initialisation.initialisations.exists[i | i instanceof ContextInitialisation]]) {
 			imports.add("java.util.List")

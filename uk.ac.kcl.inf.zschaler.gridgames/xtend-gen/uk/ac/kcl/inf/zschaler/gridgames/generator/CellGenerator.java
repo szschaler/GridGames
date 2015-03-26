@@ -76,6 +76,25 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.append("public abstract Component formatUIRepresentation(JButton jb, JLabel jl);");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    EList<CellSpecification> _cells = this.gg.getCells();
+    final Function1<CellSpecification, CharSequence> _function = new Function1<CellSpecification, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellSpecification c) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("public boolean is");
+        String _name = c.getName();
+        String _firstUpper = StringExtensions.toFirstUpper(_name);
+        _builder.append(_firstUpper, "");
+        _builder.append("() { return false; }");
+        return _builder.toString();
+      }
+    };
+    String _join = IterableExtensions.<CellSpecification>join(_cells, " ", _function);
+    _builder.append(_join, "\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
     return _builder;
@@ -190,6 +209,24 @@ public class CellGenerator extends CommonGenerator {
     }
     _builder.append(_xifexpression, "\t\t");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public boolean is");
+    String _name = c.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "\t");
+    _builder.append("() {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("return true;");
+    _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
