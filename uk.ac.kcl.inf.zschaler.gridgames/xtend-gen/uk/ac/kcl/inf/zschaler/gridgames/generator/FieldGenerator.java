@@ -209,14 +209,15 @@ public class FieldGenerator extends CommonGenerator {
       _builder_1.newLine();
       _builder_1.append("\t");
       Iterable<AtomicExpression> _contextExpInvocations = this.getContextExpInvocations(this.gg);
-      final Function1<AtomicExpression, CharSequence> _function_2 = new Function1<AtomicExpression, CharSequence>() {
+      final Function1<AtomicExpression, String> _function_2 = new Function1<AtomicExpression, String>() {
         @Override
-        public CharSequence apply(final AtomicExpression e) {
-          return FieldGenerator.this.generateImplementation(e);
+        public String apply(final AtomicExpression e) {
+          CharSequence _generateImplementation = FieldGenerator.this.generateImplementation(e);
+          return _generateImplementation.toString();
         }
       };
-      Iterable<CharSequence> _map = IterableExtensions.<AtomicExpression, CharSequence>map(_contextExpInvocations, _function_2);
-      Set<CharSequence> _set = IterableExtensions.<CharSequence>toSet(_map);
+      Iterable<String> _map = IterableExtensions.<AtomicExpression, String>map(_contextExpInvocations, _function_2);
+      Set<String> _set = IterableExtensions.<String>toSet(_map);
       String _join_1 = IterableExtensions.join(_set, " ");
       _builder_1.append(_join_1, "\t");
       _builder_1.newLineIfNotEmpty();

@@ -76,7 +76,9 @@ class FieldGenerator extends CommonGenerator {
 					}
 				}
 				
-				«gg.contextExpInvocations.map[e | e.generateImplementation].toSet.join(" ")»
+				«// Slightly annoyingly have to convert the CharSequences into Strings here to make 
+				 //sure the equality check in toSet works
+				gg.contextExpInvocations.map[e | e.generateImplementation.toString].toSet.join(" ")»
 			}
 			'''
 		}»
