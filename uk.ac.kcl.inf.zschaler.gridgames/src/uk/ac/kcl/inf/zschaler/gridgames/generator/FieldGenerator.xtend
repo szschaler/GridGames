@@ -120,7 +120,7 @@ class FieldGenerator extends CommonGenerator {
 			ArrayList<Cell> newAL = new ArrayList<>();
 			
 			for (Cell c : al) {
-				if (c instanceof «generateCellClassName(fe.cell_type)» {
+				if (c instanceof «generateCellClassName(fe.cell_type)») {
 					newAL.add (c);
 				}
 			}

@@ -339,7 +339,7 @@ public class FieldGenerator extends CommonGenerator {
     String _cell_type_1 = fe.getCell_type();
     CharSequence _generateCellClassName = this.generateCellClassName(_cell_type_1);
     _builder.append(_generateCellClassName, "\t\t");
-    _builder.append(" {");
+    _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
     _builder.append("newAL.add (c);");
