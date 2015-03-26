@@ -61,7 +61,7 @@ StartFieldDeclaration:
 ;
 
 FieldInitialisations :
-	"init" initialisations += FieldInitialisation+ 
+	"init" "{" (initialisations += FieldInitialisation ";")+ "}" 
 ;
 
 FieldInitialisation :
@@ -79,7 +79,7 @@ RandomInitialisation :
 ;
 
 ContextInitialisation :
-	"context" ":" cell=ID "=" exp = ContextExpression
+	"context" ":" cell=ID "check" check=ContextExpression "value" "=" exp=ContextExpression
 ;
 
 ContextExpression :

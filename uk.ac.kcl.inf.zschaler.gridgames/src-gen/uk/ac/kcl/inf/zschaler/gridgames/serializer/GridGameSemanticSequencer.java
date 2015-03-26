@@ -135,19 +135,22 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (cell=ID exp=ContextExpression)
+	 *     (cell=ID check=ContextExpression exp=ContextExpression)
 	 */
 	protected void sequence_ContextInitialisation(EObject context, ContextInitialisation semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL));
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__CHECK) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__CHECK));
 			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__EXP) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__EXP));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getContextInitialisationAccess().getCellIDTerminalRuleCall_2_0(), semanticObject.getCell());
-		feeder.accept(grammarAccess.getContextInitialisationAccess().getExpContextExpressionParserRuleCall_4_0(), semanticObject.getExp());
+		feeder.accept(grammarAccess.getContextInitialisationAccess().getCheckContextExpressionParserRuleCall_4_0(), semanticObject.getCheck());
+		feeder.accept(grammarAccess.getContextInitialisationAccess().getExpContextExpressionParserRuleCall_7_0(), semanticObject.getExp());
 		feeder.finish();
 	}
 	

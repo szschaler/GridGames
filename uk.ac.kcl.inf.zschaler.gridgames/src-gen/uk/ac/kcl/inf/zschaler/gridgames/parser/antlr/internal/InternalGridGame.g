@@ -696,25 +696,37 @@ ruleFieldInitialisations returns [EObject current=null]
     {
     	newLeafNode(otherlv_0, grammarAccess.getFieldInitialisationsAccess().getInitKeyword_0());
     }
-(
+	otherlv_1='{' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getFieldInitialisationsAccess().getLeftCurlyBracketKeyword_1());
+    }
+((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFieldInitialisationsAccess().getInitialisationsFieldInitialisationParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getFieldInitialisationsAccess().getInitialisationsFieldInitialisationParserRuleCall_2_0_0()); 
 	    }
-		lv_initialisations_1_0=ruleFieldInitialisation		{
+		lv_initialisations_2_0=ruleFieldInitialisation		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFieldInitialisationsRule());
 	        }
        		add(
        			$current, 
        			"initialisations",
-        		lv_initialisations_1_0, 
+        		lv_initialisations_2_0, 
         		"FieldInitialisation");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)+)
+)	otherlv_3=';' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getFieldInitialisationsAccess().getSemicolonKeyword_2_1());
+    }
+)+	otherlv_4='}' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getFieldInitialisationsAccess().getRightCurlyBracketKeyword_3());
+    }
+)
 ;
 
 
@@ -927,23 +939,49 @@ ruleContextInitialisation returns [EObject current=null]
 	    }
 
 )
-)	otherlv_3='=' 
+)	otherlv_3='check' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getContextInitialisationAccess().getEqualsSignKeyword_3());
+    	newLeafNode(otherlv_3, grammarAccess.getContextInitialisationAccess().getCheckKeyword_3());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getContextInitialisationAccess().getExpContextExpressionParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getContextInitialisationAccess().getCheckContextExpressionParserRuleCall_4_0()); 
 	    }
-		lv_exp_4_0=ruleContextExpression		{
+		lv_check_4_0=ruleContextExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getContextInitialisationRule());
+	        }
+       		set(
+       			$current, 
+       			"check",
+        		lv_check_4_0, 
+        		"ContextExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_5='value' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getContextInitialisationAccess().getValueKeyword_5());
+    }
+	otherlv_6='=' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getContextInitialisationAccess().getEqualsSignKeyword_6());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getContextInitialisationAccess().getExpContextExpressionParserRuleCall_7_0()); 
+	    }
+		lv_exp_7_0=ruleContextExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getContextInitialisationRule());
 	        }
        		set(
        			$current, 
        			"exp",
-        		lv_exp_4_0, 
+        		lv_exp_7_0, 
         		"ContextExpression");
 	        afterParserOrEnumRuleCall();
 	    }

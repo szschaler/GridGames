@@ -21,6 +21,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextInitialisationImpl#getCheck <em>Check</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextInitialisationImpl#getExp <em>Exp</em>}</li>
  * </ul>
  * </p>
@@ -29,6 +30,16 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  */
 public class ContextInitialisationImpl extends FieldInitialisationImpl implements ContextInitialisation
 {
+  /**
+   * The cached value of the '{@link #getCheck() <em>Check</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCheck()
+   * @generated
+   * @ordered
+   */
+  protected ContextExpression check;
+
   /**
    * The cached value of the '{@link #getExp() <em>Exp</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -58,6 +69,54 @@ public class ContextInitialisationImpl extends FieldInitialisationImpl implement
   protected EClass eStaticClass()
   {
     return GridGamePackage.Literals.CONTEXT_INITIALISATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ContextExpression getCheck()
+  {
+    return check;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetCheck(ContextExpression newCheck, NotificationChain msgs)
+  {
+    ContextExpression oldCheck = check;
+    check = newCheck;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GridGamePackage.CONTEXT_INITIALISATION__CHECK, oldCheck, newCheck);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCheck(ContextExpression newCheck)
+  {
+    if (newCheck != check)
+    {
+      NotificationChain msgs = null;
+      if (check != null)
+        msgs = ((InternalEObject)check).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GridGamePackage.CONTEXT_INITIALISATION__CHECK, null, msgs);
+      if (newCheck != null)
+        msgs = ((InternalEObject)newCheck).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GridGamePackage.CONTEXT_INITIALISATION__CHECK, null, msgs);
+      msgs = basicSetCheck(newCheck, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.CONTEXT_INITIALISATION__CHECK, newCheck, newCheck));
   }
 
   /**
@@ -118,6 +177,8 @@ public class ContextInitialisationImpl extends FieldInitialisationImpl implement
   {
     switch (featureID)
     {
+      case GridGamePackage.CONTEXT_INITIALISATION__CHECK:
+        return basicSetCheck(null, msgs);
       case GridGamePackage.CONTEXT_INITIALISATION__EXP:
         return basicSetExp(null, msgs);
     }
@@ -134,6 +195,8 @@ public class ContextInitialisationImpl extends FieldInitialisationImpl implement
   {
     switch (featureID)
     {
+      case GridGamePackage.CONTEXT_INITIALISATION__CHECK:
+        return getCheck();
       case GridGamePackage.CONTEXT_INITIALISATION__EXP:
         return getExp();
     }
@@ -150,6 +213,9 @@ public class ContextInitialisationImpl extends FieldInitialisationImpl implement
   {
     switch (featureID)
     {
+      case GridGamePackage.CONTEXT_INITIALISATION__CHECK:
+        setCheck((ContextExpression)newValue);
+        return;
       case GridGamePackage.CONTEXT_INITIALISATION__EXP:
         setExp((ContextExpression)newValue);
         return;
@@ -167,6 +233,9 @@ public class ContextInitialisationImpl extends FieldInitialisationImpl implement
   {
     switch (featureID)
     {
+      case GridGamePackage.CONTEXT_INITIALISATION__CHECK:
+        setCheck((ContextExpression)null);
+        return;
       case GridGamePackage.CONTEXT_INITIALISATION__EXP:
         setExp((ContextExpression)null);
         return;
@@ -184,6 +253,8 @@ public class ContextInitialisationImpl extends FieldInitialisationImpl implement
   {
     switch (featureID)
     {
+      case GridGamePackage.CONTEXT_INITIALISATION__CHECK:
+        return check != null;
       case GridGamePackage.CONTEXT_INITIALISATION__EXP:
         return exp != null;
     }

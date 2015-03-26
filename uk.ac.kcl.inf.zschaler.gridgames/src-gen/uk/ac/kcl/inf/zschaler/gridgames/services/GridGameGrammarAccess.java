@@ -380,24 +380,40 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FieldInitialisations");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cInitKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cInitialisationsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cInitialisationsFieldInitialisationParserRuleCall_1_0 = (RuleCall)cInitialisationsAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Assignment cInitialisationsAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final RuleCall cInitialisationsFieldInitialisationParserRuleCall_2_0_0 = (RuleCall)cInitialisationsAssignment_2_0.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//FieldInitialisations:
-		//	"init" initialisations+=FieldInitialisation+;
+		//	"init" "{" (initialisations+=FieldInitialisation ";")+ "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"init" initialisations+=FieldInitialisation+
+		//"init" "{" (initialisations+=FieldInitialisation ";")+ "}"
 		public Group getGroup() { return cGroup; }
 
 		//"init"
 		public Keyword getInitKeyword_0() { return cInitKeyword_0; }
 
-		//initialisations+=FieldInitialisation+
-		public Assignment getInitialisationsAssignment_1() { return cInitialisationsAssignment_1; }
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+
+		//(initialisations+=FieldInitialisation ";")+
+		public Group getGroup_2() { return cGroup_2; }
+
+		//initialisations+=FieldInitialisation
+		public Assignment getInitialisationsAssignment_2_0() { return cInitialisationsAssignment_2_0; }
 
 		//FieldInitialisation
-		public RuleCall getInitialisationsFieldInitialisationParserRuleCall_1_0() { return cInitialisationsFieldInitialisationParserRuleCall_1_0; }
+		public RuleCall getInitialisationsFieldInitialisationParserRuleCall_2_0_0() { return cInitialisationsFieldInitialisationParserRuleCall_2_0_0; }
+
+		//";"
+		public Keyword getSemicolonKeyword_2_1() { return cSemicolonKeyword_2_1; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 
 	public class FieldInitialisationElements extends AbstractParserRuleElementFinder {
@@ -499,15 +515,19 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cCellAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cCellIDTerminalRuleCall_2_0 = (RuleCall)cCellAssignment_2.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cExpAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cExpContextExpressionParserRuleCall_4_0 = (RuleCall)cExpAssignment_4.eContents().get(0);
+		private final Keyword cCheckKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cCheckAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cCheckContextExpressionParserRuleCall_4_0 = (RuleCall)cCheckAssignment_4.eContents().get(0);
+		private final Keyword cValueKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cEqualsSignKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cExpAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cExpContextExpressionParserRuleCall_7_0 = (RuleCall)cExpAssignment_7.eContents().get(0);
 		
 		//ContextInitialisation:
-		//	"context" ":" cell=ID "=" exp=ContextExpression;
+		//	"context" ":" cell=ID "check" check=ContextExpression "value" "=" exp=ContextExpression;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"context" ":" cell=ID "=" exp=ContextExpression
+		//"context" ":" cell=ID "check" check=ContextExpression "value" "=" exp=ContextExpression
 		public Group getGroup() { return cGroup; }
 
 		//"context"
@@ -522,14 +542,26 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getCellIDTerminalRuleCall_2_0() { return cCellIDTerminalRuleCall_2_0; }
 
-		//"="
-		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
+		//"check"
+		public Keyword getCheckKeyword_3() { return cCheckKeyword_3; }
 
-		//exp=ContextExpression
-		public Assignment getExpAssignment_4() { return cExpAssignment_4; }
+		//check=ContextExpression
+		public Assignment getCheckAssignment_4() { return cCheckAssignment_4; }
 
 		//ContextExpression
-		public RuleCall getExpContextExpressionParserRuleCall_4_0() { return cExpContextExpressionParserRuleCall_4_0; }
+		public RuleCall getCheckContextExpressionParserRuleCall_4_0() { return cCheckContextExpressionParserRuleCall_4_0; }
+
+		//"value"
+		public Keyword getValueKeyword_5() { return cValueKeyword_5; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_6() { return cEqualsSignKeyword_6; }
+
+		//exp=ContextExpression
+		public Assignment getExpAssignment_7() { return cExpAssignment_7; }
+
+		//ContextExpression
+		public RuleCall getExpContextExpressionParserRuleCall_7_0() { return cExpContextExpressionParserRuleCall_7_0; }
 	}
 
 	public class ContextExpressionElements extends AbstractParserRuleElementFinder {
@@ -821,7 +853,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FieldInitialisations:
-	//	"init" initialisations+=FieldInitialisation+;
+	//	"init" "{" (initialisations+=FieldInitialisation ";")+ "}";
 	public FieldInitialisationsElements getFieldInitialisationsAccess() {
 		return pFieldInitialisations;
 	}
@@ -861,7 +893,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ContextInitialisation:
-	//	"context" ":" cell=ID "=" exp=ContextExpression;
+	//	"context" ":" cell=ID "check" check=ContextExpression "value" "=" exp=ContextExpression;
 	public ContextInitialisationElements getContextInitialisationAccess() {
 		return pContextInitialisation;
 	}

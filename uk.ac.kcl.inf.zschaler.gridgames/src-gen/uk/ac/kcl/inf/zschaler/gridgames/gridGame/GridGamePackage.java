@@ -503,13 +503,22 @@ public interface GridGamePackage extends EPackage
   int CONTEXT_INITIALISATION__CELL = FIELD_INITIALISATION__CELL;
 
   /**
+   * The feature id for the '<em><b>Check</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_INITIALISATION__CHECK = FIELD_INITIALISATION_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Exp</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTEXT_INITIALISATION__EXP = FIELD_INITIALISATION_FEATURE_COUNT + 0;
+  int CONTEXT_INITIALISATION__EXP = FIELD_INITIALISATION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Context Initialisation</em>' class.
@@ -518,7 +527,7 @@ public interface GridGamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_INITIALISATION_FEATURE_COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 1;
+  int CONTEXT_INITIALISATION_FEATURE_COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextExpressionImpl <em>Context Expression</em>}' class.
@@ -954,6 +963,17 @@ public interface GridGamePackage extends EPackage
   EClass getContextInitialisation();
 
   /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation#getCheck <em>Check</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Check</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation#getCheck()
+   * @see #getContextInitialisation()
+   * @generated
+   */
+  EReference getContextInitialisation_Check();
+
+  /**
    * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation#getExp <em>Exp</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1332,6 +1352,14 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EClass CONTEXT_INITIALISATION = eINSTANCE.getContextInitialisation();
+
+    /**
+     * The meta object literal for the '<em><b>Check</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTEXT_INITIALISATION__CHECK = eINSTANCE.getContextInitialisation_Check();
 
     /**
      * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.

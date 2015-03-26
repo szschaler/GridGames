@@ -11,6 +11,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation#getCheck <em>Check</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation#getExp <em>Exp</em>}</li>
  * </ul>
  * </p>
@@ -21,6 +22,32 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
  */
 public interface ContextInitialisation extends FieldInitialisation
 {
+  /**
+   * Returns the value of the '<em><b>Check</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Check</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Check</em>' containment reference.
+   * @see #setCheck(ContextExpression)
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getContextInitialisation_Check()
+   * @model containment="true"
+   * @generated
+   */
+  ContextExpression getCheck();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation#getCheck <em>Check</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Check</em>' containment reference.
+   * @see #getCheck()
+   * @generated
+   */
+  void setCheck(ContextExpression value);
+
   /**
    * Returns the value of the '<em><b>Exp</b></em>' containment reference.
    * <!-- begin-user-doc -->

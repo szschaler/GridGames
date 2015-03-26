@@ -552,9 +552,19 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getContextInitialisation_Exp()
+  public EReference getContextInitialisation_Check()
   {
     return (EReference)contextInitialisationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getContextInitialisation_Exp()
+  {
+    return (EReference)contextInitialisationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -692,6 +702,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEAttribute(randomInitialisationEClass, RANDOM_INITIALISATION__COUNT);
 
     contextInitialisationEClass = createEClass(CONTEXT_INITIALISATION);
+    createEReference(contextInitialisationEClass, CONTEXT_INITIALISATION__CHECK);
     createEReference(contextInitialisationEClass, CONTEXT_INITIALISATION__EXP);
 
     contextExpressionEClass = createEClass(CONTEXT_EXPRESSION);
@@ -790,6 +801,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEAttribute(getRandomInitialisation_Count(), ecorePackage.getEInt(), "count", null, 0, 1, RandomInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(contextInitialisationEClass, ContextInitialisation.class, "ContextInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getContextInitialisation_Check(), this.getContextExpression(), null, "check", null, 0, 1, ContextInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContextInitialisation_Exp(), this.getContextExpression(), null, "exp", null, 0, 1, ContextInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(contextExpressionEClass, ContextExpression.class, "ContextExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

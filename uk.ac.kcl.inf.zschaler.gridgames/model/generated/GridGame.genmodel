@@ -48,6 +48,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//RandomInitialisation/count"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//ContextInitialisation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//ContextInitialisation/check"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//ContextInitialisation/exp"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//ContextExpression">
