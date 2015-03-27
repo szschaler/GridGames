@@ -3,6 +3,11 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -13,6 +18,8 @@ import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 
@@ -38,6 +45,7 @@ public class CellGenerator extends CommonGenerator {
     final Procedure1<CellSpecification> _function = new Procedure1<CellSpecification>() {
       @Override
       public void apply(final CellSpecification c) {
+        CellGenerator.this.normalizeDisplayAnnotation(c);
         StringConcatenation _builder = new StringConcatenation();
         CharSequence _generateCellClassFileName = CellGenerator.this.generateCellClassFileName(c);
         _builder.append(_generateCellClassFileName, "");
@@ -51,6 +59,78 @@ public class CellGenerator extends CommonGenerator {
     _builder_1.append(_generateFactoryClassFileName, "");
     CharSequence _generateFactory = this.generateFactory();
     fsa.generateFile(_builder_1.toString(), _generateFactory);
+  }
+  
+  /**
+   * Normalize display annotations for this cell specification. If there are no states,
+   * but a display annotation, create an artifical default state moving the display annotation
+   * over.
+   * 
+   * TODO Eventually might want to enable sharing of display annotations between a number of states.
+   */
+  public void normalizeDisplayAnnotation(final CellSpecification c) {
+    boolean _and = false;
+    EList<CellMember> _members = c.getMembers();
+    Iterable<CellStateSpec> _filter = Iterables.<CellStateSpec>filter(_members, CellStateSpec.class);
+    boolean _isEmpty = IterableExtensions.isEmpty(_filter);
+    if (!_isEmpty) {
+      _and = false;
+    } else {
+      EList<CellMember> _members_1 = c.getMembers();
+      Iterable<CellDisplaySpec> _filter_1 = Iterables.<CellDisplaySpec>filter(_members_1, CellDisplaySpec.class);
+      boolean _isEmpty_1 = IterableExtensions.isEmpty(_filter_1);
+      boolean _not = (!_isEmpty_1);
+      _and = _not;
+    }
+    if (_and) {
+      EClass _eClass = this.gg.eClass();
+      EPackage _ePackage = _eClass.getEPackage();
+      EFactory _eFactoryInstance = _ePackage.getEFactoryInstance();
+      EClass _eClass_1 = this.gg.eClass();
+      EPackage _ePackage_1 = _eClass_1.getEPackage();
+      EList<EClassifier> _eClassifiers = _ePackage_1.getEClassifiers();
+      final Function1<EClassifier, Boolean> _function = new Function1<EClassifier, Boolean>() {
+        @Override
+        public Boolean apply(final EClassifier ec) {
+          String _name = ec.getName();
+          return Boolean.valueOf(_name.equals("CellStateSpec"));
+        }
+      };
+      EClassifier _findFirst = IterableExtensions.<EClassifier>findFirst(_eClassifiers, _function);
+      EObject _create = _eFactoryInstance.create(((EClass) _findFirst));
+      CellStateSpec stateSpec = ((CellStateSpec) _create);
+      EClass _eClass_2 = this.gg.eClass();
+      EPackage _ePackage_2 = _eClass_2.getEPackage();
+      EFactory _eFactoryInstance_1 = _ePackage_2.getEFactoryInstance();
+      EClass _eClass_3 = this.gg.eClass();
+      EPackage _ePackage_3 = _eClass_3.getEPackage();
+      EList<EClassifier> _eClassifiers_1 = _ePackage_3.getEClassifiers();
+      final Function1<EClassifier, Boolean> _function_1 = new Function1<EClassifier, Boolean>() {
+        @Override
+        public Boolean apply(final EClassifier ec) {
+          String _name = ec.getName();
+          return Boolean.valueOf(_name.equals("CellState"));
+        }
+      };
+      EClassifier _findFirst_1 = IterableExtensions.<EClassifier>findFirst(_eClassifiers_1, _function_1);
+      EObject _create_1 = _eFactoryInstance_1.create(((EClass) _findFirst_1));
+      CellState dummyState = ((CellState) _create_1);
+      EList<CellState> _states = stateSpec.getStates();
+      _states.add(dummyState);
+      EList<CellMember> _members_2 = c.getMembers();
+      _members_2.add(stateSpec);
+      EList<CellMember> _members_3 = c.getMembers();
+      Iterable<CellDisplaySpec> _filter_2 = Iterables.<CellDisplaySpec>filter(_members_3, CellDisplaySpec.class);
+      final Function1<CellDisplaySpec, Boolean> _function_2 = new Function1<CellDisplaySpec, Boolean>() {
+        @Override
+        public Boolean apply(final CellDisplaySpec it) {
+          return Boolean.valueOf(true);
+        }
+      };
+      CellDisplaySpec _findFirst_2 = IterableExtensions.<CellDisplaySpec>findFirst(_filter_2, _function_2);
+      dummyState.setDisplay(_findFirst_2);
+      stateSpec.setStart(dummyState);
+    }
   }
   
   /**
