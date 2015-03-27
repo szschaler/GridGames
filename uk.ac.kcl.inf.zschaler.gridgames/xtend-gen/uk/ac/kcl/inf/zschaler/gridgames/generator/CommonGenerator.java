@@ -145,10 +145,11 @@ public class CommonGenerator {
     return _builder;
   }
   
-  public CharSequence generateCellFactoryMethodName(final String cellName) {
+  public CharSequence generateCellFactoryMethodName(final CellSpecification c) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("create");
-    String _firstUpper = StringExtensions.toFirstUpper(cellName);
+    String _name = c.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
     _builder.append(_firstUpper, "");
     _builder.append("Field");
     return _builder;

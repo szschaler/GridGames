@@ -14,6 +14,7 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
@@ -330,8 +331,9 @@ public class FieldGenerator extends CommonGenerator {
   protected CharSequence _generateImplementation(final FilterExpression fe) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public CellContext filter");
-    String _cell_type = fe.getCell_type();
-    String _firstUpper = StringExtensions.toFirstUpper(_cell_type);
+    CellSpecification _cell_type = fe.getCell_type();
+    String _name = _cell_type.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
     _builder.append(_firstUpper, "");
     _builder.append("() {");
     _builder.newLineIfNotEmpty();
@@ -345,8 +347,9 @@ public class FieldGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("if (c.is");
-    String _cell_type_1 = fe.getCell_type();
-    String _firstUpper_1 = StringExtensions.toFirstUpper(_cell_type_1);
+    CellSpecification _cell_type_1 = fe.getCell_type();
+    String _name_1 = _cell_type_1.getName();
+    String _firstUpper_1 = StringExtensions.toFirstUpper(_name_1);
     _builder.append(_firstUpper_1, "\t\t");
     _builder.append("()) {");
     _builder.newLineIfNotEmpty();
@@ -547,7 +550,7 @@ public class FieldGenerator extends CommonGenerator {
   protected CharSequence _generateInitCode(final DefaultInitialisation dfi) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// Fill the rest of the field with ");
-    String _cell = dfi.getCell();
+    CellSpecification _cell = dfi.getCell();
     _builder.append(_cell, "");
     _builder.append(" cells");
     _builder.newLineIfNotEmpty();
@@ -561,7 +564,7 @@ public class FieldGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("field[x][y] = cellFactory.");
-    String _cell_1 = dfi.getCell();
+    CellSpecification _cell_1 = dfi.getCell();
     CharSequence _generateCellFactoryMethodName = this.generateCellFactoryMethodName(_cell_1);
     _builder.append(_generateCellFactoryMethodName, "\t\t\t");
     _builder.append("();");
@@ -580,7 +583,7 @@ public class FieldGenerator extends CommonGenerator {
   protected CharSequence _generateInitCode(final RandomInitialisation rfi) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// Randomly allocate ");
-    String _cell = rfi.getCell();
+    CellSpecification _cell = rfi.getCell();
     _builder.append(_cell, "");
     _builder.append(" cells");
     _builder.newLineIfNotEmpty();
@@ -614,7 +617,7 @@ public class FieldGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("field[x][y] = cellFactory.");
-    String _cell_1 = rfi.getCell();
+    CellSpecification _cell_1 = rfi.getCell();
     CharSequence _generateCellFactoryMethodName = this.generateCellFactoryMethodName(_cell_1);
     _builder.append(_generateCellFactoryMethodName, "\t");
     _builder.append("();");
@@ -640,7 +643,7 @@ public class FieldGenerator extends CommonGenerator {
   protected CharSequence _generateInitCode(final ContextInitialisation ci) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// Fill in ");
-    String _cell = ci.getCell();
+    CellSpecification _cell = ci.getCell();
     _builder.append(_cell, "");
     _builder.append(" cells where appropriate because of context");
     _builder.newLineIfNotEmpty();
@@ -663,7 +666,7 @@ public class FieldGenerator extends CommonGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t");
     _builder.append("field[x][y] = cellFactory.");
-    String _cell_1 = ci.getCell();
+    CellSpecification _cell_1 = ci.getCell();
     CharSequence _generateCellFactoryMethodName = this.generateCellFactoryMethodName(_cell_1);
     _builder.append(_generateCellFactoryMethodName, "\t\t\t\t");
     _builder.append("(");
@@ -732,8 +735,9 @@ public class FieldGenerator extends CommonGenerator {
   protected CharSequence _generateFor(final FilterExpression fe) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("filter");
-    String _cell_type = fe.getCell_type();
-    String _firstUpper = StringExtensions.toFirstUpper(_cell_type);
+    CellSpecification _cell_type = fe.getCell_type();
+    String _name = _cell_type.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
     _builder.append(_firstUpper, "");
     _builder.append("()");
     return _builder;

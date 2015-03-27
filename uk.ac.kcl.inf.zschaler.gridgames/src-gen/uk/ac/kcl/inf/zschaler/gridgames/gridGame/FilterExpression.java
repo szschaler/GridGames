@@ -22,29 +22,29 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
 public interface FilterExpression extends AtomicExpression
 {
   /**
-   * Returns the value of the '<em><b>Cell type</b></em>' attribute.
+   * Returns the value of the '<em><b>Cell type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Cell type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Cell type</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cell type</em>' attribute.
-   * @see #setCell_type(String)
+   * @return the value of the '<em>Cell type</em>' reference.
+   * @see #setCell_type(CellSpecification)
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getFilterExpression_Cell_type()
    * @model
    * @generated
    */
-  String getCell_type();
+  CellSpecification getCell_type();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression#getCell_type <em>Cell type</em>}' attribute.
+   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression#getCell_type <em>Cell type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cell type</em>' attribute.
+   * @param value the new value of the '<em>Cell type</em>' reference.
    * @see #getCell_type()
    * @generated
    */
-  void setCell_type(String value);
+  void setCell_type(CellSpecification value);
 
 } // FilterExpression

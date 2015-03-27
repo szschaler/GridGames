@@ -43,7 +43,7 @@
         eType="#//FieldInitialisation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FieldInitialisation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cell" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cell" eType="#//CellSpecification"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DefaultInitialisation" eSuperTypes="#//FieldInitialisation"/>
   <eClassifiers xsi:type="ecore:EClass" name="RandomInitialisation" eSuperTypes="#//FieldInitialisation">
@@ -61,7 +61,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="FilterExpression" eSuperTypes="#//AtomicExpression">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cell_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cell_type" eType="#//CellSpecification"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CountExpression" eSuperTypes="#//AtomicExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="NotEmptyExpression" eSuperTypes="#//AtomicExpression"/>

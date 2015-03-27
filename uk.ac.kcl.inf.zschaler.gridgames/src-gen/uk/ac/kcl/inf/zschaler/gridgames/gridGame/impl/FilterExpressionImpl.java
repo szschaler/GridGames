@@ -5,9 +5,11 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 
@@ -27,24 +29,14 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 public class FilterExpressionImpl extends AtomicExpressionImpl implements FilterExpression
 {
   /**
-   * The default value of the '{@link #getCell_type() <em>Cell type</em>}' attribute.
+   * The cached value of the '{@link #getCell_type() <em>Cell type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCell_type()
    * @generated
    * @ordered
    */
-  protected static final String CELL_TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getCell_type() <em>Cell type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCell_type()
-   * @generated
-   * @ordered
-   */
-  protected String cell_type = CELL_TYPE_EDEFAULT;
+  protected CellSpecification cell_type;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,7 +64,27 @@ public class FilterExpressionImpl extends AtomicExpressionImpl implements Filter
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getCell_type()
+  public CellSpecification getCell_type()
+  {
+    if (cell_type != null && cell_type.eIsProxy())
+    {
+      InternalEObject oldCell_type = (InternalEObject)cell_type;
+      cell_type = (CellSpecification)eResolveProxy(oldCell_type);
+      if (cell_type != oldCell_type)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GridGamePackage.FILTER_EXPRESSION__CELL_TYPE, oldCell_type, cell_type));
+      }
+    }
+    return cell_type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CellSpecification basicGetCell_type()
   {
     return cell_type;
   }
@@ -82,9 +94,9 @@ public class FilterExpressionImpl extends AtomicExpressionImpl implements Filter
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCell_type(String newCell_type)
+  public void setCell_type(CellSpecification newCell_type)
   {
-    String oldCell_type = cell_type;
+    CellSpecification oldCell_type = cell_type;
     cell_type = newCell_type;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.FILTER_EXPRESSION__CELL_TYPE, oldCell_type, cell_type));
@@ -101,7 +113,8 @@ public class FilterExpressionImpl extends AtomicExpressionImpl implements Filter
     switch (featureID)
     {
       case GridGamePackage.FILTER_EXPRESSION__CELL_TYPE:
-        return getCell_type();
+        if (resolve) return getCell_type();
+        return basicGetCell_type();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -117,7 +130,7 @@ public class FilterExpressionImpl extends AtomicExpressionImpl implements Filter
     switch (featureID)
     {
       case GridGamePackage.FILTER_EXPRESSION__CELL_TYPE:
-        setCell_type((String)newValue);
+        setCell_type((CellSpecification)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,7 +147,7 @@ public class FilterExpressionImpl extends AtomicExpressionImpl implements Filter
     switch (featureID)
     {
       case GridGamePackage.FILTER_EXPRESSION__CELL_TYPE:
-        setCell_type(CELL_TYPE_EDEFAULT);
+        setCell_type((CellSpecification)null);
         return;
     }
     super.eUnset(featureID);
@@ -151,26 +164,9 @@ public class FilterExpressionImpl extends AtomicExpressionImpl implements Filter
     switch (featureID)
     {
       case GridGamePackage.FILTER_EXPRESSION__CELL_TYPE:
-        return CELL_TYPE_EDEFAULT == null ? cell_type != null : !CELL_TYPE_EDEFAULT.equals(cell_type);
+        return cell_type != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (cell_type: ");
-    result.append(cell_type);
-    result.append(')');
-    return result.toString();
   }
 
 } //FilterExpressionImpl

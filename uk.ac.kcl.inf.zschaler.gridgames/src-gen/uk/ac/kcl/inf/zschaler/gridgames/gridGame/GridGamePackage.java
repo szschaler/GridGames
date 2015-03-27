@@ -410,7 +410,7 @@ public interface GridGamePackage extends EPackage
   int FIELD_INITIALISATION = 10;
 
   /**
-   * The feature id for the '<em><b>Cell</b></em>' attribute.
+   * The feature id for the '<em><b>Cell</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -438,7 +438,7 @@ public interface GridGamePackage extends EPackage
   int DEFAULT_INITIALISATION = 11;
 
   /**
-   * The feature id for the '<em><b>Cell</b></em>' attribute.
+   * The feature id for the '<em><b>Cell</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -466,7 +466,7 @@ public interface GridGamePackage extends EPackage
   int RANDOM_INITIALISATION = 12;
 
   /**
-   * The feature id for the '<em><b>Cell</b></em>' attribute.
+   * The feature id for the '<em><b>Cell</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -503,7 +503,7 @@ public interface GridGamePackage extends EPackage
   int CONTEXT_INITIALISATION = 13;
 
   /**
-   * The feature id for the '<em><b>Cell</b></em>' attribute.
+   * The feature id for the '<em><b>Cell</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -596,7 +596,7 @@ public interface GridGamePackage extends EPackage
   int FILTER_EXPRESSION = 16;
 
   /**
-   * The feature id for the '<em><b>Cell type</b></em>' attribute.
+   * The feature id for the '<em><b>Cell type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -950,15 +950,15 @@ public interface GridGamePackage extends EPackage
   EClass getFieldInitialisation();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation#getCell <em>Cell</em>}'.
+   * Returns the meta object for the reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation#getCell <em>Cell</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Cell</em>'.
+   * @return the meta object for the reference '<em>Cell</em>'.
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation#getCell()
    * @see #getFieldInitialisation()
    * @generated
    */
-  EAttribute getFieldInitialisation_Cell();
+  EReference getFieldInitialisation_Cell();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation <em>Default Initialisation</em>}'.
@@ -1065,15 +1065,15 @@ public interface GridGamePackage extends EPackage
   EClass getFilterExpression();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression#getCell_type <em>Cell type</em>}'.
+   * Returns the meta object for the reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression#getCell_type <em>Cell type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Cell type</em>'.
+   * @return the meta object for the reference '<em>Cell type</em>'.
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression#getCell_type()
    * @see #getFilterExpression()
    * @generated
    */
-  EAttribute getFilterExpression_Cell_type();
+  EReference getFilterExpression_Cell_type();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression <em>Count Expression</em>}'.
@@ -1365,12 +1365,12 @@ public interface GridGamePackage extends EPackage
     EClass FIELD_INITIALISATION = eINSTANCE.getFieldInitialisation();
 
     /**
-     * The meta object literal for the '<em><b>Cell</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cell</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FIELD_INITIALISATION__CELL = eINSTANCE.getFieldInitialisation_Cell();
+    EReference FIELD_INITIALISATION__CELL = eINSTANCE.getFieldInitialisation_Cell();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.DefaultInitialisationImpl <em>Default Initialisation</em>}' class.
@@ -1465,12 +1465,12 @@ public interface GridGamePackage extends EPackage
     EClass FILTER_EXPRESSION = eINSTANCE.getFilterExpression();
 
     /**
-     * The meta object literal for the '<em><b>Cell type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cell type</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FILTER_EXPRESSION__CELL_TYPE = eINSTANCE.getFilterExpression_Cell_type();
+    EReference FILTER_EXPRESSION__CELL_TYPE = eINSTANCE.getFilterExpression_Cell_type();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CountExpressionImpl <em>Count Expression</em>}' class.

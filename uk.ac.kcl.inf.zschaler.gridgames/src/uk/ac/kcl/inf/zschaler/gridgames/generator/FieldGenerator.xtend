@@ -119,11 +119,11 @@ class FieldGenerator extends CommonGenerator {
 	}'''
 	
 	def dispatch generateImplementation(FilterExpression fe) '''
-		public CellContext filter«fe.cell_type.toFirstUpper»() {
+		public CellContext filter«fe.cell_type.name.toFirstUpper»() {
 			ArrayList<Cell> newAL = new ArrayList<>();
 			
 			for (Cell c : al) {
-				if (c.is«fe.cell_type.toFirstUpper»()) {
+				if (c.is«fe.cell_type.name.toFirstUpper»()) {
 					newAL.add (c);
 				}
 			}
@@ -248,7 +248,7 @@ class FieldGenerator extends CommonGenerator {
 		context.«ce.sub_exp.join(".", [se | se.generateFor])»
 	'''
 	
-	def dispatch CharSequence generateFor (FilterExpression fe) '''filter«fe.cell_type.toFirstUpper»()'''
+	def dispatch CharSequence generateFor (FilterExpression fe) '''filter«fe.cell_type.name.toFirstUpper»()'''
 	
 	def dispatch CharSequence generateFor (CountExpression ce) '''size()'''
 	

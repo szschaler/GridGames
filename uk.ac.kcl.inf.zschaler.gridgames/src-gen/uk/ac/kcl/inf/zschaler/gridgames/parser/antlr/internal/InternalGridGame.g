@@ -830,20 +830,15 @@ ruleDefaultInitialisation returns [EObject current=null]
     }
 (
 (
-		lv_cell_2_0=RULE_ID
 		{
-			newLeafNode(lv_cell_2_0, grammarAccess.getDefaultInitialisationAccess().getCellIDTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
+			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getDefaultInitialisationRule());
 	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"cell",
-        		lv_cell_2_0, 
-        		"ID");
-	    }
+        }
+	otherlv_2=RULE_ID
+	{
+		newLeafNode(otherlv_2, grammarAccess.getDefaultInitialisationAccess().getCellCellSpecificationCrossReference_2_0()); 
+	}
 
 )
 ))
@@ -877,20 +872,15 @@ ruleRandomInitialisation returns [EObject current=null]
     }
 (
 (
-		lv_cell_2_0=RULE_ID
 		{
-			newLeafNode(lv_cell_2_0, grammarAccess.getRandomInitialisationAccess().getCellIDTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
+			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getRandomInitialisationRule());
 	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"cell",
-        		lv_cell_2_0, 
-        		"ID");
-	    }
+        }
+	otherlv_2=RULE_ID
+	{
+		newLeafNode(otherlv_2, grammarAccess.getRandomInitialisationAccess().getCellCellSpecificationCrossReference_2_0()); 
+	}
 
 )
 )	otherlv_3='=' 
@@ -946,20 +936,15 @@ ruleContextInitialisation returns [EObject current=null]
     }
 (
 (
-		lv_cell_2_0=RULE_ID
 		{
-			newLeafNode(lv_cell_2_0, grammarAccess.getContextInitialisationAccess().getCellIDTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
+			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getContextInitialisationRule());
 	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"cell",
-        		lv_cell_2_0, 
-        		"ID");
-	    }
+        }
+	otherlv_2=RULE_ID
+	{
+		newLeafNode(otherlv_2, grammarAccess.getContextInitialisationAccess().getCellCellSpecificationCrossReference_2_0()); 
+	}
 
 )
 )	otherlv_3='check' 
@@ -1152,20 +1137,15 @@ ruleFilterExpression returns [EObject current=null]
     }
 (
 (
-		lv_cell_type_2_0=RULE_ID
 		{
-			newLeafNode(lv_cell_type_2_0, grammarAccess.getFilterExpressionAccess().getCell_typeIDTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
+			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getFilterExpressionRule());
 	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"cell_type",
-        		lv_cell_type_2_0, 
-        		"ID");
-	    }
+        }
+	otherlv_2=RULE_ID
+	{
+		newLeafNode(otherlv_2, grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationCrossReference_2_0()); 
+	}
 
 )
 )	otherlv_3=')' 

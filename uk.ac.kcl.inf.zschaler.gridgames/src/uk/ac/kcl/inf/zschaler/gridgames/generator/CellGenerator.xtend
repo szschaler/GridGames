@@ -101,7 +101,7 @@ class CellGenerator extends CommonGenerator {
 	'''
 	
 	def generateFactoryMethod (CellSpecification cs) '''
-		public Cell «cs.name.generateCellFactoryMethodName»(«cs.members.filter(CellVarSpec).join(", ", [v | '''«v.type» «v.name»'''])») {
+		public Cell «cs.generateCellFactoryMethodName»(«cs.members.filter(CellVarSpec).join(", ", [v | '''«v.type» «v.name»'''])») {
 			return new «cs.generateCellClassName»(«cs.members.filter(CellVarSpec).join(", ", [v | v.name])»);
 		}
 	'''

@@ -72,16 +72,16 @@ FieldInitialisation :
 ;
 
 DefaultInitialisation :
-	"default" ":" cell=ID
+	"default" ":" cell=[CellSpecification]
 ;
 
 RandomInitialisation :
-	"random" ":" cell=ID "=" count=INT
+	"random" ":" cell=[CellSpecification] "=" count=INT
 ;
 
 // FIXME This should support a number of values, one for each variable defined for the cell type
 ContextInitialisation :
-	"context" ":" cell=ID "check" check=ContextExpression "value" "=" exp=ContextExpression
+	"context" ":" cell=[CellSpecification] "check" check=ContextExpression "value" "=" exp=ContextExpression
 ;
 
 ContextExpression :
@@ -95,7 +95,7 @@ AtomicExpression :
 ;
 
 FilterExpression :
-	"filter" "(" cell_type = ID ")"
+	"filter" "(" cell_type = [CellSpecification] ")"
 ;
 
 CountExpression :

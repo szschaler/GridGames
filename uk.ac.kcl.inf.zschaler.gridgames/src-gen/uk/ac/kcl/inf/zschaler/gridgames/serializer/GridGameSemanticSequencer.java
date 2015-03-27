@@ -139,7 +139,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (cell=ID check=ContextExpression exp=ContextExpression)
+	 *     (cell=[CellSpecification|ID] check=ContextExpression exp=ContextExpression)
 	 */
 	protected void sequence_ContextInitialisation(EObject context, ContextInitialisation semanticObject) {
 		if(errorAcceptor != null) {
@@ -152,7 +152,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getContextInitialisationAccess().getCellIDTerminalRuleCall_2_0(), semanticObject.getCell());
+		feeder.accept(grammarAccess.getContextInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell());
 		feeder.accept(grammarAccess.getContextInitialisationAccess().getCheckContextExpressionParserRuleCall_4_0(), semanticObject.getCheck());
 		feeder.accept(grammarAccess.getContextInitialisationAccess().getExpContextExpressionParserRuleCall_7_0(), semanticObject.getExp());
 		feeder.finish();
@@ -170,7 +170,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     cell=ID
+	 *     cell=[CellSpecification|ID]
 	 */
 	protected void sequence_DefaultInitialisation(EObject context, DefaultInitialisation semanticObject) {
 		if(errorAcceptor != null) {
@@ -179,7 +179,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getDefaultInitialisationAccess().getCellIDTerminalRuleCall_2_0(), semanticObject.getCell());
+		feeder.accept(grammarAccess.getDefaultInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell());
 		feeder.finish();
 	}
 	
@@ -204,7 +204,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     cell_type=ID
+	 *     cell_type=[CellSpecification|ID]
 	 */
 	protected void sequence_FilterExpression(EObject context, FilterExpression semanticObject) {
 		if(errorAcceptor != null) {
@@ -213,7 +213,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFilterExpressionAccess().getCell_typeIDTerminalRuleCall_2_0(), semanticObject.getCell_type());
+		feeder.accept(grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell_type());
 		feeder.finish();
 	}
 	
@@ -238,7 +238,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (cell=ID count=INT)
+	 *     (cell=[CellSpecification|ID] count=INT)
 	 */
 	protected void sequence_RandomInitialisation(EObject context, RandomInitialisation semanticObject) {
 		if(errorAcceptor != null) {
@@ -249,7 +249,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getRandomInitialisationAccess().getCellIDTerminalRuleCall_2_0(), semanticObject.getCell());
+		feeder.accept(grammarAccess.getRandomInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell());
 		feeder.accept(grammarAccess.getRandomInitialisationAccess().getCountINTTerminalRuleCall_4_0(), semanticObject.getCount());
 		feeder.finish();
 	}

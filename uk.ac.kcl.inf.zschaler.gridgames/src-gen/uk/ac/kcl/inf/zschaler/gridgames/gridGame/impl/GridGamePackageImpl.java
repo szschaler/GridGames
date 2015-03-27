@@ -520,9 +520,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFieldInitialisation_Cell()
+  public EReference getFieldInitialisation_Cell()
   {
-    return (EAttribute)fieldInitialisationEClass.getEStructuralFeatures().get(0);
+    return (EReference)fieldInitialisationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -630,9 +630,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFilterExpression_Cell_type()
+  public EReference getFilterExpression_Cell_type()
   {
-    return (EAttribute)filterExpressionEClass.getEStructuralFeatures().get(0);
+    return (EReference)filterExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -723,7 +723,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEReference(fieldInitialisationsEClass, FIELD_INITIALISATIONS__INITIALISATIONS);
 
     fieldInitialisationEClass = createEClass(FIELD_INITIALISATION);
-    createEAttribute(fieldInitialisationEClass, FIELD_INITIALISATION__CELL);
+    createEReference(fieldInitialisationEClass, FIELD_INITIALISATION__CELL);
 
     defaultInitialisationEClass = createEClass(DEFAULT_INITIALISATION);
 
@@ -740,7 +740,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     atomicExpressionEClass = createEClass(ATOMIC_EXPRESSION);
 
     filterExpressionEClass = createEClass(FILTER_EXPRESSION);
-    createEAttribute(filterExpressionEClass, FILTER_EXPRESSION__CELL_TYPE);
+    createEReference(filterExpressionEClass, FILTER_EXPRESSION__CELL_TYPE);
 
     countExpressionEClass = createEClass(COUNT_EXPRESSION);
 
@@ -826,7 +826,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEReference(getFieldInitialisations_Initialisations(), this.getFieldInitialisation(), null, "initialisations", null, 0, -1, FieldInitialisations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldInitialisationEClass, FieldInitialisation.class, "FieldInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFieldInitialisation_Cell(), ecorePackage.getEString(), "cell", null, 0, 1, FieldInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFieldInitialisation_Cell(), this.getCellSpecification(), null, "cell", null, 0, 1, FieldInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(defaultInitialisationEClass, DefaultInitialisation.class, "DefaultInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -843,7 +843,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEClass(atomicExpressionEClass, AtomicExpression.class, "AtomicExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(filterExpressionEClass, FilterExpression.class, "FilterExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFilterExpression_Cell_type(), ecorePackage.getEString(), "cell_type", null, 0, 1, FilterExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFilterExpression_Cell_type(), this.getCellSpecification(), null, "cell_type", null, 0, 1, FilterExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(countExpressionEClass, CountExpression.class, "CountExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

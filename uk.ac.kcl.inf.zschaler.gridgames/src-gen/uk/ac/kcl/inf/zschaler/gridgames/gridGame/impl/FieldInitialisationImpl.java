@@ -5,10 +5,12 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 
@@ -28,24 +30,14 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 public class FieldInitialisationImpl extends MinimalEObjectImpl.Container implements FieldInitialisation
 {
   /**
-   * The default value of the '{@link #getCell() <em>Cell</em>}' attribute.
+   * The cached value of the '{@link #getCell() <em>Cell</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCell()
    * @generated
    * @ordered
    */
-  protected static final String CELL_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getCell() <em>Cell</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCell()
-   * @generated
-   * @ordered
-   */
-  protected String cell = CELL_EDEFAULT;
+  protected CellSpecification cell;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,7 +65,27 @@ public class FieldInitialisationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getCell()
+  public CellSpecification getCell()
+  {
+    if (cell != null && cell.eIsProxy())
+    {
+      InternalEObject oldCell = (InternalEObject)cell;
+      cell = (CellSpecification)eResolveProxy(oldCell);
+      if (cell != oldCell)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GridGamePackage.FIELD_INITIALISATION__CELL, oldCell, cell));
+      }
+    }
+    return cell;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CellSpecification basicGetCell()
   {
     return cell;
   }
@@ -83,9 +95,9 @@ public class FieldInitialisationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCell(String newCell)
+  public void setCell(CellSpecification newCell)
   {
-    String oldCell = cell;
+    CellSpecification oldCell = cell;
     cell = newCell;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.FIELD_INITIALISATION__CELL, oldCell, cell));
@@ -102,7 +114,8 @@ public class FieldInitialisationImpl extends MinimalEObjectImpl.Container implem
     switch (featureID)
     {
       case GridGamePackage.FIELD_INITIALISATION__CELL:
-        return getCell();
+        if (resolve) return getCell();
+        return basicGetCell();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,7 +131,7 @@ public class FieldInitialisationImpl extends MinimalEObjectImpl.Container implem
     switch (featureID)
     {
       case GridGamePackage.FIELD_INITIALISATION__CELL:
-        setCell((String)newValue);
+        setCell((CellSpecification)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,7 +148,7 @@ public class FieldInitialisationImpl extends MinimalEObjectImpl.Container implem
     switch (featureID)
     {
       case GridGamePackage.FIELD_INITIALISATION__CELL:
-        setCell(CELL_EDEFAULT);
+        setCell((CellSpecification)null);
         return;
     }
     super.eUnset(featureID);
@@ -152,26 +165,9 @@ public class FieldInitialisationImpl extends MinimalEObjectImpl.Container implem
     switch (featureID)
     {
       case GridGamePackage.FIELD_INITIALISATION__CELL:
-        return CELL_EDEFAULT == null ? cell != null : !CELL_EDEFAULT.equals(cell);
+        return cell != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (cell: ");
-    result.append(cell);
-    result.append(')');
-    return result.toString();
   }
 
 } //FieldInitialisationImpl

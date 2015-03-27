@@ -338,8 +338,7 @@ public class CellGenerator extends CommonGenerator {
   public CharSequence generateFactoryMethod(final CellSpecification cs) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public Cell ");
-    String _name = cs.getName();
-    CharSequence _generateCellFactoryMethodName = this.generateCellFactoryMethodName(_name);
+    CharSequence _generateCellFactoryMethodName = this.generateCellFactoryMethodName(cs);
     _builder.append(_generateCellFactoryMethodName, "");
     _builder.append("(");
     EList<CellMember> _members = cs.getMembers();

@@ -470,13 +470,14 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDefaultKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cCellAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cCellIDTerminalRuleCall_2_0 = (RuleCall)cCellAssignment_2.eContents().get(0);
+		private final CrossReference cCellCellSpecificationCrossReference_2_0 = (CrossReference)cCellAssignment_2.eContents().get(0);
+		private final RuleCall cCellCellSpecificationIDTerminalRuleCall_2_0_1 = (RuleCall)cCellCellSpecificationCrossReference_2_0.eContents().get(1);
 		
 		//DefaultInitialisation:
-		//	"default" ":" cell=ID;
+		//	"default" ":" cell=[CellSpecification];
 		@Override public ParserRule getRule() { return rule; }
 
-		//"default" ":" cell=ID
+		//"default" ":" cell=[CellSpecification]
 		public Group getGroup() { return cGroup; }
 
 		//"default"
@@ -485,11 +486,14 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
 
-		//cell=ID
+		//cell=[CellSpecification]
 		public Assignment getCellAssignment_2() { return cCellAssignment_2; }
 
+		//[CellSpecification]
+		public CrossReference getCellCellSpecificationCrossReference_2_0() { return cCellCellSpecificationCrossReference_2_0; }
+
 		//ID
-		public RuleCall getCellIDTerminalRuleCall_2_0() { return cCellIDTerminalRuleCall_2_0; }
+		public RuleCall getCellCellSpecificationIDTerminalRuleCall_2_0_1() { return cCellCellSpecificationIDTerminalRuleCall_2_0_1; }
 	}
 
 	public class RandomInitialisationElements extends AbstractParserRuleElementFinder {
@@ -498,16 +502,17 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRandomKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cCellAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cCellIDTerminalRuleCall_2_0 = (RuleCall)cCellAssignment_2.eContents().get(0);
+		private final CrossReference cCellCellSpecificationCrossReference_2_0 = (CrossReference)cCellAssignment_2.eContents().get(0);
+		private final RuleCall cCellCellSpecificationIDTerminalRuleCall_2_0_1 = (RuleCall)cCellCellSpecificationCrossReference_2_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cCountAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cCountINTTerminalRuleCall_4_0 = (RuleCall)cCountAssignment_4.eContents().get(0);
 		
 		//RandomInitialisation:
-		//	"random" ":" cell=ID "=" count=INT;
+		//	"random" ":" cell=[CellSpecification] "=" count=INT;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"random" ":" cell=ID "=" count=INT
+		//"random" ":" cell=[CellSpecification] "=" count=INT
 		public Group getGroup() { return cGroup; }
 
 		//"random"
@@ -516,11 +521,14 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
 
-		//cell=ID
+		//cell=[CellSpecification]
 		public Assignment getCellAssignment_2() { return cCellAssignment_2; }
 
+		//[CellSpecification]
+		public CrossReference getCellCellSpecificationCrossReference_2_0() { return cCellCellSpecificationCrossReference_2_0; }
+
 		//ID
-		public RuleCall getCellIDTerminalRuleCall_2_0() { return cCellIDTerminalRuleCall_2_0; }
+		public RuleCall getCellCellSpecificationIDTerminalRuleCall_2_0_1() { return cCellCellSpecificationIDTerminalRuleCall_2_0_1; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
@@ -538,7 +546,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cContextKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cCellAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cCellIDTerminalRuleCall_2_0 = (RuleCall)cCellAssignment_2.eContents().get(0);
+		private final CrossReference cCellCellSpecificationCrossReference_2_0 = (CrossReference)cCellAssignment_2.eContents().get(0);
+		private final RuleCall cCellCellSpecificationIDTerminalRuleCall_2_0_1 = (RuleCall)cCellCellSpecificationCrossReference_2_0.eContents().get(1);
 		private final Keyword cCheckKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cCheckAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cCheckContextExpressionParserRuleCall_4_0 = (RuleCall)cCheckAssignment_4.eContents().get(0);
@@ -549,10 +558,10 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//// FIXME This should support a number of values, one for each variable defined for the cell type
 		//ContextInitialisation:
-		//	"context" ":" cell=ID "check" check=ContextExpression "value" "=" exp=ContextExpression;
+		//	"context" ":" cell=[CellSpecification] "check" check=ContextExpression "value" "=" exp=ContextExpression;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"context" ":" cell=ID "check" check=ContextExpression "value" "=" exp=ContextExpression
+		//"context" ":" cell=[CellSpecification] "check" check=ContextExpression "value" "=" exp=ContextExpression
 		public Group getGroup() { return cGroup; }
 
 		//"context"
@@ -561,11 +570,14 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
 
-		//cell=ID
+		//cell=[CellSpecification]
 		public Assignment getCellAssignment_2() { return cCellAssignment_2; }
 
+		//[CellSpecification]
+		public CrossReference getCellCellSpecificationCrossReference_2_0() { return cCellCellSpecificationCrossReference_2_0; }
+
 		//ID
-		public RuleCall getCellIDTerminalRuleCall_2_0() { return cCellIDTerminalRuleCall_2_0; }
+		public RuleCall getCellCellSpecificationIDTerminalRuleCall_2_0_1() { return cCellCellSpecificationIDTerminalRuleCall_2_0_1; }
 
 		//"check"
 		public Keyword getCheckKeyword_3() { return cCheckKeyword_3; }
@@ -655,14 +667,15 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFilterKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cCell_typeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cCell_typeIDTerminalRuleCall_2_0 = (RuleCall)cCell_typeAssignment_2.eContents().get(0);
+		private final CrossReference cCell_typeCellSpecificationCrossReference_2_0 = (CrossReference)cCell_typeAssignment_2.eContents().get(0);
+		private final RuleCall cCell_typeCellSpecificationIDTerminalRuleCall_2_0_1 = (RuleCall)cCell_typeCellSpecificationCrossReference_2_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//FilterExpression:
-		//	"filter" "(" cell_type=ID ")";
+		//	"filter" "(" cell_type=[CellSpecification] ")";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"filter" "(" cell_type=ID ")"
+		//"filter" "(" cell_type=[CellSpecification] ")"
 		public Group getGroup() { return cGroup; }
 
 		//"filter"
@@ -671,11 +684,14 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
-		//cell_type=ID
+		//cell_type=[CellSpecification]
 		public Assignment getCell_typeAssignment_2() { return cCell_typeAssignment_2; }
 
+		//[CellSpecification]
+		public CrossReference getCell_typeCellSpecificationCrossReference_2_0() { return cCell_typeCellSpecificationCrossReference_2_0; }
+
 		//ID
-		public RuleCall getCell_typeIDTerminalRuleCall_2_0() { return cCell_typeIDTerminalRuleCall_2_0; }
+		public RuleCall getCell_typeCellSpecificationIDTerminalRuleCall_2_0_1() { return cCell_typeCellSpecificationIDTerminalRuleCall_2_0_1; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -932,7 +948,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DefaultInitialisation:
-	//	"default" ":" cell=ID;
+	//	"default" ":" cell=[CellSpecification];
 	public DefaultInitialisationElements getDefaultInitialisationAccess() {
 		return pDefaultInitialisation;
 	}
@@ -942,7 +958,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RandomInitialisation:
-	//	"random" ":" cell=ID "=" count=INT;
+	//	"random" ":" cell=[CellSpecification] "=" count=INT;
 	public RandomInitialisationElements getRandomInitialisationAccess() {
 		return pRandomInitialisation;
 	}
@@ -953,7 +969,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// FIXME This should support a number of values, one for each variable defined for the cell type
 	//ContextInitialisation:
-	//	"context" ":" cell=ID "check" check=ContextExpression "value" "=" exp=ContextExpression;
+	//	"context" ":" cell=[CellSpecification] "check" check=ContextExpression "value" "=" exp=ContextExpression;
 	public ContextInitialisationElements getContextInitialisationAccess() {
 		return pContextInitialisation;
 	}
@@ -983,7 +999,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FilterExpression:
-	//	"filter" "(" cell_type=ID ")";
+	//	"filter" "(" cell_type=[CellSpecification] ")";
 	public FilterExpressionElements getFilterExpressionAccess() {
 		return pFilterExpression;
 	}

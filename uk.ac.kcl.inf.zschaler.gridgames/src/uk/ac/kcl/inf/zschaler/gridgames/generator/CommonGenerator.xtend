@@ -43,7 +43,7 @@ class CommonGenerator {
 
 	def generateFrameClassFileName() '''«generateViewPackageFolder»/«generateFrameClassName()».java'''
 	
-	def generateCellFactoryMethodName (String cellName) '''create«cellName.toFirstUpper»Field'''
+	def generateCellFactoryMethodName (CellSpecification c) '''create«c.name.toFirstUpper»Field'''
 	
 	def generateFieldInitialiserName (FieldSpecification f) '''initialise«f.name.toFirstUpper»Field'''
 }
