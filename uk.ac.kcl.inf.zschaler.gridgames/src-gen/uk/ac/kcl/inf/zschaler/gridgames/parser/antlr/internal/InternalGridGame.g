@@ -678,20 +678,15 @@ ruleStartFieldDeclaration returns [EObject current=null]
     }
 (
 (
-		lv_field_name_2_0=RULE_ID
 		{
-			newLeafNode(lv_field_name_2_0, grammarAccess.getStartFieldDeclarationAccess().getField_nameIDTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
+			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getStartFieldDeclarationRule());
 	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"field_name",
-        		lv_field_name_2_0, 
-        		"ID");
-	    }
+        }
+	otherlv_2=RULE_ID
+	{
+		newLeafNode(otherlv_2, grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationCrossReference_2_0()); 
+	}
 
 )
 ))

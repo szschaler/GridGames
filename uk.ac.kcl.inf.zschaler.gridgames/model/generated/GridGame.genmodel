@@ -36,7 +36,7 @@
     <genClasses ecoreClass="GridGame.ecore#//OptionSpecification"/>
     <genClasses ecoreClass="GridGame.ecore#//AllowRestartMenu"/>
     <genClasses ecoreClass="GridGame.ecore#//StartFieldDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//StartFieldDeclaration/field_name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//StartFieldDeclaration/field"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//FieldInitialisations">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//FieldInitialisations/initialisations"/>

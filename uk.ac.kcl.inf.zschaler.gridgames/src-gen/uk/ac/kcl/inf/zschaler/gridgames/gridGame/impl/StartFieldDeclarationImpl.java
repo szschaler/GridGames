@@ -5,9 +5,11 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
 
@@ -18,7 +20,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.StartFieldDeclarationImpl#getField_name <em>Field name</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.StartFieldDeclarationImpl#getField <em>Field</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,24 +29,14 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
 public class StartFieldDeclarationImpl extends OptionSpecificationImpl implements StartFieldDeclaration
 {
   /**
-   * The default value of the '{@link #getField_name() <em>Field name</em>}' attribute.
+   * The cached value of the '{@link #getField() <em>Field</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getField_name()
+   * @see #getField()
    * @generated
    * @ordered
    */
-  protected static final String FIELD_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getField_name() <em>Field name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getField_name()
-   * @generated
-   * @ordered
-   */
-  protected String field_name = FIELD_NAME_EDEFAULT;
+  protected FieldSpecification field;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,9 +64,19 @@ public class StartFieldDeclarationImpl extends OptionSpecificationImpl implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getField_name()
+  public FieldSpecification getField()
   {
-    return field_name;
+    if (field != null && field.eIsProxy())
+    {
+      InternalEObject oldField = (InternalEObject)field;
+      field = (FieldSpecification)eResolveProxy(oldField);
+      if (field != oldField)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GridGamePackage.START_FIELD_DECLARATION__FIELD, oldField, field));
+      }
+    }
+    return field;
   }
 
   /**
@@ -82,12 +84,22 @@ public class StartFieldDeclarationImpl extends OptionSpecificationImpl implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setField_name(String newField_name)
+  public FieldSpecification basicGetField()
   {
-    String oldField_name = field_name;
-    field_name = newField_name;
+    return field;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setField(FieldSpecification newField)
+  {
+    FieldSpecification oldField = field;
+    field = newField;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.START_FIELD_DECLARATION__FIELD_NAME, oldField_name, field_name));
+      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.START_FIELD_DECLARATION__FIELD, oldField, field));
   }
 
   /**
@@ -100,8 +112,9 @@ public class StartFieldDeclarationImpl extends OptionSpecificationImpl implement
   {
     switch (featureID)
     {
-      case GridGamePackage.START_FIELD_DECLARATION__FIELD_NAME:
-        return getField_name();
+      case GridGamePackage.START_FIELD_DECLARATION__FIELD:
+        if (resolve) return getField();
+        return basicGetField();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -116,8 +129,8 @@ public class StartFieldDeclarationImpl extends OptionSpecificationImpl implement
   {
     switch (featureID)
     {
-      case GridGamePackage.START_FIELD_DECLARATION__FIELD_NAME:
-        setField_name((String)newValue);
+      case GridGamePackage.START_FIELD_DECLARATION__FIELD:
+        setField((FieldSpecification)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -133,8 +146,8 @@ public class StartFieldDeclarationImpl extends OptionSpecificationImpl implement
   {
     switch (featureID)
     {
-      case GridGamePackage.START_FIELD_DECLARATION__FIELD_NAME:
-        setField_name(FIELD_NAME_EDEFAULT);
+      case GridGamePackage.START_FIELD_DECLARATION__FIELD:
+        setField((FieldSpecification)null);
         return;
     }
     super.eUnset(featureID);
@@ -150,27 +163,10 @@ public class StartFieldDeclarationImpl extends OptionSpecificationImpl implement
   {
     switch (featureID)
     {
-      case GridGamePackage.START_FIELD_DECLARATION__FIELD_NAME:
-        return FIELD_NAME_EDEFAULT == null ? field_name != null : !FIELD_NAME_EDEFAULT.equals(field_name);
+      case GridGamePackage.START_FIELD_DECLARATION__FIELD:
+        return field != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (field_name: ");
-    result.append(field_name);
-    result.append(')');
-    return result.toString();
   }
 
 } //StartFieldDeclarationImpl

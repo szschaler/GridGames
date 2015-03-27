@@ -706,8 +706,9 @@ public class FieldGenerator extends CommonGenerator {
       public CharSequence apply(final StartFieldDeclaration o) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("initialise");
-        String _field_name = o.getField_name();
-        String _firstUpper = StringExtensions.toFirstUpper(_field_name);
+        FieldSpecification _field = o.getField();
+        String _name = _field.getName();
+        String _firstUpper = StringExtensions.toFirstUpper(_name);
         _builder.append(_firstUpper, "");
         _builder.append("Field();");
         return _builder.toString();

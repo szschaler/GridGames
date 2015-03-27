@@ -480,9 +480,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStartFieldDeclaration_Field_name()
+  public EReference getStartFieldDeclaration_Field()
   {
-    return (EAttribute)startFieldDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EReference)startFieldDeclarationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -717,7 +717,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     allowRestartMenuEClass = createEClass(ALLOW_RESTART_MENU);
 
     startFieldDeclarationEClass = createEClass(START_FIELD_DECLARATION);
-    createEAttribute(startFieldDeclarationEClass, START_FIELD_DECLARATION__FIELD_NAME);
+    createEReference(startFieldDeclarationEClass, START_FIELD_DECLARATION__FIELD);
 
     fieldInitialisationsEClass = createEClass(FIELD_INITIALISATIONS);
     createEReference(fieldInitialisationsEClass, FIELD_INITIALISATIONS__INITIALISATIONS);
@@ -820,7 +820,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEClass(allowRestartMenuEClass, AllowRestartMenu.class, "AllowRestartMenu", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(startFieldDeclarationEClass, StartFieldDeclaration.class, "StartFieldDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStartFieldDeclaration_Field_name(), ecorePackage.getEString(), "field_name", null, 0, 1, StartFieldDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStartFieldDeclaration_Field(), this.getFieldSpecification(), null, "field", null, 0, 1, StartFieldDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldInitialisationsEClass, FieldInitialisations.class, "FieldInitialisations", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFieldInitialisations_Initialisations(), this.getFieldInitialisation(), null, "initialisations", null, 0, -1, FieldInitialisations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

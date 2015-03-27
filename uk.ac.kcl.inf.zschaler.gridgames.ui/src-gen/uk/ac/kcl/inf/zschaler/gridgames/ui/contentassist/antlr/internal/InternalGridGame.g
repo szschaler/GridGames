@@ -2072,9 +2072,9 @@ rule__StartFieldDeclaration__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getStartFieldDeclarationAccess().getField_nameAssignment_2()); }
-(rule__StartFieldDeclaration__Field_nameAssignment_2)
-{ after(grammarAccess.getStartFieldDeclarationAccess().getField_nameAssignment_2()); }
+{ before(grammarAccess.getStartFieldDeclarationAccess().getFieldAssignment_2()); }
+(rule__StartFieldDeclaration__FieldAssignment_2)
+{ after(grammarAccess.getStartFieldDeclarationAccess().getFieldAssignment_2()); }
 )
 
 ;
@@ -3544,14 +3544,18 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__StartFieldDeclaration__Field_nameAssignment_2
+rule__StartFieldDeclaration__FieldAssignment_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getStartFieldDeclarationAccess().getField_nameIDTerminalRuleCall_2_0()); }
-	RULE_ID{ after(grammarAccess.getStartFieldDeclarationAccess().getField_nameIDTerminalRuleCall_2_0()); }
+{ before(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationCrossReference_2_0()); }
+(
+{ before(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationIDTerminalRuleCall_2_0_1()); }
+	RULE_ID{ after(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationIDTerminalRuleCall_2_0_1()); }
+)
+{ after(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationCrossReference_2_0()); }
 )
 
 ;

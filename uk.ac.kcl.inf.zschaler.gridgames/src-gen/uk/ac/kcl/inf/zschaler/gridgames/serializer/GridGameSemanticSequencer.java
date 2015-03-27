@@ -257,16 +257,16 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     field_name=ID
+	 *     field=[FieldSpecification|ID]
 	 */
 	protected void sequence_StartFieldDeclaration(EObject context, StartFieldDeclaration semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.START_FIELD_DECLARATION__FIELD_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.START_FIELD_DECLARATION__FIELD_NAME));
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.START_FIELD_DECLARATION__FIELD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.START_FIELD_DECLARATION__FIELD));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getStartFieldDeclarationAccess().getField_nameIDTerminalRuleCall_2_0(), semanticObject.getField_name());
+		feeder.accept(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getField());
 		feeder.finish();
 	}
 }

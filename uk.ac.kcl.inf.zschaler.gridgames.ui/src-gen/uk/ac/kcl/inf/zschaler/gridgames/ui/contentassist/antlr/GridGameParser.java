@@ -78,7 +78,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFieldSpecificationAccess().getWidthAssignment_5(), "rule__FieldSpecification__WidthAssignment_5");
 					put(grammarAccess.getFieldSpecificationAccess().getHeightAssignment_8(), "rule__FieldSpecification__HeightAssignment_8");
 					put(grammarAccess.getFieldSpecificationAccess().getField_initialisationAssignment_9(), "rule__FieldSpecification__Field_initialisationAssignment_9");
-					put(grammarAccess.getStartFieldDeclarationAccess().getField_nameAssignment_2(), "rule__StartFieldDeclaration__Field_nameAssignment_2");
+					put(grammarAccess.getStartFieldDeclarationAccess().getFieldAssignment_2(), "rule__StartFieldDeclaration__FieldAssignment_2");
 					put(grammarAccess.getFieldInitialisationsAccess().getInitialisationsAssignment_2_0(), "rule__FieldInitialisations__InitialisationsAssignment_2_0");
 					put(grammarAccess.getDefaultInitialisationAccess().getCellAssignment_2(), "rule__DefaultInitialisation__CellAssignment_2");
 					put(grammarAccess.getRandomInitialisationAccess().getCellAssignment_2(), "rule__RandomInitialisation__CellAssignment_2");

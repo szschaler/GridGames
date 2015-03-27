@@ -11,7 +11,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration#getField_name <em>Field name</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration#getField <em>Field</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,29 +22,29 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
 public interface StartFieldDeclaration extends OptionSpecification
 {
   /**
-   * Returns the value of the '<em><b>Field name</b></em>' attribute.
+   * Returns the value of the '<em><b>Field</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Field name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Field</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Field name</em>' attribute.
-   * @see #setField_name(String)
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getStartFieldDeclaration_Field_name()
+   * @return the value of the '<em>Field</em>' reference.
+   * @see #setField(FieldSpecification)
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getStartFieldDeclaration_Field()
    * @model
    * @generated
    */
-  String getField_name();
+  FieldSpecification getField();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration#getField_name <em>Field name</em>}' attribute.
+   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration#getField <em>Field</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Field name</em>' attribute.
-   * @see #getField_name()
+   * @param value the new value of the '<em>Field</em>' reference.
+   * @see #getField()
    * @generated
    */
-  void setField_name(String value);
+  void setField(FieldSpecification value);
 
 } // StartFieldDeclaration

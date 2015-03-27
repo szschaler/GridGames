@@ -240,7 +240,7 @@ class FieldGenerator extends CommonGenerator {
 	}
 	
 	def generateFieldInitialisation() {
-		gg.options.filter(StartFieldDeclaration).join(" ", [o|'''initialise«o.field_name.toFirstUpper»Field();'''])
+		gg.options.filter(StartFieldDeclaration).join(" ", [o|'''initialise«o.field.name.toFirstUpper»Field();'''])
 
 	}
 	

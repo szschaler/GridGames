@@ -377,14 +377,15 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cStartKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cField_nameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cField_nameIDTerminalRuleCall_2_0 = (RuleCall)cField_nameAssignment_2.eContents().get(0);
+		private final Assignment cFieldAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cFieldFieldSpecificationCrossReference_2_0 = (CrossReference)cFieldAssignment_2.eContents().get(0);
+		private final RuleCall cFieldFieldSpecificationIDTerminalRuleCall_2_0_1 = (RuleCall)cFieldFieldSpecificationCrossReference_2_0.eContents().get(1);
 		
 		//StartFieldDeclaration:
-		//	"start" "=" field_name=ID;
+		//	"start" "=" field=[FieldSpecification];
 		@Override public ParserRule getRule() { return rule; }
 
-		//"start" "=" field_name=ID
+		//"start" "=" field=[FieldSpecification]
 		public Group getGroup() { return cGroup; }
 
 		//"start"
@@ -393,11 +394,14 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
 
-		//field_name=ID
-		public Assignment getField_nameAssignment_2() { return cField_nameAssignment_2; }
+		//field=[FieldSpecification]
+		public Assignment getFieldAssignment_2() { return cFieldAssignment_2; }
+
+		//[FieldSpecification]
+		public CrossReference getFieldFieldSpecificationCrossReference_2_0() { return cFieldFieldSpecificationCrossReference_2_0; }
 
 		//ID
-		public RuleCall getField_nameIDTerminalRuleCall_2_0() { return cField_nameIDTerminalRuleCall_2_0; }
+		public RuleCall getFieldFieldSpecificationIDTerminalRuleCall_2_0_1() { return cFieldFieldSpecificationIDTerminalRuleCall_2_0_1; }
 	}
 
 	public class FieldInitialisationsElements extends AbstractParserRuleElementFinder {
@@ -918,7 +922,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StartFieldDeclaration:
-	//	"start" "=" field_name=ID;
+	//	"start" "=" field=[FieldSpecification];
 	public StartFieldDeclarationElements getStartFieldDeclarationAccess() {
 		return pStartFieldDeclaration;
 	}

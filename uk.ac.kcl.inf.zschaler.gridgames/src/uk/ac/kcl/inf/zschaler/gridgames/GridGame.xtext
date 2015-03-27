@@ -58,7 +58,7 @@ AllowRestartMenu:
 ;
 
 StartFieldDeclaration:
-	"start" "=" field_name = ID
+	"start" "=" field = [FieldSpecification]
 ;
 
 FieldInitialisations :

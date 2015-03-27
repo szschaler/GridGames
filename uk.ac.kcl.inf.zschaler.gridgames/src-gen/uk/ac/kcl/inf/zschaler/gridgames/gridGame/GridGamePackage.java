@@ -354,13 +354,13 @@ public interface GridGamePackage extends EPackage
   int START_FIELD_DECLARATION = 8;
 
   /**
-   * The feature id for the '<em><b>Field name</b></em>' attribute.
+   * The feature id for the '<em><b>Field</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int START_FIELD_DECLARATION__FIELD_NAME = OPTION_SPECIFICATION_FEATURE_COUNT + 0;
+  int START_FIELD_DECLARATION__FIELD = OPTION_SPECIFICATION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Start Field Declaration</em>' class.
@@ -908,15 +908,15 @@ public interface GridGamePackage extends EPackage
   EClass getStartFieldDeclaration();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration#getField_name <em>Field name</em>}'.
+   * Returns the meta object for the reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration#getField <em>Field</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Field name</em>'.
-   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration#getField_name()
+   * @return the meta object for the reference '<em>Field</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration#getField()
    * @see #getStartFieldDeclaration()
    * @generated
    */
-  EAttribute getStartFieldDeclaration_Field_name();
+  EReference getStartFieldDeclaration_Field();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations <em>Field Initialisations</em>}'.
@@ -1329,12 +1329,12 @@ public interface GridGamePackage extends EPackage
     EClass START_FIELD_DECLARATION = eINSTANCE.getStartFieldDeclaration();
 
     /**
-     * The meta object literal for the '<em><b>Field name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Field</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute START_FIELD_DECLARATION__FIELD_NAME = eINSTANCE.getStartFieldDeclaration_Field_name();
+    EReference START_FIELD_DECLARATION__FIELD = eINSTANCE.getStartFieldDeclaration_Field();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldInitialisationsImpl <em>Field Initialisations</em>}' class.
