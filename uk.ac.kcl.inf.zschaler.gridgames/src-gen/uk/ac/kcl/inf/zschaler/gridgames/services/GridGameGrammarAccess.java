@@ -158,14 +158,15 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4_1 = (Group)cAlternatives_4.eContents().get(1);
 		private final Keyword cVarKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
 		private final Assignment cVarAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
-		private final RuleCall cVarIDTerminalRuleCall_4_1_1_0 = (RuleCall)cVarAssignment_4_1_1.eContents().get(0);
+		private final CrossReference cVarCellVarSpecCrossReference_4_1_1_0 = (CrossReference)cVarAssignment_4_1_1.eContents().get(0);
+		private final RuleCall cVarCellVarSpecIDTerminalRuleCall_4_1_1_0_1 = (RuleCall)cVarCellVarSpecCrossReference_4_1_1_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//CellDisplaySpec:
-		//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=ID) "}";
+		//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[CellVarSpec]) "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=ID) "}"
+		//"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[CellVarSpec]) "}"
 		public Group getGroup() { return cGroup; }
 
 		//"display"
@@ -189,7 +190,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"button"
 		public Keyword getDisplay_typeButtonKeyword_3_0_1() { return cDisplay_typeButtonKeyword_3_0_1; }
 
-		//"text" text=STRING | "var" var=ID
+		//"text" text=STRING | "var" var=[CellVarSpec]
 		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 
 		//"text" text=STRING
@@ -204,17 +205,20 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getTextSTRINGTerminalRuleCall_4_0_1_0() { return cTextSTRINGTerminalRuleCall_4_0_1_0; }
 
-		//"var" var=ID
+		//"var" var=[CellVarSpec]
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
 		//"var"
 		public Keyword getVarKeyword_4_1_0() { return cVarKeyword_4_1_0; }
 
-		//var=ID
+		//var=[CellVarSpec]
 		public Assignment getVarAssignment_4_1_1() { return cVarAssignment_4_1_1; }
 
+		//[CellVarSpec]
+		public CrossReference getVarCellVarSpecCrossReference_4_1_1_0() { return cVarCellVarSpecCrossReference_4_1_1_0; }
+
 		//ID
-		public RuleCall getVarIDTerminalRuleCall_4_1_1_0() { return cVarIDTerminalRuleCall_4_1_1_0; }
+		public RuleCall getVarCellVarSpecIDTerminalRuleCall_4_1_1_0_1() { return cVarCellVarSpecIDTerminalRuleCall_4_1_1_0_1; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
@@ -872,7 +876,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellDisplaySpec:
-	//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=ID) "}";
+	//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[CellVarSpec]) "}";
 	public CellDisplaySpecElements getCellDisplaySpecAccess() {
 		return pCellDisplaySpec;
 	}

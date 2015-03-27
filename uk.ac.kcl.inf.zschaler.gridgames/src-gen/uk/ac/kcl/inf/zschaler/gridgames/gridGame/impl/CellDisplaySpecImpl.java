@@ -5,10 +5,12 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 
 /**
@@ -69,24 +71,14 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
   protected String text = TEXT_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getVar() <em>Var</em>}' attribute.
+   * The cached value of the '{@link #getVar() <em>Var</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getVar()
    * @generated
    * @ordered
    */
-  protected static final String VAR_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getVar() <em>Var</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVar()
-   * @generated
-   * @ordered
-   */
-  protected String var = VAR_EDEFAULT;
+  protected CellVarSpec var;
 
   /**
    * <!-- begin-user-doc -->
@@ -160,7 +152,27 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getVar()
+  public CellVarSpec getVar()
+  {
+    if (var != null && var.eIsProxy())
+    {
+      InternalEObject oldVar = (InternalEObject)var;
+      var = (CellVarSpec)eResolveProxy(oldVar);
+      if (var != oldVar)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GridGamePackage.CELL_DISPLAY_SPEC__VAR, oldVar, var));
+      }
+    }
+    return var;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CellVarSpec basicGetVar()
   {
     return var;
   }
@@ -170,9 +182,9 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVar(String newVar)
+  public void setVar(CellVarSpec newVar)
   {
-    String oldVar = var;
+    CellVarSpec oldVar = var;
     var = newVar;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.CELL_DISPLAY_SPEC__VAR, oldVar, var));
@@ -193,7 +205,8 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
       case GridGamePackage.CELL_DISPLAY_SPEC__TEXT:
         return getText();
       case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
-        return getVar();
+        if (resolve) return getVar();
+        return basicGetVar();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -215,7 +228,7 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
         setText((String)newValue);
         return;
       case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
-        setVar((String)newValue);
+        setVar((CellVarSpec)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -238,7 +251,7 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
         setText(TEXT_EDEFAULT);
         return;
       case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
-        setVar(VAR_EDEFAULT);
+        setVar((CellVarSpec)null);
         return;
     }
     super.eUnset(featureID);
@@ -259,7 +272,7 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
       case GridGamePackage.CELL_DISPLAY_SPEC__TEXT:
         return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
       case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
-        return VAR_EDEFAULT == null ? var != null : !VAR_EDEFAULT.equals(var);
+        return var != null;
     }
     return super.eIsSet(featureID);
   }
@@ -279,8 +292,6 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
     result.append(display_type);
     result.append(", text: ");
     result.append(text);
-    result.append(", var: ");
-    result.append(var);
     result.append(')');
     return result.toString();
   }

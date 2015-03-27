@@ -196,7 +196,7 @@ public interface GridGamePackage extends EPackage
   int CELL_DISPLAY_SPEC__TEXT = CELL_MEMBER_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Var</b></em>' attribute.
+   * The feature id for the '<em><b>Var</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -781,15 +781,15 @@ public interface GridGamePackage extends EPackage
   EAttribute getCellDisplaySpec_Text();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getVar <em>Var</em>}'.
+   * Returns the meta object for the reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getVar <em>Var</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Var</em>'.
+   * @return the meta object for the reference '<em>Var</em>'.
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getVar()
    * @see #getCellDisplaySpec()
    * @generated
    */
-  EAttribute getCellDisplaySpec_Var();
+  EReference getCellDisplaySpec_Var();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec <em>Cell Var Spec</em>}'.
@@ -1223,12 +1223,12 @@ public interface GridGamePackage extends EPackage
     EAttribute CELL_DISPLAY_SPEC__TEXT = eINSTANCE.getCellDisplaySpec_Text();
 
     /**
-     * The meta object literal for the '<em><b>Var</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Var</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CELL_DISPLAY_SPEC__VAR = eINSTANCE.getCellDisplaySpec_Var();
+    EReference CELL_DISPLAY_SPEC__VAR = eINSTANCE.getCellDisplaySpec_Var();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellVarSpecImpl <em>Cell Var Spec</em>}' class.

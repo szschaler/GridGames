@@ -362,20 +362,15 @@ ruleCellDisplaySpec returns [EObject current=null]
     }
 (
 (
-		lv_var_7_0=RULE_ID
 		{
-			newLeafNode(lv_var_7_0, grammarAccess.getCellDisplaySpecAccess().getVarIDTerminalRuleCall_4_1_1_0()); 
-		}
-		{
-	        if ($current==null) {
+			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getCellDisplaySpecRule());
 	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"var",
-        		lv_var_7_0, 
-        		"ID");
-	    }
+        }
+	otherlv_7=RULE_ID
+	{
+		newLeafNode(otherlv_7, grammarAccess.getCellDisplaySpecAccess().getVarCellVarSpecCrossReference_4_1_1_0()); 
+	}
 
 )
 )))	otherlv_8='}' 

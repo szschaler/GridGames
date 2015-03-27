@@ -3444,8 +3444,12 @@ rule__CellDisplaySpec__VarAssignment_4_1_1
     }
 :
 (
-{ before(grammarAccess.getCellDisplaySpecAccess().getVarIDTerminalRuleCall_4_1_1_0()); }
-	RULE_ID{ after(grammarAccess.getCellDisplaySpecAccess().getVarIDTerminalRuleCall_4_1_1_0()); }
+{ before(grammarAccess.getCellDisplaySpecAccess().getVarCellVarSpecCrossReference_4_1_1_0()); }
+(
+{ before(grammarAccess.getCellDisplaySpecAccess().getVarCellVarSpecIDTerminalRuleCall_4_1_1_0_1()); }
+	RULE_ID{ after(grammarAccess.getCellDisplaySpecAccess().getVarCellVarSpecIDTerminalRuleCall_4_1_1_0_1()); }
+)
+{ after(grammarAccess.getCellDisplaySpecAccess().getVarCellVarSpecCrossReference_4_1_1_0()); }
 )
 
 ;

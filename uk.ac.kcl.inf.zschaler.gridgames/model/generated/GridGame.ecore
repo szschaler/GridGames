@@ -20,7 +20,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="CellDisplaySpec" eSuperTypes="#//CellMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="display_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="var" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//CellVarSpec"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CellVarSpec" eSuperTypes="#//CellMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

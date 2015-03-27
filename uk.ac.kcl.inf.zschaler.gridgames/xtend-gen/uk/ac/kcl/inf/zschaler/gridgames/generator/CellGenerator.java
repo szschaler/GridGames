@@ -136,10 +136,9 @@ public class CellGenerator extends CommonGenerator {
         String _type = v.getType();
         _builder.append(_type, "");
         _builder.append(" ");
-        String _name = v.getName();
-        String _firstLower = StringExtensions.toFirstLower(_name);
-        _builder.append(_firstLower, "");
-        _builder.append("Variable;");
+        CharSequence _generateVariableName = CellGenerator.this.generateVariableName(v);
+        _builder.append(_generateVariableName, "");
+        _builder.append(";");
         return _builder.toString();
       }
     };
@@ -179,13 +178,12 @@ public class CellGenerator extends CommonGenerator {
       @Override
       public CharSequence apply(final CellVarSpec v) {
         StringConcatenation _builder = new StringConcatenation();
+        CharSequence _generateVariableName = CellGenerator.this.generateVariableName(v);
+        _builder.append(_generateVariableName, "");
+        _builder.append(" = ");
         String _name = v.getName();
         String _firstLower = StringExtensions.toFirstLower(_name);
         _builder.append(_firstLower, "");
-        _builder.append("Variable = ");
-        String _name_1 = v.getName();
-        String _firstLower_1 = StringExtensions.toFirstLower(_name_1);
-        _builder.append(_firstLower_1, "");
         _builder.append(";");
         return _builder.toString();
       }
@@ -286,6 +284,15 @@ public class CellGenerator extends CommonGenerator {
     return _builder;
   }
   
+  public CharSequence generateVariableName(final CellVarSpec v) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = v.getName();
+    String _firstLower = StringExtensions.toFirstLower(_name);
+    _builder.append(_firstLower, "");
+    _builder.append("Variable");
+    return _builder;
+  }
+  
   public CharSequence generateTextCalculation(final CellDisplaySpec cds) {
     CharSequence _xifexpression = null;
     String _text = cds.getText();
@@ -300,9 +307,9 @@ public class CellGenerator extends CommonGenerator {
     } else {
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("\"\" + ");
-      String _var = cds.getVar();
-      _builder_1.append(_var, "");
-      _builder_1.append("Variable");
+      CellVarSpec _var = cds.getVar();
+      CharSequence _generateVariableName = this.generateVariableName(_var);
+      _builder_1.append(_generateVariableName, "");
       _xifexpression = _builder_1;
     }
     return _xifexpression;

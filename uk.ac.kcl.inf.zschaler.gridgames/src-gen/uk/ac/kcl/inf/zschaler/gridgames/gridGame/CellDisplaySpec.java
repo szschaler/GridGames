@@ -76,29 +76,29 @@ public interface CellDisplaySpec extends CellMember
   void setText(String value);
 
   /**
-   * Returns the value of the '<em><b>Var</b></em>' attribute.
+   * Returns the value of the '<em><b>Var</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Var</em>' attribute isn't clear,
+   * If the meaning of the '<em>Var</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Var</em>' attribute.
-   * @see #setVar(String)
+   * @return the value of the '<em>Var</em>' reference.
+   * @see #setVar(CellVarSpec)
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getCellDisplaySpec_Var()
    * @model
    * @generated
    */
-  String getVar();
+  CellVarSpec getVar();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getVar <em>Var</em>}' attribute.
+   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getVar <em>Var</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Var</em>' attribute.
+   * @param value the new value of the '<em>Var</em>' reference.
    * @see #getVar()
    * @generated
    */
-  void setVar(String value);
+  void setVar(CellVarSpec value);
 
 } // CellDisplaySpec

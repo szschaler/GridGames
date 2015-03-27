@@ -54,10 +54,10 @@ class CellGenerator extends CommonGenerator {
 		import java.awt.Component;
 		
 		public class «c.generateCellClassName» extends Cell {
-			«c.members.filter(CellVarSpec).join(" ", [v | '''private «v.type» «v.name.toFirstLower»Variable;'''])»
+			«c.members.filter(CellVarSpec).join(" ", [v | '''private «v.type» «v.generateVariableName»;'''])»
 			
 			public «c.generateCellClassName»(«c.members.filter(CellVarSpec).join(", ", [v | '''«v.type» «v.name.toFirstLower»'''])») {
-				«c.members.filter(CellVarSpec).join("; ", [v | '''«v.name.toFirstLower»Variable = «v.name.toFirstLower»;'''])»
+				«c.members.filter(CellVarSpec).join("; ", [v | '''«v.generateVariableName» = «v.name.toFirstLower»;'''])»
 			}
 			
 			@Override
@@ -87,9 +87,11 @@ class CellGenerator extends CommonGenerator {
 		}
 	'''
 	
+	def generateVariableName (CellVarSpec v) '''«v.name.toFirstLower»Variable'''
+	
 	def generateTextCalculation(CellDisplaySpec cds) {
 		if (cds.text != null) '''"«cds.text»"'''
-		else '''"" + «cds.^var»Variable'''
+		else '''"" + «cds.^var.generateVariableName»'''
 	}
 	
 	def generateFactory() '''
