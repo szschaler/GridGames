@@ -109,6 +109,21 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.CELL_STATE_SPEC:
+      {
+        CellStateSpec cellStateSpec = (CellStateSpec)theEObject;
+        T result = caseCellStateSpec(cellStateSpec);
+        if (result == null) result = caseCellMember(cellStateSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.CELL_STATE:
+      {
+        CellState cellState = (CellState)theEObject;
+        T result = caseCellState(cellState);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GridGamePackage.FIELD_SPECIFICATION:
       {
         FieldSpecification fieldSpecification = (FieldSpecification)theEObject;
@@ -295,6 +310,38 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCellVarSpec(CellVarSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cell State Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cell State Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCellStateSpec(CellStateSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cell State</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cell State</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCellState(CellState object)
   {
     return null;
   }

@@ -19,6 +19,8 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransi
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
@@ -51,6 +53,12 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.CELL_SPECIFICATION:
 				sequence_CellSpecification(context, (CellSpecification) semanticObject); 
+				return; 
+			case GridGamePackage.CELL_STATE:
+				sequence_CellState(context, (CellState) semanticObject); 
+				return; 
+			case GridGamePackage.CELL_STATE_SPEC:
+				sequence_CellStateSpec(context, (CellStateSpec) semanticObject); 
 				return; 
 			case GridGamePackage.CELL_VAR_SPEC:
 				sequence_CellVarSpec(context, (CellVarSpec) semanticObject); 
@@ -116,6 +124,34 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 */
 	protected void sequence_CellSpecification(EObject context, CellSpecification semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (states+=CellState+ start=[CellState|ID])
+	 */
+	protected void sequence_CellStateSpec(EObject context, CellStateSpec semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID display=CellDisplaySpec)
+	 */
+	protected void sequence_CellState(EObject context, CellState semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.CELL_STATE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.CELL_STATE__NAME));
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.CELL_STATE__DISPLAY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.CELL_STATE__DISPLAY));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getCellStateAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCellStateAccess().getDisplayCellDisplaySpecParserRuleCall_2_0(), semanticObject.getDisplay());
+		feeder.finish();
 	}
 	
 	

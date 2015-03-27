@@ -14,6 +14,8 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
@@ -73,6 +75,20 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass cellVarSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cellStateSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cellStateEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -400,6 +416,66 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getCellStateSpec()
+  {
+    return cellStateSpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCellStateSpec_States()
+  {
+    return (EReference)cellStateSpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCellStateSpec_Start()
+  {
+    return (EReference)cellStateSpecEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCellState()
+  {
+    return cellStateEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCellState_Name()
+  {
+    return (EAttribute)cellStateEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCellState_Display()
+  {
+    return (EReference)cellStateEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getFieldSpecification()
   {
     return fieldSpecificationEClass;
@@ -706,6 +782,14 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEAttribute(cellVarSpecEClass, CELL_VAR_SPEC__TYPE);
     createEAttribute(cellVarSpecEClass, CELL_VAR_SPEC__NAME);
 
+    cellStateSpecEClass = createEClass(CELL_STATE_SPEC);
+    createEReference(cellStateSpecEClass, CELL_STATE_SPEC__STATES);
+    createEReference(cellStateSpecEClass, CELL_STATE_SPEC__START);
+
+    cellStateEClass = createEClass(CELL_STATE);
+    createEAttribute(cellStateEClass, CELL_STATE__NAME);
+    createEReference(cellStateEClass, CELL_STATE__DISPLAY);
+
     fieldSpecificationEClass = createEClass(FIELD_SPECIFICATION);
     createEAttribute(fieldSpecificationEClass, FIELD_SPECIFICATION__NAME);
     createEAttribute(fieldSpecificationEClass, FIELD_SPECIFICATION__WIDTH);
@@ -778,6 +862,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     // Add supertypes to classes
     cellDisplaySpecEClass.getESuperTypes().add(this.getCellMember());
     cellVarSpecEClass.getESuperTypes().add(this.getCellMember());
+    cellStateSpecEClass.getESuperTypes().add(this.getCellMember());
     allowRestartMenuEClass.getESuperTypes().add(this.getOptionSpecification());
     startFieldDeclarationEClass.getESuperTypes().add(this.getOptionSpecification());
     defaultInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
@@ -808,6 +893,14 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEClass(cellVarSpecEClass, CellVarSpec.class, "CellVarSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCellVarSpec_Type(), ecorePackage.getEString(), "type", null, 0, 1, CellVarSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCellVarSpec_Name(), ecorePackage.getEString(), "name", null, 0, 1, CellVarSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(cellStateSpecEClass, CellStateSpec.class, "CellStateSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCellStateSpec_States(), this.getCellState(), null, "states", null, 0, -1, CellStateSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCellStateSpec_Start(), this.getCellState(), null, "start", null, 0, 1, CellStateSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(cellStateEClass, CellState.class, "CellState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCellState_Name(), ecorePackage.getEString(), "name", null, 0, 1, CellState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCellState_Display(), this.getCellDisplaySpec(), null, "display", null, 0, 1, CellState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldSpecificationEClass, FieldSpecification.class, "FieldSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFieldSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, FieldSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

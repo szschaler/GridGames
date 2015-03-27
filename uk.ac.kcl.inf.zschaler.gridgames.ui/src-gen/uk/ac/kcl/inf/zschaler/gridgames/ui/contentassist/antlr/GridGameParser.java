@@ -50,6 +50,8 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCellDisplaySpecAccess().getGroup_4_0(), "rule__CellDisplaySpec__Group_4_0__0");
 					put(grammarAccess.getCellDisplaySpecAccess().getGroup_4_1(), "rule__CellDisplaySpec__Group_4_1__0");
 					put(grammarAccess.getCellVarSpecAccess().getGroup(), "rule__CellVarSpec__Group__0");
+					put(grammarAccess.getCellStateSpecAccess().getGroup(), "rule__CellStateSpec__Group__0");
+					put(grammarAccess.getCellStateAccess().getGroup(), "rule__CellState__Group__0");
 					put(grammarAccess.getFieldSpecificationAccess().getGroup(), "rule__FieldSpecification__Group__0");
 					put(grammarAccess.getAllowRestartMenuAccess().getGroup(), "rule__AllowRestartMenu__Group__0");
 					put(grammarAccess.getStartFieldDeclarationAccess().getGroup(), "rule__StartFieldDeclaration__Group__0");
@@ -74,6 +76,10 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCellDisplaySpecAccess().getVarAssignment_4_1_1(), "rule__CellDisplaySpec__VarAssignment_4_1_1");
 					put(grammarAccess.getCellVarSpecAccess().getTypeAssignment_1(), "rule__CellVarSpec__TypeAssignment_1");
 					put(grammarAccess.getCellVarSpecAccess().getNameAssignment_2(), "rule__CellVarSpec__NameAssignment_2");
+					put(grammarAccess.getCellStateSpecAccess().getStatesAssignment_2(), "rule__CellStateSpec__StatesAssignment_2");
+					put(grammarAccess.getCellStateSpecAccess().getStartAssignment_5(), "rule__CellStateSpec__StartAssignment_5");
+					put(grammarAccess.getCellStateAccess().getNameAssignment_0(), "rule__CellState__NameAssignment_0");
+					put(grammarAccess.getCellStateAccess().getDisplayAssignment_2(), "rule__CellState__DisplayAssignment_2");
 					put(grammarAccess.getFieldSpecificationAccess().getNameAssignment_1(), "rule__FieldSpecification__NameAssignment_1");
 					put(grammarAccess.getFieldSpecificationAccess().getWidthAssignment_5(), "rule__FieldSpecification__WidthAssignment_5");
 					put(grammarAccess.getFieldSpecificationAccess().getHeightAssignment_8(), "rule__FieldSpecification__HeightAssignment_8");

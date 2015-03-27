@@ -25,7 +25,8 @@ CellSpecification :
 	
 CellMember :
 	CellDisplaySpec |
-	CellVarSpec 
+	CellVarSpec |
+	CellStateSpec
 ;
 
 CellDisplaySpec :
@@ -38,6 +39,20 @@ CellDisplaySpec :
 
 CellVarSpec :
 	"var" type=("int"|"String") name=ID	
+;
+
+CellStateSpec :
+	"states" "{"
+		states+=CellState+
+		
+		"start" "=" start=[CellState]
+	"}"
+;
+
+CellState :
+	name=ID "{"
+		display = CellDisplaySpec
+	"}"
 ;
 
 FieldSpecification :
