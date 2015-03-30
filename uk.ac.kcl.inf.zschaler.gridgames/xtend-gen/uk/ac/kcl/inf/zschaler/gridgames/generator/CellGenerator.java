@@ -22,6 +22,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 
 /**
  * Generates all stuff to do with handling cells.
@@ -161,13 +162,16 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t\t");
     _builder.append("public abstract Component formatUIRepresentation(JButton jb, JLabel jl);");
     _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public void handleMouseClick (boolean isLeft) {}");
+    _builder.newLine();
     _builder.append("\t");
     _builder.append("} ");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("protected CellState currentState;");
+    _builder.append("private CellState currentState;");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -191,6 +195,28 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public void setState (CellState newState) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("currentState = newState;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public void handleMouseClick (boolean isLeft) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("currentState.handleMouseClick(isLeft);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -290,7 +316,7 @@ public class CellGenerator extends CommonGenerator {
     _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("currentState = new ");
+    _builder.append("setState (new ");
     EList<CellMember> _members_2 = c.getMembers();
     Iterable<CellStateSpec> _filter_2 = Iterables.<CellStateSpec>filter(_members_2, CellStateSpec.class);
     final Function1<CellStateSpec, Boolean> _function_2 = new Function1<CellStateSpec, Boolean>() {
@@ -304,7 +330,7 @@ public class CellGenerator extends CommonGenerator {
     String _name = _start.getName();
     String _firstUpper = StringExtensions.toFirstUpper(_name);
     _builder.append(_firstUpper, "\t\t");
-    _builder.append("CellState();");
+    _builder.append("CellState());");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
@@ -426,6 +452,60 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
+    _builder.append("\t");
+    CharSequence _xifexpression_1 = null;
+    EList<TransitionSpec> _transitions = cs.getTransitions();
+    boolean _isEmpty = _transitions.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.newLine();
+      _builder_3.append("public void handleMouseClick (boolean isLeft) {");
+      _builder_3.newLine();
+      _builder_3.append("\t");
+      EList<TransitionSpec> _transitions_1 = cs.getTransitions();
+      final Function1<TransitionSpec, CharSequence> _function = new Function1<TransitionSpec, CharSequence>() {
+        @Override
+        public CharSequence apply(final TransitionSpec t) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("if (");
+          CharSequence _xifexpression = null;
+          String _trigger = t.getTrigger();
+          boolean _equals = _trigger.equals("mouse-left");
+          if (_equals) {
+            StringConcatenation _builder_1 = new StringConcatenation();
+            _builder_1.append("isLeft");
+            _xifexpression = _builder_1;
+          } else {
+            StringConcatenation _builder_2 = new StringConcatenation();
+            _builder_2.append("!isLeft");
+            _xifexpression = _builder_2;
+          }
+          _builder.append(_xifexpression, "");
+          _builder.append(") {");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t");
+          _builder.append("setState(new ");
+          CellState _target = t.getTarget();
+          String _name = _target.getName();
+          String _firstUpper = StringExtensions.toFirstUpper(_name);
+          _builder.append(_firstUpper, "\t");
+          _builder.append("CellState());");
+          _builder.newLineIfNotEmpty();
+          _builder.append("}");
+          _builder.newLine();
+          return _builder.toString();
+        }
+      };
+      String _join = IterableExtensions.<TransitionSpec>join(_transitions_1, " ", _function);
+      _builder_3.append(_join, "\t");
+      _builder_3.newLineIfNotEmpty();
+      _builder_3.append("}");
+      _builder_3.newLine();
+      _xifexpression_1 = _builder_3;
+    }
+    _builder.append(_xifexpression_1, "\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
     return _builder;

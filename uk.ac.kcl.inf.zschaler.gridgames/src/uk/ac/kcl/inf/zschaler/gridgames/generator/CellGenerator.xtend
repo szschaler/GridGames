@@ -67,9 +67,10 @@ class CellGenerator extends CommonGenerator {
 		public abstract class Cell {
 			protected abstract class CellState {
 				public abstract Component formatUIRepresentation(JButton jb, JLabel jl);
+				public void handleMouseClick (boolean isLeft) {}
 			} 
 			
-			protected CellState currentState;
+			private CellState currentState;
 			
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
 				if (currentState != null) {
@@ -78,6 +79,16 @@ class CellGenerator extends CommonGenerator {
 				else {
 					return jb;
 				}
+			}
+
+			public void setState (CellState newState) {
+				currentState = newState;
+				«// TODO: Trigger view update
+				»
+			}
+
+			public void handleMouseClick (boolean isLeft) {
+				currentState.handleMouseClick(isLeft);
 			}
 			
 			«gg.cells.join(" ", [c | '''public boolean is«c.name.toFirstUpper»() { return false; }'''])»
@@ -101,7 +112,7 @@ class CellGenerator extends CommonGenerator {
 			«c.members.filter(CellVarSpec).join(" ", [v | '''private «v.type» «v.generateVariableName»;'''])»
 			
 			public «c.generateCellClassName»(«c.members.filter(CellVarSpec).join(", ", [v | '''«v.type» «v.name.toFirstLower»'''])») {
-				currentState = new «c.members.filter(CellStateSpec).findFirst[true].start.name.toFirstUpper»CellState();
+				setState (new «c.members.filter(CellStateSpec).findFirst[true].start.name.toFirstUpper»CellState());
 				
 				«c.members.filter(CellVarSpec).join("; ", [v | '''«v.generateVariableName» = «v.name.toFirstLower»;'''])»
 			}
@@ -135,6 +146,18 @@ class CellGenerator extends CommonGenerator {
 					'''
 				}»
 			}
+			«if (!cs.transitions.empty) {
+				'''
+				
+				public void handleMouseClick (boolean isLeft) {
+					«cs.transitions.join (" ", [t | '''
+					if («if (t.trigger.equals("mouse-left")) {'''isLeft'''} else {'''!isLeft'''}») {
+						setState(new «t.target.name.toFirstUpper»CellState());
+					}
+					'''])»
+				}
+				'''
+			}»
 		}
 	'''
 
