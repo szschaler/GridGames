@@ -45,6 +45,7 @@ class CellGenerator extends CommonGenerator {
 			// Create a new state spec and move the display spec over
 			var stateSpec = gg.eClass.EPackage.EFactoryInstance.create(gg.eClass.EPackage.EClassifiers.findFirst[ec | ec.name.equals ("CellStateSpec")] as EClass) as CellStateSpec
 			var dummyState = gg.eClass.EPackage.EFactoryInstance.create(gg.eClass.EPackage.EClassifiers.findFirst[ec | ec.name.equals ("CellState")] as EClass) as CellState
+			dummyState.name = "default";
 			stateSpec.states.add(dummyState)
 			c.members.add (stateSpec)
 			dummyState.display = c.members.filter(CellDisplaySpec).findFirst[true]
@@ -64,7 +65,20 @@ class CellGenerator extends CommonGenerator {
 		import java.awt.Component;
 		
 		public abstract class Cell {
-			public abstract Component formatUIRepresentation(JButton jb, JLabel jl);
+			protected abstract class CellState {
+				public abstract Component formatUIRepresentation(JButton jb, JLabel jl);
+			} 
+			
+			protected CellState currentState;
+			
+			public Component formatUIRepresentation(JButton jb, JLabel jl) {
+				if (currentState != null) {
+					return currentState.formatUIRepresentation(jb, jl);
+				}
+				else {
+					return jb;
+				}
+			}
 			
 			«gg.cells.join(" ", [c | '''public boolean is«c.name.toFirstUpper»() { return false; }'''])»
 		}
@@ -87,32 +101,39 @@ class CellGenerator extends CommonGenerator {
 			«c.members.filter(CellVarSpec).join(" ", [v | '''private «v.type» «v.generateVariableName»;'''])»
 			
 			public «c.generateCellClassName»(«c.members.filter(CellVarSpec).join(", ", [v | '''«v.type» «v.name.toFirstLower»'''])») {
+				currentState = new «c.members.filter(CellStateSpec).findFirst[true].start.name.toFirstUpper»CellState();
+				
 				«c.members.filter(CellVarSpec).join("; ", [v | '''«v.generateVariableName» = «v.name.toFirstLower»;'''])»
 			}
 			
-			@Override
-			public Component formatUIRepresentation(JButton jb, JLabel jl) {
-				«if (c.members.exists[m | m instanceof CellDisplaySpec]) {
-					val d = c.members.findFirst[m | m instanceof CellDisplaySpec] as CellDisplaySpec
-					if (d.display_type.equals ("button")) {
-						'''
-						jb.setText («d.generateTextCalculation»);
-						return jb;
-						'''
-					} else {
-						'''
-						jl.setText («d.generateTextCalculation»);
-						return jl;
-						'''
-					}
-				} else {
-					'''return jb;'''
-				}»
-			}
+			«c.members.filter(CellStateSpec).join (" ", [css | css.generateStateSpec])»
 			
 			@Override
 			public boolean is«c.name.toFirstUpper»() {
 				return true;
+			}
+		}
+	'''
+	
+	def CharSequence generateStateSpec(CellStateSpec css) {
+		css.states.join (" ", [s | s.generateStateSpec])
+	} 
+	
+	def generateStateSpec (CellState cs) '''
+		private class «cs.name.toFirstUpper»CellState extends CellState {
+			@Override
+			public Component formatUIRepresentation(JButton jb, JLabel jl) {
+				«if (cs.display.display_type.equals ("button")) {
+					'''
+					jb.setText («cs.display.generateTextCalculation»);
+					return jb;
+					'''
+				 } else {
+				 	'''
+					jl.setText («cs.display.generateTextCalculation»);
+					return jl;
+					'''
+				}»
 			}
 		}
 	'''
