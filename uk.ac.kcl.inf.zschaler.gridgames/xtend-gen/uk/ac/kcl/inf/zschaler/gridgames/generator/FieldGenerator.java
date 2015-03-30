@@ -324,6 +324,15 @@ public class FieldGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public void handleClickAt (int row, int col, boolean isLeft) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("getValueAt (row, col).handleMouseClick (isLeft, row, col, this);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
     _builder.append("}");
     return _builder;
   }

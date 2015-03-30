@@ -64,13 +64,15 @@ class CellGenerator extends CommonGenerator {
 		
 		import java.awt.Component;
 		
+		import «generateModelPackage».«generateFieldClassName»;
+		
 		public abstract class Cell {
 			protected abstract class CellState {
 				public abstract Component formatUIRepresentation(JButton jb, JLabel jl);
-				public void handleMouseClick (boolean isLeft) {}
+				public void handleMouseClick (boolean isLeft, int row, int col, «generateFieldClassName()» field) { }
 			} 
 			
-			private CellState currentState;
+			protected CellState currentState;
 			
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
 				if (currentState != null) {
@@ -81,14 +83,8 @@ class CellGenerator extends CommonGenerator {
 				}
 			}
 
-			public void setState (CellState newState) {
-				currentState = newState;
-				«// TODO: Trigger view update
-				»
-			}
-
-			public void handleMouseClick (boolean isLeft) {
-				currentState.handleMouseClick(isLeft);
+			public void handleMouseClick (boolean isLeft, int row, int col, «generateFieldClassName()» field) {
+				currentState.handleMouseClick(isLeft, row, col, field);
 			}
 			
 			«gg.cells.join(" ", [c | '''public boolean is«c.name.toFirstUpper»() { return false; }'''])»
@@ -98,21 +94,21 @@ class CellGenerator extends CommonGenerator {
 	/**
 	 * Generate code for the specified cell specification
 	 */
-	def generateCellClass(
-		CellSpecification c
-	) '''
+	def generateCellClass(CellSpecification c) '''
 		package «generateCellPackage»;
 		
 		import javax.swing.JButton;
 		import javax.swing.JLabel;
 		
 		import java.awt.Component;
+
+		import «generateModelPackage».«generateFieldClassName»;
 		
 		public class «c.generateCellClassName» extends Cell {
 			«c.members.filter(CellVarSpec).join(" ", [v | '''private «v.type» «v.generateVariableName»;'''])»
 			
 			public «c.generateCellClassName»(«c.members.filter(CellVarSpec).join(", ", [v | '''«v.type» «v.name.toFirstLower»'''])») {
-				setState (new «c.members.filter(CellStateSpec).findFirst[true].start.name.toFirstUpper»CellState());
+				currentState = new «c.members.filter(CellStateSpec).findFirst[true].start.name.toFirstUpper»CellState();
 				
 				«c.members.filter(CellVarSpec).join("; ", [v | '''«v.generateVariableName» = «v.name.toFirstLower»;'''])»
 			}
@@ -149,10 +145,11 @@ class CellGenerator extends CommonGenerator {
 			«if (!cs.transitions.empty) {
 				'''
 				
-				public void handleMouseClick (boolean isLeft) {
+				public void handleMouseClick (boolean isLeft, int row, int col, «generateFieldClassName()» field) {
 					«cs.transitions.join (" ", [t | '''
 					if («if (t.trigger.equals("mouse-left")) {'''isLeft'''} else {'''!isLeft'''}») {
-						setState(new «t.target.name.toFirstUpper»CellState());
+						currentState = new «t.target.name.toFirstUpper»CellState();
+						field.fireTableCellUpdated(row, col);
 					}
 					'''])»
 				}

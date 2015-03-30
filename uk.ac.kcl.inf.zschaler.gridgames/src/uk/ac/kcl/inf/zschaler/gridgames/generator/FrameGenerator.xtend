@@ -3,6 +3,10 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
+import java.awt.event.MouseAdapter
+import java.awt.event.MouseEvent
+import javax.swing.SwingUtilities
+import java.awt.Point
 
 class FrameGenerator extends CommonGenerator {
 	new(GridGame gg) {
@@ -28,6 +32,7 @@ class FrameGenerator extends CommonGenerator {
 		import javax.swing.AbstractAction;
 		import javax.swing.JLabel;
 		import javax.swing.JButton;
+		import javax.swing.SwingUtilities;
 
 		import javax.swing.table.TableCellRenderer;
 		
@@ -35,6 +40,9 @@ class FrameGenerator extends CommonGenerator {
 		import java.awt.FlowLayout;
 		import java.awt.Component;
 		import java.awt.Insets;
+		import java.awt.event.MouseAdapter;
+		import java.awt.event.MouseEvent;
+		import java.awt.Point;
 		
 		import java.util.Enumeration;
 
@@ -98,6 +106,17 @@ class FrameGenerator extends CommonGenerator {
 				jtDisplay.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 				jtDisplay.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				jtDisplay.setCellSelectionEnabled(true);
+				
+				jtDisplay.addMouseListener (new MouseAdapter() {
+					@Override
+					public void mouseReleased (MouseEvent e) {
+						Point p = e.getPoint();
+						int row = jtDisplay.rowAtPoint(p);
+						int col = jtDisplay.columnAtPoint(p);
+						
+						field.handleClickAt (row, col, SwingUtilities.isLeftMouseButton(e));
+					}
+				});
 		
 				add(jtDisplay);
 				

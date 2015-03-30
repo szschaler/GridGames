@@ -116,6 +116,9 @@ class FieldGenerator extends CommonGenerator {
 			fireTableCellUpdated(row, col);
 		}
 		
+		public void handleClickAt (int row, int col, boolean isLeft) {
+			getValueAt (row, col).handleMouseClick (isLeft, row, col, this);
+		}
 	}'''
 	
 	def dispatch generateImplementation(FilterExpression fe) '''
