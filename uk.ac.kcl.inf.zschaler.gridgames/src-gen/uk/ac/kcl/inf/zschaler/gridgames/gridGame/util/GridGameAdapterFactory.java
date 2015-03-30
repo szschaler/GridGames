@@ -110,6 +110,11 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createCellStateAdapter();
       }
       @Override
+      public Adapter caseTransitionSpec(TransitionSpec object)
+      {
+        return createTransitionSpecAdapter();
+      }
+      @Override
       public Adapter caseFieldSpecification(FieldSpecification object)
       {
         return createFieldSpecificationAdapter();
@@ -302,6 +307,21 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCellStateAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec <em>Transition Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec
+   * @generated
+   */
+  public Adapter createTransitionSpecAdapter()
   {
     return null;
   }

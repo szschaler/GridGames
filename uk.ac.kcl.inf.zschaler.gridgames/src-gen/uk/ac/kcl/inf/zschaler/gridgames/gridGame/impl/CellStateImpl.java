@@ -2,8 +2,12 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -11,9 +15,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +32,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateImpl#getDisplay <em>Display</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateImpl#getTransitions <em>Transitions</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,6 +69,16 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
    * @ordered
    */
   protected CellDisplaySpec display;
+
+  /**
+   * The cached value of the '{@link #getTransitions() <em>Transitions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTransitions()
+   * @generated
+   * @ordered
+   */
+  protected EList<TransitionSpec> transitions;
 
   /**
    * <!-- begin-user-doc -->
@@ -158,6 +177,20 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<TransitionSpec> getTransitions()
+  {
+    if (transitions == null)
+    {
+      transitions = new EObjectContainmentEList<TransitionSpec>(TransitionSpec.class, this, GridGamePackage.CELL_STATE__TRANSITIONS);
+    }
+    return transitions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -165,6 +198,8 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
     {
       case GridGamePackage.CELL_STATE__DISPLAY:
         return basicSetDisplay(null, msgs);
+      case GridGamePackage.CELL_STATE__TRANSITIONS:
+        return ((InternalEList<?>)getTransitions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -183,6 +218,8 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
         return getName();
       case GridGamePackage.CELL_STATE__DISPLAY:
         return getDisplay();
+      case GridGamePackage.CELL_STATE__TRANSITIONS:
+        return getTransitions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -192,6 +229,7 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -202,6 +240,10 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
         return;
       case GridGamePackage.CELL_STATE__DISPLAY:
         setDisplay((CellDisplaySpec)newValue);
+        return;
+      case GridGamePackage.CELL_STATE__TRANSITIONS:
+        getTransitions().clear();
+        getTransitions().addAll((Collection<? extends TransitionSpec>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -223,6 +265,9 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
       case GridGamePackage.CELL_STATE__DISPLAY:
         setDisplay((CellDisplaySpec)null);
         return;
+      case GridGamePackage.CELL_STATE__TRANSITIONS:
+        getTransitions().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -241,6 +286,8 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GridGamePackage.CELL_STATE__DISPLAY:
         return display != null;
+      case GridGamePackage.CELL_STATE__TRANSITIONS:
+        return transitions != null && !transitions.isEmpty();
     }
     return super.eIsSet(featureID);
   }

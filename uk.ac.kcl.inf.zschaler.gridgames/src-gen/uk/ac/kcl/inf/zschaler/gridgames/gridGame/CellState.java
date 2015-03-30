@@ -2,6 +2,8 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState#getDisplay <em>Display</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState#getTransitions <em>Transitions</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,5 +77,21 @@ public interface CellState extends EObject
    * @generated
    */
   void setDisplay(CellDisplaySpec value);
+
+  /**
+   * Returns the value of the '<em><b>Transitions</b></em>' containment reference list.
+   * The list contents are of type {@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Transitions</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Transitions</em>' containment reference list.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getCellState_Transitions()
+   * @model containment="true"
+   * @generated
+   */
+  EList<TransitionSpec> getTransitions();
 
 } // CellState

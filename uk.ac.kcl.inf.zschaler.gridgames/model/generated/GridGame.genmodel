@@ -34,6 +34,11 @@
     <genClasses ecoreClass="GridGame.ecore#//CellState">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellState/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//CellState/display"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//CellState/transitions"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//TransitionSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//TransitionSpec/trigger"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//TransitionSpec/target"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//FieldSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/name"/>

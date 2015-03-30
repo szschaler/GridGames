@@ -52,7 +52,18 @@ CellStateSpec :
 CellState :
 	name=ID "{"
 		display = CellDisplaySpec
+		("transitions" "{"
+			transitions += TransitionSpec+
+		 "}")?
 	"}"
+;
+
+TransitionSpec :
+	"on" trigger=TransitionTriggerSpec "goto" target=[CellState]
+;
+
+TransitionTriggerSpec :
+	"mouse-left" | "mouse-right" 
 ;
 
 FieldSpecification :

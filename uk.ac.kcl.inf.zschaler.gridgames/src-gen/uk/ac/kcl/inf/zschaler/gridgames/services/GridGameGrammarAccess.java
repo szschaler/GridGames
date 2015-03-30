@@ -328,13 +328,19 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cDisplayAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cDisplayCellDisplaySpecParserRuleCall_2_0 = (RuleCall)cDisplayAssignment_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cTransitionsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Assignment cTransitionsAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
+		private final RuleCall cTransitionsTransitionSpecParserRuleCall_3_2_0 = (RuleCall)cTransitionsAssignment_3_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//CellState:
-		//	name=ID "{" display=CellDisplaySpec "}";
+		//	name=ID "{" display=CellDisplaySpec ("transitions" "{" transitions+=TransitionSpec+ "}")? "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//name=ID "{" display=CellDisplaySpec "}"
+		//name=ID "{" display=CellDisplaySpec ("transitions" "{" transitions+=TransitionSpec+ "}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -352,8 +358,86 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//CellDisplaySpec
 		public RuleCall getDisplayCellDisplaySpecParserRuleCall_2_0() { return cDisplayCellDisplaySpecParserRuleCall_2_0; }
 
+		//("transitions" "{" transitions+=TransitionSpec+ "}")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"transitions"
+		public Keyword getTransitionsKeyword_3_0() { return cTransitionsKeyword_3_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3_1() { return cLeftCurlyBracketKeyword_3_1; }
+
+		//transitions+=TransitionSpec+
+		public Assignment getTransitionsAssignment_3_2() { return cTransitionsAssignment_3_2; }
+
+		//TransitionSpec
+		public RuleCall getTransitionsTransitionSpecParserRuleCall_3_2_0() { return cTransitionsTransitionSpecParserRuleCall_3_2_0; }
+
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+		public Keyword getRightCurlyBracketKeyword_3_3() { return cRightCurlyBracketKeyword_3_3; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class TransitionSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TransitionSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cOnKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTriggerAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTriggerTransitionTriggerSpecParserRuleCall_1_0 = (RuleCall)cTriggerAssignment_1.eContents().get(0);
+		private final Keyword cGotoKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTargetAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cTargetCellStateCrossReference_3_0 = (CrossReference)cTargetAssignment_3.eContents().get(0);
+		private final RuleCall cTargetCellStateIDTerminalRuleCall_3_0_1 = (RuleCall)cTargetCellStateCrossReference_3_0.eContents().get(1);
+		
+		//TransitionSpec:
+		//	"on" trigger=TransitionTriggerSpec "goto" target=[CellState];
+		@Override public ParserRule getRule() { return rule; }
+
+		//"on" trigger=TransitionTriggerSpec "goto" target=[CellState]
+		public Group getGroup() { return cGroup; }
+
+		//"on"
+		public Keyword getOnKeyword_0() { return cOnKeyword_0; }
+
+		//trigger=TransitionTriggerSpec
+		public Assignment getTriggerAssignment_1() { return cTriggerAssignment_1; }
+
+		//TransitionTriggerSpec
+		public RuleCall getTriggerTransitionTriggerSpecParserRuleCall_1_0() { return cTriggerTransitionTriggerSpecParserRuleCall_1_0; }
+
+		//"goto"
+		public Keyword getGotoKeyword_2() { return cGotoKeyword_2; }
+
+		//target=[CellState]
+		public Assignment getTargetAssignment_3() { return cTargetAssignment_3; }
+
+		//[CellState]
+		public CrossReference getTargetCellStateCrossReference_3_0() { return cTargetCellStateCrossReference_3_0; }
+
+		//ID
+		public RuleCall getTargetCellStateIDTerminalRuleCall_3_0_1() { return cTargetCellStateIDTerminalRuleCall_3_0_1; }
+	}
+
+	public class TransitionTriggerSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TransitionTriggerSpec");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cMouseLeftKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cMouseRightKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//TransitionTriggerSpec:
+		//	"mouse-left" | "mouse-right";
+		@Override public ParserRule getRule() { return rule; }
+
+		//"mouse-left" | "mouse-right"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//"mouse-left"
+		public Keyword getMouseLeftKeyword_0() { return cMouseLeftKeyword_0; }
+
+		//"mouse-right"
+		public Keyword getMouseRightKeyword_1() { return cMouseRightKeyword_1; }
 	}
 
 	public class FieldSpecificationElements extends AbstractParserRuleElementFinder {
@@ -861,6 +945,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final CellVarSpecElements pCellVarSpec;
 	private final CellStateSpecElements pCellStateSpec;
 	private final CellStateElements pCellState;
+	private final TransitionSpecElements pTransitionSpec;
+	private final TransitionTriggerSpecElements pTransitionTriggerSpec;
 	private final FieldSpecificationElements pFieldSpecification;
 	private final OptionSpecificationElements pOptionSpecification;
 	private final AllowRestartMenuElements pAllowRestartMenu;
@@ -892,6 +978,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pCellVarSpec = new CellVarSpecElements();
 		this.pCellStateSpec = new CellStateSpecElements();
 		this.pCellState = new CellStateElements();
+		this.pTransitionSpec = new TransitionSpecElements();
+		this.pTransitionTriggerSpec = new TransitionTriggerSpecElements();
 		this.pFieldSpecification = new FieldSpecificationElements();
 		this.pOptionSpecification = new OptionSpecificationElements();
 		this.pAllowRestartMenu = new AllowRestartMenuElements();
@@ -1002,13 +1090,33 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellState:
-	//	name=ID "{" display=CellDisplaySpec "}";
+	//	name=ID "{" display=CellDisplaySpec ("transitions" "{" transitions+=TransitionSpec+ "}")? "}";
 	public CellStateElements getCellStateAccess() {
 		return pCellState;
 	}
 	
 	public ParserRule getCellStateRule() {
 		return getCellStateAccess().getRule();
+	}
+
+	//TransitionSpec:
+	//	"on" trigger=TransitionTriggerSpec "goto" target=[CellState];
+	public TransitionSpecElements getTransitionSpecAccess() {
+		return pTransitionSpec;
+	}
+	
+	public ParserRule getTransitionSpecRule() {
+		return getTransitionSpecAccess().getRule();
+	}
+
+	//TransitionTriggerSpec:
+	//	"mouse-left" | "mouse-right";
+	public TransitionTriggerSpecElements getTransitionTriggerSpecAccess() {
+		return pTransitionTriggerSpec;
+	}
+	
+	public ParserRule getTransitionTriggerSpecRule() {
+		return getTransitionTriggerSpecAccess().getRule();
 	}
 
 	//FieldSpecification:

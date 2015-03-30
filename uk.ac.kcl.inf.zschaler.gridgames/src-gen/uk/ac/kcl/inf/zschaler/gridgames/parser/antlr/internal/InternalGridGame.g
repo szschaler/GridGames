@@ -593,12 +593,136 @@ ruleCellState returns [EObject current=null]
 	    }
 
 )
-)	otherlv_3='}' 
+)(	otherlv_3='transitions' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getCellStateAccess().getRightCurlyBracketKeyword_3());
+    	newLeafNode(otherlv_3, grammarAccess.getCellStateAccess().getTransitionsKeyword_3_0());
+    }
+	otherlv_4='{' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getCellStateAccess().getLeftCurlyBracketKeyword_3_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCellStateAccess().getTransitionsTransitionSpecParserRuleCall_3_2_0()); 
+	    }
+		lv_transitions_5_0=ruleTransitionSpec		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCellStateRule());
+	        }
+       		add(
+       			$current, 
+       			"transitions",
+        		lv_transitions_5_0, 
+        		"TransitionSpec");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)+	otherlv_6='}' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getCellStateAccess().getRightCurlyBracketKeyword_3_3());
+    }
+)?	otherlv_7='}' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getCellStateAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;
+
+
+
+
+
+// Entry rule entryRuleTransitionSpec
+entryRuleTransitionSpec returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getTransitionSpecRule()); }
+	 iv_ruleTransitionSpec=ruleTransitionSpec 
+	 { $current=$iv_ruleTransitionSpec.current; } 
+	 EOF 
+;
+
+// Rule TransitionSpec
+ruleTransitionSpec returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='on' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getTransitionSpecAccess().getOnKeyword_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getTransitionSpecAccess().getTriggerTransitionTriggerSpecParserRuleCall_1_0()); 
+	    }
+		lv_trigger_1_0=ruleTransitionTriggerSpec		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getTransitionSpecRule());
+	        }
+       		set(
+       			$current, 
+       			"trigger",
+        		lv_trigger_1_0, 
+        		"TransitionTriggerSpec");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_2='goto' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getTransitionSpecAccess().getGotoKeyword_2());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getTransitionSpecRule());
+	        }
+        }
+	otherlv_3=RULE_ID
+	{
+		newLeafNode(otherlv_3, grammarAccess.getTransitionSpecAccess().getTargetCellStateCrossReference_3_0()); 
+	}
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRuleTransitionTriggerSpec
+entryRuleTransitionTriggerSpec returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getTransitionTriggerSpecRule()); } 
+	 iv_ruleTransitionTriggerSpec=ruleTransitionTriggerSpec 
+	 { $current=$iv_ruleTransitionTriggerSpec.current.getText(); }  
+	 EOF 
+;
+
+// Rule TransitionTriggerSpec
+ruleTransitionTriggerSpec returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+	kw='mouse-left' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getTransitionTriggerSpecAccess().getMouseLeftKeyword_0()); 
+    }
+
+    |
+	kw='mouse-right' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getTransitionTriggerSpecAccess().getMouseRightKeyword_1()); 
+    }
+)
+    ;
 
 
 
