@@ -42,7 +42,6 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		// * 
 		// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 		// * 
-		// * TODO Enable reuse of state specifications (possibly parametrised) between cell specifications
 		// * TODO Enable reuse of field initialisers (possibly parametrised) between field specifications
 		// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells
 		// * TODO Enable keyboard triggers
@@ -1380,7 +1379,6 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	// * 
 	// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 	// * 
-	// * TODO Enable reuse of state specifications (possibly parametrised) between cell specifications
 	// * TODO Enable reuse of field initialisers (possibly parametrised) between field specifications
 	// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells
 	// * TODO Enable keyboard triggers
