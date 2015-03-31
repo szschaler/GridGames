@@ -69,6 +69,7 @@ TransitionSpec :
 	"on" trigger=TransitionTriggerSpec "goto" target=[CellState]
 ;
 
+// TODO Consider introducing triggers based on state changes in the context
 TransitionTriggerSpec :
 	"mouse-left" | "mouse-right" 
 ;
