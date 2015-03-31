@@ -26,6 +26,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
@@ -81,6 +82,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.DEFAULT_INITIALISATION:
 				sequence_DefaultInitialisation(context, (DefaultInitialisation) semanticObject); 
+				return; 
+			case GridGamePackage.END_GAME_BEHAVIOUR:
+				sequence_EndGameBehaviour(context, (EndGameBehaviour) semanticObject); 
 				return; 
 			case GridGamePackage.FIELD_INITIALISATIONS:
 				sequence_FieldInitialisations(context, (FieldInitialisations) semanticObject); 
@@ -166,7 +170,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID display=CellDisplaySpec transitions+=TransitionSpec*)
+	 *     (name=ID display=CellDisplaySpec transitions+=TransitionSpec* (onEnter+=CellStateBehaviour onEnter+=CellStateBehaviour*)?)
 	 */
 	protected void sequence_CellState(EObject context, CellState semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -234,6 +238,22 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getDefaultInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     message=STRING
+	 */
+	protected void sequence_EndGameBehaviour(EObject context, EndGameBehaviour semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.END_GAME_BEHAVIOUR__MESSAGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.END_GAME_BEHAVIOUR__MESSAGE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getEndGameBehaviourAccess().getMessageSTRINGTerminalRuleCall_2_0(), semanticObject.getMessage());
 		feeder.finish();
 	}
 	

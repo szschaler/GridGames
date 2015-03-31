@@ -106,6 +106,7 @@ CellState :
 		("transitions" "{"
 			transitions += TransitionSpec+
 		 "}")?
+		("onEnter" "{" onEnter += CellStateBehaviour ("," onEnter += CellStateBehaviour)*"}")?
 	"}"
 ;
 
@@ -116,6 +117,14 @@ TransitionSpec :
 // TODO Consider introducing triggers based on state changes in the context
 TransitionTriggerSpec :
 	"mouse-left" | "mouse-right" 
+;
+
+CellStateBehaviour :
+	EndGameBehaviour
+;
+
+EndGameBehaviour :
+	"end-game" "(" message=STRING ")"
 ;
 
 FieldSpecification :

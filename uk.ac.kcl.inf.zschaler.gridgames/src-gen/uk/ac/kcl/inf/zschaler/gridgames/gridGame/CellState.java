@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState#getDisplay <em>Display</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState#getTransitions <em>Transitions</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState#getOnEnter <em>On Enter</em>}</li>
  * </ul>
  * </p>
  *
@@ -93,5 +94,21 @@ public interface CellState extends EObject
    * @generated
    */
   EList<TransitionSpec> getTransitions();
+
+  /**
+   * Returns the value of the '<em><b>On Enter</b></em>' containment reference list.
+   * The list contents are of type {@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>On Enter</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>On Enter</em>' containment reference list.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getCellState_OnEnter()
+   * @model containment="true"
+   * @generated
+   */
+  EList<CellStateBehaviour> getOnEnter();
 
 } // CellState

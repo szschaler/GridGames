@@ -15,6 +15,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
@@ -22,6 +23,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
@@ -169,6 +171,20 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass transitionSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cellStateBehaviourEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass endGameBehaviourEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -756,6 +772,16 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getCellState_OnEnter()
+  {
+    return (EReference)cellStateEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getTransitionSpec()
   {
     return transitionSpecEClass;
@@ -779,6 +805,36 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
   public EReference getTransitionSpec_Target()
   {
     return (EReference)transitionSpecEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCellStateBehaviour()
+  {
+    return cellStateBehaviourEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEndGameBehaviour()
+  {
+    return endGameBehaviourEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEndGameBehaviour_Message()
+  {
+    return (EAttribute)endGameBehaviourEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1128,10 +1184,16 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEAttribute(cellStateEClass, CELL_STATE__NAME);
     createEReference(cellStateEClass, CELL_STATE__DISPLAY);
     createEReference(cellStateEClass, CELL_STATE__TRANSITIONS);
+    createEReference(cellStateEClass, CELL_STATE__ON_ENTER);
 
     transitionSpecEClass = createEClass(TRANSITION_SPEC);
     createEAttribute(transitionSpecEClass, TRANSITION_SPEC__TRIGGER);
     createEReference(transitionSpecEClass, TRANSITION_SPEC__TARGET);
+
+    cellStateBehaviourEClass = createEClass(CELL_STATE_BEHAVIOUR);
+
+    endGameBehaviourEClass = createEClass(END_GAME_BEHAVIOUR);
+    createEAttribute(endGameBehaviourEClass, END_GAME_BEHAVIOUR__MESSAGE);
 
     fieldSpecificationEClass = createEClass(FIELD_SPECIFICATION);
     createEAttribute(fieldSpecificationEClass, FIELD_SPECIFICATION__NAME);
@@ -1213,6 +1275,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     stringValueEClass.getESuperTypes().add(this.getValue());
     intValueEClass.getESuperTypes().add(this.getValue());
     varRefValueEClass.getESuperTypes().add(this.getValue());
+    endGameBehaviourEClass.getESuperTypes().add(this.getCellStateBehaviour());
     allowRestartMenuEClass.getESuperTypes().add(this.getOptionSpecification());
     startFieldDeclarationEClass.getESuperTypes().add(this.getOptionSpecification());
     defaultInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
@@ -1280,10 +1343,16 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEAttribute(getCellState_Name(), ecorePackage.getEString(), "name", null, 0, 1, CellState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCellState_Display(), this.getCellDisplaySpec(), null, "display", null, 0, 1, CellState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCellState_Transitions(), this.getTransitionSpec(), null, "transitions", null, 0, -1, CellState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCellState_OnEnter(), this.getCellStateBehaviour(), null, "onEnter", null, 0, -1, CellState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(transitionSpecEClass, TransitionSpec.class, "TransitionSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTransitionSpec_Trigger(), ecorePackage.getEString(), "trigger", null, 0, 1, TransitionSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTransitionSpec_Target(), this.getCellState(), null, "target", null, 0, 1, TransitionSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(cellStateBehaviourEClass, CellStateBehaviour.class, "CellStateBehaviour", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(endGameBehaviourEClass, EndGameBehaviour.class, "EndGameBehaviour", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEndGameBehaviour_Message(), ecorePackage.getEString(), "message", null, 0, 1, EndGameBehaviour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldSpecificationEClass, FieldSpecification.class, "FieldSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFieldSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, FieldSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

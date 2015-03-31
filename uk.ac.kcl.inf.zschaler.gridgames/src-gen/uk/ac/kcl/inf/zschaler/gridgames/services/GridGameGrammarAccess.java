@@ -43,7 +43,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 		// * 
 		// * TODO Enable reuse of field initialisers (possibly parametrised) between field specifications
-		// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells
+		// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells. Also enable ending the game on discovery of a mine etc.
 		// * TODO Enable keyboard triggers
 		// * TODO Enable cell movement as an alternative behaviour (to support games like Tetris and Breakout), possibly of cell groups rather than just individual cells
 		// * TODO Enable timed triggers for behaviours 
@@ -664,13 +664,25 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTransitionsAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
 		private final RuleCall cTransitionsTransitionSpecParserRuleCall_3_2_0 = (RuleCall)cTransitionsAssignment_3_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cOnEnterKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Assignment cOnEnterAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
+		private final RuleCall cOnEnterCellStateBehaviourParserRuleCall_4_2_0 = (RuleCall)cOnEnterAssignment_4_2.eContents().get(0);
+		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
+		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
+		private final Assignment cOnEnterAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
+		private final RuleCall cOnEnterCellStateBehaviourParserRuleCall_4_3_1_0 = (RuleCall)cOnEnterAssignment_4_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//CellState:
-		//	name=ID "{" display=CellDisplaySpec ("transitions" "{" transitions+=TransitionSpec+ "}")? "}";
+		//	name=ID "{" display=CellDisplaySpec ("transitions" "{" transitions+=TransitionSpec+ "}")? ("onEnter" "{"
+		//	onEnter+=CellStateBehaviour ("," onEnter+=CellStateBehaviour)* "}")? "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//name=ID "{" display=CellDisplaySpec ("transitions" "{" transitions+=TransitionSpec+ "}")? "}"
+		//name=ID "{" display=CellDisplaySpec ("transitions" "{" transitions+=TransitionSpec+ "}")? ("onEnter" "{"
+		//onEnter+=CellStateBehaviour ("," onEnter+=CellStateBehaviour)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -706,8 +718,38 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_3_3() { return cRightCurlyBracketKeyword_3_3; }
 
+		//("onEnter" "{" onEnter+=CellStateBehaviour ("," onEnter+=CellStateBehaviour)* "}")?
+		public Group getGroup_4() { return cGroup_4; }
+
+		//"onEnter"
+		public Keyword getOnEnterKeyword_4_0() { return cOnEnterKeyword_4_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
+
+		//onEnter+=CellStateBehaviour
+		public Assignment getOnEnterAssignment_4_2() { return cOnEnterAssignment_4_2; }
+
+		//CellStateBehaviour
+		public RuleCall getOnEnterCellStateBehaviourParserRuleCall_4_2_0() { return cOnEnterCellStateBehaviourParserRuleCall_4_2_0; }
+
+		//("," onEnter+=CellStateBehaviour)*
+		public Group getGroup_4_3() { return cGroup_4_3; }
+
+		//","
+		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
+
+		//onEnter+=CellStateBehaviour
+		public Assignment getOnEnterAssignment_4_3_1() { return cOnEnterAssignment_4_3_1; }
+
+		//CellStateBehaviour
+		public RuleCall getOnEnterCellStateBehaviourParserRuleCall_4_3_1_0() { return cOnEnterCellStateBehaviourParserRuleCall_4_3_1_0; }
+
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class TransitionSpecElements extends AbstractParserRuleElementFinder {
@@ -769,6 +811,50 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"mouse-right"
 		public Keyword getMouseRightKeyword_1() { return cMouseRightKeyword_1; }
+	}
+
+	public class CellStateBehaviourElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CellStateBehaviour");
+		private final RuleCall cEndGameBehaviourParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//CellStateBehaviour:
+		//	EndGameBehaviour;
+		@Override public ParserRule getRule() { return rule; }
+
+		//EndGameBehaviour
+		public RuleCall getEndGameBehaviourParserRuleCall() { return cEndGameBehaviourParserRuleCall; }
+	}
+
+	public class EndGameBehaviourElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EndGameBehaviour");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cEndGameKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cMessageAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMessageSTRINGTerminalRuleCall_2_0 = (RuleCall)cMessageAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//EndGameBehaviour:
+		//	"end-game" "(" message=STRING ")";
+		@Override public ParserRule getRule() { return rule; }
+
+		//"end-game" "(" message=STRING ")"
+		public Group getGroup() { return cGroup; }
+
+		//"end-game"
+		public Keyword getEndGameKeyword_0() { return cEndGameKeyword_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+
+		//message=STRING
+		public Assignment getMessageAssignment_2() { return cMessageAssignment_2; }
+
+		//STRING
+		public RuleCall getMessageSTRINGTerminalRuleCall_2_0() { return cMessageSTRINGTerminalRuleCall_2_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
 
 	public class FieldSpecificationElements extends AbstractParserRuleElementFinder {
@@ -1287,6 +1373,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final CellStateElements pCellState;
 	private final TransitionSpecElements pTransitionSpec;
 	private final TransitionTriggerSpecElements pTransitionTriggerSpec;
+	private final CellStateBehaviourElements pCellStateBehaviour;
+	private final EndGameBehaviourElements pEndGameBehaviour;
 	private final FieldSpecificationElements pFieldSpecification;
 	private final OptionSpecificationElements pOptionSpecification;
 	private final AllowRestartMenuElements pAllowRestartMenu;
@@ -1329,6 +1417,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pCellState = new CellStateElements();
 		this.pTransitionSpec = new TransitionSpecElements();
 		this.pTransitionTriggerSpec = new TransitionTriggerSpecElements();
+		this.pCellStateBehaviour = new CellStateBehaviourElements();
+		this.pEndGameBehaviour = new EndGameBehaviourElements();
 		this.pFieldSpecification = new FieldSpecificationElements();
 		this.pOptionSpecification = new OptionSpecificationElements();
 		this.pAllowRestartMenu = new AllowRestartMenuElements();
@@ -1380,7 +1470,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 	// * 
 	// * TODO Enable reuse of field initialisers (possibly parametrised) between field specifications
-	// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells
+	// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells. Also enable ending the game on discovery of a mine etc.
 	// * TODO Enable keyboard triggers
 	// * TODO Enable cell movement as an alternative behaviour (to support games like Tetris and Breakout), possibly of cell groups rather than just individual cells
 	// * TODO Enable timed triggers for behaviours 
@@ -1537,7 +1627,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellState:
-	//	name=ID "{" display=CellDisplaySpec ("transitions" "{" transitions+=TransitionSpec+ "}")? "}";
+	//	name=ID "{" display=CellDisplaySpec ("transitions" "{" transitions+=TransitionSpec+ "}")? ("onEnter" "{"
+	//	onEnter+=CellStateBehaviour ("," onEnter+=CellStateBehaviour)* "}")? "}";
 	public CellStateElements getCellStateAccess() {
 		return pCellState;
 	}
@@ -1565,6 +1656,26 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getTransitionTriggerSpecRule() {
 		return getTransitionTriggerSpecAccess().getRule();
+	}
+
+	//CellStateBehaviour:
+	//	EndGameBehaviour;
+	public CellStateBehaviourElements getCellStateBehaviourAccess() {
+		return pCellStateBehaviour;
+	}
+	
+	public ParserRule getCellStateBehaviourRule() {
+		return getCellStateBehaviourAccess().getRule();
+	}
+
+	//EndGameBehaviour:
+	//	"end-game" "(" message=STRING ")";
+	public EndGameBehaviourElements getEndGameBehaviourAccess() {
+		return pEndGameBehaviour;
+	}
+	
+	public ParserRule getEndGameBehaviourRule() {
+		return getEndGameBehaviourAccess().getRule();
 	}
 
 	//FieldSpecification:

@@ -160,6 +160,16 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createTransitionSpecAdapter();
       }
       @Override
+      public Adapter caseCellStateBehaviour(CellStateBehaviour object)
+      {
+        return createCellStateBehaviourAdapter();
+      }
+      @Override
+      public Adapter caseEndGameBehaviour(EndGameBehaviour object)
+      {
+        return createEndGameBehaviourAdapter();
+      }
+      @Override
       public Adapter caseFieldSpecification(FieldSpecification object)
       {
         return createFieldSpecificationAdapter();
@@ -502,6 +512,36 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTransitionSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour <em>Cell State Behaviour</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour
+   * @generated
+   */
+  public Adapter createCellStateBehaviourAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour <em>End Game Behaviour</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour
+   * @generated
+   */
+  public Adapter createEndGameBehaviourAdapter()
   {
     return null;
   }

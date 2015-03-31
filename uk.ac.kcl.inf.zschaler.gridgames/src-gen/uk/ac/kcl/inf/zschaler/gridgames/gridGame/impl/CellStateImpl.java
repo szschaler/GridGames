@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 
@@ -33,6 +34,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateImpl#getDisplay <em>Display</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateImpl#getTransitions <em>Transitions</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateImpl#getOnEnter <em>On Enter</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,6 +81,16 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
    * @ordered
    */
   protected EList<TransitionSpec> transitions;
+
+  /**
+   * The cached value of the '{@link #getOnEnter() <em>On Enter</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOnEnter()
+   * @generated
+   * @ordered
+   */
+  protected EList<CellStateBehaviour> onEnter;
 
   /**
    * <!-- begin-user-doc -->
@@ -191,6 +203,20 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<CellStateBehaviour> getOnEnter()
+  {
+    if (onEnter == null)
+    {
+      onEnter = new EObjectContainmentEList<CellStateBehaviour>(CellStateBehaviour.class, this, GridGamePackage.CELL_STATE__ON_ENTER);
+    }
+    return onEnter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -200,6 +226,8 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
         return basicSetDisplay(null, msgs);
       case GridGamePackage.CELL_STATE__TRANSITIONS:
         return ((InternalEList<?>)getTransitions()).basicRemove(otherEnd, msgs);
+      case GridGamePackage.CELL_STATE__ON_ENTER:
+        return ((InternalEList<?>)getOnEnter()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -220,6 +248,8 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
         return getDisplay();
       case GridGamePackage.CELL_STATE__TRANSITIONS:
         return getTransitions();
+      case GridGamePackage.CELL_STATE__ON_ENTER:
+        return getOnEnter();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -245,6 +275,10 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
         getTransitions().clear();
         getTransitions().addAll((Collection<? extends TransitionSpec>)newValue);
         return;
+      case GridGamePackage.CELL_STATE__ON_ENTER:
+        getOnEnter().clear();
+        getOnEnter().addAll((Collection<? extends CellStateBehaviour>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -268,6 +302,9 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
       case GridGamePackage.CELL_STATE__TRANSITIONS:
         getTransitions().clear();
         return;
+      case GridGamePackage.CELL_STATE__ON_ENTER:
+        getOnEnter().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -288,6 +325,8 @@ public class CellStateImpl extends MinimalEObjectImpl.Container implements CellS
         return display != null;
       case GridGamePackage.CELL_STATE__TRANSITIONS:
         return transitions != null && !transitions.isEmpty();
+      case GridGamePackage.CELL_STATE__ON_ENTER:
+        return onEnter != null && !onEnter.isEmpty();
     }
     return super.eIsSet(featureID);
   }

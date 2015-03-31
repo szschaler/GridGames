@@ -176,6 +176,24 @@ public interface GridGameFactory extends EFactory
   TransitionSpec createTransitionSpec();
 
   /**
+   * Returns a new object of class '<em>Cell State Behaviour</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cell State Behaviour</em>'.
+   * @generated
+   */
+  CellStateBehaviour createCellStateBehaviour();
+
+  /**
+   * Returns a new object of class '<em>End Game Behaviour</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>End Game Behaviour</em>'.
+   * @generated
+   */
+  EndGameBehaviour createEndGameBehaviour();
+
+  /**
    * Returns a new object of class '<em>Field Specification</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
