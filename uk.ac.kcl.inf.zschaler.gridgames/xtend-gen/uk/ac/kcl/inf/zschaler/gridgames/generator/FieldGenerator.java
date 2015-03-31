@@ -192,10 +192,10 @@ public class FieldGenerator extends CommonGenerator {
       _builder_1.append("if (((dx != 0) || (dy != 0)) && ");
       _builder_1.newLine();
       _builder_1.append("\t\t\t\t    ");
-      _builder_1.append("((x + dx > 0) && (x + dx < width)) &&");
+      _builder_1.append("((x + dx >= 0) && (x + dx < width)) &&");
       _builder_1.newLine();
       _builder_1.append("\t\t\t\t    ");
-      _builder_1.append("((y + dy > 0) && (y + dy < height)) &&");
+      _builder_1.append("((y + dy >= 0) && (y + dy < height)) &&");
       _builder_1.newLine();
       _builder_1.append("\t\t\t\t    ");
       _builder_1.append("(field[x + dx][y + dy] != null)) {");
