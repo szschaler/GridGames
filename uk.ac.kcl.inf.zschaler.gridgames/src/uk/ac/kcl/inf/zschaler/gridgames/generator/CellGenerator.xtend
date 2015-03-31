@@ -43,6 +43,7 @@ class CellGenerator extends CommonGenerator {
 		if ((c.members.filter(CellStateSpec).empty) && 
 			(!c.members.filter(CellDisplaySpec).empty)) {
 			// Create a new state spec and move the display spec over
+			// TODO: There must be a simpler way of doing this
 			var stateSpec = gg.eClass.EPackage.EFactoryInstance.create(gg.eClass.EPackage.EClassifiers.findFirst[ec | ec.name.equals ("CellStateSpec")] as EClass) as CellStateSpec
 			var dummyState = gg.eClass.EPackage.EFactoryInstance.create(gg.eClass.EPackage.EClassifiers.findFirst[ec | ec.name.equals ("CellState")] as EClass) as CellState
 			dummyState.name = "default";
