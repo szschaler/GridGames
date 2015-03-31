@@ -9,6 +9,7 @@
       fileExtensions="ggame" ecorePackage="GridGame.ecore#/">
     <genClasses ecoreClass="GridGame.ecore#//GridGame">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GridGame/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/states"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/cells"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/fields"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/options"/>
@@ -26,6 +27,16 @@
     <genClasses ecoreClass="GridGame.ecore#//CellVarSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellVarSpec/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CellVarSpec/name"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//GlobalCellStateSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GlobalCellStateSpec/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalCellStateSpec/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalCellStateSpec/states"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalCellStateSpec/start"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//StateParamSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//StateParamSpec/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//StateParamSpec/name"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//CellStateSpec">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//CellStateSpec/states"/>

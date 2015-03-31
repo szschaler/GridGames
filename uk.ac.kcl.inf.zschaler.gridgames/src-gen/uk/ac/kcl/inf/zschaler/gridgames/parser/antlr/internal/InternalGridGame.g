@@ -106,16 +106,34 @@ ruleGridGame returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getCellsCellSpecificationParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getStatesGlobalCellStateSpecParserRuleCall_3_0()); 
 	    }
-		lv_cells_3_0=ruleCellSpecification		{
+		lv_states_3_0=ruleGlobalCellStateSpec		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
+	        }
+       		add(
+       			$current, 
+       			"states",
+        		lv_states_3_0, 
+        		"GlobalCellStateSpec");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getCellsCellSpecificationParserRuleCall_4_0()); 
+	    }
+		lv_cells_4_0=ruleCellSpecification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
 	        }
        		add(
        			$current, 
        			"cells",
-        		lv_cells_3_0, 
+        		lv_cells_4_0, 
         		"CellSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -124,16 +142,16 @@ ruleGridGame returns [EObject current=null]
 )+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_5_0()); 
 	    }
-		lv_fields_4_0=ruleFieldSpecification		{
+		lv_fields_5_0=ruleFieldSpecification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
 	        }
        		add(
        			$current, 
        			"fields",
-        		lv_fields_4_0, 
+        		lv_fields_5_0, 
         		"FieldSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -142,24 +160,24 @@ ruleGridGame returns [EObject current=null]
 )+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_6_0()); 
 	    }
-		lv_options_5_0=ruleOptionSpecification		{
+		lv_options_6_0=ruleOptionSpecification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
 	        }
        		add(
        			$current, 
        			"options",
-        		lv_options_5_0, 
+        		lv_options_6_0, 
         		"OptionSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_6='}' 
+)*	otherlv_7='}' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getGridGameAccess().getRightCurlyBracketKeyword_6());
+    	newLeafNode(otherlv_7, grammarAccess.getGridGameAccess().getRightCurlyBracketKeyword_7());
     }
 )
 ;
@@ -456,6 +474,213 @@ ruleCellVarSpec returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_2_0, 
+        		"ID");
+	    }
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRuleGlobalCellStateSpec
+entryRuleGlobalCellStateSpec returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getGlobalCellStateSpecRule()); }
+	 iv_ruleGlobalCellStateSpec=ruleGlobalCellStateSpec 
+	 { $current=$iv_ruleGlobalCellStateSpec.current; } 
+	 EOF 
+;
+
+// Rule GlobalCellStateSpec
+ruleGlobalCellStateSpec returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='states' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getGlobalCellStateSpecAccess().getStatesKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getGlobalCellStateSpecAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getGlobalCellStateSpecRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)(	otherlv_2='(' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getGlobalCellStateSpecAccess().getLeftParenthesisKeyword_2_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getGlobalCellStateSpecAccess().getParamsStateParamSpecParserRuleCall_2_1_0()); 
+	    }
+		lv_params_3_0=ruleStateParamSpec		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getGlobalCellStateSpecRule());
+	        }
+       		add(
+       			$current, 
+       			"params",
+        		lv_params_3_0, 
+        		"StateParamSpec");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_4=',' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getGlobalCellStateSpecAccess().getCommaKeyword_2_2_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getGlobalCellStateSpecAccess().getParamsStateParamSpecParserRuleCall_2_2_1_0()); 
+	    }
+		lv_params_5_0=ruleStateParamSpec		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getGlobalCellStateSpecRule());
+	        }
+       		add(
+       			$current, 
+       			"params",
+        		lv_params_5_0, 
+        		"StateParamSpec");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*	otherlv_6=')' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getGlobalCellStateSpecAccess().getRightParenthesisKeyword_2_3());
+    }
+)?	otherlv_7='{' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getGlobalCellStateSpecAccess().getLeftCurlyBracketKeyword_3());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getGlobalCellStateSpecAccess().getStatesCellStateParserRuleCall_4_0()); 
+	    }
+		lv_states_8_0=ruleCellState		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getGlobalCellStateSpecRule());
+	        }
+       		add(
+       			$current, 
+       			"states",
+        		lv_states_8_0, 
+        		"CellState");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)+	otherlv_9='start' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getGlobalCellStateSpecAccess().getStartKeyword_5());
+    }
+	otherlv_10='=' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getGlobalCellStateSpecAccess().getEqualsSignKeyword_6());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getGlobalCellStateSpecRule());
+	        }
+        }
+	otherlv_11=RULE_ID
+	{
+		newLeafNode(otherlv_11, grammarAccess.getGlobalCellStateSpecAccess().getStartCellStateCrossReference_7_0()); 
+	}
+
+)
+)	otherlv_12='}' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getGlobalCellStateSpecAccess().getRightCurlyBracketKeyword_8());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleStateParamSpec
+entryRuleStateParamSpec returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getStateParamSpecRule()); }
+	 iv_ruleStateParamSpec=ruleStateParamSpec 
+	 { $current=$iv_ruleStateParamSpec.current; } 
+	 EOF 
+;
+
+// Rule StateParamSpec
+ruleStateParamSpec returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+(
+		lv_type_0_1=	'int' 
+    {
+        newLeafNode(lv_type_0_1, grammarAccess.getStateParamSpecAccess().getTypeIntKeyword_0_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStateParamSpecRule());
+	        }
+       		setWithLastConsumed($current, "type", lv_type_0_1, null);
+	    }
+
+    |		lv_type_0_2=	'String' 
+    {
+        newLeafNode(lv_type_0_2, grammarAccess.getStateParamSpecAccess().getTypeStringKeyword_0_0_1());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStateParamSpecRule());
+	        }
+       		setWithLastConsumed($current, "type", lv_type_0_2, null);
+	    }
+
+)
+
+)
+)(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getStateParamSpecAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStateParamSpecRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
         		"ID");
 	    }
 

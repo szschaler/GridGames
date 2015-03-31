@@ -19,6 +19,7 @@ generate gridGame "http://www.inf.kcl.ac.uk/zschaler/gridgames/GridGame"
 
 GridGame : 
 	"game" name=ID "{"
+		(states += GlobalCellStateSpec+)?
 		cells += CellSpecification+
 		fields += FieldSpecification+
 		options += OptionSpecification*
@@ -46,6 +47,18 @@ CellDisplaySpec :
 
 CellVarSpec :
 	"var" type=("int"|"String") name=ID	
+;
+
+GlobalCellStateSpec :
+	"states" name=ID ("(" params += StateParamSpec ("," params += StateParamSpec)* ")")? "{"
+		states+=CellState+
+		
+		"start" "=" start=[CellState]
+	"}"
+;
+
+StateParamSpec :
+	type=("int"|"String") name=ID
 ;
 
 CellStateSpec :

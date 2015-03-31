@@ -4,6 +4,8 @@
     nsPrefix="gridGame">
   <eClassifiers xsi:type="ecore:EClass" name="GridGame">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//GlobalCellStateSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
         eType="#//CellSpecification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
@@ -23,6 +25,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//CellVarSpec"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CellVarSpec" eSuperTypes="#//CellMember">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalCellStateSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//StateParamSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//CellState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//CellState"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateParamSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

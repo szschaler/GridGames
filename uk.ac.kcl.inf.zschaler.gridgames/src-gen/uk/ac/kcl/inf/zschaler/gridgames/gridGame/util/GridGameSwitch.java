@@ -109,6 +109,20 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.GLOBAL_CELL_STATE_SPEC:
+      {
+        GlobalCellStateSpec globalCellStateSpec = (GlobalCellStateSpec)theEObject;
+        T result = caseGlobalCellStateSpec(globalCellStateSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.STATE_PARAM_SPEC:
+      {
+        StateParamSpec stateParamSpec = (StateParamSpec)theEObject;
+        T result = caseStateParamSpec(stateParamSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GridGamePackage.CELL_STATE_SPEC:
       {
         CellStateSpec cellStateSpec = (CellStateSpec)theEObject;
@@ -317,6 +331,38 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCellVarSpec(CellVarSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Global Cell State Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Global Cell State Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGlobalCellStateSpec(GlobalCellStateSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>State Param Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>State Param Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStateParamSpec(StateParamSpec object)
   {
     return null;
   }

@@ -68,6 +68,24 @@ public interface GridGameFactory extends EFactory
   CellVarSpec createCellVarSpec();
 
   /**
+   * Returns a new object of class '<em>Global Cell State Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Global Cell State Spec</em>'.
+   * @generated
+   */
+  GlobalCellStateSpec createGlobalCellStateSpec();
+
+  /**
+   * Returns a new object of class '<em>State Param Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>State Param Spec</em>'.
+   * @generated
+   */
+  StateParamSpec createStateParamSpec();
+
+  /**
    * Returns a new object of class '<em>Cell State Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

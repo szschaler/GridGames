@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
@@ -32,6 +33,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
  * The following features are implemented:
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getName <em>Name</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getStates <em>States</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getCells <em>Cells</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getOptions <em>Options</em>}</li>
@@ -61,6 +63,16 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getStates() <em>States</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStates()
+   * @generated
+   * @ordered
+   */
+  protected EList<GlobalCellStateSpec> states;
 
   /**
    * The cached value of the '{@link #getCells() <em>Cells</em>}' containment reference list.
@@ -141,6 +153,20 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<GlobalCellStateSpec> getStates()
+  {
+    if (states == null)
+    {
+      states = new EObjectContainmentEList<GlobalCellStateSpec>(GlobalCellStateSpec.class, this, GridGamePackage.GRID_GAME__STATES);
+    }
+    return states;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<CellSpecification> getCells()
   {
     if (cells == null)
@@ -188,6 +214,8 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
   {
     switch (featureID)
     {
+      case GridGamePackage.GRID_GAME__STATES:
+        return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
       case GridGamePackage.GRID_GAME__CELLS:
         return ((InternalEList<?>)getCells()).basicRemove(otherEnd, msgs);
       case GridGamePackage.GRID_GAME__FIELDS:
@@ -210,6 +238,8 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
     {
       case GridGamePackage.GRID_GAME__NAME:
         return getName();
+      case GridGamePackage.GRID_GAME__STATES:
+        return getStates();
       case GridGamePackage.GRID_GAME__CELLS:
         return getCells();
       case GridGamePackage.GRID_GAME__FIELDS:
@@ -233,6 +263,10 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
     {
       case GridGamePackage.GRID_GAME__NAME:
         setName((String)newValue);
+        return;
+      case GridGamePackage.GRID_GAME__STATES:
+        getStates().clear();
+        getStates().addAll((Collection<? extends GlobalCellStateSpec>)newValue);
         return;
       case GridGamePackage.GRID_GAME__CELLS:
         getCells().clear();
@@ -263,6 +297,9 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
       case GridGamePackage.GRID_GAME__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case GridGamePackage.GRID_GAME__STATES:
+        getStates().clear();
+        return;
       case GridGamePackage.GRID_GAME__CELLS:
         getCells().clear();
         return;
@@ -288,6 +325,8 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
     {
       case GridGamePackage.GRID_GAME__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case GridGamePackage.GRID_GAME__STATES:
+        return states != null && !states.isEmpty();
       case GridGamePackage.GRID_GAME__CELLS:
         return cells != null && !cells.isEmpty();
       case GridGamePackage.GRID_GAME__FIELDS:

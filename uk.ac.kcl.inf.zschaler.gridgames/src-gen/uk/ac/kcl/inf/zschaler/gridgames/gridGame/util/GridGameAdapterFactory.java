@@ -100,6 +100,16 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createCellVarSpecAdapter();
       }
       @Override
+      public Adapter caseGlobalCellStateSpec(GlobalCellStateSpec object)
+      {
+        return createGlobalCellStateSpecAdapter();
+      }
+      @Override
+      public Adapter caseStateParamSpec(StateParamSpec object)
+      {
+        return createStateParamSpecAdapter();
+      }
+      @Override
       public Adapter caseCellStateSpec(CellStateSpec object)
       {
         return createCellStateSpecAdapter();
@@ -277,6 +287,36 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCellVarSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec <em>Global Cell State Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec
+   * @generated
+   */
+  public Adapter createGlobalCellStateSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateParamSpec <em>State Param Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateParamSpec
+   * @generated
+   */
+  public Adapter createStateParamSpecAdapter()
   {
     return null;
   }

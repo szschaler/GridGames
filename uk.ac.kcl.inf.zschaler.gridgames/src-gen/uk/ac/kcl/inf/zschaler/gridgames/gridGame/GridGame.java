@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getName <em>Name</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getStates <em>States</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getCells <em>Cells</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getFields <em>Fields</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getOptions <em>Options</em>}</li>
@@ -52,6 +53,22 @@ public interface GridGame extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>States</b></em>' containment reference list.
+   * The list contents are of type {@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>States</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>States</em>' containment reference list.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getGridGame_States()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GlobalCellStateSpec> getStates();
 
   /**
    * Returns the value of the '<em><b>Cells</b></em>' containment reference list.

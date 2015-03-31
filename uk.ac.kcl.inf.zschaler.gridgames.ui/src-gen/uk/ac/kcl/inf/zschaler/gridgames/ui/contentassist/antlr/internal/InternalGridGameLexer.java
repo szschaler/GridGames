@@ -44,6 +44,7 @@ public class InternalGridGameLexer extends Lexer {
     public static final int T__44=44;
     public static final int T__45=45;
     public static final int T__48=48;
+    public static final int T__49=49;
     public static final int RULE_SL_COMMENT=8;
     public static final int RULE_ML_COMMENT=7;
     public static final int T__30=30;
@@ -431,11 +432,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:28:7: ( 'transitions' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:28:9: 'transitions'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:28:7: ( '(' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:28:9: '('
             {
-            match("transitions"); 
-
+            match('('); 
 
             }
 
@@ -452,11 +452,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:29:7: ( 'on' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:29:9: 'on'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:29:7: ( ')' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:29:9: ')'
             {
-            match("on"); 
-
+            match(')'); 
 
             }
 
@@ -473,11 +472,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:30:7: ( 'goto' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:30:9: 'goto'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:30:7: ( ',' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:30:9: ','
             {
-            match("goto"); 
-
+            match(','); 
 
             }
 
@@ -494,10 +492,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:31:7: ( 'field' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:31:9: 'field'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:31:7: ( 'transitions' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:31:9: 'transitions'
             {
-            match("field"); 
+            match("transitions"); 
 
 
             }
@@ -515,10 +513,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:32:7: ( 'width' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:32:9: 'width'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:32:7: ( 'on' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:32:9: 'on'
             {
-            match("width"); 
+            match("on"); 
 
 
             }
@@ -536,10 +534,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:33:7: ( 'height' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:33:9: 'height'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:33:7: ( 'goto' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:33:9: 'goto'
             {
-            match("height"); 
+            match("goto"); 
 
 
             }
@@ -557,10 +555,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:34:7: ( 'allow_restart' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:34:9: 'allow_restart'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:34:7: ( 'field' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:34:9: 'field'
             {
-            match("allow_restart"); 
+            match("field"); 
 
 
             }
@@ -578,10 +576,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:35:7: ( 'init' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:35:9: 'init'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:35:7: ( 'width' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:35:9: 'width'
             {
-            match("init"); 
+            match("width"); 
 
 
             }
@@ -599,10 +597,11 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:36:7: ( ';' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:36:9: ';'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:36:7: ( 'height' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:36:9: 'height'
             {
-            match(';'); 
+            match("height"); 
+
 
             }
 
@@ -619,10 +618,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:37:7: ( 'default' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:37:9: 'default'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:37:7: ( 'allow_restart' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:37:9: 'allow_restart'
             {
-            match("default"); 
+            match("allow_restart"); 
 
 
             }
@@ -640,10 +639,11 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:38:7: ( ':' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:38:9: ':'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:38:7: ( 'init' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:38:9: 'init'
             {
-            match(':'); 
+            match("init"); 
+
 
             }
 
@@ -660,11 +660,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:39:7: ( 'random' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:39:9: 'random'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:39:7: ( ';' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:39:9: ';'
             {
-            match("random"); 
-
+            match(';'); 
 
             }
 
@@ -681,10 +680,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:40:7: ( 'context' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:40:9: 'context'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:40:7: ( 'default' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:40:9: 'default'
             {
-            match("context"); 
+            match("default"); 
 
 
             }
@@ -702,11 +701,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:41:7: ( 'check' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:41:9: 'check'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:41:7: ( ':' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:41:9: ':'
             {
-            match("check"); 
-
+            match(':'); 
 
             }
 
@@ -723,10 +721,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:42:7: ( 'value' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:42:9: 'value'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:42:7: ( 'random' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:42:9: 'random'
             {
-            match("value"); 
+            match("random"); 
 
 
             }
@@ -744,10 +742,11 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:43:7: ( '.' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:43:9: '.'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:43:7: ( 'context' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:43:9: 'context'
             {
-            match('.'); 
+            match("context"); 
+
 
             }
 
@@ -764,10 +763,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:44:7: ( 'filter' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:44:9: 'filter'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:44:7: ( 'check' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:44:9: 'check'
             {
-            match("filter"); 
+            match("check"); 
 
 
             }
@@ -785,10 +784,11 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:45:7: ( '(' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:45:9: '('
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:45:7: ( 'value' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:45:9: 'value'
             {
-            match('('); 
+            match("value"); 
+
 
             }
 
@@ -805,10 +805,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:46:7: ( ')' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:46:9: ')'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:46:7: ( '.' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:46:9: '.'
             {
-            match(')'); 
+            match('.'); 
 
             }
 
@@ -825,10 +825,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:47:7: ( 'count' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:47:9: 'count'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:47:7: ( 'filter' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:47:9: 'filter'
             {
-            match("count"); 
+            match("filter"); 
 
 
             }
@@ -846,10 +846,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:48:7: ( 'notEmpty' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:48:9: 'notEmpty'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:48:7: ( 'count' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:48:9: 'count'
             {
-            match("notEmpty"); 
+            match("count"); 
 
 
             }
@@ -862,15 +862,36 @@ public class InternalGridGameLexer extends Lexer {
     }
     // $ANTLR end "T__48"
 
+    // $ANTLR start "T__49"
+    public final void mT__49() throws RecognitionException {
+        try {
+            int _type = T__49;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:49:7: ( 'notEmpty' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:49:9: 'notEmpty'
+            {
+            match("notEmpty"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__49"
+
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4648:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4648:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5432:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5432:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4648:11: ( '^' )?
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5432:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -879,7 +900,7 @@ public class InternalGridGameLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4648:11: '^'
+                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5432:11: '^'
                     {
                     match('^'); 
 
@@ -897,7 +918,7 @@ public class InternalGridGameLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4648:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5432:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -946,10 +967,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4650:10: ( ( '0' .. '9' )+ )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4650:12: ( '0' .. '9' )+
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5434:10: ( ( '0' .. '9' )+ )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5434:12: ( '0' .. '9' )+
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4650:12: ( '0' .. '9' )+
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5434:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -963,7 +984,7 @@ public class InternalGridGameLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4650:13: '0' .. '9'
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5434:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -995,10 +1016,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4652:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4652:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5436:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5436:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4652:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5436:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -1016,10 +1037,10 @@ public class InternalGridGameLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4652:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5436:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4652:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5436:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -1035,7 +1056,7 @@ public class InternalGridGameLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4652:21: '\\\\' .
+                    	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5436:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1043,7 +1064,7 @@ public class InternalGridGameLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4652:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5436:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1068,10 +1089,10 @@ public class InternalGridGameLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4652:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5436:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4652:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5436:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1087,7 +1108,7 @@ public class InternalGridGameLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4652:54: '\\\\' .
+                    	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5436:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1095,7 +1116,7 @@ public class InternalGridGameLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4652:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5436:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1138,12 +1159,12 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4654:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4654:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5438:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5438:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4654:24: ( options {greedy=false; } : . )*
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5438:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -1168,7 +1189,7 @@ public class InternalGridGameLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4654:52: .
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5438:52: .
             	    {
             	    matchAny(); 
 
@@ -1198,12 +1219,12 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4656:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4656:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5440:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5440:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4656:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5440:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1216,7 +1237,7 @@ public class InternalGridGameLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4656:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5440:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1236,7 +1257,7 @@ public class InternalGridGameLexer extends Lexer {
                 }
             } while (true);
 
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4656:40: ( ( '\\r' )? '\\n' )?
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5440:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1245,9 +1266,9 @@ public class InternalGridGameLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4656:41: ( '\\r' )? '\\n'
+                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5440:41: ( '\\r' )? '\\n'
                     {
-                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4656:41: ( '\\r' )?
+                    // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5440:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1256,7 +1277,7 @@ public class InternalGridGameLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4656:41: '\\r'
+                            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5440:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1288,10 +1309,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4658:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4658:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5442:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5442:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4658:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5442:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1345,8 +1366,8 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4660:16: ( . )
-            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:4660:18: .
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5444:16: ( . )
+            // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:5444:18: .
             {
             matchAny(); 
 
@@ -1361,8 +1382,8 @@ public class InternalGridGameLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=45;
+        // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=46;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -1632,49 +1653,56 @@ public class InternalGridGameLexer extends Lexer {
                 }
                 break;
             case 39 :
-                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:238: RULE_ID
+                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:238: T__49
+                {
+                mT__49(); 
+
+                }
+                break;
+            case 40 :
+                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:244: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 40 :
-                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:246: RULE_INT
+            case 41 :
+                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:252: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 41 :
-                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:255: RULE_STRING
+            case 42 :
+                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:261: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 42 :
-                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:267: RULE_ML_COMMENT
+            case 43 :
+                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:273: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 43 :
-                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:283: RULE_SL_COMMENT
+            case 44 :
+                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:289: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 44 :
-                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:299: RULE_WS
+            case 45 :
+                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:305: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 45 :
-                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:307: RULE_ANY_OTHER
+            case 46 :
+                // ../uk.ac.kcl.inf.zschaler.gridgames.ui/src-gen/uk/ac/kcl/inf/zschaler/gridgames/ui/contentassist/antlr/internal/InternalGridGame.g:1:313: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1688,26 +1716,26 @@ public class InternalGridGameLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\6\44\2\uffff\6\44\1\uffff\4\44\2\uffff\1\44\3\uffff\1"+
-        "\44\1\42\2\uffff\3\42\2\uffff\1\44\1\uffff\6\44\2\uffff\5\44\1\127"+
-        "\5\44\1\uffff\1\136\3\44\2\uffff\1\44\3\uffff\1\44\5\uffff\2\44"+
-        "\1\147\13\44\1\uffff\3\44\1\166\2\44\1\uffff\10\44\1\uffff\1\u0082"+
-        "\2\44\1\u0085\1\u0086\1\u0087\6\44\1\u008e\1\44\1\uffff\11\44\1"+
-        "\u0099\1\44\1\uffff\2\44\3\uffff\1\44\1\u009e\1\u009f\3\44\1\uffff"+
-        "\1\44\1\u00a4\1\44\1\u00a6\1\u00a7\1\44\1\u00a9\3\44\1\uffff\1\u00ad"+
-        "\1\u00ae\1\uffff\1\44\2\uffff\4\44\1\uffff\1\u00b6\2\uffff\1\u00b7"+
-        "\1\uffff\1\u00b8\1\u00b9\1\44\4\uffff\1\u00bb\1\u00bc\1\u00bd\2"+
-        "\44\4\uffff\1\44\3\uffff\2\44\1\u00c3\2\44\1\uffff\3\44\1\u00c9"+
-        "\1\44\1\uffff\1\u00cb\1\uffff";
+        "\1\uffff\6\45\2\uffff\6\45\4\uffff\4\45\2\uffff\1\45\1\uffff\1"+
+        "\45\1\43\2\uffff\3\43\2\uffff\1\45\1\uffff\6\45\2\uffff\5\45\1\131"+
+        "\5\45\4\uffff\1\140\3\45\2\uffff\1\45\1\uffff\1\45\5\uffff\2\45"+
+        "\1\151\13\45\1\uffff\3\45\1\170\2\45\1\uffff\10\45\1\uffff\1\u0084"+
+        "\2\45\1\u0087\1\u0088\1\u0089\6\45\1\u0090\1\45\1\uffff\11\45\1"+
+        "\u009b\1\45\1\uffff\2\45\3\uffff\1\45\1\u00a0\1\u00a1\3\45\1\uffff"+
+        "\1\45\1\u00a6\1\45\1\u00a8\1\u00a9\1\45\1\u00ab\3\45\1\uffff\1\u00af"+
+        "\1\u00b0\1\uffff\1\45\2\uffff\4\45\1\uffff\1\u00b8\2\uffff\1\u00b9"+
+        "\1\uffff\1\u00ba\1\u00bb\1\45\4\uffff\1\u00bd\1\u00be\1\u00bf\2"+
+        "\45\4\uffff\1\45\3\uffff\2\45\1\u00c5\2\45\1\uffff\3\45\1\u00cb"+
+        "\1\45\1\uffff\1\u00cd\1\uffff";
     static final String DFA12_eofS =
-        "\u00cc\uffff";
+        "\u00ce\uffff";
     static final String DFA12_minS =
         "\1\0\1\141\1\165\1\156\1\164\1\157\1\141\2\uffff\2\145\1\154\1"+
-        "\145\1\141\1\164\1\uffff\1\156\2\151\1\145\2\uffff\1\141\3\uffff"+
+        "\145\1\141\1\164\4\uffff\1\156\2\151\1\145\2\uffff\1\141\1\uffff"+
         "\1\157\1\101\2\uffff\2\0\1\52\2\uffff\1\142\1\uffff\1\164\1\151"+
         "\1\162\1\165\1\155\1\164\2\uffff\1\154\1\156\1\145\1\163\1\146\1"+
-        "\60\1\154\1\170\1\141\1\154\1\141\1\uffff\1\60\1\145\1\144\1\151"+
-        "\2\uffff\1\156\3\uffff\1\164\5\uffff\1\145\1\164\1\60\1\164\1\151"+
+        "\60\1\154\1\170\1\141\1\154\1\141\4\uffff\1\60\1\145\1\144\1\151"+
+        "\2\uffff\1\156\1\uffff\1\164\5\uffff\1\145\1\164\1\60\1\164\1\151"+
         "\1\163\1\145\1\157\1\154\1\164\1\156\1\143\1\160\1\141\1\uffff\1"+
         "\157\1\164\1\156\1\60\1\165\1\162\1\uffff\1\154\2\164\1\147\1\144"+
         "\1\105\1\154\1\157\1\uffff\1\60\1\156\1\145\3\60\1\145\1\164\1\153"+
@@ -1720,11 +1748,11 @@ public class InternalGridGameLexer extends Lexer {
         "\1\uffff\1\141\1\163\1\162\1\60\1\164\1\uffff\1\60\1\uffff";
     static final String DFA12_maxS =
         "\1\uffff\1\141\1\165\1\156\1\164\2\157\2\uffff\1\157\1\151\1\163"+
-        "\1\162\1\141\1\164\1\uffff\1\156\2\151\1\145\2\uffff\1\141\3\uffff"+
+        "\1\162\1\141\1\164\4\uffff\1\156\2\151\1\145\2\uffff\1\141\1\uffff"+
         "\1\157\1\172\2\uffff\2\uffff\1\57\2\uffff\1\142\1\uffff\2\164\1"+
         "\162\1\165\1\155\1\164\2\uffff\1\154\1\165\1\145\1\163\1\146\1\172"+
-        "\1\154\1\170\1\141\1\162\1\141\1\uffff\1\172\1\154\1\144\1\151\2"+
-        "\uffff\1\156\3\uffff\1\164\5\uffff\1\145\1\164\1\172\1\164\1\151"+
+        "\1\154\1\170\1\141\1\162\1\141\4\uffff\1\172\1\154\1\144\1\151\2"+
+        "\uffff\1\156\1\uffff\1\164\5\uffff\1\145\1\164\1\172\1\164\1\151"+
         "\1\163\1\145\1\157\1\154\1\164\1\156\1\143\1\160\1\141\1\uffff\1"+
         "\157\1\164\1\156\1\172\1\165\1\164\1\uffff\1\154\2\164\1\147\1\144"+
         "\1\105\1\154\1\157\1\uffff\1\172\1\156\1\145\3\172\1\145\1\164\1"+
@@ -1737,100 +1765,100 @@ public class InternalGridGameLexer extends Lexer {
         "\1\164\1\156\1\uffff\1\141\1\163\1\162\1\172\1\164\1\uffff\1\172"+
         "\1\uffff";
     static final String DFA12_acceptS =
-        "\7\uffff\1\10\1\11\6\uffff\1\21\4\uffff\1\32\1\34\1\uffff\1\41"+
-        "\1\43\1\44\2\uffff\1\47\1\50\3\uffff\1\54\1\55\1\uffff\1\47\6\uffff"+
-        "\1\10\1\11\13\uffff\1\21\4\uffff\1\32\1\34\1\uffff\1\41\1\43\1\44"+
-        "\1\uffff\1\50\1\51\1\52\1\53\1\54\16\uffff\1\14\6\uffff\1\23\10"+
-        "\uffff\1\3\16\uffff\1\16\13\uffff\1\31\2\uffff\1\7\1\24\1\12\6\uffff"+
-        "\1\15\12\uffff\1\1\4\uffff\1\45\1\37\4\uffff\1\40\1\uffff\1\20\1"+
-        "\25\1\uffff\1\26\3\uffff\1\2\1\4\1\5\1\6\5\uffff\1\17\1\42\1\27"+
-        "\1\35\1\uffff\1\36\1\13\1\33\5\uffff\1\46\5\uffff\1\22\1\uffff\1"+
-        "\30";
+        "\7\uffff\1\10\1\11\6\uffff\1\21\1\22\1\23\1\24\4\uffff\1\35\1\37"+
+        "\1\uffff\1\44\2\uffff\1\50\1\51\3\uffff\1\55\1\56\1\uffff\1\50\6"+
+        "\uffff\1\10\1\11\13\uffff\1\21\1\22\1\23\1\24\4\uffff\1\35\1\37"+
+        "\1\uffff\1\44\1\uffff\1\51\1\52\1\53\1\54\1\55\16\uffff\1\14\6\uffff"+
+        "\1\26\10\uffff\1\3\16\uffff\1\16\13\uffff\1\34\2\uffff\1\7\1\27"+
+        "\1\12\6\uffff\1\15\12\uffff\1\1\4\uffff\1\46\1\42\4\uffff\1\43\1"+
+        "\uffff\1\20\1\30\1\uffff\1\31\3\uffff\1\2\1\4\1\5\1\6\5\uffff\1"+
+        "\17\1\45\1\32\1\40\1\uffff\1\41\1\13\1\36\5\uffff\1\47\5\uffff\1"+
+        "\25\1\uffff\1\33";
     static final String DFA12_specialS =
-        "\1\0\35\uffff\1\2\1\1\u00ac\uffff}>";
+        "\1\2\36\uffff\1\0\1\1\u00ad\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\42\2\41\2\42\1\41\22\42\1\41\1\42\1\36\4\42\1\37\1\30\1"+
-            "\31\4\42\1\27\1\40\12\35\1\25\1\24\1\42\1\17\3\42\22\34\1\4"+
-            "\7\34\3\42\1\33\1\34\1\42\1\13\1\2\1\11\1\12\1\34\1\21\1\6\1"+
-            "\23\1\3\2\34\1\1\1\5\1\32\1\20\2\34\1\26\1\16\1\14\1\34\1\15"+
-            "\1\22\3\34\1\7\1\42\1\10\uff82\42",
-            "\1\43",
-            "\1\45",
+            "\11\43\2\42\2\43\1\42\22\43\1\42\1\43\1\37\4\43\1\40\1\20\1"+
+            "\21\2\43\1\22\1\43\1\32\1\41\12\36\1\30\1\27\1\43\1\17\3\43"+
+            "\22\35\1\4\7\35\3\43\1\34\1\35\1\43\1\13\1\2\1\11\1\12\1\35"+
+            "\1\24\1\6\1\26\1\3\2\35\1\1\1\5\1\33\1\23\2\35\1\31\1\16\1\14"+
+            "\1\35\1\15\1\25\3\35\1\7\1\43\1\10\uff82\43",
+            "\1\44",
             "\1\46",
             "\1\47",
             "\1\50",
-            "\1\51\15\uffff\1\52",
+            "\1\51",
+            "\1\52\15\uffff\1\53",
             "",
             "",
-            "\1\55\2\uffff\1\57\6\uffff\1\56",
-            "\1\61\3\uffff\1\60",
-            "\1\63\6\uffff\1\62",
-            "\1\64\14\uffff\1\65",
-            "\1\66",
+            "\1\56\2\uffff\1\60\6\uffff\1\57",
+            "\1\62\3\uffff\1\61",
+            "\1\64\6\uffff\1\63",
+            "\1\65\14\uffff\1\66",
             "\1\67",
-            "",
-            "\1\71",
-            "\1\72",
-            "\1\73",
-            "\1\74",
+            "\1\70",
             "",
             "",
+            "",
+            "",
+            "\1\75",
+            "\1\76",
             "\1\77",
-            "",
+            "\1\100",
             "",
             "",
             "\1\103",
-            "\32\44\4\uffff\1\44\1\uffff\32\44",
+            "",
+            "\1\105",
+            "\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
             "",
-            "\0\105",
-            "\0\105",
-            "\1\106\4\uffff\1\107",
+            "\0\107",
+            "\0\107",
+            "\1\110\4\uffff\1\111",
             "",
             "",
-            "\1\111",
+            "\1\113",
             "",
-            "\1\112",
-            "\1\114\12\uffff\1\113",
-            "\1\115",
-            "\1\116",
+            "\1\114",
+            "\1\116\12\uffff\1\115",
             "\1\117",
             "\1\120",
-            "",
-            "",
             "\1\121",
-            "\1\122\6\uffff\1\123",
-            "\1\124",
-            "\1\125",
+            "\1\122",
+            "",
+            "",
+            "\1\123",
+            "\1\124\6\uffff\1\125",
             "\1\126",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
+            "\1\127",
             "\1\130",
-            "\1\131",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\132",
-            "\1\134\5\uffff\1\133",
-            "\1\135",
-            "",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\137\6\uffff\1\140",
-            "\1\141",
-            "\1\142",
+            "\1\133",
+            "\1\134",
+            "\1\136\5\uffff\1\135",
+            "\1\137",
             "",
             "",
+            "",
+            "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\141\6\uffff\1\142",
             "\1\143",
-            "",
-            "",
-            "",
             "\1\144",
             "",
             "",
-            "",
-            "",
-            "",
             "\1\145",
+            "",
             "\1\146",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\147",
             "\1\150",
-            "\1\151",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\152",
             "\1\153",
             "\1\154",
@@ -1840,40 +1868,40 @@ public class InternalGridGameLexer extends Lexer {
             "\1\160",
             "\1\161",
             "\1\162",
-            "",
             "\1\163",
             "\1\164",
-            "\1\165",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\167",
-            "\1\171\1\uffff\1\170",
             "",
-            "\1\172",
-            "\1\173",
+            "\1\165",
+            "\1\166",
+            "\1\167",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\171",
+            "\1\173\1\uffff\1\172",
+            "",
             "\1\174",
             "\1\175",
             "\1\176",
             "\1\177",
             "\1\u0080",
             "\1\u0081",
-            "",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
+            "\1\u0082",
             "\1\u0083",
-            "\1\u0084",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\u0088",
-            "\1\u0089",
+            "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u0085",
+            "\1\u0086",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u008a",
             "\1\u008b",
             "\1\u008c",
             "\1\u008d",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
+            "\1\u008e",
             "\1\u008f",
-            "",
-            "\1\u0090",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u0091",
+            "",
             "\1\u0092",
             "\1\u0093",
             "\1\u0094",
@@ -1881,81 +1909,83 @@ public class InternalGridGameLexer extends Lexer {
             "\1\u0096",
             "\1\u0097",
             "\1\u0098",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
+            "\1\u0099",
             "\1\u009a",
-            "",
-            "\1\u009b",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u009c",
             "",
-            "",
-            "",
             "\1\u009d",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\u00a0",
-            "\1\u00a1",
+            "\1\u009e",
+            "",
+            "",
+            "",
+            "\1\u009f",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00a2",
-            "",
             "\1\u00a3",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
+            "\1\u00a4",
+            "",
             "\1\u00a5",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\u00a8",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00a7",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00aa",
-            "\1\u00ab",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00ac",
+            "\1\u00ad",
+            "\1\u00ae",
             "",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\u00af\5\uffff\1\u00b0",
-            "\1\u00b1",
-            "",
-            "",
-            "\1\u00b2",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00b1\5\uffff\1\u00b2",
             "\1\u00b3",
+            "",
+            "",
             "\1\u00b4",
             "\1\u00b5",
+            "\1\u00b6",
+            "\1\u00b7",
             "",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "",
-            "",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\u00ba",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
             "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
-            "",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\u00be",
-            "\1\u00bf",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00bc",
             "",
             "",
             "",
             "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00c0",
-            "",
-            "",
-            "",
             "\1\u00c1",
-            "\1\u00c2",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\u00c4",
-            "\1\u00c5",
             "",
+            "",
+            "",
+            "",
+            "\1\u00c2",
+            "",
+            "",
+            "",
+            "\1\u00c3",
+            "\1\u00c4",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00c6",
             "\1\u00c7",
-            "\1\u00c8",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\u00ca",
             "",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
+            "\1\u00c8",
+            "\1\u00c9",
+            "\1\u00ca",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00cc",
+            "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             ""
     };
 
@@ -1989,13 +2019,33 @@ public class InternalGridGameLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA12_31 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_31>='\u0000' && LA12_31<='\uFFFF')) ) {s = 71;}
+
+                        else s = 35;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA12_32 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_32>='\u0000' && LA12_32<='\uFFFF')) ) {s = 71;}
+
+                        else s = 35;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -2029,63 +2079,45 @@ public class InternalGridGameLexer extends Lexer {
 
                         else if ( (LA12_0=='=') ) {s = 15;}
 
-                        else if ( (LA12_0=='o') ) {s = 16;}
+                        else if ( (LA12_0=='(') ) {s = 16;}
 
-                        else if ( (LA12_0=='f') ) {s = 17;}
+                        else if ( (LA12_0==')') ) {s = 17;}
 
-                        else if ( (LA12_0=='w') ) {s = 18;}
+                        else if ( (LA12_0==',') ) {s = 18;}
 
-                        else if ( (LA12_0=='h') ) {s = 19;}
+                        else if ( (LA12_0=='o') ) {s = 19;}
 
-                        else if ( (LA12_0==';') ) {s = 20;}
+                        else if ( (LA12_0=='f') ) {s = 20;}
 
-                        else if ( (LA12_0==':') ) {s = 21;}
+                        else if ( (LA12_0=='w') ) {s = 21;}
 
-                        else if ( (LA12_0=='r') ) {s = 22;}
+                        else if ( (LA12_0=='h') ) {s = 22;}
 
-                        else if ( (LA12_0=='.') ) {s = 23;}
+                        else if ( (LA12_0==';') ) {s = 23;}
 
-                        else if ( (LA12_0=='(') ) {s = 24;}
+                        else if ( (LA12_0==':') ) {s = 24;}
 
-                        else if ( (LA12_0==')') ) {s = 25;}
+                        else if ( (LA12_0=='r') ) {s = 25;}
 
-                        else if ( (LA12_0=='n') ) {s = 26;}
+                        else if ( (LA12_0=='.') ) {s = 26;}
 
-                        else if ( (LA12_0=='^') ) {s = 27;}
+                        else if ( (LA12_0=='n') ) {s = 27;}
 
-                        else if ( ((LA12_0>='A' && LA12_0<='R')||(LA12_0>='T' && LA12_0<='Z')||LA12_0=='_'||LA12_0=='e'||(LA12_0>='j' && LA12_0<='k')||(LA12_0>='p' && LA12_0<='q')||LA12_0=='u'||(LA12_0>='x' && LA12_0<='z')) ) {s = 28;}
+                        else if ( (LA12_0=='^') ) {s = 28;}
 
-                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 29;}
+                        else if ( ((LA12_0>='A' && LA12_0<='R')||(LA12_0>='T' && LA12_0<='Z')||LA12_0=='_'||LA12_0=='e'||(LA12_0>='j' && LA12_0<='k')||(LA12_0>='p' && LA12_0<='q')||LA12_0=='u'||(LA12_0>='x' && LA12_0<='z')) ) {s = 29;}
 
-                        else if ( (LA12_0=='\"') ) {s = 30;}
+                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 30;}
 
-                        else if ( (LA12_0=='\'') ) {s = 31;}
+                        else if ( (LA12_0=='\"') ) {s = 31;}
 
-                        else if ( (LA12_0=='/') ) {s = 32;}
+                        else if ( (LA12_0=='\'') ) {s = 32;}
 
-                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 33;}
+                        else if ( (LA12_0=='/') ) {s = 33;}
 
-                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='*' && LA12_0<='-')||LA12_0=='<'||(LA12_0>='>' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||LA12_0=='|'||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 34;}
+                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 34;}
 
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA12_31 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_31>='\u0000' && LA12_31<='\uFFFF')) ) {s = 69;}
-
-                        else s = 34;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA12_30 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_30>='\u0000' && LA12_30<='\uFFFF')) ) {s = 69;}
-
-                        else s = 34;
+                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='*' && LA12_0<='+')||LA12_0=='-'||LA12_0=='<'||(LA12_0>='>' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||LA12_0=='|'||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 35;}
 
                         if ( s>=0 ) return s;
                         break;

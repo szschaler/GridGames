@@ -25,13 +25,15 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cCellsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cCellsCellSpecificationParserRuleCall_3_0 = (RuleCall)cCellsAssignment_3.eContents().get(0);
-		private final Assignment cFieldsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cFieldsFieldSpecificationParserRuleCall_4_0 = (RuleCall)cFieldsAssignment_4.eContents().get(0);
-		private final Assignment cOptionsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cOptionsOptionSpecificationParserRuleCall_5_0 = (RuleCall)cOptionsAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cStatesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cStatesGlobalCellStateSpecParserRuleCall_3_0 = (RuleCall)cStatesAssignment_3.eContents().get(0);
+		private final Assignment cCellsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cCellsCellSpecificationParserRuleCall_4_0 = (RuleCall)cCellsAssignment_4.eContents().get(0);
+		private final Assignment cFieldsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cFieldsFieldSpecificationParserRuleCall_5_0 = (RuleCall)cFieldsAssignment_5.eContents().get(0);
+		private final Assignment cOptionsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cOptionsOptionSpecificationParserRuleCall_6_0 = (RuleCall)cOptionsAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		/// * 
 		// * This language is meant to serve as a high-level modelling language for arcade-style games with a grid playing field
@@ -39,11 +41,20 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		// * Just a bit of fun, really :-)
 		// * 
 		// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
+		// * 
+		// * TODO Enable reuse of state specifications (possibly parametrised) between cell specifications
+		// * TODO Enable reuse of field initialisers (possibly parametrised) between field specifications
+		// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells
+		// * TODO Enable keyboard triggers
+		// * TODO Enable cell movement as an alternative behaviour (to support games like Tetris and Breakout), possibly of cell groups rather than just individual cells
+		// * TODO Enable timed triggers for behaviours 
 		// * / GridGame:
-		//	"game" name=ID "{" cells+=CellSpecification+ fields+=FieldSpecification+ options+=OptionSpecification* "}";
+		//	"game" name=ID "{" states+=GlobalCellStateSpec? cells+=CellSpecification+ fields+=FieldSpecification+
+		//	options+=OptionSpecification* "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"game" name=ID "{" cells+=CellSpecification+ fields+=FieldSpecification+ options+=OptionSpecification* "}"
+		//"game" name=ID "{" states+=GlobalCellStateSpec? cells+=CellSpecification+ fields+=FieldSpecification+
+		//options+=OptionSpecification* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"game"
@@ -58,26 +69,32 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
+		//states+=GlobalCellStateSpec?
+		public Assignment getStatesAssignment_3() { return cStatesAssignment_3; }
+
+		//GlobalCellStateSpec
+		public RuleCall getStatesGlobalCellStateSpecParserRuleCall_3_0() { return cStatesGlobalCellStateSpecParserRuleCall_3_0; }
+
 		//cells+=CellSpecification+
-		public Assignment getCellsAssignment_3() { return cCellsAssignment_3; }
+		public Assignment getCellsAssignment_4() { return cCellsAssignment_4; }
 
 		//CellSpecification
-		public RuleCall getCellsCellSpecificationParserRuleCall_3_0() { return cCellsCellSpecificationParserRuleCall_3_0; }
+		public RuleCall getCellsCellSpecificationParserRuleCall_4_0() { return cCellsCellSpecificationParserRuleCall_4_0; }
 
 		//fields+=FieldSpecification+
-		public Assignment getFieldsAssignment_4() { return cFieldsAssignment_4; }
+		public Assignment getFieldsAssignment_5() { return cFieldsAssignment_5; }
 
 		//FieldSpecification
-		public RuleCall getFieldsFieldSpecificationParserRuleCall_4_0() { return cFieldsFieldSpecificationParserRuleCall_4_0; }
+		public RuleCall getFieldsFieldSpecificationParserRuleCall_5_0() { return cFieldsFieldSpecificationParserRuleCall_5_0; }
 
 		//options+=OptionSpecification*
-		public Assignment getOptionsAssignment_5() { return cOptionsAssignment_5; }
+		public Assignment getOptionsAssignment_6() { return cOptionsAssignment_6; }
 
 		//OptionSpecification
-		public RuleCall getOptionsOptionSpecificationParserRuleCall_5_0() { return cOptionsOptionSpecificationParserRuleCall_5_0; }
+		public RuleCall getOptionsOptionSpecificationParserRuleCall_6_0() { return cOptionsOptionSpecificationParserRuleCall_6_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 
 	public class CellSpecificationElements extends AbstractParserRuleElementFinder {
@@ -268,6 +285,140 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
 
+	public class GlobalCellStateSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GlobalCellStateSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cStatesKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cParamsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cParamsStateParamSpecParserRuleCall_2_1_0 = (RuleCall)cParamsAssignment_2_1.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
+		private final Keyword cCommaKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Assignment cParamsAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
+		private final RuleCall cParamsStateParamSpecParserRuleCall_2_2_1_0 = (RuleCall)cParamsAssignment_2_2_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cStatesAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cStatesCellStateParserRuleCall_4_0 = (RuleCall)cStatesAssignment_4.eContents().get(0);
+		private final Keyword cStartKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cEqualsSignKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cStartAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final CrossReference cStartCellStateCrossReference_7_0 = (CrossReference)cStartAssignment_7.eContents().get(0);
+		private final RuleCall cStartCellStateIDTerminalRuleCall_7_0_1 = (RuleCall)cStartCellStateCrossReference_7_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		
+		//GlobalCellStateSpec:
+		//	"states" name=ID ("(" params+=StateParamSpec ("," params+=StateParamSpec)* ")")? "{" states+=CellState+ "start" "="
+		//	start=[CellState] "}";
+		@Override public ParserRule getRule() { return rule; }
+
+		//"states" name=ID ("(" params+=StateParamSpec ("," params+=StateParamSpec)* ")")? "{" states+=CellState+ "start" "="
+		//start=[CellState] "}"
+		public Group getGroup() { return cGroup; }
+
+		//"states"
+		public Keyword getStatesKeyword_0() { return cStatesKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//("(" params+=StateParamSpec ("," params+=StateParamSpec)* ")")?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
+
+		//params+=StateParamSpec
+		public Assignment getParamsAssignment_2_1() { return cParamsAssignment_2_1; }
+
+		//StateParamSpec
+		public RuleCall getParamsStateParamSpecParserRuleCall_2_1_0() { return cParamsStateParamSpecParserRuleCall_2_1_0; }
+
+		//("," params+=StateParamSpec)*
+		public Group getGroup_2_2() { return cGroup_2_2; }
+
+		//","
+		public Keyword getCommaKeyword_2_2_0() { return cCommaKeyword_2_2_0; }
+
+		//params+=StateParamSpec
+		public Assignment getParamsAssignment_2_2_1() { return cParamsAssignment_2_2_1; }
+
+		//StateParamSpec
+		public RuleCall getParamsStateParamSpecParserRuleCall_2_2_1_0() { return cParamsStateParamSpecParserRuleCall_2_2_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_2_3() { return cRightParenthesisKeyword_2_3; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+
+		//states+=CellState+
+		public Assignment getStatesAssignment_4() { return cStatesAssignment_4; }
+
+		//CellState
+		public RuleCall getStatesCellStateParserRuleCall_4_0() { return cStatesCellStateParserRuleCall_4_0; }
+
+		//"start"
+		public Keyword getStartKeyword_5() { return cStartKeyword_5; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_6() { return cEqualsSignKeyword_6; }
+
+		//start=[CellState]
+		public Assignment getStartAssignment_7() { return cStartAssignment_7; }
+
+		//[CellState]
+		public CrossReference getStartCellStateCrossReference_7_0() { return cStartCellStateCrossReference_7_0; }
+
+		//ID
+		public RuleCall getStartCellStateIDTerminalRuleCall_7_0_1() { return cStartCellStateIDTerminalRuleCall_7_0_1; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+	}
+
+	public class StateParamSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StateParamSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Alternatives cTypeAlternatives_0_0 = (Alternatives)cTypeAssignment_0.eContents().get(0);
+		private final Keyword cTypeIntKeyword_0_0_0 = (Keyword)cTypeAlternatives_0_0.eContents().get(0);
+		private final Keyword cTypeStringKeyword_0_0_1 = (Keyword)cTypeAlternatives_0_0.eContents().get(1);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//StateParamSpec:
+		//	type=("int" | "String") name=ID;
+		@Override public ParserRule getRule() { return rule; }
+
+		//type=("int" | "String") name=ID
+		public Group getGroup() { return cGroup; }
+
+		//type=("int" | "String")
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+
+		//"int" | "String"
+		public Alternatives getTypeAlternatives_0_0() { return cTypeAlternatives_0_0; }
+
+		//"int"
+		public Keyword getTypeIntKeyword_0_0_0() { return cTypeIntKeyword_0_0_0; }
+
+		//"String"
+		public Keyword getTypeStringKeyword_0_0_1() { return cTypeStringKeyword_0_0_1; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+	}
+
 	public class CellStateSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CellStateSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -426,6 +577,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cMouseLeftKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cMouseRightKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
+		//// TODO Consider introducing triggers based on state changes in the context
 		//TransitionTriggerSpec:
 		//	"mouse-left" | "mouse-right";
 		@Override public ParserRule getRule() { return rule; }
@@ -943,6 +1095,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final CellMemberElements pCellMember;
 	private final CellDisplaySpecElements pCellDisplaySpec;
 	private final CellVarSpecElements pCellVarSpec;
+	private final GlobalCellStateSpecElements pGlobalCellStateSpec;
+	private final StateParamSpecElements pStateParamSpec;
 	private final CellStateSpecElements pCellStateSpec;
 	private final CellStateElements pCellState;
 	private final TransitionSpecElements pTransitionSpec;
@@ -976,6 +1130,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pCellMember = new CellMemberElements();
 		this.pCellDisplaySpec = new CellDisplaySpecElements();
 		this.pCellVarSpec = new CellVarSpecElements();
+		this.pGlobalCellStateSpec = new GlobalCellStateSpecElements();
+		this.pStateParamSpec = new StateParamSpecElements();
 		this.pCellStateSpec = new CellStateSpecElements();
 		this.pCellState = new CellStateElements();
 		this.pTransitionSpec = new TransitionSpecElements();
@@ -1029,8 +1185,16 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	// * Just a bit of fun, really :-)
 	// * 
 	// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
+	// * 
+	// * TODO Enable reuse of state specifications (possibly parametrised) between cell specifications
+	// * TODO Enable reuse of field initialisers (possibly parametrised) between field specifications
+	// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells
+	// * TODO Enable keyboard triggers
+	// * TODO Enable cell movement as an alternative behaviour (to support games like Tetris and Breakout), possibly of cell groups rather than just individual cells
+	// * TODO Enable timed triggers for behaviours 
 	// * / GridGame:
-	//	"game" name=ID "{" cells+=CellSpecification+ fields+=FieldSpecification+ options+=OptionSpecification* "}";
+	//	"game" name=ID "{" states+=GlobalCellStateSpec? cells+=CellSpecification+ fields+=FieldSpecification+
+	//	options+=OptionSpecification* "}";
 	public GridGameElements getGridGameAccess() {
 		return pGridGame;
 	}
@@ -1079,6 +1243,27 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		return getCellVarSpecAccess().getRule();
 	}
 
+	//GlobalCellStateSpec:
+	//	"states" name=ID ("(" params+=StateParamSpec ("," params+=StateParamSpec)* ")")? "{" states+=CellState+ "start" "="
+	//	start=[CellState] "}";
+	public GlobalCellStateSpecElements getGlobalCellStateSpecAccess() {
+		return pGlobalCellStateSpec;
+	}
+	
+	public ParserRule getGlobalCellStateSpecRule() {
+		return getGlobalCellStateSpecAccess().getRule();
+	}
+
+	//StateParamSpec:
+	//	type=("int" | "String") name=ID;
+	public StateParamSpecElements getStateParamSpecAccess() {
+		return pStateParamSpec;
+	}
+	
+	public ParserRule getStateParamSpecRule() {
+		return getStateParamSpecAccess().getRule();
+	}
+
 	//CellStateSpec:
 	//	"states" "{" states+=CellState+ "start" "=" start=[CellState] "}";
 	public CellStateSpecElements getCellStateSpecAccess() {
@@ -1109,6 +1294,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		return getTransitionSpecAccess().getRule();
 	}
 
+	//// TODO Consider introducing triggers based on state changes in the context
 	//TransitionTriggerSpec:
 	//	"mouse-left" | "mouse-right";
 	public TransitionTriggerSpecElements getTransitionTriggerSpecAccess() {
