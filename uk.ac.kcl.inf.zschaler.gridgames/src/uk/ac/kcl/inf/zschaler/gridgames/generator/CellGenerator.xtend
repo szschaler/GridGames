@@ -40,18 +40,26 @@ class CellGenerator extends CommonGenerator {
 	 * TODO Eventually might want to enable sharing of display annotations between a number of states.
 	 */
 	def void normalizeDisplayAnnotation(CellSpecification c) {
-		if ((c.members.filter(CellStateSpec).empty) && 
-			(!c.members.filter(CellDisplaySpec).empty)) {
+		if ((c.cellStates.empty) && (!c.members.filter(CellDisplaySpec).empty)) {
 			// Create a new state spec and move the display spec over
 			// TODO: There must be a simpler way of doing this
-			var stateSpec = gg.eClass.EPackage.EFactoryInstance.create(gg.eClass.EPackage.EClassifiers.findFirst[ec | ec.name.equals ("CellStateSpec")] as EClass) as CellStateSpec
-			var dummyState = gg.eClass.EPackage.EFactoryInstance.create(gg.eClass.EPackage.EClassifiers.findFirst[ec | ec.name.equals ("CellState")] as EClass) as CellState
+			var stateSpec = gg.eClass.EPackage.EFactoryInstance.create(gg.eClass.EPackage.EClassifiers.findFirst [ec |
+				ec.name.equals("CellStateSpec")
+			] as EClass) as CellStateSpec
+			var dummyState = gg.eClass.EPackage.EFactoryInstance.create(gg.eClass.EPackage.EClassifiers.findFirst [ec |
+				ec.name.equals("CellState")
+			] as EClass) as CellState
 			dummyState.name = "default";
 			stateSpec.states.add(dummyState)
-			c.members.add (stateSpec)
+			c.members.add(stateSpec)
 			dummyState.display = c.members.filter(CellDisplaySpec).findFirst[true]
 			stateSpec.start = dummyState
 		}
+	}
+
+	// TODO Hook in here to get the list of states from referenced global cell state specs
+	def getCellStates(CellSpecification c) {
+		c.members.filter(CellStateSpec).map[css|css.states].flatten
 	}
 
 	/**
@@ -83,9 +91,9 @@ class CellGenerator extends CommonGenerator {
 					return jb;
 				}
 			}
-
+		
 			public void handleMouseClick (boolean isLeft, int row, int col, «generateFieldClassName()» field) {
-				currentState.handleMouseClick(isLeft, row, col, field);
+			currentState.handleMouseClick(isLeft, row, col, field);
 			}
 			
 			«gg.cells.join(" ", [c | '''public boolean is«c.name.toFirstUpper»() { return false; }'''])»
@@ -95,26 +103,27 @@ class CellGenerator extends CommonGenerator {
 	/**
 	 * Generate code for the specified cell specification
 	 */
-	def generateCellClass(CellSpecification c) '''
+	def generateCellClass (CellSpecification c) '''
 		package «generateCellPackage»;
 		
 		import javax.swing.JButton;
 		import javax.swing.JLabel;
 		
 		import java.awt.Component;
-
+		
 		import «generateModelPackage».«generateFieldClassName»;
 		
 		public class «c.generateCellClassName» extends Cell {
 			«c.members.filter(CellVarSpec).join(" ", [v | '''private «v.type» «v.generateVariableName»;'''])»
 			
 			public «c.generateCellClassName»(«c.members.filter(CellVarSpec).join(", ", [v | '''«v.type» «v.name.toFirstLower»'''])») {
+				«/* FIXME May need to do slightly different things for different kinds of CellStateSpecs? */»
 				currentState = new «c.members.filter(CellStateSpec).findFirst[true].start.name.toFirstUpper»CellState();
 				
 				«c.members.filter(CellVarSpec).join("; ", [v | '''«v.generateVariableName» = «v.name.toFirstLower»;'''])»
 			}
 			
-			«c.members.filter(CellStateSpec).join (" ", [css | css.generateStateSpec])»
+			«c.cellStates.join (" ", [css | css.generateStateSpec])»
 			
 			@Override
 			public boolean is«c.name.toFirstUpper»() {
@@ -122,12 +131,8 @@ class CellGenerator extends CommonGenerator {
 			}
 		}
 	'''
-	
-	def CharSequence generateStateSpec(CellStateSpec css) {
-		css.states.join (" ", [s | s.generateStateSpec])
-	} 
-	
-	def generateStateSpec (CellState cs) '''
+
+	def generateStateSpec(CellState cs) '''
 		private class «cs.name.toFirstUpper»CellState extends CellState {
 			@Override
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {

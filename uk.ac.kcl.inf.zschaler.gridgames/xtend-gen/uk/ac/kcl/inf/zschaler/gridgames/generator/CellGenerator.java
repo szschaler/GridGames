@@ -71,15 +71,14 @@ public class CellGenerator extends CommonGenerator {
    */
   public void normalizeDisplayAnnotation(final CellSpecification c) {
     boolean _and = false;
-    EList<CellMember> _members = c.getMembers();
-    Iterable<CellStateSpec> _filter = Iterables.<CellStateSpec>filter(_members, CellStateSpec.class);
-    boolean _isEmpty = IterableExtensions.isEmpty(_filter);
+    Iterable<CellState> _cellStates = this.getCellStates(c);
+    boolean _isEmpty = IterableExtensions.isEmpty(_cellStates);
     if (!_isEmpty) {
       _and = false;
     } else {
-      EList<CellMember> _members_1 = c.getMembers();
-      Iterable<CellDisplaySpec> _filter_1 = Iterables.<CellDisplaySpec>filter(_members_1, CellDisplaySpec.class);
-      boolean _isEmpty_1 = IterableExtensions.isEmpty(_filter_1);
+      EList<CellMember> _members = c.getMembers();
+      Iterable<CellDisplaySpec> _filter = Iterables.<CellDisplaySpec>filter(_members, CellDisplaySpec.class);
+      boolean _isEmpty_1 = IterableExtensions.isEmpty(_filter);
       boolean _not = (!_isEmpty_1);
       _and = _not;
     }
@@ -119,20 +118,33 @@ public class CellGenerator extends CommonGenerator {
       dummyState.setName("default");
       EList<CellState> _states = stateSpec.getStates();
       _states.add(dummyState);
+      EList<CellMember> _members_1 = c.getMembers();
+      _members_1.add(stateSpec);
       EList<CellMember> _members_2 = c.getMembers();
-      _members_2.add(stateSpec);
-      EList<CellMember> _members_3 = c.getMembers();
-      Iterable<CellDisplaySpec> _filter_2 = Iterables.<CellDisplaySpec>filter(_members_3, CellDisplaySpec.class);
+      Iterable<CellDisplaySpec> _filter_1 = Iterables.<CellDisplaySpec>filter(_members_2, CellDisplaySpec.class);
       final Function1<CellDisplaySpec, Boolean> _function_2 = new Function1<CellDisplaySpec, Boolean>() {
         @Override
         public Boolean apply(final CellDisplaySpec it) {
           return Boolean.valueOf(true);
         }
       };
-      CellDisplaySpec _findFirst_2 = IterableExtensions.<CellDisplaySpec>findFirst(_filter_2, _function_2);
+      CellDisplaySpec _findFirst_2 = IterableExtensions.<CellDisplaySpec>findFirst(_filter_1, _function_2);
       dummyState.setDisplay(_findFirst_2);
       stateSpec.setStart(dummyState);
     }
+  }
+  
+  public Iterable<CellState> getCellStates(final CellSpecification c) {
+    EList<CellMember> _members = c.getMembers();
+    Iterable<CellStateSpec> _filter = Iterables.<CellStateSpec>filter(_members, CellStateSpec.class);
+    final Function1<CellStateSpec, EList<CellState>> _function = new Function1<CellStateSpec, EList<CellState>>() {
+      @Override
+      public EList<CellState> apply(final CellStateSpec css) {
+        return css.getStates();
+      }
+    };
+    Iterable<EList<CellState>> _map = IterableExtensions.<CellStateSpec, EList<CellState>>map(_filter, _function);
+    return Iterables.<CellState>concat(_map);
   }
   
   /**
@@ -218,7 +230,7 @@ public class CellGenerator extends CommonGenerator {
     _builder.append(_generateFieldClassName_2, "\t");
     _builder.append(" field) {");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
+    _builder.append("\t");
     _builder.append("currentState.handleMouseClick(isLeft, row, col, field);");
     _builder.newLine();
     _builder.append("\t");
@@ -328,6 +340,8 @@ public class CellGenerator extends CommonGenerator {
     _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
     _builder.append("currentState = new ");
     EList<CellMember> _members_2 = c.getMembers();
     Iterable<CellStateSpec> _filter_2 = Iterables.<CellStateSpec>filter(_members_2, CellStateSpec.class);
@@ -372,15 +386,14 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    EList<CellMember> _members_4 = c.getMembers();
-    Iterable<CellStateSpec> _filter_4 = Iterables.<CellStateSpec>filter(_members_4, CellStateSpec.class);
-    final Function1<CellStateSpec, CharSequence> _function_4 = new Function1<CellStateSpec, CharSequence>() {
+    Iterable<CellState> _cellStates = this.getCellStates(c);
+    final Function1<CellState, CharSequence> _function_4 = new Function1<CellState, CharSequence>() {
       @Override
-      public CharSequence apply(final CellStateSpec css) {
+      public CharSequence apply(final CellState css) {
         return CellGenerator.this.generateStateSpec(css);
       }
     };
-    String _join_3 = IterableExtensions.<CellStateSpec>join(_filter_4, " ", _function_4);
+    String _join_3 = IterableExtensions.<CellState>join(_cellStates, " ", _function_4);
     _builder.append(_join_3, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -404,17 +417,6 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("}");
     _builder.newLine();
     return _builder;
-  }
-  
-  public CharSequence generateStateSpec(final CellStateSpec css) {
-    EList<CellState> _states = css.getStates();
-    final Function1<CellState, CharSequence> _function = new Function1<CellState, CharSequence>() {
-      @Override
-      public CharSequence apply(final CellState s) {
-        return CellGenerator.this.generateStateSpec(s);
-      }
-    };
-    return IterableExtensions.<CellState>join(_states, " ", _function);
   }
   
   public CharSequence generateStateSpec(final CellState cs) {
