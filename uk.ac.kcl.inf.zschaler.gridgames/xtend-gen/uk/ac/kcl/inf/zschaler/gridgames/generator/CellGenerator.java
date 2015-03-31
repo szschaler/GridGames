@@ -3,6 +3,11 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -13,6 +18,8 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
@@ -25,8 +32,14 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateParamSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
 
 /**
  * Generates all stuff to do with handling cells.
@@ -75,7 +88,7 @@ public class CellGenerator extends CommonGenerator {
    */
   public void normalizeDisplayAnnotation(final CellSpecification c) {
     boolean _and = false;
-    Iterable<CellState> _cellStates = this.getCellStates(c);
+    Iterable<Pair<? extends Map<String, Value>, CellState>> _cellStates = this.getCellStates(c);
     boolean _isEmpty = IterableExtensions.isEmpty(_cellStates);
     if (!_isEmpty) {
       _and = false;
@@ -138,26 +151,63 @@ public class CellGenerator extends CommonGenerator {
     }
   }
   
-  public Iterable<CellState> getCellStates(final CellSpecification c) {
+  public Iterable<Pair<? extends Map<String, Value>, CellState>> getCellStates(final CellSpecification c) {
     EList<CellMember> _members = c.getMembers();
     Iterable<CellStateSpec> _filter = Iterables.<CellStateSpec>filter(_members, CellStateSpec.class);
-    final Function1<CellStateSpec, EList<CellState>> _function = new Function1<CellStateSpec, EList<CellState>>() {
+    final Function1<CellStateSpec, List<Pair<? extends Map<String, Value>, CellState>>> _function = new Function1<CellStateSpec, List<Pair<? extends Map<String, Value>, CellState>>>() {
       @Override
-      public EList<CellState> apply(final CellStateSpec css) {
+      public List<Pair<? extends Map<String, Value>, CellState>> apply(final CellStateSpec css) {
         return CellGenerator.this.getAllStates(css);
       }
     };
-    Iterable<EList<CellState>> _map = IterableExtensions.<CellStateSpec, EList<CellState>>map(_filter, _function);
-    return Iterables.<CellState>concat(_map);
+    Iterable<List<Pair<? extends Map<String, Value>, CellState>>> _map = IterableExtensions.<CellStateSpec, List<Pair<? extends Map<String, Value>, CellState>>>map(_filter, _function);
+    return Iterables.<Pair<? extends Map<String, Value>, CellState>>concat(_map);
   }
   
-  protected EList<CellState> _getAllStates(final LocalCellStateSpec lcss) {
-    return lcss.getStates();
+  protected List<Pair<? extends Map<String, Value>, CellState>> _getAllStates(final LocalCellStateSpec lcss) {
+    List<Pair<? extends Map<String, Value>, CellState>> _xblockexpression = null;
+    {
+      final Map<String, Value> symbols = Collections.<String, Value>emptyMap();
+      EList<CellState> _states = lcss.getStates();
+      final Function1<CellState, Pair<? extends Map<String, Value>, CellState>> _function = new Function1<CellState, Pair<? extends Map<String, Value>, CellState>>() {
+        @Override
+        public Pair<? extends Map<String, Value>, CellState> apply(final CellState s) {
+          return new Pair<Map<String, Value>, CellState>(symbols, s);
+        }
+      };
+      _xblockexpression = ListExtensions.<CellState, Pair<? extends Map<String, Value>, CellState>>map(_states, _function);
+    }
+    return _xblockexpression;
   }
   
-  protected EList<CellState> _getAllStates(final CellStateSpecReference cssr) {
-    GlobalCellStateSpec _stateSpec = cssr.getStateSpec();
-    return _stateSpec.getStates();
+  protected List<Pair<? extends Map<String, Value>, CellState>> _getAllStates(final CellStateSpecReference cssr) {
+    List<Pair<? extends Map<String, Value>, CellState>> _xblockexpression = null;
+    {
+      final HashMap<String, Value> symbols = new HashMap<String, Value>();
+      EList<Value> _params = cssr.getParams();
+      final Iterator<Value> iter = _params.iterator();
+      GlobalCellStateSpec _stateSpec = cssr.getStateSpec();
+      EList<StateParamSpec> _params_1 = _stateSpec.getParams();
+      final Procedure1<StateParamSpec> _function = new Procedure1<StateParamSpec>() {
+        @Override
+        public void apply(final StateParamSpec p) {
+          String _name = p.getName();
+          Value _next = iter.next();
+          symbols.put(_name, _next);
+        }
+      };
+      IterableExtensions.<StateParamSpec>forEach(_params_1, _function);
+      GlobalCellStateSpec _stateSpec_1 = cssr.getStateSpec();
+      EList<CellState> _states = _stateSpec_1.getStates();
+      final Function1<CellState, Pair<? extends Map<String, Value>, CellState>> _function_1 = new Function1<CellState, Pair<? extends Map<String, Value>, CellState>>() {
+        @Override
+        public Pair<? extends Map<String, Value>, CellState> apply(final CellState s) {
+          return new Pair<HashMap<String, Value>, CellState>(symbols, s);
+        }
+      };
+      _xblockexpression = ListExtensions.<CellState, Pair<? extends Map<String, Value>, CellState>>map(_states, _function_1);
+    }
+    return _xblockexpression;
   }
   
   public CellState getStartState(final CellSpecification c) {
@@ -416,14 +466,16 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    Iterable<CellState> _cellStates = this.getCellStates(c);
-    final Function1<CellState, CharSequence> _function_3 = new Function1<CellState, CharSequence>() {
+    Iterable<Pair<? extends Map<String, Value>, CellState>> _cellStates = this.getCellStates(c);
+    final Function1<Pair<? extends Map<String, Value>, CellState>, CharSequence> _function_3 = new Function1<Pair<? extends Map<String, Value>, CellState>, CharSequence>() {
       @Override
-      public CharSequence apply(final CellState css) {
-        return CellGenerator.this.generateStateSpec(css);
+      public CharSequence apply(final Pair<? extends Map<String, Value>, CellState> stateWithSymbols) {
+        CellState _value = stateWithSymbols.getValue();
+        Map<String, Value> _key = stateWithSymbols.getKey();
+        return CellGenerator.this.generateStateSpec(_value, _key);
       }
     };
-    String _join_3 = IterableExtensions.<CellState>join(_cellStates, " ", _function_3);
+    String _join_3 = IterableExtensions.<Pair<? extends Map<String, Value>, CellState>>join(_cellStates, " ", _function_3);
     _builder.append(_join_3, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -449,7 +501,7 @@ public class CellGenerator extends CommonGenerator {
     return _builder;
   }
   
-  public CharSequence generateStateSpec(final CellState cs) {
+  public CharSequence generateStateSpec(final CellState cs, final Map<String, Value> symbolTable) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("private class ");
     String _name = cs.getName();
@@ -472,7 +524,7 @@ public class CellGenerator extends CommonGenerator {
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("jb.setText (");
       CellDisplaySpec _display_1 = cs.getDisplay();
-      CharSequence _generateTextCalculation = this.generateTextCalculation(_display_1);
+      CharSequence _generateTextCalculation = this.generateTextCalculation(_display_1, symbolTable);
       _builder_1.append(_generateTextCalculation, "");
       _builder_1.append(");");
       _builder_1.newLineIfNotEmpty();
@@ -483,7 +535,7 @@ public class CellGenerator extends CommonGenerator {
       StringConcatenation _builder_2 = new StringConcatenation();
       _builder_2.append("jl.setText (");
       CellDisplaySpec _display_2 = cs.getDisplay();
-      CharSequence _generateTextCalculation_1 = this.generateTextCalculation(_display_2);
+      CharSequence _generateTextCalculation_1 = this.generateTextCalculation(_display_2, symbolTable);
       _builder_2.append(_generateTextCalculation_1, "");
       _builder_2.append(");");
       _builder_2.newLineIfNotEmpty();
@@ -570,7 +622,7 @@ public class CellGenerator extends CommonGenerator {
     return _builder;
   }
   
-  public CharSequence generateTextCalculation(final CellDisplaySpec cds) {
+  public CharSequence generateTextCalculation(final CellDisplaySpec cds, final Map<String, Value> symbolTable) {
     CharSequence _xifexpression = null;
     String _text = cds.getText();
     boolean _notEquals = (!Objects.equal(_text, null));
@@ -584,12 +636,43 @@ public class CellGenerator extends CommonGenerator {
     } else {
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("\"\" + ");
-      CellVarSpec _var = cds.getVar();
-      CharSequence _generateVariableName = this.generateVariableName(_var);
-      _builder_1.append(_generateVariableName, "");
+      VarSpec _var = cds.getVar();
+      CharSequence _generateAccessCode = this.generateAccessCode(_var, symbolTable);
+      _builder_1.append(_generateAccessCode, "");
       _xifexpression = _builder_1;
     }
     return _xifexpression;
+  }
+  
+  protected CharSequence _generateAccessCode(final CellVarSpec cvs, final Map<String, Value> symbolTable) {
+    return this.generateVariableName(cvs);
+  }
+  
+  protected CharSequence _generateAccessCode(final StateParamSpec sps, final Map<String, Value> symbolTable) {
+    String _name = sps.getName();
+    Value _get = symbolTable.get(_name);
+    return this.generateAccessCode(_get, symbolTable);
+  }
+  
+  protected CharSequence _generateAccessCode(final StringValue v, final Map<String, Value> symbolTable) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\"");
+    String _value = v.getValue();
+    _builder.append(_value, "");
+    _builder.append("\"");
+    return _builder;
+  }
+  
+  protected CharSequence _generateAccessCode(final IntValue v, final Map<String, Value> symbolTable) {
+    StringConcatenation _builder = new StringConcatenation();
+    int _value = v.getValue();
+    _builder.append(_value, "");
+    return _builder;
+  }
+  
+  protected CharSequence _generateAccessCode(final VarRefValue v, final Map<String, Value> symbolTable) {
+    CellVarSpec _ref = v.getRef();
+    return this.generateAccessCode(_ref, symbolTable);
   }
   
   public CharSequence generateFactory() {
@@ -665,7 +748,7 @@ public class CellGenerator extends CommonGenerator {
     return _builder;
   }
   
-  public EList<CellState> getAllStates(final CellStateSpec cssr) {
+  public List<Pair<? extends Map<String, Value>, CellState>> getAllStates(final CellStateSpec cssr) {
     if (cssr instanceof CellStateSpecReference) {
       return _getAllStates((CellStateSpecReference)cssr);
     } else if (cssr instanceof LocalCellStateSpec) {
@@ -684,6 +767,23 @@ public class CellGenerator extends CommonGenerator {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(cssr).toString());
+    }
+  }
+  
+  public CharSequence generateAccessCode(final EObject cvs, final Map<String, Value> symbolTable) {
+    if (cvs instanceof CellVarSpec) {
+      return _generateAccessCode((CellVarSpec)cvs, symbolTable);
+    } else if (cvs instanceof IntValue) {
+      return _generateAccessCode((IntValue)cvs, symbolTable);
+    } else if (cvs instanceof StateParamSpec) {
+      return _generateAccessCode((StateParamSpec)cvs, symbolTable);
+    } else if (cvs instanceof StringValue) {
+      return _generateAccessCode((StringValue)cvs, symbolTable);
+    } else if (cvs instanceof VarRefValue) {
+      return _generateAccessCode((VarRefValue)cvs, symbolTable);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(cvs, symbolTable).toString());
     }
   }
 }

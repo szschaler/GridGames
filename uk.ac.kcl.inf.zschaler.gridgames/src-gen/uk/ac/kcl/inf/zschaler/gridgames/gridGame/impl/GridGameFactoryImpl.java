@@ -68,12 +68,17 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.CELL_SPECIFICATION: return createCellSpecification();
       case GridGamePackage.CELL_MEMBER: return createCellMember();
       case GridGamePackage.CELL_DISPLAY_SPEC: return createCellDisplaySpec();
+      case GridGamePackage.VAR_SPEC: return createVarSpec();
       case GridGamePackage.CELL_VAR_SPEC: return createCellVarSpec();
       case GridGamePackage.GLOBAL_CELL_STATE_SPEC: return createGlobalCellStateSpec();
       case GridGamePackage.STATE_PARAM_SPEC: return createStateParamSpec();
       case GridGamePackage.CELL_STATE_SPEC: return createCellStateSpec();
       case GridGamePackage.LOCAL_CELL_STATE_SPEC: return createLocalCellStateSpec();
       case GridGamePackage.CELL_STATE_SPEC_REFERENCE: return createCellStateSpecReference();
+      case GridGamePackage.VALUE: return createValue();
+      case GridGamePackage.STRING_VALUE: return createStringValue();
+      case GridGamePackage.INT_VALUE: return createIntValue();
+      case GridGamePackage.VAR_REF_VALUE: return createVarRefValue();
       case GridGamePackage.CELL_STATE: return createCellState();
       case GridGamePackage.TRANSITION_SPEC: return createTransitionSpec();
       case GridGamePackage.FIELD_SPECIFICATION: return createFieldSpecification();
@@ -144,6 +149,17 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public VarSpec createVarSpec()
+  {
+    VarSpecImpl varSpec = new VarSpecImpl();
+    return varSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public CellVarSpec createCellVarSpec()
   {
     CellVarSpecImpl cellVarSpec = new CellVarSpecImpl();
@@ -203,6 +219,50 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     CellStateSpecReferenceImpl cellStateSpecReference = new CellStateSpecReferenceImpl();
     return cellStateSpecReference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Value createValue()
+  {
+    ValueImpl value = new ValueImpl();
+    return value;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringValue createStringValue()
+  {
+    StringValueImpl stringValue = new StringValueImpl();
+    return stringValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IntValue createIntValue()
+  {
+    IntValueImpl intValue = new IntValueImpl();
+    return intValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VarRefValue createVarRefValue()
+  {
+    VarRefValueImpl varRefValue = new VarRefValueImpl();
+    return varRefValue;
   }
 
   /**

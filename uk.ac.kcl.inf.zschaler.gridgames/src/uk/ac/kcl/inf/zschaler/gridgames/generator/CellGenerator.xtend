@@ -1,15 +1,24 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
+import java.util.Collections
+import java.util.HashMap
+import java.util.List
+import java.util.Map
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateParamSpec
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
 
 /**
  * Generates all stuff to do with handling cells.
@@ -63,12 +72,20 @@ class CellGenerator extends CommonGenerator {
 		c.members.filter(CellStateSpec).map[css | css.allStates].flatten
 	}
 	
-	def dispatch getAllStates (LocalCellStateSpec lcss) {
-		lcss.states
+	def dispatch List<Pair<? extends Map<String, Value>, CellState>> getAllStates (LocalCellStateSpec lcss) {
+		val symbols = Collections.emptyMap;
+		lcss.states.map[s | new Pair(symbols, s)]
 	}
 	
-	def dispatch getAllStates (CellStateSpecReference cssr) {
-		cssr.stateSpec.states
+	def dispatch List<Pair<? extends Map<String, Value>, CellState>> getAllStates (CellStateSpecReference cssr) {
+		val symbols = new HashMap<String, Value>()
+		// Put params into symbol table
+		val iter = cssr.params.iterator
+		cssr.stateSpec.params.forEach[p | 
+			// TODO Should do a type check here
+			symbols.put(p.name, iter.next)
+		]
+		cssr.stateSpec.states.map[s | new Pair(symbols, s)]
 	}
 
 	def getStartState(CellSpecification c) {
@@ -143,7 +160,7 @@ class CellGenerator extends CommonGenerator {
 				«c.members.filter(CellVarSpec).join("; ", [v | '''«v.generateVariableName» = «v.name.toFirstLower»;'''])»
 			}
 			
-			«c.cellStates.join (" ", [css | css.generateStateSpec])»
+			«c.cellStates.join (" ", [stateWithSymbols | stateWithSymbols.value.generateStateSpec (stateWithSymbols.key)])»
 			
 			@Override
 			public boolean is«c.name.toFirstUpper»() {
@@ -152,18 +169,18 @@ class CellGenerator extends CommonGenerator {
 		}
 	'''
 
-	def generateStateSpec(CellState cs) '''
+	def generateStateSpec(CellState cs, Map<String, Value> symbolTable) '''
 		private class «cs.name.toFirstUpper»CellState extends CellState {
 			@Override
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
 				«if (cs.display.display_type.equals ("button")) {
 					'''
-					jb.setText («cs.display.generateTextCalculation»);
+					jb.setText («cs.display.generateTextCalculation (symbolTable)»);
 					return jb;
 					'''
 				 } else {
 				 	'''
-					jl.setText («cs.display.generateTextCalculation»);
+					jl.setText («cs.display.generateTextCalculation (symbolTable)»);
 					return jl;
 					'''
 				}»
@@ -186,9 +203,23 @@ class CellGenerator extends CommonGenerator {
 
 	def generateVariableName(CellVarSpec v) '''«v.name.toFirstLower»Variable'''
 
-	def generateTextCalculation(CellDisplaySpec cds) {
-		if (cds.text != null) '''"«cds.text»"''' else '''"" + «cds.^var.generateVariableName»'''
+	def generateTextCalculation(CellDisplaySpec cds, Map<String, Value> symbolTable) {
+		if (cds.text != null) '''"«cds.text»"''' else '''"" + «cds.^var.generateAccessCode (symbolTable)»'''
 	}
+
+	def dispatch CharSequence generateAccessCode (CellVarSpec cvs, Map<String, Value> symbolTable) {
+		cvs.generateVariableName
+	}
+
+	def dispatch CharSequence generateAccessCode (StateParamSpec sps, Map<String, Value> symbolTable) {
+		symbolTable.get (sps.name).generateAccessCode(symbolTable)
+	}
+
+	def dispatch CharSequence generateAccessCode (StringValue v, Map<String, Value> symbolTable) '''"«v.value»"'''
+	def dispatch CharSequence generateAccessCode (IntValue v, Map<String, Value> symbolTable) '''«v.value»'''
+	def dispatch CharSequence generateAccessCode (VarRefValue v, Map<String, Value> symbolTable) {
+		v.ref.generateAccessCode (symbolTable)
+	} 
 
 	def generateFactory() '''
 		package «generateCellPackage»;

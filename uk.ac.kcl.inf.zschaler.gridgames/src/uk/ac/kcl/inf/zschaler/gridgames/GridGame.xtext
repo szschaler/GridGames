@@ -41,8 +41,13 @@ CellDisplaySpec :
 	"display" "{"
 		"as" display_type=("label" | "button")
 		(("text" text=STRING) | 
-		 ("var" var=[CellVarSpec]))
+		 ("var" var=[VarSpec]))
 	"}"
+;
+
+VarSpec : 
+	CellVarSpec |
+	StateParamSpec
 ;
 
 CellVarSpec :
@@ -75,7 +80,25 @@ LocalCellStateSpec :
 ;
 
 CellStateSpecReference :
-	"states" stateSpec=[GlobalCellStateSpec]
+	"states" stateSpec=[GlobalCellStateSpec] ("(" params += Value ("," params += Value)* ")")?
+;
+
+Value :
+	StringValue |
+	IntValue |
+	VarRefValue
+;
+
+StringValue :
+	value = STRING 
+;
+
+IntValue : 
+	value = INT 
+;
+
+VarRefValue :
+	ref   = [CellVarSpec]
 ;
 
 CellState :

@@ -10,8 +10,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,7 +78,7 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
    * @generated
    * @ordered
    */
-  protected CellVarSpec var;
+  protected VarSpec var;
 
   /**
    * <!-- begin-user-doc -->
@@ -152,12 +152,12 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
    * <!-- end-user-doc -->
    * @generated
    */
-  public CellVarSpec getVar()
+  public VarSpec getVar()
   {
     if (var != null && var.eIsProxy())
     {
       InternalEObject oldVar = (InternalEObject)var;
-      var = (CellVarSpec)eResolveProxy(oldVar);
+      var = (VarSpec)eResolveProxy(oldVar);
       if (var != oldVar)
       {
         if (eNotificationRequired())
@@ -172,7 +172,7 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
    * <!-- end-user-doc -->
    * @generated
    */
-  public CellVarSpec basicGetVar()
+  public VarSpec basicGetVar()
   {
     return var;
   }
@@ -182,9 +182,9 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVar(CellVarSpec newVar)
+  public void setVar(VarSpec newVar)
   {
-    CellVarSpec oldVar = var;
+    VarSpec oldVar = var;
     var = newVar;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.CELL_DISPLAY_SPEC__VAR, oldVar, var));
@@ -228,7 +228,7 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
         setText((String)newValue);
         return;
       case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
-        setVar((CellVarSpec)newValue);
+        setVar((VarSpec)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -251,7 +251,7 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
         setText(TEXT_EDEFAULT);
         return;
       case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
-        setVar((CellVarSpec)null);
+        setVar((VarSpec)null);
         return;
     }
     super.eUnset(featureID);

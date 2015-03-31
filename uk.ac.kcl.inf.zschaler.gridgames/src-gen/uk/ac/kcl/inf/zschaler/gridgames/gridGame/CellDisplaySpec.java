@@ -84,12 +84,12 @@ public interface CellDisplaySpec extends CellMember
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Var</em>' reference.
-   * @see #setVar(CellVarSpec)
+   * @see #setVar(VarSpec)
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getCellDisplaySpec_Var()
    * @model
    * @generated
    */
-  CellVarSpec getVar();
+  VarSpec getVar();
 
   /**
    * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getVar <em>Var</em>}' reference.
@@ -99,6 +99,6 @@ public interface CellDisplaySpec extends CellMember
    * @see #getVar()
    * @generated
    */
-  void setVar(CellVarSpec value);
+  void setVar(VarSpec value);
 
 } // CellDisplaySpec

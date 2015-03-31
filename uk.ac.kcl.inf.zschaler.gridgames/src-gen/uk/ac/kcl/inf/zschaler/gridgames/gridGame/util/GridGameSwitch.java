@@ -101,11 +101,19 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.VAR_SPEC:
+      {
+        VarSpec varSpec = (VarSpec)theEObject;
+        T result = caseVarSpec(varSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GridGamePackage.CELL_VAR_SPEC:
       {
         CellVarSpec cellVarSpec = (CellVarSpec)theEObject;
         T result = caseCellVarSpec(cellVarSpec);
         if (result == null) result = caseCellMember(cellVarSpec);
+        if (result == null) result = caseVarSpec(cellVarSpec);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -120,6 +128,7 @@ public class GridGameSwitch<T> extends Switch<T>
       {
         StateParamSpec stateParamSpec = (StateParamSpec)theEObject;
         T result = caseStateParamSpec(stateParamSpec);
+        if (result == null) result = caseVarSpec(stateParamSpec);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -146,6 +155,37 @@ public class GridGameSwitch<T> extends Switch<T>
         T result = caseCellStateSpecReference(cellStateSpecReference);
         if (result == null) result = caseCellStateSpec(cellStateSpecReference);
         if (result == null) result = caseCellMember(cellStateSpecReference);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.VALUE:
+      {
+        Value value = (Value)theEObject;
+        T result = caseValue(value);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.STRING_VALUE:
+      {
+        StringValue stringValue = (StringValue)theEObject;
+        T result = caseStringValue(stringValue);
+        if (result == null) result = caseValue(stringValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.INT_VALUE:
+      {
+        IntValue intValue = (IntValue)theEObject;
+        T result = caseIntValue(intValue);
+        if (result == null) result = caseValue(intValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.VAR_REF_VALUE:
+      {
+        VarRefValue varRefValue = (VarRefValue)theEObject;
+        T result = caseVarRefValue(varRefValue);
+        if (result == null) result = caseValue(varRefValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -338,6 +378,22 @@ public class GridGameSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Var Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Var Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVarSpec(VarSpec object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Cell Var Spec</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -429,6 +485,70 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCellStateSpecReference(CellStateSpecReference object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValue(Value object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringValue(StringValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Int Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Int Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIntValue(IntValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Var Ref Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Var Ref Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVarRefValue(VarRefValue object)
   {
     return null;
   }

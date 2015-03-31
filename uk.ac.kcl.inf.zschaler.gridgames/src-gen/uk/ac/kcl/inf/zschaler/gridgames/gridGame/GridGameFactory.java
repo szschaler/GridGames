@@ -59,6 +59,15 @@ public interface GridGameFactory extends EFactory
   CellDisplaySpec createCellDisplaySpec();
 
   /**
+   * Returns a new object of class '<em>Var Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Var Spec</em>'.
+   * @generated
+   */
+  VarSpec createVarSpec();
+
+  /**
    * Returns a new object of class '<em>Cell Var Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -111,6 +120,42 @@ public interface GridGameFactory extends EFactory
    * @generated
    */
   CellStateSpecReference createCellStateSpecReference();
+
+  /**
+   * Returns a new object of class '<em>Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Value</em>'.
+   * @generated
+   */
+  Value createValue();
+
+  /**
+   * Returns a new object of class '<em>String Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Value</em>'.
+   * @generated
+   */
+  StringValue createStringValue();
+
+  /**
+   * Returns a new object of class '<em>Int Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Int Value</em>'.
+   * @generated
+   */
+  IntValue createIntValue();
+
+  /**
+   * Returns a new object of class '<em>Var Ref Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Var Ref Value</em>'.
+   * @generated
+   */
+  VarRefValue createVarRefValue();
 
   /**
    * Returns a new object of class '<em>Cell State</em>'.

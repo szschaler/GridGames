@@ -22,12 +22,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="CellDisplaySpec" eSuperTypes="#//CellMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="display_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//CellVarSpec"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//VarSpec"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CellVarSpec" eSuperTypes="#//CellMember">
+  <eClassifiers xsi:type="ecore:EClass" name="VarSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CellVarSpec" eSuperTypes="#//CellMember #//VarSpec"/>
   <eClassifiers xsi:type="ecore:EClass" name="GlobalCellStateSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
@@ -36,10 +37,7 @@
         eType="#//CellState" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//CellState"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StateParamSpec">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateParamSpec" eSuperTypes="#//VarSpec"/>
   <eClassifiers xsi:type="ecore:EClass" name="CellStateSpec" eSuperTypes="#//CellMember"/>
   <eClassifiers xsi:type="ecore:EClass" name="LocalCellStateSpec" eSuperTypes="#//CellStateSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
@@ -48,6 +46,18 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CellStateSpecReference" eSuperTypes="#//CellStateSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="stateSpec" eType="#//GlobalCellStateSpec"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//Value" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Value"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntValue" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VarRefValue" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//CellVarSpec"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CellState">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

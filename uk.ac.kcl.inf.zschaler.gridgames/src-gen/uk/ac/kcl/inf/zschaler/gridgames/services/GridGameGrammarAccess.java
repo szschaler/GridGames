@@ -179,15 +179,15 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4_1 = (Group)cAlternatives_4.eContents().get(1);
 		private final Keyword cVarKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
 		private final Assignment cVarAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
-		private final CrossReference cVarCellVarSpecCrossReference_4_1_1_0 = (CrossReference)cVarAssignment_4_1_1.eContents().get(0);
-		private final RuleCall cVarCellVarSpecIDTerminalRuleCall_4_1_1_0_1 = (RuleCall)cVarCellVarSpecCrossReference_4_1_1_0.eContents().get(1);
+		private final CrossReference cVarVarSpecCrossReference_4_1_1_0 = (CrossReference)cVarAssignment_4_1_1.eContents().get(0);
+		private final RuleCall cVarVarSpecIDTerminalRuleCall_4_1_1_0_1 = (RuleCall)cVarVarSpecCrossReference_4_1_1_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//CellDisplaySpec:
-		//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[CellVarSpec]) "}";
+		//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[VarSpec]) "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[CellVarSpec]) "}"
+		//"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[VarSpec]) "}"
 		public Group getGroup() { return cGroup; }
 
 		//"display"
@@ -211,7 +211,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"button"
 		public Keyword getDisplay_typeButtonKeyword_3_0_1() { return cDisplay_typeButtonKeyword_3_0_1; }
 
-		//"text" text=STRING | "var" var=[CellVarSpec]
+		//"text" text=STRING | "var" var=[VarSpec]
 		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 
 		//"text" text=STRING
@@ -226,23 +226,43 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getTextSTRINGTerminalRuleCall_4_0_1_0() { return cTextSTRINGTerminalRuleCall_4_0_1_0; }
 
-		//"var" var=[CellVarSpec]
+		//"var" var=[VarSpec]
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
 		//"var"
 		public Keyword getVarKeyword_4_1_0() { return cVarKeyword_4_1_0; }
 
-		//var=[CellVarSpec]
+		//var=[VarSpec]
 		public Assignment getVarAssignment_4_1_1() { return cVarAssignment_4_1_1; }
 
-		//[CellVarSpec]
-		public CrossReference getVarCellVarSpecCrossReference_4_1_1_0() { return cVarCellVarSpecCrossReference_4_1_1_0; }
+		//[VarSpec]
+		public CrossReference getVarVarSpecCrossReference_4_1_1_0() { return cVarVarSpecCrossReference_4_1_1_0; }
 
 		//ID
-		public RuleCall getVarCellVarSpecIDTerminalRuleCall_4_1_1_0_1() { return cVarCellVarSpecIDTerminalRuleCall_4_1_1_0_1; }
+		public RuleCall getVarVarSpecIDTerminalRuleCall_4_1_1_0_1() { return cVarVarSpecIDTerminalRuleCall_4_1_1_0_1; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+
+	public class VarSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VarSpec");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cCellVarSpecParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cStateParamSpecParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//VarSpec:
+		//	CellVarSpec | StateParamSpec;
+		@Override public ParserRule getRule() { return rule; }
+
+		//CellVarSpec | StateParamSpec
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//CellVarSpec
+		public RuleCall getCellVarSpecParserRuleCall_0() { return cCellVarSpecParserRuleCall_0; }
+
+		//StateParamSpec
+		public RuleCall getStateParamSpecParserRuleCall_1() { return cStateParamSpecParserRuleCall_1; }
 	}
 
 	public class CellVarSpecElements extends AbstractParserRuleElementFinder {
@@ -498,12 +518,21 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cStateSpecAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cStateSpecGlobalCellStateSpecCrossReference_1_0 = (CrossReference)cStateSpecAssignment_1.eContents().get(0);
 		private final RuleCall cStateSpecGlobalCellStateSpecIDTerminalRuleCall_1_0_1 = (RuleCall)cStateSpecGlobalCellStateSpecCrossReference_1_0.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cParamsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cParamsValueParserRuleCall_2_1_0 = (RuleCall)cParamsAssignment_2_1.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
+		private final Keyword cCommaKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Assignment cParamsAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
+		private final RuleCall cParamsValueParserRuleCall_2_2_1_0 = (RuleCall)cParamsAssignment_2_2_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
 		
 		//CellStateSpecReference:
-		//	"states" stateSpec=[GlobalCellStateSpec];
+		//	"states" stateSpec=[GlobalCellStateSpec] ("(" params+=Value ("," params+=Value)* ")")?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"states" stateSpec=[GlobalCellStateSpec]
+		//"states" stateSpec=[GlobalCellStateSpec] ("(" params+=Value ("," params+=Value)* ")")?
 		public Group getGroup() { return cGroup; }
 
 		//"states"
@@ -517,6 +546,109 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getStateSpecGlobalCellStateSpecIDTerminalRuleCall_1_0_1() { return cStateSpecGlobalCellStateSpecIDTerminalRuleCall_1_0_1; }
+
+		//("(" params+=Value ("," params+=Value)* ")")?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
+
+		//params+=Value
+		public Assignment getParamsAssignment_2_1() { return cParamsAssignment_2_1; }
+
+		//Value
+		public RuleCall getParamsValueParserRuleCall_2_1_0() { return cParamsValueParserRuleCall_2_1_0; }
+
+		//("," params+=Value)*
+		public Group getGroup_2_2() { return cGroup_2_2; }
+
+		//","
+		public Keyword getCommaKeyword_2_2_0() { return cCommaKeyword_2_2_0; }
+
+		//params+=Value
+		public Assignment getParamsAssignment_2_2_1() { return cParamsAssignment_2_2_1; }
+
+		//Value
+		public RuleCall getParamsValueParserRuleCall_2_2_1_0() { return cParamsValueParserRuleCall_2_2_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_2_3() { return cRightParenthesisKeyword_2_3; }
+	}
+
+	public class ValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Value");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cStringValueParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cIntValueParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cVarRefValueParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//Value:
+		//	StringValue | IntValue | VarRefValue;
+		@Override public ParserRule getRule() { return rule; }
+
+		//StringValue | IntValue | VarRefValue
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//StringValue
+		public RuleCall getStringValueParserRuleCall_0() { return cStringValueParserRuleCall_0; }
+
+		//IntValue
+		public RuleCall getIntValueParserRuleCall_1() { return cIntValueParserRuleCall_1; }
+
+		//VarRefValue
+		public RuleCall getVarRefValueParserRuleCall_2() { return cVarRefValueParserRuleCall_2; }
+	}
+
+	public class StringValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringValue");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//StringValue:
+		//	value=STRING;
+		@Override public ParserRule getRule() { return rule; }
+
+		//value=STRING
+		public Assignment getValueAssignment() { return cValueAssignment; }
+
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_0() { return cValueSTRINGTerminalRuleCall_0; }
+	}
+
+	public class IntValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IntValue");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//IntValue:
+		//	value=INT;
+		@Override public ParserRule getRule() { return rule; }
+
+		//value=INT
+		public Assignment getValueAssignment() { return cValueAssignment; }
+
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_0() { return cValueINTTerminalRuleCall_0; }
+	}
+
+	public class VarRefValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VarRefValue");
+		private final Assignment cRefAssignment = (Assignment)rule.eContents().get(1);
+		private final CrossReference cRefCellVarSpecCrossReference_0 = (CrossReference)cRefAssignment.eContents().get(0);
+		private final RuleCall cRefCellVarSpecIDTerminalRuleCall_0_1 = (RuleCall)cRefCellVarSpecCrossReference_0.eContents().get(1);
+		
+		//VarRefValue:
+		//	ref=[CellVarSpec];
+		@Override public ParserRule getRule() { return rule; }
+
+		//ref=[CellVarSpec]
+		public Assignment getRefAssignment() { return cRefAssignment; }
+
+		//[CellVarSpec]
+		public CrossReference getRefCellVarSpecCrossReference_0() { return cRefCellVarSpecCrossReference_0; }
+
+		//ID
+		public RuleCall getRefCellVarSpecIDTerminalRuleCall_0_1() { return cRefCellVarSpecIDTerminalRuleCall_0_1; }
 	}
 
 	public class CellStateElements extends AbstractParserRuleElementFinder {
@@ -1142,12 +1274,17 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final CellSpecificationElements pCellSpecification;
 	private final CellMemberElements pCellMember;
 	private final CellDisplaySpecElements pCellDisplaySpec;
+	private final VarSpecElements pVarSpec;
 	private final CellVarSpecElements pCellVarSpec;
 	private final GlobalCellStateSpecElements pGlobalCellStateSpec;
 	private final StateParamSpecElements pStateParamSpec;
 	private final CellStateSpecElements pCellStateSpec;
 	private final LocalCellStateSpecElements pLocalCellStateSpec;
 	private final CellStateSpecReferenceElements pCellStateSpecReference;
+	private final ValueElements pValue;
+	private final StringValueElements pStringValue;
+	private final IntValueElements pIntValue;
+	private final VarRefValueElements pVarRefValue;
 	private final CellStateElements pCellState;
 	private final TransitionSpecElements pTransitionSpec;
 	private final TransitionTriggerSpecElements pTransitionTriggerSpec;
@@ -1179,12 +1316,17 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pCellSpecification = new CellSpecificationElements();
 		this.pCellMember = new CellMemberElements();
 		this.pCellDisplaySpec = new CellDisplaySpecElements();
+		this.pVarSpec = new VarSpecElements();
 		this.pCellVarSpec = new CellVarSpecElements();
 		this.pGlobalCellStateSpec = new GlobalCellStateSpecElements();
 		this.pStateParamSpec = new StateParamSpecElements();
 		this.pCellStateSpec = new CellStateSpecElements();
 		this.pLocalCellStateSpec = new LocalCellStateSpecElements();
 		this.pCellStateSpecReference = new CellStateSpecReferenceElements();
+		this.pValue = new ValueElements();
+		this.pStringValue = new StringValueElements();
+		this.pIntValue = new IntValueElements();
+		this.pVarRefValue = new VarRefValueElements();
 		this.pCellState = new CellStateElements();
 		this.pTransitionSpec = new TransitionSpecElements();
 		this.pTransitionTriggerSpec = new TransitionTriggerSpecElements();
@@ -1276,13 +1418,23 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellDisplaySpec:
-	//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[CellVarSpec]) "}";
+	//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[VarSpec]) "}";
 	public CellDisplaySpecElements getCellDisplaySpecAccess() {
 		return pCellDisplaySpec;
 	}
 	
 	public ParserRule getCellDisplaySpecRule() {
 		return getCellDisplaySpecAccess().getRule();
+	}
+
+	//VarSpec:
+	//	CellVarSpec | StateParamSpec;
+	public VarSpecElements getVarSpecAccess() {
+		return pVarSpec;
+	}
+	
+	public ParserRule getVarSpecRule() {
+		return getVarSpecAccess().getRule();
 	}
 
 	//CellVarSpec:
@@ -1337,13 +1489,53 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellStateSpecReference:
-	//	"states" stateSpec=[GlobalCellStateSpec];
+	//	"states" stateSpec=[GlobalCellStateSpec] ("(" params+=Value ("," params+=Value)* ")")?;
 	public CellStateSpecReferenceElements getCellStateSpecReferenceAccess() {
 		return pCellStateSpecReference;
 	}
 	
 	public ParserRule getCellStateSpecReferenceRule() {
 		return getCellStateSpecReferenceAccess().getRule();
+	}
+
+	//Value:
+	//	StringValue | IntValue | VarRefValue;
+	public ValueElements getValueAccess() {
+		return pValue;
+	}
+	
+	public ParserRule getValueRule() {
+		return getValueAccess().getRule();
+	}
+
+	//StringValue:
+	//	value=STRING;
+	public StringValueElements getStringValueAccess() {
+		return pStringValue;
+	}
+	
+	public ParserRule getStringValueRule() {
+		return getStringValueAccess().getRule();
+	}
+
+	//IntValue:
+	//	value=INT;
+	public IntValueElements getIntValueAccess() {
+		return pIntValue;
+	}
+	
+	public ParserRule getIntValueRule() {
+		return getIntValueAccess().getRule();
+	}
+
+	//VarRefValue:
+	//	ref=[CellVarSpec];
+	public VarRefValueElements getVarRefValueAccess() {
+		return pVarRefValue;
+	}
+	
+	public ParserRule getVarRefValueRule() {
+		return getVarRefValueAccess().getRule();
 	}
 
 	//CellState:

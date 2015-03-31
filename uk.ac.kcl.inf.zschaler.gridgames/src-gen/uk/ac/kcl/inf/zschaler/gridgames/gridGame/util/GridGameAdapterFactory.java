@@ -95,6 +95,11 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createCellDisplaySpecAdapter();
       }
       @Override
+      public Adapter caseVarSpec(VarSpec object)
+      {
+        return createVarSpecAdapter();
+      }
+      @Override
       public Adapter caseCellVarSpec(CellVarSpec object)
       {
         return createCellVarSpecAdapter();
@@ -123,6 +128,26 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCellStateSpecReference(CellStateSpecReference object)
       {
         return createCellStateSpecReferenceAdapter();
+      }
+      @Override
+      public Adapter caseValue(Value object)
+      {
+        return createValueAdapter();
+      }
+      @Override
+      public Adapter caseStringValue(StringValue object)
+      {
+        return createStringValueAdapter();
+      }
+      @Override
+      public Adapter caseIntValue(IntValue object)
+      {
+        return createIntValueAdapter();
+      }
+      @Override
+      public Adapter caseVarRefValue(VarRefValue object)
+      {
+        return createVarRefValueAdapter();
       }
       @Override
       public Adapter caseCellState(CellState object)
@@ -287,6 +312,21 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec <em>Var Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec
+   * @generated
+   */
+  public Adapter createVarSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec <em>Cell Var Spec</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -372,6 +412,66 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCellStateSpecReferenceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
+   * @generated
+   */
+  public Adapter createValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue <em>String Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue
+   * @generated
+   */
+  public Adapter createStringValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue <em>Int Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue
+   * @generated
+   */
+  public Adapter createIntValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue <em>Var Ref Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
+   * @generated
+   */
+  public Adapter createVarRefValueAdapter()
   {
     return null;
   }
