@@ -706,22 +706,62 @@ ruleCellStateSpec returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getCellStateSpecAccess().getLocalCellStateSpecParserRuleCall_0()); 
+    }
+    this_LocalCellStateSpec_0=ruleLocalCellStateSpec
+    { 
+        $current = $this_LocalCellStateSpec_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getCellStateSpecAccess().getCellStateSpecReferenceParserRuleCall_1()); 
+    }
+    this_CellStateSpecReference_1=ruleCellStateSpecReference
+    { 
+        $current = $this_CellStateSpecReference_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleLocalCellStateSpec
+entryRuleLocalCellStateSpec returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getLocalCellStateSpecRule()); }
+	 iv_ruleLocalCellStateSpec=ruleLocalCellStateSpec 
+	 { $current=$iv_ruleLocalCellStateSpec.current; } 
+	 EOF 
+;
+
+// Rule LocalCellStateSpec
+ruleLocalCellStateSpec returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
 (	otherlv_0='states' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getCellStateSpecAccess().getStatesKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getLocalCellStateSpecAccess().getStatesKeyword_0());
     }
 	otherlv_1='{' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getCellStateSpecAccess().getLeftCurlyBracketKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getLocalCellStateSpecAccess().getLeftCurlyBracketKeyword_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCellStateSpecAccess().getStatesCellStateParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getLocalCellStateSpecAccess().getStatesCellStateParserRuleCall_2_0()); 
 	    }
 		lv_states_2_0=ruleCellState		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getCellStateSpecRule());
+	            $current = createModelElementForParent(grammarAccess.getLocalCellStateSpecRule());
 	        }
        		add(
        			$current, 
@@ -734,30 +774,68 @@ ruleCellStateSpec returns [EObject current=null]
 )
 )+	otherlv_3='start' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getCellStateSpecAccess().getStartKeyword_3());
+    	newLeafNode(otherlv_3, grammarAccess.getLocalCellStateSpecAccess().getStartKeyword_3());
     }
 	otherlv_4='=' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getCellStateSpecAccess().getEqualsSignKeyword_4());
+    	newLeafNode(otherlv_4, grammarAccess.getLocalCellStateSpecAccess().getEqualsSignKeyword_4());
     }
 (
 (
 		{
 			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getCellStateSpecRule());
+	            $current = createModelElement(grammarAccess.getLocalCellStateSpecRule());
 	        }
         }
 	otherlv_5=RULE_ID
 	{
-		newLeafNode(otherlv_5, grammarAccess.getCellStateSpecAccess().getStartCellStateCrossReference_5_0()); 
+		newLeafNode(otherlv_5, grammarAccess.getLocalCellStateSpecAccess().getStartCellStateCrossReference_5_0()); 
 	}
 
 )
 )	otherlv_6='}' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getCellStateSpecAccess().getRightCurlyBracketKeyword_6());
+    	newLeafNode(otherlv_6, grammarAccess.getLocalCellStateSpecAccess().getRightCurlyBracketKeyword_6());
     }
 )
+;
+
+
+
+
+
+// Entry rule entryRuleCellStateSpecReference
+entryRuleCellStateSpecReference returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getCellStateSpecReferenceRule()); }
+	 iv_ruleCellStateSpecReference=ruleCellStateSpecReference 
+	 { $current=$iv_ruleCellStateSpecReference.current; } 
+	 EOF 
+;
+
+// Rule CellStateSpecReference
+ruleCellStateSpecReference returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='states' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getCellStateSpecReferenceAccess().getStatesKeyword_0());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellStateSpecReferenceRule());
+	        }
+        }
+	otherlv_1=RULE_ID
+	{
+		newLeafNode(otherlv_1, grammarAccess.getCellStateSpecReferenceAccess().getStateSpecGlobalCellStateSpecCrossReference_1_0()); 
+	}
+
+)
+))
 ;
 
 

@@ -1700,123 +1700,84 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCellStateSpec"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:705:1: ruleCellStateSpec returns [EObject current=null] : (otherlv_0= 'states' otherlv_1= '{' ( (lv_states_2_0= ruleCellState ) )+ otherlv_3= 'start' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) otherlv_6= '}' ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:705:1: ruleCellStateSpec returns [EObject current=null] : (this_LocalCellStateSpec_0= ruleLocalCellStateSpec | this_CellStateSpecReference_1= ruleCellStateSpecReference ) ;
     public final EObject ruleCellStateSpec() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_0=null;
-        Token otherlv_1=null;
-        Token otherlv_3=null;
-        Token otherlv_4=null;
-        Token otherlv_5=null;
-        Token otherlv_6=null;
-        EObject lv_states_2_0 = null;
+        EObject this_LocalCellStateSpec_0 = null;
+
+        EObject this_CellStateSpecReference_1 = null;
 
 
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:708:28: ( (otherlv_0= 'states' otherlv_1= '{' ( (lv_states_2_0= ruleCellState ) )+ otherlv_3= 'start' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) otherlv_6= '}' ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:709:1: (otherlv_0= 'states' otherlv_1= '{' ( (lv_states_2_0= ruleCellState ) )+ otherlv_3= 'start' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) otherlv_6= '}' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:708:28: ( (this_LocalCellStateSpec_0= ruleLocalCellStateSpec | this_CellStateSpecReference_1= ruleCellStateSpecReference ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:709:1: (this_LocalCellStateSpec_0= ruleLocalCellStateSpec | this_CellStateSpecReference_1= ruleCellStateSpecReference )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:709:1: (otherlv_0= 'states' otherlv_1= '{' ( (lv_states_2_0= ruleCellState ) )+ otherlv_3= 'start' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) otherlv_6= '}' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:709:3: otherlv_0= 'states' otherlv_1= '{' ( (lv_states_2_0= ruleCellState ) )+ otherlv_3= 'start' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) otherlv_6= '}'
-            {
-            otherlv_0=(Token)match(input,23,FOLLOW_23_in_ruleCellStateSpec1505); 
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:709:1: (this_LocalCellStateSpec_0= ruleLocalCellStateSpec | this_CellStateSpecReference_1= ruleCellStateSpecReference )
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-                	newLeafNode(otherlv_0, grammarAccess.getCellStateSpecAccess().getStatesKeyword_0());
-                
-            otherlv_1=(Token)match(input,12,FOLLOW_12_in_ruleCellStateSpec1517); 
+            if ( (LA14_0==23) ) {
+                int LA14_1 = input.LA(2);
 
-                	newLeafNode(otherlv_1, grammarAccess.getCellStateSpecAccess().getLeftCurlyBracketKeyword_1());
-                
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:717:1: ( (lv_states_2_0= ruleCellState ) )+
-            int cnt14=0;
-            loop14:
-            do {
-                int alt14=2;
-                int LA14_0 = input.LA(1);
-
-                if ( (LA14_0==RULE_ID) ) {
+                if ( (LA14_1==12) ) {
                     alt14=1;
                 }
-
-
-                switch (alt14) {
-            	case 1 :
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:718:1: (lv_states_2_0= ruleCellState )
-            	    {
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:718:1: (lv_states_2_0= ruleCellState )
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:719:3: lv_states_2_0= ruleCellState
-            	    {
-            	     
-            	    	        newCompositeNode(grammarAccess.getCellStateSpecAccess().getStatesCellStateParserRuleCall_2_0()); 
-            	    	    
-            	    pushFollow(FOLLOW_ruleCellState_in_ruleCellStateSpec1538);
-            	    lv_states_2_0=ruleCellState();
-
-            	    state._fsp--;
-
-
-            	    	        if (current==null) {
-            	    	            current = createModelElementForParent(grammarAccess.getCellStateSpecRule());
-            	    	        }
-            	           		add(
-            	           			current, 
-            	           			"states",
-            	            		lv_states_2_0, 
-            	            		"CellState");
-            	    	        afterParserOrEnumRuleCall();
-            	    	    
-
-            	    }
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    if ( cnt14 >= 1 ) break loop14;
-                        EarlyExitException eee =
-                            new EarlyExitException(14, input);
-                        throw eee;
+                else if ( (LA14_1==RULE_ID) ) {
+                    alt14=2;
                 }
-                cnt14++;
-            } while (true);
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 14, 1, input);
 
-            otherlv_3=(Token)match(input,27,FOLLOW_27_in_ruleCellStateSpec1551); 
-
-                	newLeafNode(otherlv_3, grammarAccess.getCellStateSpecAccess().getStartKeyword_3());
-                
-            otherlv_4=(Token)match(input,28,FOLLOW_28_in_ruleCellStateSpec1563); 
-
-                	newLeafNode(otherlv_4, grammarAccess.getCellStateSpecAccess().getEqualsSignKeyword_4());
-                
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:743:1: ( (otherlv_5= RULE_ID ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:744:1: (otherlv_5= RULE_ID )
-            {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:744:1: (otherlv_5= RULE_ID )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:745:3: otherlv_5= RULE_ID
-            {
-
-            			if (current==null) {
-            	            current = createModelElement(grammarAccess.getCellStateSpecRule());
-            	        }
-                    
-            otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCellStateSpec1583); 
-
-            		newLeafNode(otherlv_5, grammarAccess.getCellStateSpecAccess().getStartCellStateCrossReference_5_0()); 
-            	
-
+                    throw nvae;
+                }
             }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 14, 0, input);
 
-
+                throw nvae;
             }
+            switch (alt14) {
+                case 1 :
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:710:5: this_LocalCellStateSpec_0= ruleLocalCellStateSpec
+                    {
+                     
+                            newCompositeNode(grammarAccess.getCellStateSpecAccess().getLocalCellStateSpecParserRuleCall_0()); 
+                        
+                    pushFollow(FOLLOW_ruleLocalCellStateSpec_in_ruleCellStateSpec1515);
+                    this_LocalCellStateSpec_0=ruleLocalCellStateSpec();
 
-            otherlv_6=(Token)match(input,13,FOLLOW_13_in_ruleCellStateSpec1595); 
+                    state._fsp--;
 
-                	newLeafNode(otherlv_6, grammarAccess.getCellStateSpecAccess().getRightCurlyBracketKeyword_6());
-                
+                     
+                            current = this_LocalCellStateSpec_0; 
+                            afterParserOrEnumRuleCall();
+                        
+
+                    }
+                    break;
+                case 2 :
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:720:5: this_CellStateSpecReference_1= ruleCellStateSpecReference
+                    {
+                     
+                            newCompositeNode(grammarAccess.getCellStateSpecAccess().getCellStateSpecReferenceParserRuleCall_1()); 
+                        
+                    pushFollow(FOLLOW_ruleCellStateSpecReference_in_ruleCellStateSpec1542);
+                    this_CellStateSpecReference_1=ruleCellStateSpecReference();
+
+                    state._fsp--;
+
+                     
+                            current = this_CellStateSpecReference_1; 
+                            afterParserOrEnumRuleCall();
+                        
+
+                    }
+                    break;
 
             }
 
@@ -1837,8 +1798,280 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleCellStateSpec"
 
 
+    // $ANTLR start "entryRuleLocalCellStateSpec"
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:736:1: entryRuleLocalCellStateSpec returns [EObject current=null] : iv_ruleLocalCellStateSpec= ruleLocalCellStateSpec EOF ;
+    public final EObject entryRuleLocalCellStateSpec() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleLocalCellStateSpec = null;
+
+
+        try {
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:737:2: (iv_ruleLocalCellStateSpec= ruleLocalCellStateSpec EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:738:2: iv_ruleLocalCellStateSpec= ruleLocalCellStateSpec EOF
+            {
+             newCompositeNode(grammarAccess.getLocalCellStateSpecRule()); 
+            pushFollow(FOLLOW_ruleLocalCellStateSpec_in_entryRuleLocalCellStateSpec1577);
+            iv_ruleLocalCellStateSpec=ruleLocalCellStateSpec();
+
+            state._fsp--;
+
+             current =iv_ruleLocalCellStateSpec; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLocalCellStateSpec1587); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleLocalCellStateSpec"
+
+
+    // $ANTLR start "ruleLocalCellStateSpec"
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:745:1: ruleLocalCellStateSpec returns [EObject current=null] : (otherlv_0= 'states' otherlv_1= '{' ( (lv_states_2_0= ruleCellState ) )+ otherlv_3= 'start' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) otherlv_6= '}' ) ;
+    public final EObject ruleLocalCellStateSpec() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token otherlv_1=null;
+        Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
+        Token otherlv_6=null;
+        EObject lv_states_2_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:748:28: ( (otherlv_0= 'states' otherlv_1= '{' ( (lv_states_2_0= ruleCellState ) )+ otherlv_3= 'start' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) otherlv_6= '}' ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:749:1: (otherlv_0= 'states' otherlv_1= '{' ( (lv_states_2_0= ruleCellState ) )+ otherlv_3= 'start' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) otherlv_6= '}' )
+            {
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:749:1: (otherlv_0= 'states' otherlv_1= '{' ( (lv_states_2_0= ruleCellState ) )+ otherlv_3= 'start' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) otherlv_6= '}' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:749:3: otherlv_0= 'states' otherlv_1= '{' ( (lv_states_2_0= ruleCellState ) )+ otherlv_3= 'start' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) otherlv_6= '}'
+            {
+            otherlv_0=(Token)match(input,23,FOLLOW_23_in_ruleLocalCellStateSpec1624); 
+
+                	newLeafNode(otherlv_0, grammarAccess.getLocalCellStateSpecAccess().getStatesKeyword_0());
+                
+            otherlv_1=(Token)match(input,12,FOLLOW_12_in_ruleLocalCellStateSpec1636); 
+
+                	newLeafNode(otherlv_1, grammarAccess.getLocalCellStateSpecAccess().getLeftCurlyBracketKeyword_1());
+                
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:757:1: ( (lv_states_2_0= ruleCellState ) )+
+            int cnt15=0;
+            loop15:
+            do {
+                int alt15=2;
+                int LA15_0 = input.LA(1);
+
+                if ( (LA15_0==RULE_ID) ) {
+                    alt15=1;
+                }
+
+
+                switch (alt15) {
+            	case 1 :
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:758:1: (lv_states_2_0= ruleCellState )
+            	    {
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:758:1: (lv_states_2_0= ruleCellState )
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:759:3: lv_states_2_0= ruleCellState
+            	    {
+            	     
+            	    	        newCompositeNode(grammarAccess.getLocalCellStateSpecAccess().getStatesCellStateParserRuleCall_2_0()); 
+            	    	    
+            	    pushFollow(FOLLOW_ruleCellState_in_ruleLocalCellStateSpec1657);
+            	    lv_states_2_0=ruleCellState();
+
+            	    state._fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = createModelElementForParent(grammarAccess.getLocalCellStateSpecRule());
+            	    	        }
+            	           		add(
+            	           			current, 
+            	           			"states",
+            	            		lv_states_2_0, 
+            	            		"CellState");
+            	    	        afterParserOrEnumRuleCall();
+            	    	    
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt15 >= 1 ) break loop15;
+                        EarlyExitException eee =
+                            new EarlyExitException(15, input);
+                        throw eee;
+                }
+                cnt15++;
+            } while (true);
+
+            otherlv_3=(Token)match(input,27,FOLLOW_27_in_ruleLocalCellStateSpec1670); 
+
+                	newLeafNode(otherlv_3, grammarAccess.getLocalCellStateSpecAccess().getStartKeyword_3());
+                
+            otherlv_4=(Token)match(input,28,FOLLOW_28_in_ruleLocalCellStateSpec1682); 
+
+                	newLeafNode(otherlv_4, grammarAccess.getLocalCellStateSpecAccess().getEqualsSignKeyword_4());
+                
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:783:1: ( (otherlv_5= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:784:1: (otherlv_5= RULE_ID )
+            {
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:784:1: (otherlv_5= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:785:3: otherlv_5= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getLocalCellStateSpecRule());
+            	        }
+                    
+            otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleLocalCellStateSpec1702); 
+
+            		newLeafNode(otherlv_5, grammarAccess.getLocalCellStateSpecAccess().getStartCellStateCrossReference_5_0()); 
+            	
+
+            }
+
+
+            }
+
+            otherlv_6=(Token)match(input,13,FOLLOW_13_in_ruleLocalCellStateSpec1714); 
+
+                	newLeafNode(otherlv_6, grammarAccess.getLocalCellStateSpecAccess().getRightCurlyBracketKeyword_6());
+                
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleLocalCellStateSpec"
+
+
+    // $ANTLR start "entryRuleCellStateSpecReference"
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:808:1: entryRuleCellStateSpecReference returns [EObject current=null] : iv_ruleCellStateSpecReference= ruleCellStateSpecReference EOF ;
+    public final EObject entryRuleCellStateSpecReference() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleCellStateSpecReference = null;
+
+
+        try {
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:809:2: (iv_ruleCellStateSpecReference= ruleCellStateSpecReference EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:810:2: iv_ruleCellStateSpecReference= ruleCellStateSpecReference EOF
+            {
+             newCompositeNode(grammarAccess.getCellStateSpecReferenceRule()); 
+            pushFollow(FOLLOW_ruleCellStateSpecReference_in_entryRuleCellStateSpecReference1750);
+            iv_ruleCellStateSpecReference=ruleCellStateSpecReference();
+
+            state._fsp--;
+
+             current =iv_ruleCellStateSpecReference; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCellStateSpecReference1760); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleCellStateSpecReference"
+
+
+    // $ANTLR start "ruleCellStateSpecReference"
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:817:1: ruleCellStateSpecReference returns [EObject current=null] : (otherlv_0= 'states' ( (otherlv_1= RULE_ID ) ) ) ;
+    public final EObject ruleCellStateSpecReference() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token otherlv_1=null;
+
+         enterRule(); 
+            
+        try {
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:820:28: ( (otherlv_0= 'states' ( (otherlv_1= RULE_ID ) ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:821:1: (otherlv_0= 'states' ( (otherlv_1= RULE_ID ) ) )
+            {
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:821:1: (otherlv_0= 'states' ( (otherlv_1= RULE_ID ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:821:3: otherlv_0= 'states' ( (otherlv_1= RULE_ID ) )
+            {
+            otherlv_0=(Token)match(input,23,FOLLOW_23_in_ruleCellStateSpecReference1797); 
+
+                	newLeafNode(otherlv_0, grammarAccess.getCellStateSpecReferenceAccess().getStatesKeyword_0());
+                
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:825:1: ( (otherlv_1= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:826:1: (otherlv_1= RULE_ID )
+            {
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:826:1: (otherlv_1= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:827:3: otherlv_1= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getCellStateSpecReferenceRule());
+            	        }
+                    
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCellStateSpecReference1817); 
+
+            		newLeafNode(otherlv_1, grammarAccess.getCellStateSpecReferenceAccess().getStateSpecGlobalCellStateSpecCrossReference_1_0()); 
+            	
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleCellStateSpecReference"
+
+
     // $ANTLR start "entryRuleCellState"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:768:1: entryRuleCellState returns [EObject current=null] : iv_ruleCellState= ruleCellState EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:846:1: entryRuleCellState returns [EObject current=null] : iv_ruleCellState= ruleCellState EOF ;
     public final EObject entryRuleCellState() throws RecognitionException {
         EObject current = null;
 
@@ -1846,17 +2079,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:769:2: (iv_ruleCellState= ruleCellState EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:770:2: iv_ruleCellState= ruleCellState EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:847:2: (iv_ruleCellState= ruleCellState EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:848:2: iv_ruleCellState= ruleCellState EOF
             {
              newCompositeNode(grammarAccess.getCellStateRule()); 
-            pushFollow(FOLLOW_ruleCellState_in_entryRuleCellState1631);
+            pushFollow(FOLLOW_ruleCellState_in_entryRuleCellState1853);
             iv_ruleCellState=ruleCellState();
 
             state._fsp--;
 
              current =iv_ruleCellState; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCellState1641); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCellState1863); 
 
             }
 
@@ -1874,7 +2107,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCellState"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:777:1: ruleCellState returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' ( (lv_display_2_0= ruleCellDisplaySpec ) ) (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )? otherlv_7= '}' ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:855:1: ruleCellState returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' ( (lv_display_2_0= ruleCellDisplaySpec ) ) (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )? otherlv_7= '}' ) ;
     public final EObject ruleCellState() throws RecognitionException {
         EObject current = null;
 
@@ -1892,19 +2125,19 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:780:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' ( (lv_display_2_0= ruleCellDisplaySpec ) ) (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )? otherlv_7= '}' ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:781:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' ( (lv_display_2_0= ruleCellDisplaySpec ) ) (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )? otherlv_7= '}' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:858:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' ( (lv_display_2_0= ruleCellDisplaySpec ) ) (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )? otherlv_7= '}' ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:859:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' ( (lv_display_2_0= ruleCellDisplaySpec ) ) (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )? otherlv_7= '}' )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:781:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' ( (lv_display_2_0= ruleCellDisplaySpec ) ) (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )? otherlv_7= '}' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:781:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' ( (lv_display_2_0= ruleCellDisplaySpec ) ) (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )? otherlv_7= '}'
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:859:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' ( (lv_display_2_0= ruleCellDisplaySpec ) ) (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )? otherlv_7= '}' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:859:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' ( (lv_display_2_0= ruleCellDisplaySpec ) ) (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )? otherlv_7= '}'
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:781:2: ( (lv_name_0_0= RULE_ID ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:782:1: (lv_name_0_0= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:859:2: ( (lv_name_0_0= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:860:1: (lv_name_0_0= RULE_ID )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:782:1: (lv_name_0_0= RULE_ID )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:783:3: lv_name_0_0= RULE_ID
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:860:1: (lv_name_0_0= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:861:3: lv_name_0_0= RULE_ID
             {
-            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCellState1683); 
+            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCellState1905); 
 
             			newLeafNode(lv_name_0_0, grammarAccess.getCellStateAccess().getNameIDTerminalRuleCall_0_0()); 
             		
@@ -1924,20 +2157,20 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,12,FOLLOW_12_in_ruleCellState1700); 
+            otherlv_1=(Token)match(input,12,FOLLOW_12_in_ruleCellState1922); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getCellStateAccess().getLeftCurlyBracketKeyword_1());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:803:1: ( (lv_display_2_0= ruleCellDisplaySpec ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:804:1: (lv_display_2_0= ruleCellDisplaySpec )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:881:1: ( (lv_display_2_0= ruleCellDisplaySpec ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:882:1: (lv_display_2_0= ruleCellDisplaySpec )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:804:1: (lv_display_2_0= ruleCellDisplaySpec )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:805:3: lv_display_2_0= ruleCellDisplaySpec
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:882:1: (lv_display_2_0= ruleCellDisplaySpec )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:883:3: lv_display_2_0= ruleCellDisplaySpec
             {
              
             	        newCompositeNode(grammarAccess.getCellStateAccess().getDisplayCellDisplaySpecParserRuleCall_2_0()); 
             	    
-            pushFollow(FOLLOW_ruleCellDisplaySpec_in_ruleCellState1721);
+            pushFollow(FOLLOW_ruleCellDisplaySpec_in_ruleCellState1943);
             lv_display_2_0=ruleCellDisplaySpec();
 
             state._fsp--;
@@ -1959,48 +2192,48 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:821:2: (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )?
-            int alt16=2;
-            int LA16_0 = input.LA(1);
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:899:2: (otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}' )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            if ( (LA16_0==29) ) {
-                alt16=1;
+            if ( (LA17_0==29) ) {
+                alt17=1;
             }
-            switch (alt16) {
+            switch (alt17) {
                 case 1 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:821:4: otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}'
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:899:4: otherlv_3= 'transitions' otherlv_4= '{' ( (lv_transitions_5_0= ruleTransitionSpec ) )+ otherlv_6= '}'
                     {
-                    otherlv_3=(Token)match(input,29,FOLLOW_29_in_ruleCellState1734); 
+                    otherlv_3=(Token)match(input,29,FOLLOW_29_in_ruleCellState1956); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getCellStateAccess().getTransitionsKeyword_3_0());
                         
-                    otherlv_4=(Token)match(input,12,FOLLOW_12_in_ruleCellState1746); 
+                    otherlv_4=(Token)match(input,12,FOLLOW_12_in_ruleCellState1968); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getCellStateAccess().getLeftCurlyBracketKeyword_3_1());
                         
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:829:1: ( (lv_transitions_5_0= ruleTransitionSpec ) )+
-                    int cnt15=0;
-                    loop15:
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:907:1: ( (lv_transitions_5_0= ruleTransitionSpec ) )+
+                    int cnt16=0;
+                    loop16:
                     do {
-                        int alt15=2;
-                        int LA15_0 = input.LA(1);
+                        int alt16=2;
+                        int LA16_0 = input.LA(1);
 
-                        if ( (LA15_0==30) ) {
-                            alt15=1;
+                        if ( (LA16_0==30) ) {
+                            alt16=1;
                         }
 
 
-                        switch (alt15) {
+                        switch (alt16) {
                     	case 1 :
-                    	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:830:1: (lv_transitions_5_0= ruleTransitionSpec )
+                    	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:908:1: (lv_transitions_5_0= ruleTransitionSpec )
                     	    {
-                    	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:830:1: (lv_transitions_5_0= ruleTransitionSpec )
-                    	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:831:3: lv_transitions_5_0= ruleTransitionSpec
+                    	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:908:1: (lv_transitions_5_0= ruleTransitionSpec )
+                    	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:909:3: lv_transitions_5_0= ruleTransitionSpec
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getCellStateAccess().getTransitionsTransitionSpecParserRuleCall_3_2_0()); 
                     	    	    
-                    	    pushFollow(FOLLOW_ruleTransitionSpec_in_ruleCellState1767);
+                    	    pushFollow(FOLLOW_ruleTransitionSpec_in_ruleCellState1989);
                     	    lv_transitions_5_0=ruleTransitionSpec();
 
                     	    state._fsp--;
@@ -2024,15 +2257,15 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt15 >= 1 ) break loop15;
+                    	    if ( cnt16 >= 1 ) break loop16;
                                 EarlyExitException eee =
-                                    new EarlyExitException(15, input);
+                                    new EarlyExitException(16, input);
                                 throw eee;
                         }
-                        cnt15++;
+                        cnt16++;
                     } while (true);
 
-                    otherlv_6=(Token)match(input,13,FOLLOW_13_in_ruleCellState1780); 
+                    otherlv_6=(Token)match(input,13,FOLLOW_13_in_ruleCellState2002); 
 
                         	newLeafNode(otherlv_6, grammarAccess.getCellStateAccess().getRightCurlyBracketKeyword_3_3());
                         
@@ -2042,7 +2275,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_7=(Token)match(input,13,FOLLOW_13_in_ruleCellState1794); 
+            otherlv_7=(Token)match(input,13,FOLLOW_13_in_ruleCellState2016); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getCellStateAccess().getRightCurlyBracketKeyword_4());
                 
@@ -2067,7 +2300,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTransitionSpec"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:863:1: entryRuleTransitionSpec returns [EObject current=null] : iv_ruleTransitionSpec= ruleTransitionSpec EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:941:1: entryRuleTransitionSpec returns [EObject current=null] : iv_ruleTransitionSpec= ruleTransitionSpec EOF ;
     public final EObject entryRuleTransitionSpec() throws RecognitionException {
         EObject current = null;
 
@@ -2075,17 +2308,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:864:2: (iv_ruleTransitionSpec= ruleTransitionSpec EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:865:2: iv_ruleTransitionSpec= ruleTransitionSpec EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:942:2: (iv_ruleTransitionSpec= ruleTransitionSpec EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:943:2: iv_ruleTransitionSpec= ruleTransitionSpec EOF
             {
              newCompositeNode(grammarAccess.getTransitionSpecRule()); 
-            pushFollow(FOLLOW_ruleTransitionSpec_in_entryRuleTransitionSpec1830);
+            pushFollow(FOLLOW_ruleTransitionSpec_in_entryRuleTransitionSpec2052);
             iv_ruleTransitionSpec=ruleTransitionSpec();
 
             state._fsp--;
 
              current =iv_ruleTransitionSpec; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTransitionSpec1840); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTransitionSpec2062); 
 
             }
 
@@ -2103,7 +2336,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTransitionSpec"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:872:1: ruleTransitionSpec returns [EObject current=null] : (otherlv_0= 'on' ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) ) otherlv_2= 'goto' ( (otherlv_3= RULE_ID ) ) ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:950:1: ruleTransitionSpec returns [EObject current=null] : (otherlv_0= 'on' ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) ) otherlv_2= 'goto' ( (otherlv_3= RULE_ID ) ) ) ;
     public final EObject ruleTransitionSpec() throws RecognitionException {
         EObject current = null;
 
@@ -2116,26 +2349,26 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:875:28: ( (otherlv_0= 'on' ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) ) otherlv_2= 'goto' ( (otherlv_3= RULE_ID ) ) ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:876:1: (otherlv_0= 'on' ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) ) otherlv_2= 'goto' ( (otherlv_3= RULE_ID ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:953:28: ( (otherlv_0= 'on' ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) ) otherlv_2= 'goto' ( (otherlv_3= RULE_ID ) ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:954:1: (otherlv_0= 'on' ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) ) otherlv_2= 'goto' ( (otherlv_3= RULE_ID ) ) )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:876:1: (otherlv_0= 'on' ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) ) otherlv_2= 'goto' ( (otherlv_3= RULE_ID ) ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:876:3: otherlv_0= 'on' ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) ) otherlv_2= 'goto' ( (otherlv_3= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:954:1: (otherlv_0= 'on' ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) ) otherlv_2= 'goto' ( (otherlv_3= RULE_ID ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:954:3: otherlv_0= 'on' ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) ) otherlv_2= 'goto' ( (otherlv_3= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,30,FOLLOW_30_in_ruleTransitionSpec1877); 
+            otherlv_0=(Token)match(input,30,FOLLOW_30_in_ruleTransitionSpec2099); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getTransitionSpecAccess().getOnKeyword_0());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:880:1: ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:881:1: (lv_trigger_1_0= ruleTransitionTriggerSpec )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:958:1: ( (lv_trigger_1_0= ruleTransitionTriggerSpec ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:959:1: (lv_trigger_1_0= ruleTransitionTriggerSpec )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:881:1: (lv_trigger_1_0= ruleTransitionTriggerSpec )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:882:3: lv_trigger_1_0= ruleTransitionTriggerSpec
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:959:1: (lv_trigger_1_0= ruleTransitionTriggerSpec )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:960:3: lv_trigger_1_0= ruleTransitionTriggerSpec
             {
              
             	        newCompositeNode(grammarAccess.getTransitionSpecAccess().getTriggerTransitionTriggerSpecParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleTransitionTriggerSpec_in_ruleTransitionSpec1898);
+            pushFollow(FOLLOW_ruleTransitionTriggerSpec_in_ruleTransitionSpec2120);
             lv_trigger_1_0=ruleTransitionTriggerSpec();
 
             state._fsp--;
@@ -2157,22 +2390,22 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,31,FOLLOW_31_in_ruleTransitionSpec1910); 
+            otherlv_2=(Token)match(input,31,FOLLOW_31_in_ruleTransitionSpec2132); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getTransitionSpecAccess().getGotoKeyword_2());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:902:1: ( (otherlv_3= RULE_ID ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:903:1: (otherlv_3= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:980:1: ( (otherlv_3= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:981:1: (otherlv_3= RULE_ID )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:903:1: (otherlv_3= RULE_ID )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:904:3: otherlv_3= RULE_ID
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:981:1: (otherlv_3= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:982:3: otherlv_3= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getTransitionSpecRule());
             	        }
                     
-            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTransitionSpec1930); 
+            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTransitionSpec2152); 
 
             		newLeafNode(otherlv_3, grammarAccess.getTransitionSpecAccess().getTargetCellStateCrossReference_3_0()); 
             	
@@ -2203,7 +2436,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTransitionTriggerSpec"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:923:1: entryRuleTransitionTriggerSpec returns [String current=null] : iv_ruleTransitionTriggerSpec= ruleTransitionTriggerSpec EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1001:1: entryRuleTransitionTriggerSpec returns [String current=null] : iv_ruleTransitionTriggerSpec= ruleTransitionTriggerSpec EOF ;
     public final String entryRuleTransitionTriggerSpec() throws RecognitionException {
         String current = null;
 
@@ -2211,17 +2444,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:924:2: (iv_ruleTransitionTriggerSpec= ruleTransitionTriggerSpec EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:925:2: iv_ruleTransitionTriggerSpec= ruleTransitionTriggerSpec EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1002:2: (iv_ruleTransitionTriggerSpec= ruleTransitionTriggerSpec EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1003:2: iv_ruleTransitionTriggerSpec= ruleTransitionTriggerSpec EOF
             {
              newCompositeNode(grammarAccess.getTransitionTriggerSpecRule()); 
-            pushFollow(FOLLOW_ruleTransitionTriggerSpec_in_entryRuleTransitionTriggerSpec1967);
+            pushFollow(FOLLOW_ruleTransitionTriggerSpec_in_entryRuleTransitionTriggerSpec2189);
             iv_ruleTransitionTriggerSpec=ruleTransitionTriggerSpec();
 
             state._fsp--;
 
              current =iv_ruleTransitionTriggerSpec.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTransitionTriggerSpec1978); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTransitionTriggerSpec2200); 
 
             }
 
@@ -2239,7 +2472,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTransitionTriggerSpec"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:932:1: ruleTransitionTriggerSpec returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'mouse-left' | kw= 'mouse-right' ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1010:1: ruleTransitionTriggerSpec returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'mouse-left' | kw= 'mouse-right' ) ;
     public final AntlrDatatypeRuleToken ruleTransitionTriggerSpec() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2248,30 +2481,30 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:935:28: ( (kw= 'mouse-left' | kw= 'mouse-right' ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:936:1: (kw= 'mouse-left' | kw= 'mouse-right' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1013:28: ( (kw= 'mouse-left' | kw= 'mouse-right' ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1014:1: (kw= 'mouse-left' | kw= 'mouse-right' )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:936:1: (kw= 'mouse-left' | kw= 'mouse-right' )
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1014:1: (kw= 'mouse-left' | kw= 'mouse-right' )
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA17_0==32) ) {
-                alt17=1;
+            if ( (LA18_0==32) ) {
+                alt18=1;
             }
-            else if ( (LA17_0==33) ) {
-                alt17=2;
+            else if ( (LA18_0==33) ) {
+                alt18=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 18, 0, input);
 
                 throw nvae;
             }
-            switch (alt17) {
+            switch (alt18) {
                 case 1 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:937:2: kw= 'mouse-left'
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1015:2: kw= 'mouse-left'
                     {
-                    kw=(Token)match(input,32,FOLLOW_32_in_ruleTransitionTriggerSpec2016); 
+                    kw=(Token)match(input,32,FOLLOW_32_in_ruleTransitionTriggerSpec2238); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getTransitionTriggerSpecAccess().getMouseLeftKeyword_0()); 
@@ -2280,9 +2513,9 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:944:2: kw= 'mouse-right'
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1022:2: kw= 'mouse-right'
                     {
-                    kw=(Token)match(input,33,FOLLOW_33_in_ruleTransitionTriggerSpec2035); 
+                    kw=(Token)match(input,33,FOLLOW_33_in_ruleTransitionTriggerSpec2257); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getTransitionTriggerSpecAccess().getMouseRightKeyword_1()); 
@@ -2311,7 +2544,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFieldSpecification"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:957:1: entryRuleFieldSpecification returns [EObject current=null] : iv_ruleFieldSpecification= ruleFieldSpecification EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1035:1: entryRuleFieldSpecification returns [EObject current=null] : iv_ruleFieldSpecification= ruleFieldSpecification EOF ;
     public final EObject entryRuleFieldSpecification() throws RecognitionException {
         EObject current = null;
 
@@ -2319,17 +2552,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:958:2: (iv_ruleFieldSpecification= ruleFieldSpecification EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:959:2: iv_ruleFieldSpecification= ruleFieldSpecification EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1036:2: (iv_ruleFieldSpecification= ruleFieldSpecification EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1037:2: iv_ruleFieldSpecification= ruleFieldSpecification EOF
             {
              newCompositeNode(grammarAccess.getFieldSpecificationRule()); 
-            pushFollow(FOLLOW_ruleFieldSpecification_in_entryRuleFieldSpecification2075);
+            pushFollow(FOLLOW_ruleFieldSpecification_in_entryRuleFieldSpecification2297);
             iv_ruleFieldSpecification=ruleFieldSpecification();
 
             state._fsp--;
 
              current =iv_ruleFieldSpecification; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldSpecification2085); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldSpecification2307); 
 
             }
 
@@ -2347,7 +2580,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFieldSpecification"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:966:1: ruleFieldSpecification returns [EObject current=null] : (otherlv_0= 'field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'width' otherlv_4= '=' ( (lv_width_5_0= RULE_INT ) ) otherlv_6= 'height' otherlv_7= '=' ( (lv_height_8_0= RULE_INT ) ) ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )? otherlv_10= '}' ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1044:1: ruleFieldSpecification returns [EObject current=null] : (otherlv_0= 'field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'width' otherlv_4= '=' ( (lv_width_5_0= RULE_INT ) ) otherlv_6= 'height' otherlv_7= '=' ( (lv_height_8_0= RULE_INT ) ) ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )? otherlv_10= '}' ) ;
     public final EObject ruleFieldSpecification() throws RecognitionException {
         EObject current = null;
 
@@ -2367,23 +2600,23 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:969:28: ( (otherlv_0= 'field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'width' otherlv_4= '=' ( (lv_width_5_0= RULE_INT ) ) otherlv_6= 'height' otherlv_7= '=' ( (lv_height_8_0= RULE_INT ) ) ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )? otherlv_10= '}' ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:970:1: (otherlv_0= 'field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'width' otherlv_4= '=' ( (lv_width_5_0= RULE_INT ) ) otherlv_6= 'height' otherlv_7= '=' ( (lv_height_8_0= RULE_INT ) ) ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )? otherlv_10= '}' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1047:28: ( (otherlv_0= 'field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'width' otherlv_4= '=' ( (lv_width_5_0= RULE_INT ) ) otherlv_6= 'height' otherlv_7= '=' ( (lv_height_8_0= RULE_INT ) ) ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )? otherlv_10= '}' ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1048:1: (otherlv_0= 'field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'width' otherlv_4= '=' ( (lv_width_5_0= RULE_INT ) ) otherlv_6= 'height' otherlv_7= '=' ( (lv_height_8_0= RULE_INT ) ) ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )? otherlv_10= '}' )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:970:1: (otherlv_0= 'field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'width' otherlv_4= '=' ( (lv_width_5_0= RULE_INT ) ) otherlv_6= 'height' otherlv_7= '=' ( (lv_height_8_0= RULE_INT ) ) ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )? otherlv_10= '}' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:970:3: otherlv_0= 'field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'width' otherlv_4= '=' ( (lv_width_5_0= RULE_INT ) ) otherlv_6= 'height' otherlv_7= '=' ( (lv_height_8_0= RULE_INT ) ) ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )? otherlv_10= '}'
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1048:1: (otherlv_0= 'field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'width' otherlv_4= '=' ( (lv_width_5_0= RULE_INT ) ) otherlv_6= 'height' otherlv_7= '=' ( (lv_height_8_0= RULE_INT ) ) ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )? otherlv_10= '}' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1048:3: otherlv_0= 'field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'width' otherlv_4= '=' ( (lv_width_5_0= RULE_INT ) ) otherlv_6= 'height' otherlv_7= '=' ( (lv_height_8_0= RULE_INT ) ) ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )? otherlv_10= '}'
             {
-            otherlv_0=(Token)match(input,34,FOLLOW_34_in_ruleFieldSpecification2122); 
+            otherlv_0=(Token)match(input,34,FOLLOW_34_in_ruleFieldSpecification2344); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getFieldSpecificationAccess().getFieldKeyword_0());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:974:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:975:1: (lv_name_1_0= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1052:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1053:1: (lv_name_1_0= RULE_ID )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:975:1: (lv_name_1_0= RULE_ID )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:976:3: lv_name_1_0= RULE_ID
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1053:1: (lv_name_1_0= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1054:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFieldSpecification2139); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFieldSpecification2361); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getFieldSpecificationAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -2403,25 +2636,25 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleFieldSpecification2156); 
+            otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleFieldSpecification2378); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getFieldSpecificationAccess().getLeftCurlyBracketKeyword_2());
                 
-            otherlv_3=(Token)match(input,35,FOLLOW_35_in_ruleFieldSpecification2168); 
+            otherlv_3=(Token)match(input,35,FOLLOW_35_in_ruleFieldSpecification2390); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getFieldSpecificationAccess().getWidthKeyword_3());
                 
-            otherlv_4=(Token)match(input,28,FOLLOW_28_in_ruleFieldSpecification2180); 
+            otherlv_4=(Token)match(input,28,FOLLOW_28_in_ruleFieldSpecification2402); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getFieldSpecificationAccess().getEqualsSignKeyword_4());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1004:1: ( (lv_width_5_0= RULE_INT ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1005:1: (lv_width_5_0= RULE_INT )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1082:1: ( (lv_width_5_0= RULE_INT ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1083:1: (lv_width_5_0= RULE_INT )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1005:1: (lv_width_5_0= RULE_INT )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1006:3: lv_width_5_0= RULE_INT
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1083:1: (lv_width_5_0= RULE_INT )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1084:3: lv_width_5_0= RULE_INT
             {
-            lv_width_5_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleFieldSpecification2197); 
+            lv_width_5_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleFieldSpecification2419); 
 
             			newLeafNode(lv_width_5_0, grammarAccess.getFieldSpecificationAccess().getWidthINTTerminalRuleCall_5_0()); 
             		
@@ -2441,21 +2674,21 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,36,FOLLOW_36_in_ruleFieldSpecification2214); 
+            otherlv_6=(Token)match(input,36,FOLLOW_36_in_ruleFieldSpecification2436); 
 
                 	newLeafNode(otherlv_6, grammarAccess.getFieldSpecificationAccess().getHeightKeyword_6());
                 
-            otherlv_7=(Token)match(input,28,FOLLOW_28_in_ruleFieldSpecification2226); 
+            otherlv_7=(Token)match(input,28,FOLLOW_28_in_ruleFieldSpecification2448); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getFieldSpecificationAccess().getEqualsSignKeyword_7());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1030:1: ( (lv_height_8_0= RULE_INT ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1031:1: (lv_height_8_0= RULE_INT )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1108:1: ( (lv_height_8_0= RULE_INT ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1109:1: (lv_height_8_0= RULE_INT )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1031:1: (lv_height_8_0= RULE_INT )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1032:3: lv_height_8_0= RULE_INT
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1109:1: (lv_height_8_0= RULE_INT )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1110:3: lv_height_8_0= RULE_INT
             {
-            lv_height_8_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleFieldSpecification2243); 
+            lv_height_8_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleFieldSpecification2465); 
 
             			newLeafNode(lv_height_8_0, grammarAccess.getFieldSpecificationAccess().getHeightINTTerminalRuleCall_8_0()); 
             		
@@ -2475,24 +2708,24 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1048:2: ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )?
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1126:2: ( (lv_field_initialisation_9_0= ruleFieldInitialisations ) )?
+            int alt19=2;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA18_0==38) ) {
-                alt18=1;
+            if ( (LA19_0==38) ) {
+                alt19=1;
             }
-            switch (alt18) {
+            switch (alt19) {
                 case 1 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1049:1: (lv_field_initialisation_9_0= ruleFieldInitialisations )
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1127:1: (lv_field_initialisation_9_0= ruleFieldInitialisations )
                     {
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1049:1: (lv_field_initialisation_9_0= ruleFieldInitialisations )
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1050:3: lv_field_initialisation_9_0= ruleFieldInitialisations
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1127:1: (lv_field_initialisation_9_0= ruleFieldInitialisations )
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1128:3: lv_field_initialisation_9_0= ruleFieldInitialisations
                     {
                      
                     	        newCompositeNode(grammarAccess.getFieldSpecificationAccess().getField_initialisationFieldInitialisationsParserRuleCall_9_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleFieldInitialisations_in_ruleFieldSpecification2269);
+                    pushFollow(FOLLOW_ruleFieldInitialisations_in_ruleFieldSpecification2491);
                     lv_field_initialisation_9_0=ruleFieldInitialisations();
 
                     state._fsp--;
@@ -2517,7 +2750,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_10=(Token)match(input,13,FOLLOW_13_in_ruleFieldSpecification2282); 
+            otherlv_10=(Token)match(input,13,FOLLOW_13_in_ruleFieldSpecification2504); 
 
                 	newLeafNode(otherlv_10, grammarAccess.getFieldSpecificationAccess().getRightCurlyBracketKeyword_10());
                 
@@ -2542,7 +2775,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOptionSpecification"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1078:1: entryRuleOptionSpecification returns [EObject current=null] : iv_ruleOptionSpecification= ruleOptionSpecification EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1156:1: entryRuleOptionSpecification returns [EObject current=null] : iv_ruleOptionSpecification= ruleOptionSpecification EOF ;
     public final EObject entryRuleOptionSpecification() throws RecognitionException {
         EObject current = null;
 
@@ -2550,17 +2783,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1079:2: (iv_ruleOptionSpecification= ruleOptionSpecification EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1080:2: iv_ruleOptionSpecification= ruleOptionSpecification EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1157:2: (iv_ruleOptionSpecification= ruleOptionSpecification EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1158:2: iv_ruleOptionSpecification= ruleOptionSpecification EOF
             {
              newCompositeNode(grammarAccess.getOptionSpecificationRule()); 
-            pushFollow(FOLLOW_ruleOptionSpecification_in_entryRuleOptionSpecification2318);
+            pushFollow(FOLLOW_ruleOptionSpecification_in_entryRuleOptionSpecification2540);
             iv_ruleOptionSpecification=ruleOptionSpecification();
 
             state._fsp--;
 
              current =iv_ruleOptionSpecification; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOptionSpecification2328); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOptionSpecification2550); 
 
             }
 
@@ -2578,7 +2811,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOptionSpecification"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1087:1: ruleOptionSpecification returns [EObject current=null] : (this_StartFieldDeclaration_0= ruleStartFieldDeclaration | this_AllowRestartMenu_1= ruleAllowRestartMenu ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1165:1: ruleOptionSpecification returns [EObject current=null] : (this_StartFieldDeclaration_0= ruleStartFieldDeclaration | this_AllowRestartMenu_1= ruleAllowRestartMenu ) ;
     public final EObject ruleOptionSpecification() throws RecognitionException {
         EObject current = null;
 
@@ -2590,33 +2823,33 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1090:28: ( (this_StartFieldDeclaration_0= ruleStartFieldDeclaration | this_AllowRestartMenu_1= ruleAllowRestartMenu ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1091:1: (this_StartFieldDeclaration_0= ruleStartFieldDeclaration | this_AllowRestartMenu_1= ruleAllowRestartMenu )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1168:28: ( (this_StartFieldDeclaration_0= ruleStartFieldDeclaration | this_AllowRestartMenu_1= ruleAllowRestartMenu ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1169:1: (this_StartFieldDeclaration_0= ruleStartFieldDeclaration | this_AllowRestartMenu_1= ruleAllowRestartMenu )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1091:1: (this_StartFieldDeclaration_0= ruleStartFieldDeclaration | this_AllowRestartMenu_1= ruleAllowRestartMenu )
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1169:1: (this_StartFieldDeclaration_0= ruleStartFieldDeclaration | this_AllowRestartMenu_1= ruleAllowRestartMenu )
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA19_0==27) ) {
-                alt19=1;
+            if ( (LA20_0==27) ) {
+                alt20=1;
             }
-            else if ( (LA19_0==37) ) {
-                alt19=2;
+            else if ( (LA20_0==37) ) {
+                alt20=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 19, 0, input);
+                    new NoViableAltException("", 20, 0, input);
 
                 throw nvae;
             }
-            switch (alt19) {
+            switch (alt20) {
                 case 1 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1092:5: this_StartFieldDeclaration_0= ruleStartFieldDeclaration
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1170:5: this_StartFieldDeclaration_0= ruleStartFieldDeclaration
                     {
                      
                             newCompositeNode(grammarAccess.getOptionSpecificationAccess().getStartFieldDeclarationParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleStartFieldDeclaration_in_ruleOptionSpecification2375);
+                    pushFollow(FOLLOW_ruleStartFieldDeclaration_in_ruleOptionSpecification2597);
                     this_StartFieldDeclaration_0=ruleStartFieldDeclaration();
 
                     state._fsp--;
@@ -2629,12 +2862,12 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1102:5: this_AllowRestartMenu_1= ruleAllowRestartMenu
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1180:5: this_AllowRestartMenu_1= ruleAllowRestartMenu
                     {
                      
                             newCompositeNode(grammarAccess.getOptionSpecificationAccess().getAllowRestartMenuParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleAllowRestartMenu_in_ruleOptionSpecification2402);
+                    pushFollow(FOLLOW_ruleAllowRestartMenu_in_ruleOptionSpecification2624);
                     this_AllowRestartMenu_1=ruleAllowRestartMenu();
 
                     state._fsp--;
@@ -2667,7 +2900,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAllowRestartMenu"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1118:1: entryRuleAllowRestartMenu returns [EObject current=null] : iv_ruleAllowRestartMenu= ruleAllowRestartMenu EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1196:1: entryRuleAllowRestartMenu returns [EObject current=null] : iv_ruleAllowRestartMenu= ruleAllowRestartMenu EOF ;
     public final EObject entryRuleAllowRestartMenu() throws RecognitionException {
         EObject current = null;
 
@@ -2675,17 +2908,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1119:2: (iv_ruleAllowRestartMenu= ruleAllowRestartMenu EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1120:2: iv_ruleAllowRestartMenu= ruleAllowRestartMenu EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1197:2: (iv_ruleAllowRestartMenu= ruleAllowRestartMenu EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1198:2: iv_ruleAllowRestartMenu= ruleAllowRestartMenu EOF
             {
              newCompositeNode(grammarAccess.getAllowRestartMenuRule()); 
-            pushFollow(FOLLOW_ruleAllowRestartMenu_in_entryRuleAllowRestartMenu2437);
+            pushFollow(FOLLOW_ruleAllowRestartMenu_in_entryRuleAllowRestartMenu2659);
             iv_ruleAllowRestartMenu=ruleAllowRestartMenu();
 
             state._fsp--;
 
              current =iv_ruleAllowRestartMenu; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAllowRestartMenu2447); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAllowRestartMenu2669); 
 
             }
 
@@ -2703,7 +2936,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAllowRestartMenu"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1127:1: ruleAllowRestartMenu returns [EObject current=null] : (otherlv_0= 'allow_restart' () ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1205:1: ruleAllowRestartMenu returns [EObject current=null] : (otherlv_0= 'allow_restart' () ) ;
     public final EObject ruleAllowRestartMenu() throws RecognitionException {
         EObject current = null;
 
@@ -2712,18 +2945,18 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1130:28: ( (otherlv_0= 'allow_restart' () ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1131:1: (otherlv_0= 'allow_restart' () )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1208:28: ( (otherlv_0= 'allow_restart' () ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1209:1: (otherlv_0= 'allow_restart' () )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1131:1: (otherlv_0= 'allow_restart' () )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1131:3: otherlv_0= 'allow_restart' ()
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1209:1: (otherlv_0= 'allow_restart' () )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1209:3: otherlv_0= 'allow_restart' ()
             {
-            otherlv_0=(Token)match(input,37,FOLLOW_37_in_ruleAllowRestartMenu2484); 
+            otherlv_0=(Token)match(input,37,FOLLOW_37_in_ruleAllowRestartMenu2706); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getAllowRestartMenuAccess().getAllow_restartKeyword_0());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1135:1: ()
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1136:5: 
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1213:1: ()
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1214:5: 
             {
 
                     current = forceCreateModelElement(
@@ -2754,7 +2987,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStartFieldDeclaration"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1149:1: entryRuleStartFieldDeclaration returns [EObject current=null] : iv_ruleStartFieldDeclaration= ruleStartFieldDeclaration EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1227:1: entryRuleStartFieldDeclaration returns [EObject current=null] : iv_ruleStartFieldDeclaration= ruleStartFieldDeclaration EOF ;
     public final EObject entryRuleStartFieldDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -2762,17 +2995,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1150:2: (iv_ruleStartFieldDeclaration= ruleStartFieldDeclaration EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1151:2: iv_ruleStartFieldDeclaration= ruleStartFieldDeclaration EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1228:2: (iv_ruleStartFieldDeclaration= ruleStartFieldDeclaration EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1229:2: iv_ruleStartFieldDeclaration= ruleStartFieldDeclaration EOF
             {
              newCompositeNode(grammarAccess.getStartFieldDeclarationRule()); 
-            pushFollow(FOLLOW_ruleStartFieldDeclaration_in_entryRuleStartFieldDeclaration2529);
+            pushFollow(FOLLOW_ruleStartFieldDeclaration_in_entryRuleStartFieldDeclaration2751);
             iv_ruleStartFieldDeclaration=ruleStartFieldDeclaration();
 
             state._fsp--;
 
              current =iv_ruleStartFieldDeclaration; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStartFieldDeclaration2539); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStartFieldDeclaration2761); 
 
             }
 
@@ -2790,7 +3023,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStartFieldDeclaration"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1158:1: ruleStartFieldDeclaration returns [EObject current=null] : (otherlv_0= 'start' otherlv_1= '=' ( (otherlv_2= RULE_ID ) ) ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1236:1: ruleStartFieldDeclaration returns [EObject current=null] : (otherlv_0= 'start' otherlv_1= '=' ( (otherlv_2= RULE_ID ) ) ) ;
     public final EObject ruleStartFieldDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -2801,32 +3034,32 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1161:28: ( (otherlv_0= 'start' otherlv_1= '=' ( (otherlv_2= RULE_ID ) ) ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1162:1: (otherlv_0= 'start' otherlv_1= '=' ( (otherlv_2= RULE_ID ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1239:28: ( (otherlv_0= 'start' otherlv_1= '=' ( (otherlv_2= RULE_ID ) ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1240:1: (otherlv_0= 'start' otherlv_1= '=' ( (otherlv_2= RULE_ID ) ) )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1162:1: (otherlv_0= 'start' otherlv_1= '=' ( (otherlv_2= RULE_ID ) ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1162:3: otherlv_0= 'start' otherlv_1= '=' ( (otherlv_2= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1240:1: (otherlv_0= 'start' otherlv_1= '=' ( (otherlv_2= RULE_ID ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1240:3: otherlv_0= 'start' otherlv_1= '=' ( (otherlv_2= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,27,FOLLOW_27_in_ruleStartFieldDeclaration2576); 
+            otherlv_0=(Token)match(input,27,FOLLOW_27_in_ruleStartFieldDeclaration2798); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getStartFieldDeclarationAccess().getStartKeyword_0());
                 
-            otherlv_1=(Token)match(input,28,FOLLOW_28_in_ruleStartFieldDeclaration2588); 
+            otherlv_1=(Token)match(input,28,FOLLOW_28_in_ruleStartFieldDeclaration2810); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getStartFieldDeclarationAccess().getEqualsSignKeyword_1());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1170:1: ( (otherlv_2= RULE_ID ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1171:1: (otherlv_2= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1248:1: ( (otherlv_2= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1249:1: (otherlv_2= RULE_ID )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1171:1: (otherlv_2= RULE_ID )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1172:3: otherlv_2= RULE_ID
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1249:1: (otherlv_2= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1250:3: otherlv_2= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getStartFieldDeclarationRule());
             	        }
                     
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleStartFieldDeclaration2608); 
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleStartFieldDeclaration2830); 
 
             		newLeafNode(otherlv_2, grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationCrossReference_2_0()); 
             	
@@ -2857,7 +3090,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFieldInitialisations"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1191:1: entryRuleFieldInitialisations returns [EObject current=null] : iv_ruleFieldInitialisations= ruleFieldInitialisations EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1269:1: entryRuleFieldInitialisations returns [EObject current=null] : iv_ruleFieldInitialisations= ruleFieldInitialisations EOF ;
     public final EObject entryRuleFieldInitialisations() throws RecognitionException {
         EObject current = null;
 
@@ -2865,17 +3098,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1192:2: (iv_ruleFieldInitialisations= ruleFieldInitialisations EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1193:2: iv_ruleFieldInitialisations= ruleFieldInitialisations EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1270:2: (iv_ruleFieldInitialisations= ruleFieldInitialisations EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1271:2: iv_ruleFieldInitialisations= ruleFieldInitialisations EOF
             {
              newCompositeNode(grammarAccess.getFieldInitialisationsRule()); 
-            pushFollow(FOLLOW_ruleFieldInitialisations_in_entryRuleFieldInitialisations2644);
+            pushFollow(FOLLOW_ruleFieldInitialisations_in_entryRuleFieldInitialisations2866);
             iv_ruleFieldInitialisations=ruleFieldInitialisations();
 
             state._fsp--;
 
              current =iv_ruleFieldInitialisations; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldInitialisations2654); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldInitialisations2876); 
 
             }
 
@@ -2893,7 +3126,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFieldInitialisations"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1200:1: ruleFieldInitialisations returns [EObject current=null] : (otherlv_0= 'init' otherlv_1= '{' ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+ otherlv_4= '}' ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1278:1: ruleFieldInitialisations returns [EObject current=null] : (otherlv_0= 'init' otherlv_1= '{' ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+ otherlv_4= '}' ) ;
     public final EObject ruleFieldInitialisations() throws RecognitionException {
         EObject current = null;
 
@@ -2907,46 +3140,46 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1203:28: ( (otherlv_0= 'init' otherlv_1= '{' ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+ otherlv_4= '}' ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1204:1: (otherlv_0= 'init' otherlv_1= '{' ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+ otherlv_4= '}' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1281:28: ( (otherlv_0= 'init' otherlv_1= '{' ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+ otherlv_4= '}' ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1282:1: (otherlv_0= 'init' otherlv_1= '{' ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+ otherlv_4= '}' )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1204:1: (otherlv_0= 'init' otherlv_1= '{' ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+ otherlv_4= '}' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1204:3: otherlv_0= 'init' otherlv_1= '{' ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+ otherlv_4= '}'
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1282:1: (otherlv_0= 'init' otherlv_1= '{' ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+ otherlv_4= '}' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1282:3: otherlv_0= 'init' otherlv_1= '{' ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+ otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,38,FOLLOW_38_in_ruleFieldInitialisations2691); 
+            otherlv_0=(Token)match(input,38,FOLLOW_38_in_ruleFieldInitialisations2913); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getFieldInitialisationsAccess().getInitKeyword_0());
                 
-            otherlv_1=(Token)match(input,12,FOLLOW_12_in_ruleFieldInitialisations2703); 
+            otherlv_1=(Token)match(input,12,FOLLOW_12_in_ruleFieldInitialisations2925); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getFieldInitialisationsAccess().getLeftCurlyBracketKeyword_1());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1212:1: ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+
-            int cnt20=0;
-            loop20:
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1290:1: ( ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';' )+
+            int cnt21=0;
+            loop21:
             do {
-                int alt20=2;
-                int LA20_0 = input.LA(1);
+                int alt21=2;
+                int LA21_0 = input.LA(1);
 
-                if ( (LA20_0==40||(LA20_0>=42 && LA20_0<=43)) ) {
-                    alt20=1;
+                if ( (LA21_0==40||(LA21_0>=42 && LA21_0<=43)) ) {
+                    alt21=1;
                 }
 
 
-                switch (alt20) {
+                switch (alt21) {
             	case 1 :
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1212:2: ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';'
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1290:2: ( (lv_initialisations_2_0= ruleFieldInitialisation ) ) otherlv_3= ';'
             	    {
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1212:2: ( (lv_initialisations_2_0= ruleFieldInitialisation ) )
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1213:1: (lv_initialisations_2_0= ruleFieldInitialisation )
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1290:2: ( (lv_initialisations_2_0= ruleFieldInitialisation ) )
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1291:1: (lv_initialisations_2_0= ruleFieldInitialisation )
             	    {
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1213:1: (lv_initialisations_2_0= ruleFieldInitialisation )
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1214:3: lv_initialisations_2_0= ruleFieldInitialisation
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1291:1: (lv_initialisations_2_0= ruleFieldInitialisation )
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1292:3: lv_initialisations_2_0= ruleFieldInitialisation
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getFieldInitialisationsAccess().getInitialisationsFieldInitialisationParserRuleCall_2_0_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleFieldInitialisation_in_ruleFieldInitialisations2725);
+            	    pushFollow(FOLLOW_ruleFieldInitialisation_in_ruleFieldInitialisations2947);
             	    lv_initialisations_2_0=ruleFieldInitialisation();
 
             	    state._fsp--;
@@ -2968,7 +3201,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    otherlv_3=(Token)match(input,39,FOLLOW_39_in_ruleFieldInitialisations2737); 
+            	    otherlv_3=(Token)match(input,39,FOLLOW_39_in_ruleFieldInitialisations2959); 
 
             	        	newLeafNode(otherlv_3, grammarAccess.getFieldInitialisationsAccess().getSemicolonKeyword_2_1());
             	        
@@ -2977,15 +3210,15 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt20 >= 1 ) break loop20;
+            	    if ( cnt21 >= 1 ) break loop21;
                         EarlyExitException eee =
-                            new EarlyExitException(20, input);
+                            new EarlyExitException(21, input);
                         throw eee;
                 }
-                cnt20++;
+                cnt21++;
             } while (true);
 
-            otherlv_4=(Token)match(input,13,FOLLOW_13_in_ruleFieldInitialisations2751); 
+            otherlv_4=(Token)match(input,13,FOLLOW_13_in_ruleFieldInitialisations2973); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getFieldInitialisationsAccess().getRightCurlyBracketKeyword_3());
                 
@@ -3010,7 +3243,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFieldInitialisation"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1246:1: entryRuleFieldInitialisation returns [EObject current=null] : iv_ruleFieldInitialisation= ruleFieldInitialisation EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1324:1: entryRuleFieldInitialisation returns [EObject current=null] : iv_ruleFieldInitialisation= ruleFieldInitialisation EOF ;
     public final EObject entryRuleFieldInitialisation() throws RecognitionException {
         EObject current = null;
 
@@ -3018,17 +3251,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1247:2: (iv_ruleFieldInitialisation= ruleFieldInitialisation EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1248:2: iv_ruleFieldInitialisation= ruleFieldInitialisation EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1325:2: (iv_ruleFieldInitialisation= ruleFieldInitialisation EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1326:2: iv_ruleFieldInitialisation= ruleFieldInitialisation EOF
             {
              newCompositeNode(grammarAccess.getFieldInitialisationRule()); 
-            pushFollow(FOLLOW_ruleFieldInitialisation_in_entryRuleFieldInitialisation2787);
+            pushFollow(FOLLOW_ruleFieldInitialisation_in_entryRuleFieldInitialisation3009);
             iv_ruleFieldInitialisation=ruleFieldInitialisation();
 
             state._fsp--;
 
              current =iv_ruleFieldInitialisation; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldInitialisation2797); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldInitialisation3019); 
 
             }
 
@@ -3046,7 +3279,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFieldInitialisation"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1255:1: ruleFieldInitialisation returns [EObject current=null] : (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation | this_ContextInitialisation_2= ruleContextInitialisation ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1333:1: ruleFieldInitialisation returns [EObject current=null] : (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation | this_ContextInitialisation_2= ruleContextInitialisation ) ;
     public final EObject ruleFieldInitialisation() throws RecognitionException {
         EObject current = null;
 
@@ -3060,42 +3293,42 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1258:28: ( (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation | this_ContextInitialisation_2= ruleContextInitialisation ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1259:1: (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation | this_ContextInitialisation_2= ruleContextInitialisation )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1336:28: ( (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation | this_ContextInitialisation_2= ruleContextInitialisation ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1337:1: (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation | this_ContextInitialisation_2= ruleContextInitialisation )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1259:1: (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation | this_ContextInitialisation_2= ruleContextInitialisation )
-            int alt21=3;
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1337:1: (this_DefaultInitialisation_0= ruleDefaultInitialisation | this_RandomInitialisation_1= ruleRandomInitialisation | this_ContextInitialisation_2= ruleContextInitialisation )
+            int alt22=3;
             switch ( input.LA(1) ) {
             case 40:
                 {
-                alt21=1;
+                alt22=1;
                 }
                 break;
             case 42:
                 {
-                alt21=2;
+                alt22=2;
                 }
                 break;
             case 43:
                 {
-                alt21=3;
+                alt22=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 21, 0, input);
+                    new NoViableAltException("", 22, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt21) {
+            switch (alt22) {
                 case 1 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1260:5: this_DefaultInitialisation_0= ruleDefaultInitialisation
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1338:5: this_DefaultInitialisation_0= ruleDefaultInitialisation
                     {
                      
                             newCompositeNode(grammarAccess.getFieldInitialisationAccess().getDefaultInitialisationParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleDefaultInitialisation_in_ruleFieldInitialisation2844);
+                    pushFollow(FOLLOW_ruleDefaultInitialisation_in_ruleFieldInitialisation3066);
                     this_DefaultInitialisation_0=ruleDefaultInitialisation();
 
                     state._fsp--;
@@ -3108,12 +3341,12 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1270:5: this_RandomInitialisation_1= ruleRandomInitialisation
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1348:5: this_RandomInitialisation_1= ruleRandomInitialisation
                     {
                      
                             newCompositeNode(grammarAccess.getFieldInitialisationAccess().getRandomInitialisationParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleRandomInitialisation_in_ruleFieldInitialisation2871);
+                    pushFollow(FOLLOW_ruleRandomInitialisation_in_ruleFieldInitialisation3093);
                     this_RandomInitialisation_1=ruleRandomInitialisation();
 
                     state._fsp--;
@@ -3126,12 +3359,12 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1280:5: this_ContextInitialisation_2= ruleContextInitialisation
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1358:5: this_ContextInitialisation_2= ruleContextInitialisation
                     {
                      
                             newCompositeNode(grammarAccess.getFieldInitialisationAccess().getContextInitialisationParserRuleCall_2()); 
                         
-                    pushFollow(FOLLOW_ruleContextInitialisation_in_ruleFieldInitialisation2898);
+                    pushFollow(FOLLOW_ruleContextInitialisation_in_ruleFieldInitialisation3120);
                     this_ContextInitialisation_2=ruleContextInitialisation();
 
                     state._fsp--;
@@ -3164,7 +3397,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDefaultInitialisation"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1296:1: entryRuleDefaultInitialisation returns [EObject current=null] : iv_ruleDefaultInitialisation= ruleDefaultInitialisation EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1374:1: entryRuleDefaultInitialisation returns [EObject current=null] : iv_ruleDefaultInitialisation= ruleDefaultInitialisation EOF ;
     public final EObject entryRuleDefaultInitialisation() throws RecognitionException {
         EObject current = null;
 
@@ -3172,17 +3405,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1297:2: (iv_ruleDefaultInitialisation= ruleDefaultInitialisation EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1298:2: iv_ruleDefaultInitialisation= ruleDefaultInitialisation EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1375:2: (iv_ruleDefaultInitialisation= ruleDefaultInitialisation EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1376:2: iv_ruleDefaultInitialisation= ruleDefaultInitialisation EOF
             {
              newCompositeNode(grammarAccess.getDefaultInitialisationRule()); 
-            pushFollow(FOLLOW_ruleDefaultInitialisation_in_entryRuleDefaultInitialisation2933);
+            pushFollow(FOLLOW_ruleDefaultInitialisation_in_entryRuleDefaultInitialisation3155);
             iv_ruleDefaultInitialisation=ruleDefaultInitialisation();
 
             state._fsp--;
 
              current =iv_ruleDefaultInitialisation; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDefaultInitialisation2943); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDefaultInitialisation3165); 
 
             }
 
@@ -3200,7 +3433,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDefaultInitialisation"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1305:1: ruleDefaultInitialisation returns [EObject current=null] : (otherlv_0= 'default' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1383:1: ruleDefaultInitialisation returns [EObject current=null] : (otherlv_0= 'default' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) ) ;
     public final EObject ruleDefaultInitialisation() throws RecognitionException {
         EObject current = null;
 
@@ -3211,32 +3444,32 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1308:28: ( (otherlv_0= 'default' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1309:1: (otherlv_0= 'default' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1386:28: ( (otherlv_0= 'default' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1387:1: (otherlv_0= 'default' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1309:1: (otherlv_0= 'default' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1309:3: otherlv_0= 'default' otherlv_1= ':' ( (otherlv_2= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1387:1: (otherlv_0= 'default' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1387:3: otherlv_0= 'default' otherlv_1= ':' ( (otherlv_2= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,40,FOLLOW_40_in_ruleDefaultInitialisation2980); 
+            otherlv_0=(Token)match(input,40,FOLLOW_40_in_ruleDefaultInitialisation3202); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getDefaultInitialisationAccess().getDefaultKeyword_0());
                 
-            otherlv_1=(Token)match(input,41,FOLLOW_41_in_ruleDefaultInitialisation2992); 
+            otherlv_1=(Token)match(input,41,FOLLOW_41_in_ruleDefaultInitialisation3214); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getDefaultInitialisationAccess().getColonKeyword_1());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1317:1: ( (otherlv_2= RULE_ID ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1318:1: (otherlv_2= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1395:1: ( (otherlv_2= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1396:1: (otherlv_2= RULE_ID )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1318:1: (otherlv_2= RULE_ID )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1319:3: otherlv_2= RULE_ID
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1396:1: (otherlv_2= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1397:3: otherlv_2= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getDefaultInitialisationRule());
             	        }
                     
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDefaultInitialisation3012); 
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDefaultInitialisation3234); 
 
             		newLeafNode(otherlv_2, grammarAccess.getDefaultInitialisationAccess().getCellCellSpecificationCrossReference_2_0()); 
             	
@@ -3267,7 +3500,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRandomInitialisation"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1338:1: entryRuleRandomInitialisation returns [EObject current=null] : iv_ruleRandomInitialisation= ruleRandomInitialisation EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1416:1: entryRuleRandomInitialisation returns [EObject current=null] : iv_ruleRandomInitialisation= ruleRandomInitialisation EOF ;
     public final EObject entryRuleRandomInitialisation() throws RecognitionException {
         EObject current = null;
 
@@ -3275,17 +3508,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1339:2: (iv_ruleRandomInitialisation= ruleRandomInitialisation EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1340:2: iv_ruleRandomInitialisation= ruleRandomInitialisation EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1417:2: (iv_ruleRandomInitialisation= ruleRandomInitialisation EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1418:2: iv_ruleRandomInitialisation= ruleRandomInitialisation EOF
             {
              newCompositeNode(grammarAccess.getRandomInitialisationRule()); 
-            pushFollow(FOLLOW_ruleRandomInitialisation_in_entryRuleRandomInitialisation3048);
+            pushFollow(FOLLOW_ruleRandomInitialisation_in_entryRuleRandomInitialisation3270);
             iv_ruleRandomInitialisation=ruleRandomInitialisation();
 
             state._fsp--;
 
              current =iv_ruleRandomInitialisation; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRandomInitialisation3058); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRandomInitialisation3280); 
 
             }
 
@@ -3303,7 +3536,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRandomInitialisation"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1347:1: ruleRandomInitialisation returns [EObject current=null] : (otherlv_0= 'random' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' ( (lv_count_4_0= RULE_INT ) ) ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1425:1: ruleRandomInitialisation returns [EObject current=null] : (otherlv_0= 'random' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' ( (lv_count_4_0= RULE_INT ) ) ) ;
     public final EObject ruleRandomInitialisation() throws RecognitionException {
         EObject current = null;
 
@@ -3316,32 +3549,32 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1350:28: ( (otherlv_0= 'random' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' ( (lv_count_4_0= RULE_INT ) ) ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1351:1: (otherlv_0= 'random' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' ( (lv_count_4_0= RULE_INT ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1428:28: ( (otherlv_0= 'random' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' ( (lv_count_4_0= RULE_INT ) ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1429:1: (otherlv_0= 'random' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' ( (lv_count_4_0= RULE_INT ) ) )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1351:1: (otherlv_0= 'random' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' ( (lv_count_4_0= RULE_INT ) ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1351:3: otherlv_0= 'random' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' ( (lv_count_4_0= RULE_INT ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1429:1: (otherlv_0= 'random' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' ( (lv_count_4_0= RULE_INT ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1429:3: otherlv_0= 'random' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' ( (lv_count_4_0= RULE_INT ) )
             {
-            otherlv_0=(Token)match(input,42,FOLLOW_42_in_ruleRandomInitialisation3095); 
+            otherlv_0=(Token)match(input,42,FOLLOW_42_in_ruleRandomInitialisation3317); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getRandomInitialisationAccess().getRandomKeyword_0());
                 
-            otherlv_1=(Token)match(input,41,FOLLOW_41_in_ruleRandomInitialisation3107); 
+            otherlv_1=(Token)match(input,41,FOLLOW_41_in_ruleRandomInitialisation3329); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getRandomInitialisationAccess().getColonKeyword_1());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1359:1: ( (otherlv_2= RULE_ID ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1360:1: (otherlv_2= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1437:1: ( (otherlv_2= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1438:1: (otherlv_2= RULE_ID )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1360:1: (otherlv_2= RULE_ID )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1361:3: otherlv_2= RULE_ID
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1438:1: (otherlv_2= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1439:3: otherlv_2= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getRandomInitialisationRule());
             	        }
                     
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRandomInitialisation3127); 
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRandomInitialisation3349); 
 
             		newLeafNode(otherlv_2, grammarAccess.getRandomInitialisationAccess().getCellCellSpecificationCrossReference_2_0()); 
             	
@@ -3351,17 +3584,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,28,FOLLOW_28_in_ruleRandomInitialisation3139); 
+            otherlv_3=(Token)match(input,28,FOLLOW_28_in_ruleRandomInitialisation3361); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getRandomInitialisationAccess().getEqualsSignKeyword_3());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1376:1: ( (lv_count_4_0= RULE_INT ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1377:1: (lv_count_4_0= RULE_INT )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1454:1: ( (lv_count_4_0= RULE_INT ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1455:1: (lv_count_4_0= RULE_INT )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1377:1: (lv_count_4_0= RULE_INT )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1378:3: lv_count_4_0= RULE_INT
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1455:1: (lv_count_4_0= RULE_INT )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1456:3: lv_count_4_0= RULE_INT
             {
-            lv_count_4_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleRandomInitialisation3156); 
+            lv_count_4_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleRandomInitialisation3378); 
 
             			newLeafNode(lv_count_4_0, grammarAccess.getRandomInitialisationAccess().getCountINTTerminalRuleCall_4_0()); 
             		
@@ -3402,7 +3635,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleContextInitialisation"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1402:1: entryRuleContextInitialisation returns [EObject current=null] : iv_ruleContextInitialisation= ruleContextInitialisation EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1480:1: entryRuleContextInitialisation returns [EObject current=null] : iv_ruleContextInitialisation= ruleContextInitialisation EOF ;
     public final EObject entryRuleContextInitialisation() throws RecognitionException {
         EObject current = null;
 
@@ -3410,17 +3643,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1403:2: (iv_ruleContextInitialisation= ruleContextInitialisation EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1404:2: iv_ruleContextInitialisation= ruleContextInitialisation EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1481:2: (iv_ruleContextInitialisation= ruleContextInitialisation EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1482:2: iv_ruleContextInitialisation= ruleContextInitialisation EOF
             {
              newCompositeNode(grammarAccess.getContextInitialisationRule()); 
-            pushFollow(FOLLOW_ruleContextInitialisation_in_entryRuleContextInitialisation3197);
+            pushFollow(FOLLOW_ruleContextInitialisation_in_entryRuleContextInitialisation3419);
             iv_ruleContextInitialisation=ruleContextInitialisation();
 
             state._fsp--;
 
              current =iv_ruleContextInitialisation; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleContextInitialisation3207); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleContextInitialisation3429); 
 
             }
 
@@ -3438,7 +3671,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleContextInitialisation"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1411:1: ruleContextInitialisation returns [EObject current=null] : (otherlv_0= 'context' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= 'check' ( (lv_check_4_0= ruleContextExpression ) ) otherlv_5= 'value' otherlv_6= '=' ( (lv_exp_7_0= ruleContextExpression ) ) ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1489:1: ruleContextInitialisation returns [EObject current=null] : (otherlv_0= 'context' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= 'check' ( (lv_check_4_0= ruleContextExpression ) ) otherlv_5= 'value' otherlv_6= '=' ( (lv_exp_7_0= ruleContextExpression ) ) ) ;
     public final EObject ruleContextInitialisation() throws RecognitionException {
         EObject current = null;
 
@@ -3456,32 +3689,32 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1414:28: ( (otherlv_0= 'context' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= 'check' ( (lv_check_4_0= ruleContextExpression ) ) otherlv_5= 'value' otherlv_6= '=' ( (lv_exp_7_0= ruleContextExpression ) ) ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1415:1: (otherlv_0= 'context' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= 'check' ( (lv_check_4_0= ruleContextExpression ) ) otherlv_5= 'value' otherlv_6= '=' ( (lv_exp_7_0= ruleContextExpression ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1492:28: ( (otherlv_0= 'context' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= 'check' ( (lv_check_4_0= ruleContextExpression ) ) otherlv_5= 'value' otherlv_6= '=' ( (lv_exp_7_0= ruleContextExpression ) ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1493:1: (otherlv_0= 'context' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= 'check' ( (lv_check_4_0= ruleContextExpression ) ) otherlv_5= 'value' otherlv_6= '=' ( (lv_exp_7_0= ruleContextExpression ) ) )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1415:1: (otherlv_0= 'context' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= 'check' ( (lv_check_4_0= ruleContextExpression ) ) otherlv_5= 'value' otherlv_6= '=' ( (lv_exp_7_0= ruleContextExpression ) ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1415:3: otherlv_0= 'context' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= 'check' ( (lv_check_4_0= ruleContextExpression ) ) otherlv_5= 'value' otherlv_6= '=' ( (lv_exp_7_0= ruleContextExpression ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1493:1: (otherlv_0= 'context' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= 'check' ( (lv_check_4_0= ruleContextExpression ) ) otherlv_5= 'value' otherlv_6= '=' ( (lv_exp_7_0= ruleContextExpression ) ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1493:3: otherlv_0= 'context' otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= 'check' ( (lv_check_4_0= ruleContextExpression ) ) otherlv_5= 'value' otherlv_6= '=' ( (lv_exp_7_0= ruleContextExpression ) )
             {
-            otherlv_0=(Token)match(input,43,FOLLOW_43_in_ruleContextInitialisation3244); 
+            otherlv_0=(Token)match(input,43,FOLLOW_43_in_ruleContextInitialisation3466); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getContextInitialisationAccess().getContextKeyword_0());
                 
-            otherlv_1=(Token)match(input,41,FOLLOW_41_in_ruleContextInitialisation3256); 
+            otherlv_1=(Token)match(input,41,FOLLOW_41_in_ruleContextInitialisation3478); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getContextInitialisationAccess().getColonKeyword_1());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1423:1: ( (otherlv_2= RULE_ID ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1424:1: (otherlv_2= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1501:1: ( (otherlv_2= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1502:1: (otherlv_2= RULE_ID )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1424:1: (otherlv_2= RULE_ID )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1425:3: otherlv_2= RULE_ID
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1502:1: (otherlv_2= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1503:3: otherlv_2= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getContextInitialisationRule());
             	        }
                     
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleContextInitialisation3276); 
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleContextInitialisation3498); 
 
             		newLeafNode(otherlv_2, grammarAccess.getContextInitialisationAccess().getCellCellSpecificationCrossReference_2_0()); 
             	
@@ -3491,20 +3724,20 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,44,FOLLOW_44_in_ruleContextInitialisation3288); 
+            otherlv_3=(Token)match(input,44,FOLLOW_44_in_ruleContextInitialisation3510); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getContextInitialisationAccess().getCheckKeyword_3());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1440:1: ( (lv_check_4_0= ruleContextExpression ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1441:1: (lv_check_4_0= ruleContextExpression )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1518:1: ( (lv_check_4_0= ruleContextExpression ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1519:1: (lv_check_4_0= ruleContextExpression )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1441:1: (lv_check_4_0= ruleContextExpression )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1442:3: lv_check_4_0= ruleContextExpression
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1519:1: (lv_check_4_0= ruleContextExpression )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1520:3: lv_check_4_0= ruleContextExpression
             {
              
             	        newCompositeNode(grammarAccess.getContextInitialisationAccess().getCheckContextExpressionParserRuleCall_4_0()); 
             	    
-            pushFollow(FOLLOW_ruleContextExpression_in_ruleContextInitialisation3309);
+            pushFollow(FOLLOW_ruleContextExpression_in_ruleContextInitialisation3531);
             lv_check_4_0=ruleContextExpression();
 
             state._fsp--;
@@ -3526,24 +3759,24 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,45,FOLLOW_45_in_ruleContextInitialisation3321); 
+            otherlv_5=(Token)match(input,45,FOLLOW_45_in_ruleContextInitialisation3543); 
 
                 	newLeafNode(otherlv_5, grammarAccess.getContextInitialisationAccess().getValueKeyword_5());
                 
-            otherlv_6=(Token)match(input,28,FOLLOW_28_in_ruleContextInitialisation3333); 
+            otherlv_6=(Token)match(input,28,FOLLOW_28_in_ruleContextInitialisation3555); 
 
                 	newLeafNode(otherlv_6, grammarAccess.getContextInitialisationAccess().getEqualsSignKeyword_6());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1466:1: ( (lv_exp_7_0= ruleContextExpression ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1467:1: (lv_exp_7_0= ruleContextExpression )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1544:1: ( (lv_exp_7_0= ruleContextExpression ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1545:1: (lv_exp_7_0= ruleContextExpression )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1467:1: (lv_exp_7_0= ruleContextExpression )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1468:3: lv_exp_7_0= ruleContextExpression
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1545:1: (lv_exp_7_0= ruleContextExpression )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1546:3: lv_exp_7_0= ruleContextExpression
             {
              
             	        newCompositeNode(grammarAccess.getContextInitialisationAccess().getExpContextExpressionParserRuleCall_7_0()); 
             	    
-            pushFollow(FOLLOW_ruleContextExpression_in_ruleContextInitialisation3354);
+            pushFollow(FOLLOW_ruleContextExpression_in_ruleContextInitialisation3576);
             lv_exp_7_0=ruleContextExpression();
 
             state._fsp--;
@@ -3586,7 +3819,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleContextExpression"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1492:1: entryRuleContextExpression returns [EObject current=null] : iv_ruleContextExpression= ruleContextExpression EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1570:1: entryRuleContextExpression returns [EObject current=null] : iv_ruleContextExpression= ruleContextExpression EOF ;
     public final EObject entryRuleContextExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3594,17 +3827,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1493:2: (iv_ruleContextExpression= ruleContextExpression EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1494:2: iv_ruleContextExpression= ruleContextExpression EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1571:2: (iv_ruleContextExpression= ruleContextExpression EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1572:2: iv_ruleContextExpression= ruleContextExpression EOF
             {
              newCompositeNode(grammarAccess.getContextExpressionRule()); 
-            pushFollow(FOLLOW_ruleContextExpression_in_entryRuleContextExpression3390);
+            pushFollow(FOLLOW_ruleContextExpression_in_entryRuleContextExpression3612);
             iv_ruleContextExpression=ruleContextExpression();
 
             state._fsp--;
 
              current =iv_ruleContextExpression; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleContextExpression3400); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleContextExpression3622); 
 
             }
 
@@ -3622,7 +3855,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleContextExpression"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1501:1: ruleContextExpression returns [EObject current=null] : ( ( (lv_sub_exp_0_0= ruleAtomicExpression ) ) (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )* ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1579:1: ruleContextExpression returns [EObject current=null] : ( ( (lv_sub_exp_0_0= ruleAtomicExpression ) ) (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )* ) ;
     public final EObject ruleContextExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3635,22 +3868,22 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1504:28: ( ( ( (lv_sub_exp_0_0= ruleAtomicExpression ) ) (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )* ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1505:1: ( ( (lv_sub_exp_0_0= ruleAtomicExpression ) ) (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )* )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1582:28: ( ( ( (lv_sub_exp_0_0= ruleAtomicExpression ) ) (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )* ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1583:1: ( ( (lv_sub_exp_0_0= ruleAtomicExpression ) ) (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )* )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1505:1: ( ( (lv_sub_exp_0_0= ruleAtomicExpression ) ) (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )* )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1505:2: ( (lv_sub_exp_0_0= ruleAtomicExpression ) ) (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )*
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1583:1: ( ( (lv_sub_exp_0_0= ruleAtomicExpression ) ) (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )* )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1583:2: ( (lv_sub_exp_0_0= ruleAtomicExpression ) ) (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )*
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1505:2: ( (lv_sub_exp_0_0= ruleAtomicExpression ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1506:1: (lv_sub_exp_0_0= ruleAtomicExpression )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1583:2: ( (lv_sub_exp_0_0= ruleAtomicExpression ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1584:1: (lv_sub_exp_0_0= ruleAtomicExpression )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1506:1: (lv_sub_exp_0_0= ruleAtomicExpression )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1507:3: lv_sub_exp_0_0= ruleAtomicExpression
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1584:1: (lv_sub_exp_0_0= ruleAtomicExpression )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1585:3: lv_sub_exp_0_0= ruleAtomicExpression
             {
              
             	        newCompositeNode(grammarAccess.getContextExpressionAccess().getSub_expAtomicExpressionParserRuleCall_0_0()); 
             	    
-            pushFollow(FOLLOW_ruleAtomicExpression_in_ruleContextExpression3446);
+            pushFollow(FOLLOW_ruleAtomicExpression_in_ruleContextExpression3668);
             lv_sub_exp_0_0=ruleAtomicExpression();
 
             state._fsp--;
@@ -3672,35 +3905,35 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1523:2: (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )*
-            loop22:
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1601:2: (otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) ) )*
+            loop23:
             do {
-                int alt22=2;
-                int LA22_0 = input.LA(1);
+                int alt23=2;
+                int LA23_0 = input.LA(1);
 
-                if ( (LA22_0==46) ) {
-                    alt22=1;
+                if ( (LA23_0==46) ) {
+                    alt23=1;
                 }
 
 
-                switch (alt22) {
+                switch (alt23) {
             	case 1 :
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1523:4: otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) )
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1601:4: otherlv_1= '.' ( (lv_sub_exp_2_0= ruleAtomicExpression ) )
             	    {
-            	    otherlv_1=(Token)match(input,46,FOLLOW_46_in_ruleContextExpression3459); 
+            	    otherlv_1=(Token)match(input,46,FOLLOW_46_in_ruleContextExpression3681); 
 
             	        	newLeafNode(otherlv_1, grammarAccess.getContextExpressionAccess().getFullStopKeyword_1_0());
             	        
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1527:1: ( (lv_sub_exp_2_0= ruleAtomicExpression ) )
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1528:1: (lv_sub_exp_2_0= ruleAtomicExpression )
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1605:1: ( (lv_sub_exp_2_0= ruleAtomicExpression ) )
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1606:1: (lv_sub_exp_2_0= ruleAtomicExpression )
             	    {
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1528:1: (lv_sub_exp_2_0= ruleAtomicExpression )
-            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1529:3: lv_sub_exp_2_0= ruleAtomicExpression
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1606:1: (lv_sub_exp_2_0= ruleAtomicExpression )
+            	    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1607:3: lv_sub_exp_2_0= ruleAtomicExpression
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getContextExpressionAccess().getSub_expAtomicExpressionParserRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleAtomicExpression_in_ruleContextExpression3480);
+            	    pushFollow(FOLLOW_ruleAtomicExpression_in_ruleContextExpression3702);
             	    lv_sub_exp_2_0=ruleAtomicExpression();
 
             	    state._fsp--;
@@ -3727,7 +3960,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop22;
+            	    break loop23;
                 }
             } while (true);
 
@@ -3752,7 +3985,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAtomicExpression"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1553:1: entryRuleAtomicExpression returns [EObject current=null] : iv_ruleAtomicExpression= ruleAtomicExpression EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1631:1: entryRuleAtomicExpression returns [EObject current=null] : iv_ruleAtomicExpression= ruleAtomicExpression EOF ;
     public final EObject entryRuleAtomicExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3760,17 +3993,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1554:2: (iv_ruleAtomicExpression= ruleAtomicExpression EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1555:2: iv_ruleAtomicExpression= ruleAtomicExpression EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1632:2: (iv_ruleAtomicExpression= ruleAtomicExpression EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1633:2: iv_ruleAtomicExpression= ruleAtomicExpression EOF
             {
              newCompositeNode(grammarAccess.getAtomicExpressionRule()); 
-            pushFollow(FOLLOW_ruleAtomicExpression_in_entryRuleAtomicExpression3518);
+            pushFollow(FOLLOW_ruleAtomicExpression_in_entryRuleAtomicExpression3740);
             iv_ruleAtomicExpression=ruleAtomicExpression();
 
             state._fsp--;
 
              current =iv_ruleAtomicExpression; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAtomicExpression3528); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAtomicExpression3750); 
 
             }
 
@@ -3788,7 +4021,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomicExpression"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1562:1: ruleAtomicExpression returns [EObject current=null] : (this_FilterExpression_0= ruleFilterExpression | this_CountExpression_1= ruleCountExpression | this_NotEmptyExpression_2= ruleNotEmptyExpression ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1640:1: ruleAtomicExpression returns [EObject current=null] : (this_FilterExpression_0= ruleFilterExpression | this_CountExpression_1= ruleCountExpression | this_NotEmptyExpression_2= ruleNotEmptyExpression ) ;
     public final EObject ruleAtomicExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3802,42 +4035,42 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1565:28: ( (this_FilterExpression_0= ruleFilterExpression | this_CountExpression_1= ruleCountExpression | this_NotEmptyExpression_2= ruleNotEmptyExpression ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1566:1: (this_FilterExpression_0= ruleFilterExpression | this_CountExpression_1= ruleCountExpression | this_NotEmptyExpression_2= ruleNotEmptyExpression )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1643:28: ( (this_FilterExpression_0= ruleFilterExpression | this_CountExpression_1= ruleCountExpression | this_NotEmptyExpression_2= ruleNotEmptyExpression ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1644:1: (this_FilterExpression_0= ruleFilterExpression | this_CountExpression_1= ruleCountExpression | this_NotEmptyExpression_2= ruleNotEmptyExpression )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1566:1: (this_FilterExpression_0= ruleFilterExpression | this_CountExpression_1= ruleCountExpression | this_NotEmptyExpression_2= ruleNotEmptyExpression )
-            int alt23=3;
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1644:1: (this_FilterExpression_0= ruleFilterExpression | this_CountExpression_1= ruleCountExpression | this_NotEmptyExpression_2= ruleNotEmptyExpression )
+            int alt24=3;
             switch ( input.LA(1) ) {
             case 47:
                 {
-                alt23=1;
+                alt24=1;
                 }
                 break;
             case 48:
                 {
-                alt23=2;
+                alt24=2;
                 }
                 break;
             case 49:
                 {
-                alt23=3;
+                alt24=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 23, 0, input);
+                    new NoViableAltException("", 24, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt23) {
+            switch (alt24) {
                 case 1 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1567:5: this_FilterExpression_0= ruleFilterExpression
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1645:5: this_FilterExpression_0= ruleFilterExpression
                     {
                      
                             newCompositeNode(grammarAccess.getAtomicExpressionAccess().getFilterExpressionParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleFilterExpression_in_ruleAtomicExpression3575);
+                    pushFollow(FOLLOW_ruleFilterExpression_in_ruleAtomicExpression3797);
                     this_FilterExpression_0=ruleFilterExpression();
 
                     state._fsp--;
@@ -3850,12 +4083,12 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1577:5: this_CountExpression_1= ruleCountExpression
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1655:5: this_CountExpression_1= ruleCountExpression
                     {
                      
                             newCompositeNode(grammarAccess.getAtomicExpressionAccess().getCountExpressionParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleCountExpression_in_ruleAtomicExpression3602);
+                    pushFollow(FOLLOW_ruleCountExpression_in_ruleAtomicExpression3824);
                     this_CountExpression_1=ruleCountExpression();
 
                     state._fsp--;
@@ -3868,12 +4101,12 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1587:5: this_NotEmptyExpression_2= ruleNotEmptyExpression
+                    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1665:5: this_NotEmptyExpression_2= ruleNotEmptyExpression
                     {
                      
                             newCompositeNode(grammarAccess.getAtomicExpressionAccess().getNotEmptyExpressionParserRuleCall_2()); 
                         
-                    pushFollow(FOLLOW_ruleNotEmptyExpression_in_ruleAtomicExpression3629);
+                    pushFollow(FOLLOW_ruleNotEmptyExpression_in_ruleAtomicExpression3851);
                     this_NotEmptyExpression_2=ruleNotEmptyExpression();
 
                     state._fsp--;
@@ -3906,7 +4139,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFilterExpression"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1603:1: entryRuleFilterExpression returns [EObject current=null] : iv_ruleFilterExpression= ruleFilterExpression EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1681:1: entryRuleFilterExpression returns [EObject current=null] : iv_ruleFilterExpression= ruleFilterExpression EOF ;
     public final EObject entryRuleFilterExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3914,17 +4147,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1604:2: (iv_ruleFilterExpression= ruleFilterExpression EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1605:2: iv_ruleFilterExpression= ruleFilterExpression EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1682:2: (iv_ruleFilterExpression= ruleFilterExpression EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1683:2: iv_ruleFilterExpression= ruleFilterExpression EOF
             {
              newCompositeNode(grammarAccess.getFilterExpressionRule()); 
-            pushFollow(FOLLOW_ruleFilterExpression_in_entryRuleFilterExpression3664);
+            pushFollow(FOLLOW_ruleFilterExpression_in_entryRuleFilterExpression3886);
             iv_ruleFilterExpression=ruleFilterExpression();
 
             state._fsp--;
 
              current =iv_ruleFilterExpression; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFilterExpression3674); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFilterExpression3896); 
 
             }
 
@@ -3942,7 +4175,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFilterExpression"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1612:1: ruleFilterExpression returns [EObject current=null] : (otherlv_0= 'filter' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1690:1: ruleFilterExpression returns [EObject current=null] : (otherlv_0= 'filter' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' ) ;
     public final EObject ruleFilterExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3954,32 +4187,32 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1615:28: ( (otherlv_0= 'filter' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1616:1: (otherlv_0= 'filter' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1693:28: ( (otherlv_0= 'filter' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1694:1: (otherlv_0= 'filter' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1616:1: (otherlv_0= 'filter' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1616:3: otherlv_0= 'filter' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')'
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1694:1: (otherlv_0= 'filter' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1694:3: otherlv_0= 'filter' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')'
             {
-            otherlv_0=(Token)match(input,47,FOLLOW_47_in_ruleFilterExpression3711); 
+            otherlv_0=(Token)match(input,47,FOLLOW_47_in_ruleFilterExpression3933); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getFilterExpressionAccess().getFilterKeyword_0());
                 
-            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleFilterExpression3723); 
+            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleFilterExpression3945); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getFilterExpressionAccess().getLeftParenthesisKeyword_1());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1624:1: ( (otherlv_2= RULE_ID ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1625:1: (otherlv_2= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1702:1: ( (otherlv_2= RULE_ID ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1703:1: (otherlv_2= RULE_ID )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1625:1: (otherlv_2= RULE_ID )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1626:3: otherlv_2= RULE_ID
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1703:1: (otherlv_2= RULE_ID )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1704:3: otherlv_2= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getFilterExpressionRule());
             	        }
                     
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFilterExpression3743); 
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFilterExpression3965); 
 
             		newLeafNode(otherlv_2, grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationCrossReference_2_0()); 
             	
@@ -3989,7 +4222,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,26,FOLLOW_26_in_ruleFilterExpression3755); 
+            otherlv_3=(Token)match(input,26,FOLLOW_26_in_ruleFilterExpression3977); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getFilterExpressionAccess().getRightParenthesisKeyword_3());
                 
@@ -4014,7 +4247,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCountExpression"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1649:1: entryRuleCountExpression returns [EObject current=null] : iv_ruleCountExpression= ruleCountExpression EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1727:1: entryRuleCountExpression returns [EObject current=null] : iv_ruleCountExpression= ruleCountExpression EOF ;
     public final EObject entryRuleCountExpression() throws RecognitionException {
         EObject current = null;
 
@@ -4022,17 +4255,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1650:2: (iv_ruleCountExpression= ruleCountExpression EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1651:2: iv_ruleCountExpression= ruleCountExpression EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1728:2: (iv_ruleCountExpression= ruleCountExpression EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1729:2: iv_ruleCountExpression= ruleCountExpression EOF
             {
              newCompositeNode(grammarAccess.getCountExpressionRule()); 
-            pushFollow(FOLLOW_ruleCountExpression_in_entryRuleCountExpression3791);
+            pushFollow(FOLLOW_ruleCountExpression_in_entryRuleCountExpression4013);
             iv_ruleCountExpression=ruleCountExpression();
 
             state._fsp--;
 
              current =iv_ruleCountExpression; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCountExpression3801); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCountExpression4023); 
 
             }
 
@@ -4050,7 +4283,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCountExpression"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1658:1: ruleCountExpression returns [EObject current=null] : (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1736:1: ruleCountExpression returns [EObject current=null] : (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ) ;
     public final EObject ruleCountExpression() throws RecognitionException {
         EObject current = null;
 
@@ -4061,26 +4294,26 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1661:28: ( (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1662:1: (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1739:28: ( (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1740:1: (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1662:1: (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1662:3: otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' ()
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1740:1: (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1740:3: otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' ()
             {
-            otherlv_0=(Token)match(input,48,FOLLOW_48_in_ruleCountExpression3838); 
+            otherlv_0=(Token)match(input,48,FOLLOW_48_in_ruleCountExpression4060); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getCountExpressionAccess().getCountKeyword_0());
                 
-            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleCountExpression3850); 
+            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleCountExpression4072); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getCountExpressionAccess().getLeftParenthesisKeyword_1());
                 
-            otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleCountExpression3862); 
+            otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleCountExpression4084); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getCountExpressionAccess().getRightParenthesisKeyword_2());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1674:1: ()
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1675:5: 
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1752:1: ()
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1753:5: 
             {
 
                     current = forceCreateModelElement(
@@ -4111,7 +4344,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNotEmptyExpression"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1688:1: entryRuleNotEmptyExpression returns [EObject current=null] : iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1766:1: entryRuleNotEmptyExpression returns [EObject current=null] : iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF ;
     public final EObject entryRuleNotEmptyExpression() throws RecognitionException {
         EObject current = null;
 
@@ -4119,17 +4352,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1689:2: (iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1690:2: iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1767:2: (iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1768:2: iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF
             {
              newCompositeNode(grammarAccess.getNotEmptyExpressionRule()); 
-            pushFollow(FOLLOW_ruleNotEmptyExpression_in_entryRuleNotEmptyExpression3907);
+            pushFollow(FOLLOW_ruleNotEmptyExpression_in_entryRuleNotEmptyExpression4129);
             iv_ruleNotEmptyExpression=ruleNotEmptyExpression();
 
             state._fsp--;
 
              current =iv_ruleNotEmptyExpression; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNotEmptyExpression3917); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNotEmptyExpression4139); 
 
             }
 
@@ -4147,7 +4380,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNotEmptyExpression"
-    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1697:1: ruleNotEmptyExpression returns [EObject current=null] : (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () ) ;
+    // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1775:1: ruleNotEmptyExpression returns [EObject current=null] : (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () ) ;
     public final EObject ruleNotEmptyExpression() throws RecognitionException {
         EObject current = null;
 
@@ -4158,26 +4391,26 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1700:28: ( (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () ) )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1701:1: (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1778:28: ( (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () ) )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1779:1: (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () )
             {
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1701:1: (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () )
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1701:3: otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' ()
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1779:1: (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () )
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1779:3: otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' ()
             {
-            otherlv_0=(Token)match(input,49,FOLLOW_49_in_ruleNotEmptyExpression3954); 
+            otherlv_0=(Token)match(input,49,FOLLOW_49_in_ruleNotEmptyExpression4176); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getNotEmptyExpressionAccess().getNotEmptyKeyword_0());
                 
-            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleNotEmptyExpression3966); 
+            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleNotEmptyExpression4188); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getNotEmptyExpressionAccess().getLeftParenthesisKeyword_1());
                 
-            otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleNotEmptyExpression3978); 
+            otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleNotEmptyExpression4200); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getNotEmptyExpressionAccess().getRightParenthesisKeyword_2());
                 
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1713:1: ()
-            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1714:5: 
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1791:1: ()
+            // ../uk.ac.kcl.inf.zschaler.gridgames/src-gen/uk/ac/kcl/inf/zschaler/gridgames/parser/antlr/internal/InternalGridGame.g:1792:5: 
             {
 
                     current = forceCreateModelElement(
@@ -4273,117 +4506,125 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_RULE_ID_in_ruleStateParamSpec1417 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleCellStateSpec_in_entryRuleCellStateSpec1458 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleCellStateSpec1468 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_ruleCellStateSpec1505 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleCellStateSpec1517 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleCellState_in_ruleCellStateSpec1538 = new BitSet(new long[]{0x0000000008000010L});
-    public static final BitSet FOLLOW_27_in_ruleCellStateSpec1551 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_ruleCellStateSpec1563 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleCellStateSpec1583 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_ruleCellStateSpec1595 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCellState_in_entryRuleCellState1631 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCellState1641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleCellState1683 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleCellState1700 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_ruleCellDisplaySpec_in_ruleCellState1721 = new BitSet(new long[]{0x0000000020002000L});
-    public static final BitSet FOLLOW_29_in_ruleCellState1734 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleCellState1746 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_ruleTransitionSpec_in_ruleCellState1767 = new BitSet(new long[]{0x0000000040002000L});
-    public static final BitSet FOLLOW_13_in_ruleCellState1780 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_ruleCellState1794 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTransitionSpec_in_entryRuleTransitionSpec1830 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTransitionSpec1840 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_ruleTransitionSpec1877 = new BitSet(new long[]{0x0000000300000000L});
-    public static final BitSet FOLLOW_ruleTransitionTriggerSpec_in_ruleTransitionSpec1898 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_31_in_ruleTransitionSpec1910 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleTransitionSpec1930 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTransitionTriggerSpec_in_entryRuleTransitionTriggerSpec1967 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTransitionTriggerSpec1978 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_ruleTransitionTriggerSpec2016 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_ruleTransitionTriggerSpec2035 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFieldSpecification_in_entryRuleFieldSpecification2075 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFieldSpecification2085 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_ruleFieldSpecification2122 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFieldSpecification2139 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleFieldSpecification2156 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_35_in_ruleFieldSpecification2168 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_ruleFieldSpecification2180 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleFieldSpecification2197 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_ruleFieldSpecification2214 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_ruleFieldSpecification2226 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleFieldSpecification2243 = new BitSet(new long[]{0x0000004000002000L});
-    public static final BitSet FOLLOW_ruleFieldInitialisations_in_ruleFieldSpecification2269 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_ruleFieldSpecification2282 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOptionSpecification_in_entryRuleOptionSpecification2318 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOptionSpecification2328 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStartFieldDeclaration_in_ruleOptionSpecification2375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAllowRestartMenu_in_ruleOptionSpecification2402 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAllowRestartMenu_in_entryRuleAllowRestartMenu2437 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAllowRestartMenu2447 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_ruleAllowRestartMenu2484 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStartFieldDeclaration_in_entryRuleStartFieldDeclaration2529 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStartFieldDeclaration2539 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ruleStartFieldDeclaration2576 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_ruleStartFieldDeclaration2588 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleStartFieldDeclaration2608 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFieldInitialisations_in_entryRuleFieldInitialisations2644 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFieldInitialisations2654 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_ruleFieldInitialisations2691 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleFieldInitialisations2703 = new BitSet(new long[]{0x00000D0000000000L});
-    public static final BitSet FOLLOW_ruleFieldInitialisation_in_ruleFieldInitialisations2725 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_39_in_ruleFieldInitialisations2737 = new BitSet(new long[]{0x00000D0000002000L});
-    public static final BitSet FOLLOW_13_in_ruleFieldInitialisations2751 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFieldInitialisation_in_entryRuleFieldInitialisation2787 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFieldInitialisation2797 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDefaultInitialisation_in_ruleFieldInitialisation2844 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRandomInitialisation_in_ruleFieldInitialisation2871 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleContextInitialisation_in_ruleFieldInitialisation2898 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDefaultInitialisation_in_entryRuleDefaultInitialisation2933 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDefaultInitialisation2943 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_ruleDefaultInitialisation2980 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleDefaultInitialisation2992 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleDefaultInitialisation3012 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRandomInitialisation_in_entryRuleRandomInitialisation3048 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRandomInitialisation3058 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_ruleRandomInitialisation3095 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleRandomInitialisation3107 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleRandomInitialisation3127 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_ruleRandomInitialisation3139 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleRandomInitialisation3156 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleContextInitialisation_in_entryRuleContextInitialisation3197 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleContextInitialisation3207 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_ruleContextInitialisation3244 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleContextInitialisation3256 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleContextInitialisation3276 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_ruleContextInitialisation3288 = new BitSet(new long[]{0x0003800000000000L});
-    public static final BitSet FOLLOW_ruleContextExpression_in_ruleContextInitialisation3309 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_45_in_ruleContextInitialisation3321 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_ruleContextInitialisation3333 = new BitSet(new long[]{0x0003800000000000L});
-    public static final BitSet FOLLOW_ruleContextExpression_in_ruleContextInitialisation3354 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleContextExpression_in_entryRuleContextExpression3390 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleContextExpression3400 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomicExpression_in_ruleContextExpression3446 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_46_in_ruleContextExpression3459 = new BitSet(new long[]{0x0003800000000000L});
-    public static final BitSet FOLLOW_ruleAtomicExpression_in_ruleContextExpression3480 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_ruleAtomicExpression_in_entryRuleAtomicExpression3518 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAtomicExpression3528 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFilterExpression_in_ruleAtomicExpression3575 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCountExpression_in_ruleAtomicExpression3602 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNotEmptyExpression_in_ruleAtomicExpression3629 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFilterExpression_in_entryRuleFilterExpression3664 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFilterExpression3674 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_47_in_ruleFilterExpression3711 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleFilterExpression3723 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFilterExpression3743 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_ruleFilterExpression3755 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCountExpression_in_entryRuleCountExpression3791 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCountExpression3801 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_ruleCountExpression3838 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleCountExpression3850 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_ruleCountExpression3862 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNotEmptyExpression_in_entryRuleNotEmptyExpression3907 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNotEmptyExpression3917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_ruleNotEmptyExpression3954 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleNotEmptyExpression3966 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_ruleNotEmptyExpression3978 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLocalCellStateSpec_in_ruleCellStateSpec1515 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCellStateSpecReference_in_ruleCellStateSpec1542 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLocalCellStateSpec_in_entryRuleLocalCellStateSpec1577 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLocalCellStateSpec1587 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_ruleLocalCellStateSpec1624 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleLocalCellStateSpec1636 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleCellState_in_ruleLocalCellStateSpec1657 = new BitSet(new long[]{0x0000000008000010L});
+    public static final BitSet FOLLOW_27_in_ruleLocalCellStateSpec1670 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_ruleLocalCellStateSpec1682 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleLocalCellStateSpec1702 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_ruleLocalCellStateSpec1714 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCellStateSpecReference_in_entryRuleCellStateSpecReference1750 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCellStateSpecReference1760 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_ruleCellStateSpecReference1797 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleCellStateSpecReference1817 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCellState_in_entryRuleCellState1853 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCellState1863 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleCellState1905 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleCellState1922 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_ruleCellDisplaySpec_in_ruleCellState1943 = new BitSet(new long[]{0x0000000020002000L});
+    public static final BitSet FOLLOW_29_in_ruleCellState1956 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleCellState1968 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_ruleTransitionSpec_in_ruleCellState1989 = new BitSet(new long[]{0x0000000040002000L});
+    public static final BitSet FOLLOW_13_in_ruleCellState2002 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_ruleCellState2016 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTransitionSpec_in_entryRuleTransitionSpec2052 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTransitionSpec2062 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_ruleTransitionSpec2099 = new BitSet(new long[]{0x0000000300000000L});
+    public static final BitSet FOLLOW_ruleTransitionTriggerSpec_in_ruleTransitionSpec2120 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_31_in_ruleTransitionSpec2132 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleTransitionSpec2152 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTransitionTriggerSpec_in_entryRuleTransitionTriggerSpec2189 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTransitionTriggerSpec2200 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_ruleTransitionTriggerSpec2238 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_ruleTransitionTriggerSpec2257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFieldSpecification_in_entryRuleFieldSpecification2297 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFieldSpecification2307 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleFieldSpecification2344 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFieldSpecification2361 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleFieldSpecification2378 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_35_in_ruleFieldSpecification2390 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_ruleFieldSpecification2402 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleFieldSpecification2419 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_36_in_ruleFieldSpecification2436 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_ruleFieldSpecification2448 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleFieldSpecification2465 = new BitSet(new long[]{0x0000004000002000L});
+    public static final BitSet FOLLOW_ruleFieldInitialisations_in_ruleFieldSpecification2491 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_ruleFieldSpecification2504 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOptionSpecification_in_entryRuleOptionSpecification2540 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOptionSpecification2550 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStartFieldDeclaration_in_ruleOptionSpecification2597 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAllowRestartMenu_in_ruleOptionSpecification2624 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAllowRestartMenu_in_entryRuleAllowRestartMenu2659 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAllowRestartMenu2669 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_ruleAllowRestartMenu2706 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStartFieldDeclaration_in_entryRuleStartFieldDeclaration2751 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStartFieldDeclaration2761 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_ruleStartFieldDeclaration2798 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_ruleStartFieldDeclaration2810 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleStartFieldDeclaration2830 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFieldInitialisations_in_entryRuleFieldInitialisations2866 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFieldInitialisations2876 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_ruleFieldInitialisations2913 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleFieldInitialisations2925 = new BitSet(new long[]{0x00000D0000000000L});
+    public static final BitSet FOLLOW_ruleFieldInitialisation_in_ruleFieldInitialisations2947 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_39_in_ruleFieldInitialisations2959 = new BitSet(new long[]{0x00000D0000002000L});
+    public static final BitSet FOLLOW_13_in_ruleFieldInitialisations2973 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFieldInitialisation_in_entryRuleFieldInitialisation3009 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFieldInitialisation3019 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDefaultInitialisation_in_ruleFieldInitialisation3066 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRandomInitialisation_in_ruleFieldInitialisation3093 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleContextInitialisation_in_ruleFieldInitialisation3120 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDefaultInitialisation_in_entryRuleDefaultInitialisation3155 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDefaultInitialisation3165 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_ruleDefaultInitialisation3202 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_41_in_ruleDefaultInitialisation3214 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleDefaultInitialisation3234 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRandomInitialisation_in_entryRuleRandomInitialisation3270 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRandomInitialisation3280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_ruleRandomInitialisation3317 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_41_in_ruleRandomInitialisation3329 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleRandomInitialisation3349 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_ruleRandomInitialisation3361 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleRandomInitialisation3378 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleContextInitialisation_in_entryRuleContextInitialisation3419 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleContextInitialisation3429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_ruleContextInitialisation3466 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_41_in_ruleContextInitialisation3478 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleContextInitialisation3498 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_44_in_ruleContextInitialisation3510 = new BitSet(new long[]{0x0003800000000000L});
+    public static final BitSet FOLLOW_ruleContextExpression_in_ruleContextInitialisation3531 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_45_in_ruleContextInitialisation3543 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_ruleContextInitialisation3555 = new BitSet(new long[]{0x0003800000000000L});
+    public static final BitSet FOLLOW_ruleContextExpression_in_ruleContextInitialisation3576 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleContextExpression_in_entryRuleContextExpression3612 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleContextExpression3622 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomicExpression_in_ruleContextExpression3668 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_46_in_ruleContextExpression3681 = new BitSet(new long[]{0x0003800000000000L});
+    public static final BitSet FOLLOW_ruleAtomicExpression_in_ruleContextExpression3702 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_ruleAtomicExpression_in_entryRuleAtomicExpression3740 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAtomicExpression3750 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFilterExpression_in_ruleAtomicExpression3797 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCountExpression_in_ruleAtomicExpression3824 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNotEmptyExpression_in_ruleAtomicExpression3851 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFilterExpression_in_entryRuleFilterExpression3886 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFilterExpression3896 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_47_in_ruleFilterExpression3933 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleFilterExpression3945 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFilterExpression3965 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleFilterExpression3977 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCountExpression_in_entryRuleCountExpression4013 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCountExpression4023 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_ruleCountExpression4060 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleCountExpression4072 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleCountExpression4084 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNotEmptyExpression_in_entryRuleNotEmptyExpression4129 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNotEmptyExpression4139 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_ruleNotEmptyExpression4176 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleNotEmptyExpression4188 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleNotEmptyExpression4200 = new BitSet(new long[]{0x0000000000000002L});
 
 }

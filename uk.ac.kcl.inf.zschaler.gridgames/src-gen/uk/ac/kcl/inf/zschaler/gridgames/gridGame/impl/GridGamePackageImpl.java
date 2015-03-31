@@ -16,6 +16,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
@@ -29,6 +30,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGameFactory;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
@@ -99,6 +101,20 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass cellStateSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass localCellStateSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cellStateSpecReferenceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -540,9 +556,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCellStateSpec_States()
+  public EClass getLocalCellStateSpec()
   {
-    return (EReference)cellStateSpecEClass.getEStructuralFeatures().get(0);
+    return localCellStateSpecEClass;
   }
 
   /**
@@ -550,9 +566,39 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCellStateSpec_Start()
+  public EReference getLocalCellStateSpec_States()
   {
-    return (EReference)cellStateSpecEClass.getEStructuralFeatures().get(1);
+    return (EReference)localCellStateSpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLocalCellStateSpec_Start()
+  {
+    return (EReference)localCellStateSpecEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCellStateSpecReference()
+  {
+    return cellStateSpecReferenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCellStateSpecReference_StateSpec()
+  {
+    return (EReference)cellStateSpecReferenceEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -948,8 +994,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEAttribute(stateParamSpecEClass, STATE_PARAM_SPEC__NAME);
 
     cellStateSpecEClass = createEClass(CELL_STATE_SPEC);
-    createEReference(cellStateSpecEClass, CELL_STATE_SPEC__STATES);
-    createEReference(cellStateSpecEClass, CELL_STATE_SPEC__START);
+
+    localCellStateSpecEClass = createEClass(LOCAL_CELL_STATE_SPEC);
+    createEReference(localCellStateSpecEClass, LOCAL_CELL_STATE_SPEC__STATES);
+    createEReference(localCellStateSpecEClass, LOCAL_CELL_STATE_SPEC__START);
+
+    cellStateSpecReferenceEClass = createEClass(CELL_STATE_SPEC_REFERENCE);
+    createEReference(cellStateSpecReferenceEClass, CELL_STATE_SPEC_REFERENCE__STATE_SPEC);
 
     cellStateEClass = createEClass(CELL_STATE);
     createEAttribute(cellStateEClass, CELL_STATE__NAME);
@@ -1033,6 +1084,8 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     cellDisplaySpecEClass.getESuperTypes().add(this.getCellMember());
     cellVarSpecEClass.getESuperTypes().add(this.getCellMember());
     cellStateSpecEClass.getESuperTypes().add(this.getCellMember());
+    localCellStateSpecEClass.getESuperTypes().add(this.getCellStateSpec());
+    cellStateSpecReferenceEClass.getESuperTypes().add(this.getCellStateSpec());
     allowRestartMenuEClass.getESuperTypes().add(this.getOptionSpecification());
     startFieldDeclarationEClass.getESuperTypes().add(this.getOptionSpecification());
     defaultInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
@@ -1076,8 +1129,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEAttribute(getStateParamSpec_Name(), ecorePackage.getEString(), "name", null, 0, 1, StateParamSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cellStateSpecEClass, CellStateSpec.class, "CellStateSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCellStateSpec_States(), this.getCellState(), null, "states", null, 0, -1, CellStateSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCellStateSpec_Start(), this.getCellState(), null, "start", null, 0, 1, CellStateSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(localCellStateSpecEClass, LocalCellStateSpec.class, "LocalCellStateSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLocalCellStateSpec_States(), this.getCellState(), null, "states", null, 0, -1, LocalCellStateSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLocalCellStateSpec_Start(), this.getCellState(), null, "start", null, 0, 1, LocalCellStateSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(cellStateSpecReferenceEClass, CellStateSpecReference.class, "CellStateSpecReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCellStateSpecReference_StateSpec(), this.getGlobalCellStateSpec(), null, "stateSpec", null, 0, 1, CellStateSpecReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cellStateEClass, CellState.class, "CellState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCellState_Name(), ecorePackage.getEString(), "name", null, 0, 1, CellState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

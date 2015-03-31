@@ -62,11 +62,20 @@ StateParamSpec :
 ;
 
 CellStateSpec :
+	LocalCellStateSpec |
+	CellStateSpecReference
+;
+
+LocalCellStateSpec :
 	"states" "{"
 		states+=CellState+
 		
 		"start" "=" start=[CellState]
 	"}"
+;
+
+CellStateSpecReference :
+	"states" stateSpec=[GlobalCellStateSpec]
 ;
 
 CellState :

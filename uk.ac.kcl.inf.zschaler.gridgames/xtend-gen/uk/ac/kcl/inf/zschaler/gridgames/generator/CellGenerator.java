@@ -2,6 +2,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -20,8 +21,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 
 /**
@@ -93,12 +97,12 @@ public class CellGenerator extends CommonGenerator {
         @Override
         public Boolean apply(final EClassifier ec) {
           String _name = ec.getName();
-          return Boolean.valueOf(_name.equals("CellStateSpec"));
+          return Boolean.valueOf(_name.equals("LocalCellStateSpec"));
         }
       };
       EClassifier _findFirst = IterableExtensions.<EClassifier>findFirst(_eClassifiers, _function);
       EObject _create = _eFactoryInstance.create(((EClass) _findFirst));
-      CellStateSpec stateSpec = ((CellStateSpec) _create);
+      LocalCellStateSpec stateSpec = ((LocalCellStateSpec) _create);
       EClass _eClass_2 = this.gg.eClass();
       EPackage _ePackage_2 = _eClass_2.getEPackage();
       EFactory _eFactoryInstance_1 = _ePackage_2.getEFactoryInstance();
@@ -140,11 +144,48 @@ public class CellGenerator extends CommonGenerator {
     final Function1<CellStateSpec, EList<CellState>> _function = new Function1<CellStateSpec, EList<CellState>>() {
       @Override
       public EList<CellState> apply(final CellStateSpec css) {
-        return css.getStates();
+        return CellGenerator.this.getAllStates(css);
       }
     };
     Iterable<EList<CellState>> _map = IterableExtensions.<CellStateSpec, EList<CellState>>map(_filter, _function);
     return Iterables.<CellState>concat(_map);
+  }
+  
+  protected EList<CellState> _getAllStates(final LocalCellStateSpec lcss) {
+    return lcss.getStates();
+  }
+  
+  protected EList<CellState> _getAllStates(final CellStateSpecReference cssr) {
+    GlobalCellStateSpec _stateSpec = cssr.getStateSpec();
+    return _stateSpec.getStates();
+  }
+  
+  public CellState getStartState(final CellSpecification c) {
+    EList<CellMember> _members = c.getMembers();
+    Iterable<CellStateSpec> _filter = Iterables.<CellStateSpec>filter(_members, CellStateSpec.class);
+    final Function1<CellStateSpec, CellState> _function = new Function1<CellStateSpec, CellState>() {
+      @Override
+      public CellState apply(final CellStateSpec css) {
+        return CellGenerator.this.getStartState(css);
+      }
+    };
+    Iterable<CellState> _map = IterableExtensions.<CellStateSpec, CellState>map(_filter, _function);
+    final Function1<CellState, Boolean> _function_1 = new Function1<CellState, Boolean>() {
+      @Override
+      public Boolean apply(final CellState it) {
+        return Boolean.valueOf(true);
+      }
+    };
+    return IterableExtensions.<CellState>findFirst(_map, _function_1);
+  }
+  
+  protected CellState _getStartState(final LocalCellStateSpec lcss) {
+    return lcss.getStart();
+  }
+  
+  protected CellState _getStartState(final CellStateSpecReference cssr) {
+    GlobalCellStateSpec _stateSpec = cssr.getStateSpec();
+    return _stateSpec.getStart();
   }
   
   /**
@@ -340,20 +381,9 @@ public class CellGenerator extends CommonGenerator {
     _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
     _builder.append("currentState = new ");
-    EList<CellMember> _members_2 = c.getMembers();
-    Iterable<CellStateSpec> _filter_2 = Iterables.<CellStateSpec>filter(_members_2, CellStateSpec.class);
-    final Function1<CellStateSpec, Boolean> _function_2 = new Function1<CellStateSpec, Boolean>() {
-      @Override
-      public Boolean apply(final CellStateSpec it) {
-        return Boolean.valueOf(true);
-      }
-    };
-    CellStateSpec _findFirst = IterableExtensions.<CellStateSpec>findFirst(_filter_2, _function_2);
-    CellState _start = _findFirst.getStart();
-    String _name = _start.getName();
+    CellState _startState = this.getStartState(c);
+    String _name = _startState.getName();
     String _firstUpper = StringExtensions.toFirstUpper(_name);
     _builder.append(_firstUpper, "\t\t");
     _builder.append("CellState();");
@@ -361,9 +391,9 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    EList<CellMember> _members_3 = c.getMembers();
-    Iterable<CellVarSpec> _filter_3 = Iterables.<CellVarSpec>filter(_members_3, CellVarSpec.class);
-    final Function1<CellVarSpec, CharSequence> _function_3 = new Function1<CellVarSpec, CharSequence>() {
+    EList<CellMember> _members_2 = c.getMembers();
+    Iterable<CellVarSpec> _filter_2 = Iterables.<CellVarSpec>filter(_members_2, CellVarSpec.class);
+    final Function1<CellVarSpec, CharSequence> _function_2 = new Function1<CellVarSpec, CharSequence>() {
       @Override
       public CharSequence apply(final CellVarSpec v) {
         StringConcatenation _builder = new StringConcatenation();
@@ -377,7 +407,7 @@ public class CellGenerator extends CommonGenerator {
         return _builder.toString();
       }
     };
-    String _join_2 = IterableExtensions.<CellVarSpec>join(_filter_3, "; ", _function_3);
+    String _join_2 = IterableExtensions.<CellVarSpec>join(_filter_2, "; ", _function_2);
     _builder.append(_join_2, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -387,13 +417,13 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t");
     Iterable<CellState> _cellStates = this.getCellStates(c);
-    final Function1<CellState, CharSequence> _function_4 = new Function1<CellState, CharSequence>() {
+    final Function1<CellState, CharSequence> _function_3 = new Function1<CellState, CharSequence>() {
       @Override
       public CharSequence apply(final CellState css) {
         return CellGenerator.this.generateStateSpec(css);
       }
     };
-    String _join_3 = IterableExtensions.<CellState>join(_cellStates, " ", _function_4);
+    String _join_3 = IterableExtensions.<CellState>join(_cellStates, " ", _function_3);
     _builder.append(_join_3, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -633,5 +663,27 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("}");
     _builder.newLine();
     return _builder;
+  }
+  
+  public EList<CellState> getAllStates(final CellStateSpec cssr) {
+    if (cssr instanceof CellStateSpecReference) {
+      return _getAllStates((CellStateSpecReference)cssr);
+    } else if (cssr instanceof LocalCellStateSpec) {
+      return _getAllStates((LocalCellStateSpec)cssr);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(cssr).toString());
+    }
+  }
+  
+  public CellState getStartState(final CellStateSpec cssr) {
+    if (cssr instanceof CellStateSpecReference) {
+      return _getStartState((CellStateSpecReference)cssr);
+    } else if (cssr instanceof LocalCellStateSpec) {
+      return _getStartState((LocalCellStateSpec)cssr);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(cssr).toString());
+    }
   }
 }

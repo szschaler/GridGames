@@ -8,6 +8,8 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference
 
 /**
  * Generates all stuff to do with handling cells.
@@ -44,8 +46,8 @@ class CellGenerator extends CommonGenerator {
 			// Create a new state spec and move the display spec over
 			// TODO: There must be a simpler way of doing this
 			var stateSpec = gg.eClass.EPackage.EFactoryInstance.create(gg.eClass.EPackage.EClassifiers.findFirst [ec |
-				ec.name.equals("CellStateSpec")
-			] as EClass) as CellStateSpec
+				ec.name.equals("LocalCellStateSpec")
+			] as EClass) as LocalCellStateSpec
 			var dummyState = gg.eClass.EPackage.EFactoryInstance.create(gg.eClass.EPackage.EClassifiers.findFirst [ec |
 				ec.name.equals("CellState")
 			] as EClass) as CellState
@@ -57,11 +59,30 @@ class CellGenerator extends CommonGenerator {
 		}
 	}
 
-	// TODO Hook in here to get the list of states from referenced global cell state specs
 	def getCellStates(CellSpecification c) {
-		c.members.filter(CellStateSpec).map[css|css.states].flatten
+		c.members.filter(CellStateSpec).map[css | css.allStates].flatten
+	}
+	
+	def dispatch getAllStates (LocalCellStateSpec lcss) {
+		lcss.states
+	}
+	
+	def dispatch getAllStates (CellStateSpecReference cssr) {
+		cssr.stateSpec.states
 	}
 
+	def getStartState(CellSpecification c) {
+		c.members.filter(CellStateSpec).map[css | css.startState].findFirst[true]
+	}
+	
+	def dispatch getStartState (LocalCellStateSpec lcss) {
+		lcss.start
+	}
+	
+	def dispatch getStartState (CellStateSpecReference cssr) {
+		cssr.stateSpec.start
+	}
+	
 	/**
 	 * Generate the basic cell class. 
 	 */
@@ -117,8 +138,7 @@ class CellGenerator extends CommonGenerator {
 			«c.members.filter(CellVarSpec).join(" ", [v | '''private «v.type» «v.generateVariableName»;'''])»
 			
 			public «c.generateCellClassName»(«c.members.filter(CellVarSpec).join(", ", [v | '''«v.type» «v.name.toFirstLower»'''])») {
-				«/* FIXME May need to do slightly different things for different kinds of CellStateSpecs? */»
-				currentState = new «c.members.filter(CellStateSpec).findFirst[true].start.name.toFirstUpper»CellState();
+				currentState = new «c.startState.name.toFirstUpper»CellState();
 				
 				«c.members.filter(CellVarSpec).join("; ", [v | '''«v.generateVariableName» = «v.name.toFirstLower»;'''])»
 			}
