@@ -2,11 +2,6 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
-import java.awt.event.MouseAdapter
-import java.awt.event.MouseEvent
-import javax.swing.SwingUtilities
-import java.awt.Point
 
 class FrameGenerator extends CommonGenerator {
 	new(ModelPreprocessor mpp) {
