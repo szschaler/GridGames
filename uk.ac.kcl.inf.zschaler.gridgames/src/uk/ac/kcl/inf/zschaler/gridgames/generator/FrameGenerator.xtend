@@ -2,6 +2,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu
+import javax.swing.event.TableModelEvent
 
 class FrameGenerator extends CommonGenerator {
 	new(ModelPreprocessor mpp) {
@@ -90,6 +91,21 @@ class FrameGenerator extends CommonGenerator {
 					public void tableChanged(TableModelEvent e) {
 						if (e.getFirstRow() == TableModelEvent.HEADER_ROW) {
 							relayoutTable();
+						} else if (e.getType() == TableModelEvent.UPDATE) {
+							// React to updates to a given cell
+							int firstRow = e.getFirstRow();
+							int lastRow = e.getLastRow();
+							int col = e.getColumn();
+
+							for (int row = firstRow; row <= lastRow; row++) {
+								if (col != TableModelEvent.ALL_COLUMNS) {
+									handleStateChange (field.getValueAt(row, col));
+								} else {
+									for (col = 0; col < field.getColumnCount(); col++) {
+										handleStateChange (field.getValueAt(row, col));								
+									}
+								}
+							}
 						}
 					}
 				});
@@ -153,6 +169,10 @@ class FrameGenerator extends CommonGenerator {
 				}
 				
 				pack();
+			}
+			
+			private void handleStateChange (Cell c) {
+				«/* TODO Generate code in response to cell state changes */»
 			}
 			
 			public static void main(String[] args) {
