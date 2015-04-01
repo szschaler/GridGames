@@ -13,6 +13,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
+import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
@@ -34,8 +35,8 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
  */
 @SuppressWarnings("all")
 public class FieldGenerator extends CommonGenerator {
-  public FieldGenerator(final GridGame gg) {
-    super(gg);
+  public FieldGenerator(final ModelPreprocessor mpp) {
+    super(mpp);
   }
   
   public void generate(final IFileSystemAccess fsa) {

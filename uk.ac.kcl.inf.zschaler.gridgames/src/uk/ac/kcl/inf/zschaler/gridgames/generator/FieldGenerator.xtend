@@ -18,8 +18,8 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration
  */
 class FieldGenerator extends CommonGenerator {
 
-	new(GridGame gg) {
-		super(gg)
+	new(ModelPreprocessor mpp) {
+		super(mpp)
 	}
 
 	def generate(IFileSystemAccess fsa) {

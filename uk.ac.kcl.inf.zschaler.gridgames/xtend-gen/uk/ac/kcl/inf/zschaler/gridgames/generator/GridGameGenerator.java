@@ -3,18 +3,13 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
-import com.google.common.collect.Iterators;
-import java.util.Iterator;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CellGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.FieldGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.FrameGenerator;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
+import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
 
 /**
  * Generates code from your model files on save.
@@ -25,14 +20,12 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 public class GridGameGenerator implements IGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterator<GridGame> _filter = Iterators.<GridGame>filter(_allContents, GridGame.class);
-    final GridGame gg = IteratorExtensions.<GridGame>head(_filter);
-    FieldGenerator _fieldGenerator = new FieldGenerator(gg);
-    _fieldGenerator.generate(fsa);
-    CellGenerator _cellGenerator = new CellGenerator(gg);
+    final ModelPreprocessor processedModel = new ModelPreprocessor(resource);
+    CellGenerator _cellGenerator = new CellGenerator(processedModel);
     _cellGenerator.generate(fsa);
-    FrameGenerator _frameGenerator = new FrameGenerator(gg);
+    FieldGenerator _fieldGenerator = new FieldGenerator(processedModel);
+    _fieldGenerator.generate(fsa);
+    FrameGenerator _frameGenerator = new FrameGenerator(processedModel);
     _frameGenerator.generate(fsa);
   }
 }

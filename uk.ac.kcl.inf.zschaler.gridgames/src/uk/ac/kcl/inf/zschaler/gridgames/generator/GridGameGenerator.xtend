@@ -16,10 +16,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 class GridGameGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		val GridGame gg = resource.allContents.filter(typeof(GridGame)).head;
-		new FieldGenerator (gg).generate(fsa);
-		new CellGenerator (gg).generate (fsa);
-		new FrameGenerator(gg).generate(fsa);
+		val processedModel = new ModelPreprocessor (resource)
+		
+		new CellGenerator (processedModel).generate (fsa);
+		new FieldGenerator (processedModel).generate(fsa);
+		new FrameGenerator(processedModel).generate(fsa);
 	}
 
 }

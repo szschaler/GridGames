@@ -2,6 +2,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
+import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
@@ -11,10 +12,14 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
  */
 @SuppressWarnings("all")
 public class CommonGenerator {
+  protected ModelPreprocessor mpp;
+  
   protected final GridGame gg;
   
-  public CommonGenerator(final GridGame gg) {
-    this.gg = gg;
+  public CommonGenerator(final ModelPreprocessor mpp) {
+    this.mpp = mpp;
+    GridGame _gridGame = mpp.getGridGame();
+    this.gg = _gridGame;
   }
   
   public CharSequence generateViewPackage() {

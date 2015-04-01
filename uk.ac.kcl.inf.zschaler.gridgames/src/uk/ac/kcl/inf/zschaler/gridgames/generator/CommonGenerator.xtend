@@ -1,17 +1,19 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 
 /**
  * Common generator bits.
  */
 class CommonGenerator {
-	protected val GridGame gg;
+	protected ModelPreprocessor mpp
+	protected val GridGame gg
 
-	new(GridGame gg) {
-		this.gg = gg
+	new(ModelPreprocessor mpp) {
+		this.mpp = mpp
+		gg = mpp.gridGame
 	}
 
 	def generateViewPackage() '''«gg.name».view'''
@@ -36,14 +38,15 @@ class CommonGenerator {
 
 	def generateFactoryClassFileName() '''«generateCellPackageFolder»/CellFactory.java'''
 
-	def generateCellClassName(CellSpecification c) {generateCellClassName(c.name)}
+	def generateCellClassName(CellSpecification c) { generateCellClassName(c.name) }
+
 	def generateCellClassName(String c) '''«c.toFirstUpper»Cell'''
 
 	def generateCellClassFileName(CellSpecification c) '''«generateCellPackageFolder»/«c.generateCellClassName».java'''
 
 	def generateFrameClassFileName() '''«generateViewPackageFolder»/«generateFrameClassName()».java'''
-	
-	def generateCellFactoryMethodName (CellSpecification c) '''create«c.name.toFirstUpper»Field'''
-	
-	def generateFieldInitialiserName (FieldSpecification f) '''initialise«f.name.toFirstUpper»Field'''
+
+	def generateCellFactoryMethodName(CellSpecification c) '''create«c.name.toFirstUpper»Field'''
+
+	def generateFieldInitialiserName(FieldSpecification f) '''initialise«f.name.toFirstUpper»Field'''
 }

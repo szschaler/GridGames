@@ -7,15 +7,15 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
+import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 
 @SuppressWarnings("all")
 public class FrameGenerator extends CommonGenerator {
-  public FrameGenerator(final GridGame gg) {
-    super(gg);
+  public FrameGenerator(final ModelPreprocessor mpp) {
+    super(mpp);
   }
   
   public void generate(final IFileSystemAccess fsa) {

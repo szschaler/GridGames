@@ -9,8 +9,8 @@ import javax.swing.SwingUtilities
 import java.awt.Point
 
 class FrameGenerator extends CommonGenerator {
-	new(GridGame gg) {
-		super(gg)
+	new(ModelPreprocessor mpp) {
+		super(mpp)
 	}
 
 	def generate(IFileSystemAccess fsa) {
