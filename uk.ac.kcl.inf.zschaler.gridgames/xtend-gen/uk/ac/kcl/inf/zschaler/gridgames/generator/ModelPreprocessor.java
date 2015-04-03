@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
@@ -45,7 +45,7 @@ public class ModelPreprocessor {
   
   private final GridGame gg;
   
-  private final Map<CellSpecification, Map<CellState, Pair<Integer, ? extends Map<String, Value>>>> cellStateRegistry = new HashMap<CellSpecification, Map<CellState, Pair<Integer, ? extends Map<String, Value>>>>();
+  private final Map<CellSpecification, List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> cellStateRegistry = new HashMap<CellSpecification, List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>();
   
   private int currentStateID = 0;
   
@@ -84,21 +84,22 @@ public class ModelPreprocessor {
   /**
    * Creates a unique ID for the combination of cell and cell state, also enabling future clients to access the symbol table through this.
    */
-  private Pair<Integer, ? extends Map<String, Value>> createUniqueID(final Pair<? extends Map<String, Value>, CellState> stateDef, final CellSpecification c) {
-    Pair<Integer, ? extends Map<String, Value>> _xblockexpression = null;
+  private boolean createUniqueID(final Pair<? extends Map<String, Value>, CellState> stateDef, final CellSpecification c) {
+    boolean _xblockexpression = false;
     {
-      Map<CellState, Pair<Integer, ? extends Map<String, Value>>> states = this.cellStateRegistry.get(c);
+      List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> states = this.cellStateRegistry.get(c);
       boolean _equals = Objects.equal(states, null);
       if (_equals) {
-        HashMap<CellState, Pair<Integer, ? extends Map<String, Value>>> _hashMap = new HashMap<CellState, Pair<Integer, ? extends Map<String, Value>>>();
-        states = _hashMap;
+        LinkedList<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _linkedList = new LinkedList<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>();
+        states = _linkedList;
         this.cellStateRegistry.put(c, states);
       }
       CellState _value = stateDef.getValue();
       int _plusPlus = this.currentStateID++;
       Map<String, Value> _key = stateDef.getKey();
       Pair<Integer, Map<String, Value>> _pair = new Pair<Integer, Map<String, Value>>(Integer.valueOf(_plusPlus), _key);
-      _xblockexpression = states.put(_value, _pair);
+      Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> _pair_1 = new Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>(_value, _pair);
+      _xblockexpression = states.add(_pair_1);
     }
     return _xblockexpression;
   }
@@ -267,20 +268,16 @@ public class ModelPreprocessor {
   }
   
   public Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> getCellStates(final CellSpecification c) {
-    Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _xblockexpression = null;
-    {
-      final Map<CellState, Pair<Integer, ? extends Map<String, Value>>> states = this.cellStateRegistry.get(c);
-      Set<CellState> _keySet = states.keySet();
-      final Function1<CellState, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _function = new Function1<CellState, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>() {
-        @Override
-        public Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> apply(final CellState cs) {
-          Pair<Integer, ? extends Map<String, Value>> _get = states.get(cs);
-          return new Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>(cs, _get);
-        }
-      };
-      _xblockexpression = IterableExtensions.<CellState, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>map(_keySet, _function);
-    }
-    return _xblockexpression;
+    return this.cellStateRegistry.get(c);
+  }
+  
+  /**
+   * Find all states with an onEnter action.
+   * 
+   * TODO Eventually need to take into account parametrisation of behaviours.
+   */
+  public Object allStatesWithEnterActions() {
+    return null;
   }
   
   private List<Pair<? extends Map<String, Value>, CellState>> getAllStates(final CellStateSpec cssr) {

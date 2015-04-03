@@ -2,6 +2,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import java.util.Collections
 import java.util.HashMap
+import java.util.LinkedList
 import java.util.List
 import java.util.Map
 import org.eclipse.emf.ecore.EClass
@@ -22,7 +23,7 @@ class ModelPreprocessor {
 
 	private val Resource resource
 	private val GridGame gg
-	private val Map<CellSpecification, Map<CellState, Pair<Integer, ? extends Map<String, Value>>>> cellStateRegistry = new HashMap<CellSpecification, Map<CellState, Pair<Integer, ? extends Map<String, Value>>>>()
+	private val Map<CellSpecification, List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> cellStateRegistry = new HashMap<CellSpecification, List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>()
 	private var int currentStateID = 0
 
 	new(Resource resource) {
@@ -50,13 +51,13 @@ class ModelPreprocessor {
 	 * Creates a unique ID for the combination of cell and cell state, also enabling future clients to access the symbol table through this.
 	 */
 	private def createUniqueID(Pair<? extends Map<String, Value>, CellState> stateDef, CellSpecification c) {
-		var Map<CellState, Pair<Integer, ? extends Map<String, Value>>> states = cellStateRegistry.get (c)
+		var List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> states = cellStateRegistry.get (c)
 		if (states == null) {
-			states = new HashMap<CellState, Pair<Integer, ? extends Map<String, Value>>>()
+			states = new LinkedList<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>()
 			cellStateRegistry.put (c, states)
 		}
 		
-		states.put (stateDef.value, new Pair<Integer, Map<String, Value>>(currentStateID++, stateDef.key))
+		states.add (new Pair(stateDef.value, new Pair<Integer, Map<String, Value>>(currentStateID++, stateDef.key)))
 	}
 
 	/**
@@ -120,9 +121,16 @@ class ModelPreprocessor {
 		cssr.stateSpec.start
 	}
 	
-	// TODO Depending on how this continues to go, consider replacing the inner map with a list/set of pairs directly
 	public def Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> getCellStates (CellSpecification c) {
-		val states = cellStateRegistry.get(c)
-		states.keySet.map[cs | new Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>(cs, states.get(cs))]
+		cellStateRegistry.get(c)
+	}
+	
+	/**
+	 * Find all states with an onEnter action. 
+	 * 
+	 * TODO Eventually need to take into account parametrisation of behaviours.
+	 */
+	public def allStatesWithEnterActions () {
+		// TODO Implement!
 	}
 }
