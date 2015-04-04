@@ -15,11 +15,13 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DirectBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
 
 @SuppressWarnings("all")
 public class FrameGenerator extends CommonGenerator {
@@ -517,7 +519,9 @@ public class FrameGenerator extends CommonGenerator {
           final Function1<CellStateBehaviour, CharSequence> _function = new Function1<CellStateBehaviour, CharSequence>() {
             @Override
             public CharSequence apply(final CellStateBehaviour oe) {
-              return FrameGenerator.this.generateCodeFor(oe);
+              Pair<Integer, ? extends Map<String, Value>> _value = cpp.getValue();
+              Map<String, Value> _value_1 = _value.getValue();
+              return FrameGenerator.this.generateCodeFor(oe, _value_1);
             }
           };
           String _join = IterableExtensions.<CellStateBehaviour>join(_onEnter, " ", _function);
@@ -559,7 +563,7 @@ public class FrameGenerator extends CommonGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateCodeFor(final EndGameBehaviour egb) {
+  protected CharSequence _generateCodeFor(final EndGameBehaviour egb, final Map<String, Value> symbols) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("JOptionPane.showMessageDialog(");
     CharSequence _generateFrameClassName = this.generateFrameClassName();
@@ -572,26 +576,28 @@ public class FrameGenerator extends CommonGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateCodeFor(final NoOpBehaviour nop) {
+  protected CharSequence _generateCodeFor(final NoOpBehaviour nop, final Map<String, Value> symbols) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }
   
-  protected CharSequence _generateCodeFor(final BehaviourReference br) {
-    StringConcatenation _builder = new StringConcatenation();
-    return _builder;
+  protected CharSequence _generateCodeFor(final BehaviourReference br, final Map<String, Value> symbols) {
+    VarSpec _ref = br.getRef();
+    String _name = _ref.getName();
+    Value _get = symbols.get(_name);
+    return this.generateCodeFor(((DirectBehaviour) _get), symbols);
   }
   
-  public CharSequence generateCodeFor(final CellStateBehaviour egb) {
+  public CharSequence generateCodeFor(final CellStateBehaviour egb, final Map<String, Value> symbols) {
     if (egb instanceof EndGameBehaviour) {
-      return _generateCodeFor((EndGameBehaviour)egb);
+      return _generateCodeFor((EndGameBehaviour)egb, symbols);
     } else if (egb instanceof NoOpBehaviour) {
-      return _generateCodeFor((NoOpBehaviour)egb);
+      return _generateCodeFor((NoOpBehaviour)egb, symbols);
     } else if (egb instanceof BehaviourReference) {
-      return _generateCodeFor((BehaviourReference)egb);
+      return _generateCodeFor((BehaviourReference)egb, symbols);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(egb).toString());
+        Arrays.<Object>asList(egb, symbols).toString());
     }
   }
 }

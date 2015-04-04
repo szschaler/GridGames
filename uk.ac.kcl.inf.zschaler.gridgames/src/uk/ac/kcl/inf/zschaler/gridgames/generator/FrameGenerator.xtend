@@ -1,10 +1,13 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
+import java.util.Map
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DirectBehaviour
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 
 class FrameGenerator extends CommonGenerator {
 	new(ModelPreprocessor mpp) {
@@ -182,7 +185,7 @@ class FrameGenerator extends CommonGenerator {
 					switch (c.getState().getStateID()) {
 						«states.join (" ", [cpp |
 							'''case «cpp.value.key»:
-									«cpp.key.onEnter.join (" ", [oe | oe.generateCodeFor])»
+									«cpp.key.onEnter.join (" ", [oe | oe.generateCodeFor (cpp.value.value)])»
 									break;'''
 						])»
 					}
@@ -197,12 +200,13 @@ class FrameGenerator extends CommonGenerator {
 		}
 	'''
 	
-	def dispatch generateCodeFor(EndGameBehaviour egb) '''
+	def dispatch CharSequence generateCodeFor(EndGameBehaviour egb, Map<String, Value> symbols) '''
 		JOptionPane.showMessageDialog(«generateFrameClassName».this, "«egb.message»");
 	'''
 	
-	def dispatch generateCodeFor (NoOpBehaviour nop) ''''''
+	def dispatch CharSequence generateCodeFor (NoOpBehaviour nop, Map<String, Value> symbols) ''''''
 	
-	def dispatch generateCodeFor (BehaviourReference br) ''''''
-	
+	def dispatch CharSequence generateCodeFor (BehaviourReference br, Map<String, Value> symbols) {
+		(symbols.get(br.ref.name) as DirectBehaviour).generateCodeFor (symbols)
+	}
 }
