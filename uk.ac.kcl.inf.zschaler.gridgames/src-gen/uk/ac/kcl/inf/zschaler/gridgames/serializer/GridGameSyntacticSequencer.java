@@ -26,9 +26,21 @@ public class GridGameSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if(ruleCall.getRule() == grammarAccess.getNoOpBehaviourRule())
+			return getNoOpBehaviourToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
+	/**
+	 * NoOpBehaviour :
+	 * 	"nop"
+	 * ;
+	 */
+	protected String getNoOpBehaviourToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "nop";
+	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {

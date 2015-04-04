@@ -1,16 +1,24 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
+import java.util.Arrays;
+import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
 
 @SuppressWarnings("all")
 public class FrameGenerator extends CommonGenerator {
@@ -59,6 +67,8 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append("import javax.swing.JButton;");
     _builder.newLine();
     _builder.append("import javax.swing.SwingUtilities;");
+    _builder.newLine();
+    _builder.append("import javax.swing.JOptionPane;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("import javax.swing.table.TableCellRenderer;");
@@ -479,7 +489,53 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append("private void handleStateChange (Cell c) {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.newLine();
+    final Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> states = this.mpp.getAllStatesWithEnterActions();
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    CharSequence _xifexpression_1 = null;
+    boolean _isEmpty = IterableExtensions.isEmpty(states);
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("switch (c.getState().getStateID()) {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence> _function_2 = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence>() {
+        @Override
+        public CharSequence apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("case ");
+          Pair<Integer, ? extends Map<String, Value>> _value = cpp.getValue();
+          Integer _key = _value.getKey();
+          _builder.append(_key, "");
+          _builder.append(":");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t\t\t\t\t\t\t\t\t");
+          CellState _key_1 = cpp.getKey();
+          EList<CellStateBehaviour> _onEnter = _key_1.getOnEnter();
+          final Function1<CellStateBehaviour, CharSequence> _function = new Function1<CellStateBehaviour, CharSequence>() {
+            @Override
+            public CharSequence apply(final CellStateBehaviour oe) {
+              return FrameGenerator.this.generateCodeFor(oe);
+            }
+          };
+          String _join = IterableExtensions.<CellStateBehaviour>join(_onEnter, " ", _function);
+          _builder.append(_join, "\t\t\t\t\t\t\t\t\t");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t\t\t\t\t\t\t\t\t");
+          _builder.append("break;");
+          return _builder.toString();
+        }
+      };
+      String _join = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>join(states, " ", _function_2);
+      _builder_1.append(_join, "\t");
+      _builder_1.newLineIfNotEmpty();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _xifexpression_1 = _builder_1;
+    }
+    _builder.append(_xifexpression_1, "\t\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
@@ -500,5 +556,34 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append("}");
     _builder.newLine();
     return _builder;
+  }
+  
+  protected CharSequence _generateCodeFor(final EndGameBehaviour egb) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("JOptionPane.showMessageDialog(");
+    CharSequence _generateFrameClassName = this.generateFrameClassName();
+    _builder.append(_generateFrameClassName, "");
+    _builder.append(".this, \"");
+    String _message = egb.getMessage();
+    _builder.append(_message, "");
+    _builder.append("\");");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence _generateCodeFor(final NoOpBehaviour nop) {
+    StringConcatenation _builder = new StringConcatenation();
+    return _builder;
+  }
+  
+  public CharSequence generateCodeFor(final CellStateBehaviour egb) {
+    if (egb instanceof EndGameBehaviour) {
+      return _generateCodeFor((EndGameBehaviour)egb);
+    } else if (egb instanceof NoOpBehaviour) {
+      return _generateCodeFor((NoOpBehaviour)egb);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(egb).toString());
+    }
   }
 }

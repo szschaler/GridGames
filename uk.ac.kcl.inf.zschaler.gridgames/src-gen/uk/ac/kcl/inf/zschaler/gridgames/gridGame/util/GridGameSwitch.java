@@ -324,6 +324,14 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.NO_OP_BEHAVIOUR:
+      {
+        NoOpBehaviour noOpBehaviour = (NoOpBehaviour)theEObject;
+        T result = caseNoOpBehaviour(noOpBehaviour);
+        if (result == null) result = caseCellStateBehaviour(noOpBehaviour);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -852,6 +860,22 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseNotEmptyExpression(NotEmptyExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>No Op Behaviour</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>No Op Behaviour</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNoOpBehaviour(NoOpBehaviour object)
   {
     return null;
   }

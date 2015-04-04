@@ -1124,6 +1124,25 @@ public interface GridGamePackage extends EPackage
    */
   int NOT_EMPTY_EXPRESSION_FEATURE_COUNT = ATOMIC_EXPRESSION_FEATURE_COUNT + 0;
 
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NoOpBehaviourImpl <em>No Op Behaviour</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NoOpBehaviourImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getNoOpBehaviour()
+   * @generated
+   */
+  int NO_OP_BEHAVIOUR = 33;
+
+  /**
+   * The number of structural features of the '<em>No Op Behaviour</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NO_OP_BEHAVIOUR_FEATURE_COUNT = CELL_STATE_BEHAVIOUR_FEATURE_COUNT + 0;
+
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame <em>Grid Game</em>}'.
@@ -1918,6 +1937,16 @@ public interface GridGamePackage extends EPackage
   EClass getNotEmptyExpression();
 
   /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour <em>No Op Behaviour</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>No Op Behaviour</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour
+   * @generated
+   */
+  EClass getNoOpBehaviour();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2605,6 +2634,16 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EClass NOT_EMPTY_EXPRESSION = eINSTANCE.getNotEmptyExpression();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NoOpBehaviourImpl <em>No Op Behaviour</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NoOpBehaviourImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getNoOpBehaviour()
+     * @generated
+     */
+    EClass NO_OP_BEHAVIOUR = eINSTANCE.getNoOpBehaviour();
 
   }
 

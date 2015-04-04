@@ -2,7 +2,8 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu
-import javax.swing.event.TableModelEvent
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour
 
 class FrameGenerator extends CommonGenerator {
 	new(ModelPreprocessor mpp) {
@@ -29,6 +30,7 @@ class FrameGenerator extends CommonGenerator {
 		import javax.swing.JLabel;
 		import javax.swing.JButton;
 		import javax.swing.SwingUtilities;
+		import javax.swing.JOptionPane;
 
 		import javax.swing.table.TableCellRenderer;
 		
@@ -172,7 +174,20 @@ class FrameGenerator extends CommonGenerator {
 			}
 			
 			private void handleStateChange (Cell c) {
-				«/* TODO Generate code in response to cell state changes */»
+				«val states = mpp.allStatesWithEnterActions»
+				«
+				if (! states.empty) {
+					'''
+					switch (c.getState().getStateID()) {
+						«states.join (" ", [cpp |
+							'''case «cpp.value.key»:
+									«cpp.key.onEnter.join (" ", [oe | oe.generateCodeFor])»
+									break;'''
+						])»
+					}
+					'''
+				}
+				»
 			}
 			
 			public static void main(String[] args) {
@@ -180,4 +195,11 @@ class FrameGenerator extends CommonGenerator {
 			}
 		}
 	'''
+	
+	def dispatch generateCodeFor(EndGameBehaviour egb) '''
+		JOptionPane.showMessageDialog(«generateFrameClassName».this, "«egb.message»");
+	'''
+	
+	def dispatch generateCodeFor (NoOpBehaviour nop) ''''''
+	
 }

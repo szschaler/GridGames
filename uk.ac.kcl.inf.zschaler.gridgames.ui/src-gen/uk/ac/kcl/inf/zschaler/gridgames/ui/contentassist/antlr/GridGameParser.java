@@ -46,6 +46,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCellStateSpecAccess().getAlternatives(), "rule__CellStateSpec__Alternatives");
 					put(grammarAccess.getValueAccess().getAlternatives(), "rule__Value__Alternatives");
 					put(grammarAccess.getTransitionTriggerSpecAccess().getAlternatives(), "rule__TransitionTriggerSpec__Alternatives");
+					put(grammarAccess.getCellStateBehaviourAccess().getAlternatives(), "rule__CellStateBehaviour__Alternatives");
 					put(grammarAccess.getOptionSpecificationAccess().getAlternatives(), "rule__OptionSpecification__Alternatives");
 					put(grammarAccess.getFieldInitialisationAccess().getAlternatives(), "rule__FieldInitialisation__Alternatives");
 					put(grammarAccess.getAtomicExpressionAccess().getAlternatives(), "rule__AtomicExpression__Alternatives");
@@ -68,6 +69,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCellStateAccess().getGroup_4(), "rule__CellState__Group_4__0");
 					put(grammarAccess.getCellStateAccess().getGroup_4_3(), "rule__CellState__Group_4_3__0");
 					put(grammarAccess.getTransitionSpecAccess().getGroup(), "rule__TransitionSpec__Group__0");
+					put(grammarAccess.getCellStateBehaviourAccess().getGroup_1(), "rule__CellStateBehaviour__Group_1__0");
 					put(grammarAccess.getEndGameBehaviourAccess().getGroup(), "rule__EndGameBehaviour__Group__0");
 					put(grammarAccess.getFieldSpecificationAccess().getGroup(), "rule__FieldSpecification__Group__0");
 					put(grammarAccess.getAllowRestartMenuAccess().getGroup(), "rule__AllowRestartMenu__Group__0");

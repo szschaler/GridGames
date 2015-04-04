@@ -240,6 +240,11 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createNotEmptyExpressionAdapter();
       }
       @Override
+      public Adapter caseNoOpBehaviour(NoOpBehaviour object)
+      {
+        return createNoOpBehaviourAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -752,6 +757,21 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNotEmptyExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour <em>No Op Behaviour</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour
+   * @generated
+   */
+  public Adapter createNoOpBehaviourAdapter()
   {
     return null;
   }

@@ -34,6 +34,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGameFactory;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
@@ -283,6 +284,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass notEmptyExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass noOpBehaviourEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -1102,6 +1110,16 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getNoOpBehaviour()
+  {
+    return noOpBehaviourEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public GridGameFactory getGridGameFactory()
   {
     return (GridGameFactory)getEFactoryInstance();
@@ -1234,6 +1252,8 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     countExpressionEClass = createEClass(COUNT_EXPRESSION);
 
     notEmptyExpressionEClass = createEClass(NOT_EMPTY_EXPRESSION);
+
+    noOpBehaviourEClass = createEClass(NO_OP_BEHAVIOUR);
   }
 
   /**
@@ -1284,6 +1304,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     filterExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
     countExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
     notEmptyExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
+    noOpBehaviourEClass.getESuperTypes().add(this.getCellStateBehaviour());
 
     // Initialize classes and features; add operations and parameters
     initEClass(gridGameEClass, GridGame.class, "GridGame", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1393,6 +1414,8 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEClass(countExpressionEClass, CountExpression.class, "CountExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(notEmptyExpressionEClass, NotEmptyExpression.class, "NotEmptyExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(noOpBehaviourEClass, NoOpBehaviour.class, "NoOpBehaviour", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);

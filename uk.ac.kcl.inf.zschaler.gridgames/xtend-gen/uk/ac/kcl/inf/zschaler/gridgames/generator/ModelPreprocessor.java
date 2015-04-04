@@ -4,6 +4,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,6 +29,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
@@ -276,8 +278,19 @@ public class ModelPreprocessor {
    * 
    * TODO Eventually need to take into account parametrisation of behaviours.
    */
-  public Object allStatesWithEnterActions() {
-    return null;
+  public Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> getAllStatesWithEnterActions() {
+    Collection<List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _values = this.cellStateRegistry.values();
+    Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _flatten = Iterables.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>concat(_values);
+    final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean> _function = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean>() {
+      @Override
+      public Boolean apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
+        CellState _key = cpp.getKey();
+        EList<CellStateBehaviour> _onEnter = _key.getOnEnter();
+        boolean _isEmpty = _onEnter.isEmpty();
+        return Boolean.valueOf((!_isEmpty));
+      }
+    };
+    return IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>filter(_flatten, _function);
   }
   
   private List<Pair<? extends Map<String, Value>, CellState>> getAllStates(final CellStateSpec cssr) {

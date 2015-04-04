@@ -120,11 +120,16 @@ TransitionTriggerSpec :
 ;
 
 CellStateBehaviour :
-	EndGameBehaviour
+	EndGameBehaviour |
+	NoOpBehaviour {NoOpBehaviour}
 ;
 
 EndGameBehaviour :
 	"end-game" "(" message=STRING ")"
+;
+
+NoOpBehaviour :
+	"nop"
 ;
 
 FieldSpecification :

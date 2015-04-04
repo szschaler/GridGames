@@ -103,5 +103,6 @@
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//CountExpression"/>
     <genClasses ecoreClass="GridGame.ecore#//NotEmptyExpression"/>
+    <genClasses ecoreClass="GridGame.ecore#//NoOpBehaviour"/>
   </genPackages>
 </genmodel:GenModel>

@@ -130,7 +130,7 @@ class ModelPreprocessor {
 	 * 
 	 * TODO Eventually need to take into account parametrisation of behaviours.
 	 */
-	public def allStatesWithEnterActions () {
-		// TODO Implement!
+	public def getAllStatesWithEnterActions () {
+		cellStateRegistry.values.flatten.filter[cpp | ! cpp.key.onEnter.empty]
 	}
 }

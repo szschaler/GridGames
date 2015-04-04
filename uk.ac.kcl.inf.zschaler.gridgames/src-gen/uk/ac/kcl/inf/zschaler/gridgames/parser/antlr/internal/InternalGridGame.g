@@ -1309,9 +1309,9 @@ ruleCellStateBehaviour returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-
+(
     { 
-        newCompositeNode(grammarAccess.getCellStateBehaviourAccess().getEndGameBehaviourParserRuleCall()); 
+        newCompositeNode(grammarAccess.getCellStateBehaviourAccess().getEndGameBehaviourParserRuleCall_0()); 
     }
     this_EndGameBehaviour_0=ruleEndGameBehaviour
     { 
@@ -1319,6 +1319,21 @@ ruleCellStateBehaviour returns [EObject current=null]
         afterParserOrEnumRuleCall();
     }
 
+    |(
+    { 
+        newCompositeNode(grammarAccess.getCellStateBehaviourAccess().getNoOpBehaviourParserRuleCall_1_0()); 
+    }
+ruleNoOpBehaviour
+    { 
+        afterParserOrEnumRuleCall();
+    }
+(
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getCellStateBehaviourAccess().getNoOpBehaviourAction_1_1(),
+            $current);
+    }
+)))
 ;
 
 
@@ -1371,6 +1386,33 @@ ruleEndGameBehaviour returns [EObject current=null]
     }
 )
 ;
+
+
+
+
+
+// Entry rule entryRuleNoOpBehaviour
+entryRuleNoOpBehaviour returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getNoOpBehaviourRule()); } 
+	 iv_ruleNoOpBehaviour=ruleNoOpBehaviour 
+	 { $current=$iv_ruleNoOpBehaviour.current.getText(); }  
+	 EOF 
+;
+
+// Rule NoOpBehaviour
+ruleNoOpBehaviour returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+
+	kw='nop' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getNoOpBehaviourAccess().getNopKeyword()); 
+    }
+
+    ;
 
 
 

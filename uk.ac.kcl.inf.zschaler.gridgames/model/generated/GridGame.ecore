@@ -115,4 +115,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CountExpression" eSuperTypes="#//AtomicExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="NotEmptyExpression" eSuperTypes="#//AtomicExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NoOpBehaviour" eSuperTypes="#//CellStateBehaviour"/>
 </ecore:EPackage>

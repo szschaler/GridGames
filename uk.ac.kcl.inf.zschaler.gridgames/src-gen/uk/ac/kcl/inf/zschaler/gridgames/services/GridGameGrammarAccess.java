@@ -815,14 +815,30 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class CellStateBehaviourElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CellStateBehaviour");
-		private final RuleCall cEndGameBehaviourParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cEndGameBehaviourParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final RuleCall cNoOpBehaviourParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Action cNoOpBehaviourAction_1_1 = (Action)cGroup_1.eContents().get(1);
 		
 		//CellStateBehaviour:
-		//	EndGameBehaviour;
+		//	EndGameBehaviour | NoOpBehaviour {NoOpBehaviour};
 		@Override public ParserRule getRule() { return rule; }
 
+		//EndGameBehaviour | NoOpBehaviour {NoOpBehaviour}
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//EndGameBehaviour
-		public RuleCall getEndGameBehaviourParserRuleCall() { return cEndGameBehaviourParserRuleCall; }
+		public RuleCall getEndGameBehaviourParserRuleCall_0() { return cEndGameBehaviourParserRuleCall_0; }
+
+		//NoOpBehaviour {NoOpBehaviour}
+		public Group getGroup_1() { return cGroup_1; }
+
+		//NoOpBehaviour
+		public RuleCall getNoOpBehaviourParserRuleCall_1_0() { return cNoOpBehaviourParserRuleCall_1_0; }
+
+		//{NoOpBehaviour}
+		public Action getNoOpBehaviourAction_1_1() { return cNoOpBehaviourAction_1_1; }
 	}
 
 	public class EndGameBehaviourElements extends AbstractParserRuleElementFinder {
@@ -855,6 +871,18 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//")"
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+	}
+
+	public class NoOpBehaviourElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NoOpBehaviour");
+		private final Keyword cNopKeyword = (Keyword)rule.eContents().get(1);
+		
+		//NoOpBehaviour:
+		//	"nop";
+		@Override public ParserRule getRule() { return rule; }
+
+		//"nop"
+		public Keyword getNopKeyword() { return cNopKeyword; }
 	}
 
 	public class FieldSpecificationElements extends AbstractParserRuleElementFinder {
@@ -1375,6 +1403,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final TransitionTriggerSpecElements pTransitionTriggerSpec;
 	private final CellStateBehaviourElements pCellStateBehaviour;
 	private final EndGameBehaviourElements pEndGameBehaviour;
+	private final NoOpBehaviourElements pNoOpBehaviour;
 	private final FieldSpecificationElements pFieldSpecification;
 	private final OptionSpecificationElements pOptionSpecification;
 	private final AllowRestartMenuElements pAllowRestartMenu;
@@ -1419,6 +1448,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pTransitionTriggerSpec = new TransitionTriggerSpecElements();
 		this.pCellStateBehaviour = new CellStateBehaviourElements();
 		this.pEndGameBehaviour = new EndGameBehaviourElements();
+		this.pNoOpBehaviour = new NoOpBehaviourElements();
 		this.pFieldSpecification = new FieldSpecificationElements();
 		this.pOptionSpecification = new OptionSpecificationElements();
 		this.pAllowRestartMenu = new AllowRestartMenuElements();
@@ -1659,7 +1689,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellStateBehaviour:
-	//	EndGameBehaviour;
+	//	EndGameBehaviour | NoOpBehaviour {NoOpBehaviour};
 	public CellStateBehaviourElements getCellStateBehaviourAccess() {
 		return pCellStateBehaviour;
 	}
@@ -1676,6 +1706,16 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getEndGameBehaviourRule() {
 		return getEndGameBehaviourAccess().getRule();
+	}
+
+	//NoOpBehaviour:
+	//	"nop";
+	public NoOpBehaviourElements getNoOpBehaviourAccess() {
+		return pNoOpBehaviour;
+	}
+	
+	public ParserRule getNoOpBehaviourRule() {
+		return getNoOpBehaviourAccess().getRule();
 	}
 
 	//FieldSpecification:

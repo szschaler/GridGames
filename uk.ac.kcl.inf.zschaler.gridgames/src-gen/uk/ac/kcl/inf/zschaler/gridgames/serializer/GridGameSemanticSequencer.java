@@ -35,6 +35,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
@@ -107,6 +108,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case GridGamePackage.LOCAL_CELL_STATE_SPEC:
 				sequence_LocalCellStateSpec(context, (LocalCellStateSpec) semanticObject); 
 				return; 
+			case GridGamePackage.NO_OP_BEHAVIOUR:
+				sequence_CellStateBehaviour(context, (NoOpBehaviour) semanticObject); 
+				return; 
 			case GridGamePackage.NOT_EMPTY_EXPRESSION:
 				sequence_NotEmptyExpression(context, (NotEmptyExpression) semanticObject); 
 				return; 
@@ -155,6 +159,15 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (name=ID members+=CellMember*)
 	 */
 	protected void sequence_CellSpecification(EObject context, CellSpecification semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {NoOpBehaviour}
+	 */
+	protected void sequence_CellStateBehaviour(EObject context, NoOpBehaviour semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
