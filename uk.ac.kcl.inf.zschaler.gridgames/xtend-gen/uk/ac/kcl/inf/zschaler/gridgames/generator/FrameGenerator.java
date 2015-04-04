@@ -12,6 +12,7 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
@@ -576,11 +577,18 @@ public class FrameGenerator extends CommonGenerator {
     return _builder;
   }
   
+  protected CharSequence _generateCodeFor(final BehaviourReference br) {
+    StringConcatenation _builder = new StringConcatenation();
+    return _builder;
+  }
+  
   public CharSequence generateCodeFor(final CellStateBehaviour egb) {
     if (egb instanceof EndGameBehaviour) {
       return _generateCodeFor((EndGameBehaviour)egb);
     } else if (egb instanceof NoOpBehaviour) {
       return _generateCodeFor((NoOpBehaviour)egb);
+    } else if (egb instanceof BehaviourReference) {
+      return _generateCodeFor((BehaviourReference)egb);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(egb).toString());

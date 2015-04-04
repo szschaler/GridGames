@@ -13,6 +13,6 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
  * @model
  * @generated
  */
-public interface NoOpBehaviour extends CellStateBehaviour
+public interface NoOpBehaviour extends DirectBehaviour
 {
 } // NoOpBehaviour

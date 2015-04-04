@@ -4,6 +4,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference
 
 class FrameGenerator extends CommonGenerator {
 	new(ModelPreprocessor mpp) {
@@ -201,5 +202,7 @@ class FrameGenerator extends CommonGenerator {
 	'''
 	
 	def dispatch generateCodeFor (NoOpBehaviour nop) ''''''
+	
+	def dispatch generateCodeFor (BehaviourReference br) ''''''
 	
 }

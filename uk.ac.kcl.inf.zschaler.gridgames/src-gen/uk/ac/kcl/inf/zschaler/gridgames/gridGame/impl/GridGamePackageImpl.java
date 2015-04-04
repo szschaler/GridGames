@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
@@ -23,6 +24,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DirectBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
@@ -179,6 +181,20 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass cellStateBehaviourEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass behaviourReferenceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass directBehaviourEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -830,6 +846,36 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getBehaviourReference()
+  {
+    return behaviourReferenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getBehaviourReference_Ref()
+  {
+    return (EReference)behaviourReferenceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDirectBehaviour()
+  {
+    return directBehaviourEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getEndGameBehaviour()
   {
     return endGameBehaviourEClass;
@@ -1210,6 +1256,11 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     cellStateBehaviourEClass = createEClass(CELL_STATE_BEHAVIOUR);
 
+    behaviourReferenceEClass = createEClass(BEHAVIOUR_REFERENCE);
+    createEReference(behaviourReferenceEClass, BEHAVIOUR_REFERENCE__REF);
+
+    directBehaviourEClass = createEClass(DIRECT_BEHAVIOUR);
+
     endGameBehaviourEClass = createEClass(END_GAME_BEHAVIOUR);
     createEAttribute(endGameBehaviourEClass, END_GAME_BEHAVIOUR__MESSAGE);
 
@@ -1295,7 +1346,10 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     stringValueEClass.getESuperTypes().add(this.getValue());
     intValueEClass.getESuperTypes().add(this.getValue());
     varRefValueEClass.getESuperTypes().add(this.getValue());
-    endGameBehaviourEClass.getESuperTypes().add(this.getCellStateBehaviour());
+    behaviourReferenceEClass.getESuperTypes().add(this.getCellStateBehaviour());
+    directBehaviourEClass.getESuperTypes().add(this.getValue());
+    directBehaviourEClass.getESuperTypes().add(this.getCellStateBehaviour());
+    endGameBehaviourEClass.getESuperTypes().add(this.getDirectBehaviour());
     allowRestartMenuEClass.getESuperTypes().add(this.getOptionSpecification());
     startFieldDeclarationEClass.getESuperTypes().add(this.getOptionSpecification());
     defaultInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
@@ -1304,7 +1358,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     filterExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
     countExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
     notEmptyExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
-    noOpBehaviourEClass.getESuperTypes().add(this.getCellStateBehaviour());
+    noOpBehaviourEClass.getESuperTypes().add(this.getDirectBehaviour());
 
     // Initialize classes and features; add operations and parameters
     initEClass(gridGameEClass, GridGame.class, "GridGame", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1371,6 +1425,11 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEReference(getTransitionSpec_Target(), this.getCellState(), null, "target", null, 0, 1, TransitionSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cellStateBehaviourEClass, CellStateBehaviour.class, "CellStateBehaviour", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(behaviourReferenceEClass, BehaviourReference.class, "BehaviourReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBehaviourReference_Ref(), this.getVarSpec(), null, "ref", null, 0, 1, BehaviourReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(directBehaviourEClass, DirectBehaviour.class, "DirectBehaviour", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(endGameBehaviourEClass, EndGameBehaviour.class, "EndGameBehaviour", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEndGameBehaviour_Message(), ecorePackage.getEString(), "message", null, 0, 1, EndGameBehaviour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

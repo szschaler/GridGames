@@ -409,20 +409,21 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cTypeAlternatives_0_0 = (Alternatives)cTypeAssignment_0.eContents().get(0);
 		private final Keyword cTypeIntKeyword_0_0_0 = (Keyword)cTypeAlternatives_0_0.eContents().get(0);
 		private final Keyword cTypeStringKeyword_0_0_1 = (Keyword)cTypeAlternatives_0_0.eContents().get(1);
+		private final Keyword cTypeBehaviourKeyword_0_0_2 = (Keyword)cTypeAlternatives_0_0.eContents().get(2);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//StateParamSpec:
-		//	type=("int" | "String") name=ID;
+		//	type=("int" | "String" | "Behaviour") name=ID;
 		@Override public ParserRule getRule() { return rule; }
 
-		//type=("int" | "String") name=ID
+		//type=("int" | "String" | "Behaviour") name=ID
 		public Group getGroup() { return cGroup; }
 
-		//type=("int" | "String")
+		//type=("int" | "String" | "Behaviour")
 		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
 
-		//"int" | "String"
+		//"int" | "String" | "Behaviour"
 		public Alternatives getTypeAlternatives_0_0() { return cTypeAlternatives_0_0; }
 
 		//"int"
@@ -430,6 +431,9 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"String"
 		public Keyword getTypeStringKeyword_0_0_1() { return cTypeStringKeyword_0_0_1; }
+
+		//"Behaviour"
+		public Keyword getTypeBehaviourKeyword_0_0_2() { return cTypeBehaviourKeyword_0_0_2; }
 
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -579,13 +583,14 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cStringValueParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cIntValueParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVarRefValueParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cDirectBehaviourParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cVarRefValueParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Value:
-		//	StringValue | IntValue | VarRefValue;
+		//	StringValue | IntValue | DirectBehaviour | VarRefValue;
 		@Override public ParserRule getRule() { return rule; }
 
-		//StringValue | IntValue | VarRefValue
+		//StringValue | IntValue | DirectBehaviour | VarRefValue
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//StringValue
@@ -594,8 +599,11 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//IntValue
 		public RuleCall getIntValueParserRuleCall_1() { return cIntValueParserRuleCall_1; }
 
+		//DirectBehaviour
+		public RuleCall getDirectBehaviourParserRuleCall_2() { return cDirectBehaviourParserRuleCall_2; }
+
 		//VarRefValue
-		public RuleCall getVarRefValueParserRuleCall_2() { return cVarRefValueParserRuleCall_2; }
+		public RuleCall getVarRefValueParserRuleCall_3() { return cVarRefValueParserRuleCall_3; }
 	}
 
 	public class StringValueElements extends AbstractParserRuleElementFinder {
@@ -816,12 +824,52 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	public class CellStateBehaviourElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CellStateBehaviour");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cDirectBehaviourParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cBehaviourReferenceParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//CellStateBehaviour:
+		//	DirectBehaviour | BehaviourReference;
+		@Override public ParserRule getRule() { return rule; }
+
+		//DirectBehaviour | BehaviourReference
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//DirectBehaviour
+		public RuleCall getDirectBehaviourParserRuleCall_0() { return cDirectBehaviourParserRuleCall_0; }
+
+		//BehaviourReference
+		public RuleCall getBehaviourReferenceParserRuleCall_1() { return cBehaviourReferenceParserRuleCall_1; }
+	}
+
+	public class BehaviourReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BehaviourReference");
+		private final Assignment cRefAssignment = (Assignment)rule.eContents().get(1);
+		private final CrossReference cRefVarSpecCrossReference_0 = (CrossReference)cRefAssignment.eContents().get(0);
+		private final RuleCall cRefVarSpecIDTerminalRuleCall_0_1 = (RuleCall)cRefVarSpecCrossReference_0.eContents().get(1);
+		
+		//BehaviourReference:
+		//	ref=[VarSpec];
+		@Override public ParserRule getRule() { return rule; }
+
+		//ref=[VarSpec]
+		public Assignment getRefAssignment() { return cRefAssignment; }
+
+		//[VarSpec]
+		public CrossReference getRefVarSpecCrossReference_0() { return cRefVarSpecCrossReference_0; }
+
+		//ID
+		public RuleCall getRefVarSpecIDTerminalRuleCall_0_1() { return cRefVarSpecIDTerminalRuleCall_0_1; }
+	}
+
+	public class DirectBehaviourElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DirectBehaviour");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cEndGameBehaviourParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final RuleCall cNoOpBehaviourParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
 		private final Action cNoOpBehaviourAction_1_1 = (Action)cGroup_1.eContents().get(1);
 		
-		//CellStateBehaviour:
+		//DirectBehaviour:
 		//	EndGameBehaviour | NoOpBehaviour {NoOpBehaviour};
 		@Override public ParserRule getRule() { return rule; }
 
@@ -1402,6 +1450,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final TransitionSpecElements pTransitionSpec;
 	private final TransitionTriggerSpecElements pTransitionTriggerSpec;
 	private final CellStateBehaviourElements pCellStateBehaviour;
+	private final BehaviourReferenceElements pBehaviourReference;
+	private final DirectBehaviourElements pDirectBehaviour;
 	private final EndGameBehaviourElements pEndGameBehaviour;
 	private final NoOpBehaviourElements pNoOpBehaviour;
 	private final FieldSpecificationElements pFieldSpecification;
@@ -1447,6 +1497,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pTransitionSpec = new TransitionSpecElements();
 		this.pTransitionTriggerSpec = new TransitionTriggerSpecElements();
 		this.pCellStateBehaviour = new CellStateBehaviourElements();
+		this.pBehaviourReference = new BehaviourReferenceElements();
+		this.pDirectBehaviour = new DirectBehaviourElements();
 		this.pEndGameBehaviour = new EndGameBehaviourElements();
 		this.pNoOpBehaviour = new NoOpBehaviourElements();
 		this.pFieldSpecification = new FieldSpecificationElements();
@@ -1577,7 +1629,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StateParamSpec:
-	//	type=("int" | "String") name=ID;
+	//	type=("int" | "String" | "Behaviour") name=ID;
 	public StateParamSpecElements getStateParamSpecAccess() {
 		return pStateParamSpec;
 	}
@@ -1617,7 +1669,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Value:
-	//	StringValue | IntValue | VarRefValue;
+	//	StringValue | IntValue | DirectBehaviour | VarRefValue;
 	public ValueElements getValueAccess() {
 		return pValue;
 	}
@@ -1689,13 +1741,33 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellStateBehaviour:
-	//	EndGameBehaviour | NoOpBehaviour {NoOpBehaviour};
+	//	DirectBehaviour | BehaviourReference;
 	public CellStateBehaviourElements getCellStateBehaviourAccess() {
 		return pCellStateBehaviour;
 	}
 	
 	public ParserRule getCellStateBehaviourRule() {
 		return getCellStateBehaviourAccess().getRule();
+	}
+
+	//BehaviourReference:
+	//	ref=[VarSpec];
+	public BehaviourReferenceElements getBehaviourReferenceAccess() {
+		return pBehaviourReference;
+	}
+	
+	public ParserRule getBehaviourReferenceRule() {
+		return getBehaviourReferenceAccess().getRule();
+	}
+
+	//DirectBehaviour:
+	//	EndGameBehaviour | NoOpBehaviour {NoOpBehaviour};
+	public DirectBehaviourElements getDirectBehaviourAccess() {
+		return pDirectBehaviour;
+	}
+	
+	public ParserRule getDirectBehaviourRule() {
+		return getDirectBehaviourAccess().getRule();
 	}
 
 	//EndGameBehaviour:

@@ -185,6 +185,24 @@ public interface GridGameFactory extends EFactory
   CellStateBehaviour createCellStateBehaviour();
 
   /**
+   * Returns a new object of class '<em>Behaviour Reference</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Behaviour Reference</em>'.
+   * @generated
+   */
+  BehaviourReference createBehaviourReference();
+
+  /**
+   * Returns a new object of class '<em>Direct Behaviour</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Direct Behaviour</em>'.
+   * @generated
+   */
+  DirectBehaviour createDirectBehaviour();
+
+  /**
    * Returns a new object of class '<em>End Game Behaviour</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

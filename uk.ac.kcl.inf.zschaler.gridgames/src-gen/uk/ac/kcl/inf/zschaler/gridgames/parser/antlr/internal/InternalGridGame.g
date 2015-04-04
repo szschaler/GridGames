@@ -666,6 +666,18 @@ ruleStateParamSpec returns [EObject current=null]
        		setWithLastConsumed($current, "type", lv_type_0_2, null);
 	    }
 
+    |		lv_type_0_3=	'Behaviour' 
+    {
+        newLeafNode(lv_type_0_3, grammarAccess.getStateParamSpecAccess().getTypeBehaviourKeyword_0_0_2());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStateParamSpecRule());
+	        }
+       		setWithLastConsumed($current, "type", lv_type_0_3, null);
+	    }
+
 )
 
 )
@@ -928,11 +940,21 @@ ruleValue returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getValueAccess().getVarRefValueParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getValueAccess().getDirectBehaviourParserRuleCall_2()); 
     }
-    this_VarRefValue_2=ruleVarRefValue
+    this_DirectBehaviour_2=ruleDirectBehaviour
     { 
-        $current = $this_VarRefValue_2.current; 
+        $current = $this_DirectBehaviour_2.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getValueAccess().getVarRefValueParserRuleCall_3()); 
+    }
+    this_VarRefValue_3=ruleVarRefValue
+    { 
+        $current = $this_VarRefValue_3.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -1311,7 +1333,81 @@ ruleCellStateBehaviour returns [EObject current=null]
     @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getCellStateBehaviourAccess().getEndGameBehaviourParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getCellStateBehaviourAccess().getDirectBehaviourParserRuleCall_0()); 
+    }
+    this_DirectBehaviour_0=ruleDirectBehaviour
+    { 
+        $current = $this_DirectBehaviour_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getCellStateBehaviourAccess().getBehaviourReferenceParserRuleCall_1()); 
+    }
+    this_BehaviourReference_1=ruleBehaviourReference
+    { 
+        $current = $this_BehaviourReference_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleBehaviourReference
+entryRuleBehaviourReference returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getBehaviourReferenceRule()); }
+	 iv_ruleBehaviourReference=ruleBehaviourReference 
+	 { $current=$iv_ruleBehaviourReference.current; } 
+	 EOF 
+;
+
+// Rule BehaviourReference
+ruleBehaviourReference returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getBehaviourReferenceRule());
+	        }
+        }
+	otherlv_0=RULE_ID
+	{
+		newLeafNode(otherlv_0, grammarAccess.getBehaviourReferenceAccess().getRefVarSpecCrossReference_0()); 
+	}
+
+)
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDirectBehaviour
+entryRuleDirectBehaviour returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDirectBehaviourRule()); }
+	 iv_ruleDirectBehaviour=ruleDirectBehaviour 
+	 { $current=$iv_ruleDirectBehaviour.current; } 
+	 EOF 
+;
+
+// Rule DirectBehaviour
+ruleDirectBehaviour returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getDirectBehaviourAccess().getEndGameBehaviourParserRuleCall_0()); 
     }
     this_EndGameBehaviour_0=ruleEndGameBehaviour
     { 
@@ -1321,7 +1417,7 @@ ruleCellStateBehaviour returns [EObject current=null]
 
     |(
     { 
-        newCompositeNode(grammarAccess.getCellStateBehaviourAccess().getNoOpBehaviourParserRuleCall_1_0()); 
+        newCompositeNode(grammarAccess.getDirectBehaviourAccess().getNoOpBehaviourParserRuleCall_1_0()); 
     }
 ruleNoOpBehaviour
     { 
@@ -1330,7 +1426,7 @@ ruleNoOpBehaviour
 (
     {
         $current = forceCreateModelElement(
-            grammarAccess.getCellStateBehaviourAccess().getNoOpBehaviourAction_1_1(),
+            grammarAccess.getDirectBehaviourAccess().getNoOpBehaviourAction_1_1(),
             $current);
     }
 )))

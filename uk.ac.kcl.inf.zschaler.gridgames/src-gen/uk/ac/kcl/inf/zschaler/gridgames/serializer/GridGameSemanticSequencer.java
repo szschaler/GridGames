@@ -17,6 +17,7 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
@@ -56,6 +57,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		if(semanticObject.eClass().getEPackage() == GridGamePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case GridGamePackage.ALLOW_RESTART_MENU:
 				sequence_AllowRestartMenu(context, (AllowRestartMenu) semanticObject); 
+				return; 
+			case GridGamePackage.BEHAVIOUR_REFERENCE:
+				sequence_BehaviourReference(context, (BehaviourReference) semanticObject); 
 				return; 
 			case GridGamePackage.CELL_DISPLAY_SPEC:
 				sequence_CellDisplaySpec(context, (CellDisplaySpec) semanticObject); 
@@ -109,7 +113,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				sequence_LocalCellStateSpec(context, (LocalCellStateSpec) semanticObject); 
 				return; 
 			case GridGamePackage.NO_OP_BEHAVIOUR:
-				sequence_CellStateBehaviour(context, (NoOpBehaviour) semanticObject); 
+				sequence_DirectBehaviour(context, (NoOpBehaviour) semanticObject); 
 				return; 
 			case GridGamePackage.NOT_EMPTY_EXPRESSION:
 				sequence_NotEmptyExpression(context, (NotEmptyExpression) semanticObject); 
@@ -147,6 +151,22 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
+	 *     ref=[VarSpec|ID]
+	 */
+	protected void sequence_BehaviourReference(EObject context, BehaviourReference semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.BEHAVIOUR_REFERENCE__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.BEHAVIOUR_REFERENCE__REF));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getBehaviourReferenceAccess().getRefVarSpecIDTerminalRuleCall_0_1(), semanticObject.getRef());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     ((display_type='label' | display_type='button') (text=STRING | var=[VarSpec|ID]))
 	 */
 	protected void sequence_CellDisplaySpec(EObject context, CellDisplaySpec semanticObject) {
@@ -159,15 +179,6 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (name=ID members+=CellMember*)
 	 */
 	protected void sequence_CellSpecification(EObject context, CellSpecification semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {NoOpBehaviour}
-	 */
-	protected void sequence_CellStateBehaviour(EObject context, NoOpBehaviour semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -252,6 +263,15 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getDefaultInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {NoOpBehaviour}
+	 */
+	protected void sequence_DirectBehaviour(EObject context, NoOpBehaviour semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -394,7 +414,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     ((type='int' | type='String') name=ID)
+	 *     ((type='int' | type='String' | type='Behaviour') name=ID)
 	 */
 	protected void sequence_StateParamSpec(EObject context, StateParamSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -5,53 +5,45 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>End Game Behaviour</b></em>'.
+ * An implementation of the model object '<em><b>Behaviour Reference</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.EndGameBehaviourImpl#getMessage <em>Message</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.BehaviourReferenceImpl#getRef <em>Ref</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EndGameBehaviourImpl extends DirectBehaviourImpl implements EndGameBehaviour
+public class BehaviourReferenceImpl extends CellStateBehaviourImpl implements BehaviourReference
 {
   /**
-   * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMessage()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected static final String MESSAGE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMessage()
-   * @generated
-   * @ordered
-   */
-  protected String message = MESSAGE_EDEFAULT;
+  protected VarSpec ref;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EndGameBehaviourImpl()
+  protected BehaviourReferenceImpl()
   {
     super();
   }
@@ -64,7 +56,7 @@ public class EndGameBehaviourImpl extends DirectBehaviourImpl implements EndGame
   @Override
   protected EClass eStaticClass()
   {
-    return GridGamePackage.Literals.END_GAME_BEHAVIOUR;
+    return GridGamePackage.Literals.BEHAVIOUR_REFERENCE;
   }
 
   /**
@@ -72,9 +64,19 @@ public class EndGameBehaviourImpl extends DirectBehaviourImpl implements EndGame
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getMessage()
+  public VarSpec getRef()
   {
-    return message;
+    if (ref != null && ref.eIsProxy())
+    {
+      InternalEObject oldRef = (InternalEObject)ref;
+      ref = (VarSpec)eResolveProxy(oldRef);
+      if (ref != oldRef)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GridGamePackage.BEHAVIOUR_REFERENCE__REF, oldRef, ref));
+      }
+    }
+    return ref;
   }
 
   /**
@@ -82,12 +84,22 @@ public class EndGameBehaviourImpl extends DirectBehaviourImpl implements EndGame
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMessage(String newMessage)
+  public VarSpec basicGetRef()
   {
-    String oldMessage = message;
-    message = newMessage;
+    return ref;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRef(VarSpec newRef)
+  {
+    VarSpec oldRef = ref;
+    ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.END_GAME_BEHAVIOUR__MESSAGE, oldMessage, message));
+      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.BEHAVIOUR_REFERENCE__REF, oldRef, ref));
   }
 
   /**
@@ -100,8 +112,9 @@ public class EndGameBehaviourImpl extends DirectBehaviourImpl implements EndGame
   {
     switch (featureID)
     {
-      case GridGamePackage.END_GAME_BEHAVIOUR__MESSAGE:
-        return getMessage();
+      case GridGamePackage.BEHAVIOUR_REFERENCE__REF:
+        if (resolve) return getRef();
+        return basicGetRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -116,8 +129,8 @@ public class EndGameBehaviourImpl extends DirectBehaviourImpl implements EndGame
   {
     switch (featureID)
     {
-      case GridGamePackage.END_GAME_BEHAVIOUR__MESSAGE:
-        setMessage((String)newValue);
+      case GridGamePackage.BEHAVIOUR_REFERENCE__REF:
+        setRef((VarSpec)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -133,8 +146,8 @@ public class EndGameBehaviourImpl extends DirectBehaviourImpl implements EndGame
   {
     switch (featureID)
     {
-      case GridGamePackage.END_GAME_BEHAVIOUR__MESSAGE:
-        setMessage(MESSAGE_EDEFAULT);
+      case GridGamePackage.BEHAVIOUR_REFERENCE__REF:
+        setRef((VarSpec)null);
         return;
     }
     super.eUnset(featureID);
@@ -150,27 +163,10 @@ public class EndGameBehaviourImpl extends DirectBehaviourImpl implements EndGame
   {
     switch (featureID)
     {
-      case GridGamePackage.END_GAME_BEHAVIOUR__MESSAGE:
-        return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
+      case GridGamePackage.BEHAVIOUR_REFERENCE__REF:
+        return ref != null;
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (message: ");
-    result.append(message);
-    result.append(')');
-    return result.toString();
-  }
-
-} //EndGameBehaviourImpl
+} //BehaviourReferenceImpl

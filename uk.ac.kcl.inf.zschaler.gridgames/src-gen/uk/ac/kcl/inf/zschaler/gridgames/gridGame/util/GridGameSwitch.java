@@ -210,10 +210,29 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.BEHAVIOUR_REFERENCE:
+      {
+        BehaviourReference behaviourReference = (BehaviourReference)theEObject;
+        T result = caseBehaviourReference(behaviourReference);
+        if (result == null) result = caseCellStateBehaviour(behaviourReference);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.DIRECT_BEHAVIOUR:
+      {
+        DirectBehaviour directBehaviour = (DirectBehaviour)theEObject;
+        T result = caseDirectBehaviour(directBehaviour);
+        if (result == null) result = caseValue(directBehaviour);
+        if (result == null) result = caseCellStateBehaviour(directBehaviour);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GridGamePackage.END_GAME_BEHAVIOUR:
       {
         EndGameBehaviour endGameBehaviour = (EndGameBehaviour)theEObject;
         T result = caseEndGameBehaviour(endGameBehaviour);
+        if (result == null) result = caseDirectBehaviour(endGameBehaviour);
+        if (result == null) result = caseValue(endGameBehaviour);
         if (result == null) result = caseCellStateBehaviour(endGameBehaviour);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -328,6 +347,8 @@ public class GridGameSwitch<T> extends Switch<T>
       {
         NoOpBehaviour noOpBehaviour = (NoOpBehaviour)theEObject;
         T result = caseNoOpBehaviour(noOpBehaviour);
+        if (result == null) result = caseDirectBehaviour(noOpBehaviour);
+        if (result == null) result = caseValue(noOpBehaviour);
         if (result == null) result = caseCellStateBehaviour(noOpBehaviour);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -620,6 +641,38 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCellStateBehaviour(CellStateBehaviour object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Behaviour Reference</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Behaviour Reference</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBehaviourReference(BehaviourReference object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Direct Behaviour</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Direct Behaviour</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDirectBehaviour(DirectBehaviour object)
   {
     return null;
   }

@@ -66,6 +66,10 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//TransitionSpec/target"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//CellStateBehaviour"/>
+    <genClasses ecoreClass="GridGame.ecore#//BehaviourReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//BehaviourReference/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//DirectBehaviour"/>
     <genClasses ecoreClass="GridGame.ecore#//EndGameBehaviour">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//EndGameBehaviour/message"/>
     </genClasses>

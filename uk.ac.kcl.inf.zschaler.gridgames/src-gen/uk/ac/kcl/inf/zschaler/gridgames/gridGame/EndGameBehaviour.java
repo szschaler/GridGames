@@ -19,7 +19,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
  * @model
  * @generated
  */
-public interface EndGameBehaviour extends CellStateBehaviour
+public interface EndGameBehaviour extends DirectBehaviour
 {
   /**
    * Returns the value of the '<em><b>Message</b></em>' attribute.

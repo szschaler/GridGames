@@ -62,7 +62,7 @@ GlobalCellStateSpec :
 ;
 
 StateParamSpec :
-	type=("int"|"String") name=ID
+	type=("int"|"String"|"Behaviour") name=ID
 ;
 
 CellStateSpec :
@@ -85,6 +85,7 @@ CellStateSpecReference :
 Value :
 	StringValue |
 	IntValue |
+	DirectBehaviour |
 	VarRefValue
 ;
 
@@ -120,6 +121,15 @@ TransitionTriggerSpec :
 ;
 
 CellStateBehaviour :
+	DirectBehaviour |
+	BehaviourReference
+;
+
+BehaviourReference :
+	ref=[VarSpec]
+;
+
+DirectBehaviour :
 	EndGameBehaviour |
 	NoOpBehaviour {NoOpBehaviour}
 ;

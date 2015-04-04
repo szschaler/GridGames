@@ -4,26 +4,26 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DirectBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>No Op Behaviour</b></em>'.
+ * An implementation of the model object '<em><b>Direct Behaviour</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class NoOpBehaviourImpl extends DirectBehaviourImpl implements NoOpBehaviour
+public class DirectBehaviourImpl extends ValueImpl implements DirectBehaviour
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected NoOpBehaviourImpl()
+  protected DirectBehaviourImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class NoOpBehaviourImpl extends DirectBehaviourImpl implements NoOpBehavi
   @Override
   protected EClass eStaticClass()
   {
-    return GridGamePackage.Literals.NO_OP_BEHAVIOUR;
+    return GridGamePackage.Literals.DIRECT_BEHAVIOUR;
   }
 
-} //NoOpBehaviourImpl
+} //DirectBehaviourImpl

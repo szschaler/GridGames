@@ -73,7 +73,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//CellState"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CellStateBehaviour"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EndGameBehaviour" eSuperTypes="#//CellStateBehaviour">
+  <eClassifiers xsi:type="ecore:EClass" name="BehaviourReference" eSuperTypes="#//CellStateBehaviour">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//VarSpec"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DirectBehaviour" eSuperTypes="#//Value #//CellStateBehaviour"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EndGameBehaviour" eSuperTypes="#//DirectBehaviour">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FieldSpecification">
@@ -115,5 +119,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CountExpression" eSuperTypes="#//AtomicExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="NotEmptyExpression" eSuperTypes="#//AtomicExpression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NoOpBehaviour" eSuperTypes="#//CellStateBehaviour"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NoOpBehaviour" eSuperTypes="#//DirectBehaviour"/>
 </ecore:EPackage>
