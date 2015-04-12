@@ -169,6 +169,15 @@ GlobalFieldInitialisation :
 ;
 
 FieldInitialisations :
+	LocalFieldInitialisations |
+	FieldInitialisationsRef
+;
+
+FieldInitialisationsRef :
+	"init" ref=[GlobalFieldInitialisation] ("(" params += Value ("," params += Value)* ")")?
+;
+
+LocalFieldInitialisations :
 	"init" "{" (initialisations += FieldInitialisation ";")+ "}" 
 ;
 

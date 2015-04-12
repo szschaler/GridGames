@@ -266,6 +266,24 @@ public interface GridGameFactory extends EFactory
   FieldInitialisations createFieldInitialisations();
 
   /**
+   * Returns a new object of class '<em>Field Initialisations Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Field Initialisations Ref</em>'.
+   * @generated
+   */
+  FieldInitialisationsRef createFieldInitialisationsRef();
+
+  /**
+   * Returns a new object of class '<em>Local Field Initialisations</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Local Field Initialisations</em>'.
+   * @generated
+   */
+  LocalFieldInitialisations createLocalFieldInitialisations();
+
+  /**
    * Returns a new object of class '<em>Field Initialisation</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

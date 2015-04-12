@@ -1901,22 +1901,148 @@ ruleFieldInitialisations returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getFieldInitialisationsAccess().getLocalFieldInitialisationsParserRuleCall_0()); 
+    }
+    this_LocalFieldInitialisations_0=ruleLocalFieldInitialisations
+    { 
+        $current = $this_LocalFieldInitialisations_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getFieldInitialisationsAccess().getFieldInitialisationsRefParserRuleCall_1()); 
+    }
+    this_FieldInitialisationsRef_1=ruleFieldInitialisationsRef
+    { 
+        $current = $this_FieldInitialisationsRef_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleFieldInitialisationsRef
+entryRuleFieldInitialisationsRef returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getFieldInitialisationsRefRule()); }
+	 iv_ruleFieldInitialisationsRef=ruleFieldInitialisationsRef 
+	 { $current=$iv_ruleFieldInitialisationsRef.current; } 
+	 EOF 
+;
+
+// Rule FieldInitialisationsRef
+ruleFieldInitialisationsRef returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
 (	otherlv_0='init' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getFieldInitialisationsAccess().getInitKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getFieldInitialisationsRefAccess().getInitKeyword_0());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFieldInitialisationsRefRule());
+	        }
+        }
+	otherlv_1=RULE_ID
+	{
+		newLeafNode(otherlv_1, grammarAccess.getFieldInitialisationsRefAccess().getRefGlobalFieldInitialisationCrossReference_1_0()); 
+	}
+
+)
+)(	otherlv_2='(' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getFieldInitialisationsRefAccess().getLeftParenthesisKeyword_2_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFieldInitialisationsRefAccess().getParamsValueParserRuleCall_2_1_0()); 
+	    }
+		lv_params_3_0=ruleValue		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFieldInitialisationsRefRule());
+	        }
+       		add(
+       			$current, 
+       			"params",
+        		lv_params_3_0, 
+        		"Value");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_4=',' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getFieldInitialisationsRefAccess().getCommaKeyword_2_2_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFieldInitialisationsRefAccess().getParamsValueParserRuleCall_2_2_1_0()); 
+	    }
+		lv_params_5_0=ruleValue		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFieldInitialisationsRefRule());
+	        }
+       		add(
+       			$current, 
+       			"params",
+        		lv_params_5_0, 
+        		"Value");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*	otherlv_6=')' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getFieldInitialisationsRefAccess().getRightParenthesisKeyword_2_3());
+    }
+)?)
+;
+
+
+
+
+
+// Entry rule entryRuleLocalFieldInitialisations
+entryRuleLocalFieldInitialisations returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getLocalFieldInitialisationsRule()); }
+	 iv_ruleLocalFieldInitialisations=ruleLocalFieldInitialisations 
+	 { $current=$iv_ruleLocalFieldInitialisations.current; } 
+	 EOF 
+;
+
+// Rule LocalFieldInitialisations
+ruleLocalFieldInitialisations returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='init' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getLocalFieldInitialisationsAccess().getInitKeyword_0());
     }
 	otherlv_1='{' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getFieldInitialisationsAccess().getLeftCurlyBracketKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getLocalFieldInitialisationsAccess().getLeftCurlyBracketKeyword_1());
     }
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFieldInitialisationsAccess().getInitialisationsFieldInitialisationParserRuleCall_2_0_0()); 
+	        newCompositeNode(grammarAccess.getLocalFieldInitialisationsAccess().getInitialisationsFieldInitialisationParserRuleCall_2_0_0()); 
 	    }
 		lv_initialisations_2_0=ruleFieldInitialisation		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFieldInitialisationsRule());
+	            $current = createModelElementForParent(grammarAccess.getLocalFieldInitialisationsRule());
 	        }
        		add(
        			$current, 
@@ -1929,11 +2055,11 @@ ruleFieldInitialisations returns [EObject current=null]
 )
 )	otherlv_3=';' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getFieldInitialisationsAccess().getSemicolonKeyword_2_1());
+    	newLeafNode(otherlv_3, grammarAccess.getLocalFieldInitialisationsAccess().getSemicolonKeyword_2_1());
     }
 )+	otherlv_4='}' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getFieldInitialisationsAccess().getRightCurlyBracketKeyword_3());
+    	newLeafNode(otherlv_4, grammarAccess.getLocalFieldInitialisationsAccess().getRightCurlyBracketKeyword_3());
     }
 )
 ;

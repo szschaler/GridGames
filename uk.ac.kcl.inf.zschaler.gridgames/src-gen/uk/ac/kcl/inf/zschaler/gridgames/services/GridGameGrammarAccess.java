@@ -1172,6 +1172,90 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class FieldInitialisationsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FieldInitialisations");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cLocalFieldInitialisationsParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cFieldInitialisationsRefParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//FieldInitialisations:
+		//	LocalFieldInitialisations | FieldInitialisationsRef;
+		@Override public ParserRule getRule() { return rule; }
+
+		//LocalFieldInitialisations | FieldInitialisationsRef
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//LocalFieldInitialisations
+		public RuleCall getLocalFieldInitialisationsParserRuleCall_0() { return cLocalFieldInitialisationsParserRuleCall_0; }
+
+		//FieldInitialisationsRef
+		public RuleCall getFieldInitialisationsRefParserRuleCall_1() { return cFieldInitialisationsRefParserRuleCall_1; }
+	}
+
+	public class FieldInitialisationsRefElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FieldInitialisationsRef");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cInitKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cRefGlobalFieldInitialisationCrossReference_1_0 = (CrossReference)cRefAssignment_1.eContents().get(0);
+		private final RuleCall cRefGlobalFieldInitialisationIDTerminalRuleCall_1_0_1 = (RuleCall)cRefGlobalFieldInitialisationCrossReference_1_0.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cParamsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cParamsValueParserRuleCall_2_1_0 = (RuleCall)cParamsAssignment_2_1.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
+		private final Keyword cCommaKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Assignment cParamsAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
+		private final RuleCall cParamsValueParserRuleCall_2_2_1_0 = (RuleCall)cParamsAssignment_2_2_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
+		
+		//FieldInitialisationsRef:
+		//	"init" ref=[GlobalFieldInitialisation] ("(" params+=Value ("," params+=Value)* ")")?;
+		@Override public ParserRule getRule() { return rule; }
+
+		//"init" ref=[GlobalFieldInitialisation] ("(" params+=Value ("," params+=Value)* ")")?
+		public Group getGroup() { return cGroup; }
+
+		//"init"
+		public Keyword getInitKeyword_0() { return cInitKeyword_0; }
+
+		//ref=[GlobalFieldInitialisation]
+		public Assignment getRefAssignment_1() { return cRefAssignment_1; }
+
+		//[GlobalFieldInitialisation]
+		public CrossReference getRefGlobalFieldInitialisationCrossReference_1_0() { return cRefGlobalFieldInitialisationCrossReference_1_0; }
+
+		//ID
+		public RuleCall getRefGlobalFieldInitialisationIDTerminalRuleCall_1_0_1() { return cRefGlobalFieldInitialisationIDTerminalRuleCall_1_0_1; }
+
+		//("(" params+=Value ("," params+=Value)* ")")?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
+
+		//params+=Value
+		public Assignment getParamsAssignment_2_1() { return cParamsAssignment_2_1; }
+
+		//Value
+		public RuleCall getParamsValueParserRuleCall_2_1_0() { return cParamsValueParserRuleCall_2_1_0; }
+
+		//("," params+=Value)*
+		public Group getGroup_2_2() { return cGroup_2_2; }
+
+		//","
+		public Keyword getCommaKeyword_2_2_0() { return cCommaKeyword_2_2_0; }
+
+		//params+=Value
+		public Assignment getParamsAssignment_2_2_1() { return cParamsAssignment_2_2_1; }
+
+		//Value
+		public RuleCall getParamsValueParserRuleCall_2_2_1_0() { return cParamsValueParserRuleCall_2_2_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_2_3() { return cRightParenthesisKeyword_2_3; }
+	}
+
+	public class LocalFieldInitialisationsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LocalFieldInitialisations");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cInitKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -1181,7 +1265,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//FieldInitialisations:
+		//LocalFieldInitialisations:
 		//	"init" "{" (initialisations+=FieldInitialisation ";")+ "}";
 		@Override public ParserRule getRule() { return rule; }
 
@@ -1553,6 +1637,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final StartFieldDeclarationElements pStartFieldDeclaration;
 	private final GlobalFieldInitialisationElements pGlobalFieldInitialisation;
 	private final FieldInitialisationsElements pFieldInitialisations;
+	private final FieldInitialisationsRefElements pFieldInitialisationsRef;
+	private final LocalFieldInitialisationsElements pLocalFieldInitialisations;
 	private final FieldInitialisationElements pFieldInitialisation;
 	private final DefaultInitialisationElements pDefaultInitialisation;
 	private final RandomInitialisationElements pRandomInitialisation;
@@ -1601,6 +1687,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pStartFieldDeclaration = new StartFieldDeclarationElements();
 		this.pGlobalFieldInitialisation = new GlobalFieldInitialisationElements();
 		this.pFieldInitialisations = new FieldInitialisationsElements();
+		this.pFieldInitialisationsRef = new FieldInitialisationsRefElements();
+		this.pLocalFieldInitialisations = new LocalFieldInitialisationsElements();
 		this.pFieldInitialisation = new FieldInitialisationElements();
 		this.pDefaultInitialisation = new DefaultInitialisationElements();
 		this.pRandomInitialisation = new RandomInitialisationElements();
@@ -1937,13 +2025,33 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FieldInitialisations:
-	//	"init" "{" (initialisations+=FieldInitialisation ";")+ "}";
+	//	LocalFieldInitialisations | FieldInitialisationsRef;
 	public FieldInitialisationsElements getFieldInitialisationsAccess() {
 		return pFieldInitialisations;
 	}
 	
 	public ParserRule getFieldInitialisationsRule() {
 		return getFieldInitialisationsAccess().getRule();
+	}
+
+	//FieldInitialisationsRef:
+	//	"init" ref=[GlobalFieldInitialisation] ("(" params+=Value ("," params+=Value)* ")")?;
+	public FieldInitialisationsRefElements getFieldInitialisationsRefAccess() {
+		return pFieldInitialisationsRef;
+	}
+	
+	public ParserRule getFieldInitialisationsRefRule() {
+		return getFieldInitialisationsRefAccess().getRule();
+	}
+
+	//LocalFieldInitialisations:
+	//	"init" "{" (initialisations+=FieldInitialisation ";")+ "}";
+	public LocalFieldInitialisationsElements getLocalFieldInitialisationsAccess() {
+		return pLocalFieldInitialisations;
+	}
+	
+	public ParserRule getLocalFieldInitialisationsRule() {
+		return getLocalFieldInitialisationsAccess().getRule();
 	}
 
 	//FieldInitialisation:

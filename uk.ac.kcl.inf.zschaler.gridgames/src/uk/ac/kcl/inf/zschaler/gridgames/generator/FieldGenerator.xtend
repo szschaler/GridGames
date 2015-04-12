@@ -1,14 +1,17 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
+import java.util.List
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration
@@ -56,7 +59,7 @@ class FieldGenerator extends CommonGenerator {
 		
 		«gg.fields.join (" ", [f | generateFieldInitialiserFor(f)])»
 		
-		«if (gg.fields.exists[f | f.field_initialisation.initialisations.exists[i | i instanceof ContextInitialisation]]) {
+		«if (gg.fields.exists[f | f.allInitialisations.exists[i | i instanceof ContextInitialisation]]) {
 			// Generate helper functions for context initialisation
 			'''
 			private CellContext getContextAt (int x, int y) {
@@ -150,7 +153,7 @@ class FieldGenerator extends CommonGenerator {
 	
 	def getContextExpInvocations(GridGame gg) {
 		gg.fields.map[f | 
-			f.field_initialisation.initialisations.filter(ContextInitialisation).map[ci | 
+			f.allInitialisations.filter(ContextInitialisation).map[ci | 
 				var checkExps = ci.check.sub_exp
 				var valExps = ci.exp.sub_exp
 				checkExps.toList.addAll (valExps)
@@ -159,9 +162,9 @@ class FieldGenerator extends CommonGenerator {
 	}
 
 	def generateImports() {
-		val imports = gg.fields.map[f|f.field_initialisation.initialisations.map[getImportsRequired]].flatten.toSet
+		val imports = gg.fields.map[f|f.allInitialisations.map[getImportsRequired]].flatten.toSet
 		
-		if (gg.fields.exists[f | f.field_initialisation.initialisations.exists[i | i instanceof ContextInitialisation]]) {
+		if (gg.fields.exists[f | f.allInitialisations.exists[i | i instanceof ContextInitialisation]]) {
 			imports.add("java.util.List")
 			imports.add("java.util.ArrayList")			
 		}
@@ -182,7 +185,7 @@ class FieldGenerator extends CommonGenerator {
 			width = «f.width»;
 			height = «f.height»;
 			field = new Cell[width][height];
-			«f.field_initialisation.initialisations.join(" ", [i | i.generateInitCode()])»
+			«f.allInitialisations.join(" ", [i | i.generateInitCode()])»
 			
 			fireTableStructureChanged();
 		}
@@ -256,4 +259,16 @@ class FieldGenerator extends CommonGenerator {
 	def dispatch CharSequence generateFor (CountExpression ce) '''size()'''
 	
 	def dispatch CharSequence generateFor (NotEmptyExpression nee)'''notEmpty()'''
+	
+	def dispatch List<FieldInitialisation> allInitialisations (FieldSpecification fs) {
+		fs.field_initialisation.allInitialisations
+	}
+	
+	def dispatch List<FieldInitialisation> allInitialisations (LocalFieldInitialisations lfi) {
+		lfi.initialisations
+	}
+	
+	def dispatch List<FieldInitialisation> allInitialisations (FieldInitialisationsRef fir) {
+		fir.ref.initialisations
+	}
 }

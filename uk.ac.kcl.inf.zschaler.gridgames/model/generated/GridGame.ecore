@@ -101,7 +101,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialisations" upperBound="-1"
         eType="#//FieldInitialisation" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FieldInitialisations">
+  <eClassifiers xsi:type="ecore:EClass" name="FieldInitialisations"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FieldInitialisationsRef" eSuperTypes="#//FieldInitialisations">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//GlobalFieldInitialisation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//Value" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocalFieldInitialisations" eSuperTypes="#//FieldInitialisations">
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialisations" upperBound="-1"
         eType="#//FieldInitialisation" containment="true"/>
   </eClassifiers>

@@ -281,6 +281,22 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.FIELD_INITIALISATIONS_REF:
+      {
+        FieldInitialisationsRef fieldInitialisationsRef = (FieldInitialisationsRef)theEObject;
+        T result = caseFieldInitialisationsRef(fieldInitialisationsRef);
+        if (result == null) result = caseFieldInitialisations(fieldInitialisationsRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.LOCAL_FIELD_INITIALISATIONS:
+      {
+        LocalFieldInitialisations localFieldInitialisations = (LocalFieldInitialisations)theEObject;
+        T result = caseLocalFieldInitialisations(localFieldInitialisations);
+        if (result == null) result = caseFieldInitialisations(localFieldInitialisations);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GridGamePackage.FIELD_INITIALISATION:
       {
         FieldInitialisation fieldInitialisation = (FieldInitialisation)theEObject;
@@ -792,6 +808,38 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFieldInitialisations(FieldInitialisations object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Field Initialisations Ref</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Field Initialisations Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFieldInitialisationsRef(FieldInitialisationsRef object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Local Field Initialisations</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Local Field Initialisations</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLocalFieldInitialisations(LocalFieldInitialisations object)
   {
     return null;
   }

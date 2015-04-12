@@ -210,6 +210,16 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createFieldInitialisationsAdapter();
       }
       @Override
+      public Adapter caseFieldInitialisationsRef(FieldInitialisationsRef object)
+      {
+        return createFieldInitialisationsRefAdapter();
+      }
+      @Override
+      public Adapter caseLocalFieldInitialisations(LocalFieldInitialisations object)
+      {
+        return createLocalFieldInitialisationsAdapter();
+      }
+      @Override
       public Adapter caseFieldInitialisation(FieldInitialisation object)
       {
         return createFieldInitialisationAdapter();
@@ -682,6 +692,36 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFieldInitialisationsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef <em>Field Initialisations Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef
+   * @generated
+   */
+  public Adapter createFieldInitialisationsRefAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations <em>Local Field Initialisations</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations
+   * @generated
+   */
+  public Adapter createLocalFieldInitialisationsAdapter()
   {
     return null;
   }

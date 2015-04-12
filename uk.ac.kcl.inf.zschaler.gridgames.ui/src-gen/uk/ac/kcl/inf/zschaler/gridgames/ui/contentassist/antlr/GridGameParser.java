@@ -49,6 +49,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCellStateBehaviourAccess().getAlternatives(), "rule__CellStateBehaviour__Alternatives");
 					put(grammarAccess.getDirectBehaviourAccess().getAlternatives(), "rule__DirectBehaviour__Alternatives");
 					put(grammarAccess.getOptionSpecificationAccess().getAlternatives(), "rule__OptionSpecification__Alternatives");
+					put(grammarAccess.getFieldInitialisationsAccess().getAlternatives(), "rule__FieldInitialisations__Alternatives");
 					put(grammarAccess.getFieldInitialisationAccess().getAlternatives(), "rule__FieldInitialisation__Alternatives");
 					put(grammarAccess.getAtomicExpressionAccess().getAlternatives(), "rule__AtomicExpression__Alternatives");
 					put(grammarAccess.getGridGameAccess().getGroup(), "rule__GridGame__Group__0");
@@ -79,8 +80,11 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGlobalFieldInitialisationAccess().getGroup_2(), "rule__GlobalFieldInitialisation__Group_2__0");
 					put(grammarAccess.getGlobalFieldInitialisationAccess().getGroup_2_2(), "rule__GlobalFieldInitialisation__Group_2_2__0");
 					put(grammarAccess.getGlobalFieldInitialisationAccess().getGroup_4(), "rule__GlobalFieldInitialisation__Group_4__0");
-					put(grammarAccess.getFieldInitialisationsAccess().getGroup(), "rule__FieldInitialisations__Group__0");
-					put(grammarAccess.getFieldInitialisationsAccess().getGroup_2(), "rule__FieldInitialisations__Group_2__0");
+					put(grammarAccess.getFieldInitialisationsRefAccess().getGroup(), "rule__FieldInitialisationsRef__Group__0");
+					put(grammarAccess.getFieldInitialisationsRefAccess().getGroup_2(), "rule__FieldInitialisationsRef__Group_2__0");
+					put(grammarAccess.getFieldInitialisationsRefAccess().getGroup_2_2(), "rule__FieldInitialisationsRef__Group_2_2__0");
+					put(grammarAccess.getLocalFieldInitialisationsAccess().getGroup(), "rule__LocalFieldInitialisations__Group__0");
+					put(grammarAccess.getLocalFieldInitialisationsAccess().getGroup_2(), "rule__LocalFieldInitialisations__Group_2__0");
 					put(grammarAccess.getDefaultInitialisationAccess().getGroup(), "rule__DefaultInitialisation__Group__0");
 					put(grammarAccess.getRandomInitialisationAccess().getGroup(), "rule__RandomInitialisation__Group__0");
 					put(grammarAccess.getContextInitialisationAccess().getGroup(), "rule__ContextInitialisation__Group__0");
@@ -135,7 +139,10 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGlobalFieldInitialisationAccess().getParamsAssignment_2_1(), "rule__GlobalFieldInitialisation__ParamsAssignment_2_1");
 					put(grammarAccess.getGlobalFieldInitialisationAccess().getParamsAssignment_2_2_1(), "rule__GlobalFieldInitialisation__ParamsAssignment_2_2_1");
 					put(grammarAccess.getGlobalFieldInitialisationAccess().getInitialisationsAssignment_4_0(), "rule__GlobalFieldInitialisation__InitialisationsAssignment_4_0");
-					put(grammarAccess.getFieldInitialisationsAccess().getInitialisationsAssignment_2_0(), "rule__FieldInitialisations__InitialisationsAssignment_2_0");
+					put(grammarAccess.getFieldInitialisationsRefAccess().getRefAssignment_1(), "rule__FieldInitialisationsRef__RefAssignment_1");
+					put(grammarAccess.getFieldInitialisationsRefAccess().getParamsAssignment_2_1(), "rule__FieldInitialisationsRef__ParamsAssignment_2_1");
+					put(grammarAccess.getFieldInitialisationsRefAccess().getParamsAssignment_2_2_1(), "rule__FieldInitialisationsRef__ParamsAssignment_2_2_1");
+					put(grammarAccess.getLocalFieldInitialisationsAccess().getInitialisationsAssignment_2_0(), "rule__LocalFieldInitialisations__InitialisationsAssignment_2_0");
 					put(grammarAccess.getDefaultInitialisationAccess().getCellAssignment_2(), "rule__DefaultInitialisation__CellAssignment_2");
 					put(grammarAccess.getRandomInitialisationAccess().getCellAssignment_2(), "rule__RandomInitialisation__CellAssignment_2");
 					put(grammarAccess.getRandomInitialisationAccess().getCountAssignment_4(), "rule__RandomInitialisation__CountAssignment_4");

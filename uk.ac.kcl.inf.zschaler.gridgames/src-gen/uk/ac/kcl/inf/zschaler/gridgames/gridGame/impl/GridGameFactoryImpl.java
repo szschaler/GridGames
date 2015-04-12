@@ -91,6 +91,8 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.START_FIELD_DECLARATION: return createStartFieldDeclaration();
       case GridGamePackage.GLOBAL_FIELD_INITIALISATION: return createGlobalFieldInitialisation();
       case GridGamePackage.FIELD_INITIALISATIONS: return createFieldInitialisations();
+      case GridGamePackage.FIELD_INITIALISATIONS_REF: return createFieldInitialisationsRef();
+      case GridGamePackage.LOCAL_FIELD_INITIALISATIONS: return createLocalFieldInitialisations();
       case GridGamePackage.FIELD_INITIALISATION: return createFieldInitialisation();
       case GridGamePackage.DEFAULT_INITIALISATION: return createDefaultInitialisation();
       case GridGamePackage.RANDOM_INITIALISATION: return createRandomInitialisation();
@@ -401,6 +403,28 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     FieldInitialisationsImpl fieldInitialisations = new FieldInitialisationsImpl();
     return fieldInitialisations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FieldInitialisationsRef createFieldInitialisationsRef()
+  {
+    FieldInitialisationsRefImpl fieldInitialisationsRef = new FieldInitialisationsRefImpl();
+    return fieldInitialisationsRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LocalFieldInitialisations createLocalFieldInitialisations()
+  {
+    LocalFieldInitialisationsImpl localFieldInitialisations = new LocalFieldInitialisationsImpl();
+    return localFieldInitialisations;
   }
 
   /**

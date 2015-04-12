@@ -90,8 +90,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalFieldInitialisation/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalFieldInitialisation/initialisations"/>
     </genClasses>
-    <genClasses ecoreClass="GridGame.ecore#//FieldInitialisations">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//FieldInitialisations/initialisations"/>
+    <genClasses ecoreClass="GridGame.ecore#//FieldInitialisations"/>
+    <genClasses ecoreClass="GridGame.ecore#//FieldInitialisationsRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//FieldInitialisationsRef/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//FieldInitialisationsRef/params"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//LocalFieldInitialisations">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//LocalFieldInitialisations/initialisations"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//FieldInitialisation">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//FieldInitialisation/cell"/>

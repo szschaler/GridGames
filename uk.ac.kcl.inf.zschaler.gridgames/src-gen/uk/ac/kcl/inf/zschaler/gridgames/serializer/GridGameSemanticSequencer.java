@@ -28,7 +28,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
@@ -37,6 +37,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
@@ -92,8 +93,8 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case GridGamePackage.END_GAME_BEHAVIOUR:
 				sequence_EndGameBehaviour(context, (EndGameBehaviour) semanticObject); 
 				return; 
-			case GridGamePackage.FIELD_INITIALISATIONS:
-				sequence_FieldInitialisations(context, (FieldInitialisations) semanticObject); 
+			case GridGamePackage.FIELD_INITIALISATIONS_REF:
+				sequence_FieldInitialisationsRef(context, (FieldInitialisationsRef) semanticObject); 
 				return; 
 			case GridGamePackage.FIELD_SPECIFICATION:
 				sequence_FieldSpecification(context, (FieldSpecification) semanticObject); 
@@ -115,6 +116,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.LOCAL_CELL_STATE_SPEC:
 				sequence_LocalCellStateSpec(context, (LocalCellStateSpec) semanticObject); 
+				return; 
+			case GridGamePackage.LOCAL_FIELD_INITIALISATIONS:
+				sequence_LocalFieldInitialisations(context, (LocalFieldInitialisations) semanticObject); 
 				return; 
 			case GridGamePackage.NO_OP_BEHAVIOUR:
 				sequence_DirectBehaviour(context, (NoOpBehaviour) semanticObject); 
@@ -297,9 +301,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     initialisations+=FieldInitialisation+
+	 *     (ref=[GlobalFieldInitialisation|ID] (params+=Value params+=Value*)?)
 	 */
-	protected void sequence_FieldInitialisations(EObject context, FieldInitialisations semanticObject) {
+	protected void sequence_FieldInitialisationsRef(EObject context, FieldInitialisationsRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -384,6 +388,15 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (states+=CellState+ start=[CellState|ID])
 	 */
 	protected void sequence_LocalCellStateSpec(EObject context, LocalCellStateSpec semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     initialisations+=FieldInitialisation+
+	 */
+	protected void sequence_LocalFieldInitialisations(EObject context, LocalFieldInitialisations semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
