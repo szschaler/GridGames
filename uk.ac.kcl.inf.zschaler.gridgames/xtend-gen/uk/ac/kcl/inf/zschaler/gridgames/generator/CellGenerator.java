@@ -21,7 +21,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateParamSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
@@ -506,7 +506,7 @@ public class CellGenerator extends CommonGenerator {
     return this.generateVariableName(cvs);
   }
   
-  protected CharSequence _generateAccessCode(final StateParamSpec sps, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
+  protected CharSequence _generateAccessCode(final ParamSpec sps, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
     Map<String, Value> _value = idAndSymbolTable.getValue();
     String _name = sps.getName();
     Value _get = _value.get(_name);
@@ -612,8 +612,8 @@ public class CellGenerator extends CommonGenerator {
       return _generateAccessCode((CellVarSpec)cvs, idAndSymbolTable);
     } else if (cvs instanceof IntValue) {
       return _generateAccessCode((IntValue)cvs, idAndSymbolTable);
-    } else if (cvs instanceof StateParamSpec) {
-      return _generateAccessCode((StateParamSpec)cvs, idAndSymbolTable);
+    } else if (cvs instanceof ParamSpec) {
+      return _generateAccessCode((ParamSpec)cvs, idAndSymbolTable);
     } else if (cvs instanceof StringValue) {
       return _generateAccessCode((StringValue)cvs, idAndSymbolTable);
     } else if (cvs instanceof VarRefValue) {

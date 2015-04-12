@@ -32,15 +32,16 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalFieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue;
@@ -103,6 +104,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case GridGamePackage.GLOBAL_CELL_STATE_SPEC:
 				sequence_GlobalCellStateSpec(context, (GlobalCellStateSpec) semanticObject); 
 				return; 
+			case GridGamePackage.GLOBAL_FIELD_INITIALISATION:
+				sequence_GlobalFieldInitialisation(context, (GlobalFieldInitialisation) semanticObject); 
+				return; 
 			case GridGamePackage.GRID_GAME:
 				sequence_GridGame(context, (GridGame) semanticObject); 
 				return; 
@@ -118,14 +122,14 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case GridGamePackage.NOT_EMPTY_EXPRESSION:
 				sequence_NotEmptyExpression(context, (NotEmptyExpression) semanticObject); 
 				return; 
+			case GridGamePackage.PARAM_SPEC:
+				sequence_ParamSpec(context, (ParamSpec) semanticObject); 
+				return; 
 			case GridGamePackage.RANDOM_INITIALISATION:
 				sequence_RandomInitialisation(context, (RandomInitialisation) semanticObject); 
 				return; 
 			case GridGamePackage.START_FIELD_DECLARATION:
 				sequence_StartFieldDeclaration(context, (StartFieldDeclaration) semanticObject); 
-				return; 
-			case GridGamePackage.STATE_PARAM_SPEC:
-				sequence_StateParamSpec(context, (StateParamSpec) semanticObject); 
 				return; 
 			case GridGamePackage.STRING_VALUE:
 				sequence_StringValue(context, (StringValue) semanticObject); 
@@ -327,7 +331,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (params+=StateParamSpec params+=StateParamSpec*)? states+=CellState+ start=[CellState|ID])
+	 *     (name=ID (params+=ParamSpec params+=ParamSpec*)? states+=CellState+ start=[CellState|ID])
 	 */
 	protected void sequence_GlobalCellStateSpec(EObject context, GlobalCellStateSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -336,7 +340,23 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID states+=GlobalCellStateSpec? cells+=CellSpecification+ fields+=FieldSpecification+ options+=OptionSpecification*)
+	 *     (name=ID (params+=ParamSpec params+=ParamSpec*)? initialisations+=FieldInitialisation+)
+	 */
+	protected void sequence_GlobalFieldInitialisation(EObject context, GlobalFieldInitialisation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         states+=GlobalCellStateSpec? 
+	 *         cells+=CellSpecification+ 
+	 *         inits+=GlobalFieldInitialisation? 
+	 *         fields+=FieldSpecification+ 
+	 *         options+=OptionSpecification*
+	 *     )
 	 */
 	protected void sequence_GridGame(EObject context, GridGame semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -379,6 +399,15 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
+	 *     ((type='int' | type='String' | type='Behaviour') name=ID)
+	 */
+	protected void sequence_ParamSpec(EObject context, ParamSpec semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (cell=[CellSpecification|ID] count=INT)
 	 */
 	protected void sequence_RandomInitialisation(EObject context, RandomInitialisation semanticObject) {
@@ -409,15 +438,6 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getField());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     ((type='int' | type='String' | type='Behaviour') name=ID)
-	 */
-	protected void sequence_StateParamSpec(EObject context, StateParamSpec semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

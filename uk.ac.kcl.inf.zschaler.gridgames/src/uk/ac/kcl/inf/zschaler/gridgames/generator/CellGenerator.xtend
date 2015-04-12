@@ -7,7 +7,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateParamSpec
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
@@ -155,7 +155,7 @@ class CellGenerator extends CommonGenerator {
 		cvs.generateVariableName
 	}
 
-	def dispatch CharSequence generateAccessCode (StateParamSpec sps, Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
+	def dispatch CharSequence generateAccessCode (ParamSpec sps, Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
 		idAndSymbolTable.value.get (sps.name).generateAccessCode(idAndSymbolTable)
 	}
 

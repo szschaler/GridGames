@@ -124,11 +124,11 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GridGamePackage.STATE_PARAM_SPEC:
+      case GridGamePackage.PARAM_SPEC:
       {
-        StateParamSpec stateParamSpec = (StateParamSpec)theEObject;
-        T result = caseStateParamSpec(stateParamSpec);
-        if (result == null) result = caseVarSpec(stateParamSpec);
+        ParamSpec paramSpec = (ParamSpec)theEObject;
+        T result = caseParamSpec(paramSpec);
+        if (result == null) result = caseVarSpec(paramSpec);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -264,6 +264,13 @@ public class GridGameSwitch<T> extends Switch<T>
         StartFieldDeclaration startFieldDeclaration = (StartFieldDeclaration)theEObject;
         T result = caseStartFieldDeclaration(startFieldDeclaration);
         if (result == null) result = caseOptionSpecification(startFieldDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION:
+      {
+        GlobalFieldInitialisation globalFieldInitialisation = (GlobalFieldInitialisation)theEObject;
+        T result = caseGlobalFieldInitialisation(globalFieldInitialisation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -470,17 +477,17 @@ public class GridGameSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>State Param Spec</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Param Spec</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>State Param Spec</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Param Spec</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseStateParamSpec(StateParamSpec object)
+  public T caseParamSpec(ParamSpec object)
   {
     return null;
   }
@@ -753,6 +760,22 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseStartFieldDeclaration(StartFieldDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Global Field Initialisation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Global Field Initialisation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGlobalFieldInitialisation(GlobalFieldInitialisation object)
   {
     return null;
   }

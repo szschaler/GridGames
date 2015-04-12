@@ -31,6 +31,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalFieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGameFactory;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
@@ -39,9 +40,9 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
@@ -110,7 +111,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass stateParamSpecEClass = null;
+  private EClass paramSpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -230,6 +231,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass startFieldDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass globalFieldInitialisationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -416,7 +424,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGridGame_Fields()
+  public EReference getGridGame_Inits()
   {
     return (EReference)gridGameEClass.getEStructuralFeatures().get(3);
   }
@@ -426,9 +434,19 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGridGame_Options()
+  public EReference getGridGame_Fields()
   {
     return (EReference)gridGameEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGridGame_Options()
+  {
+    return (EReference)gridGameEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -606,9 +624,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getStateParamSpec()
+  public EClass getParamSpec()
   {
-    return stateParamSpecEClass;
+    return paramSpecEClass;
   }
 
   /**
@@ -986,6 +1004,46 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getGlobalFieldInitialisation()
+  {
+    return globalFieldInitialisationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGlobalFieldInitialisation_Name()
+  {
+    return (EAttribute)globalFieldInitialisationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGlobalFieldInitialisation_Params()
+  {
+    return (EReference)globalFieldInitialisationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGlobalFieldInitialisation_Initialisations()
+  {
+    return (EReference)globalFieldInitialisationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getFieldInitialisations()
   {
     return fieldInitialisationsEClass;
@@ -1195,6 +1253,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEAttribute(gridGameEClass, GRID_GAME__NAME);
     createEReference(gridGameEClass, GRID_GAME__STATES);
     createEReference(gridGameEClass, GRID_GAME__CELLS);
+    createEReference(gridGameEClass, GRID_GAME__INITS);
     createEReference(gridGameEClass, GRID_GAME__FIELDS);
     createEReference(gridGameEClass, GRID_GAME__OPTIONS);
 
@@ -1221,7 +1280,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEReference(globalCellStateSpecEClass, GLOBAL_CELL_STATE_SPEC__STATES);
     createEReference(globalCellStateSpecEClass, GLOBAL_CELL_STATE_SPEC__START);
 
-    stateParamSpecEClass = createEClass(STATE_PARAM_SPEC);
+    paramSpecEClass = createEClass(PARAM_SPEC);
 
     cellStateSpecEClass = createEClass(CELL_STATE_SPEC);
 
@@ -1276,6 +1335,11 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     startFieldDeclarationEClass = createEClass(START_FIELD_DECLARATION);
     createEReference(startFieldDeclarationEClass, START_FIELD_DECLARATION__FIELD);
+
+    globalFieldInitialisationEClass = createEClass(GLOBAL_FIELD_INITIALISATION);
+    createEAttribute(globalFieldInitialisationEClass, GLOBAL_FIELD_INITIALISATION__NAME);
+    createEReference(globalFieldInitialisationEClass, GLOBAL_FIELD_INITIALISATION__PARAMS);
+    createEReference(globalFieldInitialisationEClass, GLOBAL_FIELD_INITIALISATION__INITIALISATIONS);
 
     fieldInitialisationsEClass = createEClass(FIELD_INITIALISATIONS);
     createEReference(fieldInitialisationsEClass, FIELD_INITIALISATIONS__INITIALISATIONS);
@@ -1339,7 +1403,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     cellDisplaySpecEClass.getESuperTypes().add(this.getCellMember());
     cellVarSpecEClass.getESuperTypes().add(this.getCellMember());
     cellVarSpecEClass.getESuperTypes().add(this.getVarSpec());
-    stateParamSpecEClass.getESuperTypes().add(this.getVarSpec());
+    paramSpecEClass.getESuperTypes().add(this.getVarSpec());
     cellStateSpecEClass.getESuperTypes().add(this.getCellMember());
     localCellStateSpecEClass.getESuperTypes().add(this.getCellStateSpec());
     cellStateSpecReferenceEClass.getESuperTypes().add(this.getCellStateSpec());
@@ -1365,6 +1429,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEAttribute(getGridGame_Name(), ecorePackage.getEString(), "name", null, 0, 1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGridGame_States(), this.getGlobalCellStateSpec(), null, "states", null, 0, -1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGridGame_Cells(), this.getCellSpecification(), null, "cells", null, 0, -1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGridGame_Inits(), this.getGlobalFieldInitialisation(), null, "inits", null, 0, -1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGridGame_Fields(), this.getFieldSpecification(), null, "fields", null, 0, -1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGridGame_Options(), this.getOptionSpecification(), null, "options", null, 0, -1, GridGame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1387,11 +1452,11 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     initEClass(globalCellStateSpecEClass, GlobalCellStateSpec.class, "GlobalCellStateSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGlobalCellStateSpec_Name(), ecorePackage.getEString(), "name", null, 0, 1, GlobalCellStateSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGlobalCellStateSpec_Params(), this.getStateParamSpec(), null, "params", null, 0, -1, GlobalCellStateSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGlobalCellStateSpec_Params(), this.getParamSpec(), null, "params", null, 0, -1, GlobalCellStateSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGlobalCellStateSpec_States(), this.getCellState(), null, "states", null, 0, -1, GlobalCellStateSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGlobalCellStateSpec_Start(), this.getCellState(), null, "start", null, 0, 1, GlobalCellStateSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(stateParamSpecEClass, StateParamSpec.class, "StateParamSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(paramSpecEClass, ParamSpec.class, "ParamSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(cellStateSpecEClass, CellStateSpec.class, "CellStateSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1446,6 +1511,11 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     initEClass(startFieldDeclarationEClass, StartFieldDeclaration.class, "StartFieldDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getStartFieldDeclaration_Field(), this.getFieldSpecification(), null, "field", null, 0, 1, StartFieldDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(globalFieldInitialisationEClass, GlobalFieldInitialisation.class, "GlobalFieldInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGlobalFieldInitialisation_Name(), ecorePackage.getEString(), "name", null, 0, 1, GlobalFieldInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGlobalFieldInitialisation_Params(), this.getParamSpec(), null, "params", null, 0, -1, GlobalFieldInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGlobalFieldInitialisation_Initialisations(), this.getFieldInitialisation(), null, "initialisations", null, 0, -1, GlobalFieldInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldInitialisationsEClass, FieldInitialisations.class, "FieldInitialisations", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFieldInitialisations_Initialisations(), this.getFieldInitialisation(), null, "initialisations", null, 0, -1, FieldInitialisations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

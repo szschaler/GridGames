@@ -86,13 +86,13 @@ public interface GridGameFactory extends EFactory
   GlobalCellStateSpec createGlobalCellStateSpec();
 
   /**
-   * Returns a new object of class '<em>State Param Spec</em>'.
+   * Returns a new object of class '<em>Param Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>State Param Spec</em>'.
+   * @return a new object of class '<em>Param Spec</em>'.
    * @generated
    */
-  StateParamSpec createStateParamSpec();
+  ParamSpec createParamSpec();
 
   /**
    * Returns a new object of class '<em>Cell State Spec</em>'.
@@ -246,6 +246,15 @@ public interface GridGameFactory extends EFactory
    * @generated
    */
   StartFieldDeclaration createStartFieldDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Global Field Initialisation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Global Field Initialisation</em>'.
+   * @generated
+   */
+  GlobalFieldInitialisation createGlobalFieldInitialisation();
 
   /**
    * Returns a new object of class '<em>Field Initialisations</em>'.

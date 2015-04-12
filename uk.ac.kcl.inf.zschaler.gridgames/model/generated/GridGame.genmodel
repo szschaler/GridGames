@@ -11,6 +11,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GridGame/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/states"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/cells"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/inits"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/fields"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/options"/>
     </genClasses>
@@ -35,7 +36,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalCellStateSpec/states"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalCellStateSpec/start"/>
     </genClasses>
-    <genClasses ecoreClass="GridGame.ecore#//StateParamSpec"/>
+    <genClasses ecoreClass="GridGame.ecore#//ParamSpec"/>
     <genClasses ecoreClass="GridGame.ecore#//CellStateSpec"/>
     <genClasses ecoreClass="GridGame.ecore#//LocalCellStateSpec">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//LocalCellStateSpec/states"/>
@@ -83,6 +84,11 @@
     <genClasses ecoreClass="GridGame.ecore#//AllowRestartMenu"/>
     <genClasses ecoreClass="GridGame.ecore#//StartFieldDeclaration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//StartFieldDeclaration/field"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//GlobalFieldInitialisation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GlobalFieldInitialisation/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalFieldInitialisation/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalFieldInitialisation/initialisations"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//FieldInitialisations">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//FieldInitialisations/initialisations"/>

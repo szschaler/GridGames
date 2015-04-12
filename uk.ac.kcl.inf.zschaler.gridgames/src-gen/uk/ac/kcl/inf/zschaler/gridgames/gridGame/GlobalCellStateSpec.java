@@ -55,7 +55,7 @@ public interface GlobalCellStateSpec extends EObject
 
   /**
    * Returns the value of the '<em><b>Params</b></em>' containment reference list.
-   * The list contents are of type {@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateParamSpec}.
+   * The list contents are of type {@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Params</em>' containment reference list isn't clear,
@@ -67,7 +67,7 @@ public interface GlobalCellStateSpec extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<StateParamSpec> getParams();
+  EList<ParamSpec> getParams();
 
   /**
    * Returns the value of the '<em><b>States</b></em>' containment reference list.

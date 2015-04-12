@@ -8,6 +8,8 @@
         eType="#//GlobalCellStateSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
         eType="#//CellSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inits" upperBound="-1"
+        eType="#//GlobalFieldInitialisation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
         eType="#//FieldSpecification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="options" upperBound="-1"
@@ -32,12 +34,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="GlobalCellStateSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
-        eType="#//StateParamSpec" containment="true"/>
+        eType="#//ParamSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
         eType="#//CellState" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//CellState"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StateParamSpec" eSuperTypes="#//VarSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamSpec" eSuperTypes="#//VarSpec"/>
   <eClassifiers xsi:type="ecore:EClass" name="CellStateSpec" eSuperTypes="#//CellMember"/>
   <eClassifiers xsi:type="ecore:EClass" name="LocalCellStateSpec" eSuperTypes="#//CellStateSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
@@ -91,6 +93,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="AllowRestartMenu" eSuperTypes="#//OptionSpecification"/>
   <eClassifiers xsi:type="ecore:EClass" name="StartFieldDeclaration" eSuperTypes="#//OptionSpecification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="field" eType="#//FieldSpecification"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalFieldInitialisation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//ParamSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialisations" upperBound="-1"
+        eType="#//FieldInitialisation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FieldInitialisations">
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialisations" upperBound="-1"

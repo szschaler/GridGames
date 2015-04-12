@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalFieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
@@ -35,6 +36,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getStates <em>States</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getCells <em>Cells</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getInits <em>Inits</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getOptions <em>Options</em>}</li>
  * </ul>
@@ -83,6 +85,16 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
    * @ordered
    */
   protected EList<CellSpecification> cells;
+
+  /**
+   * The cached value of the '{@link #getInits() <em>Inits</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInits()
+   * @generated
+   * @ordered
+   */
+  protected EList<GlobalFieldInitialisation> inits;
 
   /**
    * The cached value of the '{@link #getFields() <em>Fields</em>}' containment reference list.
@@ -181,6 +193,20 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<GlobalFieldInitialisation> getInits()
+  {
+    if (inits == null)
+    {
+      inits = new EObjectContainmentEList<GlobalFieldInitialisation>(GlobalFieldInitialisation.class, this, GridGamePackage.GRID_GAME__INITS);
+    }
+    return inits;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<FieldSpecification> getFields()
   {
     if (fields == null)
@@ -218,6 +244,8 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
         return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
       case GridGamePackage.GRID_GAME__CELLS:
         return ((InternalEList<?>)getCells()).basicRemove(otherEnd, msgs);
+      case GridGamePackage.GRID_GAME__INITS:
+        return ((InternalEList<?>)getInits()).basicRemove(otherEnd, msgs);
       case GridGamePackage.GRID_GAME__FIELDS:
         return ((InternalEList<?>)getFields()).basicRemove(otherEnd, msgs);
       case GridGamePackage.GRID_GAME__OPTIONS:
@@ -242,6 +270,8 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
         return getStates();
       case GridGamePackage.GRID_GAME__CELLS:
         return getCells();
+      case GridGamePackage.GRID_GAME__INITS:
+        return getInits();
       case GridGamePackage.GRID_GAME__FIELDS:
         return getFields();
       case GridGamePackage.GRID_GAME__OPTIONS:
@@ -271,6 +301,10 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
       case GridGamePackage.GRID_GAME__CELLS:
         getCells().clear();
         getCells().addAll((Collection<? extends CellSpecification>)newValue);
+        return;
+      case GridGamePackage.GRID_GAME__INITS:
+        getInits().clear();
+        getInits().addAll((Collection<? extends GlobalFieldInitialisation>)newValue);
         return;
       case GridGamePackage.GRID_GAME__FIELDS:
         getFields().clear();
@@ -303,6 +337,9 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
       case GridGamePackage.GRID_GAME__CELLS:
         getCells().clear();
         return;
+      case GridGamePackage.GRID_GAME__INITS:
+        getInits().clear();
+        return;
       case GridGamePackage.GRID_GAME__FIELDS:
         getFields().clear();
         return;
@@ -329,6 +366,8 @@ public class GridGameImpl extends MinimalEObjectImpl.Container implements GridGa
         return states != null && !states.isEmpty();
       case GridGamePackage.GRID_GAME__CELLS:
         return cells != null && !cells.isEmpty();
+      case GridGamePackage.GRID_GAME__INITS:
+        return inits != null && !inits.isEmpty();
       case GridGamePackage.GRID_GAME__FIELDS:
         return fields != null && !fields.isEmpty();
       case GridGamePackage.GRID_GAME__OPTIONS:

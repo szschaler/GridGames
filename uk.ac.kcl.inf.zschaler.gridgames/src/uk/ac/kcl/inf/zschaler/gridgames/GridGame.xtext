@@ -20,6 +20,7 @@ GridGame :
 	"game" name=ID "{"
 		(states += GlobalCellStateSpec+)?
 		cells += CellSpecification+
+		(inits += GlobalFieldInitialisation+)?
 		fields += FieldSpecification+
 		options += OptionSpecification*
 	"}"
@@ -46,7 +47,7 @@ CellDisplaySpec :
 
 VarSpec : 
 	CellVarSpec |
-	StateParamSpec
+	ParamSpec
 ;
 
 CellVarSpec :
@@ -54,14 +55,14 @@ CellVarSpec :
 ;
 
 GlobalCellStateSpec :
-	"states" name=ID ("(" params += StateParamSpec ("," params += StateParamSpec)* ")")? "{"
+	"states" name=ID ("(" params += ParamSpec ("," params += ParamSpec)* ")")? "{"
 		states+=CellState+
 		
 		"start" "=" start=[CellState]
 	"}"
 ;
 
-StateParamSpec :
+ParamSpec :
 	type=("int"|"String"|"Behaviour") name=ID
 ;
 
@@ -161,6 +162,10 @@ AllowRestartMenu:
 
 StartFieldDeclaration:
 	"start" "=" field = [FieldSpecification]
+;
+
+GlobalFieldInitialisation :
+	"init" name=ID ("(" params += ParamSpec ("," params += ParamSpec)* ")")? "{" (initialisations += FieldInitialisation ";")+ "}"
 ;
 
 FieldInitialisations :

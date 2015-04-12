@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getStates <em>States</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getCells <em>Cells</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getInits <em>Inits</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getFields <em>Fields</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame#getOptions <em>Options</em>}</li>
  * </ul>
@@ -85,6 +86,22 @@ public interface GridGame extends EObject
    * @generated
    */
   EList<CellSpecification> getCells();
+
+  /**
+   * Returns the value of the '<em><b>Inits</b></em>' containment reference list.
+   * The list contents are of type {@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalFieldInitialisation}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Inits</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Inits</em>' containment reference list.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getGridGame_Inits()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GlobalFieldInitialisation> getInits();
 
   /**
    * Returns the value of the '<em><b>Fields</b></em>' containment reference list.

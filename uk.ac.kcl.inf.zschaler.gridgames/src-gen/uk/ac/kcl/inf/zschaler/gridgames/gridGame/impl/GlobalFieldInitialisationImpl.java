@@ -18,28 +18,27 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalFieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Global Cell State Spec</b></em>'.
+ * An implementation of the model object '<em><b>Global Field Initialisation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GlobalCellStateSpecImpl#getName <em>Name</em>}</li>
- *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GlobalCellStateSpecImpl#getParams <em>Params</em>}</li>
- *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GlobalCellStateSpecImpl#getStates <em>States</em>}</li>
- *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GlobalCellStateSpecImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GlobalFieldInitialisationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GlobalFieldInitialisationImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GlobalFieldInitialisationImpl#getInitialisations <em>Initialisations</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implements GlobalCellStateSpec
+public class GlobalFieldInitialisationImpl extends MinimalEObjectImpl.Container implements GlobalFieldInitialisation
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -72,31 +71,21 @@ public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implem
   protected EList<ParamSpec> params;
 
   /**
-   * The cached value of the '{@link #getStates() <em>States</em>}' containment reference list.
+   * The cached value of the '{@link #getInitialisations() <em>Initialisations</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getStates()
+   * @see #getInitialisations()
    * @generated
    * @ordered
    */
-  protected EList<CellState> states;
-
-  /**
-   * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getStart()
-   * @generated
-   * @ordered
-   */
-  protected CellState start;
+  protected EList<FieldInitialisation> initialisations;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected GlobalCellStateSpecImpl()
+  protected GlobalFieldInitialisationImpl()
   {
     super();
   }
@@ -109,7 +98,7 @@ public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implem
   @Override
   protected EClass eStaticClass()
   {
-    return GridGamePackage.Literals.GLOBAL_CELL_STATE_SPEC;
+    return GridGamePackage.Literals.GLOBAL_FIELD_INITIALISATION;
   }
 
   /**
@@ -132,7 +121,7 @@ public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implem
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.GLOBAL_CELL_STATE_SPEC__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.GLOBAL_FIELD_INITIALISATION__NAME, oldName, name));
   }
 
   /**
@@ -144,7 +133,7 @@ public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implem
   {
     if (params == null)
     {
-      params = new EObjectContainmentEList<ParamSpec>(ParamSpec.class, this, GridGamePackage.GLOBAL_CELL_STATE_SPEC__PARAMS);
+      params = new EObjectContainmentEList<ParamSpec>(ParamSpec.class, this, GridGamePackage.GLOBAL_FIELD_INITIALISATION__PARAMS);
     }
     return params;
   }
@@ -154,56 +143,13 @@ public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<CellState> getStates()
+  public EList<FieldInitialisation> getInitialisations()
   {
-    if (states == null)
+    if (initialisations == null)
     {
-      states = new EObjectContainmentEList<CellState>(CellState.class, this, GridGamePackage.GLOBAL_CELL_STATE_SPEC__STATES);
+      initialisations = new EObjectContainmentEList<FieldInitialisation>(FieldInitialisation.class, this, GridGamePackage.GLOBAL_FIELD_INITIALISATION__INITIALISATIONS);
     }
-    return states;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CellState getStart()
-  {
-    if (start != null && start.eIsProxy())
-    {
-      InternalEObject oldStart = (InternalEObject)start;
-      start = (CellState)eResolveProxy(oldStart);
-      if (start != oldStart)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GridGamePackage.GLOBAL_CELL_STATE_SPEC__START, oldStart, start));
-      }
-    }
-    return start;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CellState basicGetStart()
-  {
-    return start;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setStart(CellState newStart)
-  {
-    CellState oldStart = start;
-    start = newStart;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.GLOBAL_CELL_STATE_SPEC__START, oldStart, start));
+    return initialisations;
   }
 
   /**
@@ -216,10 +162,10 @@ public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__PARAMS:
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__PARAMS:
         return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__STATES:
-        return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__INITIALISATIONS:
+        return ((InternalEList<?>)getInitialisations()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -234,15 +180,12 @@ public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__NAME:
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__NAME:
         return getName();
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__PARAMS:
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__PARAMS:
         return getParams();
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__STATES:
-        return getStates();
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__START:
-        if (resolve) return getStart();
-        return basicGetStart();
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__INITIALISATIONS:
+        return getInitialisations();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -258,19 +201,16 @@ public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__NAME:
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__NAME:
         setName((String)newValue);
         return;
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__PARAMS:
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__PARAMS:
         getParams().clear();
         getParams().addAll((Collection<? extends ParamSpec>)newValue);
         return;
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__STATES:
-        getStates().clear();
-        getStates().addAll((Collection<? extends CellState>)newValue);
-        return;
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__START:
-        setStart((CellState)newValue);
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__INITIALISATIONS:
+        getInitialisations().clear();
+        getInitialisations().addAll((Collection<? extends FieldInitialisation>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -286,17 +226,14 @@ public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__NAME:
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__PARAMS:
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__PARAMS:
         getParams().clear();
         return;
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__STATES:
-        getStates().clear();
-        return;
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__START:
-        setStart((CellState)null);
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__INITIALISATIONS:
+        getInitialisations().clear();
         return;
     }
     super.eUnset(featureID);
@@ -312,14 +249,12 @@ public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__NAME:
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__PARAMS:
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__PARAMS:
         return params != null && !params.isEmpty();
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__STATES:
-        return states != null && !states.isEmpty();
-      case GridGamePackage.GLOBAL_CELL_STATE_SPEC__START:
-        return start != null;
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION__INITIALISATIONS:
+        return initialisations != null && !initialisations.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -341,4 +276,4 @@ public class GlobalCellStateSpecImpl extends MinimalEObjectImpl.Container implem
     return result.toString();
   }
 
-} //GlobalCellStateSpecImpl
+} //GlobalFieldInitialisationImpl

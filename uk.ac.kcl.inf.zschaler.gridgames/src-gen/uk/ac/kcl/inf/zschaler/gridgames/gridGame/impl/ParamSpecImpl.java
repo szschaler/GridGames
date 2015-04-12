@@ -5,25 +5,25 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateParamSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>State Param Spec</b></em>'.
+ * An implementation of the model object '<em><b>Param Spec</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class StateParamSpecImpl extends VarSpecImpl implements StateParamSpec
+public class ParamSpecImpl extends VarSpecImpl implements ParamSpec
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected StateParamSpecImpl()
+  protected ParamSpecImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class StateParamSpecImpl extends VarSpecImpl implements StateParamSpec
   @Override
   protected EClass eStaticClass()
   {
-    return GridGamePackage.Literals.STATE_PARAM_SPEC;
+    return GridGamePackage.Literals.PARAM_SPEC;
   }
 
-} //StateParamSpecImpl
+} //ParamSpecImpl

@@ -71,7 +71,7 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.VAR_SPEC: return createVarSpec();
       case GridGamePackage.CELL_VAR_SPEC: return createCellVarSpec();
       case GridGamePackage.GLOBAL_CELL_STATE_SPEC: return createGlobalCellStateSpec();
-      case GridGamePackage.STATE_PARAM_SPEC: return createStateParamSpec();
+      case GridGamePackage.PARAM_SPEC: return createParamSpec();
       case GridGamePackage.CELL_STATE_SPEC: return createCellStateSpec();
       case GridGamePackage.LOCAL_CELL_STATE_SPEC: return createLocalCellStateSpec();
       case GridGamePackage.CELL_STATE_SPEC_REFERENCE: return createCellStateSpecReference();
@@ -89,6 +89,7 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.OPTION_SPECIFICATION: return createOptionSpecification();
       case GridGamePackage.ALLOW_RESTART_MENU: return createAllowRestartMenu();
       case GridGamePackage.START_FIELD_DECLARATION: return createStartFieldDeclaration();
+      case GridGamePackage.GLOBAL_FIELD_INITIALISATION: return createGlobalFieldInitialisation();
       case GridGamePackage.FIELD_INITIALISATIONS: return createFieldInitialisations();
       case GridGamePackage.FIELD_INITIALISATION: return createFieldInitialisation();
       case GridGamePackage.DEFAULT_INITIALISATION: return createDefaultInitialisation();
@@ -187,10 +188,10 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public StateParamSpec createStateParamSpec()
+  public ParamSpec createParamSpec()
   {
-    StateParamSpecImpl stateParamSpec = new StateParamSpecImpl();
-    return stateParamSpec;
+    ParamSpecImpl paramSpec = new ParamSpecImpl();
+    return paramSpec;
   }
 
   /**
@@ -378,6 +379,17 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     StartFieldDeclarationImpl startFieldDeclaration = new StartFieldDeclarationImpl();
     return startFieldDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GlobalFieldInitialisation createGlobalFieldInitialisation()
+  {
+    GlobalFieldInitialisationImpl globalFieldInitialisation = new GlobalFieldInitialisationImpl();
+    return globalFieldInitialisation;
   }
 
   /**

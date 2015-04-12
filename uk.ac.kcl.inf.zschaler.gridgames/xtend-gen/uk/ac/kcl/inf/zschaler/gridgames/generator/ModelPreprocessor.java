@@ -35,7 +35,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateParamSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
 
 /**
@@ -218,16 +218,16 @@ public class ModelPreprocessor {
       EList<Value> _params = cssr.getParams();
       final Iterator<Value> iter = _params.iterator();
       GlobalCellStateSpec _stateSpec = cssr.getStateSpec();
-      EList<StateParamSpec> _params_1 = _stateSpec.getParams();
-      final Procedure1<StateParamSpec> _function = new Procedure1<StateParamSpec>() {
+      EList<ParamSpec> _params_1 = _stateSpec.getParams();
+      final Procedure1<ParamSpec> _function = new Procedure1<ParamSpec>() {
         @Override
-        public void apply(final StateParamSpec p) {
+        public void apply(final ParamSpec p) {
           String _name = p.getName();
           Value _next = iter.next();
           symbols.put(_name, _next);
         }
       };
-      IterableExtensions.<StateParamSpec>forEach(_params_1, _function);
+      IterableExtensions.<ParamSpec>forEach(_params_1, _function);
       GlobalCellStateSpec _stateSpec_1 = cssr.getStateSpec();
       EList<CellState> _states = _stateSpec_1.getStates();
       final Function1<CellState, Pair<? extends Map<String, Value>, CellState>> _function_1 = new Function1<CellState, Pair<? extends Map<String, Value>, CellState>>() {
