@@ -25,6 +25,7 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
@@ -299,18 +300,78 @@ public class ModelPreprocessor {
     return IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>filter(_flatten, _function);
   }
   
-  protected List<FieldInitialisation> _allInitialisations(final FieldSpecification fs) {
-    FieldInitialisations _field_initialisation = fs.getField_initialisation();
-    return this.allInitialisations(_field_initialisation);
+  private Map<FieldSpecification, List<Pair<Map<String, Value>, FieldInitialisation>>> fieldInitialisations;
+  
+  public List<Pair<Map<String, Value>, FieldInitialisation>> allInitialisations(final FieldSpecification fs) {
+    List<Pair<Map<String, Value>, FieldInitialisation>> _xblockexpression = null;
+    {
+      boolean _equals = Objects.equal(this.fieldInitialisations, null);
+      if (_equals) {
+        this.initialiseFieldInitialisations();
+      }
+      _xblockexpression = this.fieldInitialisations.get(fs);
+    }
+    return _xblockexpression;
   }
   
-  protected List<FieldInitialisation> _allInitialisations(final LocalFieldInitialisations lfi) {
-    return lfi.getInitialisations();
+  private void initialiseFieldInitialisations() {
+    HashMap<FieldSpecification, List<Pair<Map<String, Value>, FieldInitialisation>>> _hashMap = new HashMap<FieldSpecification, List<Pair<Map<String, Value>, FieldInitialisation>>>();
+    this.fieldInitialisations = _hashMap;
+    EList<FieldSpecification> _fields = this.gg.getFields();
+    final Procedure1<FieldSpecification> _function = new Procedure1<FieldSpecification>() {
+      @Override
+      public void apply(final FieldSpecification f) {
+        FieldInitialisations _field_initialisation = f.getField_initialisation();
+        List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = ModelPreprocessor.this.getAllInitialisations(_field_initialisation);
+        ModelPreprocessor.this.fieldInitialisations.put(f, _allInitialisations);
+      }
+    };
+    IterableExtensions.<FieldSpecification>forEach(_fields, _function);
   }
   
-  protected List<FieldInitialisation> _allInitialisations(final FieldInitialisationsRef fir) {
-    GlobalFieldInitialisation _ref = fir.getRef();
-    return _ref.getInitialisations();
+  private List<Pair<Map<String, Value>, FieldInitialisation>> _getAllInitialisations(final LocalFieldInitialisations lfi) {
+    List<Pair<Map<String, Value>, FieldInitialisation>> _xblockexpression = null;
+    {
+      final Map<String, Value> symbols = Collections.<String, Value>emptyMap();
+      EList<FieldInitialisation> _initialisations = lfi.getInitialisations();
+      final Function1<FieldInitialisation, Pair<Map<String, Value>, FieldInitialisation>> _function = new Function1<FieldInitialisation, Pair<Map<String, Value>, FieldInitialisation>>() {
+        @Override
+        public Pair<Map<String, Value>, FieldInitialisation> apply(final FieldInitialisation i) {
+          return new Pair<Map<String, Value>, FieldInitialisation>(symbols, i);
+        }
+      };
+      _xblockexpression = ListExtensions.<FieldInitialisation, Pair<Map<String, Value>, FieldInitialisation>>map(_initialisations, _function);
+    }
+    return _xblockexpression;
+  }
+  
+  private List<Pair<Map<String, Value>, FieldInitialisation>> _getAllInitialisations(final FieldInitialisationsRef fir) {
+    List<Pair<Map<String, Value>, FieldInitialisation>> _xblockexpression = null;
+    {
+      final Map<String, Value> symbols = new HashMap<String, Value>();
+      GlobalFieldInitialisation _ref = fir.getRef();
+      EList<ParamSpec> _params = _ref.getParams();
+      final Procedure2<ParamSpec, Integer> _function = new Procedure2<ParamSpec, Integer>() {
+        @Override
+        public void apply(final ParamSpec p, final Integer idx) {
+          String _name = p.getName();
+          EList<Value> _params = fir.getParams();
+          Value _get = _params.get((idx).intValue());
+          symbols.put(_name, _get);
+        }
+      };
+      IterableExtensions.<ParamSpec>forEach(_params, _function);
+      GlobalFieldInitialisation _ref_1 = fir.getRef();
+      EList<FieldInitialisation> _initialisations = _ref_1.getInitialisations();
+      final Function1<FieldInitialisation, Pair<Map<String, Value>, FieldInitialisation>> _function_1 = new Function1<FieldInitialisation, Pair<Map<String, Value>, FieldInitialisation>>() {
+        @Override
+        public Pair<Map<String, Value>, FieldInitialisation> apply(final FieldInitialisation i) {
+          return new Pair<Map<String, Value>, FieldInitialisation>(symbols, i);
+        }
+      };
+      _xblockexpression = ListExtensions.<FieldInitialisation, Pair<Map<String, Value>, FieldInitialisation>>map(_initialisations, _function_1);
+    }
+    return _xblockexpression;
   }
   
   private List<Pair<? extends Map<String, Value>, CellState>> getAllStates(final CellStateSpec cssr) {
@@ -335,13 +396,11 @@ public class ModelPreprocessor {
     }
   }
   
-  public List<FieldInitialisation> allInitialisations(final EObject fir) {
+  private List<Pair<Map<String, Value>, FieldInitialisation>> getAllInitialisations(final FieldInitialisations fir) {
     if (fir instanceof FieldInitialisationsRef) {
-      return _allInitialisations((FieldInitialisationsRef)fir);
+      return _getAllInitialisations((FieldInitialisationsRef)fir);
     } else if (fir instanceof LocalFieldInitialisations) {
-      return _allInitialisations((LocalFieldInitialisations)fir);
-    } else if (fir instanceof FieldSpecification) {
-      return _allInitialisations((FieldSpecification)fir);
+      return _getAllInitialisations((LocalFieldInitialisations)fir);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(fir).toString());

@@ -1,5 +1,6 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
+import java.util.Map
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation
@@ -12,6 +13,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 
 /**
  * Generates the field class.
@@ -56,7 +58,7 @@ class FieldGenerator extends CommonGenerator {
 		
 		«gg.fields.join (" ", [f | generateFieldInitialiserFor(f)])»
 		
-		«if (gg.fields.exists[f | mpp.allInitialisations(f).exists[i | i instanceof ContextInitialisation]]) {
+		«if (gg.fields.exists[f | mpp.allInitialisations(f).exists[i | i.value instanceof ContextInitialisation]]) {
 			// Generate helper functions for context initialisation
 			'''
 			private CellContext getContextAt (int x, int y) {
@@ -159,9 +161,9 @@ class FieldGenerator extends CommonGenerator {
 	}
 
 	def generateImports() {
-		val imports = gg.fields.map[f|mpp.allInitialisations(f).map[getImportsRequired]].flatten.toSet
+		val imports = gg.fields.map[f|mpp.allInitialisations(f).map[i | i.value.getImportsRequired (i.key)]].flatten.toSet
 		
-		if (gg.fields.exists[f | mpp.allInitialisations(f).exists[i | i instanceof ContextInitialisation]]) {
+		if (gg.fields.exists[f | mpp.allInitialisations(f).exists[i | i.value instanceof ContextInitialisation]]) {
 			imports.add("java.util.List")
 			imports.add("java.util.ArrayList")			
 		}
@@ -169,11 +171,11 @@ class FieldGenerator extends CommonGenerator {
 		imports.filter[imp | !imp.equals("")].join("\n", [ imp | '''import «imp»;'''])
 	}
 
-	def dispatch getImportsRequired(RandomInitialisation ri) {
+	def dispatch getImportsRequired(RandomInitialisation ri, Map<String, Value> symbols) {
 		"java.util.Random"
 	}
 
-	def dispatch getImportsRequired(FieldInitialisation di) {
+	def dispatch getImportsRequired(FieldInitialisation di, Map<String, Value> symbols) {
 		""
 	}
 	
@@ -182,13 +184,13 @@ class FieldGenerator extends CommonGenerator {
 			width = «f.width»;
 			height = «f.height»;
 			field = new Cell[width][height];
-			«mpp.allInitialisations(f).join(" ", [i | i.generateInitCode()])»
+			«mpp.allInitialisations(f).join(" ", [i | i.value.generateInitCode(i.key)])»
 			
 			fireTableStructureChanged();
 		}
 	'''
 
-	def dispatch generateInitCode(DefaultInitialisation dfi) '''
+	def dispatch generateInitCode(DefaultInitialisation dfi, Map<String, Value> symbols) '''
 		// Fill the rest of the field with «dfi.cell» cells
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
@@ -199,7 +201,7 @@ class FieldGenerator extends CommonGenerator {
 		}
 	'''
 
-	def dispatch generateInitCode(RandomInitialisation rfi) '''
+	def dispatch generateInitCode(RandomInitialisation rfi, Map<String, Value> symbols) '''
 		// Randomly allocate «rfi.cell» cells
 		{
 			Random r = new Random();
@@ -220,7 +222,7 @@ class FieldGenerator extends CommonGenerator {
 		}
 	'''
 
-	def dispatch generateInitCode(ContextInitialisation ci) '''
+	def dispatch generateInitCode(ContextInitialisation ci, Map<String, Value> symbols) '''
 	  // Fill in «ci.cell» cells where appropriate because of context
 	  for (int x = 0; x < width; x++) {
 	  	for (int y = 0; y < height; y++) {

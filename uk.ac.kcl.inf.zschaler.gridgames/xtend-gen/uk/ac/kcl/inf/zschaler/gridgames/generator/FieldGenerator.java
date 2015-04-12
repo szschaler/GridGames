@@ -3,6 +3,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator;
 import com.google.common.collect.Iterables;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -11,6 +12,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
@@ -28,6 +30,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
 
 /**
  * Generates the field class.
@@ -150,14 +153,15 @@ public class FieldGenerator extends CommonGenerator {
     final Function1<FieldSpecification, Boolean> _function_1 = new Function1<FieldSpecification, Boolean>() {
       @Override
       public Boolean apply(final FieldSpecification f) {
-        List<FieldInitialisation> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
-        final Function1<FieldInitialisation, Boolean> _function = new Function1<FieldInitialisation, Boolean>() {
+        List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
+        final Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean>() {
           @Override
-          public Boolean apply(final FieldInitialisation i) {
-            return Boolean.valueOf((i instanceof ContextInitialisation));
+          public Boolean apply(final Pair<Map<String, Value>, FieldInitialisation> i) {
+            FieldInitialisation _value = i.getValue();
+            return Boolean.valueOf((_value instanceof ContextInitialisation));
           }
         };
-        return Boolean.valueOf(IterableExtensions.<FieldInitialisation>exists(_allInitialisations, _function));
+        return Boolean.valueOf(IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>exists(_allInitialisations, _function));
       }
     };
     boolean _exists = IterableExtensions.<FieldSpecification>exists(_fields_1, _function_1);
@@ -412,7 +416,7 @@ public class FieldGenerator extends CommonGenerator {
     final Function1<FieldSpecification, Iterable<AtomicExpression>> _function = new Function1<FieldSpecification, Iterable<AtomicExpression>>() {
       @Override
       public Iterable<AtomicExpression> apply(final FieldSpecification f) {
-        List<FieldInitialisation> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
+        List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
         Iterable<ContextInitialisation> _filter = Iterables.<ContextInitialisation>filter(_allInitialisations, ContextInitialisation.class);
         final Function1<ContextInitialisation, EList<AtomicExpression>> _function = new Function1<ContextInitialisation, EList<AtomicExpression>>() {
           @Override
@@ -445,14 +449,16 @@ public class FieldGenerator extends CommonGenerator {
       final Function1<FieldSpecification, List<String>> _function = new Function1<FieldSpecification, List<String>>() {
         @Override
         public List<String> apply(final FieldSpecification f) {
-          List<FieldInitialisation> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
-          final Function1<FieldInitialisation, String> _function = new Function1<FieldInitialisation, String>() {
+          List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
+          final Function1<Pair<Map<String, Value>, FieldInitialisation>, String> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, String>() {
             @Override
-            public String apply(final FieldInitialisation it) {
-              return FieldGenerator.this.getImportsRequired(it);
+            public String apply(final Pair<Map<String, Value>, FieldInitialisation> i) {
+              FieldInitialisation _value = i.getValue();
+              Map<String, Value> _key = i.getKey();
+              return FieldGenerator.this.getImportsRequired(_value, _key);
             }
           };
-          return ListExtensions.<FieldInitialisation, String>map(_allInitialisations, _function);
+          return ListExtensions.<Pair<Map<String, Value>, FieldInitialisation>, String>map(_allInitialisations, _function);
         }
       };
       List<List<String>> _map = ListExtensions.<FieldSpecification, List<String>>map(_fields, _function);
@@ -462,14 +468,15 @@ public class FieldGenerator extends CommonGenerator {
       final Function1<FieldSpecification, Boolean> _function_1 = new Function1<FieldSpecification, Boolean>() {
         @Override
         public Boolean apply(final FieldSpecification f) {
-          List<FieldInitialisation> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
-          final Function1<FieldInitialisation, Boolean> _function = new Function1<FieldInitialisation, Boolean>() {
+          List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
+          final Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean>() {
             @Override
-            public Boolean apply(final FieldInitialisation i) {
-              return Boolean.valueOf((i instanceof ContextInitialisation));
+            public Boolean apply(final Pair<Map<String, Value>, FieldInitialisation> i) {
+              FieldInitialisation _value = i.getValue();
+              return Boolean.valueOf((_value instanceof ContextInitialisation));
             }
           };
-          return Boolean.valueOf(IterableExtensions.<FieldInitialisation>exists(_allInitialisations, _function));
+          return Boolean.valueOf(IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>exists(_allInitialisations, _function));
         }
       };
       boolean _exists = IterableExtensions.<FieldSpecification>exists(_fields_1, _function_1);
@@ -500,11 +507,11 @@ public class FieldGenerator extends CommonGenerator {
     return _xblockexpression;
   }
   
-  protected String _getImportsRequired(final RandomInitialisation ri) {
+  protected String _getImportsRequired(final RandomInitialisation ri, final Map<String, Value> symbols) {
     return "java.util.Random";
   }
   
-  protected String _getImportsRequired(final FieldInitialisation di) {
+  protected String _getImportsRequired(final FieldInitialisation di, final Map<String, Value> symbols) {
     return "";
   }
   
@@ -531,14 +538,16 @@ public class FieldGenerator extends CommonGenerator {
     _builder.append("field = new Cell[width][height];");
     _builder.newLine();
     _builder.append("\t");
-    List<FieldInitialisation> _allInitialisations = this.mpp.allInitialisations(f);
-    final Function1<FieldInitialisation, CharSequence> _function = new Function1<FieldInitialisation, CharSequence>() {
+    List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = this.mpp.allInitialisations(f);
+    final Function1<Pair<Map<String, Value>, FieldInitialisation>, CharSequence> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, CharSequence>() {
       @Override
-      public CharSequence apply(final FieldInitialisation i) {
-        return FieldGenerator.this.generateInitCode(i);
+      public CharSequence apply(final Pair<Map<String, Value>, FieldInitialisation> i) {
+        FieldInitialisation _value = i.getValue();
+        Map<String, Value> _key = i.getKey();
+        return FieldGenerator.this.generateInitCode(_value, _key);
       }
     };
-    String _join = IterableExtensions.<FieldInitialisation>join(_allInitialisations, " ", _function);
+    String _join = IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>join(_allInitialisations, " ", _function);
     _builder.append(_join, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -551,7 +560,7 @@ public class FieldGenerator extends CommonGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateInitCode(final DefaultInitialisation dfi) {
+  protected CharSequence _generateInitCode(final DefaultInitialisation dfi, final Map<String, Value> symbols) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// Fill the rest of the field with ");
     CellSpecification _cell = dfi.getCell();
@@ -584,7 +593,7 @@ public class FieldGenerator extends CommonGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateInitCode(final RandomInitialisation rfi) {
+  protected CharSequence _generateInitCode(final RandomInitialisation rfi, final Map<String, Value> symbols) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// Randomly allocate ");
     CellSpecification _cell = rfi.getCell();
@@ -644,7 +653,7 @@ public class FieldGenerator extends CommonGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateInitCode(final ContextInitialisation ci) {
+  protected CharSequence _generateInitCode(final ContextInitialisation ci, final Map<String, Value> symbols) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// Fill in ");
     CellSpecification _cell = ci.getCell();
@@ -773,27 +782,27 @@ public class FieldGenerator extends CommonGenerator {
     }
   }
   
-  public String getImportsRequired(final FieldInitialisation ri) {
+  public String getImportsRequired(final FieldInitialisation ri, final Map<String, Value> symbols) {
     if (ri instanceof RandomInitialisation) {
-      return _getImportsRequired((RandomInitialisation)ri);
+      return _getImportsRequired((RandomInitialisation)ri, symbols);
     } else if (ri != null) {
-      return _getImportsRequired(ri);
+      return _getImportsRequired(ri, symbols);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(ri).toString());
+        Arrays.<Object>asList(ri, symbols).toString());
     }
   }
   
-  public CharSequence generateInitCode(final FieldInitialisation ci) {
+  public CharSequence generateInitCode(final FieldInitialisation ci, final Map<String, Value> symbols) {
     if (ci instanceof ContextInitialisation) {
-      return _generateInitCode((ContextInitialisation)ci);
+      return _generateInitCode((ContextInitialisation)ci, symbols);
     } else if (ci instanceof DefaultInitialisation) {
-      return _generateInitCode((DefaultInitialisation)ci);
+      return _generateInitCode((DefaultInitialisation)ci, symbols);
     } else if (ci instanceof RandomInitialisation) {
-      return _generateInitCode((RandomInitialisation)ci);
+      return _generateInitCode((RandomInitialisation)ci, symbols);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(ci).toString());
+        Arrays.<Object>asList(ci, symbols).toString());
     }
   }
   

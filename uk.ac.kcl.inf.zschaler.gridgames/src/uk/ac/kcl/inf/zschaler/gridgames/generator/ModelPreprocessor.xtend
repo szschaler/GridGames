@@ -138,15 +138,37 @@ class ModelPreprocessor {
 		cellStateRegistry.values.flatten.filter[cpp | ! cpp.key.onEnter.empty]
 	}
 	
-	def dispatch List<FieldInitialisation> allInitialisations (FieldSpecification fs) {
-		fs.field_initialisation.allInitialisations
+	private var Map<FieldSpecification, List<Pair<Map<String, Value>, FieldInitialisation>>> fieldInitialisations; 
+	
+	public def List<Pair<Map<String, Value>, FieldInitialisation>> allInitialisations (FieldSpecification fs) {
+		if (fieldInitialisations == null) {
+			initialiseFieldInitialisations()
+		}
+		
+		fieldInitialisations.get (fs)
 	}
 	
-	def dispatch List<FieldInitialisation> allInitialisations (LocalFieldInitialisations lfi) {
-		lfi.initialisations
+	private def initialiseFieldInitialisations() {
+		fieldInitialisations = new HashMap<FieldSpecification, List<Pair<Map<String, Value>, FieldInitialisation>>>()
+		
+		gg.fields.forEach[f | fieldInitialisations.put (f, f.field_initialisation.getAllInitialisations)]
 	}
 	
-	def dispatch List<FieldInitialisation> allInitialisations (FieldInitialisationsRef fir) {
-		fir.ref.initialisations
+	private def dispatch List<Pair<Map<String, Value>, FieldInitialisation>> getAllInitialisations (LocalFieldInitialisations lfi) {
+		val symbols = Collections.emptyMap
+		
+		lfi.initialisations.map[i | new Pair (symbols, i)]
+	}
+	
+	private def dispatch List<Pair<Map<String, Value>, FieldInitialisation>> getAllInitialisations (FieldInitialisationsRef fir) {
+		val Map<String, Value> symbols = new HashMap<String, Value>()
+
+		// Put params into symbol table		
+		fir.ref.params.forEach[p, idx | 
+			// TODO Should do a type check here
+			symbols.put (p.name, fir.params.get(idx))
+		]
+
+		fir.ref.initialisations.map[i | new Pair(symbols, i)]
 	}
 }
