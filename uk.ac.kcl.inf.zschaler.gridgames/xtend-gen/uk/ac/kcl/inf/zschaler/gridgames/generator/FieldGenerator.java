@@ -21,13 +21,9 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalFieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
@@ -154,7 +150,7 @@ public class FieldGenerator extends CommonGenerator {
     final Function1<FieldSpecification, Boolean> _function_1 = new Function1<FieldSpecification, Boolean>() {
       @Override
       public Boolean apply(final FieldSpecification f) {
-        List<FieldInitialisation> _allInitialisations = FieldGenerator.this.allInitialisations(f);
+        List<FieldInitialisation> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
         final Function1<FieldInitialisation, Boolean> _function = new Function1<FieldInitialisation, Boolean>() {
           @Override
           public Boolean apply(final FieldInitialisation i) {
@@ -416,7 +412,7 @@ public class FieldGenerator extends CommonGenerator {
     final Function1<FieldSpecification, Iterable<AtomicExpression>> _function = new Function1<FieldSpecification, Iterable<AtomicExpression>>() {
       @Override
       public Iterable<AtomicExpression> apply(final FieldSpecification f) {
-        List<FieldInitialisation> _allInitialisations = FieldGenerator.this.allInitialisations(f);
+        List<FieldInitialisation> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
         Iterable<ContextInitialisation> _filter = Iterables.<ContextInitialisation>filter(_allInitialisations, ContextInitialisation.class);
         final Function1<ContextInitialisation, EList<AtomicExpression>> _function = new Function1<ContextInitialisation, EList<AtomicExpression>>() {
           @Override
@@ -449,7 +445,7 @@ public class FieldGenerator extends CommonGenerator {
       final Function1<FieldSpecification, List<String>> _function = new Function1<FieldSpecification, List<String>>() {
         @Override
         public List<String> apply(final FieldSpecification f) {
-          List<FieldInitialisation> _allInitialisations = FieldGenerator.this.allInitialisations(f);
+          List<FieldInitialisation> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
           final Function1<FieldInitialisation, String> _function = new Function1<FieldInitialisation, String>() {
             @Override
             public String apply(final FieldInitialisation it) {
@@ -466,7 +462,7 @@ public class FieldGenerator extends CommonGenerator {
       final Function1<FieldSpecification, Boolean> _function_1 = new Function1<FieldSpecification, Boolean>() {
         @Override
         public Boolean apply(final FieldSpecification f) {
-          List<FieldInitialisation> _allInitialisations = FieldGenerator.this.allInitialisations(f);
+          List<FieldInitialisation> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
           final Function1<FieldInitialisation, Boolean> _function = new Function1<FieldInitialisation, Boolean>() {
             @Override
             public Boolean apply(final FieldInitialisation i) {
@@ -535,7 +531,7 @@ public class FieldGenerator extends CommonGenerator {
     _builder.append("field = new Cell[width][height];");
     _builder.newLine();
     _builder.append("\t");
-    List<FieldInitialisation> _allInitialisations = this.allInitialisations(f);
+    List<FieldInitialisation> _allInitialisations = this.mpp.allInitialisations(f);
     final Function1<FieldInitialisation, CharSequence> _function = new Function1<FieldInitialisation, CharSequence>() {
       @Override
       public CharSequence apply(final FieldInitialisation i) {
@@ -764,20 +760,6 @@ public class FieldGenerator extends CommonGenerator {
     return _builder;
   }
   
-  protected List<FieldInitialisation> _allInitialisations(final FieldSpecification fs) {
-    FieldInitialisations _field_initialisation = fs.getField_initialisation();
-    return this.allInitialisations(_field_initialisation);
-  }
-  
-  protected List<FieldInitialisation> _allInitialisations(final LocalFieldInitialisations lfi) {
-    return lfi.getInitialisations();
-  }
-  
-  protected List<FieldInitialisation> _allInitialisations(final FieldInitialisationsRef fir) {
-    GlobalFieldInitialisation _ref = fir.getRef();
-    return _ref.getInitialisations();
-  }
-  
   public CharSequence generateImplementation(final AtomicExpression ce) {
     if (ce instanceof CountExpression) {
       return _generateImplementation((CountExpression)ce);
@@ -827,19 +809,6 @@ public class FieldGenerator extends CommonGenerator {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(ce).toString());
-    }
-  }
-  
-  public List<FieldInitialisation> allInitialisations(final EObject fir) {
-    if (fir instanceof FieldInitialisationsRef) {
-      return _allInitialisations((FieldInitialisationsRef)fir);
-    } else if (fir instanceof LocalFieldInitialisations) {
-      return _allInitialisations((LocalFieldInitialisations)fir);
-    } else if (fir instanceof FieldSpecification) {
-      return _allInitialisations((FieldSpecification)fir);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(fir).toString());
     }
   }
 }

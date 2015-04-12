@@ -32,9 +32,15 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalFieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
 
@@ -293,6 +299,20 @@ public class ModelPreprocessor {
     return IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>filter(_flatten, _function);
   }
   
+  protected List<FieldInitialisation> _allInitialisations(final FieldSpecification fs) {
+    FieldInitialisations _field_initialisation = fs.getField_initialisation();
+    return this.allInitialisations(_field_initialisation);
+  }
+  
+  protected List<FieldInitialisation> _allInitialisations(final LocalFieldInitialisations lfi) {
+    return lfi.getInitialisations();
+  }
+  
+  protected List<FieldInitialisation> _allInitialisations(final FieldInitialisationsRef fir) {
+    GlobalFieldInitialisation _ref = fir.getRef();
+    return _ref.getInitialisations();
+  }
+  
   private List<Pair<? extends Map<String, Value>, CellState>> getAllStates(final CellStateSpec cssr) {
     if (cssr instanceof CellStateSpecReference) {
       return _getAllStates((CellStateSpecReference)cssr);
@@ -312,6 +332,19 @@ public class ModelPreprocessor {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(cssr).toString());
+    }
+  }
+  
+  public List<FieldInitialisation> allInitialisations(final EObject fir) {
+    if (fir instanceof FieldInitialisationsRef) {
+      return _allInitialisations((FieldInitialisationsRef)fir);
+    } else if (fir instanceof LocalFieldInitialisations) {
+      return _allInitialisations((LocalFieldInitialisations)fir);
+    } else if (fir instanceof FieldSpecification) {
+      return _allInitialisations((FieldSpecification)fir);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(fir).toString());
     }
   }
 }

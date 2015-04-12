@@ -12,8 +12,12 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 
 /**
@@ -132,5 +136,17 @@ class ModelPreprocessor {
 	 */
 	public def getAllStatesWithEnterActions () {
 		cellStateRegistry.values.flatten.filter[cpp | ! cpp.key.onEnter.empty]
+	}
+	
+	def dispatch List<FieldInitialisation> allInitialisations (FieldSpecification fs) {
+		fs.field_initialisation.allInitialisations
+	}
+	
+	def dispatch List<FieldInitialisation> allInitialisations (LocalFieldInitialisations lfi) {
+		lfi.initialisations
+	}
+	
+	def dispatch List<FieldInitialisation> allInitialisations (FieldInitialisationsRef fir) {
+		fir.ref.initialisations
 	}
 }
