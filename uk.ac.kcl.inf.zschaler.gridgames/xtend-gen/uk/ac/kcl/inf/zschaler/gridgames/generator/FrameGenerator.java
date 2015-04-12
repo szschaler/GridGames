@@ -192,6 +192,9 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.append("private static final int cellSize = 20;");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.append("private boolean handlingInput = true;");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public ");
@@ -334,6 +337,11 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append("public void mouseReleased (MouseEvent e) {");
     _builder.newLine();
     _builder.append("\t\t\t\t");
+    _builder.append("if (!handlingInput) return;");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
     _builder.append("Point p = e.getPoint();");
     _builder.newLine();
     _builder.append("\t\t\t\t");
@@ -409,6 +417,9 @@ public class FrameGenerator extends CommonGenerator {
           _builder.append(_generateFieldInitialiserName, "\t\t");
           _builder.append("();");
           _builder.newLineIfNotEmpty();
+          _builder.append("\t\t");
+          _builder.append("handlingInput = true;");
+          _builder.newLine();
           _builder.append("\t");
           _builder.append("}");
           _builder.newLine();
@@ -565,6 +576,8 @@ public class FrameGenerator extends CommonGenerator {
   
   protected CharSequence _generateCodeFor(final EndGameBehaviour egb, final Map<String, Value> symbols) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("handlingInput = false;");
+    _builder.newLine();
     _builder.append("JOptionPane.showMessageDialog(");
     CharSequence _generateFrameClassName = this.generateFrameClassName();
     _builder.append(_generateFrameClassName, "");

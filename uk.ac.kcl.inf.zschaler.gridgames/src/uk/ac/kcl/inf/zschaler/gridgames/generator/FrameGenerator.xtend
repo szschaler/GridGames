@@ -78,6 +78,7 @@ class FrameGenerator extends CommonGenerator {
 			private «generateFieldClassName» field;
 			private JTable jtDisplay;
 			private static final int cellSize = 20;
+			private boolean handlingInput = true;
 		
 			public «generateFrameClassName» (CellFactory cellFactory) {
 				super("«gg.name.toFirstUpper»");
@@ -127,6 +128,8 @@ class FrameGenerator extends CommonGenerator {
 				jtDisplay.addMouseListener (new MouseAdapter() {
 					@Override
 					public void mouseReleased (MouseEvent e) {
+						if (!handlingInput) return;
+						
 						Point p = e.getPoint();
 						int row = jtDisplay.rowAtPoint(p);
 						int col = jtDisplay.columnAtPoint(p);
@@ -149,6 +152,7 @@ class FrameGenerator extends CommonGenerator {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							field.«f.generateFieldInitialiserName»();
+							handlingInput = true;
 						}
 					}));
 					'''])
@@ -201,6 +205,7 @@ class FrameGenerator extends CommonGenerator {
 	'''
 	
 	def dispatch CharSequence generateCodeFor(EndGameBehaviour egb, Map<String, Value> symbols) '''
+		handlingInput = false;
 		JOptionPane.showMessageDialog(«generateFrameClassName».this, "«egb.message»");
 	'''
 	
