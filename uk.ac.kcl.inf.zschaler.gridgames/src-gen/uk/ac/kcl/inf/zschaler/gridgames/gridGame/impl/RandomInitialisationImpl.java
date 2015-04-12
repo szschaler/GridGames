@@ -5,11 +5,13 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,6 +21,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
  * The following features are implemented:
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.RandomInitialisationImpl#getCount <em>Count</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.RandomInitialisationImpl#getVar <em>Var</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +48,16 @@ public class RandomInitialisationImpl extends FieldInitialisationImpl implements
    * @ordered
    */
   protected int count = COUNT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getVar() <em>Var</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVar()
+   * @generated
+   * @ordered
+   */
+  protected VarSpec var;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,6 +108,49 @@ public class RandomInitialisationImpl extends FieldInitialisationImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
+  public VarSpec getVar()
+  {
+    if (var != null && var.eIsProxy())
+    {
+      InternalEObject oldVar = (InternalEObject)var;
+      var = (VarSpec)eResolveProxy(oldVar);
+      if (var != oldVar)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GridGamePackage.RANDOM_INITIALISATION__VAR, oldVar, var));
+      }
+    }
+    return var;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VarSpec basicGetVar()
+  {
+    return var;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVar(VarSpec newVar)
+  {
+    VarSpec oldVar = var;
+    var = newVar;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.RANDOM_INITIALISATION__VAR, oldVar, var));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -102,6 +158,9 @@ public class RandomInitialisationImpl extends FieldInitialisationImpl implements
     {
       case GridGamePackage.RANDOM_INITIALISATION__COUNT:
         return getCount();
+      case GridGamePackage.RANDOM_INITIALISATION__VAR:
+        if (resolve) return getVar();
+        return basicGetVar();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,6 +177,9 @@ public class RandomInitialisationImpl extends FieldInitialisationImpl implements
     {
       case GridGamePackage.RANDOM_INITIALISATION__COUNT:
         setCount((Integer)newValue);
+        return;
+      case GridGamePackage.RANDOM_INITIALISATION__VAR:
+        setVar((VarSpec)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,6 +198,9 @@ public class RandomInitialisationImpl extends FieldInitialisationImpl implements
       case GridGamePackage.RANDOM_INITIALISATION__COUNT:
         setCount(COUNT_EDEFAULT);
         return;
+      case GridGamePackage.RANDOM_INITIALISATION__VAR:
+        setVar((VarSpec)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -152,6 +217,8 @@ public class RandomInitialisationImpl extends FieldInitialisationImpl implements
     {
       case GridGamePackage.RANDOM_INITIALISATION__COUNT:
         return count != COUNT_EDEFAULT;
+      case GridGamePackage.RANDOM_INITIALISATION__VAR:
+        return var != null;
     }
     return super.eIsSet(featureID);
   }

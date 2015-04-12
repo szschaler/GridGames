@@ -192,7 +192,7 @@ DefaultInitialisation :
 ;
 
 RandomInitialisation :
-	"random" ":" cell=[CellSpecification] "=" count=INT
+	"random" ":" cell=[CellSpecification] "=" (count=INT | var=[VarSpec])
 ;
 
 // FIXME This should support a number of values, one for each variable defined for the cell type

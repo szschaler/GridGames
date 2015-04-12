@@ -1115,13 +1115,22 @@ public interface GridGamePackage extends EPackage
   int RANDOM_INITIALISATION__COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Var</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RANDOM_INITIALISATION__VAR = FIELD_INITIALISATION_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Random Initialisation</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RANDOM_INITIALISATION_FEATURE_COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 1;
+  int RANDOM_INITIALISATION_FEATURE_COUNT = FIELD_INITIALISATION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextInitialisationImpl <em>Context Initialisation</em>}' class.
@@ -2118,6 +2127,17 @@ public interface GridGamePackage extends EPackage
   EAttribute getRandomInitialisation_Count();
 
   /**
+   * Returns the meta object for the reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation#getVar <em>Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Var</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation#getVar()
+   * @see #getRandomInitialisation()
+   * @generated
+   */
+  EReference getRandomInitialisation_Var();
+
+  /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation <em>Context Initialisation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2933,6 +2953,14 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EAttribute RANDOM_INITIALISATION__COUNT = eINSTANCE.getRandomInitialisation_Count();
+
+    /**
+     * The meta object literal for the '<em><b>Var</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RANDOM_INITIALISATION__VAR = eINSTANCE.getRandomInitialisation_Var();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextInitialisationImpl <em>Context Initialisation</em>}' class.

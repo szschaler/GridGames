@@ -1359,14 +1359,18 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cCellCellSpecificationCrossReference_2_0 = (CrossReference)cCellAssignment_2.eContents().get(0);
 		private final RuleCall cCellCellSpecificationIDTerminalRuleCall_2_0_1 = (RuleCall)cCellCellSpecificationCrossReference_2_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cCountAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cCountINTTerminalRuleCall_4_0 = (RuleCall)cCountAssignment_4.eContents().get(0);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Assignment cCountAssignment_4_0 = (Assignment)cAlternatives_4.eContents().get(0);
+		private final RuleCall cCountINTTerminalRuleCall_4_0_0 = (RuleCall)cCountAssignment_4_0.eContents().get(0);
+		private final Assignment cVarAssignment_4_1 = (Assignment)cAlternatives_4.eContents().get(1);
+		private final CrossReference cVarVarSpecCrossReference_4_1_0 = (CrossReference)cVarAssignment_4_1.eContents().get(0);
+		private final RuleCall cVarVarSpecIDTerminalRuleCall_4_1_0_1 = (RuleCall)cVarVarSpecCrossReference_4_1_0.eContents().get(1);
 		
 		//RandomInitialisation:
-		//	"random" ":" cell=[CellSpecification] "=" count=INT;
+		//	"random" ":" cell=[CellSpecification] "=" (count=INT | var=[VarSpec]);
 		@Override public ParserRule getRule() { return rule; }
 
-		//"random" ":" cell=[CellSpecification] "=" count=INT
+		//"random" ":" cell=[CellSpecification] "=" (count=INT | var=[VarSpec])
 		public Group getGroup() { return cGroup; }
 
 		//"random"
@@ -1387,11 +1391,23 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 
+		//count=INT | var=[VarSpec]
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
+
 		//count=INT
-		public Assignment getCountAssignment_4() { return cCountAssignment_4; }
+		public Assignment getCountAssignment_4_0() { return cCountAssignment_4_0; }
 
 		//INT
-		public RuleCall getCountINTTerminalRuleCall_4_0() { return cCountINTTerminalRuleCall_4_0; }
+		public RuleCall getCountINTTerminalRuleCall_4_0_0() { return cCountINTTerminalRuleCall_4_0_0; }
+
+		//var=[VarSpec]
+		public Assignment getVarAssignment_4_1() { return cVarAssignment_4_1; }
+
+		//[VarSpec]
+		public CrossReference getVarVarSpecCrossReference_4_1_0() { return cVarVarSpecCrossReference_4_1_0; }
+
+		//ID
+		public RuleCall getVarVarSpecIDTerminalRuleCall_4_1_0_1() { return cVarVarSpecIDTerminalRuleCall_4_1_0_1; }
 	}
 
 	public class ContextInitialisationElements extends AbstractParserRuleElementFinder {
@@ -2075,7 +2091,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RandomInitialisation:
-	//	"random" ":" cell=[CellSpecification] "=" count=INT;
+	//	"random" ":" cell=[CellSpecification] "=" (count=INT | var=[VarSpec]);
 	public RandomInitialisationElements getRandomInitialisationAccess() {
 		return pRandomInitialisation;
 	}

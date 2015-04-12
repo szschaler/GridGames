@@ -2199,11 +2199,11 @@ ruleRandomInitialisation returns [EObject current=null]
     {
     	newLeafNode(otherlv_3, grammarAccess.getRandomInitialisationAccess().getEqualsSignKeyword_3());
     }
-(
+((
 (
 		lv_count_4_0=RULE_INT
 		{
-			newLeafNode(lv_count_4_0, grammarAccess.getRandomInitialisationAccess().getCountINTTerminalRuleCall_4_0()); 
+			newLeafNode(lv_count_4_0, grammarAccess.getRandomInitialisationAccess().getCountINTTerminalRuleCall_4_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -2217,7 +2217,21 @@ ruleRandomInitialisation returns [EObject current=null]
 	    }
 
 )
-))
+)
+    |(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getRandomInitialisationRule());
+	        }
+        }
+	otherlv_5=RULE_ID
+	{
+		newLeafNode(otherlv_5, grammarAccess.getRandomInitialisationAccess().getVarVarSpecCrossReference_4_1_0()); 
+	}
+
+)
+)))
 ;
 
 

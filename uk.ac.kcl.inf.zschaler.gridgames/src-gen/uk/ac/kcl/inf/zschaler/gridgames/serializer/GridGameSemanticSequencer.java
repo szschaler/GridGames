@@ -421,20 +421,10 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (cell=[CellSpecification|ID] count=INT)
+	 *     (cell=[CellSpecification|ID] (count=INT | var=[VarSpec|ID]))
 	 */
 	protected void sequence_RandomInitialisation(EObject context, RandomInitialisation semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL));
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.RANDOM_INITIALISATION__COUNT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.RANDOM_INITIALISATION__COUNT));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getRandomInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell());
-		feeder.accept(grammarAccess.getRandomInitialisationAccess().getCountINTTerminalRuleCall_4_0(), semanticObject.getCount());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

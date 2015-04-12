@@ -104,6 +104,7 @@
     <genClasses ecoreClass="GridGame.ecore#//DefaultInitialisation"/>
     <genClasses ecoreClass="GridGame.ecore#//RandomInitialisation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//RandomInitialisation/count"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//RandomInitialisation/var"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//ContextInitialisation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//ContextInitialisation/check"/>

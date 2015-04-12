@@ -1170,6 +1170,16 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getRandomInitialisation_Var()
+  {
+    return (EReference)randomInitialisationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getContextInitialisation()
   {
     return contextInitialisationEClass;
@@ -1413,6 +1423,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     randomInitialisationEClass = createEClass(RANDOM_INITIALISATION);
     createEAttribute(randomInitialisationEClass, RANDOM_INITIALISATION__COUNT);
+    createEReference(randomInitialisationEClass, RANDOM_INITIALISATION__VAR);
 
     contextInitialisationEClass = createEClass(CONTEXT_INITIALISATION);
     createEReference(contextInitialisationEClass, CONTEXT_INITIALISATION__CHECK);
@@ -1597,6 +1608,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     initEClass(randomInitialisationEClass, RandomInitialisation.class, "RandomInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRandomInitialisation_Count(), ecorePackage.getEInt(), "count", null, 0, 1, RandomInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRandomInitialisation_Var(), this.getVarSpec(), null, "var", null, 0, 1, RandomInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(contextInitialisationEClass, ContextInitialisation.class, "ContextInitialisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getContextInitialisation_Check(), this.getContextExpression(), null, "check", null, 0, 1, ContextInitialisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
