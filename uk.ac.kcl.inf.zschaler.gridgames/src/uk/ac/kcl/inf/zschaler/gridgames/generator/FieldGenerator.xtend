@@ -59,6 +59,38 @@ class FieldGenerator extends CommonGenerator {
 			super();
 			this.cellFactory = cellFactory;
 			«generateFieldInitialisation()»
+			
+			«if (true) { // FIXME Add proper check to determine whether we need this listener at all
+				'''
+				addTableModelListener(new TableModelListener() {
+					@Override
+					public void tableChanged(TableModelEvent e) {
+						if ((e.getFirstRow() != TableModelEvent.HEADER_ROW) && (e.getType() == TableModelEvent.UPDATE)) {
+							// React to updates to a given cell by checking whether any context triggers need activating
+							int firstRow = e.getFirstRow();
+							int lastRow = e.getLastRow();
+							int col = e.getColumn();
+
+							for (int row = firstRow; row <= lastRow; row++) {
+								if (col != TableModelEvent.ALL_COLUMNS) {
+									«/* TODO Figure out parameters and how to deal with recursion (esp. where multiple sequential states have context triggers */»
+									handleStateChange ();
+								} else {
+									for (col = 0; col < field.getColumnCount(); col++) {
+										«/* TODO Figure out parameters and how to deal with recursion (esp. where multiple sequential states have context triggers */»
+										handleStateChange ();
+									}
+								}
+							}
+						}
+					}
+					
+					private void handleStateChange () {
+						«/* TODO Needs implementing */»
+					}
+				});
+				''' 
+			}»
 		}
 		
 		«gg.fields.join (" ", [f | generateFieldInitialiserFor(f)])»
