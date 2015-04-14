@@ -21,9 +21,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
@@ -151,7 +153,7 @@ public class CellGenerator extends CommonGenerator {
     _builder.append(_generateFieldClassName_2, "\t");
     _builder.append(" field) {");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t");
+    _builder.append("\t\t");
     _builder.append("currentState.handleMouseClick(isLeft, row, col, field);");
     _builder.newLine();
     _builder.append("\t");
@@ -404,15 +406,23 @@ public class CellGenerator extends CommonGenerator {
       _builder_3.newLineIfNotEmpty();
       _builder_3.append("\t");
       EList<TransitionSpec> _transitions_1 = cs.getTransitions();
-      final Function1<TransitionSpec, CharSequence> _function = new Function1<TransitionSpec, CharSequence>() {
+      final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
+        @Override
+        public Boolean apply(final TransitionSpec t) {
+          TransitionTriggerSpec _trigger = t.getTrigger();
+          return Boolean.valueOf((_trigger instanceof MouseTrigger));
+        }
+      };
+      Iterable<TransitionSpec> _filter = IterableExtensions.<TransitionSpec>filter(_transitions_1, _function);
+      final Function1<TransitionSpec, CharSequence> _function_1 = new Function1<TransitionSpec, CharSequence>() {
         @Override
         public CharSequence apply(final TransitionSpec t) {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("if (");
           CharSequence _xifexpression = null;
-          String _trigger = t.getTrigger();
-          boolean _equals = _trigger.equals("mouse-left");
-          if (_equals) {
+          TransitionTriggerSpec _trigger = t.getTrigger();
+          boolean _isLeft = ((MouseTrigger) _trigger).isLeft();
+          if (_isLeft) {
             StringConcatenation _builder_1 = new StringConcatenation();
             _builder_1.append("isLeft");
             _xifexpression = _builder_1;
@@ -440,7 +450,7 @@ public class CellGenerator extends CommonGenerator {
           return _builder.toString();
         }
       };
-      String _join = IterableExtensions.<TransitionSpec>join(_transitions_1, " ", _function);
+      String _join = IterableExtensions.<TransitionSpec>join(_filter, " ", _function_1);
       _builder_3.append(_join, "\t");
       _builder_3.newLineIfNotEmpty();
       _builder_3.append("}");

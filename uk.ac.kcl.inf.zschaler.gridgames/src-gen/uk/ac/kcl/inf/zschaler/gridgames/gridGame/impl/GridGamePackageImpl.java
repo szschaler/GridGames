@@ -39,6 +39,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
@@ -47,6 +48,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
@@ -177,6 +179,20 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass transitionSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass transitionTriggerSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mouseTriggerEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -850,9 +866,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTransitionSpec_Trigger()
+  public EReference getTransitionSpec_Trigger()
   {
-    return (EAttribute)transitionSpecEClass.getEStructuralFeatures().get(0);
+    return (EReference)transitionSpecEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -863,6 +879,36 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
   public EReference getTransitionSpec_Target()
   {
     return (EReference)transitionSpecEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTransitionTriggerSpec()
+  {
+    return transitionTriggerSpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMouseTrigger()
+  {
+    return mouseTriggerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMouseTrigger_Left()
+  {
+    return (EAttribute)mouseTriggerEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1376,8 +1422,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEReference(cellStateEClass, CELL_STATE__ON_ENTER);
 
     transitionSpecEClass = createEClass(TRANSITION_SPEC);
-    createEAttribute(transitionSpecEClass, TRANSITION_SPEC__TRIGGER);
+    createEReference(transitionSpecEClass, TRANSITION_SPEC__TRIGGER);
     createEReference(transitionSpecEClass, TRANSITION_SPEC__TARGET);
+
+    transitionTriggerSpecEClass = createEClass(TRANSITION_TRIGGER_SPEC);
+
+    mouseTriggerEClass = createEClass(MOUSE_TRIGGER);
+    createEAttribute(mouseTriggerEClass, MOUSE_TRIGGER__LEFT);
 
     cellStateBehaviourEClass = createEClass(CELL_STATE_BEHAVIOUR);
 
@@ -1483,6 +1534,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     stringValueEClass.getESuperTypes().add(this.getValue());
     intValueEClass.getESuperTypes().add(this.getValue());
     varRefValueEClass.getESuperTypes().add(this.getValue());
+    mouseTriggerEClass.getESuperTypes().add(this.getTransitionTriggerSpec());
     behaviourReferenceEClass.getESuperTypes().add(this.getCellStateBehaviour());
     directBehaviourEClass.getESuperTypes().add(this.getValue());
     directBehaviourEClass.getESuperTypes().add(this.getCellStateBehaviour());
@@ -1561,8 +1613,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEReference(getCellState_OnEnter(), this.getCellStateBehaviour(), null, "onEnter", null, 0, -1, CellState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(transitionSpecEClass, TransitionSpec.class, "TransitionSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTransitionSpec_Trigger(), ecorePackage.getEString(), "trigger", null, 0, 1, TransitionSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTransitionSpec_Trigger(), this.getTransitionTriggerSpec(), null, "trigger", null, 0, 1, TransitionSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTransitionSpec_Target(), this.getCellState(), null, "target", null, 0, 1, TransitionSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(transitionTriggerSpecEClass, TransitionTriggerSpec.class, "TransitionTriggerSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(mouseTriggerEClass, MouseTrigger.class, "MouseTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMouseTrigger_Left(), ecorePackage.getEBoolean(), "left", null, 0, 1, MouseTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cellStateBehaviourEClass, CellStateBehaviour.class, "CellStateBehaviour", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

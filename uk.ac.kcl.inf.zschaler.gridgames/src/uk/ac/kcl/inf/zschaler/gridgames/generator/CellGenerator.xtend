@@ -11,6 +11,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger
 
 /**
  * Generates all stuff to do with handling cells.
@@ -66,7 +67,7 @@ class CellGenerator extends CommonGenerator {
 			}
 		
 			public void handleMouseClick (boolean isLeft, int row, int col, «generateFieldClassName()» field) {
-			currentState.handleMouseClick(isLeft, row, col, field);
+				currentState.handleMouseClick(isLeft, row, col, field);
 			}
 			
 			public CellState getState() {
@@ -128,8 +129,8 @@ class CellGenerator extends CommonGenerator {
 				'''
 				
 				public void handleMouseClick (boolean isLeft, int row, int col, «generateFieldClassName()» field) {
-					«cs.transitions.join (" ", [t | '''
-					if («if (t.trigger.equals("mouse-left")) {'''isLeft'''} else {'''!isLeft'''}») {
+					«cs.transitions.filter[t | t.trigger instanceof MouseTrigger].join (" ", [t | '''
+					if («if ((t.trigger as MouseTrigger).left) {'''isLeft'''} else {'''!isLeft'''}») {
 						currentState = new «t.target.name.toFirstUpper»CellState();
 						field.fireTableCellUpdated(row, col);
 					}

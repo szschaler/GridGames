@@ -160,6 +160,16 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createTransitionSpecAdapter();
       }
       @Override
+      public Adapter caseTransitionTriggerSpec(TransitionTriggerSpec object)
+      {
+        return createTransitionTriggerSpecAdapter();
+      }
+      @Override
+      public Adapter caseMouseTrigger(MouseTrigger object)
+      {
+        return createMouseTriggerAdapter();
+      }
+      @Override
       public Adapter caseCellStateBehaviour(CellStateBehaviour object)
       {
         return createCellStateBehaviourAdapter();
@@ -542,6 +552,36 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTransitionSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec <em>Transition Trigger Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec
+   * @generated
+   */
+  public Adapter createTransitionTriggerSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger <em>Mouse Trigger</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger
+   * @generated
+   */
+  public Adapter createMouseTriggerAdapter()
   {
     return null;
   }

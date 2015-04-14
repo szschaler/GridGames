@@ -203,6 +203,21 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.TRANSITION_TRIGGER_SPEC:
+      {
+        TransitionTriggerSpec transitionTriggerSpec = (TransitionTriggerSpec)theEObject;
+        T result = caseTransitionTriggerSpec(transitionTriggerSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.MOUSE_TRIGGER:
+      {
+        MouseTrigger mouseTrigger = (MouseTrigger)theEObject;
+        T result = caseMouseTrigger(mouseTrigger);
+        if (result == null) result = caseTransitionTriggerSpec(mouseTrigger);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GridGamePackage.CELL_STATE_BEHAVIOUR:
       {
         CellStateBehaviour cellStateBehaviour = (CellStateBehaviour)theEObject;
@@ -648,6 +663,38 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTransitionSpec(TransitionSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Transition Trigger Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Transition Trigger Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTransitionTriggerSpec(TransitionTriggerSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Mouse Trigger</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Mouse Trigger</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMouseTrigger(MouseTrigger object)
   {
     return null;
   }

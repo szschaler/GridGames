@@ -3,6 +3,7 @@
 package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -13,6 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,24 +33,14 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 public class TransitionSpecImpl extends MinimalEObjectImpl.Container implements TransitionSpec
 {
   /**
-   * The default value of the '{@link #getTrigger() <em>Trigger</em>}' attribute.
+   * The cached value of the '{@link #getTrigger() <em>Trigger</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTrigger()
    * @generated
    * @ordered
    */
-  protected static final String TRIGGER_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTrigger() <em>Trigger</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTrigger()
-   * @generated
-   * @ordered
-   */
-  protected String trigger = TRIGGER_EDEFAULT;
+  protected TransitionTriggerSpec trigger;
 
   /**
    * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -86,7 +78,7 @@ public class TransitionSpecImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTrigger()
+  public TransitionTriggerSpec getTrigger()
   {
     return trigger;
   }
@@ -96,12 +88,37 @@ public class TransitionSpecImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTrigger(String newTrigger)
+  public NotificationChain basicSetTrigger(TransitionTriggerSpec newTrigger, NotificationChain msgs)
   {
-    String oldTrigger = trigger;
+    TransitionTriggerSpec oldTrigger = trigger;
     trigger = newTrigger;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.TRANSITION_SPEC__TRIGGER, oldTrigger, trigger));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GridGamePackage.TRANSITION_SPEC__TRIGGER, oldTrigger, newTrigger);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTrigger(TransitionTriggerSpec newTrigger)
+  {
+    if (newTrigger != trigger)
+    {
+      NotificationChain msgs = null;
+      if (trigger != null)
+        msgs = ((InternalEObject)trigger).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GridGamePackage.TRANSITION_SPEC__TRIGGER, null, msgs);
+      if (newTrigger != null)
+        msgs = ((InternalEObject)newTrigger).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GridGamePackage.TRANSITION_SPEC__TRIGGER, null, msgs);
+      msgs = basicSetTrigger(newTrigger, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.TRANSITION_SPEC__TRIGGER, newTrigger, newTrigger));
   }
 
   /**
@@ -153,6 +170,22 @@ public class TransitionSpecImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case GridGamePackage.TRANSITION_SPEC__TRIGGER:
+        return basicSetTrigger(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -177,7 +210,7 @@ public class TransitionSpecImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case GridGamePackage.TRANSITION_SPEC__TRIGGER:
-        setTrigger((String)newValue);
+        setTrigger((TransitionTriggerSpec)newValue);
         return;
       case GridGamePackage.TRANSITION_SPEC__TARGET:
         setTarget((CellState)newValue);
@@ -197,7 +230,7 @@ public class TransitionSpecImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case GridGamePackage.TRANSITION_SPEC__TRIGGER:
-        setTrigger(TRIGGER_EDEFAULT);
+        setTrigger((TransitionTriggerSpec)null);
         return;
       case GridGamePackage.TRANSITION_SPEC__TARGET:
         setTarget((CellState)null);
@@ -217,28 +250,11 @@ public class TransitionSpecImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case GridGamePackage.TRANSITION_SPEC__TRIGGER:
-        return TRIGGER_EDEFAULT == null ? trigger != null : !TRIGGER_EDEFAULT.equals(trigger);
+        return trigger != null;
       case GridGamePackage.TRANSITION_SPEC__TARGET:
         return target != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (trigger: ");
-    result.append(trigger);
-    result.append(')');
-    return result.toString();
   }
 
 } //TransitionSpecImpl

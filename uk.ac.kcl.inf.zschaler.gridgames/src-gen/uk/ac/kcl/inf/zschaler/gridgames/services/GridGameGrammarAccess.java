@@ -814,23 +814,47 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class TransitionTriggerSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TransitionTriggerSpec");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cMouseLeftKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cMouseRightKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final RuleCall cMouseTriggerParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//// TODO Consider introducing triggers based on state changes in the context
 		//TransitionTriggerSpec:
-		//	"mouse-left" | "mouse-right";
+		//	MouseTrigger;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"mouse-left" | "mouse-right"
+		//MouseTrigger
+		public RuleCall getMouseTriggerParserRuleCall() { return cMouseTriggerParserRuleCall; }
+	}
+
+	public class MouseTriggerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MouseTrigger");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cLeftAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cLeftMouseLeftKeyword_0_0 = (Keyword)cLeftAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cMouseRightKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Action cMouseTriggerAction_1_1 = (Action)cGroup_1.eContents().get(1);
+		
+		//MouseTrigger:
+		//	left?="mouse-left" | "mouse-right" {MouseTrigger};
+		@Override public ParserRule getRule() { return rule; }
+
+		//left?="mouse-left" | "mouse-right" {MouseTrigger}
 		public Alternatives getAlternatives() { return cAlternatives; }
 
+		//left?="mouse-left"
+		public Assignment getLeftAssignment_0() { return cLeftAssignment_0; }
+
 		//"mouse-left"
-		public Keyword getMouseLeftKeyword_0() { return cMouseLeftKeyword_0; }
+		public Keyword getLeftMouseLeftKeyword_0_0() { return cLeftMouseLeftKeyword_0_0; }
+
+		//"mouse-right" {MouseTrigger}
+		public Group getGroup_1() { return cGroup_1; }
 
 		//"mouse-right"
-		public Keyword getMouseRightKeyword_1() { return cMouseRightKeyword_1; }
+		public Keyword getMouseRightKeyword_1_0() { return cMouseRightKeyword_1_0; }
+
+		//{MouseTrigger}
+		public Action getMouseTriggerAction_1_1() { return cMouseTriggerAction_1_1; }
 	}
 
 	public class CellStateBehaviourElements extends AbstractParserRuleElementFinder {
@@ -1646,6 +1670,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final CellStateElements pCellState;
 	private final TransitionSpecElements pTransitionSpec;
 	private final TransitionTriggerSpecElements pTransitionTriggerSpec;
+	private final MouseTriggerElements pMouseTrigger;
 	private final CellStateBehaviourElements pCellStateBehaviour;
 	private final BehaviourReferenceElements pBehaviourReference;
 	private final DirectBehaviourElements pDirectBehaviour;
@@ -1696,6 +1721,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pCellState = new CellStateElements();
 		this.pTransitionSpec = new TransitionSpecElements();
 		this.pTransitionTriggerSpec = new TransitionTriggerSpecElements();
+		this.pMouseTrigger = new MouseTriggerElements();
 		this.pCellStateBehaviour = new CellStateBehaviourElements();
 		this.pBehaviourReference = new BehaviourReferenceElements();
 		this.pDirectBehaviour = new DirectBehaviourElements();
@@ -1933,13 +1959,23 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// TODO Consider introducing triggers based on state changes in the context
 	//TransitionTriggerSpec:
-	//	"mouse-left" | "mouse-right";
+	//	MouseTrigger;
 	public TransitionTriggerSpecElements getTransitionTriggerSpecAccess() {
 		return pTransitionTriggerSpec;
 	}
 	
 	public ParserRule getTransitionTriggerSpecRule() {
 		return getTransitionTriggerSpecAccess().getRule();
+	}
+
+	//MouseTrigger:
+	//	left?="mouse-left" | "mouse-right" {MouseTrigger};
+	public MouseTriggerElements getMouseTriggerAccess() {
+		return pMouseTrigger;
+	}
+	
+	public ParserRule getMouseTriggerRule() {
+		return getMouseTriggerAccess().getRule();
 	}
 
 	//CellStateBehaviour:

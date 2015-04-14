@@ -1306,34 +1306,77 @@ ruleTransitionSpec returns [EObject current=null]
 
 
 // Entry rule entryRuleTransitionTriggerSpec
-entryRuleTransitionTriggerSpec returns [String current=null] 
+entryRuleTransitionTriggerSpec returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getTransitionTriggerSpecRule()); } 
+	{ newCompositeNode(grammarAccess.getTransitionTriggerSpecRule()); }
 	 iv_ruleTransitionTriggerSpec=ruleTransitionTriggerSpec 
-	 { $current=$iv_ruleTransitionTriggerSpec.current.getText(); }  
+	 { $current=$iv_ruleTransitionTriggerSpec.current; } 
 	 EOF 
 ;
 
 // Rule TransitionTriggerSpec
-ruleTransitionTriggerSpec returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+ruleTransitionTriggerSpec returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(
-	kw='mouse-left' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getTransitionTriggerSpecAccess().getMouseLeftKeyword_0()); 
+
+    { 
+        newCompositeNode(grammarAccess.getTransitionTriggerSpecAccess().getMouseTriggerParserRuleCall()); 
+    }
+    this_MouseTrigger_0=ruleMouseTrigger
+    { 
+        $current = $this_MouseTrigger_0.current; 
+        afterParserOrEnumRuleCall();
     }
 
-    |
-	kw='mouse-right' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getTransitionTriggerSpecAccess().getMouseRightKeyword_1()); 
+;
+
+
+
+
+
+// Entry rule entryRuleMouseTrigger
+entryRuleMouseTrigger returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getMouseTriggerRule()); }
+	 iv_ruleMouseTrigger=ruleMouseTrigger 
+	 { $current=$iv_ruleMouseTrigger.current; } 
+	 EOF 
+;
+
+// Rule MouseTrigger
+ruleMouseTrigger returns [EObject current=null] 
+    @init { enterRule(); 
     }
+    @after { leaveRule(); }:
+((
+(
+		lv_left_0_0=	'mouse-left' 
+    {
+        newLeafNode(lv_left_0_0, grammarAccess.getMouseTriggerAccess().getLeftMouseLeftKeyword_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMouseTriggerRule());
+	        }
+       		setWithLastConsumed($current, "left", true, "mouse-left");
+	    }
+
 )
-    ;
+)
+    |(	otherlv_1='mouse-right' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getMouseTriggerAccess().getMouseRightKeyword_1_0());
+    }
+(
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMouseTriggerAccess().getMouseTriggerAction_1_1(),
+            $current);
+    }
+)))
+;
 
 
 

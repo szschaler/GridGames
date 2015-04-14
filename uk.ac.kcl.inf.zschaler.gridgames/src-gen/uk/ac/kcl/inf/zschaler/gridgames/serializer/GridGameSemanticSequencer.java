@@ -38,6 +38,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
@@ -119,6 +120,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.LOCAL_FIELD_INITIALISATIONS:
 				sequence_LocalFieldInitialisations(context, (LocalFieldInitialisations) semanticObject); 
+				return; 
+			case GridGamePackage.MOUSE_TRIGGER:
+				sequence_MouseTrigger(context, (MouseTrigger) semanticObject); 
 				return; 
 			case GridGamePackage.NO_OP_BEHAVIOUR:
 				sequence_DirectBehaviour(context, (NoOpBehaviour) semanticObject); 
@@ -393,6 +397,15 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     initialisations+=FieldInitialisation+
 	 */
 	protected void sequence_LocalFieldInitialisations(EObject context, LocalFieldInitialisations semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {MouseTrigger}
+	 */
+	protected void sequence_MouseTrigger(EObject context, MouseTrigger semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -176,6 +176,24 @@ public interface GridGameFactory extends EFactory
   TransitionSpec createTransitionSpec();
 
   /**
+   * Returns a new object of class '<em>Transition Trigger Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Transition Trigger Spec</em>'.
+   * @generated
+   */
+  TransitionTriggerSpec createTransitionTriggerSpec();
+
+  /**
+   * Returns a new object of class '<em>Mouse Trigger</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Mouse Trigger</em>'.
+   * @generated
+   */
+  MouseTrigger createMouseTrigger();
+
+  /**
    * Returns a new object of class '<em>Cell State Behaviour</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

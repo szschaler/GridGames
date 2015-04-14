@@ -117,7 +117,11 @@ TransitionSpec :
 
 // TODO Consider introducing triggers based on state changes in the context
 TransitionTriggerSpec :
-	"mouse-left" | "mouse-right" 
+	MouseTrigger 
+;
+
+MouseTrigger :
+	left ?= "mouse-left" | "mouse-right" {MouseTrigger}
 ;
 
 CellStateBehaviour :
