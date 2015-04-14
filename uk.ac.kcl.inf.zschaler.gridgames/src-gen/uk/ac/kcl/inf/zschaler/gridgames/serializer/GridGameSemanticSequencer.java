@@ -355,11 +355,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         states+=GlobalCellStateSpec? 
-	 *         cells+=CellSpecification+ 
-	 *         inits+=GlobalFieldInitialisation? 
-	 *         fields+=FieldSpecification+ 
-	 *         options+=OptionSpecification*
+	 *         (states+=GlobalCellStateSpec | cells+=CellSpecification | inits+=GlobalFieldInitialisation | fields+=FieldSpecification | options+=OptionSpecification)+
 	 *     )
 	 */
 	protected void sequence_GridGame(EObject context, GridGame semanticObject) {

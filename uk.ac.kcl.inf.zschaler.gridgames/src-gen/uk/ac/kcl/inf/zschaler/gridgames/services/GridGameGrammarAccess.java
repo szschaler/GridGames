@@ -25,17 +25,18 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cStatesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cStatesGlobalCellStateSpecParserRuleCall_3_0 = (RuleCall)cStatesAssignment_3.eContents().get(0);
-		private final Assignment cCellsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cCellsCellSpecificationParserRuleCall_4_0 = (RuleCall)cCellsAssignment_4.eContents().get(0);
-		private final Assignment cInitsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cInitsGlobalFieldInitialisationParserRuleCall_5_0 = (RuleCall)cInitsAssignment_5.eContents().get(0);
-		private final Assignment cFieldsAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cFieldsFieldSpecificationParserRuleCall_6_0 = (RuleCall)cFieldsAssignment_6.eContents().get(0);
-		private final Assignment cOptionsAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cOptionsOptionSpecificationParserRuleCall_7_0 = (RuleCall)cOptionsAssignment_7.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Assignment cStatesAssignment_3_0 = (Assignment)cAlternatives_3.eContents().get(0);
+		private final RuleCall cStatesGlobalCellStateSpecParserRuleCall_3_0_0 = (RuleCall)cStatesAssignment_3_0.eContents().get(0);
+		private final Assignment cCellsAssignment_3_1 = (Assignment)cAlternatives_3.eContents().get(1);
+		private final RuleCall cCellsCellSpecificationParserRuleCall_3_1_0 = (RuleCall)cCellsAssignment_3_1.eContents().get(0);
+		private final Assignment cInitsAssignment_3_2 = (Assignment)cAlternatives_3.eContents().get(2);
+		private final RuleCall cInitsGlobalFieldInitialisationParserRuleCall_3_2_0 = (RuleCall)cInitsAssignment_3_2.eContents().get(0);
+		private final Assignment cFieldsAssignment_3_3 = (Assignment)cAlternatives_3.eContents().get(3);
+		private final RuleCall cFieldsFieldSpecificationParserRuleCall_3_3_0 = (RuleCall)cFieldsAssignment_3_3.eContents().get(0);
+		private final Assignment cOptionsAssignment_3_4 = (Assignment)cAlternatives_3.eContents().get(4);
+		private final RuleCall cOptionsOptionSpecificationParserRuleCall_3_4_0 = (RuleCall)cOptionsAssignment_3_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		/// * 
 		// * This language is meant to serve as a high-level modelling language for arcade-style games with a grid playing field
@@ -44,18 +45,17 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		// * 
 		// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 		// * 
-		// * TODO Enable reuse of field initialisers (possibly parametrised) between field specifications
 		// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells etc.
 		// * TODO Enable keyboard triggers
 		// * TODO Enable cell movement as an alternative behaviour (to support games like Tetris and Breakout), possibly of cell groups rather than just individual cells
 		// * TODO Enable timed triggers for behaviours 
 		// * / GridGame:
-		//	"game" name=ID "{" states+=GlobalCellStateSpec? cells+=CellSpecification+ inits+=GlobalFieldInitialisation?
-		//	fields+=FieldSpecification+ options+=OptionSpecification* "}";
+		//	"game" name=ID "{" (states+=GlobalCellStateSpec | cells+=CellSpecification | inits+=GlobalFieldInitialisation |
+		//	fields+=FieldSpecification | options+=OptionSpecification)+ "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"game" name=ID "{" states+=GlobalCellStateSpec? cells+=CellSpecification+ inits+=GlobalFieldInitialisation?
-		//fields+=FieldSpecification+ options+=OptionSpecification* "}"
+		//"game" name=ID "{" (states+=GlobalCellStateSpec | cells+=CellSpecification | inits+=GlobalFieldInitialisation |
+		//fields+=FieldSpecification | options+=OptionSpecification)+ "}"
 		public Group getGroup() { return cGroup; }
 
 		//"game"
@@ -70,38 +70,42 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//states+=GlobalCellStateSpec?
-		public Assignment getStatesAssignment_3() { return cStatesAssignment_3; }
+		//(states+=GlobalCellStateSpec | cells+=CellSpecification | inits+=GlobalFieldInitialisation | fields+=FieldSpecification
+		//| options+=OptionSpecification)+
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+
+		//states+=GlobalCellStateSpec
+		public Assignment getStatesAssignment_3_0() { return cStatesAssignment_3_0; }
 
 		//GlobalCellStateSpec
-		public RuleCall getStatesGlobalCellStateSpecParserRuleCall_3_0() { return cStatesGlobalCellStateSpecParserRuleCall_3_0; }
+		public RuleCall getStatesGlobalCellStateSpecParserRuleCall_3_0_0() { return cStatesGlobalCellStateSpecParserRuleCall_3_0_0; }
 
-		//cells+=CellSpecification+
-		public Assignment getCellsAssignment_4() { return cCellsAssignment_4; }
+		//cells+=CellSpecification
+		public Assignment getCellsAssignment_3_1() { return cCellsAssignment_3_1; }
 
 		//CellSpecification
-		public RuleCall getCellsCellSpecificationParserRuleCall_4_0() { return cCellsCellSpecificationParserRuleCall_4_0; }
+		public RuleCall getCellsCellSpecificationParserRuleCall_3_1_0() { return cCellsCellSpecificationParserRuleCall_3_1_0; }
 
-		//inits+=GlobalFieldInitialisation?
-		public Assignment getInitsAssignment_5() { return cInitsAssignment_5; }
+		//inits+=GlobalFieldInitialisation
+		public Assignment getInitsAssignment_3_2() { return cInitsAssignment_3_2; }
 
 		//GlobalFieldInitialisation
-		public RuleCall getInitsGlobalFieldInitialisationParserRuleCall_5_0() { return cInitsGlobalFieldInitialisationParserRuleCall_5_0; }
+		public RuleCall getInitsGlobalFieldInitialisationParserRuleCall_3_2_0() { return cInitsGlobalFieldInitialisationParserRuleCall_3_2_0; }
 
-		//fields+=FieldSpecification+
-		public Assignment getFieldsAssignment_6() { return cFieldsAssignment_6; }
+		//fields+=FieldSpecification
+		public Assignment getFieldsAssignment_3_3() { return cFieldsAssignment_3_3; }
 
 		//FieldSpecification
-		public RuleCall getFieldsFieldSpecificationParserRuleCall_6_0() { return cFieldsFieldSpecificationParserRuleCall_6_0; }
+		public RuleCall getFieldsFieldSpecificationParserRuleCall_3_3_0() { return cFieldsFieldSpecificationParserRuleCall_3_3_0; }
 
-		//options+=OptionSpecification*
-		public Assignment getOptionsAssignment_7() { return cOptionsAssignment_7; }
+		//options+=OptionSpecification
+		public Assignment getOptionsAssignment_3_4() { return cOptionsAssignment_3_4; }
 
 		//OptionSpecification
-		public RuleCall getOptionsOptionSpecificationParserRuleCall_7_0() { return cOptionsOptionSpecificationParserRuleCall_7_0; }
+		public RuleCall getOptionsOptionSpecificationParserRuleCall_3_4_0() { return cOptionsOptionSpecificationParserRuleCall_3_4_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 
 	public class CellSpecificationElements extends AbstractParserRuleElementFinder {
@@ -1750,14 +1754,13 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	// * 
 	// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 	// * 
-	// * TODO Enable reuse of field initialisers (possibly parametrised) between field specifications
 	// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells etc.
 	// * TODO Enable keyboard triggers
 	// * TODO Enable cell movement as an alternative behaviour (to support games like Tetris and Breakout), possibly of cell groups rather than just individual cells
 	// * TODO Enable timed triggers for behaviours 
 	// * / GridGame:
-	//	"game" name=ID "{" states+=GlobalCellStateSpec? cells+=CellSpecification+ inits+=GlobalFieldInitialisation?
-	//	fields+=FieldSpecification+ options+=OptionSpecification* "}";
+	//	"game" name=ID "{" (states+=GlobalCellStateSpec | cells+=CellSpecification | inits+=GlobalFieldInitialisation |
+	//	fields+=FieldSpecification | options+=OptionSpecification)+ "}";
 	public GridGameElements getGridGameAccess() {
 		return pGridGame;
 	}

@@ -17,11 +17,11 @@ generate gridGame "http://www.inf.kcl.ac.uk/zschaler/gridgames/GridGame"
 
 GridGame : 
 	"game" name=ID "{"
-		(states += GlobalCellStateSpec+)?
-		cells += CellSpecification+
-		(inits += GlobalFieldInitialisation+)?
-		fields += FieldSpecification+
-		options += OptionSpecification*
+		(states += GlobalCellStateSpec |
+		cells += CellSpecification |
+		inits += GlobalFieldInitialisation |
+		fields += FieldSpecification |
+		options += OptionSpecification)+
 	"}"
 ;
               

@@ -103,10 +103,10 @@ ruleGridGame returns [EObject current=null]
     {
     	newLeafNode(otherlv_2, grammarAccess.getGridGameAccess().getLeftCurlyBracketKeyword_2());
     }
-(
+((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getStatesGlobalCellStateSpecParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getStatesGlobalCellStateSpecParserRuleCall_3_0_0()); 
 	    }
 		lv_states_3_0=ruleGlobalCellStateSpec		{
 	        if ($current==null) {
@@ -121,10 +121,11 @@ ruleGridGame returns [EObject current=null]
 	    }
 
 )
-)?(
+)
+    |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getCellsCellSpecificationParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getCellsCellSpecificationParserRuleCall_3_1_0()); 
 	    }
 		lv_cells_4_0=ruleCellSpecification		{
 	        if ($current==null) {
@@ -139,10 +140,11 @@ ruleGridGame returns [EObject current=null]
 	    }
 
 )
-)+(
+)
+    |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getInitsGlobalFieldInitialisationParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getInitsGlobalFieldInitialisationParserRuleCall_3_2_0()); 
 	    }
 		lv_inits_5_0=ruleGlobalFieldInitialisation		{
 	        if ($current==null) {
@@ -157,10 +159,11 @@ ruleGridGame returns [EObject current=null]
 	    }
 
 )
-)?(
+)
+    |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_3_3_0()); 
 	    }
 		lv_fields_6_0=ruleFieldSpecification		{
 	        if ($current==null) {
@@ -175,10 +178,11 @@ ruleGridGame returns [EObject current=null]
 	    }
 
 )
-)+(
+)
+    |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_7_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_3_4_0()); 
 	    }
 		lv_options_7_0=ruleOptionSpecification		{
 	        if ($current==null) {
@@ -193,9 +197,9 @@ ruleGridGame returns [EObject current=null]
 	    }
 
 )
-)*	otherlv_8='}' 
+))+	otherlv_8='}' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getGridGameAccess().getRightCurlyBracketKeyword_8());
+    	newLeafNode(otherlv_8, grammarAccess.getGridGameAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;

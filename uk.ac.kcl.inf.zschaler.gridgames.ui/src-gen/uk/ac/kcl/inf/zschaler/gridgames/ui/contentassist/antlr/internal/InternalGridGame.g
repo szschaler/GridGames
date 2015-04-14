@@ -1153,6 +1153,46 @@ finally {
 
 
 
+rule__GridGame__Alternatives_3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getGridGameAccess().getStatesAssignment_3_0()); }
+(rule__GridGame__StatesAssignment_3_0)
+{ after(grammarAccess.getGridGameAccess().getStatesAssignment_3_0()); }
+)
+
+    |(
+{ before(grammarAccess.getGridGameAccess().getCellsAssignment_3_1()); }
+(rule__GridGame__CellsAssignment_3_1)
+{ after(grammarAccess.getGridGameAccess().getCellsAssignment_3_1()); }
+)
+
+    |(
+{ before(grammarAccess.getGridGameAccess().getInitsAssignment_3_2()); }
+(rule__GridGame__InitsAssignment_3_2)
+{ after(grammarAccess.getGridGameAccess().getInitsAssignment_3_2()); }
+)
+
+    |(
+{ before(grammarAccess.getGridGameAccess().getFieldsAssignment_3_3()); }
+(rule__GridGame__FieldsAssignment_3_3)
+{ after(grammarAccess.getGridGameAccess().getFieldsAssignment_3_3()); }
+)
+
+    |(
+{ before(grammarAccess.getGridGameAccess().getOptionsAssignment_3_4()); }
+(rule__GridGame__OptionsAssignment_3_4)
+{ after(grammarAccess.getGridGameAccess().getOptionsAssignment_3_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__CellMember__Alternatives
     @init {
 		int stackSize = keepStackSize();
@@ -1649,9 +1689,16 @@ rule__GridGame__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getGridGameAccess().getStatesAssignment_3()); }
-(rule__GridGame__StatesAssignment_3)?
-{ after(grammarAccess.getGridGameAccess().getStatesAssignment_3()); }
+(
+{ before(grammarAccess.getGridGameAccess().getAlternatives_3()); }
+(rule__GridGame__Alternatives_3)
+{ after(grammarAccess.getGridGameAccess().getAlternatives_3()); }
+)
+(
+{ before(grammarAccess.getGridGameAccess().getAlternatives_3()); }
+(rule__GridGame__Alternatives_3)*
+{ after(grammarAccess.getGridGameAccess().getAlternatives_3()); }
+)
 )
 
 ;
@@ -1666,7 +1713,6 @@ rule__GridGame__Group__4
     }
 :
 	rule__GridGame__Group__4__Impl
-	rule__GridGame__Group__5
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1678,154 +1724,17 @@ rule__GridGame__Group__4__Impl
     }
 :
 (
-(
-{ before(grammarAccess.getGridGameAccess().getCellsAssignment_4()); }
-(rule__GridGame__CellsAssignment_4)
-{ after(grammarAccess.getGridGameAccess().getCellsAssignment_4()); }
-)
-(
-{ before(grammarAccess.getGridGameAccess().getCellsAssignment_4()); }
-(rule__GridGame__CellsAssignment_4)*
-{ after(grammarAccess.getGridGameAccess().getCellsAssignment_4()); }
-)
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__GridGame__Group__5
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__GridGame__Group__5__Impl
-	rule__GridGame__Group__6
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__GridGame__Group__5__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getGridGameAccess().getInitsAssignment_5()); }
-(rule__GridGame__InitsAssignment_5)?
-{ after(grammarAccess.getGridGameAccess().getInitsAssignment_5()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__GridGame__Group__6
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__GridGame__Group__6__Impl
-	rule__GridGame__Group__7
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__GridGame__Group__6__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-(
-{ before(grammarAccess.getGridGameAccess().getFieldsAssignment_6()); }
-(rule__GridGame__FieldsAssignment_6)
-{ after(grammarAccess.getGridGameAccess().getFieldsAssignment_6()); }
-)
-(
-{ before(grammarAccess.getGridGameAccess().getFieldsAssignment_6()); }
-(rule__GridGame__FieldsAssignment_6)*
-{ after(grammarAccess.getGridGameAccess().getFieldsAssignment_6()); }
-)
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__GridGame__Group__7
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__GridGame__Group__7__Impl
-	rule__GridGame__Group__8
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__GridGame__Group__7__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getGridGameAccess().getOptionsAssignment_7()); }
-(rule__GridGame__OptionsAssignment_7)*
-{ after(grammarAccess.getGridGameAccess().getOptionsAssignment_7()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__GridGame__Group__8
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__GridGame__Group__8__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__GridGame__Group__8__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getGridGameAccess().getRightCurlyBracketKeyword_8()); }
+{ before(grammarAccess.getGridGameAccess().getRightCurlyBracketKeyword_4()); }
 
 	'}' 
 
-{ after(grammarAccess.getGridGameAccess().getRightCurlyBracketKeyword_8()); }
+{ after(grammarAccess.getGridGameAccess().getRightCurlyBracketKeyword_4()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -6834,14 +6743,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__GridGame__StatesAssignment_3
+rule__GridGame__StatesAssignment_3_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getGridGameAccess().getStatesGlobalCellStateSpecParserRuleCall_3_0()); }
-	ruleGlobalCellStateSpec{ after(grammarAccess.getGridGameAccess().getStatesGlobalCellStateSpecParserRuleCall_3_0()); }
+{ before(grammarAccess.getGridGameAccess().getStatesGlobalCellStateSpecParserRuleCall_3_0_0()); }
+	ruleGlobalCellStateSpec{ after(grammarAccess.getGridGameAccess().getStatesGlobalCellStateSpecParserRuleCall_3_0_0()); }
 )
 
 ;
@@ -6849,14 +6758,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__GridGame__CellsAssignment_4
+rule__GridGame__CellsAssignment_3_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getGridGameAccess().getCellsCellSpecificationParserRuleCall_4_0()); }
-	ruleCellSpecification{ after(grammarAccess.getGridGameAccess().getCellsCellSpecificationParserRuleCall_4_0()); }
+{ before(grammarAccess.getGridGameAccess().getCellsCellSpecificationParserRuleCall_3_1_0()); }
+	ruleCellSpecification{ after(grammarAccess.getGridGameAccess().getCellsCellSpecificationParserRuleCall_3_1_0()); }
 )
 
 ;
@@ -6864,14 +6773,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__GridGame__InitsAssignment_5
+rule__GridGame__InitsAssignment_3_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getGridGameAccess().getInitsGlobalFieldInitialisationParserRuleCall_5_0()); }
-	ruleGlobalFieldInitialisation{ after(grammarAccess.getGridGameAccess().getInitsGlobalFieldInitialisationParserRuleCall_5_0()); }
+{ before(grammarAccess.getGridGameAccess().getInitsGlobalFieldInitialisationParserRuleCall_3_2_0()); }
+	ruleGlobalFieldInitialisation{ after(grammarAccess.getGridGameAccess().getInitsGlobalFieldInitialisationParserRuleCall_3_2_0()); }
 )
 
 ;
@@ -6879,14 +6788,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__GridGame__FieldsAssignment_6
+rule__GridGame__FieldsAssignment_3_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_6_0()); }
-	ruleFieldSpecification{ after(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_6_0()); }
+{ before(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_3_3_0()); }
+	ruleFieldSpecification{ after(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_3_3_0()); }
 )
 
 ;
@@ -6894,14 +6803,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__GridGame__OptionsAssignment_7
+rule__GridGame__OptionsAssignment_3_4
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_7_0()); }
-	ruleOptionSpecification{ after(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_7_0()); }
+{ before(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_3_4_0()); }
+	ruleOptionSpecification{ after(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_3_4_0()); }
 )
 
 ;

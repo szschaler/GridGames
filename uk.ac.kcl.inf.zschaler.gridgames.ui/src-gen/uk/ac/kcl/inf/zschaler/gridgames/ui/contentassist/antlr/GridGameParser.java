@@ -37,6 +37,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getGridGameAccess().getAlternatives_3(), "rule__GridGame__Alternatives_3");
 					put(grammarAccess.getCellMemberAccess().getAlternatives(), "rule__CellMember__Alternatives");
 					put(grammarAccess.getCellDisplaySpecAccess().getDisplay_typeAlternatives_3_0(), "rule__CellDisplaySpec__Display_typeAlternatives_3_0");
 					put(grammarAccess.getCellDisplaySpecAccess().getAlternatives_4(), "rule__CellDisplaySpec__Alternatives_4");
@@ -95,11 +96,11 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCountExpressionAccess().getGroup(), "rule__CountExpression__Group__0");
 					put(grammarAccess.getNotEmptyExpressionAccess().getGroup(), "rule__NotEmptyExpression__Group__0");
 					put(grammarAccess.getGridGameAccess().getNameAssignment_1(), "rule__GridGame__NameAssignment_1");
-					put(grammarAccess.getGridGameAccess().getStatesAssignment_3(), "rule__GridGame__StatesAssignment_3");
-					put(grammarAccess.getGridGameAccess().getCellsAssignment_4(), "rule__GridGame__CellsAssignment_4");
-					put(grammarAccess.getGridGameAccess().getInitsAssignment_5(), "rule__GridGame__InitsAssignment_5");
-					put(grammarAccess.getGridGameAccess().getFieldsAssignment_6(), "rule__GridGame__FieldsAssignment_6");
-					put(grammarAccess.getGridGameAccess().getOptionsAssignment_7(), "rule__GridGame__OptionsAssignment_7");
+					put(grammarAccess.getGridGameAccess().getStatesAssignment_3_0(), "rule__GridGame__StatesAssignment_3_0");
+					put(grammarAccess.getGridGameAccess().getCellsAssignment_3_1(), "rule__GridGame__CellsAssignment_3_1");
+					put(grammarAccess.getGridGameAccess().getInitsAssignment_3_2(), "rule__GridGame__InitsAssignment_3_2");
+					put(grammarAccess.getGridGameAccess().getFieldsAssignment_3_3(), "rule__GridGame__FieldsAssignment_3_3");
+					put(grammarAccess.getGridGameAccess().getOptionsAssignment_3_4(), "rule__GridGame__OptionsAssignment_3_4");
 					put(grammarAccess.getCellSpecificationAccess().getNameAssignment_1(), "rule__CellSpecification__NameAssignment_1");
 					put(grammarAccess.getCellSpecificationAccess().getMembersAssignment_3(), "rule__CellSpecification__MembersAssignment_3");
 					put(grammarAccess.getCellDisplaySpecAccess().getDisplay_typeAssignment_3(), "rule__CellDisplaySpec__Display_typeAssignment_3");
