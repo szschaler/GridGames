@@ -181,8 +181,11 @@ public class FieldGenerator extends CommonGenerator {
       _builder_1.append("} else {");
       _builder_1.newLine();
       _builder_1.append("\t\t\t\t\t");
-      _builder_1.append("for (col = 0; col < field.getColumnCount(); col++) {");
-      _builder_1.newLine();
+      _builder_1.append("for (col = 0; col < ");
+      CharSequence _generateFieldClassName_2 = this.generateFieldClassName();
+      _builder_1.append(_generateFieldClassName_2, "\t\t\t\t\t");
+      _builder_1.append(".this.getColumnCount(); col++) {");
+      _builder_1.newLineIfNotEmpty();
       _builder_1.append("\t\t\t\t\t\t");
       _builder_1.newLine();
       _builder_1.append("\t\t\t\t\t\t");
@@ -582,6 +585,10 @@ public class FieldGenerator extends CommonGenerator {
       if (_exists) {
         imports.add("java.util.List");
         imports.add("java.util.ArrayList");
+      }
+      if (true) {
+        imports.add("javax.swing.event.TableModelEvent");
+        imports.add("javax.swing.event.TableModelListener");
       }
       final Function1<String, Boolean> _function_2 = new Function1<String, Boolean>() {
         @Override

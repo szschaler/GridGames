@@ -76,7 +76,7 @@ class FieldGenerator extends CommonGenerator {
 									«/* TODO Figure out parameters and how to deal with recursion (esp. where multiple sequential states have context triggers */»
 									handleStateChange ();
 								} else {
-									for (col = 0; col < field.getColumnCount(); col++) {
+									for (col = 0; col < «generateFieldClassName()».this.getColumnCount(); col++) {
 										«/* TODO Figure out parameters and how to deal with recursion (esp. where multiple sequential states have context triggers */»
 										handleStateChange ();
 									}
@@ -206,6 +206,10 @@ class FieldGenerator extends CommonGenerator {
 			imports.add("java.util.ArrayList")			
 		}
 		
+		if (true) { // FIXME Use same condition as when determining whether we need to generate a listener for context-triggered transitions. 
+			imports.add ("javax.swing.event.TableModelEvent")
+			imports.add ("javax.swing.event.TableModelListener")
+		}
 		imports.filter[imp | !imp.equals("")].join("\n", [ imp | '''import «imp»;'''])
 	}
 
