@@ -83,6 +83,7 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.TRANSITION_SPEC: return createTransitionSpec();
       case GridGamePackage.TRANSITION_TRIGGER_SPEC: return createTransitionTriggerSpec();
       case GridGamePackage.MOUSE_TRIGGER: return createMouseTrigger();
+      case GridGamePackage.CONTEXT_TRIGGER: return createContextTrigger();
       case GridGamePackage.CELL_STATE_BEHAVIOUR: return createCellStateBehaviour();
       case GridGamePackage.BEHAVIOUR_REFERENCE: return createBehaviourReference();
       case GridGamePackage.DIRECT_BEHAVIOUR: return createDirectBehaviour();
@@ -317,6 +318,17 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     MouseTriggerImpl mouseTrigger = new MouseTriggerImpl();
     return mouseTrigger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ContextTrigger createContextTrigger()
+  {
+    ContextTriggerImpl contextTrigger = new ContextTriggerImpl();
+    return contextTrigger;
   }
 
   /**

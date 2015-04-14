@@ -194,6 +194,15 @@ public interface GridGameFactory extends EFactory
   MouseTrigger createMouseTrigger();
 
   /**
+   * Returns a new object of class '<em>Context Trigger</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Context Trigger</em>'.
+   * @generated
+   */
+  ContextTrigger createContextTrigger();
+
+  /**
    * Returns a new object of class '<em>Cell State Behaviour</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

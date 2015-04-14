@@ -170,6 +170,11 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createMouseTriggerAdapter();
       }
       @Override
+      public Adapter caseContextTrigger(ContextTrigger object)
+      {
+        return createContextTriggerAdapter();
+      }
+      @Override
       public Adapter caseCellStateBehaviour(CellStateBehaviour object)
       {
         return createCellStateBehaviourAdapter();
@@ -582,6 +587,21 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMouseTriggerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger <em>Context Trigger</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
+   * @generated
+   */
+  public Adapter createContextTriggerAdapter()
   {
     return null;
   }

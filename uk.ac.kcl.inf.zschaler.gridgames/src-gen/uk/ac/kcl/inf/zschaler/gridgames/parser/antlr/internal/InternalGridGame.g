@@ -1319,9 +1319,9 @@ ruleTransitionTriggerSpec returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-
+(
     { 
-        newCompositeNode(grammarAccess.getTransitionTriggerSpecAccess().getMouseTriggerParserRuleCall()); 
+        newCompositeNode(grammarAccess.getTransitionTriggerSpecAccess().getMouseTriggerParserRuleCall_0()); 
     }
     this_MouseTrigger_0=ruleMouseTrigger
     { 
@@ -1329,6 +1329,16 @@ ruleTransitionTriggerSpec returns [EObject current=null]
         afterParserOrEnumRuleCall();
     }
 
+    |
+    { 
+        newCompositeNode(grammarAccess.getTransitionTriggerSpecAccess().getContextTriggerParserRuleCall_1()); 
+    }
+    this_ContextTrigger_1=ruleContextTrigger
+    { 
+        $current = $this_ContextTrigger_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
 ;
 
 
@@ -1376,6 +1386,57 @@ ruleMouseTrigger returns [EObject current=null]
             $current);
     }
 )))
+;
+
+
+
+
+
+// Entry rule entryRuleContextTrigger
+entryRuleContextTrigger returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getContextTriggerRule()); }
+	 iv_ruleContextTrigger=ruleContextTrigger 
+	 { $current=$iv_ruleContextTrigger.current; } 
+	 EOF 
+;
+
+// Rule ContextTrigger
+ruleContextTrigger returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='context' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getContextTriggerAccess().getContextKeyword_0());
+    }
+	otherlv_1='(' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getContextTriggerAccess().getLeftParenthesisKeyword_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getContextTriggerAccess().getExpContextExpressionParserRuleCall_2_0()); 
+	    }
+		lv_exp_2_0=ruleContextExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getContextTriggerRule());
+	        }
+       		set(
+       			$current, 
+       			"exp",
+        		lv_exp_2_0, 
+        		"ContextExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_3=')' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getContextTriggerAccess().getRightParenthesisKeyword_3());
+    }
+)
 ;
 
 

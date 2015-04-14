@@ -70,6 +70,9 @@
     <genClasses ecoreClass="GridGame.ecore#//MouseTrigger">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//MouseTrigger/left"/>
     </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//ContextTrigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//ContextTrigger/exp"/>
+    </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//CellStateBehaviour"/>
     <genClasses ecoreClass="GridGame.ecore#//BehaviourReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//BehaviourReference/ref"/>

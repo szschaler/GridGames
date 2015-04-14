@@ -733,6 +733,34 @@ public interface GridGamePackage extends EPackage
   int MOUSE_TRIGGER_FEATURE_COUNT = TRANSITION_TRIGGER_SPEC_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextTriggerImpl <em>Context Trigger</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextTriggerImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getContextTrigger()
+   * @generated
+   */
+  int CONTEXT_TRIGGER = 19;
+
+  /**
+   * The feature id for the '<em><b>Exp</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_TRIGGER__EXP = TRANSITION_TRIGGER_SPEC_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Context Trigger</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTEXT_TRIGGER_FEATURE_COUNT = TRANSITION_TRIGGER_SPEC_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateBehaviourImpl <em>Cell State Behaviour</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -740,7 +768,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCellStateBehaviour()
    * @generated
    */
-  int CELL_STATE_BEHAVIOUR = 19;
+  int CELL_STATE_BEHAVIOUR = 20;
 
   /**
    * The number of structural features of the '<em>Cell State Behaviour</em>' class.
@@ -759,7 +787,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getBehaviourReference()
    * @generated
    */
-  int BEHAVIOUR_REFERENCE = 20;
+  int BEHAVIOUR_REFERENCE = 21;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -787,7 +815,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getDirectBehaviour()
    * @generated
    */
-  int DIRECT_BEHAVIOUR = 21;
+  int DIRECT_BEHAVIOUR = 22;
 
   /**
    * The number of structural features of the '<em>Direct Behaviour</em>' class.
@@ -806,7 +834,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getEndGameBehaviour()
    * @generated
    */
-  int END_GAME_BEHAVIOUR = 22;
+  int END_GAME_BEHAVIOUR = 23;
 
   /**
    * The feature id for the '<em><b>Message</b></em>' attribute.
@@ -834,7 +862,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldSpecification()
    * @generated
    */
-  int FIELD_SPECIFICATION = 23;
+  int FIELD_SPECIFICATION = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -889,7 +917,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getOptionSpecification()
    * @generated
    */
-  int OPTION_SPECIFICATION = 24;
+  int OPTION_SPECIFICATION = 25;
 
   /**
    * The number of structural features of the '<em>Option Specification</em>' class.
@@ -908,7 +936,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getAllowRestartMenu()
    * @generated
    */
-  int ALLOW_RESTART_MENU = 25;
+  int ALLOW_RESTART_MENU = 26;
 
   /**
    * The number of structural features of the '<em>Allow Restart Menu</em>' class.
@@ -927,7 +955,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getStartFieldDeclaration()
    * @generated
    */
-  int START_FIELD_DECLARATION = 26;
+  int START_FIELD_DECLARATION = 27;
 
   /**
    * The feature id for the '<em><b>Field</b></em>' reference.
@@ -955,7 +983,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getGlobalFieldInitialisation()
    * @generated
    */
-  int GLOBAL_FIELD_INITIALISATION = 27;
+  int GLOBAL_FIELD_INITIALISATION = 28;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1001,7 +1029,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldInitialisations()
    * @generated
    */
-  int FIELD_INITIALISATIONS = 28;
+  int FIELD_INITIALISATIONS = 29;
 
   /**
    * The number of structural features of the '<em>Field Initialisations</em>' class.
@@ -1020,7 +1048,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldInitialisationsRef()
    * @generated
    */
-  int FIELD_INITIALISATIONS_REF = 29;
+  int FIELD_INITIALISATIONS_REF = 30;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -1057,7 +1085,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getLocalFieldInitialisations()
    * @generated
    */
-  int LOCAL_FIELD_INITIALISATIONS = 30;
+  int LOCAL_FIELD_INITIALISATIONS = 31;
 
   /**
    * The feature id for the '<em><b>Initialisations</b></em>' containment reference list.
@@ -1085,7 +1113,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFieldInitialisation()
    * @generated
    */
-  int FIELD_INITIALISATION = 31;
+  int FIELD_INITIALISATION = 32;
 
   /**
    * The feature id for the '<em><b>Cell</b></em>' reference.
@@ -1113,7 +1141,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getDefaultInitialisation()
    * @generated
    */
-  int DEFAULT_INITIALISATION = 32;
+  int DEFAULT_INITIALISATION = 33;
 
   /**
    * The feature id for the '<em><b>Cell</b></em>' reference.
@@ -1141,7 +1169,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getRandomInitialisation()
    * @generated
    */
-  int RANDOM_INITIALISATION = 33;
+  int RANDOM_INITIALISATION = 34;
 
   /**
    * The feature id for the '<em><b>Cell</b></em>' reference.
@@ -1187,7 +1215,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getContextInitialisation()
    * @generated
    */
-  int CONTEXT_INITIALISATION = 34;
+  int CONTEXT_INITIALISATION = 35;
 
   /**
    * The feature id for the '<em><b>Cell</b></em>' reference.
@@ -1233,7 +1261,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getContextExpression()
    * @generated
    */
-  int CONTEXT_EXPRESSION = 35;
+  int CONTEXT_EXPRESSION = 36;
 
   /**
    * The feature id for the '<em><b>Sub exp</b></em>' containment reference list.
@@ -1261,7 +1289,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getAtomicExpression()
    * @generated
    */
-  int ATOMIC_EXPRESSION = 36;
+  int ATOMIC_EXPRESSION = 37;
 
   /**
    * The number of structural features of the '<em>Atomic Expression</em>' class.
@@ -1280,7 +1308,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getFilterExpression()
    * @generated
    */
-  int FILTER_EXPRESSION = 37;
+  int FILTER_EXPRESSION = 38;
 
   /**
    * The feature id for the '<em><b>Cell type</b></em>' reference.
@@ -1308,7 +1336,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCountExpression()
    * @generated
    */
-  int COUNT_EXPRESSION = 38;
+  int COUNT_EXPRESSION = 39;
 
   /**
    * The number of structural features of the '<em>Count Expression</em>' class.
@@ -1327,7 +1355,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getNotEmptyExpression()
    * @generated
    */
-  int NOT_EMPTY_EXPRESSION = 39;
+  int NOT_EMPTY_EXPRESSION = 40;
 
   /**
    * The number of structural features of the '<em>Not Empty Expression</em>' class.
@@ -1346,7 +1374,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getNoOpBehaviour()
    * @generated
    */
-  int NO_OP_BEHAVIOUR = 40;
+  int NO_OP_BEHAVIOUR = 41;
 
   /**
    * The number of structural features of the '<em>No Op Behaviour</em>' class.
@@ -1888,6 +1916,27 @@ public interface GridGamePackage extends EPackage
    * @generated
    */
   EAttribute getMouseTrigger_Left();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger <em>Context Trigger</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Context Trigger</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
+   * @generated
+   */
+  EClass getContextTrigger();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger#getExp <em>Exp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger#getExp()
+   * @see #getContextTrigger()
+   * @generated
+   */
+  EReference getContextTrigger_Exp();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour <em>Cell State Behaviour</em>}'.
@@ -2789,6 +2838,24 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EAttribute MOUSE_TRIGGER__LEFT = eINSTANCE.getMouseTrigger_Left();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextTriggerImpl <em>Context Trigger</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextTriggerImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getContextTrigger()
+     * @generated
+     */
+    EClass CONTEXT_TRIGGER = eINSTANCE.getContextTrigger();
+
+    /**
+     * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTEXT_TRIGGER__EXP = eINSTANCE.getContextTrigger_Exp();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateBehaviourImpl <em>Cell State Behaviour</em>}' class.

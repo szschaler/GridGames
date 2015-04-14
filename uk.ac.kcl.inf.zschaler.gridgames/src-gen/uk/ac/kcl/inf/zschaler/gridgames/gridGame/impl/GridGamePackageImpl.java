@@ -22,6 +22,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DirectBehaviour;
@@ -193,6 +194,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass mouseTriggerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass contextTriggerEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -916,6 +924,26 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getContextTrigger()
+  {
+    return contextTriggerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getContextTrigger_Exp()
+  {
+    return (EReference)contextTriggerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getCellStateBehaviour()
   {
     return cellStateBehaviourEClass;
@@ -1430,6 +1458,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     mouseTriggerEClass = createEClass(MOUSE_TRIGGER);
     createEAttribute(mouseTriggerEClass, MOUSE_TRIGGER__LEFT);
 
+    contextTriggerEClass = createEClass(CONTEXT_TRIGGER);
+    createEReference(contextTriggerEClass, CONTEXT_TRIGGER__EXP);
+
     cellStateBehaviourEClass = createEClass(CELL_STATE_BEHAVIOUR);
 
     behaviourReferenceEClass = createEClass(BEHAVIOUR_REFERENCE);
@@ -1535,6 +1566,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     intValueEClass.getESuperTypes().add(this.getValue());
     varRefValueEClass.getESuperTypes().add(this.getValue());
     mouseTriggerEClass.getESuperTypes().add(this.getTransitionTriggerSpec());
+    contextTriggerEClass.getESuperTypes().add(this.getTransitionTriggerSpec());
     behaviourReferenceEClass.getESuperTypes().add(this.getCellStateBehaviour());
     directBehaviourEClass.getESuperTypes().add(this.getValue());
     directBehaviourEClass.getESuperTypes().add(this.getCellStateBehaviour());
@@ -1620,6 +1652,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     initEClass(mouseTriggerEClass, MouseTrigger.class, "MouseTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMouseTrigger_Left(), ecorePackage.getEBoolean(), "left", null, 0, 1, MouseTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(contextTriggerEClass, ContextTrigger.class, "ContextTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getContextTrigger_Exp(), this.getContextExpression(), null, "exp", null, 0, 1, ContextTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cellStateBehaviourEClass, CellStateBehaviour.class, "CellStateBehaviour", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

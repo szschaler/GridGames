@@ -814,15 +814,23 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class TransitionTriggerSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TransitionTriggerSpec");
-		private final RuleCall cMouseTriggerParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cMouseTriggerParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cContextTriggerParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//// TODO Consider introducing triggers based on state changes in the context
 		//TransitionTriggerSpec:
-		//	MouseTrigger;
+		//	MouseTrigger | ContextTrigger;
 		@Override public ParserRule getRule() { return rule; }
 
+		//MouseTrigger | ContextTrigger
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//MouseTrigger
-		public RuleCall getMouseTriggerParserRuleCall() { return cMouseTriggerParserRuleCall; }
+		public RuleCall getMouseTriggerParserRuleCall_0() { return cMouseTriggerParserRuleCall_0; }
+
+		//ContextTrigger
+		public RuleCall getContextTriggerParserRuleCall_1() { return cContextTriggerParserRuleCall_1; }
 	}
 
 	public class MouseTriggerElements extends AbstractParserRuleElementFinder {
@@ -855,6 +863,40 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//{MouseTrigger}
 		public Action getMouseTriggerAction_1_1() { return cMouseTriggerAction_1_1; }
+	}
+
+	public class ContextTriggerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ContextTrigger");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cContextKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cExpAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cExpContextExpressionParserRuleCall_2_0 = (RuleCall)cExpAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//ContextTrigger: // Trigger a transition when a cell in the context changes state
+		//	"context" "(" exp=ContextExpression ")";
+		@Override public ParserRule getRule() { return rule; }
+
+		//// Trigger a transition when a cell in the context changes state
+		//"context" "(" exp=ContextExpression ")"
+		public Group getGroup() { return cGroup; }
+
+		//// Trigger a transition when a cell in the context changes state
+		//"context"
+		public Keyword getContextKeyword_0() { return cContextKeyword_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+
+		//exp=ContextExpression
+		public Assignment getExpAssignment_2() { return cExpAssignment_2; }
+
+		//ContextExpression
+		public RuleCall getExpContextExpressionParserRuleCall_2_0() { return cExpContextExpressionParserRuleCall_2_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
 
 	public class CellStateBehaviourElements extends AbstractParserRuleElementFinder {
@@ -1671,6 +1713,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final TransitionSpecElements pTransitionSpec;
 	private final TransitionTriggerSpecElements pTransitionTriggerSpec;
 	private final MouseTriggerElements pMouseTrigger;
+	private final ContextTriggerElements pContextTrigger;
 	private final CellStateBehaviourElements pCellStateBehaviour;
 	private final BehaviourReferenceElements pBehaviourReference;
 	private final DirectBehaviourElements pDirectBehaviour;
@@ -1722,6 +1765,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pTransitionSpec = new TransitionSpecElements();
 		this.pTransitionTriggerSpec = new TransitionTriggerSpecElements();
 		this.pMouseTrigger = new MouseTriggerElements();
+		this.pContextTrigger = new ContextTriggerElements();
 		this.pCellStateBehaviour = new CellStateBehaviourElements();
 		this.pBehaviourReference = new BehaviourReferenceElements();
 		this.pDirectBehaviour = new DirectBehaviourElements();
@@ -1959,7 +2003,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// TODO Consider introducing triggers based on state changes in the context
 	//TransitionTriggerSpec:
-	//	MouseTrigger;
+	//	MouseTrigger | ContextTrigger;
 	public TransitionTriggerSpecElements getTransitionTriggerSpecAccess() {
 		return pTransitionTriggerSpec;
 	}
@@ -1976,6 +2020,16 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getMouseTriggerRule() {
 		return getMouseTriggerAccess().getRule();
+	}
+
+	//ContextTrigger: // Trigger a transition when a cell in the context changes state
+	//	"context" "(" exp=ContextExpression ")";
+	public ContextTriggerElements getContextTriggerAccess() {
+		return pContextTrigger;
+	}
+	
+	public ParserRule getContextTriggerRule() {
+		return getContextTriggerAccess().getRule();
 	}
 
 	//CellStateBehaviour:
