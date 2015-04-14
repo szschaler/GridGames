@@ -571,7 +571,8 @@ public class FieldGenerator extends CommonGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// Fill the rest of the field with ");
     CellSpecification _cell = dfi.getCell();
-    _builder.append(_cell, "");
+    String _name = _cell.getName();
+    _builder.append(_name, "");
     _builder.append(" cells");
     _builder.newLineIfNotEmpty();
     _builder.append("for (int x = 0; x < width; x++) {");
@@ -604,7 +605,8 @@ public class FieldGenerator extends CommonGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// Randomly allocate ");
     CellSpecification _cell = rfi.getCell();
-    _builder.append(_cell, "");
+    String _name = _cell.getName();
+    _builder.append(_name, "");
     _builder.append(" cells");
     _builder.newLineIfNotEmpty();
     _builder.append("{");
@@ -708,7 +710,8 @@ public class FieldGenerator extends CommonGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// Fill in ");
     CellSpecification _cell = ci.getCell();
-    _builder.append(_cell, "");
+    String _name = _cell.getName();
+    _builder.append(_name, "");
     _builder.append(" cells where appropriate because of context");
     _builder.newLineIfNotEmpty();
     _builder.append("for (int x = 0; x < width; x++) {");

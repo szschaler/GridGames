@@ -196,7 +196,7 @@ class FieldGenerator extends CommonGenerator {
 	'''
 
 	def dispatch generateInitCode(DefaultInitialisation dfi, Map<String, Value> symbols) '''
-		// Fill the rest of the field with «dfi.cell» cells
+		// Fill the rest of the field with «dfi.cell.name» cells
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				if (field[x][y] == null) {
@@ -207,7 +207,7 @@ class FieldGenerator extends CommonGenerator {
 	'''
 	
 	def dispatch generateInitCode(RandomInitialisation rfi, Map<String, Value> symbols) '''
-		// Randomly allocate «rfi.cell» cells
+		// Randomly allocate «rfi.cell.name» cells
 		{
 			Random r = new Random();
 		
@@ -250,7 +250,7 @@ class FieldGenerator extends CommonGenerator {
 	}
 	
 	def dispatch generateInitCode(ContextInitialisation ci, Map<String, Value> symbols) '''
-	  // Fill in «ci.cell» cells where appropriate because of context
+	  // Fill in «ci.cell.name» cells where appropriate because of context
 	  for (int x = 0; x < width; x++) {
 	  	for (int y = 0; y < height; y++) {
 	  		if (field[x][y] == null) {
