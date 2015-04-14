@@ -157,7 +157,8 @@ class FieldGenerator extends CommonGenerator {
 	
 	def getContextExpInvocations(GridGame gg) {
 		gg.fields.map[f | 
-			mpp.allInitialisations(f).filter(ContextInitialisation).map[ci | 
+			mpp.allInitialisations(f).filter[p | p.value instanceof ContextInitialisation].map[cip |
+				val ci = cip.value as ContextInitialisation 
 				var checkExps = ci.check.sub_exp
 				var valExps = ci.exp.sub_exp
 				checkExps.toList.addAll (valExps)

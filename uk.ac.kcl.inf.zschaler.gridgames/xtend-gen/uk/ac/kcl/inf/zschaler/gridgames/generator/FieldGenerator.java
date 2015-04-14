@@ -424,12 +424,21 @@ public class FieldGenerator extends CommonGenerator {
       @Override
       public Iterable<AtomicExpression> apply(final FieldSpecification f) {
         List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
-        Iterable<ContextInitialisation> _filter = Iterables.<ContextInitialisation>filter(_allInitialisations, ContextInitialisation.class);
-        final Function1<ContextInitialisation, EList<AtomicExpression>> _function = new Function1<ContextInitialisation, EList<AtomicExpression>>() {
+        final Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean>() {
           @Override
-          public EList<AtomicExpression> apply(final ContextInitialisation ci) {
+          public Boolean apply(final Pair<Map<String, Value>, FieldInitialisation> p) {
+            FieldInitialisation _value = p.getValue();
+            return Boolean.valueOf((_value instanceof ContextInitialisation));
+          }
+        };
+        Iterable<Pair<Map<String, Value>, FieldInitialisation>> _filter = IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>filter(_allInitialisations, _function);
+        final Function1<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>> _function_1 = new Function1<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>>() {
+          @Override
+          public EList<AtomicExpression> apply(final Pair<Map<String, Value>, FieldInitialisation> cip) {
             EList<AtomicExpression> _xblockexpression = null;
             {
+              FieldInitialisation _value = cip.getValue();
+              final ContextInitialisation ci = ((ContextInitialisation) _value);
               ContextExpression _check = ci.getCheck();
               EList<AtomicExpression> checkExps = _check.getSub_exp();
               ContextExpression _exp = ci.getExp();
@@ -441,7 +450,7 @@ public class FieldGenerator extends CommonGenerator {
             return _xblockexpression;
           }
         };
-        Iterable<EList<AtomicExpression>> _map = IterableExtensions.<ContextInitialisation, EList<AtomicExpression>>map(_filter, _function);
+        Iterable<EList<AtomicExpression>> _map = IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>>map(_filter, _function_1);
         return Iterables.<AtomicExpression>concat(_map);
       }
     };
