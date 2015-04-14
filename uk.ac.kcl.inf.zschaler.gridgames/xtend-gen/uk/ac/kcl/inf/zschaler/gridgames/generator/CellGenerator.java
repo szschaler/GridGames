@@ -471,15 +471,6 @@ public class CellGenerator extends CommonGenerator {
     return _builder;
   }
   
-  public CharSequence generateVariableName(final CellVarSpec v) {
-    StringConcatenation _builder = new StringConcatenation();
-    String _name = v.getName();
-    String _firstLower = StringExtensions.toFirstLower(_name);
-    _builder.append(_firstLower, "");
-    _builder.append("Variable");
-    return _builder;
-  }
-  
   public CharSequence generateTextCalculation(final CellDisplaySpec cds, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
     CharSequence _xifexpression = null;
     String _text = cds.getText();

@@ -1,6 +1,7 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 
@@ -49,4 +50,6 @@ class CommonGenerator {
 	def generateCellFactoryMethodName(CellSpecification c) '''create«c.name.toFirstUpper»Field'''
 
 	def generateFieldInitialiserName(FieldSpecification f) '''initialise«f.name.toFirstUpper»Field'''
+	
+	def generateVariableName(CellVarSpec v) '''«v.name.toFirstLower»Variable'''
 }

@@ -145,8 +145,6 @@ class CellGenerator extends CommonGenerator {
 		}
 	'''
 
-	def generateVariableName(CellVarSpec v) '''«v.name.toFirstLower»Variable'''
-
 	def generateTextCalculation(CellDisplaySpec cds, Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
 		if (cds.text != null) '''"«cds.text»"''' else '''"" + «cds.^var.generateAccessCode (idAndSymbolTable)»'''
 	}

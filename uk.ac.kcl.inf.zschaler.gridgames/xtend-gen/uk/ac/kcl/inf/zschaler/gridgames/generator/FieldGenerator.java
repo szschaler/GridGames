@@ -1,5 +1,6 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +19,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
@@ -26,11 +28,16 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
 
 /**
  * Generates the field class.
@@ -608,8 +615,8 @@ public class FieldGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("for (int i = 0; i < ");
-    int _count = rfi.getCount();
-    _builder.append(_count, "\t");
+    Object _countValue = this.getCountValue(rfi, symbols);
+    _builder.append(_countValue, "\t");
     _builder.append("; i++) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -651,6 +658,50 @@ public class FieldGenerator extends CommonGenerator {
     _builder.append("}");
     _builder.newLine();
     return _builder;
+  }
+  
+  public Object getCountValue(final RandomInitialisation rfi, final Map<String, Value> symbols) {
+    Object _xifexpression = null;
+    VarSpec _var = rfi.getVar();
+    boolean _notEquals = (!Objects.equal(_var, null));
+    if (_notEquals) {
+      VarSpec _var_1 = rfi.getVar();
+      _xifexpression = this.generateAccessCode(_var_1, symbols);
+    } else {
+      _xifexpression = Integer.valueOf(rfi.getCount());
+    }
+    return _xifexpression;
+  }
+  
+  protected CharSequence _generateAccessCode(final CellVarSpec cvs, final Map<String, Value> symbols) {
+    return this.generateVariableName(cvs);
+  }
+  
+  protected CharSequence _generateAccessCode(final ParamSpec sps, final Map<String, Value> symbols) {
+    String _name = sps.getName();
+    Value _get = symbols.get(_name);
+    return this.generateAccessCode(_get, symbols);
+  }
+  
+  protected CharSequence _generateAccessCode(final StringValue v, final Map<String, Value> symbols) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\"");
+    String _value = v.getValue();
+    _builder.append(_value, "");
+    _builder.append("\"");
+    return _builder;
+  }
+  
+  protected CharSequence _generateAccessCode(final IntValue v, final Map<String, Value> symbols) {
+    StringConcatenation _builder = new StringConcatenation();
+    int _value = v.getValue();
+    _builder.append(_value, "");
+    return _builder;
+  }
+  
+  protected CharSequence _generateAccessCode(final VarRefValue v, final Map<String, Value> symbols) {
+    CellVarSpec _ref = v.getRef();
+    return this.generateAccessCode(_ref, symbols);
   }
   
   protected CharSequence _generateInitCode(final ContextInitialisation ci, final Map<String, Value> symbols) {
@@ -803,6 +854,23 @@ public class FieldGenerator extends CommonGenerator {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(ci, symbols).toString());
+    }
+  }
+  
+  public CharSequence generateAccessCode(final EObject cvs, final Map<String, Value> symbols) {
+    if (cvs instanceof CellVarSpec) {
+      return _generateAccessCode((CellVarSpec)cvs, symbols);
+    } else if (cvs instanceof IntValue) {
+      return _generateAccessCode((IntValue)cvs, symbols);
+    } else if (cvs instanceof ParamSpec) {
+      return _generateAccessCode((ParamSpec)cvs, symbols);
+    } else if (cvs instanceof StringValue) {
+      return _generateAccessCode((StringValue)cvs, symbols);
+    } else if (cvs instanceof VarRefValue) {
+      return _generateAccessCode((VarRefValue)cvs, symbols);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(cvs, symbols).toString());
     }
   }
   

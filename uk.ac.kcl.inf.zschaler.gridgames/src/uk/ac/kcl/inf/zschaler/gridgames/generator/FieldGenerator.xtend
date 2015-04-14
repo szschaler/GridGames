@@ -2,6 +2,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import java.util.Map
 import org.eclipse.xtext.generator.IFileSystemAccess
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression
@@ -10,10 +11,14 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
 
 /**
  * Generates the field class.
@@ -200,13 +205,13 @@ class FieldGenerator extends CommonGenerator {
 			}
 		}
 	'''
-
+	
 	def dispatch generateInitCode(RandomInitialisation rfi, Map<String, Value> symbols) '''
 		// Randomly allocate «rfi.cell» cells
 		{
 			Random r = new Random();
 		
-			for (int i = 0; i < «rfi.count»; i++) {
+			for (int i = 0; i < «rfi.getCountValue (symbols)»; i++) {
 			boolean fSet = false;
 			do {
 				int x = r.nextInt(width);
@@ -222,6 +227,28 @@ class FieldGenerator extends CommonGenerator {
 		}
 	'''
 
+	def getCountValue (RandomInitialisation rfi, Map<String, Value> symbols) {
+		if (rfi.^var != null) {
+			rfi.^var.generateAccessCode (symbols)
+		} else {
+			rfi.count
+		}
+	}
+	
+	def dispatch CharSequence generateAccessCode (CellVarSpec cvs, Map<String, Value> symbols) {
+		cvs.generateVariableName
+	}
+
+	def dispatch CharSequence generateAccessCode (ParamSpec sps, Map<String, Value> symbols) {
+		symbols.get (sps.name).generateAccessCode(symbols)
+	}
+
+	def dispatch CharSequence generateAccessCode (StringValue v, Map<String, Value> symbols) '''"«v.value»"'''
+	def dispatch CharSequence generateAccessCode (IntValue v, Map<String, Value> symbols) '''«v.value»'''
+	def dispatch CharSequence generateAccessCode (VarRefValue v, Map<String, Value> symbols) {
+		v.ref.generateAccessCode (symbols)
+	}
+	
 	def dispatch generateInitCode(ContextInitialisation ci, Map<String, Value> symbols) '''
 	  // Fill in «ci.cell» cells where appropriate because of context
 	  for (int x = 0; x < width; x++) {
