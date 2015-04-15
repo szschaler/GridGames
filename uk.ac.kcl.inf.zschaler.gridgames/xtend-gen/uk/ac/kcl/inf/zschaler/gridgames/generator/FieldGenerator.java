@@ -19,9 +19,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
@@ -35,6 +37,8 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
@@ -314,7 +318,7 @@ public class FieldGenerator extends CommonGenerator {
       _builder_2.append("\t");
       _builder_2.newLine();
       _builder_2.append("\t");
-      Iterable<AtomicExpression> _contextExpInvocations = this.getContextExpInvocations(this.gg);
+      List<AtomicExpression> _contextExpInvocations = this.getContextExpInvocations(this.gg);
       final Function1<AtomicExpression, String> _function_2 = new Function1<AtomicExpression, String>() {
         @Override
         public String apply(final AtomicExpression e) {
@@ -322,7 +326,7 @@ public class FieldGenerator extends CommonGenerator {
           return _generateImplementation.toString();
         }
       };
-      Iterable<String> _map = IterableExtensions.<AtomicExpression, String>map(_contextExpInvocations, _function_2);
+      List<String> _map = ListExtensions.<AtomicExpression, String>map(_contextExpInvocations, _function_2);
       Set<String> _set = IterableExtensions.<String>toSet(_map);
       String _join_1 = IterableExtensions.join(_set, " ");
       _builder_2.append(_join_1, "\t");
@@ -504,44 +508,79 @@ public class FieldGenerator extends CommonGenerator {
     return _builder;
   }
   
-  public Iterable<AtomicExpression> getContextExpInvocations(final GridGame gg) {
-    EList<FieldSpecification> _fields = gg.getFields();
-    final Function1<FieldSpecification, Iterable<AtomicExpression>> _function = new Function1<FieldSpecification, Iterable<AtomicExpression>>() {
-      @Override
-      public Iterable<AtomicExpression> apply(final FieldSpecification f) {
-        List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
-        final Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean>() {
-          @Override
-          public Boolean apply(final Pair<Map<String, Value>, FieldInitialisation> p) {
-            FieldInitialisation _value = p.getValue();
-            return Boolean.valueOf((_value instanceof ContextInitialisation));
-          }
-        };
-        Iterable<Pair<Map<String, Value>, FieldInitialisation>> _filter = IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>filter(_allInitialisations, _function);
-        final Function1<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>> _function_1 = new Function1<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>>() {
-          @Override
-          public EList<AtomicExpression> apply(final Pair<Map<String, Value>, FieldInitialisation> cip) {
-            EList<AtomicExpression> _xblockexpression = null;
-            {
-              FieldInitialisation _value = cip.getValue();
-              final ContextInitialisation ci = ((ContextInitialisation) _value);
-              ContextExpression _check = ci.getCheck();
-              EList<AtomicExpression> checkExps = _check.getSub_exp();
-              ContextExpression _exp = ci.getExp();
-              EList<AtomicExpression> valExps = _exp.getSub_exp();
-              List<AtomicExpression> _list = IterableExtensions.<AtomicExpression>toList(checkExps);
-              _list.addAll(valExps);
-              _xblockexpression = checkExps;
+  public List<AtomicExpression> getContextExpInvocations(final GridGame gg) {
+    List<AtomicExpression> _xblockexpression = null;
+    {
+      EList<FieldSpecification> _fields = gg.getFields();
+      final Function1<FieldSpecification, Iterable<AtomicExpression>> _function = new Function1<FieldSpecification, Iterable<AtomicExpression>>() {
+        @Override
+        public Iterable<AtomicExpression> apply(final FieldSpecification f) {
+          List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = FieldGenerator.this.mpp.allInitialisations(f);
+          final Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean>() {
+            @Override
+            public Boolean apply(final Pair<Map<String, Value>, FieldInitialisation> p) {
+              FieldInitialisation _value = p.getValue();
+              return Boolean.valueOf((_value instanceof ContextInitialisation));
             }
-            return _xblockexpression;
-          }
-        };
-        Iterable<EList<AtomicExpression>> _map = IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>>map(_filter, _function_1);
-        return Iterables.<AtomicExpression>concat(_map);
-      }
-    };
-    List<Iterable<AtomicExpression>> _map = ListExtensions.<FieldSpecification, Iterable<AtomicExpression>>map(_fields, _function);
-    return Iterables.<AtomicExpression>concat(_map);
+          };
+          Iterable<Pair<Map<String, Value>, FieldInitialisation>> _filter = IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>filter(_allInitialisations, _function);
+          final Function1<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>> _function_1 = new Function1<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>>() {
+            @Override
+            public EList<AtomicExpression> apply(final Pair<Map<String, Value>, FieldInitialisation> cip) {
+              EList<AtomicExpression> _xblockexpression = null;
+              {
+                FieldInitialisation _value = cip.getValue();
+                final ContextInitialisation ci = ((ContextInitialisation) _value);
+                ContextExpression _check = ci.getCheck();
+                EList<AtomicExpression> checkExps = _check.getSub_exp();
+                ContextExpression _exp = ci.getExp();
+                EList<AtomicExpression> valExps = _exp.getSub_exp();
+                List<AtomicExpression> _list = IterableExtensions.<AtomicExpression>toList(checkExps);
+                _list.addAll(valExps);
+                _xblockexpression = checkExps;
+              }
+              return _xblockexpression;
+            }
+          };
+          Iterable<EList<AtomicExpression>> _map = IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>>map(_filter, _function_1);
+          return Iterables.<AtomicExpression>concat(_map);
+        }
+      };
+      List<Iterable<AtomicExpression>> _map = ListExtensions.<FieldSpecification, Iterable<AtomicExpression>>map(_fields, _function);
+      Iterable<AtomicExpression> _flatten = Iterables.<AtomicExpression>concat(_map);
+      List<AtomicExpression> contextExpInvs = IterableExtensions.<AtomicExpression>toList(_flatten);
+      Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _allCellStates = this.mpp.getAllCellStates();
+      final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Iterable<AtomicExpression>> _function_1 = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Iterable<AtomicExpression>>() {
+        @Override
+        public Iterable<AtomicExpression> apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> csp) {
+          CellState _key = csp.getKey();
+          EList<TransitionSpec> _transitions = _key.getTransitions();
+          final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
+            @Override
+            public Boolean apply(final TransitionSpec t) {
+              TransitionTriggerSpec _trigger = t.getTrigger();
+              return Boolean.valueOf((_trigger instanceof ContextTrigger));
+            }
+          };
+          Iterable<TransitionSpec> _filter = IterableExtensions.<TransitionSpec>filter(_transitions, _function);
+          final Function1<TransitionSpec, EList<AtomicExpression>> _function_1 = new Function1<TransitionSpec, EList<AtomicExpression>>() {
+            @Override
+            public EList<AtomicExpression> apply(final TransitionSpec t) {
+              TransitionTriggerSpec _trigger = t.getTrigger();
+              ContextExpression _exp = ((ContextTrigger) _trigger).getExp();
+              return _exp.getSub_exp();
+            }
+          };
+          Iterable<EList<AtomicExpression>> _map = IterableExtensions.<TransitionSpec, EList<AtomicExpression>>map(_filter, _function_1);
+          return Iterables.<AtomicExpression>concat(_map);
+        }
+      };
+      Iterable<Iterable<AtomicExpression>> _map_1 = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Iterable<AtomicExpression>>map(_allCellStates, _function_1);
+      Iterable<AtomicExpression> _flatten_1 = Iterables.<AtomicExpression>concat(_map_1);
+      Iterables.<AtomicExpression>addAll(contextExpInvs, _flatten_1);
+      _xblockexpression = contextExpInvs;
+    }
+    return _xblockexpression;
   }
   
   public String generateImports() {

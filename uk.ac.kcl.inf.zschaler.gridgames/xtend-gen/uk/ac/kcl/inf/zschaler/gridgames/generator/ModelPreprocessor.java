@@ -280,6 +280,11 @@ public class ModelPreprocessor {
     return this.cellStateRegistry.get(c);
   }
   
+  public Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> getAllCellStates() {
+    Collection<List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _values = this.cellStateRegistry.values();
+    return Iterables.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>concat(_values);
+  }
+  
   /**
    * Find all states with an onEnter action.
    * 

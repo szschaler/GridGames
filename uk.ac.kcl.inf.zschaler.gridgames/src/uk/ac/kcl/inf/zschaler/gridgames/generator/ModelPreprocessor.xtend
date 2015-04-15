@@ -129,6 +129,10 @@ class ModelPreprocessor {
 		cellStateRegistry.get(c)
 	}
 	
+	public def Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> getAllCellStates () {
+		cellStateRegistry.values.flatten
+	}
+	
 	/**
 	 * Find all states with an onEnter action. 
 	 * 

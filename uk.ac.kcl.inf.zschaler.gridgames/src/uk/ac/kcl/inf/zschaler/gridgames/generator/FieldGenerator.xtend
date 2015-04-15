@@ -19,6 +19,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
 
 /**
  * Generates the field class.
@@ -159,7 +160,7 @@ class FieldGenerator extends CommonGenerator {
 			getValueAt (row, col).handleMouseClick (isLeft, row, col, this);
 		}
 	}'''
-	
+
 	def dispatch generateImplementation(FilterExpression fe) '''
 		public CellContext filter«fe.cell_type.name.toFirstUpper»() {
 			ArrayList<Cell> newAL = new ArrayList<>();
@@ -174,43 +175,50 @@ class FieldGenerator extends CommonGenerator {
 			return this;
 		}
 	'''
-	
+
 	def dispatch generateImplementation(NotEmptyExpression nee) '''
 		public boolean notEmpty() {
 			return al.size() > 0;
 		}
 	'''
-	
+
 	def dispatch generateImplementation(CountExpression ce) '''
 		public int size() {
 			return al.size();
 		}
 	'''
-	
+
 	def getContextExpInvocations(GridGame gg) {
-		gg.fields.map[f | 
-			mpp.allInitialisations(f).filter[p | p.value instanceof ContextInitialisation].map[cip |
-				val ci = cip.value as ContextInitialisation 
+		var contextExpInvs = gg.fields.map [f |
+			mpp.allInitialisations(f).filter[p|p.value instanceof ContextInitialisation].map [cip |
+				val ci = cip.value as ContextInitialisation
 				var checkExps = ci.check.sub_exp
 				var valExps = ci.exp.sub_exp
-				checkExps.toList.addAll (valExps)
-				checkExps].flatten]
-		  .flatten
+				checkExps.toList.addAll(valExps)
+				checkExps
+			].flatten
+		].flatten.toList
+
+		contextExpInvs.addAll(mpp.allCellStates.map [csp |
+			csp.key.transitions.filter[t | t.trigger instanceof ContextTrigger].map[t | (t.trigger as ContextTrigger).exp.sub_exp].flatten
+		].flatten)
+
+		contextExpInvs
 	}
 
 	def generateImports() {
-		val imports = gg.fields.map[f|mpp.allInitialisations(f).map[i | i.value.getImportsRequired (i.key)]].flatten.toSet
-		
-		if (gg.fields.exists[f | mpp.allInitialisations(f).exists[i | i.value instanceof ContextInitialisation]]) {
+		val imports = gg.fields.map[f|mpp.allInitialisations(f).map[i|i.value.getImportsRequired(i.key)]].flatten.toSet
+
+		if (gg.fields.exists[f|mpp.allInitialisations(f).exists[i|i.value instanceof ContextInitialisation]]) {
 			imports.add("java.util.List")
-			imports.add("java.util.ArrayList")			
+			imports.add("java.util.ArrayList")
 		}
-		
+
 		if (true) { // FIXME Use same condition as when determining whether we need to generate a listener for context-triggered transitions. 
-			imports.add ("javax.swing.event.TableModelEvent")
-			imports.add ("javax.swing.event.TableModelListener")
+			imports.add("javax.swing.event.TableModelEvent")
+			imports.add("javax.swing.event.TableModelListener")
 		}
-		imports.filter[imp | !imp.equals("")].join("\n", [ imp | '''import «imp»;'''])
+		imports.filter[imp|!imp.equals("")].join("\n", [imp|'''import «imp»;'''])
 	}
 
 	def dispatch getImportsRequired(RandomInitialisation ri, Map<String, Value> symbols) {
@@ -220,7 +228,7 @@ class FieldGenerator extends CommonGenerator {
 	def dispatch getImportsRequired(FieldInitialisation di, Map<String, Value> symbols) {
 		""
 	}
-	
+
 	def generateFieldInitialiserFor(FieldSpecification f) '''
 		public final void «f.generateFieldInitialiserName»() {
 			width = «f.width»;
@@ -242,7 +250,7 @@ class FieldGenerator extends CommonGenerator {
 			}
 		}
 	'''
-	
+
 	def dispatch generateInitCode(RandomInitialisation rfi, Map<String, Value> symbols) '''
 		// Randomly allocate «rfi.cell.name» cells
 		{
@@ -264,62 +272,64 @@ class FieldGenerator extends CommonGenerator {
 		}
 	'''
 
-	def getCountValue (RandomInitialisation rfi, Map<String, Value> symbols) {
+	def getCountValue(RandomInitialisation rfi, Map<String, Value> symbols) {
 		if (rfi.^var != null) {
-			rfi.^var.generateAccessCode (symbols)
+			rfi.^var.generateAccessCode(symbols)
 		} else {
 			rfi.count
 		}
 	}
-	
-	def dispatch CharSequence generateAccessCode (CellVarSpec cvs, Map<String, Value> symbols) {
+
+	def dispatch CharSequence generateAccessCode(CellVarSpec cvs, Map<String, Value> symbols) {
 		cvs.generateVariableName
 	}
 
-	def dispatch CharSequence generateAccessCode (ParamSpec sps, Map<String, Value> symbols) {
-		symbols.get (sps.name).generateAccessCode(symbols)
+	def dispatch CharSequence generateAccessCode(ParamSpec sps, Map<String, Value> symbols) {
+		symbols.get(sps.name).generateAccessCode(symbols)
 	}
 
-	def dispatch CharSequence generateAccessCode (StringValue v, Map<String, Value> symbols) '''"«v.value»"'''
-	def dispatch CharSequence generateAccessCode (IntValue v, Map<String, Value> symbols) '''«v.value»'''
-	def dispatch CharSequence generateAccessCode (VarRefValue v, Map<String, Value> symbols) {
-		v.ref.generateAccessCode (symbols)
+	def dispatch CharSequence generateAccessCode(StringValue v, Map<String, Value> symbols) '''"«v.value»"'''
+
+	def dispatch CharSequence generateAccessCode(IntValue v, Map<String, Value> symbols) '''«v.value»'''
+
+	def dispatch CharSequence generateAccessCode(VarRefValue v, Map<String, Value> symbols) {
+		v.ref.generateAccessCode(symbols)
 	}
-	
+
 	def dispatch generateInitCode(ContextInitialisation ci, Map<String, Value> symbols) '''
-	  // Fill in «ci.cell.name» cells where appropriate because of context
-	  for (int x = 0; x < width; x++) {
-	  	for (int y = 0; y < height; y++) {
-	  		if (field[x][y] == null) {
-	  			CellContext context = getContextAt (x, y);
-	  			if («ci.generateContextCheck») {
-	  				field[x][y] = cellFactory.«ci.cell.generateCellFactoryMethodName»(«ci.generateValue»);
-	  			}
-	  		}
-	  	}
-	  }
+		// Fill in «ci.cell.name» cells where appropriate because of context
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; y < height; y++) {
+				if (field[x][y] == null) {
+					CellContext context = getContextAt (x, y);
+					if («ci.generateContextCheck») {
+						field[x][y] = cellFactory.«ci.cell.generateCellFactoryMethodName»(«ci.generateValue»);
+					}
+				}
+			}
+		}
 	'''
-	
+
 	def generateContextCheck(ContextInitialisation ci) {
 		ci.check.generateFor
 	}
-	
-	def generateValue (ContextInitialisation ci) {
+
+	def generateValue(ContextInitialisation ci) {
 		ci.exp.generateFor
 	}
-	
+
 	def generateFieldInitialisation() {
 		gg.options.filter(StartFieldDeclaration).join(" ", [o|'''initialise«o.field.name.toFirstUpper»Field();'''])
 
 	}
-	
-	def dispatch CharSequence generateFor (ContextExpression ce) '''
+
+	def dispatch CharSequence generateFor(ContextExpression ce) '''
 		context.«ce.sub_exp.join(".", [se | se.generateFor])»
 	'''
-	
-	def dispatch CharSequence generateFor (FilterExpression fe) '''filter«fe.cell_type.name.toFirstUpper»()'''
-	
-	def dispatch CharSequence generateFor (CountExpression ce) '''size()'''
-	
-	def dispatch CharSequence generateFor (NotEmptyExpression nee)'''notEmpty()'''
+
+	def dispatch CharSequence generateFor(FilterExpression fe) '''filter«fe.cell_type.name.toFirstUpper»()'''
+
+	def dispatch CharSequence generateFor(CountExpression ce) '''size()'''
+
+	def dispatch CharSequence generateFor(NotEmptyExpression nee) '''notEmpty()'''
 }
