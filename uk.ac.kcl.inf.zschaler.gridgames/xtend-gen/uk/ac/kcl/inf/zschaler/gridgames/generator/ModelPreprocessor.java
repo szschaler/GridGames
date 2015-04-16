@@ -33,6 +33,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateSpecReference;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef;
@@ -43,6 +44,8 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
 
 /**
@@ -300,6 +303,30 @@ public class ModelPreprocessor {
         EList<CellStateBehaviour> _onEnter = _key.getOnEnter();
         boolean _isEmpty = _onEnter.isEmpty();
         return Boolean.valueOf((!_isEmpty));
+      }
+    };
+    return IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>filter(_flatten, _function);
+  }
+  
+  /**
+   * Find all states with a transition triggered by context changes
+   */
+  public Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> getAllStatesWithContextTriggers() {
+    Collection<List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _values = this.cellStateRegistry.values();
+    Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _flatten = Iterables.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>concat(_values);
+    final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean> _function = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean>() {
+      @Override
+      public Boolean apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
+        CellState _key = cpp.getKey();
+        EList<TransitionSpec> _transitions = _key.getTransitions();
+        final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
+          @Override
+          public Boolean apply(final TransitionSpec t) {
+            TransitionTriggerSpec _trigger = t.getTrigger();
+            return Boolean.valueOf((_trigger instanceof ContextTrigger));
+          }
+        };
+        return Boolean.valueOf(IterableExtensions.<TransitionSpec>exists(_transitions, _function));
       }
     };
     return IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>filter(_flatten, _function);

@@ -19,6 +19,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
 
 /**
  * Preprocesses the model, normalising structures and computing helper data such as unique cell state IDs.
@@ -141,6 +142,13 @@ class ModelPreprocessor {
 	public def getAllStatesWithEnterActions () {
 		cellStateRegistry.values.flatten.filter[cpp | ! cpp.key.onEnter.empty]
 	}
+
+	/**
+	 * Find all states with a transition triggered by context changes
+	 */	
+	def getAllStatesWithContextTriggers() {
+		cellStateRegistry.values.flatten.filter[cpp | cpp.key.transitions.exists[t | t.trigger instanceof ContextTrigger]]
+	}
 	
 	private var Map<FieldSpecification, List<Pair<Map<String, Value>, FieldInitialisation>>> fieldInitialisations; 
 	
@@ -174,5 +182,5 @@ class ModelPreprocessor {
 		]
 
 		fir.ref.initialisations.map[i | new Pair(symbols, i)]
-	}
+	}	
 }

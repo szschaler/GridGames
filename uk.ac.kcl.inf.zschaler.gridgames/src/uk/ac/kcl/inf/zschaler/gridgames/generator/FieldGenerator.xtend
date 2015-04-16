@@ -20,6 +20,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec
 
 /**
  * Generates the field class.
@@ -61,7 +62,7 @@ class FieldGenerator extends CommonGenerator {
 			this.cellFactory = cellFactory;
 			«generateFieldInitialisation()»
 			
-			«if (true) { // FIXME Add proper check to determine whether we need this listener at all
+			«if (true) {
 				'''
 				addTableModelListener(new TableModelListener() {
 					@Override
@@ -74,23 +75,36 @@ class FieldGenerator extends CommonGenerator {
 
 							for (int row = firstRow; row <= lastRow; row++) {
 								if (col != TableModelEvent.ALL_COLUMNS) {
-									«/* TODO Figure out parameters and how to deal with recursion (esp. where multiple sequential states have context triggers */»
-									handleStateChange ();
+									handleStateChange (row, col);
 								} else {
 									for (col = 0; col < «generateFieldClassName()».this.getColumnCount(); col++) {
-										«/* TODO Figure out parameters and how to deal with recursion (esp. where multiple sequential states have context triggers */»
-										handleStateChange ();
+										handleStateChange (row, col);
 									}
 								}
 							}
 						}
 					}
 					
-					private void handleStateChange () {
-						«/* TODO Needs implementing */»
+					private void handleStateChange (int row, int col) {
+						«/* TODO Figure out how to deal with recursion (esp. where multiple sequential states have context triggers */»
+						«val states = mpp.allStatesWithContextTriggers»
+						«if (!states.empty) {
+							'''
+							for (Cell c : getContextAt(col, row)) {
+								«/* TODO Extract context of c into variable context */» 
+								switch (c.getState().getStateID()) {
+									«states.join (" ", [cpp | 
+										'''case «cpp.value.key»:
+											«cpp.key.transitions.filter[t | t.trigger instanceof ContextTrigger]
+										                                             .join ("\n", [t | t.generateCodeForContextTrigger (cpp.value.value)])»
+										   	break;'''])»
+								}
+							}
+							'''
+						}»
 					}
 				});
-				''' 
+				'''
 			}»
 		}
 		
@@ -103,7 +117,7 @@ class FieldGenerator extends CommonGenerator {
 				return new CellContext(x, y);
 			}
 
-			private class CellContext {
+			private class CellContext implements Iterable<Cell> {
 				private ArrayList<Cell> al = new ArrayList<> (8);
 				
 				public CellContext (int x, int y) {
@@ -117,6 +131,10 @@ class FieldGenerator extends CommonGenerator {
 							}
 						}
 					}
+				}
+				
+				public Iterator<Cell> iterator() {
+					return al.iterator();
 				}
 				
 				«// Slightly annoyingly have to convert the CharSequences into Strings here to make 
@@ -160,6 +178,21 @@ class FieldGenerator extends CommonGenerator {
 			getValueAt (row, col).handleMouseClick (isLeft, row, col, this);
 		}
 	}'''
+	
+	/**
+	 * Generate implementation code for reaction to context trigger. Can assume t has a context trigger. 
+	 * In the surrounding code, variable 'c' will refer to the currently checked cell.
+	 * The generated code should start with an if-statement checking the trigger condition.
+	 */
+	def CharSequence generateCodeForContextTrigger(TransitionSpec t, Map<String, Value> symbols) {
+		val trigger = t.trigger as ContextTrigger
+		'''
+		if («trigger.exp.generateFor») {
+			«/*TODO To implement, need to refactor code generation for state transitions */»
+			// TODO Implement transition
+		}
+		'''
+	}
 
 	def dispatch generateImplementation(FilterExpression fe) '''
 		public CellContext filter«fe.cell_type.name.toFirstUpper»() {
@@ -212,6 +245,7 @@ class FieldGenerator extends CommonGenerator {
 		if (gg.fields.exists[f|mpp.allInitialisations(f).exists[i|i.value instanceof ContextInitialisation]]) {
 			imports.add("java.util.List")
 			imports.add("java.util.ArrayList")
+			imports.add("java.util.Iterator")
 		}
 
 		if (true) { // FIXME Use same condition as when determining whether we need to generate a listener for context-triggered transitions. 
