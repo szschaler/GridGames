@@ -22,23 +22,44 @@ class CellContextGenerator extends CommonGenerator {
 					return new CellContext(x, y);
 				}
 				
-				private class CellContext implements Iterable<Cell> {
-					private ArrayList<Cell> al = new ArrayList<> (8);
+				private class CellContext implements Iterable<CellContext.ContextElement> {
+					public class ContextElement {
+						private Cell cell;
+						private int dx, dy;
+						
+						public ContextElement (int dx, int dy, Cell cell) {
+							this.dx = dx; this.dy = dy;
+							this.cell = cell;
+						}
+						
+						public Cell getCell() {
+							return cell;
+						}
+						
+						public CellContext getContextHere() {
+							return getContextAt (x + dx, y + dy);
+						}
+					}
+					
+					private ArrayList<ContextElement> al = new ArrayList<> (8);
+					private int x, y; 
 					
 					public CellContext (int x, int y) {
+						this.x = x; this.y = y;
+						
 						for (int dx = -1; dx <= 1; dx ++) {
 							for (int dy = -1; dy <= 1; dy++) {
 								if (((dx != 0) || (dy != 0)) && 
 								    ((x + dx >= 0) && (x + dx < width)) &&
 								    ((y + dy >= 0) && (y + dy < height)) &&
 								    (field[x + dx][y + dy] != null)) {
-									al.add (field[x + dx][y + dy]);
+									al.add (new ContextElement (dx, dy, field[x + dx][y + dy]));
 								}
 							}
 						}
 					}
 					
-					public Iterator<Cell> iterator() {
+					public Iterator<ContextElement> iterator() {
 						return al.iterator();
 					}
 					
@@ -72,10 +93,10 @@ class CellContextGenerator extends CommonGenerator {
 	
 	def dispatch generateImplementation(FilterExpression fe) '''
 		public CellContext filter«fe.cell_type.name.toFirstUpper»() {
-			ArrayList<Cell> newAL = new ArrayList<>();
+			ArrayList<ContextElement> newAL = new ArrayList<>();
 			
-			for (Cell c : al) {
-				if (c.is«fe.cell_type.name.toFirstUpper»()) {
+			for (ContextElement c : al) {
+				if (c.getCell().is«fe.cell_type.name.toFirstUpper»()) {
 					newAL.add (c);
 				}
 			}

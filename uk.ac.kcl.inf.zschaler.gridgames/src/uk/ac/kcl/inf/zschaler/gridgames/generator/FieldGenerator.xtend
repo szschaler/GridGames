@@ -93,9 +93,9 @@ class FieldGenerator extends CommonGenerator {
 						«val states = mpp.allStatesWithContextTriggers»
 						«if (!states.empty) {
 							'''
-							for (Cell c : getContextAt(col, row)) {
-								«/* TODO Extract context of c into variable context */» 
-								switch (c.getState().getStateID()) {
+							for (CellContext.ContextElement ce : getContextAt(col, row)) {
+								CellContext context = ce.getContextHere(); 
+								switch (ce.getCell().getState().getStateID()) {
 									«states.join (" ", [cpp | 
 										'''case «cpp.value.key»:
 											«cpp.key.transitions.filter[t | t.trigger instanceof ContextTrigger]

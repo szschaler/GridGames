@@ -226,12 +226,13 @@ public class FieldGenerator extends CommonGenerator {
       boolean _not = (!_isEmpty);
       if (_not) {
         StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append("for (Cell c : getContextAt(col, row)) {");
-        _builder_2.newLine();
-        _builder_2.append("\t ");
+        _builder_2.append("for (CellContext.ContextElement ce : getContextAt(col, row)) {");
         _builder_2.newLine();
         _builder_2.append("\t");
-        _builder_2.append("switch (c.getState().getStateID()) {");
+        _builder_2.append("CellContext context = ce.getContextHere(); ");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("switch (ce.getCell().getState().getStateID()) {");
         _builder_2.newLine();
         _builder_2.append("\t\t");
         final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence> _function = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence>() {
