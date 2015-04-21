@@ -55,7 +55,7 @@ class CellGenerator extends CommonGenerator {
 				public abstract int getStateID();
 			} 
 			
-			protected CellState currentState;
+			private CellState currentState;
 			
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
 				if (currentState != null) {
@@ -72,6 +72,17 @@ class CellGenerator extends CommonGenerator {
 			
 			public CellState getState() {
 				return currentState;
+			}
+			
+			/**
+			 * Change the state of this cell to the given one. Assume the cell is positioned at the given 
+			 * coordinates in the given field and issue an update event for that field.
+			 */
+			public void setState (CellState csNewState, int row, int col, «generateFieldClassName()» field) {
+				currentState = csNewState;
+				if (field != null) {
+					field.fireTableCellUpdated(row, col);
+				}
 			}
 			
 			«gg.cells.join(" ", [c | '''public boolean is«c.name.toFirstUpper»() { return false; }'''])»
@@ -95,7 +106,7 @@ class CellGenerator extends CommonGenerator {
 			«c.members.filter(CellVarSpec).join(" ", [v | '''private «v.type» «v.generateVariableName»;'''])»
 			
 			public «c.generateCellClassName»(«c.members.filter(CellVarSpec).join(", ", [v | '''«v.type» «v.name.toFirstLower»'''])») {
-				currentState = new «mpp.getStartState(c).name.toFirstUpper»CellState();
+				setState (new «mpp.getStartState(c).name.toFirstUpper»CellState(), 0, 0, null);
 				
 				«c.members.filter(CellVarSpec).join("; ", [v | '''«v.generateVariableName» = «v.name.toFirstLower»;'''])»
 			}
@@ -131,8 +142,7 @@ class CellGenerator extends CommonGenerator {
 				public void handleMouseClick (boolean isLeft, int row, int col, «generateFieldClassName()» field) {
 					«cs.transitions.filter[t | t.trigger instanceof MouseTrigger].join (" ", [t | '''
 					if («if ((t.trigger as MouseTrigger).left) {'''isLeft'''} else {'''!isLeft'''}») {
-						currentState = new «t.target.name.toFirstUpper»CellState();
-						field.fireTableCellUpdated(row, col);
+						setState (new «t.target.name.toFirstUpper»CellState(), row, col, field);
 					}
 					'''])»
 				}
