@@ -1,5 +1,6 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +27,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
@@ -343,6 +345,74 @@ public class CellContextGenerator extends CommonGenerator {
     return _builder;
   }
   
+  protected CharSequence _generateImplementation(final StateFilterExpression sfe) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public CellContext inState");
+    CellState _cell_state = sfe.getCell_state();
+    String _name = _cell_state.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("() {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("ArrayList<ContextElement> newAL = new ArrayList<>();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("for (ContextElement c : al) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("switch (c.getCell().getState().getStateID()) {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _allCellStates = this.mpp.getAllCellStates();
+    final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean> _function = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean>() {
+      @Override
+      public Boolean apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
+        CellState _key = cpp.getKey();
+        CellState _cell_state = sfe.getCell_state();
+        return Boolean.valueOf(Objects.equal(_key, _cell_state));
+      }
+    };
+    Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _filter = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>filter(_allCellStates, _function);
+    final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence> _function_1 = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence>() {
+      @Override
+      public CharSequence apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("case ");
+        Pair<Integer, ? extends Map<String, Value>> _value = cpp.getValue();
+        Integer _key = _value.getKey();
+        _builder.append(_key, "");
+        _builder.append(": ");
+        return _builder.toString();
+      }
+    };
+    String _join = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>join(_filter, "\n", _function_1);
+    _builder.append(_join, "\t\t\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t\t\t");
+    _builder.append("newAL.add (c);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("al = newAL;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("return this;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
   protected CharSequence _generateImplementation(final NotEmptyExpression nee) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public boolean notEmpty() {");
@@ -407,6 +477,8 @@ public class CellContextGenerator extends CommonGenerator {
       return _generateImplementation((FilterExpression)ce);
     } else if (ce instanceof NotEmptyExpression) {
       return _generateImplementation((NotEmptyExpression)ce);
+    } else if (ce instanceof StateFilterExpression) {
+      return _generateImplementation((StateFilterExpression)ce);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(ce).toString());

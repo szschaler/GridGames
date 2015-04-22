@@ -21,6 +21,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression
 
 /**
  * Generates the field class.
@@ -294,6 +295,8 @@ class FieldGenerator extends CommonGenerator {
 	'''
 
 	def dispatch CharSequence generateFor(FilterExpression fe) '''filter«fe.cell_type.name.toFirstUpper»()'''
+	
+	def dispatch CharSequence generateFor(StateFilterExpression sfe) '''inState«sfe.cell_state.name.toFirstUpper»()'''
 
 	def dispatch CharSequence generateFor(CountExpression ce) '''size()'''
 

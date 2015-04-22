@@ -7,6 +7,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression
 import java.util.Set
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression
 
 class CellContextGenerator extends CommonGenerator {
 
@@ -106,6 +107,23 @@ class CellContextGenerator extends CommonGenerator {
 			for (ContextElement c : al) {
 				if (c.getCell().is«fe.cell_type.name.toFirstUpper»()) {
 					newAL.add (c);
+				}
+			}
+			
+			al = newAL;
+			return this;
+		}
+	'''
+	
+	// TODO The implementation below might not work correctly with all variants of referencing etc.
+	def dispatch generateImplementation(StateFilterExpression sfe) '''
+		public CellContext inState«sfe.cell_state.name.toFirstUpper»() {
+			ArrayList<ContextElement> newAL = new ArrayList<>();
+			
+			for (ContextElement c : al) {
+				switch (c.getCell().getState().getStateID()) {
+					«mpp.allCellStates.filter[cpp | cpp.key == sfe.cell_state].join ("\n", [cpp | '''case «cpp.value.key»: '''])»
+						newAL.add (c);
 				}
 			}
 			

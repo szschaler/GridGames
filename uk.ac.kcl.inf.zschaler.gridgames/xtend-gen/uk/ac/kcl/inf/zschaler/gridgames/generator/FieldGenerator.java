@@ -37,6 +37,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
@@ -833,6 +834,17 @@ public class FieldGenerator extends CommonGenerator {
     return _builder;
   }
   
+  protected CharSequence _generateFor(final StateFilterExpression sfe) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("inState");
+    CellState _cell_state = sfe.getCell_state();
+    String _name = _cell_state.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("()");
+    return _builder;
+  }
+  
   protected CharSequence _generateFor(final CountExpression ce) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("size()");
@@ -893,6 +905,8 @@ public class FieldGenerator extends CommonGenerator {
       return _generateFor((FilterExpression)ce);
     } else if (ce instanceof NotEmptyExpression) {
       return _generateFor((NotEmptyExpression)ce);
+    } else if (ce instanceof StateFilterExpression) {
+      return _generateFor((StateFilterExpression)ce);
     } else if (ce instanceof ContextExpression) {
       return _generateFor((ContextExpression)ce);
     } else {
