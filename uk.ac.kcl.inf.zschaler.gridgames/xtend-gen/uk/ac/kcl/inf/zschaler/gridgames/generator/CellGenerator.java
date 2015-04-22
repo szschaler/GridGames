@@ -103,7 +103,7 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("public static abstract class CellState {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("public abstract Component formatUIRepresentation(JButton jb, JLabel jl);");
+    _builder.append("public abstract Component formatUIRepresentation(Cell cOwner, JButton jb, JLabel jl);");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("public abstract int getStateID();");
@@ -134,7 +134,7 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("if (currentState != null) {");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("return currentState.formatUIRepresentation(jb, jl);");
+    _builder.append("return currentState.formatUIRepresentation(this, jb, jl);");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("}");
@@ -457,7 +457,7 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public Component formatUIRepresentation(JButton jb, JLabel jl) {");
+    _builder.append("public Component formatUIRepresentation(Cell cOwner, JButton jb, JLabel jl) {");
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _xifexpression = null;
@@ -706,7 +706,15 @@ public class CellGenerator extends CommonGenerator {
   }
   
   protected CharSequence _generateAccessCode(final CellVarSpec cvs, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
-    return this.generateVariableName(cvs);
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("((");
+    EObject _eContainer = cvs.eContainer();
+    CharSequence _generateCellClassName = this.generateCellClassName(((CellSpecification) _eContainer));
+    _builder.append(_generateCellClassName, "");
+    _builder.append(") cOwner).");
+    CharSequence _generateVariableName = this.generateVariableName(cvs);
+    _builder.append(_generateVariableName, "");
+    return _builder;
   }
   
   protected CharSequence _generateAccessCode(final ParamSpec sps, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {

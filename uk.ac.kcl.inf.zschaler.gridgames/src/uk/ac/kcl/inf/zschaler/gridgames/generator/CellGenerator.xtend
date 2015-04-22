@@ -52,7 +52,7 @@ class CellGenerator extends CommonGenerator {
 		
 		public abstract class Cell {
 			public static abstract class CellState {
-				public abstract Component formatUIRepresentation(JButton jb, JLabel jl);
+				public abstract Component formatUIRepresentation(Cell cOwner, JButton jb, JLabel jl);
 				public abstract int getStateID();
 				public CellState getMouseBasedFollowState (boolean isLeft) { return this; }
 				public abstract CellState getContextBasedFollowState («generateFieldClassName».CellContext context);
@@ -62,7 +62,7 @@ class CellGenerator extends CommonGenerator {
 			
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
 				if (currentState != null) {
-					return currentState.formatUIRepresentation(jb, jl);
+					return currentState.formatUIRepresentation(this, jb, jl);
 				}
 				else {
 					return jb;
@@ -146,7 +146,7 @@ class CellGenerator extends CommonGenerator {
 	def generateStateSpec(CellState cs, Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) '''
 		public static class «cs.name.toFirstUpper»CellState extends CellState {
 			@Override
-			public Component formatUIRepresentation(JButton jb, JLabel jl) {
+			public Component formatUIRepresentation(Cell cOwner, JButton jb, JLabel jl) {
 				«if (cs.display.color != null) {
 					if (cs.display.display_type.equals ("button")) {
 						'''
@@ -211,9 +211,8 @@ class CellGenerator extends CommonGenerator {
 		if (cds.text != null) '''"«cds.text»"''' else '''"" + «cds.^var.generateAccessCode (idAndSymbolTable)»'''
 	}
 
-	def dispatch CharSequence generateAccessCode (CellVarSpec cvs, Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
-		cvs.generateVariableName
-	}
+	def dispatch CharSequence generateAccessCode (CellVarSpec cvs, Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) '''
+		((«(cvs.eContainer as CellSpecification).generateCellClassName») cOwner).«cvs.generateVariableName»'''
 
 	def dispatch CharSequence generateAccessCode (ParamSpec sps, Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
 		idAndSymbolTable.value.get (sps.name).generateAccessCode(idAndSymbolTable)
