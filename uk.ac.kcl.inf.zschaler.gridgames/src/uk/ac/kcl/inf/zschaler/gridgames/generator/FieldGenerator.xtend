@@ -2,6 +2,7 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import java.util.Map
 import org.eclipse.xtext.generator.IFileSystemAccess
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation
@@ -16,12 +17,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression
 
 /**
  * Generates the field class.
@@ -67,50 +67,7 @@ class FieldGenerator extends CommonGenerator {
 			this.cellFactory = cellFactory;
 			«generateFieldInitialisation()»
 			
-			«if (!mpp.allStatesWithContextTriggers.empty) {
-				'''
-				addTableModelListener(new TableModelListener() {
-					@Override
-					public void tableChanged(TableModelEvent e) {
-						if ((e.getFirstRow() != TableModelEvent.HEADER_ROW) && (e.getType() == TableModelEvent.UPDATE)) {
-							// React to updates to a given cell by checking whether any context triggers need activating
-							int firstRow = e.getFirstRow();
-							int lastRow = e.getLastRow();
-							int col = e.getColumn();
-
-							for (int row = firstRow; row <= lastRow; row++) {
-								if (col != TableModelEvent.ALL_COLUMNS) {
-									handleStateChange (row, col);
-								} else {
-									for (col = 0; col < «generateFieldClassName()».this.getColumnCount(); col++) {
-										handleStateChange (row, col);
-									}
-								}
-							}
-						}
-					}
-					
-					private void handleStateChange (int row, int col) {
-						«/* TODO Figure out how to deal with recursion (esp. where multiple sequential states have context triggers */»
-						«val states = mpp.allStatesWithContextTriggers»
-						«if (!states.empty) {
-							'''
-							for (CellContext.ContextElement ce : getContextAt(col, row)) {
-								CellContext context = ce.getContextHere(); 
-								switch (ce.getCell().getState().getStateID()) {
-									«states.join (" ", [cpp | 
-										'''case «cpp.value.value.key»:
-											«cpp.value.key.transitions.filter[t | t.trigger instanceof ContextTrigger]
-										                                             .join ("\n", [t | t.generateCodeForContextTrigger (cpp.key, cpp.value.value.value)])»
-										   	break;'''])»
-								}
-							}
-							'''
-						}»
-					}
-				});
-				'''
-			}»
+			«generateIncrementalContextTriggerListener()»
 		}
 		
 		«gg.fields.join (" ", [f | generateFieldInitialiserFor(f)])»
@@ -151,6 +108,55 @@ class FieldGenerator extends CommonGenerator {
 			getValueAt (row, col).handleMouseClick (isLeft, row, col, this);
 		}
 	}'''
+	
+	def generateIncrementalContextTriggerListener() {
+		if (mpp.doGenerateGenerationalContexts) {
+			''''''
+		} else if (!mpp.allStatesWithContextTriggers.empty) {
+			'''
+			addTableModelListener(new TableModelListener() {
+				@Override
+				public void tableChanged(TableModelEvent e) {
+					if ((e.getFirstRow() != TableModelEvent.HEADER_ROW) && (e.getType() == TableModelEvent.UPDATE)) {
+						// React to updates to a given cell by checking whether any context triggers need activating
+						int firstRow = e.getFirstRow();
+						int lastRow = e.getLastRow();
+						int col = e.getColumn();
+		
+						for (int row = firstRow; row <= lastRow; row++) {
+							if (col != TableModelEvent.ALL_COLUMNS) {
+								handleStateChange (row, col);
+							} else {
+								for (col = 0; col < «generateFieldClassName()».this.getColumnCount(); col++) {
+									handleStateChange (row, col);
+								}
+							}
+						}
+					}
+				}
+				
+				private void handleStateChange (int row, int col) {
+					«/* TODO Figure out how to deal with recursion (esp. where multiple sequential states have context triggers */»
+					«val states = mpp.allStatesWithContextTriggers»
+					«if (!states.empty) {
+						'''
+						for (CellContext.ContextElement ce : getContextAt(col, row)) {
+							CellContext context = ce.getContextHere(); 
+							switch (ce.getCell().getState().getStateID()) {
+								«states.join (" ", [cpp | 
+									'''case «cpp.value.value.key»:
+										«cpp.value.key.transitions.filter[t | t.trigger instanceof ContextTrigger]
+									                                             .join ("\n", [t | t.generateCodeForContextTrigger (cpp.key, cpp.value.value.value)])»
+									   	break;'''])»
+							}
+						}
+						'''
+					}»
+				}
+			});
+			'''
+		}
+	}
 	
 	/**
 	 * Generate implementation code for reaction to context trigger. Can assume t has a context trigger. 
