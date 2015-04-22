@@ -19,25 +19,20 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CellContextGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
@@ -328,7 +323,43 @@ public class FieldGenerator extends CommonGenerator {
       _builder.append("if (doRun) {");
       _builder.newLine();
       _builder.append("\t\t\t\t\t");
-      _builder.append("// TODO Generate a new generation");
+      _builder.append("// Compute a new generation");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.append("Cell[][] newGeneration = new Cell[width][height];");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.append("for (int x = 0; x < width; x++) {");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t\t");
+      _builder.append("for (int y = 0; y < height; y++) {");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t\t\t");
+      _builder.append("CellContext context = getContextAt(x, y);");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t\t\t");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t\t\t");
+      _builder.append("newGeneration[x][y] = field[x][y].computeNewGeneration (context);");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.append("// Set the new generation");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.append("field = newGeneration;");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.append("fireTableDataChanged();");
       _builder.newLine();
       _builder.append("\t\t\t\t");
       _builder.append("}");
@@ -917,69 +948,6 @@ public class FieldGenerator extends CommonGenerator {
     return IterableExtensions.<StartFieldDeclaration>join(_filter, " ", _function);
   }
   
-  protected CharSequence _generateFor(final ContextExpression ce) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("context.");
-    EList<AtomicExpression> _sub_exp = ce.getSub_exp();
-    final Function1<AtomicExpression, CharSequence> _function = new Function1<AtomicExpression, CharSequence>() {
-      @Override
-      public CharSequence apply(final AtomicExpression se) {
-        return FieldGenerator.this.generateFor(se);
-      }
-    };
-    String _join = IterableExtensions.<AtomicExpression>join(_sub_exp, ".", _function);
-    _builder.append(_join, "");
-    _builder.newLineIfNotEmpty();
-    return _builder;
-  }
-  
-  protected CharSequence _generateFor(final FilterExpression fe) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("filter");
-    CellSpecification _cell_type = fe.getCell_type();
-    String _name = _cell_type.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
-    _builder.append("()");
-    return _builder;
-  }
-  
-  protected CharSequence _generateFor(final StateFilterExpression sfe) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("inState");
-    CellState _cell_state = sfe.getCell_state();
-    String _name = _cell_state.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
-    _builder.append("()");
-    return _builder;
-  }
-  
-  protected CharSequence _generateFor(final CountExpression ce) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("size()");
-    CharSequence _xifexpression = null;
-    String _op = ce.getOp();
-    boolean _notEquals = (!Objects.equal(_op, null));
-    if (_notEquals) {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      String _op_1 = ce.getOp();
-      _builder_1.append(_op_1, "");
-      _builder_1.append(" ");
-      int _cmpVal = ce.getCmpVal();
-      _builder_1.append(_cmpVal, "");
-      _xifexpression = _builder_1;
-    }
-    _builder.append(_xifexpression, "");
-    return _builder;
-  }
-  
-  protected CharSequence _generateFor(final NotEmptyExpression nee) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("notEmpty()");
-    return _builder;
-  }
-  
   public String getImportsRequired(final FieldInitialisation ri, final Map<String, Value> symbols) {
     if (ri instanceof RandomInitialisation) {
       return _getImportsRequired((RandomInitialisation)ri, symbols);
@@ -1018,23 +986,6 @@ public class FieldGenerator extends CommonGenerator {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(cvs, symbols).toString());
-    }
-  }
-  
-  public CharSequence generateFor(final EObject ce) {
-    if (ce instanceof CountExpression) {
-      return _generateFor((CountExpression)ce);
-    } else if (ce instanceof FilterExpression) {
-      return _generateFor((FilterExpression)ce);
-    } else if (ce instanceof NotEmptyExpression) {
-      return _generateFor((NotEmptyExpression)ce);
-    } else if (ce instanceof StateFilterExpression) {
-      return _generateFor((StateFilterExpression)ce);
-    } else if (ce instanceof ContextExpression) {
-      return _generateFor((ContextExpression)ce);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(ce).toString());
     }
   }
 }

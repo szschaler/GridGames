@@ -1,12 +1,25 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
+import com.google.common.base.Objects;
+import java.util.Arrays;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
 
 /**
  * Common generator bits.
@@ -178,5 +191,84 @@ public class CommonGenerator {
     _builder.append(_firstLower, "");
     _builder.append("Variable");
     return _builder;
+  }
+  
+  protected CharSequence _generateFor(final ContextExpression ce) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("context.");
+    EList<AtomicExpression> _sub_exp = ce.getSub_exp();
+    final Function1<AtomicExpression, CharSequence> _function = new Function1<AtomicExpression, CharSequence>() {
+      @Override
+      public CharSequence apply(final AtomicExpression se) {
+        return CommonGenerator.this.generateFor(se);
+      }
+    };
+    String _join = IterableExtensions.<AtomicExpression>join(_sub_exp, ".", _function);
+    _builder.append(_join, "");
+    return _builder;
+  }
+  
+  protected CharSequence _generateFor(final FilterExpression fe) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("filter");
+    CellSpecification _cell_type = fe.getCell_type();
+    String _name = _cell_type.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("()");
+    return _builder;
+  }
+  
+  protected CharSequence _generateFor(final StateFilterExpression sfe) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("inState");
+    CellState _cell_state = sfe.getCell_state();
+    String _name = _cell_state.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("()");
+    return _builder;
+  }
+  
+  protected CharSequence _generateFor(final CountExpression ce) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("size()");
+    CharSequence _xifexpression = null;
+    String _op = ce.getOp();
+    boolean _notEquals = (!Objects.equal(_op, null));
+    if (_notEquals) {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      String _op_1 = ce.getOp();
+      _builder_1.append(_op_1, "");
+      _builder_1.append(" ");
+      int _cmpVal = ce.getCmpVal();
+      _builder_1.append(_cmpVal, "");
+      _xifexpression = _builder_1;
+    }
+    _builder.append(_xifexpression, "");
+    return _builder;
+  }
+  
+  protected CharSequence _generateFor(final NotEmptyExpression nee) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("notEmpty()");
+    return _builder;
+  }
+  
+  public CharSequence generateFor(final EObject ce) {
+    if (ce instanceof CountExpression) {
+      return _generateFor((CountExpression)ce);
+    } else if (ce instanceof FilterExpression) {
+      return _generateFor((FilterExpression)ce);
+    } else if (ce instanceof NotEmptyExpression) {
+      return _generateFor((NotEmptyExpression)ce);
+    } else if (ce instanceof StateFilterExpression) {
+      return _generateFor((StateFilterExpression)ce);
+    } else if (ce instanceof ContextExpression) {
+      return _generateFor((ContextExpression)ce);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(ce).toString());
+    }
   }
 }

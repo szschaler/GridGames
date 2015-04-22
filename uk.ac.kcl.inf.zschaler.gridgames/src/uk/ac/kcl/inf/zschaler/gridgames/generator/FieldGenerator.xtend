@@ -4,20 +4,15 @@ import java.util.Map
 import org.eclipse.xtext.generator.IFileSystemAccess
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
@@ -126,7 +121,20 @@ class FieldGenerator extends CommonGenerator {
 					try {
 						while (true) {
 							if (doRun) {
-								// TODO Generate a new generation
+								// Compute a new generation
+								Cell[][] newGeneration = new Cell[width][height];
+								
+								for (int x = 0; x < width; x++) {
+									for (int y = 0; y < height; y++) {
+										CellContext context = getContextAt(x, y);
+										
+										newGeneration[x][y] = field[x][y].computeNewGeneration (context);
+									}
+								}
+								
+								// Set the new generation
+								field = newGeneration;
+								fireTableDataChanged();
 							}
 							
 							sleep(sleepTime);
@@ -325,18 +333,5 @@ class FieldGenerator extends CommonGenerator {
 
 	def generateFieldInitialisation() {
 		gg.options.filter(StartFieldDeclaration).join(" ", [o|'''initialise«o.field.name.toFirstUpper»Field();'''])
-
 	}
-
-	def dispatch CharSequence generateFor(ContextExpression ce) '''
-		context.«ce.sub_exp.join(".", [se | se.generateFor])»
-	'''
-
-	def dispatch CharSequence generateFor(FilterExpression fe) '''filter«fe.cell_type.name.toFirstUpper»()'''
-	
-	def dispatch CharSequence generateFor(StateFilterExpression sfe) '''inState«sfe.cell_state.name.toFirstUpper»()'''
-
-	def dispatch CharSequence generateFor(CountExpression ce) '''size()«if (ce.op != null) {'''«ce.op» «ce.cmpVal»'''}»'''
-
-	def dispatch CharSequence generateFor(NotEmptyExpression nee) '''notEmpty()'''
 }

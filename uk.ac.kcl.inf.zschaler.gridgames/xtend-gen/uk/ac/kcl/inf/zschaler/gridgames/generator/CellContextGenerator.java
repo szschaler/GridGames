@@ -51,7 +51,7 @@ public class CellContextGenerator extends CommonGenerator {
       _builder.append("}");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("private class CellContext implements Iterable<CellContext.ContextElement> {");
+      _builder.append("public class CellContext implements Iterable<CellContext.ContextElement> {");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("public class ContextElement {");

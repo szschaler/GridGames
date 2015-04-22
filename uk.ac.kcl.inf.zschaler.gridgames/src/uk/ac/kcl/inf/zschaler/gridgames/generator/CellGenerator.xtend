@@ -12,6 +12,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
 
 /**
  * Generates all stuff to do with handling cells.
@@ -53,9 +54,12 @@ class CellGenerator extends CommonGenerator {
 				public abstract Component formatUIRepresentation(JButton jb, JLabel jl);
 				public void handleMouseClick (boolean isLeft, int row, int col, «generateFieldClassName()» field) { }
 				public abstract int getStateID();
+				«if (mpp.doGenerateGenerationalContexts) {
+					'''public abstract CellState getContextBasedFollowState («generateFieldClassName».CellContext context);'''
+				}»
 			} 
 			
-			private CellState currentState;
+			protected CellState currentState;
 			
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
 				if (currentState != null) {
@@ -86,6 +90,10 @@ class CellGenerator extends CommonGenerator {
 			}
 			
 			«gg.cells.join(" ", [c | '''public boolean is«c.name.toFirstUpper»() { return false; }'''])»
+			
+			«if (mpp.doGenerateGenerationalContexts){
+				'''public abstract Cell computeNewGeneration(«generateFieldClassName».CellContext context);'''
+			}»
 		}
 	'''
 
@@ -117,6 +125,18 @@ class CellGenerator extends CommonGenerator {
 			public boolean is«c.name.toFirstUpper»() {
 				return true;
 			}
+			
+			«if (mpp.doGenerateGenerationalContexts){
+				'''
+				private «c.generateCellClassName» (CellState startAt) {
+					currentState = startAt;
+				}
+				
+				@Override
+				public Cell computeNewGeneration(«generateFieldClassName».CellContext context) {
+					return new «c.generateCellClassName» (currentState.getContextBasedFollowState (context));
+				}'''
+			}»
 		}
 	'''
 
@@ -153,6 +173,21 @@ class CellGenerator extends CommonGenerator {
 			public int getStateID() {
 				return «idAndSymbolTable.key»;
 			}
+
+			«if (mpp.doGenerateGenerationalContexts) {
+				'''
+				public CellState getContextBasedFollowState («generateFieldClassName».CellContext context) {
+					«cs.transitions.filter[t | t.trigger instanceof ContextTrigger].join ("\n", [t |
+						var tr = t.trigger as ContextTrigger
+						'''
+						if («tr.exp.generateFor») {
+							return new «t.target.name.toFirstUpper»CellState();
+						}
+						'''])»
+					return this;
+				}
+				'''
+			}»
 		}
 	'''
 

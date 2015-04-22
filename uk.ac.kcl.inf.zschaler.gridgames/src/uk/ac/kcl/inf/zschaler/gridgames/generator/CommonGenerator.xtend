@@ -2,8 +2,13 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression
 
 /**
  * Common generator bits.
@@ -52,4 +57,14 @@ class CommonGenerator {
 	def generateFieldInitialiserName(FieldSpecification f) '''initialise«f.name.toFirstUpper»Field'''
 	
 	def generateVariableName(CellVarSpec v) '''«v.name.toFirstLower»Variable'''
+	
+	def dispatch CharSequence generateFor(ContextExpression ce) '''context.«ce.sub_exp.join(".", [se | se.generateFor])»'''
+	
+	def dispatch CharSequence generateFor(FilterExpression fe) '''filter«fe.cell_type.name.toFirstUpper»()'''
+	
+	def dispatch CharSequence generateFor(StateFilterExpression sfe) '''inState«sfe.cell_state.name.toFirstUpper»()'''
+
+	def dispatch CharSequence generateFor(CountExpression ce) '''size()«if (ce.op != null) {'''«ce.op» «ce.cmpVal»'''}»'''
+
+	def dispatch CharSequence generateFor(NotEmptyExpression nee) '''notEmpty()'''
 }

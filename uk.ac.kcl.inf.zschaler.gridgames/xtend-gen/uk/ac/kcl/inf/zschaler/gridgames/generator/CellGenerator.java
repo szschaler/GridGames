@@ -20,6 +20,8 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
@@ -112,13 +114,26 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t\t");
     _builder.append("public abstract int getStateID();");
     _builder.newLine();
+    _builder.append("\t\t");
+    CharSequence _xifexpression = null;
+    boolean _doGenerateGenerationalContexts = this.mpp.doGenerateGenerationalContexts();
+    if (_doGenerateGenerationalContexts) {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("public abstract CellState getContextBasedFollowState (");
+      CharSequence _generateFieldClassName_2 = this.generateFieldClassName();
+      _builder_1.append(_generateFieldClassName_2, "");
+      _builder_1.append(".CellContext context);");
+      _xifexpression = _builder_1;
+    }
+    _builder.append(_xifexpression, "\t\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("} ");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("private CellState currentState;");
+    _builder.append("protected CellState currentState;");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -149,8 +164,8 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public void handleMouseClick (boolean isLeft, int row, int col, ");
-    CharSequence _generateFieldClassName_2 = this.generateFieldClassName();
-    _builder.append(_generateFieldClassName_2, "\t");
+    CharSequence _generateFieldClassName_3 = this.generateFieldClassName();
+    _builder.append(_generateFieldClassName_3, "\t");
     _builder.append(" field) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -186,8 +201,8 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public void setState (CellState csNewState, int row, int col, ");
-    CharSequence _generateFieldClassName_3 = this.generateFieldClassName();
-    _builder.append(_generateFieldClassName_3, "\t");
+    CharSequence _generateFieldClassName_4 = this.generateFieldClassName();
+    _builder.append(_generateFieldClassName_4, "\t");
     _builder.append(" field) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -223,6 +238,21 @@ public class CellGenerator extends CommonGenerator {
     };
     String _join = IterableExtensions.<CellSpecification>join(_cells, " ", _function);
     _builder.append(_join, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    CharSequence _xifexpression_1 = null;
+    boolean _doGenerateGenerationalContexts_1 = this.mpp.doGenerateGenerationalContexts();
+    if (_doGenerateGenerationalContexts_1) {
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("public abstract Cell computeNewGeneration(");
+      CharSequence _generateFieldClassName_5 = this.generateFieldClassName();
+      _builder_2.append(_generateFieldClassName_5, "");
+      _builder_2.append(".CellContext context);");
+      _xifexpression_1 = _builder_2;
+    }
+    _builder.append(_xifexpression_1, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
@@ -374,6 +404,42 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    CharSequence _xifexpression = null;
+    boolean _doGenerateGenerationalContexts = this.mpp.doGenerateGenerationalContexts();
+    if (_doGenerateGenerationalContexts) {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("private ");
+      CharSequence _generateCellClassName_2 = this.generateCellClassName(c);
+      _builder_1.append(_generateCellClassName_2, "");
+      _builder_1.append(" (CellState startAt) {");
+      _builder_1.newLineIfNotEmpty();
+      _builder_1.append("\t");
+      _builder_1.append("currentState = startAt;");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("@Override");
+      _builder_1.newLine();
+      _builder_1.append("public Cell computeNewGeneration(");
+      CharSequence _generateFieldClassName_1 = this.generateFieldClassName();
+      _builder_1.append(_generateFieldClassName_1, "");
+      _builder_1.append(".CellContext context) {");
+      _builder_1.newLineIfNotEmpty();
+      _builder_1.append("\t");
+      _builder_1.append("return new ");
+      CharSequence _generateCellClassName_3 = this.generateCellClassName(c);
+      _builder_1.append(_generateCellClassName_3, "\t");
+      _builder_1.append(" (currentState.getContextBasedFollowState (context));");
+      _builder_1.newLineIfNotEmpty();
+      _builder_1.append("}");
+      _xifexpression = _builder_1;
+    }
+    _builder.append(_xifexpression, "\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
     return _builder;
@@ -508,6 +574,68 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    CharSequence _xifexpression_2 = null;
+    boolean _doGenerateGenerationalContexts = this.mpp.doGenerateGenerationalContexts();
+    if (_doGenerateGenerationalContexts) {
+      StringConcatenation _builder_4 = new StringConcatenation();
+      _builder_4.append("public CellState getContextBasedFollowState (");
+      CharSequence _generateFieldClassName_1 = this.generateFieldClassName();
+      _builder_4.append(_generateFieldClassName_1, "");
+      _builder_4.append(".CellContext context) {");
+      _builder_4.newLineIfNotEmpty();
+      _builder_4.append("\t");
+      EList<TransitionSpec> _transitions_2 = cs.getTransitions();
+      final Function1<TransitionSpec, Boolean> _function_2 = new Function1<TransitionSpec, Boolean>() {
+        @Override
+        public Boolean apply(final TransitionSpec t) {
+          TransitionTriggerSpec _trigger = t.getTrigger();
+          return Boolean.valueOf((_trigger instanceof ContextTrigger));
+        }
+      };
+      Iterable<TransitionSpec> _filter_1 = IterableExtensions.<TransitionSpec>filter(_transitions_2, _function_2);
+      final Function1<TransitionSpec, CharSequence> _function_3 = new Function1<TransitionSpec, CharSequence>() {
+        @Override
+        public CharSequence apply(final TransitionSpec t) {
+          String _xblockexpression = null;
+          {
+            TransitionTriggerSpec _trigger = t.getTrigger();
+            ContextTrigger tr = ((ContextTrigger) _trigger);
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("if (");
+            ContextExpression _exp = tr.getExp();
+            CharSequence _generateFor = CellGenerator.this.generateFor(_exp);
+            _builder.append(_generateFor, "");
+            _builder.append(") {");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("return new ");
+            CellState _target = t.getTarget();
+            String _name = _target.getName();
+            String _firstUpper = StringExtensions.toFirstUpper(_name);
+            _builder.append(_firstUpper, "\t");
+            _builder.append("CellState();");
+            _builder.newLineIfNotEmpty();
+            _builder.append("}");
+            _builder.newLine();
+            _xblockexpression = _builder.toString();
+          }
+          return _xblockexpression;
+        }
+      };
+      String _join_1 = IterableExtensions.<TransitionSpec>join(_filter_1, "\n", _function_3);
+      _builder_4.append(_join_1, "\t");
+      _builder_4.newLineIfNotEmpty();
+      _builder_4.append("\t");
+      _builder_4.append("return this;");
+      _builder_4.newLine();
+      _builder_4.append("}");
+      _builder_4.newLine();
+      _xifexpression_2 = _builder_4;
+    }
+    _builder.append(_xifexpression_2, "\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
     return _builder;

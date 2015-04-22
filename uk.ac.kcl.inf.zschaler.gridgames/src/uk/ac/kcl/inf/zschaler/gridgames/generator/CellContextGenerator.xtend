@@ -23,7 +23,7 @@ class CellContextGenerator extends CommonGenerator {
 					return new CellContext(x, y);
 				}
 				
-				private class CellContext implements Iterable<CellContext.ContextElement> {
+				public class CellContext implements Iterable<CellContext.ContextElement> {
 					public class ContextElement {
 						private Cell cell;
 						private int dx, dy;
