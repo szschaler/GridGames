@@ -1,12 +1,12 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator
 
+import java.util.Set
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression
-import java.util.Set
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression
 
 class CellContextGenerator extends CommonGenerator {
@@ -15,8 +15,8 @@ class CellContextGenerator extends CommonGenerator {
 		super(mpp)
 	}
 
-	public def generateCellContext() {
-		if (gg.fields.exists[f|mpp.allInitialisations(f).exists[i|i.value instanceof ContextInitialisation]]) {
+	public def generateCellContext() {		
+		if (needContextGeneration) {
 			// Generate helper functions for context initialisation
 			'''
 				private CellContext getContextAt (int x, int y) {
@@ -73,11 +73,16 @@ class CellContextGenerator extends CommonGenerator {
 					}
 					
 					«// Slightly annoyingly have to convert the CharSequences into Strings here to make
- 					 // sure the equality check in toSet works
+		 					 // sure the equality check in toSet works
 					 gg.contextExpInvocations.map[e | e.generateImplementation.toString].toSet.join(" ")»
 				}
 			'''
 		}
+	}
+	
+	private def needContextGeneration() {
+		(gg.fields.exists[f|mpp.allInitialisations(f).exists[i|i.value instanceof ContextInitialisation]]) ||
+		(!mpp.allStatesWithContextTriggers.empty)
 	}
 
 	def getContextExpInvocations(GridGame gg) {
@@ -147,7 +152,7 @@ class CellContextGenerator extends CommonGenerator {
 	 * Add required imports to the set given
 	 */
 	def addImports(Set<String> imports) {
-		if (gg.fields.exists[f|mpp.allInitialisations(f).exists[i|i.value instanceof ContextInitialisation]]) {
+		if (needContextGeneration) {
 			imports.add("java.util.List")
 			imports.add("java.util.ArrayList")
 			imports.add("java.util.Iterator")

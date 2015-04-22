@@ -40,23 +40,8 @@ public class CellContextGenerator extends CommonGenerator {
   
   public CharSequence generateCellContext() {
     CharSequence _xifexpression = null;
-    EList<FieldSpecification> _fields = this.gg.getFields();
-    final Function1<FieldSpecification, Boolean> _function = new Function1<FieldSpecification, Boolean>() {
-      @Override
-      public Boolean apply(final FieldSpecification f) {
-        List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = CellContextGenerator.this.mpp.allInitialisations(f);
-        final Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean>() {
-          @Override
-          public Boolean apply(final Pair<Map<String, Value>, FieldInitialisation> i) {
-            FieldInitialisation _value = i.getValue();
-            return Boolean.valueOf((_value instanceof ContextInitialisation));
-          }
-        };
-        return Boolean.valueOf(IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>exists(_allInitialisations, _function));
-      }
-    };
-    boolean _exists = IterableExtensions.<FieldSpecification>exists(_fields, _function);
-    if (_exists) {
+    boolean _needContextGeneration = this.needContextGeneration();
+    if (_needContextGeneration) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("private CellContext getContextAt (int x, int y) {");
       _builder.newLine();
@@ -204,14 +189,14 @@ public class CellContextGenerator extends CommonGenerator {
       _builder.newLine();
       _builder.append("\t");
       List<AtomicExpression> _contextExpInvocations = this.getContextExpInvocations(this.gg);
-      final Function1<AtomicExpression, String> _function_1 = new Function1<AtomicExpression, String>() {
+      final Function1<AtomicExpression, String> _function = new Function1<AtomicExpression, String>() {
         @Override
         public String apply(final AtomicExpression e) {
           CharSequence _generateImplementation = CellContextGenerator.this.generateImplementation(e);
           return _generateImplementation.toString();
         }
       };
-      List<String> _map = ListExtensions.<AtomicExpression, String>map(_contextExpInvocations, _function_1);
+      List<String> _map = ListExtensions.<AtomicExpression, String>map(_contextExpInvocations, _function);
       Set<String> _set = IterableExtensions.<String>toSet(_map);
       String _join = IterableExtensions.join(_set, " ");
       _builder.append(_join, "\t");
@@ -221,6 +206,35 @@ public class CellContextGenerator extends CommonGenerator {
       _xifexpression = _builder;
     }
     return _xifexpression;
+  }
+  
+  private boolean needContextGeneration() {
+    boolean _or = false;
+    EList<FieldSpecification> _fields = this.gg.getFields();
+    final Function1<FieldSpecification, Boolean> _function = new Function1<FieldSpecification, Boolean>() {
+      @Override
+      public Boolean apply(final FieldSpecification f) {
+        List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = CellContextGenerator.this.mpp.allInitialisations(f);
+        final Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean>() {
+          @Override
+          public Boolean apply(final Pair<Map<String, Value>, FieldInitialisation> i) {
+            FieldInitialisation _value = i.getValue();
+            return Boolean.valueOf((_value instanceof ContextInitialisation));
+          }
+        };
+        return Boolean.valueOf(IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>exists(_allInitialisations, _function));
+      }
+    };
+    boolean _exists = IterableExtensions.<FieldSpecification>exists(_fields, _function);
+    if (_exists) {
+      _or = true;
+    } else {
+      Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers = this.mpp.getAllStatesWithContextTriggers();
+      boolean _isEmpty = IterableExtensions.isEmpty(_allStatesWithContextTriggers);
+      boolean _not = (!_isEmpty);
+      _or = _not;
+    }
+    return _or;
   }
   
   public List<AtomicExpression> getContextExpInvocations(final GridGame gg) {
@@ -442,23 +456,8 @@ public class CellContextGenerator extends CommonGenerator {
    */
   public boolean addImports(final Set<String> imports) {
     boolean _xifexpression = false;
-    EList<FieldSpecification> _fields = this.gg.getFields();
-    final Function1<FieldSpecification, Boolean> _function = new Function1<FieldSpecification, Boolean>() {
-      @Override
-      public Boolean apply(final FieldSpecification f) {
-        List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = CellContextGenerator.this.mpp.allInitialisations(f);
-        final Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean>() {
-          @Override
-          public Boolean apply(final Pair<Map<String, Value>, FieldInitialisation> i) {
-            FieldInitialisation _value = i.getValue();
-            return Boolean.valueOf((_value instanceof ContextInitialisation));
-          }
-        };
-        return Boolean.valueOf(IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>exists(_allInitialisations, _function));
-      }
-    };
-    boolean _exists = IterableExtensions.<FieldSpecification>exists(_fields, _function);
-    if (_exists) {
+    boolean _needContextGeneration = this.needContextGeneration();
+    if (_needContextGeneration) {
       boolean _xblockexpression = false;
       {
         imports.add("java.util.List");
