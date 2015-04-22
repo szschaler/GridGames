@@ -55,9 +55,7 @@ class CellGenerator extends CommonGenerator {
 				public abstract Component formatUIRepresentation(JButton jb, JLabel jl);
 				public abstract int getStateID();
 				public CellState getMouseBasedFollowState (boolean isLeft) { return this; }
-				«if (mpp.doGenerateGenerationalContexts) {
-					'''public abstract CellState getContextBasedFollowState («generateFieldClassName».CellContext context);'''
-				}»
+				public abstract CellState getContextBasedFollowState («generateFieldClassName».CellContext context);
 			} 
 			
 			protected CellState currentState;
@@ -85,9 +83,11 @@ class CellGenerator extends CommonGenerator {
 			 * coordinates in the given field and issue an update event for that field.
 			 */
 			public void setState (CellState csNewState, int row, int col, «generateFieldClassName()» field) {
-				currentState = csNewState;
-				if (field != null) {
-					field.fireTableCellUpdated(row, col);
+				if (currentState != csNewState) {
+					currentState = csNewState;
+					if (field != null) {
+						field.fireTableCellUpdated(row, col);
+					}
 				}
 			}
 			
@@ -194,20 +194,16 @@ class CellGenerator extends CommonGenerator {
 				return «idAndSymbolTable.key»;
 			}
 
-			«if (mpp.doGenerateGenerationalContexts) {
-				'''
-				public CellState getContextBasedFollowState («generateFieldClassName».CellContext context) {
-					«cs.transitions.filter[t | t.trigger instanceof ContextTrigger].join ("\n", [t |
-						var tr = t.trigger as ContextTrigger
-						'''
-						if («tr.exp.generateFor») {
-							return new «t.target.name.toFirstUpper»CellState();
-						}
-						'''])»
-					return this;
-				}
-				'''
-			}»
+			public CellState getContextBasedFollowState («generateFieldClassName».CellContext context) {
+				«cs.transitions.filter[t | t.trigger instanceof ContextTrigger].join ("\n", [t |
+					var tr = t.trigger as ContextTrigger
+					'''
+					if («tr.exp.generateFor») {
+						return new «t.target.name.toFirstUpper»CellState();
+					}
+					'''])»
+				return this;
+			}
 		}
 	'''
 

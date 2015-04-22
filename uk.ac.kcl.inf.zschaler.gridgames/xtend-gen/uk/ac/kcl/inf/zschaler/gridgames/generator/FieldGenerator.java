@@ -527,6 +527,15 @@ public class FieldGenerator extends CommonGenerator {
         _builder_1.append("CellContext context = ce.getContextHere(); ");
         _builder_1.newLine();
         _builder_1.append("\t");
+        _builder_1.append("ce.getCell().setState (ce.getCell().getState().getContextBasedFollowState (ce.getContextHere()), ce.getRow(), ce.getCol(), ");
+        CharSequence _generateFieldClassName_1 = this.generateFieldClassName();
+        _builder_1.append(_generateFieldClassName_1, "\t");
+        _builder_1.append(".this);");
+        _builder_1.newLineIfNotEmpty();
+        _builder_1.append("\t");
+        _builder_1.append("/*");
+        _builder_1.newLine();
+        _builder_1.append("\t");
         _builder_1.append("switch (ce.getCell().getState().getStateID()) {");
         _builder_1.newLine();
         _builder_1.append("\t\t");
@@ -575,7 +584,7 @@ public class FieldGenerator extends CommonGenerator {
         _builder_1.append(_join, "\t\t");
         _builder_1.newLineIfNotEmpty();
         _builder_1.append("\t");
-        _builder_1.append("}");
+        _builder_1.append("}*/");
         _builder_1.newLine();
         _builder_1.append("}");
         _builder_1.newLine();
@@ -596,7 +605,7 @@ public class FieldGenerator extends CommonGenerator {
   
   /**
    * Generate implementation code for reaction to context trigger. Can assume t has a context trigger.
-   * In the surrounding code, variable 'c' will refer to the currently checked cell.
+   * In the surrounding code, variable 'ce.getCell()' will refer to the currently checked cell.
    * The generated code should start with an if-statement checking the trigger condition.
    * 
    * @param t the transition for which to generate code

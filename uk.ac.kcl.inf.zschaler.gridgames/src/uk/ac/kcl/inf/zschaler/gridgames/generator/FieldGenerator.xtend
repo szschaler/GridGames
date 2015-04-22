@@ -196,13 +196,15 @@ class FieldGenerator extends CommonGenerator {
 						'''
 						for (CellContext.ContextElement ce : getContextAt(col, row)) {
 							CellContext context = ce.getContextHere(); 
+							ce.getCell().setState (ce.getCell().getState().getContextBasedFollowState (ce.getContextHere()), ce.getRow(), ce.getCol(), «generateFieldClassName».this);
+							/*
 							switch (ce.getCell().getState().getStateID()) {
 								«states.join (" ", [cpp | 
 									'''case «cpp.value.value.key»:
 										«cpp.value.key.transitions.filter[t | t.trigger instanceof ContextTrigger]
 									                                             .join ("\n", [t | t.generateCodeForContextTrigger (cpp.key, cpp.value.value.value)])»
 									   	break;'''])»
-							}
+							}*/
 						}
 						'''
 					}»
@@ -214,7 +216,7 @@ class FieldGenerator extends CommonGenerator {
 	
 	/**
 	 * Generate implementation code for reaction to context trigger. Can assume t has a context trigger. 
-	 * In the surrounding code, variable 'c' will refer to the currently checked cell.
+	 * In the surrounding code, variable 'ce.getCell()' will refer to the currently checked cell.
 	 * The generated code should start with an if-statement checking the trigger condition.
 	 * 
 	 * @param t the transition for which to generate code
