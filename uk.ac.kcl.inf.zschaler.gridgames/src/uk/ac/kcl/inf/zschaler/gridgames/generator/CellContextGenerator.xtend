@@ -114,8 +114,7 @@ class CellContextGenerator extends CommonGenerator {
 			return this;
 		}
 	'''
-	
-	// TODO The implementation below might not work correctly with all variants of referencing etc.
+
 	def dispatch generateImplementation(StateFilterExpression sfe) '''
 		public CellContext inState«sfe.cell_state.name.toFirstUpper»() {
 			ArrayList<ContextElement> newAL = new ArrayList<>();
