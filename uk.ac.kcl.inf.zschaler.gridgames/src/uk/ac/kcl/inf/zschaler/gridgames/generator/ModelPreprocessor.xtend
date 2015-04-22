@@ -20,6 +20,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GenerationalContexts
 
 /**
  * Preprocesses the model, normalising structures and computing helper data such as unique cell state IDs.
@@ -188,5 +189,12 @@ class ModelPreprocessor {
 		]
 
 		fir.ref.initialisations.map[i | new Pair(symbols, i)]
-	}	
+	}
+	
+	/**
+	 * Return true if generational context updates should be generated rather than incremental, reactive ones
+	 */
+	public def doGenerateGenerationalContexts() {
+		return gg.options.exists[o | o instanceof GenerationalContexts]
+	}
 }

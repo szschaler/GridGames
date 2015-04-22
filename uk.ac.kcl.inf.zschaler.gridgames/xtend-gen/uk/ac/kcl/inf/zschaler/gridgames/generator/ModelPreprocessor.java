@@ -39,11 +39,13 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisations;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GenerationalContexts;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalFieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
@@ -421,6 +423,20 @@ public class ModelPreprocessor {
       _xblockexpression = ListExtensions.<FieldInitialisation, Pair<Map<String, Value>, FieldInitialisation>>map(_initialisations, _function_1);
     }
     return _xblockexpression;
+  }
+  
+  /**
+   * Return true if generational context updates should be generated rather than incremental, reactive ones
+   */
+  public boolean doGenerateGenerationalContexts() {
+    EList<OptionSpecification> _options = this.gg.getOptions();
+    final Function1<OptionSpecification, Boolean> _function = new Function1<OptionSpecification, Boolean>() {
+      @Override
+      public Boolean apply(final OptionSpecification o) {
+        return Boolean.valueOf((o instanceof GenerationalContexts));
+      }
+    };
+    return IterableExtensions.<OptionSpecification>exists(_options, _function);
   }
   
   private List<Pair<? extends Map<String, Value>, CellState>> getAllStates(final CellStateSpec cssr) {

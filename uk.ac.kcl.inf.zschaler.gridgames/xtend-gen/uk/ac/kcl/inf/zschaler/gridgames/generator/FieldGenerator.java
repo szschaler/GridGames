@@ -150,7 +150,10 @@ public class FieldGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _xifexpression = null;
-    if (true) {
+    Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers = this.mpp.getAllStatesWithContextTriggers();
+    boolean _isEmpty = IterableExtensions.isEmpty(_allStatesWithContextTriggers);
+    boolean _not = (!_isEmpty);
+    if (_not) {
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("addTableModelListener(new TableModelListener() {");
       _builder_1.newLine();
@@ -224,9 +227,9 @@ public class FieldGenerator extends CommonGenerator {
       _builder_1.newLineIfNotEmpty();
       _builder_1.append("\t\t");
       CharSequence _xifexpression_1 = null;
-      boolean _isEmpty = IterableExtensions.isEmpty(states);
-      boolean _not = (!_isEmpty);
-      if (_not) {
+      boolean _isEmpty_1 = IterableExtensions.isEmpty(states);
+      boolean _not_1 = (!_isEmpty_1);
+      if (_not_1) {
         StringConcatenation _builder_2 = new StringConcatenation();
         _builder_2.append("for (CellContext.ContextElement ce : getContextAt(col, row)) {");
         _builder_2.newLine();
@@ -494,10 +497,13 @@ public class FieldGenerator extends CommonGenerator {
       Iterable<String> _flatten = Iterables.<String>concat(_map);
       final Set<String> imports = IterableExtensions.<String>toSet(_flatten);
       this.ccg.addImports(imports);
-      if (true) {
+      Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers = this.mpp.getAllStatesWithContextTriggers();
+      boolean _isEmpty = IterableExtensions.isEmpty(_allStatesWithContextTriggers);
+      boolean _not = (!_isEmpty);
+      if (_not) {
         imports.add("javax.swing.event.TableModelEvent");
         imports.add("javax.swing.event.TableModelListener");
-        Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers = this.mpp.getAllStatesWithContextTriggers();
+        Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers_1 = this.mpp.getAllStatesWithContextTriggers();
         final Procedure1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _function_1 = new Procedure1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>() {
           @Override
           public void apply(final Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> p) {
@@ -512,7 +518,7 @@ public class FieldGenerator extends CommonGenerator {
             imports.add(_string);
           }
         };
-        IterableExtensions.<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>forEach(_allStatesWithContextTriggers, _function_1);
+        IterableExtensions.<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>forEach(_allStatesWithContextTriggers_1, _function_1);
       }
       final Function1<String, Boolean> _function_2 = new Function1<String, Boolean>() {
         @Override

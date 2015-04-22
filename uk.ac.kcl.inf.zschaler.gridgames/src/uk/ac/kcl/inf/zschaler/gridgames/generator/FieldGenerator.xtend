@@ -67,7 +67,7 @@ class FieldGenerator extends CommonGenerator {
 			this.cellFactory = cellFactory;
 			«generateFieldInitialisation()»
 			
-			«if (true) {
+			«if (!mpp.allStatesWithContextTriggers.empty) {
 				'''
 				addTableModelListener(new TableModelListener() {
 					@Override
@@ -178,7 +178,7 @@ class FieldGenerator extends CommonGenerator {
 
 		ccg.addImports (imports)
 
-		if (true) { // FIXME Use same condition as when determining whether we need to generate a listener for context-triggered transitions. 
+		if (!mpp.allStatesWithContextTriggers.empty) { 
 			imports.add("javax.swing.event.TableModelEvent")
 			imports.add("javax.swing.event.TableModelListener")
 			mpp.allStatesWithContextTriggers.forEach[p | 
