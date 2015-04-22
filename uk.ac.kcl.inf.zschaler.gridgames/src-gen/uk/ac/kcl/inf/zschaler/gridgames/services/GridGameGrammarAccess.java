@@ -1088,12 +1088,13 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cStartFieldDeclarationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cAllowRestartMenuParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cGenerationalContextsParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//OptionSpecification:
-		//	StartFieldDeclaration | AllowRestartMenu;
+		//	StartFieldDeclaration | AllowRestartMenu | GenerationalContexts;
 		@Override public ParserRule getRule() { return rule; }
 
-		//StartFieldDeclaration | AllowRestartMenu
+		//StartFieldDeclaration | AllowRestartMenu | GenerationalContexts
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//StartFieldDeclaration
@@ -1101,6 +1102,9 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//AllowRestartMenu
 		public RuleCall getAllowRestartMenuParserRuleCall_1() { return cAllowRestartMenuParserRuleCall_1; }
+
+		//GenerationalContexts
+		public RuleCall getGenerationalContextsParserRuleCall_2() { return cGenerationalContextsParserRuleCall_2; }
 	}
 
 	public class AllowRestartMenuElements extends AbstractParserRuleElementFinder {
@@ -1153,6 +1157,26 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getFieldFieldSpecificationIDTerminalRuleCall_2_0_1() { return cFieldFieldSpecificationIDTerminalRuleCall_2_0_1; }
+	}
+
+	public class GenerationalContextsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GenerationalContexts");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cContextsTriggerGenerationallyKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Action cGenerationalContextsAction_1 = (Action)cGroup.eContents().get(1);
+		
+		//GenerationalContexts:
+		//	"contextsTriggerGenerationally" {GenerationalContexts};
+		@Override public ParserRule getRule() { return rule; }
+
+		//"contextsTriggerGenerationally" {GenerationalContexts}
+		public Group getGroup() { return cGroup; }
+
+		//"contextsTriggerGenerationally"
+		public Keyword getContextsTriggerGenerationallyKeyword_0() { return cContextsTriggerGenerationallyKeyword_0; }
+
+		//{GenerationalContexts}
+		public Action getGenerationalContextsAction_1() { return cGenerationalContextsAction_1; }
 	}
 
 	public class GlobalFieldInitialisationElements extends AbstractParserRuleElementFinder {
@@ -1795,6 +1819,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final OptionSpecificationElements pOptionSpecification;
 	private final AllowRestartMenuElements pAllowRestartMenu;
 	private final StartFieldDeclarationElements pStartFieldDeclaration;
+	private final GenerationalContextsElements pGenerationalContexts;
 	private final GlobalFieldInitialisationElements pGlobalFieldInitialisation;
 	private final FieldInitialisationsElements pFieldInitialisations;
 	private final FieldInitialisationsRefElements pFieldInitialisationsRef;
@@ -1848,6 +1873,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pOptionSpecification = new OptionSpecificationElements();
 		this.pAllowRestartMenu = new AllowRestartMenuElements();
 		this.pStartFieldDeclaration = new StartFieldDeclarationElements();
+		this.pGenerationalContexts = new GenerationalContextsElements();
 		this.pGlobalFieldInitialisation = new GlobalFieldInitialisationElements();
 		this.pFieldInitialisations = new FieldInitialisationsElements();
 		this.pFieldInitialisationsRef = new FieldInitialisationsRefElements();
@@ -2167,7 +2193,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OptionSpecification:
-	//	StartFieldDeclaration | AllowRestartMenu;
+	//	StartFieldDeclaration | AllowRestartMenu | GenerationalContexts;
 	public OptionSpecificationElements getOptionSpecificationAccess() {
 		return pOptionSpecification;
 	}
@@ -2194,6 +2220,16 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getStartFieldDeclarationRule() {
 		return getStartFieldDeclarationAccess().getRule();
+	}
+
+	//GenerationalContexts:
+	//	"contextsTriggerGenerationally" {GenerationalContexts};
+	public GenerationalContextsElements getGenerationalContextsAccess() {
+		return pGenerationalContexts;
+	}
+	
+	public ParserRule getGenerationalContextsRule() {
+		return getGenerationalContextsAccess().getRule();
 	}
 
 	//GlobalFieldInitialisation:

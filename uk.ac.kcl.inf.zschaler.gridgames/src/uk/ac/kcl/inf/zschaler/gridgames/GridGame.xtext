@@ -162,7 +162,8 @@ FieldSpecification :
 
 OptionSpecification :
 	StartFieldDeclaration | 
-	AllowRestartMenu
+	AllowRestartMenu |
+	GenerationalContexts
 ;
 
 AllowRestartMenu:
@@ -171,6 +172,10 @@ AllowRestartMenu:
 
 StartFieldDeclaration:
 	"start" "=" field = [FieldSpecification]
+;
+
+GenerationalContexts :
+	"contextsTriggerGenerationally" {GenerationalContexts}
 ;
 
 GlobalFieldInitialisation :

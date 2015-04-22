@@ -275,6 +275,15 @@ public interface GridGameFactory extends EFactory
   StartFieldDeclaration createStartFieldDeclaration();
 
   /**
+   * Returns a new object of class '<em>Generational Contexts</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Generational Contexts</em>'.
+   * @generated
+   */
+  GenerationalContexts createGenerationalContexts();
+
+  /**
    * Returns a new object of class '<em>Global Field Initialisation</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

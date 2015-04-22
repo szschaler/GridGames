@@ -290,6 +290,14 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.GENERATIONAL_CONTEXTS:
+      {
+        GenerationalContexts generationalContexts = (GenerationalContexts)theEObject;
+        T result = caseGenerationalContexts(generationalContexts);
+        if (result == null) result = caseOptionSpecification(generationalContexts);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GridGamePackage.GLOBAL_FIELD_INITIALISATION:
       {
         GlobalFieldInitialisation globalFieldInitialisation = (GlobalFieldInitialisation)theEObject;
@@ -855,6 +863,22 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseStartFieldDeclaration(StartFieldDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Generational Contexts</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Generational Contexts</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGenerationalContexts(GenerationalContexts object)
   {
     return null;
   }

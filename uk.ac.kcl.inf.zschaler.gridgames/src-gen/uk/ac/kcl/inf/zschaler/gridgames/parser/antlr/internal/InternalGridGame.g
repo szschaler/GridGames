@@ -1794,6 +1794,16 @@ ruleOptionSpecification returns [EObject current=null]
         $current = $this_AllowRestartMenu_1.current; 
         afterParserOrEnumRuleCall();
     }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getOptionSpecificationAccess().getGenerationalContextsParserRuleCall_2()); 
+    }
+    this_GenerationalContexts_2=ruleGenerationalContexts
+    { 
+        $current = $this_GenerationalContexts_2.current; 
+        afterParserOrEnumRuleCall();
+    }
 )
 ;
 
@@ -1867,6 +1877,37 @@ ruleStartFieldDeclaration returns [EObject current=null]
 	}
 
 )
+))
+;
+
+
+
+
+
+// Entry rule entryRuleGenerationalContexts
+entryRuleGenerationalContexts returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getGenerationalContextsRule()); }
+	 iv_ruleGenerationalContexts=ruleGenerationalContexts 
+	 { $current=$iv_ruleGenerationalContexts.current; } 
+	 EOF 
+;
+
+// Rule GenerationalContexts
+ruleGenerationalContexts returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='contextsTriggerGenerationally' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getGenerationalContextsAccess().getContextsTriggerGenerationallyKeyword_0());
+    }
+(
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getGenerationalContextsAccess().getGenerationalContextsAction_1(),
+            $current);
+    }
 ))
 ;
 

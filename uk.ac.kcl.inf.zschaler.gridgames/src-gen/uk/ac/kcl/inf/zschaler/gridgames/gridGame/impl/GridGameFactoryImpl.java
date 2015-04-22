@@ -92,6 +92,7 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.OPTION_SPECIFICATION: return createOptionSpecification();
       case GridGamePackage.ALLOW_RESTART_MENU: return createAllowRestartMenu();
       case GridGamePackage.START_FIELD_DECLARATION: return createStartFieldDeclaration();
+      case GridGamePackage.GENERATIONAL_CONTEXTS: return createGenerationalContexts();
       case GridGamePackage.GLOBAL_FIELD_INITIALISATION: return createGlobalFieldInitialisation();
       case GridGamePackage.FIELD_INITIALISATIONS: return createFieldInitialisations();
       case GridGamePackage.FIELD_INITIALISATIONS_REF: return createFieldInitialisationsRef();
@@ -418,6 +419,17 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     StartFieldDeclarationImpl startFieldDeclaration = new StartFieldDeclarationImpl();
     return startFieldDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GenerationalContexts createGenerationalContexts()
+  {
+    GenerationalContextsImpl generationalContexts = new GenerationalContextsImpl();
+    return generationalContexts;
   }
 
   /**

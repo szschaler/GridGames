@@ -92,6 +92,7 @@
     <genClasses ecoreClass="GridGame.ecore#//StartFieldDeclaration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//StartFieldDeclaration/field"/>
     </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//GenerationalContexts"/>
     <genClasses ecoreClass="GridGame.ecore#//GlobalFieldInitialisation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GlobalFieldInitialisation/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalFieldInitialisation/params"/>

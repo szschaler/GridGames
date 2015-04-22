@@ -844,6 +844,34 @@ finally {
 
 
 
+// Entry rule entryRuleGenerationalContexts
+entryRuleGenerationalContexts 
+:
+{ before(grammarAccess.getGenerationalContextsRule()); }
+	 ruleGenerationalContexts
+{ after(grammarAccess.getGenerationalContextsRule()); } 
+	 EOF 
+;
+
+// Rule GenerationalContexts
+ruleGenerationalContexts
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getGenerationalContextsAccess().getGroup()); }
+(rule__GenerationalContexts__Group__0)
+{ after(grammarAccess.getGenerationalContextsAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleGlobalFieldInitialisation
 entryRuleGlobalFieldInitialisation 
 :
@@ -1573,6 +1601,12 @@ rule__OptionSpecification__Alternatives
 { before(grammarAccess.getOptionSpecificationAccess().getAllowRestartMenuParserRuleCall_1()); }
 	ruleAllowRestartMenu
 { after(grammarAccess.getOptionSpecificationAccess().getAllowRestartMenuParserRuleCall_1()); }
+)
+
+    |(
+{ before(grammarAccess.getOptionSpecificationAccess().getGenerationalContextsParserRuleCall_2()); }
+	ruleGenerationalContexts
+{ after(grammarAccess.getOptionSpecificationAccess().getGenerationalContextsParserRuleCall_2()); }
 )
 
 ;
@@ -5095,6 +5129,71 @@ finally {
 }
 
 
+
+
+
+
+
+
+rule__GenerationalContexts__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__GenerationalContexts__Group__0__Impl
+	rule__GenerationalContexts__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GenerationalContexts__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getGenerationalContextsAccess().getContextsTriggerGenerationallyKeyword_0()); }
+
+	'contextsTriggerGenerationally' 
+
+{ after(grammarAccess.getGenerationalContextsAccess().getContextsTriggerGenerationallyKeyword_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__GenerationalContexts__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__GenerationalContexts__Group__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GenerationalContexts__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getGenerationalContextsAccess().getGenerationalContextsAction_1()); }
+(
+
+)
+{ after(grammarAccess.getGenerationalContextsAccess().getGenerationalContextsAction_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 

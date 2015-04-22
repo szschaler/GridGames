@@ -32,6 +32,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GenerationalContexts;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalFieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
@@ -107,6 +108,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.FILTER_EXPRESSION:
 				sequence_FilterExpression(context, (FilterExpression) semanticObject); 
+				return; 
+			case GridGamePackage.GENERATIONAL_CONTEXTS:
+				sequence_GenerationalContexts(context, (GenerationalContexts) semanticObject); 
 				return; 
 			case GridGamePackage.GLOBAL_CELL_STATE_SPEC:
 				sequence_GlobalCellStateSpec(context, (GlobalCellStateSpec) semanticObject); 
@@ -358,6 +362,15 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell_type());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {GenerationalContexts}
+	 */
+	protected void sequence_GenerationalContexts(EObject context, GenerationalContexts semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

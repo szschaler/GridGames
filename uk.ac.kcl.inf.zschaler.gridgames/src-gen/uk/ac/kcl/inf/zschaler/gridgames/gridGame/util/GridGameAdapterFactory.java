@@ -215,6 +215,11 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createStartFieldDeclarationAdapter();
       }
       @Override
+      public Adapter caseGenerationalContexts(GenerationalContexts object)
+      {
+        return createGenerationalContextsAdapter();
+      }
+      @Override
       public Adapter caseGlobalFieldInitialisation(GlobalFieldInitialisation object)
       {
         return createGlobalFieldInitialisationAdapter();
@@ -727,6 +732,21 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStartFieldDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GenerationalContexts <em>Generational Contexts</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GenerationalContexts
+   * @generated
+   */
+  public Adapter createGenerationalContextsAdapter()
   {
     return null;
   }
