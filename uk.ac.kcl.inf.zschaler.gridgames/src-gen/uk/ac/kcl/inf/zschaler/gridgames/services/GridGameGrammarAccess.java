@@ -1684,12 +1684,20 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Action cCountExpressionAction_3 = (Action)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Assignment cOpAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final Alternatives cOpAlternatives_4_0_0 = (Alternatives)cOpAssignment_4_0.eContents().get(0);
+		private final Keyword cOpEqualsSignEqualsSignKeyword_4_0_0_0 = (Keyword)cOpAlternatives_4_0_0.eContents().get(0);
+		private final Keyword cOpGreaterThanSignKeyword_4_0_0_1 = (Keyword)cOpAlternatives_4_0_0.eContents().get(1);
+		private final Keyword cOpLessThanSignKeyword_4_0_0_2 = (Keyword)cOpAlternatives_4_0_0.eContents().get(2);
+		private final Assignment cCmpValAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cCmpValINTTerminalRuleCall_4_1_0 = (RuleCall)cCmpValAssignment_4_1.eContents().get(0);
 		
 		//CountExpression:
-		//	"count" "(" ")" {CountExpression};
+		//	"count" "(" ")" {CountExpression} (op=("==" | ">" | "<") cmpVal=INT)?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"count" "(" ")" {CountExpression}
+		//"count" "(" ")" {CountExpression} (op=("==" | ">" | "<") cmpVal=INT)?
 		public Group getGroup() { return cGroup; }
 
 		//"count"
@@ -1703,6 +1711,30 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//{CountExpression}
 		public Action getCountExpressionAction_3() { return cCountExpressionAction_3; }
+
+		//(op=("==" | ">" | "<") cmpVal=INT)?
+		public Group getGroup_4() { return cGroup_4; }
+
+		//op=("==" | ">" | "<")
+		public Assignment getOpAssignment_4_0() { return cOpAssignment_4_0; }
+
+		//"==" | ">" | "<"
+		public Alternatives getOpAlternatives_4_0_0() { return cOpAlternatives_4_0_0; }
+
+		//"=="
+		public Keyword getOpEqualsSignEqualsSignKeyword_4_0_0_0() { return cOpEqualsSignEqualsSignKeyword_4_0_0_0; }
+
+		//">"
+		public Keyword getOpGreaterThanSignKeyword_4_0_0_1() { return cOpGreaterThanSignKeyword_4_0_0_1; }
+
+		//"<"
+		public Keyword getOpLessThanSignKeyword_4_0_0_2() { return cOpLessThanSignKeyword_4_0_0_2; }
+
+		//cmpVal=INT
+		public Assignment getCmpValAssignment_4_1() { return cCmpValAssignment_4_1; }
+
+		//INT
+		public RuleCall getCmpValINTTerminalRuleCall_4_1_0() { return cCmpValINTTerminalRuleCall_4_1_0; }
 	}
 
 	public class NotEmptyExpressionElements extends AbstractParserRuleElementFinder {
@@ -2287,7 +2319,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CountExpression:
-	//	"count" "(" ")" {CountExpression};
+	//	"count" "(" ")" {CountExpression} (op=("==" | ">" | "<") cmpVal=INT)?;
 	public CountExpressionElements getCountExpressionAccess() {
 		return pCountExpression;
 	}

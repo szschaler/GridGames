@@ -4,7 +4,10 @@
 '.'=50
 ':'=46
 ';'=44
+'<'=56
 '='=28
+'=='=54
+'>'=55
 'Behaviour'=29
 'String'=22
 'allow_restart'=42
@@ -29,7 +32,7 @@
 'mouse-left'=34
 'mouse-right'=35
 'nop'=38
-'notEmpty'=54
+'notEmpty'=57
 'on'=32
 'onEnter'=31
 'random'=47
@@ -93,3 +96,6 @@ T__51=51
 T__52=52
 T__53=53
 T__54=54
+T__55=55
+T__56=56
+T__57=57

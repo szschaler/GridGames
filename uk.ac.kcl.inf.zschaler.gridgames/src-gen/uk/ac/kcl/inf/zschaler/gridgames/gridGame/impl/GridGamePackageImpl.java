@@ -1372,6 +1372,26 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getCountExpression_Op()
+  {
+    return (EAttribute)countExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCountExpression_CmpVal()
+  {
+    return (EAttribute)countExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getNotEmptyExpression()
   {
     return notEmptyExpressionEClass;
@@ -1551,6 +1571,8 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEReference(stateFilterExpressionEClass, STATE_FILTER_EXPRESSION__CELL_STATE);
 
     countExpressionEClass = createEClass(COUNT_EXPRESSION);
+    createEAttribute(countExpressionEClass, COUNT_EXPRESSION__OP);
+    createEAttribute(countExpressionEClass, COUNT_EXPRESSION__CMP_VAL);
 
     notEmptyExpressionEClass = createEClass(NOT_EMPTY_EXPRESSION);
 
@@ -1750,6 +1772,8 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEReference(getStateFilterExpression_Cell_state(), this.getCellState(), null, "cell_state", null, 0, 1, StateFilterExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(countExpressionEClass, CountExpression.class, "CountExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCountExpression_Op(), ecorePackage.getEString(), "op", null, 0, 1, CountExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCountExpression_CmpVal(), ecorePackage.getEInt(), "cmpVal", null, 0, 1, CountExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(notEmptyExpressionEClass, NotEmptyExpression.class, "NotEmptyExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

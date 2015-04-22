@@ -279,7 +279,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     {CountExpression}
+	 *     (((op='==' | op='>' | op='<') cmpVal=INT)?)
 	 */
 	protected void sequence_CountExpression(EObject context, CountExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

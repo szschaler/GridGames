@@ -229,7 +229,7 @@ StateFilterExpression :
 ;
 
 CountExpression :
-	"count" "(" ")" {CountExpression}
+	"count" "(" ")" {CountExpression} (op = ("==" | ">" | "<") cmpVal = INT)? 
 ;
 
 NotEmptyExpression :

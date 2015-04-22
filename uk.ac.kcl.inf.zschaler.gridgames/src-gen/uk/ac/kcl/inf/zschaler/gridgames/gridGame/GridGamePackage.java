@@ -1367,13 +1367,31 @@ public interface GridGamePackage extends EPackage
   int COUNT_EXPRESSION = 40;
 
   /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COUNT_EXPRESSION__OP = ATOMIC_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Cmp Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COUNT_EXPRESSION__CMP_VAL = ATOMIC_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Count Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COUNT_EXPRESSION_FEATURE_COUNT = ATOMIC_EXPRESSION_FEATURE_COUNT + 0;
+  int COUNT_EXPRESSION_FEATURE_COUNT = ATOMIC_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NotEmptyExpressionImpl <em>Not Empty Expression</em>}' class.
@@ -2408,6 +2426,28 @@ public interface GridGamePackage extends EPackage
   EClass getCountExpression();
 
   /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression#getOp()
+   * @see #getCountExpression()
+   * @generated
+   */
+  EAttribute getCountExpression_Op();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression#getCmpVal <em>Cmp Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Cmp Val</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression#getCmpVal()
+   * @see #getCountExpression()
+   * @generated
+   */
+  EAttribute getCountExpression_CmpVal();
+
+  /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression <em>Not Empty Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3283,6 +3323,22 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EClass COUNT_EXPRESSION = eINSTANCE.getCountExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COUNT_EXPRESSION__OP = eINSTANCE.getCountExpression_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Cmp Val</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COUNT_EXPRESSION__CMP_VAL = eINSTANCE.getCountExpression_CmpVal();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NotEmptyExpressionImpl <em>Not Empty Expression</em>}' class.

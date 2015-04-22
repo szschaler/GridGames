@@ -2681,7 +2681,67 @@ ruleCountExpression returns [EObject current=null]
             grammarAccess.getCountExpressionAccess().getCountExpressionAction_3(),
             $current);
     }
-))
+)((
+(
+(
+		lv_op_4_1=	'==' 
+    {
+        newLeafNode(lv_op_4_1, grammarAccess.getCountExpressionAccess().getOpEqualsSignEqualsSignKeyword_4_0_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCountExpressionRule());
+	        }
+       		setWithLastConsumed($current, "op", lv_op_4_1, null);
+	    }
+
+    |		lv_op_4_2=	'>' 
+    {
+        newLeafNode(lv_op_4_2, grammarAccess.getCountExpressionAccess().getOpGreaterThanSignKeyword_4_0_0_1());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCountExpressionRule());
+	        }
+       		setWithLastConsumed($current, "op", lv_op_4_2, null);
+	    }
+
+    |		lv_op_4_3=	'<' 
+    {
+        newLeafNode(lv_op_4_3, grammarAccess.getCountExpressionAccess().getOpLessThanSignKeyword_4_0_0_2());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCountExpressionRule());
+	        }
+       		setWithLastConsumed($current, "op", lv_op_4_3, null);
+	    }
+
+)
+
+)
+)(
+(
+		lv_cmpVal_5_0=RULE_INT
+		{
+			newLeafNode(lv_cmpVal_5_0, grammarAccess.getCountExpressionAccess().getCmpValINTTerminalRuleCall_4_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCountExpressionRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"cmpVal",
+        		lv_cmpVal_5_0, 
+        		"INT");
+	    }
+
+)
+))?)
 ;
 
 

@@ -55,6 +55,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFieldInitialisationAccess().getAlternatives(), "rule__FieldInitialisation__Alternatives");
 					put(grammarAccess.getRandomInitialisationAccess().getAlternatives_4(), "rule__RandomInitialisation__Alternatives_4");
 					put(grammarAccess.getAtomicExpressionAccess().getAlternatives(), "rule__AtomicExpression__Alternatives");
+					put(grammarAccess.getCountExpressionAccess().getOpAlternatives_4_0_0(), "rule__CountExpression__OpAlternatives_4_0_0");
 					put(grammarAccess.getGridGameAccess().getGroup(), "rule__GridGame__Group__0");
 					put(grammarAccess.getCellSpecificationAccess().getGroup(), "rule__CellSpecification__Group__0");
 					put(grammarAccess.getCellDisplaySpecAccess().getGroup(), "rule__CellDisplaySpec__Group__0");
@@ -98,6 +99,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFilterExpressionAccess().getGroup(), "rule__FilterExpression__Group__0");
 					put(grammarAccess.getStateFilterExpressionAccess().getGroup(), "rule__StateFilterExpression__Group__0");
 					put(grammarAccess.getCountExpressionAccess().getGroup(), "rule__CountExpression__Group__0");
+					put(grammarAccess.getCountExpressionAccess().getGroup_4(), "rule__CountExpression__Group_4__0");
 					put(grammarAccess.getNotEmptyExpressionAccess().getGroup(), "rule__NotEmptyExpression__Group__0");
 					put(grammarAccess.getGridGameAccess().getNameAssignment_1(), "rule__GridGame__NameAssignment_1");
 					put(grammarAccess.getGridGameAccess().getStatesAssignment_3_0(), "rule__GridGame__StatesAssignment_3_0");
@@ -162,6 +164,8 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getContextExpressionAccess().getSub_expAssignment_1_1(), "rule__ContextExpression__Sub_expAssignment_1_1");
 					put(grammarAccess.getFilterExpressionAccess().getCell_typeAssignment_2(), "rule__FilterExpression__Cell_typeAssignment_2");
 					put(grammarAccess.getStateFilterExpressionAccess().getCell_stateAssignment_2(), "rule__StateFilterExpression__Cell_stateAssignment_2");
+					put(grammarAccess.getCountExpressionAccess().getOpAssignment_4_0(), "rule__CountExpression__OpAssignment_4_0");
+					put(grammarAccess.getCountExpressionAccess().getCmpValAssignment_4_1(), "rule__CountExpression__CmpValAssignment_4_1");
 				}
 			};
 		}

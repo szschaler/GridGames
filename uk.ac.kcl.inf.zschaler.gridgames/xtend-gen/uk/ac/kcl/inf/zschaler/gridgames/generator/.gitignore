@@ -5,3 +5,5 @@
 /.FrameGenerator.java._trace
 /.ModelPreprocessor.java._trace
 /.CellContextGenerator.java._trace
+/.CellContextGenerator.xtendbin
+/CellContextGenerator.java
