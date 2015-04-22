@@ -51,10 +51,10 @@ class CellGenerator extends CommonGenerator {
 		import «generateModelPackage».«generateFieldClassName»;
 		
 		public abstract class Cell {
-			public abstract class CellState {
+			public static abstract class CellState {
 				public abstract Component formatUIRepresentation(JButton jb, JLabel jl);
-				public void handleMouseClick (boolean isLeft, int row, int col, «generateFieldClassName()» field) { }
 				public abstract int getStateID();
+				public CellState getMouseBasedFollowState (boolean isLeft) { return this; }
 				«if (mpp.doGenerateGenerationalContexts) {
 					'''public abstract CellState getContextBasedFollowState («generateFieldClassName».CellContext context);'''
 				}»
@@ -72,7 +72,8 @@ class CellGenerator extends CommonGenerator {
 			}
 		
 			public void handleMouseClick (boolean isLeft, int row, int col, «generateFieldClassName()» field) {
-				currentState.handleMouseClick(isLeft, row, col, field);
+				setState (currentState.getMouseBasedFollowState (isLeft), row, col, field);
+				
 			}
 			
 			public CellState getState() {
@@ -143,7 +144,7 @@ class CellGenerator extends CommonGenerator {
 	'''
 
 	def generateStateSpec(CellState cs, Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) '''
-		public class «cs.name.toFirstUpper»CellState extends CellState {
+		public static class «cs.name.toFirstUpper»CellState extends CellState {
 			@Override
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
 				«if (cs.display.color != null) {
@@ -175,15 +176,15 @@ class CellGenerator extends CommonGenerator {
 					}
 				}»
 			}
-			«if (!cs.transitions.empty) {
+			«if (!cs.transitions.filter[t | t.trigger instanceof MouseTrigger].empty) {
 				'''
-				
-				public void handleMouseClick (boolean isLeft, int row, int col, «generateFieldClassName()» field) {
+				public CellState getMouseBasedFollowState (boolean isLeft) {
 					«cs.transitions.filter[t | t.trigger instanceof MouseTrigger].join (" ", [t | '''
 					if («if ((t.trigger as MouseTrigger).left) {'''isLeft'''} else {'''!isLeft'''}») {
-						setState (new «t.target.name.toFirstUpper»CellState(), row, col, field);
+						return new «t.target.name.toFirstUpper»CellState();
 					}
 					'''])»
+					return super.getMouseBasedFollowState (isLeft);
 				}
 				'''
 			}»

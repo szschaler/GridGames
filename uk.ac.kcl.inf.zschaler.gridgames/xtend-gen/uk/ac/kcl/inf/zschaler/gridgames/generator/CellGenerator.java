@@ -100,19 +100,16 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("public abstract class Cell {");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public abstract class CellState {");
+    _builder.append("public static abstract class CellState {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("public abstract Component formatUIRepresentation(JButton jb, JLabel jl);");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("public void handleMouseClick (boolean isLeft, int row, int col, ");
-    CharSequence _generateFieldClassName_1 = this.generateFieldClassName();
-    _builder.append(_generateFieldClassName_1, "\t\t");
-    _builder.append(" field) { }");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
     _builder.append("public abstract int getStateID();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public CellState getMouseBasedFollowState (boolean isLeft) { return this; }");
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _xifexpression = null;
@@ -120,8 +117,8 @@ public class CellGenerator extends CommonGenerator {
     if (_doGenerateGenerationalContexts) {
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("public abstract CellState getContextBasedFollowState (");
-      CharSequence _generateFieldClassName_2 = this.generateFieldClassName();
-      _builder_1.append(_generateFieldClassName_2, "");
+      CharSequence _generateFieldClassName_1 = this.generateFieldClassName();
+      _builder_1.append(_generateFieldClassName_1, "");
       _builder_1.append(".CellContext context);");
       _xifexpression = _builder_1;
     }
@@ -164,12 +161,14 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public void handleMouseClick (boolean isLeft, int row, int col, ");
-    CharSequence _generateFieldClassName_3 = this.generateFieldClassName();
-    _builder.append(_generateFieldClassName_3, "\t");
+    CharSequence _generateFieldClassName_2 = this.generateFieldClassName();
+    _builder.append(_generateFieldClassName_2, "\t");
     _builder.append(" field) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("currentState.handleMouseClick(isLeft, row, col, field);");
+    _builder.append("setState (currentState.getMouseBasedFollowState (isLeft), row, col, field);");
+    _builder.newLine();
+    _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -201,8 +200,8 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public void setState (CellState csNewState, int row, int col, ");
-    CharSequence _generateFieldClassName_4 = this.generateFieldClassName();
-    _builder.append(_generateFieldClassName_4, "\t");
+    CharSequence _generateFieldClassName_3 = this.generateFieldClassName();
+    _builder.append(_generateFieldClassName_3, "\t");
     _builder.append(" field) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -247,8 +246,8 @@ public class CellGenerator extends CommonGenerator {
     if (_doGenerateGenerationalContexts_1) {
       StringConcatenation _builder_2 = new StringConcatenation();
       _builder_2.append("public abstract Cell computeNewGeneration(");
-      CharSequence _generateFieldClassName_5 = this.generateFieldClassName();
-      _builder_2.append(_generateFieldClassName_5, "");
+      CharSequence _generateFieldClassName_4 = this.generateFieldClassName();
+      _builder_2.append(_generateFieldClassName_4, "");
       _builder_2.append(".CellContext context);");
       _xifexpression_1 = _builder_2;
     }
@@ -449,7 +448,7 @@ public class CellGenerator extends CommonGenerator {
   
   public CharSequence generateStateSpec(final CellState cs, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public class ");
+    _builder.append("public static class ");
     String _name = cs.getName();
     String _firstUpper = StringExtensions.toFirstUpper(_name);
     _builder.append(_firstUpper, "");
@@ -539,27 +538,31 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t");
     CharSequence _xifexpression_3 = null;
     EList<TransitionSpec> _transitions = cs.getTransitions();
-    boolean _isEmpty = _transitions.isEmpty();
+    final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
+      @Override
+      public Boolean apply(final TransitionSpec t) {
+        TransitionTriggerSpec _trigger = t.getTrigger();
+        return Boolean.valueOf((_trigger instanceof MouseTrigger));
+      }
+    };
+    Iterable<TransitionSpec> _filter = IterableExtensions.<TransitionSpec>filter(_transitions, _function);
+    boolean _isEmpty = IterableExtensions.isEmpty(_filter);
     boolean _not = (!_isEmpty);
     if (_not) {
       StringConcatenation _builder_5 = new StringConcatenation();
+      _builder_5.append("public CellState getMouseBasedFollowState (boolean isLeft) {");
       _builder_5.newLine();
-      _builder_5.append("public void handleMouseClick (boolean isLeft, int row, int col, ");
-      CharSequence _generateFieldClassName = this.generateFieldClassName();
-      _builder_5.append(_generateFieldClassName, "");
-      _builder_5.append(" field) {");
-      _builder_5.newLineIfNotEmpty();
       _builder_5.append("\t");
       EList<TransitionSpec> _transitions_1 = cs.getTransitions();
-      final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
+      final Function1<TransitionSpec, Boolean> _function_1 = new Function1<TransitionSpec, Boolean>() {
         @Override
         public Boolean apply(final TransitionSpec t) {
           TransitionTriggerSpec _trigger = t.getTrigger();
           return Boolean.valueOf((_trigger instanceof MouseTrigger));
         }
       };
-      Iterable<TransitionSpec> _filter = IterableExtensions.<TransitionSpec>filter(_transitions_1, _function);
-      final Function1<TransitionSpec, CharSequence> _function_1 = new Function1<TransitionSpec, CharSequence>() {
+      Iterable<TransitionSpec> _filter_1 = IterableExtensions.<TransitionSpec>filter(_transitions_1, _function_1);
+      final Function1<TransitionSpec, CharSequence> _function_2 = new Function1<TransitionSpec, CharSequence>() {
         @Override
         public CharSequence apply(final TransitionSpec t) {
           StringConcatenation _builder = new StringConcatenation();
@@ -580,21 +583,24 @@ public class CellGenerator extends CommonGenerator {
           _builder.append(") {");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
-          _builder.append("setState (new ");
+          _builder.append("return new ");
           CellState _target = t.getTarget();
           String _name = _target.getName();
           String _firstUpper = StringExtensions.toFirstUpper(_name);
           _builder.append(_firstUpper, "\t");
-          _builder.append("CellState(), row, col, field);");
+          _builder.append("CellState();");
           _builder.newLineIfNotEmpty();
           _builder.append("}");
           _builder.newLine();
           return _builder.toString();
         }
       };
-      String _join = IterableExtensions.<TransitionSpec>join(_filter, " ", _function_1);
+      String _join = IterableExtensions.<TransitionSpec>join(_filter_1, " ", _function_2);
       _builder_5.append(_join, "\t");
       _builder_5.newLineIfNotEmpty();
+      _builder_5.append("\t");
+      _builder_5.append("return super.getMouseBasedFollowState (isLeft);");
+      _builder_5.newLine();
       _builder_5.append("}");
       _builder_5.newLine();
       _xifexpression_3 = _builder_5;
@@ -625,21 +631,21 @@ public class CellGenerator extends CommonGenerator {
     if (_doGenerateGenerationalContexts) {
       StringConcatenation _builder_6 = new StringConcatenation();
       _builder_6.append("public CellState getContextBasedFollowState (");
-      CharSequence _generateFieldClassName_1 = this.generateFieldClassName();
-      _builder_6.append(_generateFieldClassName_1, "");
+      CharSequence _generateFieldClassName = this.generateFieldClassName();
+      _builder_6.append(_generateFieldClassName, "");
       _builder_6.append(".CellContext context) {");
       _builder_6.newLineIfNotEmpty();
       _builder_6.append("\t");
       EList<TransitionSpec> _transitions_2 = cs.getTransitions();
-      final Function1<TransitionSpec, Boolean> _function_2 = new Function1<TransitionSpec, Boolean>() {
+      final Function1<TransitionSpec, Boolean> _function_3 = new Function1<TransitionSpec, Boolean>() {
         @Override
         public Boolean apply(final TransitionSpec t) {
           TransitionTriggerSpec _trigger = t.getTrigger();
           return Boolean.valueOf((_trigger instanceof ContextTrigger));
         }
       };
-      Iterable<TransitionSpec> _filter_1 = IterableExtensions.<TransitionSpec>filter(_transitions_2, _function_2);
-      final Function1<TransitionSpec, CharSequence> _function_3 = new Function1<TransitionSpec, CharSequence>() {
+      Iterable<TransitionSpec> _filter_2 = IterableExtensions.<TransitionSpec>filter(_transitions_2, _function_3);
+      final Function1<TransitionSpec, CharSequence> _function_4 = new Function1<TransitionSpec, CharSequence>() {
         @Override
         public CharSequence apply(final TransitionSpec t) {
           String _xblockexpression = null;
@@ -668,7 +674,7 @@ public class CellGenerator extends CommonGenerator {
           return _xblockexpression;
         }
       };
-      String _join_1 = IterableExtensions.<TransitionSpec>join(_filter_1, "\n", _function_3);
+      String _join_1 = IterableExtensions.<TransitionSpec>join(_filter_2, "\n", _function_4);
       _builder_6.append(_join_1, "\t");
       _builder_6.newLineIfNotEmpty();
       _builder_6.append("\t");
