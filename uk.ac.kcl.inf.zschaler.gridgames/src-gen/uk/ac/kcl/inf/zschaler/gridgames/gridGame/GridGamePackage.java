@@ -223,13 +223,22 @@ public interface GridGamePackage extends EPackage
   int CELL_DISPLAY_SPEC__VAR = CELL_MEMBER_FEATURE_COUNT + 2;
 
   /**
+   * The feature id for the '<em><b>Color</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CELL_DISPLAY_SPEC__COLOR = CELL_MEMBER_FEATURE_COUNT + 3;
+
+  /**
    * The number of structural features of the '<em>Cell Display Spec</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CELL_DISPLAY_SPEC_FEATURE_COUNT = CELL_MEMBER_FEATURE_COUNT + 3;
+  int CELL_DISPLAY_SPEC_FEATURE_COUNT = CELL_MEMBER_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.VarSpecImpl <em>Var Spec</em>}' class.
@@ -1613,6 +1622,17 @@ public interface GridGamePackage extends EPackage
   EReference getCellDisplaySpec_Var();
 
   /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getColor <em>Color</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Color</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec#getColor()
+   * @see #getCellDisplaySpec()
+   * @generated
+   */
+  EAttribute getCellDisplaySpec_Color();
+
+  /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec <em>Var Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2646,6 +2666,14 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EReference CELL_DISPLAY_SPEC__VAR = eINSTANCE.getCellDisplaySpec_Var();
+
+    /**
+     * The meta object literal for the '<em><b>Color</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CELL_DISPLAY_SPEC__COLOR = eINSTANCE.getCellDisplaySpec_Color();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.VarSpecImpl <em>Var Spec</em>}' class.

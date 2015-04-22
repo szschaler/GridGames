@@ -23,6 +23,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellDisplaySpecImpl#getDisplay_type <em>Display type</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellDisplaySpecImpl#getText <em>Text</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellDisplaySpecImpl#getVar <em>Var</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellDisplaySpecImpl#getColor <em>Color</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,6 +80,26 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
    * @ordered
    */
   protected VarSpec var;
+
+  /**
+   * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColor()
+   * @generated
+   * @ordered
+   */
+  protected static final String COLOR_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColor()
+   * @generated
+   * @ordered
+   */
+  protected String color = COLOR_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -195,6 +216,29 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getColor()
+  {
+    return color;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setColor(String newColor)
+  {
+    String oldColor = color;
+    color = newColor;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.CELL_DISPLAY_SPEC__COLOR, oldColor, color));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -207,6 +251,8 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
       case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
         if (resolve) return getVar();
         return basicGetVar();
+      case GridGamePackage.CELL_DISPLAY_SPEC__COLOR:
+        return getColor();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -229,6 +275,9 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
         return;
       case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
         setVar((VarSpec)newValue);
+        return;
+      case GridGamePackage.CELL_DISPLAY_SPEC__COLOR:
+        setColor((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -253,6 +302,9 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
       case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
         setVar((VarSpec)null);
         return;
+      case GridGamePackage.CELL_DISPLAY_SPEC__COLOR:
+        setColor(COLOR_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -273,6 +325,8 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
         return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
       case GridGamePackage.CELL_DISPLAY_SPEC__VAR:
         return var != null;
+      case GridGamePackage.CELL_DISPLAY_SPEC__COLOR:
+        return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
     }
     return super.eIsSet(featureID);
   }
@@ -292,6 +346,8 @@ public class CellDisplaySpecImpl extends CellMemberImpl implements CellDisplaySp
     result.append(display_type);
     result.append(", text: ");
     result.append(text);
+    result.append(", color: ");
+    result.append(color);
     result.append(')');
     return result.toString();
   }

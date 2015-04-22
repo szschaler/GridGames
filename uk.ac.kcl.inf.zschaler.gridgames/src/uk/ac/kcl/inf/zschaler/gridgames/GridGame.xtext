@@ -38,7 +38,8 @@ CellDisplaySpec :
 	"display" "{"
 		"as" display_type=("label" | "button")
 		(("text" text=STRING) | 
-		 ("var" var=[VarSpec]))
+		 ("var" var=[VarSpec]) |
+		 ("color" color=("black" | "white" | "yellow" | "red" | "green")))
 	"}"
 ;
 

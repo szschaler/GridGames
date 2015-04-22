@@ -41,6 +41,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCellMemberAccess().getAlternatives(), "rule__CellMember__Alternatives");
 					put(grammarAccess.getCellDisplaySpecAccess().getDisplay_typeAlternatives_3_0(), "rule__CellDisplaySpec__Display_typeAlternatives_3_0");
 					put(grammarAccess.getCellDisplaySpecAccess().getAlternatives_4(), "rule__CellDisplaySpec__Alternatives_4");
+					put(grammarAccess.getCellDisplaySpecAccess().getColorAlternatives_4_2_1_0(), "rule__CellDisplaySpec__ColorAlternatives_4_2_1_0");
 					put(grammarAccess.getVarSpecAccess().getAlternatives(), "rule__VarSpec__Alternatives");
 					put(grammarAccess.getCellVarSpecAccess().getTypeAlternatives_1_0(), "rule__CellVarSpec__TypeAlternatives_1_0");
 					put(grammarAccess.getParamSpecAccess().getTypeAlternatives_0_0(), "rule__ParamSpec__TypeAlternatives_0_0");
@@ -61,6 +62,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCellDisplaySpecAccess().getGroup(), "rule__CellDisplaySpec__Group__0");
 					put(grammarAccess.getCellDisplaySpecAccess().getGroup_4_0(), "rule__CellDisplaySpec__Group_4_0__0");
 					put(grammarAccess.getCellDisplaySpecAccess().getGroup_4_1(), "rule__CellDisplaySpec__Group_4_1__0");
+					put(grammarAccess.getCellDisplaySpecAccess().getGroup_4_2(), "rule__CellDisplaySpec__Group_4_2__0");
 					put(grammarAccess.getCellVarSpecAccess().getGroup(), "rule__CellVarSpec__Group__0");
 					put(grammarAccess.getGlobalCellStateSpecAccess().getGroup(), "rule__GlobalCellStateSpec__Group__0");
 					put(grammarAccess.getGlobalCellStateSpecAccess().getGroup_2(), "rule__GlobalCellStateSpec__Group_2__0");
@@ -113,6 +115,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCellDisplaySpecAccess().getDisplay_typeAssignment_3(), "rule__CellDisplaySpec__Display_typeAssignment_3");
 					put(grammarAccess.getCellDisplaySpecAccess().getTextAssignment_4_0_1(), "rule__CellDisplaySpec__TextAssignment_4_0_1");
 					put(grammarAccess.getCellDisplaySpecAccess().getVarAssignment_4_1_1(), "rule__CellDisplaySpec__VarAssignment_4_1_1");
+					put(grammarAccess.getCellDisplaySpecAccess().getColorAssignment_4_2_1(), "rule__CellDisplaySpec__ColorAssignment_4_2_1");
 					put(grammarAccess.getCellVarSpecAccess().getTypeAssignment_1(), "rule__CellVarSpec__TypeAssignment_1");
 					put(grammarAccess.getCellVarSpecAccess().getNameAssignment_2(), "rule__CellVarSpec__NameAssignment_2");
 					put(grammarAccess.getGlobalCellStateSpecAccess().getNameAssignment_1(), "rule__GlobalCellStateSpec__NameAssignment_1");

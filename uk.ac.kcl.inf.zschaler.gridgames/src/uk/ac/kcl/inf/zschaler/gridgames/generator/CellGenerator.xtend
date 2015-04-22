@@ -13,6 +13,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
+import java.awt.Color
 
 /**
  * Generates all stuff to do with handling cells.
@@ -107,6 +108,7 @@ class CellGenerator extends CommonGenerator {
 		import javax.swing.JLabel;
 		
 		import java.awt.Component;
+		import java.awt.Color;
 		
 		import «generateModelPackage».«generateFieldClassName»;
 		
@@ -144,16 +146,33 @@ class CellGenerator extends CommonGenerator {
 		public class «cs.name.toFirstUpper»CellState extends CellState {
 			@Override
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
-				«if (cs.display.display_type.equals ("button")) {
-					'''
-					jb.setText («cs.display.generateTextCalculation (idAndSymbolTable)»);
-					return jb;
-					'''
-				 } else {
-				 	'''
-					jl.setText («cs.display.generateTextCalculation (idAndSymbolTable)»);
-					return jl;
-					'''
+				«if (cs.display.color != null) {
+					if (cs.display.display_type.equals ("button")) {
+						'''
+						jb.setBackground (Color.«cs.display.color»);
+						return jb;
+						'''
+					 } else {
+					 	'''
+						jl.setOpaque (true);
+						jl.setBackground (Color.«cs.display.color»);
+						return jl;
+						'''
+					}					
+				} else {
+					if (cs.display.display_type.equals ("button")) {
+						'''
+						jb.setBackground (new Color(0xdfdfdf));
+						jb.setText («cs.display.generateTextCalculation (idAndSymbolTable)»);
+						return jb;
+						'''
+					 } else {
+					 	'''
+						jl.setOpaque (false);
+						jl.setText («cs.display.generateTextCalculation (idAndSymbolTable)»);
+						return jl;
+						'''
+					}
 				}»
 			}
 			«if (!cs.transitions.empty) {

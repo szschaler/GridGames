@@ -590,6 +590,16 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getCellDisplaySpec_Color()
+  {
+    return (EAttribute)cellDisplaySpecEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getVarSpec()
   {
     return varSpecEClass;
@@ -1473,6 +1483,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     createEAttribute(cellDisplaySpecEClass, CELL_DISPLAY_SPEC__DISPLAY_TYPE);
     createEAttribute(cellDisplaySpecEClass, CELL_DISPLAY_SPEC__TEXT);
     createEReference(cellDisplaySpecEClass, CELL_DISPLAY_SPEC__VAR);
+    createEAttribute(cellDisplaySpecEClass, CELL_DISPLAY_SPEC__COLOR);
 
     varSpecEClass = createEClass(VAR_SPEC);
     createEAttribute(varSpecEClass, VAR_SPEC__TYPE);
@@ -1677,6 +1688,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     initEAttribute(getCellDisplaySpec_Display_type(), ecorePackage.getEString(), "display_type", null, 0, 1, CellDisplaySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCellDisplaySpec_Text(), ecorePackage.getEString(), "text", null, 0, 1, CellDisplaySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCellDisplaySpec_Var(), this.getVarSpec(), null, "var", null, 0, 1, CellDisplaySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCellDisplaySpec_Color(), ecorePackage.getEString(), "color", null, 0, 1, CellDisplaySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(varSpecEClass, VarSpec.class, "VarSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVarSpec_Type(), ecorePackage.getEString(), "type", null, 0, 1, VarSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

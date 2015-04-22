@@ -277,6 +277,8 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("import java.awt.Component;");
     _builder.newLine();
+    _builder.append("import java.awt.Color;");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("import ");
     CharSequence _generateModelPackage = this.generateModelPackage();
@@ -462,30 +464,72 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t\t");
     CharSequence _xifexpression = null;
     CellDisplaySpec _display = cs.getDisplay();
-    String _display_type = _display.getDisplay_type();
-    boolean _equals = _display_type.equals("button");
-    if (_equals) {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("jb.setText (");
+    String _color = _display.getColor();
+    boolean _notEquals = (!Objects.equal(_color, null));
+    if (_notEquals) {
+      CharSequence _xifexpression_1 = null;
       CellDisplaySpec _display_1 = cs.getDisplay();
-      CharSequence _generateTextCalculation = this.generateTextCalculation(_display_1, idAndSymbolTable);
-      _builder_1.append(_generateTextCalculation, "");
-      _builder_1.append(");");
-      _builder_1.newLineIfNotEmpty();
-      _builder_1.append("return jb;");
-      _builder_1.newLine();
-      _xifexpression = _builder_1;
+      String _display_type = _display_1.getDisplay_type();
+      boolean _equals = _display_type.equals("button");
+      if (_equals) {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("jb.setBackground (Color.");
+        CellDisplaySpec _display_2 = cs.getDisplay();
+        String _color_1 = _display_2.getColor();
+        _builder_1.append(_color_1, "");
+        _builder_1.append(");");
+        _builder_1.newLineIfNotEmpty();
+        _builder_1.append("return jb;");
+        _builder_1.newLine();
+        _xifexpression_1 = _builder_1;
+      } else {
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("jl.setOpaque (true);");
+        _builder_2.newLine();
+        _builder_2.append("jl.setBackground (Color.");
+        CellDisplaySpec _display_3 = cs.getDisplay();
+        String _color_2 = _display_3.getColor();
+        _builder_2.append(_color_2, "");
+        _builder_2.append(");");
+        _builder_2.newLineIfNotEmpty();
+        _builder_2.append("return jl;");
+        _builder_2.newLine();
+        _xifexpression_1 = _builder_2;
+      }
+      _xifexpression = _xifexpression_1;
     } else {
-      StringConcatenation _builder_2 = new StringConcatenation();
-      _builder_2.append("jl.setText (");
-      CellDisplaySpec _display_2 = cs.getDisplay();
-      CharSequence _generateTextCalculation_1 = this.generateTextCalculation(_display_2, idAndSymbolTable);
-      _builder_2.append(_generateTextCalculation_1, "");
-      _builder_2.append(");");
-      _builder_2.newLineIfNotEmpty();
-      _builder_2.append("return jl;");
-      _builder_2.newLine();
-      _xifexpression = _builder_2;
+      CharSequence _xifexpression_2 = null;
+      CellDisplaySpec _display_4 = cs.getDisplay();
+      String _display_type_1 = _display_4.getDisplay_type();
+      boolean _equals_1 = _display_type_1.equals("button");
+      if (_equals_1) {
+        StringConcatenation _builder_3 = new StringConcatenation();
+        _builder_3.append("jb.setBackground (new Color(0xdfdfdf));");
+        _builder_3.newLine();
+        _builder_3.append("jb.setText (");
+        CellDisplaySpec _display_5 = cs.getDisplay();
+        CharSequence _generateTextCalculation = this.generateTextCalculation(_display_5, idAndSymbolTable);
+        _builder_3.append(_generateTextCalculation, "");
+        _builder_3.append(");");
+        _builder_3.newLineIfNotEmpty();
+        _builder_3.append("return jb;");
+        _builder_3.newLine();
+        _xifexpression_2 = _builder_3;
+      } else {
+        StringConcatenation _builder_4 = new StringConcatenation();
+        _builder_4.append("jl.setOpaque (false);");
+        _builder_4.newLine();
+        _builder_4.append("jl.setText (");
+        CellDisplaySpec _display_6 = cs.getDisplay();
+        CharSequence _generateTextCalculation_1 = this.generateTextCalculation(_display_6, idAndSymbolTable);
+        _builder_4.append(_generateTextCalculation_1, "");
+        _builder_4.append(");");
+        _builder_4.newLineIfNotEmpty();
+        _builder_4.append("return jl;");
+        _builder_4.newLine();
+        _xifexpression_2 = _builder_4;
+      }
+      _xifexpression = _xifexpression_2;
     }
     _builder.append(_xifexpression, "\t\t");
     _builder.newLineIfNotEmpty();
@@ -493,19 +537,19 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.append("\t");
-    CharSequence _xifexpression_1 = null;
+    CharSequence _xifexpression_3 = null;
     EList<TransitionSpec> _transitions = cs.getTransitions();
     boolean _isEmpty = _transitions.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      StringConcatenation _builder_3 = new StringConcatenation();
-      _builder_3.newLine();
-      _builder_3.append("public void handleMouseClick (boolean isLeft, int row, int col, ");
+      StringConcatenation _builder_5 = new StringConcatenation();
+      _builder_5.newLine();
+      _builder_5.append("public void handleMouseClick (boolean isLeft, int row, int col, ");
       CharSequence _generateFieldClassName = this.generateFieldClassName();
-      _builder_3.append(_generateFieldClassName, "");
-      _builder_3.append(" field) {");
-      _builder_3.newLineIfNotEmpty();
-      _builder_3.append("\t");
+      _builder_5.append(_generateFieldClassName, "");
+      _builder_5.append(" field) {");
+      _builder_5.newLineIfNotEmpty();
+      _builder_5.append("\t");
       EList<TransitionSpec> _transitions_1 = cs.getTransitions();
       final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
         @Override
@@ -549,13 +593,13 @@ public class CellGenerator extends CommonGenerator {
         }
       };
       String _join = IterableExtensions.<TransitionSpec>join(_filter, " ", _function_1);
-      _builder_3.append(_join, "\t");
-      _builder_3.newLineIfNotEmpty();
-      _builder_3.append("}");
-      _builder_3.newLine();
-      _xifexpression_1 = _builder_3;
+      _builder_5.append(_join, "\t");
+      _builder_5.newLineIfNotEmpty();
+      _builder_5.append("}");
+      _builder_5.newLine();
+      _xifexpression_3 = _builder_5;
     }
-    _builder.append(_xifexpression_1, "\t");
+    _builder.append(_xifexpression_3, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
@@ -576,16 +620,16 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    CharSequence _xifexpression_2 = null;
+    CharSequence _xifexpression_4 = null;
     boolean _doGenerateGenerationalContexts = this.mpp.doGenerateGenerationalContexts();
     if (_doGenerateGenerationalContexts) {
-      StringConcatenation _builder_4 = new StringConcatenation();
-      _builder_4.append("public CellState getContextBasedFollowState (");
+      StringConcatenation _builder_6 = new StringConcatenation();
+      _builder_6.append("public CellState getContextBasedFollowState (");
       CharSequence _generateFieldClassName_1 = this.generateFieldClassName();
-      _builder_4.append(_generateFieldClassName_1, "");
-      _builder_4.append(".CellContext context) {");
-      _builder_4.newLineIfNotEmpty();
-      _builder_4.append("\t");
+      _builder_6.append(_generateFieldClassName_1, "");
+      _builder_6.append(".CellContext context) {");
+      _builder_6.newLineIfNotEmpty();
+      _builder_6.append("\t");
       EList<TransitionSpec> _transitions_2 = cs.getTransitions();
       final Function1<TransitionSpec, Boolean> _function_2 = new Function1<TransitionSpec, Boolean>() {
         @Override
@@ -625,16 +669,16 @@ public class CellGenerator extends CommonGenerator {
         }
       };
       String _join_1 = IterableExtensions.<TransitionSpec>join(_filter_1, "\n", _function_3);
-      _builder_4.append(_join_1, "\t");
-      _builder_4.newLineIfNotEmpty();
-      _builder_4.append("\t");
-      _builder_4.append("return this;");
-      _builder_4.newLine();
-      _builder_4.append("}");
-      _builder_4.newLine();
-      _xifexpression_2 = _builder_4;
+      _builder_6.append(_join_1, "\t");
+      _builder_6.newLineIfNotEmpty();
+      _builder_6.append("\t");
+      _builder_6.append("return this;");
+      _builder_6.newLine();
+      _builder_6.append("}");
+      _builder_6.newLine();
+      _xifexpression_4 = _builder_6;
     }
-    _builder.append(_xifexpression_2, "\t");
+    _builder.append(_xifexpression_4, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();

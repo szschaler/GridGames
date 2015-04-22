@@ -423,9 +423,80 @@ ruleCellDisplaySpec returns [EObject current=null]
 	}
 
 )
-)))	otherlv_8='}' 
+))
+    |(	otherlv_8='color' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getCellDisplaySpecAccess().getRightCurlyBracketKeyword_5());
+    	newLeafNode(otherlv_8, grammarAccess.getCellDisplaySpecAccess().getColorKeyword_4_2_0());
+    }
+(
+(
+(
+		lv_color_9_1=	'black' 
+    {
+        newLeafNode(lv_color_9_1, grammarAccess.getCellDisplaySpecAccess().getColorBlackKeyword_4_2_1_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellDisplaySpecRule());
+	        }
+       		setWithLastConsumed($current, "color", lv_color_9_1, null);
+	    }
+
+    |		lv_color_9_2=	'white' 
+    {
+        newLeafNode(lv_color_9_2, grammarAccess.getCellDisplaySpecAccess().getColorWhiteKeyword_4_2_1_0_1());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellDisplaySpecRule());
+	        }
+       		setWithLastConsumed($current, "color", lv_color_9_2, null);
+	    }
+
+    |		lv_color_9_3=	'yellow' 
+    {
+        newLeafNode(lv_color_9_3, grammarAccess.getCellDisplaySpecAccess().getColorYellowKeyword_4_2_1_0_2());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellDisplaySpecRule());
+	        }
+       		setWithLastConsumed($current, "color", lv_color_9_3, null);
+	    }
+
+    |		lv_color_9_4=	'red' 
+    {
+        newLeafNode(lv_color_9_4, grammarAccess.getCellDisplaySpecAccess().getColorRedKeyword_4_2_1_0_3());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellDisplaySpecRule());
+	        }
+       		setWithLastConsumed($current, "color", lv_color_9_4, null);
+	    }
+
+    |		lv_color_9_5=	'green' 
+    {
+        newLeafNode(lv_color_9_5, grammarAccess.getCellDisplaySpecAccess().getColorGreenKeyword_4_2_1_0_4());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCellDisplaySpecRule());
+	        }
+       		setWithLastConsumed($current, "color", lv_color_9_5, null);
+	    }
+
+)
+
+)
+)))	otherlv_10='}' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getCellDisplaySpecAccess().getRightCurlyBracketKeyword_5());
     }
 )
 ;

@@ -45,10 +45,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		// * 
 		// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 		// * 
-		// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells etc.
 		// * TODO Enable keyboard triggers
 		// * TODO Enable cell movement as an alternative behaviour (to support games like Tetris and Breakout), possibly of cell groups rather than just individual cells
-		// * TODO Enable timed triggers for behaviours 
 		// * / GridGame:
 		//	"game" name=ID "{" (states+=GlobalCellStateSpec | cells+=CellSpecification | inits+=GlobalFieldInitialisation |
 		//	fields+=FieldSpecification | options+=OptionSpecification)+ "}";
@@ -192,13 +190,24 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cVarAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
 		private final CrossReference cVarVarSpecCrossReference_4_1_1_0 = (CrossReference)cVarAssignment_4_1_1.eContents().get(0);
 		private final RuleCall cVarVarSpecIDTerminalRuleCall_4_1_1_0_1 = (RuleCall)cVarVarSpecCrossReference_4_1_1_0.eContents().get(1);
+		private final Group cGroup_4_2 = (Group)cAlternatives_4.eContents().get(2);
+		private final Keyword cColorKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
+		private final Assignment cColorAssignment_4_2_1 = (Assignment)cGroup_4_2.eContents().get(1);
+		private final Alternatives cColorAlternatives_4_2_1_0 = (Alternatives)cColorAssignment_4_2_1.eContents().get(0);
+		private final Keyword cColorBlackKeyword_4_2_1_0_0 = (Keyword)cColorAlternatives_4_2_1_0.eContents().get(0);
+		private final Keyword cColorWhiteKeyword_4_2_1_0_1 = (Keyword)cColorAlternatives_4_2_1_0.eContents().get(1);
+		private final Keyword cColorYellowKeyword_4_2_1_0_2 = (Keyword)cColorAlternatives_4_2_1_0.eContents().get(2);
+		private final Keyword cColorRedKeyword_4_2_1_0_3 = (Keyword)cColorAlternatives_4_2_1_0.eContents().get(3);
+		private final Keyword cColorGreenKeyword_4_2_1_0_4 = (Keyword)cColorAlternatives_4_2_1_0.eContents().get(4);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//CellDisplaySpec:
-		//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[VarSpec]) "}";
+		//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[VarSpec] | "color"
+		//	color=("black" | "white" | "yellow" | "red" | "green")) "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[VarSpec]) "}"
+		//"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[VarSpec] | "color" color=("black"
+		//| "white" | "yellow" | "red" | "green")) "}"
 		public Group getGroup() { return cGroup; }
 
 		//"display"
@@ -222,7 +231,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"button"
 		public Keyword getDisplay_typeButtonKeyword_3_0_1() { return cDisplay_typeButtonKeyword_3_0_1; }
 
-		//"text" text=STRING | "var" var=[VarSpec]
+		//"text" text=STRING | "var" var=[VarSpec] | "color" color=("black" | "white" | "yellow" | "red" | "green")
 		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 
 		//"text" text=STRING
@@ -251,6 +260,33 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getVarVarSpecIDTerminalRuleCall_4_1_1_0_1() { return cVarVarSpecIDTerminalRuleCall_4_1_1_0_1; }
+
+		//"color" color=("black" | "white" | "yellow" | "red" | "green")
+		public Group getGroup_4_2() { return cGroup_4_2; }
+
+		//"color"
+		public Keyword getColorKeyword_4_2_0() { return cColorKeyword_4_2_0; }
+
+		//color=("black" | "white" | "yellow" | "red" | "green")
+		public Assignment getColorAssignment_4_2_1() { return cColorAssignment_4_2_1; }
+
+		//"black" | "white" | "yellow" | "red" | "green"
+		public Alternatives getColorAlternatives_4_2_1_0() { return cColorAlternatives_4_2_1_0; }
+
+		//"black"
+		public Keyword getColorBlackKeyword_4_2_1_0_0() { return cColorBlackKeyword_4_2_1_0_0; }
+
+		//"white"
+		public Keyword getColorWhiteKeyword_4_2_1_0_1() { return cColorWhiteKeyword_4_2_1_0_1; }
+
+		//"yellow"
+		public Keyword getColorYellowKeyword_4_2_1_0_2() { return cColorYellowKeyword_4_2_1_0_2; }
+
+		//"red"
+		public Keyword getColorRedKeyword_4_2_1_0_3() { return cColorRedKeyword_4_2_1_0_3; }
+
+		//"green"
+		public Keyword getColorGreenKeyword_4_2_1_0_4() { return cColorGreenKeyword_4_2_1_0_4; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
@@ -1924,10 +1960,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	// * 
 	// * Initially, the main goal is to use this as a source for code generation, generating a complete implementation from a model-level description
 	// * 
-	// * TODO Enable more complex behaviour in cell states. For example, allow state changes in one cell to trigger state changes in (selected) surrounding cells etc.
 	// * TODO Enable keyboard triggers
 	// * TODO Enable cell movement as an alternative behaviour (to support games like Tetris and Breakout), possibly of cell groups rather than just individual cells
-	// * TODO Enable timed triggers for behaviours 
 	// * / GridGame:
 	//	"game" name=ID "{" (states+=GlobalCellStateSpec | cells+=CellSpecification | inits+=GlobalFieldInitialisation |
 	//	fields+=FieldSpecification | options+=OptionSpecification)+ "}";
@@ -1960,7 +1994,8 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CellDisplaySpec:
-	//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[VarSpec]) "}";
+	//	"display" "{" "as" display_type=("label" | "button") ("text" text=STRING | "var" var=[VarSpec] | "color"
+	//	color=("black" | "white" | "yellow" | "red" | "green")) "}";
 	public CellDisplaySpecElements getCellDisplaySpecAccess() {
 		return pCellDisplaySpec;
 	}
