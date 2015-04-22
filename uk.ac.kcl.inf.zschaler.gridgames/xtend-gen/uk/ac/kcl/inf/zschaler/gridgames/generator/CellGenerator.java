@@ -381,7 +381,7 @@ public class CellGenerator extends CommonGenerator {
   
   public CharSequence generateStateSpec(final CellState cs, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("private class ");
+    _builder.append("public class ");
     String _name = cs.getName();
     String _firstUpper = StringExtensions.toFirstUpper(_name);
     _builder.append(_firstUpper, "");

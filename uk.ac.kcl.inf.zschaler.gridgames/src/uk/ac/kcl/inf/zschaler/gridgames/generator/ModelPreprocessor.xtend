@@ -147,7 +147,13 @@ class ModelPreprocessor {
 	 * Find all states with a transition triggered by context changes
 	 */	
 	def getAllStatesWithContextTriggers() {
-		cellStateRegistry.values.flatten.filter[cpp | cpp.key.transitions.exists[t | t.trigger instanceof ContextTrigger]]
+		cellStateRegistry.entrySet.map[pp |
+			pp.value.map[p |
+				new Pair (pp.key, p)
+			]]
+		.flatten
+		.filter[p |
+			p.value.key.transitions.exists[t | t.trigger instanceof ContextTrigger]]
 	}
 	
 	private var Map<FieldSpecification, List<Pair<Map<String, Value>, FieldInitialisation>>> fieldInitialisations; 

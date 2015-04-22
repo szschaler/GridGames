@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
@@ -311,13 +312,29 @@ public class ModelPreprocessor {
   /**
    * Find all states with a transition triggered by context changes
    */
-  public Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> getAllStatesWithContextTriggers() {
-    Collection<List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _values = this.cellStateRegistry.values();
-    Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _flatten = Iterables.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>concat(_values);
-    final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean> _function = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean>() {
+  public Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> getAllStatesWithContextTriggers() {
+    Set<Map.Entry<CellSpecification, List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>> _entrySet = this.cellStateRegistry.entrySet();
+    final Function1<Map.Entry<CellSpecification, List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>, List<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>> _function = new Function1<Map.Entry<CellSpecification, List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>, List<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>>() {
       @Override
-      public Boolean apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
-        CellState _key = cpp.getKey();
+      public List<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> apply(final Map.Entry<CellSpecification, List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> pp) {
+        List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _value = pp.getValue();
+        final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _function = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>() {
+          @Override
+          public Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> p) {
+            CellSpecification _key = pp.getKey();
+            return new Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>(_key, p);
+          }
+        };
+        return ListExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>map(_value, _function);
+      }
+    };
+    Iterable<List<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>> _map = IterableExtensions.<Map.Entry<CellSpecification, List<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>, List<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>>map(_entrySet, _function);
+    Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _flatten = Iterables.<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>concat(_map);
+    final Function1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>, Boolean> _function_1 = new Function1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>, Boolean>() {
+      @Override
+      public Boolean apply(final Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> p) {
+        Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> _value = p.getValue();
+        CellState _key = _value.getKey();
         EList<TransitionSpec> _transitions = _key.getTransitions();
         final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
           @Override
@@ -329,7 +346,7 @@ public class ModelPreprocessor {
         return Boolean.valueOf(IterableExtensions.<TransitionSpec>exists(_transitions, _function));
       }
     };
-    return IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>filter(_flatten, _function);
+    return IterableExtensions.<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>filter(_flatten, _function_1);
   }
   
   private Map<FieldSpecification, List<Pair<Map<String, Value>, FieldInitialisation>>> fieldInitialisations;

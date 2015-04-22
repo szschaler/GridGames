@@ -14,6 +14,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CellContextGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
@@ -218,7 +219,7 @@ public class FieldGenerator extends CommonGenerator {
       _builder_1.append("\t\t");
       _builder_1.newLine();
       _builder_1.append("\t\t");
-      final Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> states = this.mpp.getAllStatesWithContextTriggers();
+      final Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> states = this.mpp.getAllStatesWithContextTriggers();
       _builder_1.newLineIfNotEmpty();
       _builder_1.append("\t\t");
       CharSequence _xifexpression_1 = null;
@@ -235,18 +236,20 @@ public class FieldGenerator extends CommonGenerator {
         _builder_2.append("switch (ce.getCell().getState().getStateID()) {");
         _builder_2.newLine();
         _builder_2.append("\t\t");
-        final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence> _function = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence>() {
+        final Function1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>, CharSequence> _function = new Function1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>, CharSequence>() {
           @Override
-          public CharSequence apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
+          public CharSequence apply(final Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> cpp) {
             StringConcatenation _builder = new StringConcatenation();
             _builder.append("case ");
-            Pair<Integer, ? extends Map<String, Value>> _value = cpp.getValue();
-            Integer _key = _value.getKey();
+            Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> _value = cpp.getValue();
+            Pair<Integer, ? extends Map<String, Value>> _value_1 = _value.getValue();
+            Integer _key = _value_1.getKey();
             _builder.append(_key, "");
             _builder.append(":");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t\t\t\t\t\t\t\t\t\t");
-            CellState _key_1 = cpp.getKey();
+            Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> _value_2 = cpp.getValue();
+            CellState _key_1 = _value_2.getKey();
             EList<TransitionSpec> _transitions = _key_1.getTransitions();
             final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
               @Override
@@ -259,9 +262,11 @@ public class FieldGenerator extends CommonGenerator {
             final Function1<TransitionSpec, CharSequence> _function_1 = new Function1<TransitionSpec, CharSequence>() {
               @Override
               public CharSequence apply(final TransitionSpec t) {
-                Pair<Integer, ? extends Map<String, Value>> _value = cpp.getValue();
-                Map<String, Value> _value_1 = _value.getValue();
-                return FieldGenerator.this.generateCodeForContextTrigger(t, _value_1);
+                CellSpecification _key = cpp.getKey();
+                Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> _value = cpp.getValue();
+                Pair<Integer, ? extends Map<String, Value>> _value_1 = _value.getValue();
+                Map<String, Value> _value_2 = _value_1.getValue();
+                return FieldGenerator.this.generateCodeForContextTrigger(t, _key, _value_2);
               }
             };
             String _join = IterableExtensions.<TransitionSpec>join(_filter, "\n", _function_1);
@@ -272,7 +277,7 @@ public class FieldGenerator extends CommonGenerator {
             return _builder.toString();
           }
         };
-        String _join = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>join(states, " ", _function);
+        String _join = IterableExtensions.<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>join(states, " ", _function);
         _builder_2.append(_join, "\t\t");
         _builder_2.newLineIfNotEmpty();
         _builder_2.append("\t");
@@ -419,8 +424,12 @@ public class FieldGenerator extends CommonGenerator {
    * Generate implementation code for reaction to context trigger. Can assume t has a context trigger.
    * In the surrounding code, variable 'c' will refer to the currently checked cell.
    * The generated code should start with an if-statement checking the trigger condition.
+   * 
+   * @param t the transition for which to generate code
+   * @param cs the cell containing the transition
+   * @param symbols symbols to resolve
    */
-  public CharSequence generateCodeForContextTrigger(final TransitionSpec t, final Map<String, Value> symbols) {
+  public CharSequence generateCodeForContextTrigger(final TransitionSpec t, final CellSpecification cs, final Map<String, Value> symbols) {
     CharSequence _xblockexpression = null;
     {
       TransitionTriggerSpec _trigger = t.getTrigger();
@@ -433,10 +442,27 @@ public class FieldGenerator extends CommonGenerator {
       _builder.append(") {");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
+      _builder.append("ce.getCell().setState (");
       _builder.newLine();
-      _builder.append("\t");
-      _builder.append("// TODO Implement transition");
+      _builder.append("\t\t");
+      _builder.append("((");
+      CharSequence _generateCellClassName = this.generateCellClassName(cs);
+      _builder.append(_generateCellClassName, "\t\t");
+      _builder.append(") ce.getCell()).new ");
+      CellState _target = t.getTarget();
+      String _name = _target.getName();
+      String _firstUpper = StringExtensions.toFirstUpper(_name);
+      _builder.append(_firstUpper, "\t\t");
+      _builder.append("CellState(),");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t\t");
+      _builder.append("ce.getRow(), ce.getCol(), ");
       _builder.newLine();
+      _builder.append("\t\t");
+      CharSequence _generateFieldClassName = this.generateFieldClassName();
+      _builder.append(_generateFieldClassName, "\t\t");
+      _builder.append(".this);");
+      _builder.newLineIfNotEmpty();
       _builder.append("}");
       _builder.newLine();
       _xblockexpression = _builder;
@@ -470,16 +496,32 @@ public class FieldGenerator extends CommonGenerator {
       if (true) {
         imports.add("javax.swing.event.TableModelEvent");
         imports.add("javax.swing.event.TableModelListener");
+        Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers = this.mpp.getAllStatesWithContextTriggers();
+        final Procedure1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _function_1 = new Procedure1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>() {
+          @Override
+          public void apply(final Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> p) {
+            StringConcatenation _builder = new StringConcatenation();
+            CharSequence _generateCellPackage = FieldGenerator.this.generateCellPackage();
+            _builder.append(_generateCellPackage, "");
+            _builder.append(".");
+            CellSpecification _key = p.getKey();
+            CharSequence _generateCellClassName = FieldGenerator.this.generateCellClassName(_key);
+            _builder.append(_generateCellClassName, "");
+            String _string = _builder.toString();
+            imports.add(_string);
+          }
+        };
+        IterableExtensions.<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>forEach(_allStatesWithContextTriggers, _function_1);
       }
-      final Function1<String, Boolean> _function_1 = new Function1<String, Boolean>() {
+      final Function1<String, Boolean> _function_2 = new Function1<String, Boolean>() {
         @Override
         public Boolean apply(final String imp) {
           boolean _equals = imp.equals("");
           return Boolean.valueOf((!_equals));
         }
       };
-      Iterable<String> _filter = IterableExtensions.<String>filter(imports, _function_1);
-      final Function1<String, CharSequence> _function_2 = new Function1<String, CharSequence>() {
+      Iterable<String> _filter = IterableExtensions.<String>filter(imports, _function_2);
+      final Function1<String, CharSequence> _function_3 = new Function1<String, CharSequence>() {
         @Override
         public CharSequence apply(final String imp) {
           StringConcatenation _builder = new StringConcatenation();
@@ -489,7 +531,7 @@ public class FieldGenerator extends CommonGenerator {
           return _builder.toString();
         }
       };
-      _xblockexpression = IterableExtensions.<String>join(_filter, "\n", _function_2);
+      _xblockexpression = IterableExtensions.<String>join(_filter, "\n", _function_3);
     }
     return _xblockexpression;
   }

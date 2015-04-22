@@ -20,6 +20,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 
 /**
  * Generates the field class.
@@ -97,9 +98,9 @@ class FieldGenerator extends CommonGenerator {
 								CellContext context = ce.getContextHere(); 
 								switch (ce.getCell().getState().getStateID()) {
 									«states.join (" ", [cpp | 
-										'''case «cpp.value.key»:
-											«cpp.key.transitions.filter[t | t.trigger instanceof ContextTrigger]
-										                                             .join ("\n", [t | t.generateCodeForContextTrigger (cpp.value.value)])»
+										'''case «cpp.value.value.key»:
+											«cpp.value.key.transitions.filter[t | t.trigger instanceof ContextTrigger]
+										                                             .join ("\n", [t | t.generateCodeForContextTrigger (cpp.key, cpp.value.value.value)])»
 										   	break;'''])»
 								}
 							}
@@ -154,13 +155,19 @@ class FieldGenerator extends CommonGenerator {
 	 * Generate implementation code for reaction to context trigger. Can assume t has a context trigger. 
 	 * In the surrounding code, variable 'c' will refer to the currently checked cell.
 	 * The generated code should start with an if-statement checking the trigger condition.
+	 * 
+	 * @param t the transition for which to generate code
+	 * @param cs the cell containing the transition
+	 * @param symbols symbols to resolve
 	 */
-	def CharSequence generateCodeForContextTrigger(TransitionSpec t, Map<String, Value> symbols) {
+	def CharSequence generateCodeForContextTrigger(TransitionSpec t, CellSpecification cs, Map<String, Value> symbols) {
 		val trigger = t.trigger as ContextTrigger
 		'''
 		if («trigger.exp.generateFor») {
-			«/*TODO To implement, need to refactor code generation for state transitions */»
-			// TODO Implement transition
+			ce.getCell().setState (
+				((«cs.generateCellClassName») ce.getCell()).new «t.target.name.toFirstUpper»CellState(),
+				ce.getRow(), ce.getCol(), 
+				«generateFieldClassName».this);
 		}
 		'''
 	}
@@ -173,6 +180,9 @@ class FieldGenerator extends CommonGenerator {
 		if (true) { // FIXME Use same condition as when determining whether we need to generate a listener for context-triggered transitions. 
 			imports.add("javax.swing.event.TableModelEvent")
 			imports.add("javax.swing.event.TableModelListener")
+			mpp.allStatesWithContextTriggers.forEach[p | 
+				imports.add('''«generateCellPackage».«p.key.generateCellClassName»'''.toString)
+			]
 		}
 		imports.filter[imp|!imp.equals("")].join("\n", [imp|'''import «imp»;'''])
 	}

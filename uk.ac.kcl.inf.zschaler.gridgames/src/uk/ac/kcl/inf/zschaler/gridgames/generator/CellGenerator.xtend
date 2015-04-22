@@ -121,7 +121,7 @@ class CellGenerator extends CommonGenerator {
 	'''
 
 	def generateStateSpec(CellState cs, Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) '''
-		private class «cs.name.toFirstUpper»CellState extends CellState {
+		public class «cs.name.toFirstUpper»CellState extends CellState {
 			@Override
 			public Component formatUIRepresentation(JButton jb, JLabel jl) {
 				«if (cs.display.display_type.equals ("button")) {

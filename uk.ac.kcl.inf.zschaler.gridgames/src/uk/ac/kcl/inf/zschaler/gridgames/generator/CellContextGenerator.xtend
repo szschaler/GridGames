@@ -39,6 +39,14 @@ class CellContextGenerator extends CommonGenerator {
 						public CellContext getContextHere() {
 							return getContextAt (x + dx, y + dy);
 						}
+						
+						public int getRow() {
+							return y + dy;
+						}
+						
+						public int getCol() {
+							return x + dx;
+						}
 					}
 					
 					private ArrayList<ContextElement> al = new ArrayList<> (8);
