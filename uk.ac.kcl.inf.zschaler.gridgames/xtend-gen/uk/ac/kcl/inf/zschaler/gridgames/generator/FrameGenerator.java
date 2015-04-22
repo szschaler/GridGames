@@ -63,6 +63,8 @@ public class FrameGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("import javax.swing.JMenuItem;");
     _builder.newLine();
+    _builder.append("import javax.swing.JSeparator;");
+    _builder.newLine();
     _builder.append("import javax.swing.AbstractAction;");
     _builder.newLine();
     _builder.append("import javax.swing.JLabel;");
@@ -453,6 +455,8 @@ public class FrameGenerator extends CommonGenerator {
     boolean _doGenerateGenerationalContexts = this.mpp.doGenerateGenerationalContexts();
     if (_doGenerateGenerationalContexts) {
       StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("jmFile.add (new JSeparator());");
+      _builder_1.newLine();
       _builder_1.append("jmFile.add(new JMenuItem(new AbstractAction(\"Start\") {");
       _builder_1.newLine();
       _builder_1.append("\t");
@@ -485,6 +489,8 @@ public class FrameGenerator extends CommonGenerator {
       _builder_1.append("}");
       _builder_1.newLine();
       _builder_1.append("}));");
+      _builder_1.newLine();
+      _builder_1.append("jmFile.add (new JSeparator());");
       _builder_1.newLine();
       _xifexpression_1 = _builder_1;
     }

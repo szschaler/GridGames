@@ -30,6 +30,7 @@ class FrameGenerator extends CommonGenerator {
 		import javax.swing.JMenu;
 		import javax.swing.JMenuBar;
 		import javax.swing.JMenuItem;
+		import javax.swing.JSeparator;
 		import javax.swing.AbstractAction;
 		import javax.swing.JLabel;
 		import javax.swing.JButton;
@@ -165,6 +166,7 @@ class FrameGenerator extends CommonGenerator {
 				
 				«if (mpp.doGenerateGenerationalContexts) {
 					'''
+					jmFile.add (new JSeparator());
 					jmFile.add(new JMenuItem(new AbstractAction("Start") {
 						@Override
 						public void actionPerformed(ActionEvent e) {
@@ -178,6 +180,7 @@ class FrameGenerator extends CommonGenerator {
 							field.stopGenerationComputation();
 						}
 					}));
+					jmFile.add (new JSeparator());
 					'''
 				}»
 				
