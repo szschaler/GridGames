@@ -158,6 +158,24 @@ class FrameGenerator extends CommonGenerator {
 					'''])
 				}»
 				
+				«if (mpp.doGenerateGenerationalContexts) {
+					'''
+					jmFile.add(new JMenuItem(new AbstractAction("Start") {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							field.startGenerationComputation();
+						}
+					}));
+
+					jmFile.add(new JMenuItem(new AbstractAction("Stop") {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							field.stopGenerationComputation();
+						}
+					}));
+					'''
+				}»
+				
 				jmFile.add(new JMenuItem(new AbstractAction("Exit") {
 					@Override
 					public void actionPerformed(ActionEvent e) {

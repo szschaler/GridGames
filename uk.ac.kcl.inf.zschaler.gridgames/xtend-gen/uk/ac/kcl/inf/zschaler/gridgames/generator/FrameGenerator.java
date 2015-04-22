@@ -435,6 +435,50 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
+    CharSequence _xifexpression_1 = null;
+    boolean _doGenerateGenerationalContexts = this.mpp.doGenerateGenerationalContexts();
+    if (_doGenerateGenerationalContexts) {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("jmFile.add(new JMenuItem(new AbstractAction(\"Start\") {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("@Override");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("public void actionPerformed(ActionEvent e) {");
+      _builder_1.newLine();
+      _builder_1.append("\t\t");
+      _builder_1.append("field.startGenerationComputation();");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.append("}));");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("jmFile.add(new JMenuItem(new AbstractAction(\"Stop\") {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("@Override");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("public void actionPerformed(ActionEvent e) {");
+      _builder_1.newLine();
+      _builder_1.append("\t\t");
+      _builder_1.append("field.stopGenerationComputation();");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.append("}));");
+      _builder_1.newLine();
+      _xifexpression_1 = _builder_1;
+    }
+    _builder.append(_xifexpression_1, "\t\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
     _builder.append("jmFile.add(new JMenuItem(new AbstractAction(\"Exit\") {");
     _builder.newLine();
     _builder.append("\t\t\t");
@@ -506,14 +550,14 @@ public class FrameGenerator extends CommonGenerator {
     final Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> states = this.mpp.getAllStatesWithEnterActions();
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    CharSequence _xifexpression_1 = null;
+    CharSequence _xifexpression_2 = null;
     boolean _isEmpty = IterableExtensions.isEmpty(states);
     boolean _not = (!_isEmpty);
     if (_not) {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("switch (c.getState().getStateID()) {");
-      _builder_1.newLine();
-      _builder_1.append("\t");
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("switch (c.getState().getStateID()) {");
+      _builder_2.newLine();
+      _builder_2.append("\t");
       final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence> _function_2 = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence>() {
         @Override
         public CharSequence apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
@@ -544,13 +588,13 @@ public class FrameGenerator extends CommonGenerator {
         }
       };
       String _join = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>join(states, " ", _function_2);
-      _builder_1.append(_join, "\t");
-      _builder_1.newLineIfNotEmpty();
-      _builder_1.append("}");
-      _builder_1.newLine();
-      _xifexpression_1 = _builder_1;
+      _builder_2.append(_join, "\t");
+      _builder_2.newLineIfNotEmpty();
+      _builder_2.append("}");
+      _builder_2.newLine();
+      _xifexpression_2 = _builder_2;
     }
-    _builder.append(_xifexpression_1, "\t\t");
+    _builder.append(_xifexpression_2, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");

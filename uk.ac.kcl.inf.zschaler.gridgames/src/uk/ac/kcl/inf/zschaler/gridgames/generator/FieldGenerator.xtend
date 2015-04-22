@@ -142,11 +142,25 @@ class FieldGenerator extends CommonGenerator {
 					}
 					catch (InterruptedException ie) { }
 				}
+				
+				public void doStart() {
+					doRun = true;
+				}
+				
+				public void doStop() {
+					doRun = false;
+				}
 			}
 			
 			private GenerationUpdater updater = new GenerationUpdater();
 			
-			// TODO Generate appropriate accessor methods
+			public void startGenerationComputation() {
+				updater.doStart();
+			}
+
+			public void stopGenerationComputation() {
+				updater.doStop();
+			}
 			'''
 		}
 	}
