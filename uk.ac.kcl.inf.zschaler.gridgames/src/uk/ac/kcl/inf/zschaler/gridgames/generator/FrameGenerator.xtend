@@ -102,6 +102,11 @@ class FrameGenerator extends CommonGenerator {
 							// React to updates to a given cell
 							int firstRow = e.getFirstRow();
 							int lastRow = e.getLastRow();
+							// Fixing a stupid bug in abstract table model
+							if (lastRow > field.getRowCount()) {
+								lastRow = field.getRowCount();
+							}
+							
 							int col = e.getColumn();
 
 							for (int row = firstRow; row <= lastRow; row++) {
