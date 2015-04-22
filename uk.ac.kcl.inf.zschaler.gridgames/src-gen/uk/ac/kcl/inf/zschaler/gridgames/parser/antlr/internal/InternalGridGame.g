@@ -2523,21 +2523,31 @@ ruleAtomicExpression returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getAtomicExpressionAccess().getCountExpressionParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getAtomicExpressionAccess().getStateFilterExpressionParserRuleCall_1()); 
     }
-    this_CountExpression_1=ruleCountExpression
+    this_StateFilterExpression_1=ruleStateFilterExpression
     { 
-        $current = $this_CountExpression_1.current; 
+        $current = $this_StateFilterExpression_1.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAtomicExpressionAccess().getNotEmptyExpressionParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getAtomicExpressionAccess().getCountExpressionParserRuleCall_2()); 
     }
-    this_NotEmptyExpression_2=ruleNotEmptyExpression
+    this_CountExpression_2=ruleCountExpression
     { 
-        $current = $this_NotEmptyExpression_2.current; 
+        $current = $this_CountExpression_2.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getAtomicExpressionAccess().getNotEmptyExpressionParserRuleCall_3()); 
+    }
+    this_NotEmptyExpression_3=ruleNotEmptyExpression
+    { 
+        $current = $this_NotEmptyExpression_3.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -2585,6 +2595,52 @@ ruleFilterExpression returns [EObject current=null]
 )	otherlv_3=')' 
     {
     	newLeafNode(otherlv_3, grammarAccess.getFilterExpressionAccess().getRightParenthesisKeyword_3());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleStateFilterExpression
+entryRuleStateFilterExpression returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getStateFilterExpressionRule()); }
+	 iv_ruleStateFilterExpression=ruleStateFilterExpression 
+	 { $current=$iv_ruleStateFilterExpression.current; } 
+	 EOF 
+;
+
+// Rule StateFilterExpression
+ruleStateFilterExpression returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='inState' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getStateFilterExpressionAccess().getInStateKeyword_0());
+    }
+	otherlv_1='(' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getStateFilterExpressionAccess().getLeftParenthesisKeyword_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStateFilterExpressionRule());
+	        }
+        }
+	otherlv_2=RULE_ID
+	{
+		newLeafNode(otherlv_2, grammarAccess.getStateFilterExpressionAccess().getCell_stateCellStateCrossReference_2_0()); 
+	}
+
+)
+)	otherlv_3=')' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getStateFilterExpressionAccess().getRightParenthesisKeyword_3());
     }
 )
 ;

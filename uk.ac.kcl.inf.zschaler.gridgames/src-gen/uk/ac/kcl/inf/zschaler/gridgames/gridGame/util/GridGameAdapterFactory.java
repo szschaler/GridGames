@@ -270,6 +270,11 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createFilterExpressionAdapter();
       }
       @Override
+      public Adapter caseStateFilterExpression(StateFilterExpression object)
+      {
+        return createStateFilterExpressionAdapter();
+      }
+      @Override
       public Adapter caseCountExpression(CountExpression object)
       {
         return createCountExpressionAdapter();
@@ -887,6 +892,21 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFilterExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression <em>State Filter Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression
+   * @generated
+   */
+  public Adapter createStateFilterExpressionAdapter()
   {
     return null;
   }

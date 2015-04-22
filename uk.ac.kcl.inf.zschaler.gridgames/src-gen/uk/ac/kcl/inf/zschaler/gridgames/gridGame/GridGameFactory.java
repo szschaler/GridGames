@@ -374,6 +374,15 @@ public interface GridGameFactory extends EFactory
   FilterExpression createFilterExpression();
 
   /**
+   * Returns a new object of class '<em>State Filter Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>State Filter Expression</em>'.
+   * @generated
+   */
+  StateFilterExpression createStateFilterExpression();
+
+  /**
    * Returns a new object of class '<em>Count Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

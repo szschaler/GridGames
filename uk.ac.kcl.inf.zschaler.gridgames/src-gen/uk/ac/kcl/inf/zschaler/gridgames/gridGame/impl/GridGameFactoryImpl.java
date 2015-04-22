@@ -103,6 +103,7 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.CONTEXT_EXPRESSION: return createContextExpression();
       case GridGamePackage.ATOMIC_EXPRESSION: return createAtomicExpression();
       case GridGamePackage.FILTER_EXPRESSION: return createFilterExpression();
+      case GridGamePackage.STATE_FILTER_EXPRESSION: return createStateFilterExpression();
       case GridGamePackage.COUNT_EXPRESSION: return createCountExpression();
       case GridGamePackage.NOT_EMPTY_EXPRESSION: return createNotEmptyExpression();
       case GridGamePackage.NO_OP_BEHAVIOUR: return createNoOpBehaviour();
@@ -538,6 +539,17 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     FilterExpressionImpl filterExpression = new FilterExpressionImpl();
     return filterExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StateFilterExpression createStateFilterExpression()
+  {
+    StateFilterExpressionImpl stateFilterExpression = new StateFilterExpressionImpl();
+    return stateFilterExpression;
   }
 
   /**

@@ -47,6 +47,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
@@ -334,6 +335,13 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * @generated
    */
   private EClass filterExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stateFilterExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1334,6 +1342,26 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getStateFilterExpression()
+  {
+    return stateFilterExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStateFilterExpression_Cell_state()
+  {
+    return (EReference)stateFilterExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getCountExpression()
   {
     return countExpressionEClass;
@@ -1519,6 +1547,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     filterExpressionEClass = createEClass(FILTER_EXPRESSION);
     createEReference(filterExpressionEClass, FILTER_EXPRESSION__CELL_TYPE);
 
+    stateFilterExpressionEClass = createEClass(STATE_FILTER_EXPRESSION);
+    createEReference(stateFilterExpressionEClass, STATE_FILTER_EXPRESSION__CELL_STATE);
+
     countExpressionEClass = createEClass(COUNT_EXPRESSION);
 
     notEmptyExpressionEClass = createEClass(NOT_EMPTY_EXPRESSION);
@@ -1579,6 +1610,7 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
     randomInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
     contextInitialisationEClass.getESuperTypes().add(this.getFieldInitialisation());
     filterExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
+    stateFilterExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
     countExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
     notEmptyExpressionEClass.getESuperTypes().add(this.getAtomicExpression());
     noOpBehaviourEClass.getESuperTypes().add(this.getDirectBehaviour());
@@ -1713,6 +1745,9 @@ public class GridGamePackageImpl extends EPackageImpl implements GridGamePackage
 
     initEClass(filterExpressionEClass, FilterExpression.class, "FilterExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFilterExpression_Cell_type(), this.getCellSpecification(), null, "cell_type", null, 0, 1, FilterExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stateFilterExpressionEClass, StateFilterExpression.class, "StateFilterExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getStateFilterExpression_Cell_state(), this.getCellState(), null, "cell_state", null, 0, 1, StateFilterExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(countExpressionEClass, CountExpression.class, "CountExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

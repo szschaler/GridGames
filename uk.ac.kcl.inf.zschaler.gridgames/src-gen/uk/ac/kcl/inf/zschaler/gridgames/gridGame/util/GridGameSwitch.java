@@ -373,6 +373,14 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.STATE_FILTER_EXPRESSION:
+      {
+        StateFilterExpression stateFilterExpression = (StateFilterExpression)theEObject;
+        T result = caseStateFilterExpression(stateFilterExpression);
+        if (result == null) result = caseAtomicExpression(stateFilterExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GridGamePackage.COUNT_EXPRESSION:
       {
         CountExpression countExpression = (CountExpression)theEObject;
@@ -1023,6 +1031,22 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFilterExpression(FilterExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>State Filter Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>State Filter Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStateFilterExpression(StateFilterExpression object)
   {
     return null;
   }

@@ -1329,6 +1329,34 @@ public interface GridGamePackage extends EPackage
   int FILTER_EXPRESSION_FEATURE_COUNT = ATOMIC_EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.StateFilterExpressionImpl <em>State Filter Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.StateFilterExpressionImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getStateFilterExpression()
+   * @generated
+   */
+  int STATE_FILTER_EXPRESSION = 39;
+
+  /**
+   * The feature id for the '<em><b>Cell state</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_FILTER_EXPRESSION__CELL_STATE = ATOMIC_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>State Filter Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_FILTER_EXPRESSION_FEATURE_COUNT = ATOMIC_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CountExpressionImpl <em>Count Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1336,7 +1364,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getCountExpression()
    * @generated
    */
-  int COUNT_EXPRESSION = 39;
+  int COUNT_EXPRESSION = 40;
 
   /**
    * The number of structural features of the '<em>Count Expression</em>' class.
@@ -1355,7 +1383,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getNotEmptyExpression()
    * @generated
    */
-  int NOT_EMPTY_EXPRESSION = 40;
+  int NOT_EMPTY_EXPRESSION = 41;
 
   /**
    * The number of structural features of the '<em>Not Empty Expression</em>' class.
@@ -1374,7 +1402,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getNoOpBehaviour()
    * @generated
    */
-  int NO_OP_BEHAVIOUR = 41;
+  int NO_OP_BEHAVIOUR = 42;
 
   /**
    * The number of structural features of the '<em>No Op Behaviour</em>' class.
@@ -2349,6 +2377,27 @@ public interface GridGamePackage extends EPackage
   EReference getFilterExpression_Cell_type();
 
   /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression <em>State Filter Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>State Filter Expression</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression
+   * @generated
+   */
+  EClass getStateFilterExpression();
+
+  /**
+   * Returns the meta object for the reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression#getCell_state <em>Cell state</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Cell state</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression#getCell_state()
+   * @see #getStateFilterExpression()
+   * @generated
+   */
+  EReference getStateFilterExpression_Cell_state();
+
+  /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression <em>Count Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3206,6 +3255,24 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EReference FILTER_EXPRESSION__CELL_TYPE = eINSTANCE.getFilterExpression_Cell_type();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.StateFilterExpressionImpl <em>State Filter Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.StateFilterExpressionImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getStateFilterExpression()
+     * @generated
+     */
+    EClass STATE_FILTER_EXPRESSION = eINSTANCE.getStateFilterExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Cell state</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATE_FILTER_EXPRESSION__CELL_STATE = eINSTANCE.getStateFilterExpression_Cell_state();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CountExpressionImpl <em>Count Expression</em>}' class.

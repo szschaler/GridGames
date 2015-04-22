@@ -1581,24 +1581,28 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AtomicExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cFilterExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cCountExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cNotEmptyExpressionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cStateFilterExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cCountExpressionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cNotEmptyExpressionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//AtomicExpression:
-		//	FilterExpression | CountExpression | NotEmptyExpression;
+		//	FilterExpression | StateFilterExpression | CountExpression | NotEmptyExpression;
 		@Override public ParserRule getRule() { return rule; }
 
-		//FilterExpression | CountExpression | NotEmptyExpression
+		//FilterExpression | StateFilterExpression | CountExpression | NotEmptyExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//FilterExpression
 		public RuleCall getFilterExpressionParserRuleCall_0() { return cFilterExpressionParserRuleCall_0; }
 
+		//StateFilterExpression
+		public RuleCall getStateFilterExpressionParserRuleCall_1() { return cStateFilterExpressionParserRuleCall_1; }
+
 		//CountExpression
-		public RuleCall getCountExpressionParserRuleCall_1() { return cCountExpressionParserRuleCall_1; }
+		public RuleCall getCountExpressionParserRuleCall_2() { return cCountExpressionParserRuleCall_2; }
 
 		//NotEmptyExpression
-		public RuleCall getNotEmptyExpressionParserRuleCall_2() { return cNotEmptyExpressionParserRuleCall_2; }
+		public RuleCall getNotEmptyExpressionParserRuleCall_3() { return cNotEmptyExpressionParserRuleCall_3; }
 	}
 
 	public class FilterExpressionElements extends AbstractParserRuleElementFinder {
@@ -1632,6 +1636,42 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getCell_typeCellSpecificationIDTerminalRuleCall_2_0_1() { return cCell_typeCellSpecificationIDTerminalRuleCall_2_0_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+	}
+
+	public class StateFilterExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StateFilterExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cInStateKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cCell_stateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cCell_stateCellStateCrossReference_2_0 = (CrossReference)cCell_stateAssignment_2.eContents().get(0);
+		private final RuleCall cCell_stateCellStateIDTerminalRuleCall_2_0_1 = (RuleCall)cCell_stateCellStateCrossReference_2_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//StateFilterExpression:
+		//	"inState" "(" cell_state=[CellState] ")";
+		@Override public ParserRule getRule() { return rule; }
+
+		//"inState" "(" cell_state=[CellState] ")"
+		public Group getGroup() { return cGroup; }
+
+		//"inState"
+		public Keyword getInStateKeyword_0() { return cInStateKeyword_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+
+		//cell_state=[CellState]
+		public Assignment getCell_stateAssignment_2() { return cCell_stateAssignment_2; }
+
+		//[CellState]
+		public CrossReference getCell_stateCellStateCrossReference_2_0() { return cCell_stateCellStateCrossReference_2_0; }
+
+		//ID
+		public RuleCall getCell_stateCellStateIDTerminalRuleCall_2_0_1() { return cCell_stateCellStateIDTerminalRuleCall_2_0_1; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -1734,6 +1774,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	private final ContextExpressionElements pContextExpression;
 	private final AtomicExpressionElements pAtomicExpression;
 	private final FilterExpressionElements pFilterExpression;
+	private final StateFilterExpressionElements pStateFilterExpression;
 	private final CountExpressionElements pCountExpression;
 	private final NotEmptyExpressionElements pNotEmptyExpression;
 	
@@ -1786,6 +1827,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pContextExpression = new ContextExpressionElements();
 		this.pAtomicExpression = new AtomicExpressionElements();
 		this.pFilterExpression = new FilterExpressionElements();
+		this.pStateFilterExpression = new StateFilterExpressionElements();
 		this.pCountExpression = new CountExpressionElements();
 		this.pNotEmptyExpression = new NotEmptyExpressionElements();
 	}
@@ -2215,7 +2257,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AtomicExpression:
-	//	FilterExpression | CountExpression | NotEmptyExpression;
+	//	FilterExpression | StateFilterExpression | CountExpression | NotEmptyExpression;
 	public AtomicExpressionElements getAtomicExpressionAccess() {
 		return pAtomicExpression;
 	}
@@ -2232,6 +2274,16 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getFilterExpressionRule() {
 		return getFilterExpressionAccess().getRule();
+	}
+
+	//StateFilterExpression:
+	//	"inState" "(" cell_state=[CellState] ")";
+	public StateFilterExpressionElements getStateFilterExpressionAccess() {
+		return pStateFilterExpression;
+	}
+	
+	public ParserRule getStateFilterExpressionRule() {
+		return getStateFilterExpressionAccess().getRule();
 	}
 
 	//CountExpression:

@@ -124,6 +124,9 @@
     <genClasses ecoreClass="GridGame.ecore#//FilterExpression">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//FilterExpression/cell_type"/>
     </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//StateFilterExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GridGame.ecore#//StateFilterExpression/cell_state"/>
+    </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//CountExpression"/>
     <genClasses ecoreClass="GridGame.ecore#//NotEmptyExpression"/>
     <genClasses ecoreClass="GridGame.ecore#//NoOpBehaviour"/>

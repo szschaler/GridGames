@@ -45,6 +45,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue;
@@ -142,6 +143,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.START_FIELD_DECLARATION:
 				sequence_StartFieldDeclaration(context, (StartFieldDeclaration) semanticObject); 
+				return; 
+			case GridGamePackage.STATE_FILTER_EXPRESSION:
+				sequence_StateFilterExpression(context, (StateFilterExpression) semanticObject); 
 				return; 
 			case GridGamePackage.STRING_VALUE:
 				sequence_StringValue(context, (StringValue) semanticObject); 
@@ -469,6 +473,22 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getField());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     cell_state=[CellState|ID]
+	 */
+	protected void sequence_StateFilterExpression(EObject context, StateFilterExpression semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.STATE_FILTER_EXPRESSION__CELL_STATE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.STATE_FILTER_EXPRESSION__CELL_STATE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getStateFilterExpressionAccess().getCell_stateCellStateIDTerminalRuleCall_2_0_1(), semanticObject.getCell_state());
 		feeder.finish();
 	}
 	
