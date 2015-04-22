@@ -177,6 +177,12 @@ public class FieldGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
+    CharSequence _generateGenerationalContextTriggers = this.generateGenerationalContextTriggers();
+    _builder.append(_generateGenerationalContextTriggers, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
@@ -274,167 +280,250 @@ public class FieldGenerator extends CommonGenerator {
     return _builder;
   }
   
-  public CharSequence generateIncrementalContextTriggerListener() {
+  public CharSequence generateGenerationalContextTriggers() {
     CharSequence _xifexpression = null;
+    boolean _and = false;
     boolean _doGenerateGenerationalContexts = this.mpp.doGenerateGenerationalContexts();
-    if (_doGenerateGenerationalContexts) {
-      StringConcatenation _builder = new StringConcatenation();
-      _xifexpression = _builder;
+    if (!_doGenerateGenerationalContexts) {
+      _and = false;
     } else {
-      CharSequence _xifexpression_1 = null;
       Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers = this.mpp.getAllStatesWithContextTriggers();
       boolean _isEmpty = IterableExtensions.isEmpty(_allStatesWithContextTriggers);
       boolean _not = (!_isEmpty);
-      if (_not) {
+      _and = _not;
+    }
+    if (_and) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("private class GenerationUpdater extends Thread {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("private boolean doRun = false;");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("private long sleepTime = 1000;");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("public GenerationUpdater() {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("start();");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("public void run() {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("try {");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("while (true) {");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("if (doRun) {");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.append("// TODO Generate a new generation");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("sleep(sleepTime);");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("catch (InterruptedException ie) { }");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("private GenerationUpdater updater = new GenerationUpdater();");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("// TODO Generate appropriate accessor methods");
+      _builder.newLine();
+      _xifexpression = _builder;
+    }
+    return _xifexpression;
+  }
+  
+  public CharSequence generateIncrementalContextTriggerListener() {
+    CharSequence _xifexpression = null;
+    boolean _and = false;
+    boolean _doGenerateGenerationalContexts = this.mpp.doGenerateGenerationalContexts();
+    boolean _not = (!_doGenerateGenerationalContexts);
+    if (!_not) {
+      _and = false;
+    } else {
+      Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers = this.mpp.getAllStatesWithContextTriggers();
+      boolean _isEmpty = IterableExtensions.isEmpty(_allStatesWithContextTriggers);
+      boolean _not_1 = (!_isEmpty);
+      _and = _not_1;
+    }
+    if (_and) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\t");
+      _builder.append("addTableModelListener(new TableModelListener() {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("@Override");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("public void tableChanged(TableModelEvent e) {");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("if ((e.getFirstRow() != TableModelEvent.HEADER_ROW) && (e.getType() == TableModelEvent.UPDATE)) {");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("// React to updates to a given cell by checking whether any context triggers need activating");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("int firstRow = e.getFirstRow();");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("int lastRow = e.getLastRow();");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("int col = e.getColumn();");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("for (int row = firstRow; row <= lastRow; row++) {");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.append("if (col != TableModelEvent.ALL_COLUMNS) {");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t\t");
+      _builder.append("handleStateChange (row, col);");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.append("} else {");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t\t");
+      _builder.append("for (col = 0; col < ");
+      CharSequence _generateFieldClassName = this.generateFieldClassName();
+      _builder.append(_generateFieldClassName, "\t\t\t\t\t\t");
+      _builder.append(".this.getColumnCount(); col++) {");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t\t\t\t\t\t\t");
+      _builder.append("handleStateChange (row, col);");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t\t\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("private void handleStateChange (int row, int col) {");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      final Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> states = this.mpp.getAllStatesWithContextTriggers();
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t\t\t");
+      CharSequence _xifexpression_1 = null;
+      boolean _isEmpty_1 = IterableExtensions.isEmpty(states);
+      boolean _not_2 = (!_isEmpty_1);
+      if (_not_2) {
         StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("\t");
-        _builder_1.append("addTableModelListener(new TableModelListener() {");
-        _builder_1.newLine();
-        _builder_1.append("\t\t");
-        _builder_1.append("@Override");
-        _builder_1.newLine();
-        _builder_1.append("\t\t");
-        _builder_1.append("public void tableChanged(TableModelEvent e) {");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t");
-        _builder_1.append("if ((e.getFirstRow() != TableModelEvent.HEADER_ROW) && (e.getType() == TableModelEvent.UPDATE)) {");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t");
-        _builder_1.append("// React to updates to a given cell by checking whether any context triggers need activating");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t");
-        _builder_1.append("int firstRow = e.getFirstRow();");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t");
-        _builder_1.append("int lastRow = e.getLastRow();");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t");
-        _builder_1.append("int col = e.getColumn();");
-        _builder_1.newLine();
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t");
-        _builder_1.append("for (int row = firstRow; row <= lastRow; row++) {");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t\t");
-        _builder_1.append("if (col != TableModelEvent.ALL_COLUMNS) {");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t\t\t");
-        _builder_1.append("handleStateChange (row, col);");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t\t");
-        _builder_1.append("} else {");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t\t\t");
-        _builder_1.append("for (col = 0; col < ");
-        CharSequence _generateFieldClassName = this.generateFieldClassName();
-        _builder_1.append(_generateFieldClassName, "\t\t\t\t\t\t");
-        _builder_1.append(".this.getColumnCount(); col++) {");
-        _builder_1.newLineIfNotEmpty();
-        _builder_1.append("\t\t\t\t\t\t\t");
-        _builder_1.append("handleStateChange (row, col);");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t\t\t");
-        _builder_1.append("}");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t\t");
-        _builder_1.append("}");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t\t");
-        _builder_1.append("}");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t");
-        _builder_1.append("}");
-        _builder_1.newLine();
-        _builder_1.append("\t\t");
-        _builder_1.append("}");
-        _builder_1.newLine();
-        _builder_1.append("\t\t");
-        _builder_1.newLine();
-        _builder_1.append("\t\t");
-        _builder_1.append("private void handleStateChange (int row, int col) {");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t");
-        _builder_1.newLine();
-        _builder_1.append("\t\t\t");
-        final Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> states = this.mpp.getAllStatesWithContextTriggers();
-        _builder_1.newLineIfNotEmpty();
-        _builder_1.append("\t\t\t");
-        CharSequence _xifexpression_2 = null;
-        boolean _isEmpty_1 = IterableExtensions.isEmpty(states);
-        boolean _not_1 = (!_isEmpty_1);
-        if (_not_1) {
-          StringConcatenation _builder_2 = new StringConcatenation();
-          _builder_2.append("for (CellContext.ContextElement ce : getContextAt(col, row)) {");
-          _builder_2.newLine();
-          _builder_2.append("\t");
-          _builder_2.append("CellContext context = ce.getContextHere(); ");
-          _builder_2.newLine();
-          _builder_2.append("\t");
-          _builder_2.append("switch (ce.getCell().getState().getStateID()) {");
-          _builder_2.newLine();
-          _builder_2.append("\t\t");
-          final Function1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>, CharSequence> _function = new Function1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>, CharSequence>() {
-            @Override
-            public CharSequence apply(final Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> cpp) {
-              StringConcatenation _builder = new StringConcatenation();
-              _builder.append("case ");
-              Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> _value = cpp.getValue();
-              Pair<Integer, ? extends Map<String, Value>> _value_1 = _value.getValue();
-              Integer _key = _value_1.getKey();
-              _builder.append(_key, "");
-              _builder.append(":");
-              _builder.newLineIfNotEmpty();
-              _builder.append("\t\t\t\t\t\t\t\t\t\t");
-              Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> _value_2 = cpp.getValue();
-              CellState _key_1 = _value_2.getKey();
-              EList<TransitionSpec> _transitions = _key_1.getTransitions();
-              final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
-                @Override
-                public Boolean apply(final TransitionSpec t) {
-                  TransitionTriggerSpec _trigger = t.getTrigger();
-                  return Boolean.valueOf((_trigger instanceof ContextTrigger));
-                }
-              };
-              Iterable<TransitionSpec> _filter = IterableExtensions.<TransitionSpec>filter(_transitions, _function);
-              final Function1<TransitionSpec, CharSequence> _function_1 = new Function1<TransitionSpec, CharSequence>() {
-                @Override
-                public CharSequence apply(final TransitionSpec t) {
-                  CellSpecification _key = cpp.getKey();
-                  Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> _value = cpp.getValue();
-                  Pair<Integer, ? extends Map<String, Value>> _value_1 = _value.getValue();
-                  Map<String, Value> _value_2 = _value_1.getValue();
-                  return FieldGenerator.this.generateCodeForContextTrigger(t, _key, _value_2);
-                }
-              };
-              String _join = IterableExtensions.<TransitionSpec>join(_filter, "\n", _function_1);
-              _builder.append(_join, "\t\t\t\t\t\t\t\t\t\t");
-              _builder.newLineIfNotEmpty();
-              _builder.append("\t\t\t\t\t\t\t\t\t   \t");
-              _builder.append("break;");
-              return _builder.toString();
-            }
-          };
-          String _join = IterableExtensions.<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>join(states, " ", _function);
-          _builder_2.append(_join, "\t\t");
-          _builder_2.newLineIfNotEmpty();
-          _builder_2.append("\t");
-          _builder_2.append("}");
-          _builder_2.newLine();
-          _builder_2.append("}");
-          _builder_2.newLine();
-          _xifexpression_2 = _builder_2;
-        }
-        _builder_1.append(_xifexpression_2, "\t\t\t");
-        _builder_1.newLineIfNotEmpty();
-        _builder_1.append("\t\t");
-        _builder_1.append("}");
+        _builder_1.append("for (CellContext.ContextElement ce : getContextAt(col, row)) {");
         _builder_1.newLine();
         _builder_1.append("\t");
-        _builder_1.append("});");
+        _builder_1.append("CellContext context = ce.getContextHere(); ");
+        _builder_1.newLine();
+        _builder_1.append("\t");
+        _builder_1.append("switch (ce.getCell().getState().getStateID()) {");
+        _builder_1.newLine();
+        _builder_1.append("\t\t");
+        final Function1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>, CharSequence> _function = new Function1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>, CharSequence>() {
+          @Override
+          public CharSequence apply(final Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> cpp) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("case ");
+            Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> _value = cpp.getValue();
+            Pair<Integer, ? extends Map<String, Value>> _value_1 = _value.getValue();
+            Integer _key = _value_1.getKey();
+            _builder.append(_key, "");
+            _builder.append(":");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t\t\t\t\t\t\t\t\t");
+            Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> _value_2 = cpp.getValue();
+            CellState _key_1 = _value_2.getKey();
+            EList<TransitionSpec> _transitions = _key_1.getTransitions();
+            final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
+              @Override
+              public Boolean apply(final TransitionSpec t) {
+                TransitionTriggerSpec _trigger = t.getTrigger();
+                return Boolean.valueOf((_trigger instanceof ContextTrigger));
+              }
+            };
+            Iterable<TransitionSpec> _filter = IterableExtensions.<TransitionSpec>filter(_transitions, _function);
+            final Function1<TransitionSpec, CharSequence> _function_1 = new Function1<TransitionSpec, CharSequence>() {
+              @Override
+              public CharSequence apply(final TransitionSpec t) {
+                CellSpecification _key = cpp.getKey();
+                Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> _value = cpp.getValue();
+                Pair<Integer, ? extends Map<String, Value>> _value_1 = _value.getValue();
+                Map<String, Value> _value_2 = _value_1.getValue();
+                return FieldGenerator.this.generateCodeForContextTrigger(t, _key, _value_2);
+              }
+            };
+            String _join = IterableExtensions.<TransitionSpec>join(_filter, "\n", _function_1);
+            _builder.append(_join, "\t\t\t\t\t\t\t\t\t\t");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t\t\t\t\t\t\t\t   \t");
+            _builder.append("break;");
+            return _builder.toString();
+          }
+        };
+        String _join = IterableExtensions.<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>join(states, " ", _function);
+        _builder_1.append(_join, "\t\t");
+        _builder_1.newLineIfNotEmpty();
+        _builder_1.append("\t");
+        _builder_1.append("}");
+        _builder_1.newLine();
+        _builder_1.append("}");
         _builder_1.newLine();
         _xifexpression_1 = _builder_1;
       }
-      _xifexpression = _xifexpression_1;
+      _builder.append(_xifexpression_1, "\t\t\t");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("});");
+      _builder.newLine();
+      _xifexpression = _builder;
     }
     return _xifexpression;
   }

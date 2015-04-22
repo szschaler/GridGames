@@ -74,6 +74,8 @@ class FieldGenerator extends CommonGenerator {
 		
 		«ccg.generateCellContext»
 		
+		«generateGenerationalContextTriggers()»
+		
 		@Override
 		public int getColumnCount() {
 			return width;
@@ -109,10 +111,40 @@ class FieldGenerator extends CommonGenerator {
 		}
 	}'''
 	
+	def generateGenerationalContextTriggers() {
+		if ((mpp.doGenerateGenerationalContexts) && (!mpp.allStatesWithContextTriggers.empty)) {
+			'''
+			private class GenerationUpdater extends Thread {
+				private boolean doRun = false;
+				private long sleepTime = 1000;
+				
+				public GenerationUpdater() {
+					start();
+				}
+				
+				public void run() {
+					try {
+						while (true) {
+							if (doRun) {
+								// TODO Generate a new generation
+							}
+							
+							sleep(sleepTime);
+						}
+					}
+					catch (InterruptedException ie) { }
+				}
+			}
+			
+			private GenerationUpdater updater = new GenerationUpdater();
+			
+			// TODO Generate appropriate accessor methods
+			'''
+		}
+	}
+	
 	def generateIncrementalContextTriggerListener() {
-		if (mpp.doGenerateGenerationalContexts) {
-			''''''
-		} else if (!mpp.allStatesWithContextTriggers.empty) {
+		if ((!mpp.doGenerateGenerationalContexts) && (!mpp.allStatesWithContextTriggers.empty)) {
 			'''
 			addTableModelListener(new TableModelListener() {
 				@Override
