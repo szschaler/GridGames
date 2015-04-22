@@ -460,7 +460,6 @@ public class CellContextGenerator extends CommonGenerator {
     if (_needContextGeneration) {
       boolean _xblockexpression = false;
       {
-        imports.add("java.util.List");
         imports.add("java.util.ArrayList");
         _xblockexpression = imports.add("java.util.Iterator");
       }

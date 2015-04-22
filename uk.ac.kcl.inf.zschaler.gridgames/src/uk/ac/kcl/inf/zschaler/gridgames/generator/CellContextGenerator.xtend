@@ -153,7 +153,6 @@ class CellContextGenerator extends CommonGenerator {
 	 */
 	def addImports(Set<String> imports) {
 		if (needContextGeneration) {
-			imports.add("java.util.List")
 			imports.add("java.util.ArrayList")
 			imports.add("java.util.Iterator")
 		}
