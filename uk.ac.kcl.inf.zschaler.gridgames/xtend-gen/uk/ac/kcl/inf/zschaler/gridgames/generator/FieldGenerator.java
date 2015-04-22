@@ -848,6 +848,19 @@ public class FieldGenerator extends CommonGenerator {
   protected CharSequence _generateFor(final CountExpression ce) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("size()");
+    CharSequence _xifexpression = null;
+    String _op = ce.getOp();
+    boolean _notEquals = (!Objects.equal(_op, null));
+    if (_notEquals) {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      String _op_1 = ce.getOp();
+      _builder_1.append(_op_1, "");
+      _builder_1.append(" ");
+      int _cmpVal = ce.getCmpVal();
+      _builder_1.append(_cmpVal, "");
+      _xifexpression = _builder_1;
+    }
+    _builder.append(_xifexpression, "");
     return _builder;
   }
   

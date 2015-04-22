@@ -298,7 +298,7 @@ class FieldGenerator extends CommonGenerator {
 	
 	def dispatch CharSequence generateFor(StateFilterExpression sfe) '''inState«sfe.cell_state.name.toFirstUpper»()'''
 
-	def dispatch CharSequence generateFor(CountExpression ce) '''size()'''
+	def dispatch CharSequence generateFor(CountExpression ce) '''size()«if (ce.op != null) {'''«ce.op» «ce.cmpVal»'''}»'''
 
 	def dispatch CharSequence generateFor(NotEmptyExpression nee) '''notEmpty()'''
 }
