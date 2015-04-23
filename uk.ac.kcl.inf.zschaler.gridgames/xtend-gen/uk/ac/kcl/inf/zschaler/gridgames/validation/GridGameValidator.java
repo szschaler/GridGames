@@ -3,6 +3,13 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.validation;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GenerationalContexts;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.validation.AbstractGridGameValidator;
 
 /**
@@ -12,4 +19,19 @@ import uk.ac.kcl.inf.zschaler.gridgames.validation.AbstractGridGameValidator;
  */
 @SuppressWarnings("all")
 public class GridGameValidator extends AbstractGridGameValidator {
+  @Check
+  public void checkRecursiveContextTriggers(final GridGame gg) {
+    EList<OptionSpecification> _options = gg.getOptions();
+    final Function1<OptionSpecification, Boolean> _function = new Function1<OptionSpecification, Boolean>() {
+      @Override
+      public Boolean apply(final OptionSpecification o) {
+        return Boolean.valueOf((o instanceof GenerationalContexts));
+      }
+    };
+    boolean _exists = IterableExtensions.<OptionSpecification>exists(_options, _function);
+    boolean _not = (!_exists);
+    if (_not) {
+      this.warning("You may need to check for potential recursive context triggers.", null, "Recursive context triggers");
+    }
+  }
 }

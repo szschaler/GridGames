@@ -3,7 +3,9 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.validation
 
-//import org.eclipse.xtext.validation.Check
+import org.eclipse.xtext.validation.Check
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GenerationalContexts
 
 /**
  * This class contains custom validation rules. 
@@ -22,4 +24,11 @@ class GridGameValidator extends AbstractGridGameValidator {
 //					INVALID_NAME)
 //		}
 //	}
+
+	@Check
+	def checkRecursiveContextTriggers (GridGame gg) {
+		if (!gg.options.exists[o | o instanceof GenerationalContexts]) {
+			warning ("You may need to check for potential recursive context triggers.", null, "Recursive context triggers")
+		}
+	}
 }
