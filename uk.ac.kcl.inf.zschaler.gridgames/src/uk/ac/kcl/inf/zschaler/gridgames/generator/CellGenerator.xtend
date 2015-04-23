@@ -13,7 +13,6 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
-import java.awt.Color
 
 /**
  * Generates all stuff to do with handling cells.
