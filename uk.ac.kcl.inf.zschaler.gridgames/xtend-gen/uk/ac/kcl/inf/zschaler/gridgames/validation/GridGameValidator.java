@@ -3,13 +3,21 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.validation;
 
+import com.google.common.base.Objects;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GenerationalContexts;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.validation.AbstractGridGameValidator;
 
 /**
@@ -20,18 +28,44 @@ import uk.ac.kcl.inf.zschaler.gridgames.validation.AbstractGridGameValidator;
 @SuppressWarnings("all")
 public class GridGameValidator extends AbstractGridGameValidator {
   @Check
-  public void checkRecursiveContextTriggers(final GridGame gg) {
-    EList<OptionSpecification> _options = gg.getOptions();
-    final Function1<OptionSpecification, Boolean> _function = new Function1<OptionSpecification, Boolean>() {
+  public void checkRecursiveContextTriggers(final TransitionSpec ts) {
+    Resource _eResource = ts.eResource();
+    TreeIterator<EObject> _allContents = _eResource.getAllContents();
+    final Function1<EObject, Boolean> _function = new Function1<EObject, Boolean>() {
       @Override
-      public Boolean apply(final OptionSpecification o) {
+      public Boolean apply(final EObject o) {
         return Boolean.valueOf((o instanceof GenerationalContexts));
       }
     };
-    boolean _exists = IterableExtensions.<OptionSpecification>exists(_options, _function);
+    boolean _exists = IteratorExtensions.<EObject>exists(_allContents, _function);
     boolean _not = (!_exists);
     if (_not) {
-      this.warning("You may need to check for potential recursive context triggers.", null, "Recursive context triggers");
+      TransitionTriggerSpec _trigger = ts.getTrigger();
+      if ((_trigger instanceof ContextTrigger)) {
+        CellState _target = ts.getTarget();
+        EList<TransitionSpec> _transitions = _target.getTransitions();
+        final Function1<TransitionSpec, Boolean> _function_1 = new Function1<TransitionSpec, Boolean>() {
+          @Override
+          public Boolean apply(final TransitionSpec t) {
+            boolean _and = false;
+            TransitionTriggerSpec _trigger = t.getTrigger();
+            if (!(_trigger instanceof ContextTrigger)) {
+              _and = false;
+            } else {
+              CellState _target = t.getTarget();
+              EObject _eContainer = ts.eContainer();
+              boolean _equals = Objects.equal(_target, ((CellState) _eContainer));
+              _and = _equals;
+            }
+            return Boolean.valueOf(_and);
+          }
+        };
+        boolean _exists_1 = IterableExtensions.<TransitionSpec>exists(_transitions, _function_1);
+        if (_exists_1) {
+          this.warning("You may need to check for potential recursive context triggers.", 
+            GridGamePackage.Literals.TRANSITION_SPEC__TRIGGER, "recursiveContextTrigger");
+        }
+      }
     }
   }
 }
