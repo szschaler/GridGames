@@ -14,5 +14,7 @@ hs_err_pid*
 
 # Xtend binaries
 *.xtendbin
+
+# Example binaries (generated sources are automatically ignored)
 /uk.ac.kcl.inf.zschaler.gridgames.samples.minesweeper/bin
 /uk.ac.kcl.inf.zschaler.gridgames.samples.game_of_life/bin
