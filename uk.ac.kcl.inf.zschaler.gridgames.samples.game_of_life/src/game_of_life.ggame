@@ -1,0 +1,49 @@
+game GameOfLife {
+	contextsTriggerGenerationally
+
+	states cellStates {
+		dead {
+			display {
+				as label
+				text ""
+			}
+			
+			transitions {
+				// Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+				on context (inState(alive).count() == 3) goto alive
+				
+				on mouse-left goto alive
+			}
+		}
+		
+		alive {
+			display {
+				as label
+				color black
+			}
+			
+			transitions {
+				// Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+				on context (inState(alive).count() < 2) goto dead
+				// Any live cell with more than three live neighbours dies, as if by overcrowding.
+				on context (inState(alive).count() > 3) goto dead
+				
+				on mouse-left goto dead
+			}
+		}
+		
+		start = dead
+	}
+	
+	cell Cell {
+		states cellStates
+	}
+	
+	field dflt {
+		width  = 20
+		height = 20
+		init {default: Cell;}
+	}
+	
+	start = dflt	
+}

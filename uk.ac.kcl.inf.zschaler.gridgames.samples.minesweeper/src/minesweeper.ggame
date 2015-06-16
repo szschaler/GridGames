@@ -1,0 +1,89 @@
+game minesweeper {
+	// We define three types of fields of varying difficulty
+	// Easy fields are 10 by 10 cells with 10 mines 
+	field easy { 
+		width = 10 
+		height = 10
+		init fill_field(10)
+	}
+	
+	// Medium fields are 20 by 20 cells with 15 mines 
+	field medium { 
+		width = 20
+		height = 20
+		init fill_field(15)
+	}
+	
+	// Hard fields are 30 by 30 cells with 30 mines 
+	field hard { 
+		width = 30 
+		height = 30
+		init fill_field(30)
+	}
+	
+	// There are three different types of cells that make up the game field
+	
+	// Empty cells are where there is no mine 
+	cell empty {
+		states mineStates ("", nop)
+	}
+	
+	// These are empty cells that border on a mine cell; they are decorated with a number showing how many cells there are in the neighbourhood
+	cell borderingMine {
+		var int number
+		states mineStates (number, nop)
+	}
+
+	// These are the dangerous mine cells. Clicking on them creates an "explosion"	 
+	cell mine {
+		states mineStates ("M", end-game("KA-BOOM!"))
+	}
+	
+	// This defines the strategy for initialising the game field. We start by randomly placing mines, then place border cells, and finally fill up with empty cells
+	init fill_field (int numMines) {
+		random: mine = numMines;
+		context: borderingMine check filter(mine).notEmpty() value=filter(mine).count();
+		default: empty;
+	}
+
+	// Cells have states. The state machine is pretty much the same for all types of cells except for the label to be shown on discovered cells and the action to be triggered when a cell is discovered.	
+	states mineStates (String discoveredLabel, Behaviour discoveredBehaviour) {
+		hidden {
+			display {
+				as button
+				text ""
+			}
+			
+			transitions {
+				on mouse-left goto discovered
+				on mouse-right goto flagged
+				// TODO Make this a parameter (should only happen for empty cells)
+				on context (filter(empty).inState(discovered).notEmpty()) goto discovered
+			}
+		}
+		flagged {
+			display {
+				as button
+				text "F"
+			}
+
+			transitions {
+				on mouse-left goto discovered
+				on mouse-right goto hidden
+			}
+		}			
+		discovered {
+			display {
+				as label
+				var discoveredLabel
+			}
+			onEnter {
+				discoveredBehaviour
+			}
+		}
+		start=hidden
+	}
+
+	allow_restart 
+	start = easy 
+}
