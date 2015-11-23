@@ -28,11 +28,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellSpecificationImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellSpecificationImpl#getMembers <em>Members</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

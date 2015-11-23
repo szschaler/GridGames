@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression#getSub_exp <em>Sub exp</em>}</li>
  * </ul>
- * </p>
  *
  * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getContextExpression()
  * @model

@@ -11,10 +11,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations#getInitialisations <em>Initialisations</em>}</li>
  * </ul>
- * </p>
  *
  * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getLocalFieldInitialisations()
  * @model

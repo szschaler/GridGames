@@ -10,10 +10,10 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger#getExp <em>Exp</em>}</li>
  * </ul>
- * </p>
  *
  * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getContextTrigger()
  * @model

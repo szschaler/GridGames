@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -14,7 +15,6 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CellContextGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
@@ -683,9 +683,9 @@ public class FieldGenerator extends CommonGenerator {
         imports.add("javax.swing.event.TableModelEvent");
         imports.add("javax.swing.event.TableModelListener");
         Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers_1 = this.mpp.getAllStatesWithContextTriggers();
-        final Procedure1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _function_1 = new Procedure1<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>() {
+        final Consumer<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _function_1 = new Consumer<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>() {
           @Override
-          public void apply(final Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> p) {
+          public void accept(final Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> p) {
             StringConcatenation _builder = new StringConcatenation();
             CharSequence _generateCellPackage = FieldGenerator.this.generateCellPackage();
             _builder.append(_generateCellPackage, "");
@@ -697,7 +697,7 @@ public class FieldGenerator extends CommonGenerator {
             imports.add(_string);
           }
         };
-        IterableExtensions.<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>>forEach(_allStatesWithContextTriggers_1, _function_1);
+        _allStatesWithContextTriggers_1.forEach(_function_1);
       }
       final Function1<String, Boolean> _function_2 = new Function1<String, Boolean>() {
         @Override

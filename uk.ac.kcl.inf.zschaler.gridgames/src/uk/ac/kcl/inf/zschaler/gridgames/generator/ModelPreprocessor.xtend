@@ -115,15 +115,15 @@ class ModelPreprocessor {
 	}
 
 	// May at some point need to rethink this, depending on how parametrisation continues...
-	public def getStartState(CellSpecification c) {
+	public dispatch def CellState getStartState(CellSpecification c) {
 		c.members.filter(CellStateSpec).map[css|css.startState].findFirst[true]
 	}
 
-	private def dispatch getStartState(LocalCellStateSpec lcss) {
+	public def dispatch CellState getStartState(LocalCellStateSpec lcss) {
 		lcss.start
 	}
 
-	private def dispatch getStartState(CellStateSpecReference cssr) {
+	public def dispatch CellState getStartState(CellStateSpecReference cssr) {
 		cssr.stateSpec.start
 	}
 	

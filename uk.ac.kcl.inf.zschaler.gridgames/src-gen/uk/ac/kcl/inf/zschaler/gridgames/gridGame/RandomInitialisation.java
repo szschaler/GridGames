@@ -10,11 +10,11 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation#getCount <em>Count</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.RandomInitialisation#getVar <em>Var</em>}</li>
  * </ul>
- * </p>
  *
  * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getRandomInitialisation()
  * @model

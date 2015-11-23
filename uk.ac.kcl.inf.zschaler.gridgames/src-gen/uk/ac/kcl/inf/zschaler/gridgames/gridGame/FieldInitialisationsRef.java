@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef#getRef <em>Ref</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef#getParams <em>Params</em>}</li>
  * </ul>
- * </p>
  *
  * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getFieldInitialisationsRef()
  * @model

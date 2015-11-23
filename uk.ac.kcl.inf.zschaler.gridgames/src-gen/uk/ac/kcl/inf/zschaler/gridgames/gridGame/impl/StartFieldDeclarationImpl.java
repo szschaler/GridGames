@@ -19,10 +19,10 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StartFieldDeclaration;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.StartFieldDeclarationImpl#getField <em>Field</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

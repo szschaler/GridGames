@@ -11,8 +11,6 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Allow Restart Menu</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -20,11 +20,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextInitialisationImpl#getCheck <em>Check</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.ContextInitialisationImpl#getExp <em>Exp</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

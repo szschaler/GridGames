@@ -28,11 +28,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldInitialisationsRefImpl#getRef <em>Ref</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.FieldInitialisationsRefImpl#getParams <em>Params</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

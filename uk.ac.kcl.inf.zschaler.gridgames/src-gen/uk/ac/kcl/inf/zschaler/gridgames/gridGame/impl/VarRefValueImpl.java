@@ -19,10 +19,10 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.VarRefValueImpl#getRef <em>Ref</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

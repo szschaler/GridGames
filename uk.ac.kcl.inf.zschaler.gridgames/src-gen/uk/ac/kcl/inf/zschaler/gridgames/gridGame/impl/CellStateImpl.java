@@ -30,13 +30,13 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateImpl#getDisplay <em>Display</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateImpl#getTransitions <em>Transitions</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.CellStateImpl#getOnEnter <em>On Enter</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

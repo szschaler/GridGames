@@ -11,8 +11,6 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>No Op Behaviour</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

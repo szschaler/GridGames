@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
@@ -25,7 +26,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
@@ -75,21 +75,21 @@ public class ModelPreprocessor {
   
   private void preprocess() {
     EList<CellSpecification> _cells = this.gg.getCells();
-    final Procedure1<CellSpecification> _function = new Procedure1<CellSpecification>() {
+    final Consumer<CellSpecification> _function = new Consumer<CellSpecification>() {
       @Override
-      public void apply(final CellSpecification c) {
+      public void accept(final CellSpecification c) {
         ModelPreprocessor.this.normalizeDisplayAnnotation(c);
         Iterable<Pair<? extends Map<String, Value>, CellState>> _extractCellStates = ModelPreprocessor.this.extractCellStates(c);
-        final Procedure1<Pair<? extends Map<String, Value>, CellState>> _function = new Procedure1<Pair<? extends Map<String, Value>, CellState>>() {
+        final Consumer<Pair<? extends Map<String, Value>, CellState>> _function = new Consumer<Pair<? extends Map<String, Value>, CellState>>() {
           @Override
-          public void apply(final Pair<? extends Map<String, Value>, CellState> cs) {
+          public void accept(final Pair<? extends Map<String, Value>, CellState> cs) {
             ModelPreprocessor.this.createUniqueID(cs, c);
           }
         };
-        IterableExtensions.<Pair<? extends Map<String, Value>, CellState>>forEach(_extractCellStates, _function);
+        _extractCellStates.forEach(_function);
       }
     };
-    IterableExtensions.<CellSpecification>forEach(_cells, _function);
+    _cells.forEach(_function);
   }
   
   public GridGame getGridGame() {
@@ -232,15 +232,15 @@ public class ModelPreprocessor {
       final Iterator<Value> iter = _params.iterator();
       GlobalCellStateSpec _stateSpec = cssr.getStateSpec();
       EList<ParamSpec> _params_1 = _stateSpec.getParams();
-      final Procedure1<ParamSpec> _function = new Procedure1<ParamSpec>() {
+      final Consumer<ParamSpec> _function = new Consumer<ParamSpec>() {
         @Override
-        public void apply(final ParamSpec p) {
+        public void accept(final ParamSpec p) {
           String _name = p.getName();
           Value _next = iter.next();
           symbols.put(_name, _next);
         }
       };
-      IterableExtensions.<ParamSpec>forEach(_params_1, _function);
+      _params_1.forEach(_function);
       GlobalCellStateSpec _stateSpec_1 = cssr.getStateSpec();
       EList<CellState> _states = _stateSpec_1.getStates();
       final Function1<CellState, Pair<? extends Map<String, Value>, CellState>> _function_1 = new Function1<CellState, Pair<? extends Map<String, Value>, CellState>>() {
@@ -254,7 +254,7 @@ public class ModelPreprocessor {
     return _xblockexpression;
   }
   
-  public CellState getStartState(final CellSpecification c) {
+  public CellState _getStartState(final CellSpecification c) {
     EList<CellMember> _members = c.getMembers();
     Iterable<CellStateSpec> _filter = Iterables.<CellStateSpec>filter(_members, CellStateSpec.class);
     final Function1<CellStateSpec, CellState> _function = new Function1<CellStateSpec, CellState>() {
@@ -273,11 +273,11 @@ public class ModelPreprocessor {
     return IterableExtensions.<CellState>findFirst(_map, _function_1);
   }
   
-  private CellState _getStartState(final LocalCellStateSpec lcss) {
+  public CellState _getStartState(final LocalCellStateSpec lcss) {
     return lcss.getStart();
   }
   
-  private CellState _getStartState(final CellStateSpecReference cssr) {
+  public CellState _getStartState(final CellStateSpecReference cssr) {
     GlobalCellStateSpec _stateSpec = cssr.getStateSpec();
     return _stateSpec.getStart();
   }
@@ -369,15 +369,15 @@ public class ModelPreprocessor {
     HashMap<FieldSpecification, List<Pair<Map<String, Value>, FieldInitialisation>>> _hashMap = new HashMap<FieldSpecification, List<Pair<Map<String, Value>, FieldInitialisation>>>();
     this.fieldInitialisations = _hashMap;
     EList<FieldSpecification> _fields = this.gg.getFields();
-    final Procedure1<FieldSpecification> _function = new Procedure1<FieldSpecification>() {
+    final Consumer<FieldSpecification> _function = new Consumer<FieldSpecification>() {
       @Override
-      public void apply(final FieldSpecification f) {
+      public void accept(final FieldSpecification f) {
         FieldInitialisations _field_initialisation = f.getField_initialisation();
         List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = ModelPreprocessor.this.getAllInitialisations(_field_initialisation);
         ModelPreprocessor.this.fieldInitialisations.put(f, _allInitialisations);
       }
     };
-    IterableExtensions.<FieldSpecification>forEach(_fields, _function);
+    _fields.forEach(_function);
   }
   
   private List<Pair<Map<String, Value>, FieldInitialisation>> _getAllInitialisations(final LocalFieldInitialisations lfi) {
@@ -450,11 +450,13 @@ public class ModelPreprocessor {
     }
   }
   
-  private CellState getStartState(final CellStateSpec cssr) {
+  public CellState getStartState(final EObject cssr) {
     if (cssr instanceof CellStateSpecReference) {
       return _getStartState((CellStateSpecReference)cssr);
     } else if (cssr instanceof LocalCellStateSpec) {
       return _getStartState((LocalCellStateSpec)cssr);
+    } else if (cssr instanceof CellSpecification) {
+      return _getStartState((CellSpecification)cssr);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(cssr).toString());

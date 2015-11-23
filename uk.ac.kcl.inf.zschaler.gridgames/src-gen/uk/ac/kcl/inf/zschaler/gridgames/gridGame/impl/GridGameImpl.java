@@ -32,6 +32,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getStates <em>States</em>}</li>
@@ -40,7 +41,6 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGameImpl#getOptions <em>Options</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

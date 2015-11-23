@@ -11,8 +11,6 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ParamSpec;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Param Spec</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

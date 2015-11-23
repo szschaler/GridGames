@@ -10,10 +10,10 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StringValue#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getStringValue()
  * @model

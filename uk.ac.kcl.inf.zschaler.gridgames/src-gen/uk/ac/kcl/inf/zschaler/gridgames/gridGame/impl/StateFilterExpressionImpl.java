@@ -19,10 +19,10 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.StateFilterExpressionImpl#getCell_state <em>Cell state</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -13,8 +13,6 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Option Specification</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -17,10 +17,10 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.MouseTriggerImpl#isLeft <em>Left</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

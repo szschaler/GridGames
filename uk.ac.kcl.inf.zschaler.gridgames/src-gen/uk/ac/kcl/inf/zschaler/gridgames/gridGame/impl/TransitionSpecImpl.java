@@ -22,11 +22,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.TransitionSpecImpl#getTrigger <em>Trigger</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.TransitionSpecImpl#getTarget <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

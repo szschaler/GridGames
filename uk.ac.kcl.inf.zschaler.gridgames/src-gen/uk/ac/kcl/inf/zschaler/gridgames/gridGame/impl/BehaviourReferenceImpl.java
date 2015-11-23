@@ -19,10 +19,10 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.BehaviourReferenceImpl#getRef <em>Ref</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -27,11 +27,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalCellStateSpec;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.LocalCellStateSpecImpl#getStates <em>States</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.LocalCellStateSpecImpl#getStart <em>Start</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

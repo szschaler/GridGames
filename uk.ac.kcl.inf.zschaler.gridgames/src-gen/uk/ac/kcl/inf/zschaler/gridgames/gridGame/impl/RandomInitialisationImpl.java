@@ -19,11 +19,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.RandomInitialisationImpl#getCount <em>Count</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.RandomInitialisationImpl#getVar <em>Var</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

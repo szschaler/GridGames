@@ -18,11 +18,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.VarSpecImpl#getType <em>Type</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.VarSpecImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

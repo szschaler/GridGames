@@ -17,10 +17,10 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.EndGameBehaviourImpl#getMessage <em>Message</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

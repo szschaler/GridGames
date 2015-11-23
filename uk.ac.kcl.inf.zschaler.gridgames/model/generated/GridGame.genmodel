@@ -4,7 +4,7 @@
     editorDirectory="/uk.ac.kcl.inf.zschaler.gridgames.editor/src" modelPluginID="uk.ac.kcl.inf.zschaler.gridgames"
     forceOverwrite="true" modelName="GridGame" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="6.0" copyrightFields="false" editPluginID="uk.ac.kcl.inf.zschaler.gridgames.edit"
-    editorPluginID="uk.ac.kcl.inf.zschaler.gridgames.editor" runtimeVersion="2.10">
+    editorPluginID="uk.ac.kcl.inf.zschaler.gridgames.editor" runtimeVersion="2.11">
   <genPackages prefix="GridGame" basePackage="uk.ac.kcl.inf.zschaler.gridgames" disposableProviderFactory="true"
       fileExtensions="ggame" ecorePackage="GridGame.ecore#/">
     <genClasses ecoreClass="GridGame.ecore#//GridGame">

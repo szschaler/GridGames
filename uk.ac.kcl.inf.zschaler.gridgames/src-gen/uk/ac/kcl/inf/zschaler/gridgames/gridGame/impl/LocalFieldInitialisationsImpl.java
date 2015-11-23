@@ -24,10 +24,10 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.LocalFieldInitialisations;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.LocalFieldInitialisationsImpl#getInitialisations <em>Initialisations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

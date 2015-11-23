@@ -4,6 +4,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -11,7 +12,6 @@ import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
@@ -51,9 +51,9 @@ public class CellGenerator extends CommonGenerator {
     CharSequence _generateCellClass = this.generateCellClass();
     fsa.generateFile(_builder.toString(), _generateCellClass);
     EList<CellSpecification> _cells = this.gg.getCells();
-    final Procedure1<CellSpecification> _function = new Procedure1<CellSpecification>() {
+    final Consumer<CellSpecification> _function = new Consumer<CellSpecification>() {
       @Override
-      public void apply(final CellSpecification c) {
+      public void accept(final CellSpecification c) {
         StringConcatenation _builder = new StringConcatenation();
         CharSequence _generateCellClassFileName = CellGenerator.this.generateCellClassFileName(c);
         _builder.append(_generateCellClassFileName, "");
@@ -61,7 +61,7 @@ public class CellGenerator extends CommonGenerator {
         fsa.generateFile(_builder.toString(), _generateCellClass);
       }
     };
-    IterableExtensions.<CellSpecification>forEach(_cells, _function);
+    _cells.forEach(_function);
     StringConcatenation _builder_1 = new StringConcatenation();
     CharSequence _generateFactoryClassFileName = this.generateFactoryClassFileName();
     _builder_1.append(_generateFactoryClassFileName, "");

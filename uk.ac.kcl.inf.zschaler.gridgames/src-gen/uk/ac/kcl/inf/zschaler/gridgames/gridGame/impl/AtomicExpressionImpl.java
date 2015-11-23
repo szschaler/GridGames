@@ -13,8 +13,6 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Atomic Expression</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
