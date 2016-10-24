@@ -95,7 +95,7 @@ ruleGridGame returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -116,7 +116,7 @@ ruleGridGame returns [EObject current=null]
        			$current, 
        			"states",
         		lv_states_3_0, 
-        		"GlobalCellStateSpec");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.GlobalCellStateSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -135,7 +135,7 @@ ruleGridGame returns [EObject current=null]
        			$current, 
        			"cells",
         		lv_cells_4_0, 
-        		"CellSpecification");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.CellSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -144,17 +144,36 @@ ruleGridGame returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getInitsGlobalFieldInitialisationParserRuleCall_3_2_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getGlobalActionsGlobalActionParserRuleCall_3_2_0()); 
 	    }
-		lv_inits_5_0=ruleGlobalFieldInitialisation		{
+		lv_globalActions_5_0=ruleGlobalAction		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
+	        }
+       		add(
+       			$current, 
+       			"globalActions",
+        		lv_globalActions_5_0, 
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.GlobalAction");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+    |(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getInitsGlobalFieldInitialisationParserRuleCall_3_3_0()); 
+	    }
+		lv_inits_6_0=ruleGlobalFieldInitialisation		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
 	        }
        		add(
        			$current, 
        			"inits",
-        		lv_inits_5_0, 
-        		"GlobalFieldInitialisation");
+        		lv_inits_6_0, 
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.GlobalFieldInitialisation");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -163,17 +182,17 @@ ruleGridGame returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_3_3_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_3_4_0()); 
 	    }
-		lv_fields_6_0=ruleFieldSpecification		{
+		lv_fields_7_0=ruleFieldSpecification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
 	        }
        		add(
        			$current, 
        			"fields",
-        		lv_fields_6_0, 
-        		"FieldSpecification");
+        		lv_fields_7_0, 
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.FieldSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -182,24 +201,24 @@ ruleGridGame returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_3_4_0()); 
+	        newCompositeNode(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_3_5_0()); 
 	    }
-		lv_options_7_0=ruleOptionSpecification		{
+		lv_options_8_0=ruleOptionSpecification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGridGameRule());
 	        }
        		add(
        			$current, 
        			"options",
-        		lv_options_7_0, 
-        		"OptionSpecification");
+        		lv_options_8_0, 
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.OptionSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))+	otherlv_8='}' 
+))+	otherlv_9='}' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getGridGameAccess().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_9, grammarAccess.getGridGameAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;
@@ -240,7 +259,7 @@ ruleCellSpecification returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -261,7 +280,7 @@ ruleCellSpecification returns [EObject current=null]
        			$current, 
        			"members",
         		lv_members_3_0, 
-        		"CellMember");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.CellMember");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -401,7 +420,7 @@ ruleCellDisplaySpec returns [EObject current=null]
        			$current, 
        			"text",
         		lv_text_5_0, 
-        		"STRING");
+        		"org.eclipse.xtext.common.Terminals.STRING");
 	    }
 
 )
@@ -569,7 +588,7 @@ ruleCellVarSpec returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_2_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -612,7 +631,7 @@ ruleGlobalCellStateSpec returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -633,7 +652,7 @@ ruleGlobalCellStateSpec returns [EObject current=null]
        			$current, 
        			"params",
         		lv_params_3_0, 
-        		"ParamSpec");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.ParamSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -655,7 +674,7 @@ ruleGlobalCellStateSpec returns [EObject current=null]
        			$current, 
        			"params",
         		lv_params_5_0, 
-        		"ParamSpec");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.ParamSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -681,7 +700,7 @@ ruleGlobalCellStateSpec returns [EObject current=null]
        			$current, 
        			"states",
         		lv_states_8_0, 
-        		"CellState");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.CellState");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -788,7 +807,7 @@ ruleParamSpec returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -874,7 +893,7 @@ ruleLocalCellStateSpec returns [EObject current=null]
        			$current, 
        			"states",
         		lv_states_2_0, 
-        		"CellState");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.CellState");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -959,7 +978,7 @@ ruleCellStateSpecReference returns [EObject current=null]
        			$current, 
        			"params",
         		lv_params_3_0, 
-        		"Value");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.Value");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -981,7 +1000,7 @@ ruleCellStateSpecReference returns [EObject current=null]
        			$current, 
        			"params",
         		lv_params_5_0, 
-        		"Value");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.Value");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1085,7 +1104,7 @@ ruleStringValue returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_0_0, 
-        		"STRING");
+        		"org.eclipse.xtext.common.Terminals.STRING");
 	    }
 
 )
@@ -1124,7 +1143,7 @@ ruleIntValue returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_0_0, 
-        		"INT");
+        		"org.eclipse.xtext.common.Terminals.INT");
 	    }
 
 )
@@ -1197,7 +1216,7 @@ ruleCellState returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_0_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -1218,7 +1237,7 @@ ruleCellState returns [EObject current=null]
        			$current, 
        			"display",
         		lv_display_2_0, 
-        		"CellDisplaySpec");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.CellDisplaySpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1244,7 +1263,7 @@ ruleCellState returns [EObject current=null]
        			$current, 
        			"transitions",
         		lv_transitions_5_0, 
-        		"TransitionSpec");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.TransitionSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1274,7 +1293,7 @@ ruleCellState returns [EObject current=null]
        			$current, 
        			"onEnter",
         		lv_onEnter_9_0, 
-        		"CellStateBehaviour");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.CellStateBehaviour");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1296,7 +1315,7 @@ ruleCellState returns [EObject current=null]
        			$current, 
        			"onEnter",
         		lv_onEnter_11_0, 
-        		"CellStateBehaviour");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.CellStateBehaviour");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1347,7 +1366,7 @@ ruleTransitionSpec returns [EObject current=null]
        			$current, 
        			"trigger",
         		lv_trigger_1_0, 
-        		"TransitionTriggerSpec");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.TransitionTriggerSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1498,7 +1517,7 @@ ruleContextTrigger returns [EObject current=null]
        			$current, 
        			"exp",
         		lv_exp_2_0, 
-        		"ContextExpression");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.ContextExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1669,7 +1688,7 @@ ruleEndGameBehaviour returns [EObject current=null]
        			$current, 
        			"message",
         		lv_message_2_0, 
-        		"STRING");
+        		"org.eclipse.xtext.common.Terminals.STRING");
 	    }
 
 )
@@ -1711,6 +1730,101 @@ ruleNoOpBehaviour returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
 
 
 
+// Entry rule entryRuleGlobalAction
+entryRuleGlobalAction returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getGlobalActionRule()); }
+	 iv_ruleGlobalAction=ruleGlobalAction 
+	 { $current=$iv_ruleGlobalAction.current; } 
+	 EOF 
+;
+
+// Rule GlobalAction
+ruleGlobalAction returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='action' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getGlobalActionAccess().getActionKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getGlobalActionAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getGlobalActionRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"org.eclipse.xtext.common.Terminals.ID");
+	    }
+
+)
+)	otherlv_2='{' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getGlobalActionAccess().getLeftCurlyBracketKeyword_2());
+    }
+	otherlv_3='when' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getGlobalActionAccess().getWhenKeyword_3());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getGlobalActionAccess().getTriggerContextExpressionParserRuleCall_4_0()); 
+	    }
+		lv_trigger_4_0=ruleContextExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getGlobalActionRule());
+	        }
+       		set(
+       			$current, 
+       			"trigger",
+        		lv_trigger_4_0, 
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.ContextExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_5='do' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getGlobalActionAccess().getDoKeyword_5());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getGlobalActionAccess().getBehaviourDirectBehaviourParserRuleCall_6_0()); 
+	    }
+		lv_behaviour_6_0=ruleDirectBehaviour		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getGlobalActionRule());
+	        }
+       		set(
+       			$current, 
+       			"behaviour",
+        		lv_behaviour_6_0, 
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.DirectBehaviour");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_7='}' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getGlobalActionAccess().getRightCurlyBracketKeyword_7());
+    }
+)
+;
+
+
+
+
+
 // Entry rule entryRuleFieldSpecification
 entryRuleFieldSpecification returns [EObject current=null] 
 	:
@@ -1743,7 +1857,7 @@ ruleFieldSpecification returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -1773,7 +1887,7 @@ ruleFieldSpecification returns [EObject current=null]
        			$current, 
        			"width",
         		lv_width_5_0, 
-        		"INT");
+        		"org.eclipse.xtext.common.Terminals.INT");
 	    }
 
 )
@@ -1799,7 +1913,7 @@ ruleFieldSpecification returns [EObject current=null]
        			$current, 
        			"height",
         		lv_height_8_0, 
-        		"INT");
+        		"org.eclipse.xtext.common.Terminals.INT");
 	    }
 
 )
@@ -1816,7 +1930,7 @@ ruleFieldSpecification returns [EObject current=null]
        			$current, 
        			"field_initialisation",
         		lv_field_initialisation_9_0, 
-        		"FieldInitialisations");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.FieldInitialisations");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2018,7 +2132,7 @@ ruleGlobalFieldInitialisation returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -2039,7 +2153,7 @@ ruleGlobalFieldInitialisation returns [EObject current=null]
        			$current, 
        			"params",
         		lv_params_3_0, 
-        		"ParamSpec");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.ParamSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2061,7 +2175,7 @@ ruleGlobalFieldInitialisation returns [EObject current=null]
        			$current, 
        			"params",
         		lv_params_5_0, 
-        		"ParamSpec");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.ParamSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2087,7 +2201,7 @@ ruleGlobalFieldInitialisation returns [EObject current=null]
        			$current, 
        			"initialisations",
         		lv_initialisations_8_0, 
-        		"FieldInitialisation");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.FieldInitialisation");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2195,7 +2309,7 @@ ruleFieldInitialisationsRef returns [EObject current=null]
        			$current, 
        			"params",
         		lv_params_3_0, 
-        		"Value");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.Value");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2217,7 +2331,7 @@ ruleFieldInitialisationsRef returns [EObject current=null]
        			$current, 
        			"params",
         		lv_params_5_0, 
-        		"Value");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.Value");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2268,7 +2382,7 @@ ruleLocalFieldInitialisations returns [EObject current=null]
        			$current, 
        			"initialisations",
         		lv_initialisations_2_0, 
-        		"FieldInitialisation");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.FieldInitialisation");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2433,7 +2547,7 @@ ruleRandomInitialisation returns [EObject current=null]
        			$current, 
        			"count",
         		lv_count_4_0, 
-        		"INT");
+        		"org.eclipse.xtext.common.Terminals.INT");
 	    }
 
 )
@@ -2510,7 +2624,7 @@ ruleContextInitialisation returns [EObject current=null]
        			$current, 
        			"check",
         		lv_check_4_0, 
-        		"ContextExpression");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.ContextExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2536,7 +2650,7 @@ ruleContextInitialisation returns [EObject current=null]
        			$current, 
        			"exp",
         		lv_exp_7_0, 
-        		"ContextExpression");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.ContextExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2575,7 +2689,7 @@ ruleContextExpression returns [EObject current=null]
        			$current, 
        			"sub_exp",
         		lv_sub_exp_0_0, 
-        		"AtomicExpression");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.AtomicExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2597,7 +2711,7 @@ ruleContextExpression returns [EObject current=null]
        			$current, 
        			"sub_exp",
         		lv_sub_exp_2_0, 
-        		"AtomicExpression");
+        		"uk.ac.kcl.inf.zschaler.gridgames.GridGame.AtomicExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2849,7 +2963,7 @@ ruleCountExpression returns [EObject current=null]
        			$current, 
        			"cmpVal",
         		lv_cmpVal_5_0, 
-        		"INT");
+        		"org.eclipse.xtext.common.Terminals.INT");
 	    }
 
 )

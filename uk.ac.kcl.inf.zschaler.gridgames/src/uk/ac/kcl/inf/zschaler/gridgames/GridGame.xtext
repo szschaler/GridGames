@@ -17,6 +17,7 @@ GridGame :
 	"game" name=ID "{"
 		(states += GlobalCellStateSpec |
 		cells += CellSpecification |
+		globalActions += GlobalAction |
 		inits += GlobalFieldInitialisation |
 		fields += FieldSpecification |
 		options += OptionSpecification)+
@@ -149,6 +150,13 @@ EndGameBehaviour :
 
 NoOpBehaviour :
 	"nop"
+;
+
+GlobalAction :
+	"action" name=ID "{" 
+		"when" trigger = ContextExpression
+		"do" behaviour = DirectBehaviour 
+	"}"
 ;
 
 FieldSpecification :

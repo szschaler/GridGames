@@ -11,6 +11,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GridGame/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/states"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/cells"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/globalActions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/inits"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/fields"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GridGame/options"/>
@@ -81,6 +82,11 @@
     <genClasses ecoreClass="GridGame.ecore#//DirectBehaviour"/>
     <genClasses ecoreClass="GridGame.ecore#//EndGameBehaviour">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//EndGameBehaviour/message"/>
+    </genClasses>
+    <genClasses ecoreClass="GridGame.ecore#//GlobalAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//GlobalAction/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalAction/trigger"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GridGame.ecore#//GlobalAction/behaviour"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//FieldSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//FieldSpecification/name"/>

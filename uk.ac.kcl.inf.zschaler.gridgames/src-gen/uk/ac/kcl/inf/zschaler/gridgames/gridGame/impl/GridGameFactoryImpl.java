@@ -88,6 +88,7 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
       case GridGamePackage.BEHAVIOUR_REFERENCE: return createBehaviourReference();
       case GridGamePackage.DIRECT_BEHAVIOUR: return createDirectBehaviour();
       case GridGamePackage.END_GAME_BEHAVIOUR: return createEndGameBehaviour();
+      case GridGamePackage.GLOBAL_ACTION: return createGlobalAction();
       case GridGamePackage.FIELD_SPECIFICATION: return createFieldSpecification();
       case GridGamePackage.OPTION_SPECIFICATION: return createOptionSpecification();
       case GridGamePackage.ALLOW_RESTART_MENU: return createAllowRestartMenu();
@@ -375,6 +376,17 @@ public class GridGameFactoryImpl extends EFactoryImpl implements GridGameFactory
   {
     EndGameBehaviourImpl endGameBehaviour = new EndGameBehaviourImpl();
     return endGameBehaviour;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GlobalAction createGlobalAction()
+  {
+    GlobalActionImpl globalAction = new GlobalActionImpl();
+    return globalAction;
   }
 
   /**
