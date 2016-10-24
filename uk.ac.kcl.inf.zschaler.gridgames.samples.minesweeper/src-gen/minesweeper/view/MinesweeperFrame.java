@@ -179,11 +179,11 @@ public class MinesweeperFrame extends JFrame {
 	
 	private void handleStateChange (Cell c) {
 		switch (c.getState().getStateID()) {
-			case 5:
-												break; case 2:
+			case 2:
 												break; case 8:
 												handlingInput = false;
 												JOptionPane.showMessageDialog(MinesweeperFrame.this, "KA-BOOM!");
+												break; case 5:
 												break;
 		}
 	}

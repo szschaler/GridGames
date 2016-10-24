@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import minesweeper.model.cells.BorderingMineCell;
 import minesweeper.model.cells.EmptyCell;
 import minesweeper.model.cells.MineCell;
+import minesweeper.model.cells.BorderingMineCell;
 
 
 public class MinesweeperField extends AbstractTableModel {
@@ -59,14 +59,7 @@ public class MinesweeperField extends AbstractTableModel {
 						ce.getCell().setState (ce.getCell().getState().getContextBasedFollowState (ce.getContextHere()), ce.getRow(), ce.getCol(), MinesweeperField.this);
 						/*
 						switch (ce.getCell().getState().getStateID()) {
-							case 3:
-																	if (context.filterEmpty().inStateDiscovered().notEmpty()) {
-																		ce.getCell().setState (
-																			((BorderingMineCell) ce.getCell()).new DiscoveredCellState(),
-																			ce.getRow(), ce.getCol(), 
-																			MinesweeperField.this);
-																	}
-																   	break; case 0:
+							case 0:
 																	if (context.filterEmpty().inStateDiscovered().notEmpty()) {
 																		ce.getCell().setState (
 																			((EmptyCell) ce.getCell()).new DiscoveredCellState(),
@@ -77,6 +70,13 @@ public class MinesweeperField extends AbstractTableModel {
 																	if (context.filterEmpty().inStateDiscovered().notEmpty()) {
 																		ce.getCell().setState (
 																			((MineCell) ce.getCell()).new DiscoveredCellState(),
+																			ce.getRow(), ce.getCol(), 
+																			MinesweeperField.this);
+																	}
+																   	break; case 3:
+																	if (context.filterEmpty().inStateDiscovered().notEmpty()) {
+																		ce.getCell().setState (
+																			((BorderingMineCell) ce.getCell()).new DiscoveredCellState(),
 																			ce.getRow(), ce.getCol(), 
 																			MinesweeperField.this);
 																	}
@@ -308,9 +308,9 @@ public class MinesweeperField extends AbstractTableModel {
 			
 			for (ContextElement c : al) {
 				switch (c.getCell().getState().getStateID()) {
-					case 5: 
 					case 2: 
 					case 8: 
+					case 5: 
 						newAL.add (c);
 				}
 			}

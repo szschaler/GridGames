@@ -70,8 +70,22 @@ game minesweeper {
 			transitions {
 				on mouse-left goto discovered
 				on mouse-right goto hidden
+				//on mouse-right goto question
 			}
-		}			
+		}
+		/*
+		question {
+			display {
+				as button
+				text "?"
+			}
+
+			transitions {
+				on mouse-left goto discovered
+				on mouse-right goto hidden
+			}
+		}
+		*/
 		discovered {
 			display {
 				as label
