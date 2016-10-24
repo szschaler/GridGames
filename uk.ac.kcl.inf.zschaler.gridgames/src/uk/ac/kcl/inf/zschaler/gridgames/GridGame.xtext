@@ -229,7 +229,8 @@ AtomicExpression :
 	FilterExpression |
 	StateFilterExpression |
 	CountExpression |
-	NotEmptyExpression 
+	NotEmptyExpression | 
+	EmptyExpression 
 ;
 
 FilterExpression :
@@ -246,4 +247,8 @@ CountExpression :
 
 NotEmptyExpression :
 	"notEmpty" "(" ")" {NotEmptyExpression}
+;
+
+EmptyExpression :
+	"empty" "(" ")" {EmptyExpression}
 ;

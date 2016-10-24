@@ -24,6 +24,7 @@
 'default'=57
 'display'=29
 'do'=49
+'empty'=67
 'end-game'=46
 'field'=50
 'filter'=63
@@ -35,7 +36,7 @@
 'init'=55
 'int'=19
 'label'=12
-'mouse-left'=67
+'mouse-left'=68
 'mouse-right'=44
 'nop'=11
 'notEmpty'=66
@@ -119,3 +120,4 @@ T__64=64
 T__65=65
 T__66=66
 T__67=67
+T__68=68

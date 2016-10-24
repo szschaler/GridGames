@@ -22,6 +22,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
@@ -439,6 +440,18 @@ public class CellContextGenerator extends CommonGenerator {
     return _builder;
   }
   
+  protected CharSequence _generateImplementation(final EmptyExpression nee) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public boolean empty() {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("return al.size() == 0;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
   protected CharSequence _generateImplementation(final CountExpression ce) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public int size() {");
@@ -471,6 +484,8 @@ public class CellContextGenerator extends CommonGenerator {
   public CharSequence generateImplementation(final AtomicExpression ce) {
     if (ce instanceof CountExpression) {
       return _generateImplementation((CountExpression)ce);
+    } else if (ce instanceof EmptyExpression) {
+      return _generateImplementation((EmptyExpression)ce);
     } else if (ce instanceof FilterExpression) {
       return _generateImplementation((FilterExpression)ce);
     } else if (ce instanceof NotEmptyExpression) {

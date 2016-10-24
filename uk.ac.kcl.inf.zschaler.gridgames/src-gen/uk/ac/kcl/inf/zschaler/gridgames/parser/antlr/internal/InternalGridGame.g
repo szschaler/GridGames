@@ -2776,6 +2776,16 @@ ruleAtomicExpression returns [EObject current=null]
         $current = $this_NotEmptyExpression_3.current; 
         afterParserOrEnumRuleCall();
     }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getAtomicExpressionAccess().getEmptyExpressionParserRuleCall_4()); 
+    }
+    this_EmptyExpression_4=ruleEmptyExpression
+    { 
+        $current = $this_EmptyExpression_4.current; 
+        afterParserOrEnumRuleCall();
+    }
 )
 ;
 
@@ -3004,6 +3014,45 @@ ruleNotEmptyExpression returns [EObject current=null]
     {
         $current = forceCreateModelElement(
             grammarAccess.getNotEmptyExpressionAccess().getNotEmptyExpressionAction_3(),
+            $current);
+    }
+))
+;
+
+
+
+
+
+// Entry rule entryRuleEmptyExpression
+entryRuleEmptyExpression returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getEmptyExpressionRule()); }
+	 iv_ruleEmptyExpression=ruleEmptyExpression 
+	 { $current=$iv_ruleEmptyExpression.current; } 
+	 EOF 
+;
+
+// Rule EmptyExpression
+ruleEmptyExpression returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='empty' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getEmptyExpressionAccess().getEmptyKeyword_0());
+    }
+	otherlv_1='(' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getEmptyExpressionAccess().getLeftParenthesisKeyword_1());
+    }
+	otherlv_2=')' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getEmptyExpressionAccess().getRightParenthesisKeyword_2());
+    }
+(
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getEmptyExpressionAccess().getEmptyExpressionAction_3(),
             $current);
     }
 ))

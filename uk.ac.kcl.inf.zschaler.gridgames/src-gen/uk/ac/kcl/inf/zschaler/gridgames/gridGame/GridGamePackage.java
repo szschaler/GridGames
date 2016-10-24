@@ -1496,6 +1496,25 @@ public interface GridGamePackage extends EPackage
   int NOT_EMPTY_EXPRESSION_FEATURE_COUNT = ATOMIC_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.EmptyExpressionImpl <em>Empty Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.EmptyExpressionImpl
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getEmptyExpression()
+   * @generated
+   */
+  int EMPTY_EXPRESSION = 44;
+
+  /**
+   * The number of structural features of the '<em>Empty Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EMPTY_EXPRESSION_FEATURE_COUNT = ATOMIC_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NoOpBehaviourImpl <em>No Op Behaviour</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1503,7 +1522,7 @@ public interface GridGamePackage extends EPackage
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getNoOpBehaviour()
    * @generated
    */
-  int NO_OP_BEHAVIOUR = 44;
+  int NO_OP_BEHAVIOUR = 45;
 
   /**
    * The number of structural features of the '<em>No Op Behaviour</em>' class.
@@ -2616,6 +2635,16 @@ public interface GridGamePackage extends EPackage
   EClass getNotEmptyExpression();
 
   /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression <em>Empty Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Empty Expression</em>'.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression
+   * @generated
+   */
+  EClass getEmptyExpression();
+
+  /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour <em>No Op Behaviour</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3567,6 +3596,16 @@ public interface GridGamePackage extends EPackage
      * @generated
      */
     EClass NOT_EMPTY_EXPRESSION = eINSTANCE.getNotEmptyExpression();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.EmptyExpressionImpl <em>Empty Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.EmptyExpressionImpl
+     * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.GridGamePackageImpl#getEmptyExpression()
+     * @generated
+     */
+    EClass EMPTY_EXPRESSION = eINSTANCE.getEmptyExpression();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl.NoOpBehaviourImpl <em>No Op Behaviour</em>}' class.

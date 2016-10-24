@@ -140,6 +140,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GridGame.ecore#//CountExpression/cmpVal"/>
     </genClasses>
     <genClasses ecoreClass="GridGame.ecore#//NotEmptyExpression"/>
+    <genClasses ecoreClass="GridGame.ecore#//EmptyExpression"/>
     <genClasses ecoreClass="GridGame.ecore#//NoOpBehaviour"/>
   </genPackages>
 </genmodel:GenModel>

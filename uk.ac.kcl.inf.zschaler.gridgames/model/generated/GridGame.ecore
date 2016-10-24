@@ -161,5 +161,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cmpVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NotEmptyExpression" eSuperTypes="#//AtomicExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EmptyExpression" eSuperTypes="#//AtomicExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="NoOpBehaviour" eSuperTypes="#//DirectBehaviour"/>
 </ecore:EPackage>

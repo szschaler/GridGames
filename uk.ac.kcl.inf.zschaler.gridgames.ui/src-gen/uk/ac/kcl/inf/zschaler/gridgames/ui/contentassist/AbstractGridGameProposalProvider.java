@@ -354,4 +354,7 @@ public class AbstractGridGameProposalProvider extends org.eclipse.xtext.common.u
 	public void complete_NotEmptyExpression(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
 	}
+	public void complete_EmptyExpression(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
 }

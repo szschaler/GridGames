@@ -26,6 +26,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
@@ -100,6 +101,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.DEFAULT_INITIALISATION:
 				sequence_DefaultInitialisation(context, (DefaultInitialisation) semanticObject); 
+				return; 
+			case GridGamePackage.EMPTY_EXPRESSION:
+				sequence_EmptyExpression(context, (EmptyExpression) semanticObject); 
 				return; 
 			case GridGamePackage.END_GAME_BEHAVIOUR:
 				sequence_EndGameBehaviour(context, (EndGameBehaviour) semanticObject); 
@@ -378,6 +382,19 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     {NoOpBehaviour}
 	 */
 	protected void sequence_DirectBehaviour(ISerializationContext context, NoOpBehaviour semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AtomicExpression returns EmptyExpression
+	 *     EmptyExpression returns EmptyExpression
+	 *
+	 * Constraint:
+	 *     {EmptyExpression}
+	 */
+	protected void sequence_EmptyExpression(ISerializationContext context, EmptyExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

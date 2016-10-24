@@ -4,6 +4,7 @@ import java.util.Set
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression
@@ -139,6 +140,12 @@ class CellContextGenerator extends CommonGenerator {
 	def dispatch generateImplementation(NotEmptyExpression nee) '''
 		public boolean notEmpty() {
 			return al.size() > 0;
+		}
+	'''
+
+	def dispatch generateImplementation(EmptyExpression nee) '''
+		public boolean empty() {
+			return al.size() == 0;
 		}
 	'''
 
