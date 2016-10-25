@@ -6,6 +6,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DirectBehaviour
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalAction
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 
@@ -112,10 +113,10 @@ class FrameGenerator extends CommonGenerator {
 
 							for (int row = firstRow; row <= lastRow; row++) {
 								if (col != TableModelEvent.ALL_COLUMNS) {
-									handleStateChange (field.getValueAt(row, col));
+									handleStateChange (field.getValueAt(row, col), (row == firstRow));
 								} else {
 									for (col = 0; col < field.getColumnCount(); col++) {
-										handleStateChange (field.getValueAt(row, col));								
+										handleStateChange (field.getValueAt(row, col), ((row == firstRow) && (col == 0)));								
 									}
 								}
 							}
@@ -207,7 +208,7 @@ class FrameGenerator extends CommonGenerator {
 				pack();
 			}
 			
-			private void handleStateChange (Cell c) {
+			private void handleStateChange (Cell c, boolean firstNotification) {
 				«val states = mpp.allStatesWithEnterActions»
 				«
 				if (! states.empty) {
@@ -222,6 +223,7 @@ class FrameGenerator extends CommonGenerator {
 					'''
 				}
 				»
+				«generateGlobalActionsCode»
 			}
 			
 			public static void main(String[] args) {
@@ -229,9 +231,30 @@ class FrameGenerator extends CommonGenerator {
 			}
 		}
 	'''
+
+	def generateGlobalActionsCode() '''
+		«IF (!gg.globalActions.empty)»
+			if (firstNotification) {
+				final «generateFieldClassName».CellContext context = field.getGlobalContext();
+				
+				«gg.globalActions.join("\n", [ga | ga.generateCodeFor])»
+			}
+		«ENDIF»
+		
+	'''
+		
+	def generateCodeFor (GlobalAction ga) '''
+		if («ga.trigger.generateFor») {
+			«ga.behaviour.generateCodeFor(null)»
+		}
+	'''
 	
 	def dispatch CharSequence generateCodeFor(EndGameBehaviour egb, Map<String, Value> symbols) '''
-		handlingInput = false;
+		«IF (!mpp.doGenerateGenerationalContexts)»
+			handlingInput = false;
+		«ELSE»
+			field.stopGenerationComputation();
+		«ENDIF»
 		JOptionPane.showMessageDialog(«generateFrameClassName».this, "«egb.message»");
 	'''
 	

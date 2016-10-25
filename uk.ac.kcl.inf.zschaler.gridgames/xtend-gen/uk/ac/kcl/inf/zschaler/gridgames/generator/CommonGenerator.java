@@ -15,6 +15,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
@@ -210,23 +211,49 @@ public class CommonGenerator {
   
   protected CharSequence _generateFor(final FilterExpression fe) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("filter");
-    CellSpecification _cell_type = fe.getCell_type();
-    String _name = _cell_type.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
+    CharSequence _generateMethodName = this.generateMethodName(fe);
+    _builder.append(_generateMethodName, "");
     _builder.append("()");
+    return _builder;
+  }
+  
+  public CharSequence generateMethodName(final FilterExpression fe) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("filter");
+    EList<CellSpecification> _cell_type = fe.getCell_type();
+    final Function1<CellSpecification, CharSequence> _function = new Function1<CellSpecification, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellSpecification ct) {
+        String _name = ct.getName();
+        return StringExtensions.toFirstUpper(_name);
+      }
+    };
+    String _join = IterableExtensions.<CellSpecification>join(_cell_type, "Or", _function);
+    _builder.append(_join, "");
     return _builder;
   }
   
   protected CharSequence _generateFor(final StateFilterExpression sfe) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("inState");
-    CellState _cell_state = sfe.getCell_state();
-    String _name = _cell_state.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
+    CharSequence _generateMethodName = this.generateMethodName(sfe);
+    _builder.append(_generateMethodName, "");
     _builder.append("()");
+    return _builder;
+  }
+  
+  public CharSequence generateMethodName(final StateFilterExpression sfe) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("inState");
+    EList<CellState> _cell_state = sfe.getCell_state();
+    final Function1<CellState, CharSequence> _function = new Function1<CellState, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellState cs) {
+        String _name = cs.getName();
+        return StringExtensions.toFirstUpper(_name);
+      }
+    };
+    String _join = IterableExtensions.<CellState>join(_cell_state, "Or", _function);
+    _builder.append(_join, "");
     return _builder;
   }
   
@@ -255,9 +282,17 @@ public class CommonGenerator {
     return _builder;
   }
   
+  protected CharSequence _generateFor(final EmptyExpression nee) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("empty()");
+    return _builder;
+  }
+  
   public CharSequence generateFor(final EObject ce) {
     if (ce instanceof CountExpression) {
       return _generateFor((CountExpression)ce);
+    } else if (ce instanceof EmptyExpression) {
+      return _generateFor((EmptyExpression)ce);
     } else if (ce instanceof FilterExpression) {
       return _generateFor((FilterExpression)ce);
     } else if (ce instanceof NotEmptyExpression) {

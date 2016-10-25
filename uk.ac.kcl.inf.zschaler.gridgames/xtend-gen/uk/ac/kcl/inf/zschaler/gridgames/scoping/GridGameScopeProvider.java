@@ -3,7 +3,19 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.scoping;
 
+import com.google.common.base.Objects;
+import java.util.List;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
 
 /**
  * This class contains custom scoping description.
@@ -13,4 +25,22 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
  */
 @SuppressWarnings("all")
 public class GridGameScopeProvider extends AbstractDeclarativeScopeProvider {
+  @Override
+  public IScope getScope(final EObject context, final EReference reference) {
+    EClass _eReferenceType = reference.getEReferenceType();
+    boolean _equals = Objects.equal(_eReferenceType, GridGamePackage.Literals.CELL_SPECIFICATION);
+    if (_equals) {
+      EObject rootElement = EcoreUtil2.getRootContainer(context);
+      List<? extends EObject> candidates = EcoreUtil2.<CellSpecification>getAllContentsOfType(rootElement, CellSpecification.class);
+      return Scopes.scopeFor(candidates);
+    } else {
+      return super.getScope(context, reference);
+    }
+  }
+  
+  public IScope scope_StateFilterExpression_cell_state(final StateFilterExpression sfe, final EReference reference) {
+    EObject rootElement = EcoreUtil2.getRootContainer(sfe);
+    List<? extends EObject> candidates = EcoreUtil2.<CellState>getAllContentsOfType(rootElement, CellState.class);
+    return Scopes.scopeFor(candidates);
+  }
 }

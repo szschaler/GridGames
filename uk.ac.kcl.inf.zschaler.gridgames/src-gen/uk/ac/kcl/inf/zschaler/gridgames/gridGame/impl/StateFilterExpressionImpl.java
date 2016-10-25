@@ -2,12 +2,13 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
@@ -29,14 +30,14 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
 public class StateFilterExpressionImpl extends AtomicExpressionImpl implements StateFilterExpression
 {
   /**
-   * The cached value of the '{@link #getCell_state() <em>Cell state</em>}' reference.
+   * The cached value of the '{@link #getCell_state() <em>Cell state</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCell_state()
    * @generated
    * @ordered
    */
-  protected CellState cell_state;
+  protected EList<CellState> cell_state;
 
   /**
    * <!-- begin-user-doc -->
@@ -64,42 +65,13 @@ public class StateFilterExpressionImpl extends AtomicExpressionImpl implements S
    * <!-- end-user-doc -->
    * @generated
    */
-  public CellState getCell_state()
+  public EList<CellState> getCell_state()
   {
-    if (cell_state != null && cell_state.eIsProxy())
+    if (cell_state == null)
     {
-      InternalEObject oldCell_state = (InternalEObject)cell_state;
-      cell_state = (CellState)eResolveProxy(oldCell_state);
-      if (cell_state != oldCell_state)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GridGamePackage.STATE_FILTER_EXPRESSION__CELL_STATE, oldCell_state, cell_state));
-      }
+      cell_state = new EObjectResolvingEList<CellState>(CellState.class, this, GridGamePackage.STATE_FILTER_EXPRESSION__CELL_STATE);
     }
     return cell_state;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CellState basicGetCell_state()
-  {
-    return cell_state;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setCell_state(CellState newCell_state)
-  {
-    CellState oldCell_state = cell_state;
-    cell_state = newCell_state;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.STATE_FILTER_EXPRESSION__CELL_STATE, oldCell_state, cell_state));
   }
 
   /**
@@ -113,8 +85,7 @@ public class StateFilterExpressionImpl extends AtomicExpressionImpl implements S
     switch (featureID)
     {
       case GridGamePackage.STATE_FILTER_EXPRESSION__CELL_STATE:
-        if (resolve) return getCell_state();
-        return basicGetCell_state();
+        return getCell_state();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -124,13 +95,15 @@ public class StateFilterExpressionImpl extends AtomicExpressionImpl implements S
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case GridGamePackage.STATE_FILTER_EXPRESSION__CELL_STATE:
-        setCell_state((CellState)newValue);
+        getCell_state().clear();
+        getCell_state().addAll((Collection<? extends CellState>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -147,7 +120,7 @@ public class StateFilterExpressionImpl extends AtomicExpressionImpl implements S
     switch (featureID)
     {
       case GridGamePackage.STATE_FILTER_EXPRESSION__CELL_STATE:
-        setCell_state((CellState)null);
+        getCell_state().clear();
         return;
     }
     super.eUnset(featureID);
@@ -164,7 +137,7 @@ public class StateFilterExpressionImpl extends AtomicExpressionImpl implements S
     switch (featureID)
     {
       case GridGamePackage.STATE_FILTER_EXPRESSION__CELL_STATE:
-        return cell_state != null;
+        return cell_state != null && !cell_state.isEmpty();
     }
     return super.eIsSet(featureID);
   }

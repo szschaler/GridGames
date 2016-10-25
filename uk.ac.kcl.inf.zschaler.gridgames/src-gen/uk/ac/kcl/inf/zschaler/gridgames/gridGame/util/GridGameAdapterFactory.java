@@ -195,6 +195,11 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
         return createEndGameBehaviourAdapter();
       }
       @Override
+      public Adapter caseGlobalAction(GlobalAction object)
+      {
+        return createGlobalActionAdapter();
+      }
+      @Override
       public Adapter caseFieldSpecification(FieldSpecification object)
       {
         return createFieldSpecificationAdapter();
@@ -288,6 +293,11 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
       public Adapter caseNotEmptyExpression(NotEmptyExpression object)
       {
         return createNotEmptyExpressionAdapter();
+      }
+      @Override
+      public Adapter caseEmptyExpression(EmptyExpression object)
+      {
+        return createEmptyExpressionAdapter();
       }
       @Override
       public Adapter caseNoOpBehaviour(NoOpBehaviour object)
@@ -677,6 +687,21 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalAction <em>Global Action</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalAction
+   * @generated
+   */
+  public Adapter createGlobalActionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification <em>Field Specification</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -957,6 +982,21 @@ public class GridGameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNotEmptyExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression <em>Empty Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression
+   * @generated
+   */
+  public Adapter createEmptyExpressionAdapter()
   {
     return null;
   }

@@ -45,5 +45,10 @@ game GameOfLife {
 		init {default: Cell;}
 	}
 	
+	action all_mines_found {
+		when inState(alive).empty()
+		do end-game ("No living cells left")
+	}
+	
 	start = dflt	
 }

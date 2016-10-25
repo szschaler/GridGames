@@ -2,12 +2,13 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.gridGame.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
@@ -29,14 +30,14 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
 public class FilterExpressionImpl extends AtomicExpressionImpl implements FilterExpression
 {
   /**
-   * The cached value of the '{@link #getCell_type() <em>Cell type</em>}' reference.
+   * The cached value of the '{@link #getCell_type() <em>Cell type</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCell_type()
    * @generated
    * @ordered
    */
-  protected CellSpecification cell_type;
+  protected EList<CellSpecification> cell_type;
 
   /**
    * <!-- begin-user-doc -->
@@ -64,42 +65,13 @@ public class FilterExpressionImpl extends AtomicExpressionImpl implements Filter
    * <!-- end-user-doc -->
    * @generated
    */
-  public CellSpecification getCell_type()
+  public EList<CellSpecification> getCell_type()
   {
-    if (cell_type != null && cell_type.eIsProxy())
+    if (cell_type == null)
     {
-      InternalEObject oldCell_type = (InternalEObject)cell_type;
-      cell_type = (CellSpecification)eResolveProxy(oldCell_type);
-      if (cell_type != oldCell_type)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GridGamePackage.FILTER_EXPRESSION__CELL_TYPE, oldCell_type, cell_type));
-      }
+      cell_type = new EObjectResolvingEList<CellSpecification>(CellSpecification.class, this, GridGamePackage.FILTER_EXPRESSION__CELL_TYPE);
     }
     return cell_type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CellSpecification basicGetCell_type()
-  {
-    return cell_type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setCell_type(CellSpecification newCell_type)
-  {
-    CellSpecification oldCell_type = cell_type;
-    cell_type = newCell_type;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GridGamePackage.FILTER_EXPRESSION__CELL_TYPE, oldCell_type, cell_type));
   }
 
   /**
@@ -113,8 +85,7 @@ public class FilterExpressionImpl extends AtomicExpressionImpl implements Filter
     switch (featureID)
     {
       case GridGamePackage.FILTER_EXPRESSION__CELL_TYPE:
-        if (resolve) return getCell_type();
-        return basicGetCell_type();
+        return getCell_type();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -124,13 +95,15 @@ public class FilterExpressionImpl extends AtomicExpressionImpl implements Filter
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case GridGamePackage.FILTER_EXPRESSION__CELL_TYPE:
-        setCell_type((CellSpecification)newValue);
+        getCell_type().clear();
+        getCell_type().addAll((Collection<? extends CellSpecification>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -147,7 +120,7 @@ public class FilterExpressionImpl extends AtomicExpressionImpl implements Filter
     switch (featureID)
     {
       case GridGamePackage.FILTER_EXPRESSION__CELL_TYPE:
-        setCell_type((CellSpecification)null);
+        getCell_type().clear();
         return;
     }
     super.eUnset(featureID);
@@ -164,7 +137,7 @@ public class FilterExpressionImpl extends AtomicExpressionImpl implements Filter
     switch (featureID)
     {
       case GridGamePackage.FILTER_EXPRESSION__CELL_TYPE:
-        return cell_type != null;
+        return cell_type != null && !cell_type.isEmpty();
     }
     return super.eIsSet(featureID);
   }

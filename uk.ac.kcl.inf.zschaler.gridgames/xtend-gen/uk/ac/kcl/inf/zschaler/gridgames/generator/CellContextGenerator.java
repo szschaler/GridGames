@@ -1,6 +1,5 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.Arrays;
 import java.util.List;
@@ -22,9 +21,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalAction;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
@@ -46,170 +47,452 @@ public class CellContextGenerator extends CommonGenerator {
       _builder.append("private CellContext getContextAt (int x, int y) {");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("return new CellContext(x, y);");
+      _builder.append("return new LocalCellContext(x, y);");
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("public class CellContext implements Iterable<CellContext.ContextElement> {");
+      _builder.append("public CellContext getGlobalContext() {");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("public class ContextElement {");
+      _builder.append("return new GlobalCellContext();");
       _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("private Cell cell;");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("private int dx, dy;");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("public ContextElement (int dx, int dy, Cell cell) {");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("this.dx = dx; this.dy = dy;");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("this.cell = cell;");
-      _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("}");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("public Cell getCell() {");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("return cell;");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("public CellContext getContextHere() {");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("return getContextAt (x + dx, y + dy);");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("public int getRow() {");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("return y + dy;");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("public int getCol() {");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("return x + dx;");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("private ArrayList<ContextElement> al = new ArrayList<> (8);");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("private int x, y; ");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("public CellContext (int x, int y) {");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("this.x = x; this.y = y;");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("for (int dx = -1; dx <= 1; dx ++) {");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("for (int dy = -1; dy <= 1; dy++) {");
-      _builder.newLine();
-      _builder.append("\t\t\t\t");
-      _builder.append("if (((dx != 0) || (dy != 0)) && ");
-      _builder.newLine();
-      _builder.append("\t\t\t\t    ");
-      _builder.append("((x + dx >= 0) && (x + dx < width)) &&");
-      _builder.newLine();
-      _builder.append("\t\t\t\t    ");
-      _builder.append("((y + dy >= 0) && (y + dy < height)) &&");
-      _builder.newLine();
-      _builder.append("\t\t\t\t    ");
-      _builder.append("(field[x + dx][y + dy] != null)) {");
-      _builder.newLine();
-      _builder.append("\t\t\t\t\t");
-      _builder.append("al.add (new ContextElement (dx, dy, field[x + dx][y + dy]));");
-      _builder.newLine();
-      _builder.append("\t\t\t\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("public Iterator<ContextElement> iterator() {");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("return al.iterator();");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.newLine();
-      _builder.append("\t");
-      List<AtomicExpression> _contextExpInvocations = this.getContextExpInvocations(this.gg);
-      final Function1<AtomicExpression, String> _function = new Function1<AtomicExpression, String>() {
-        @Override
-        public String apply(final AtomicExpression e) {
-          CharSequence _generateImplementation = CellContextGenerator.this.generateImplementation(e);
-          return _generateImplementation.toString();
-        }
-      };
-      List<String> _map = ListExtensions.<AtomicExpression, String>map(_contextExpInvocations, _function);
-      Set<String> _set = IterableExtensions.<String>toSet(_map);
-      String _join = IterableExtensions.join(_set, " ");
-      _builder.append(_join, "\t");
+      CharSequence _generateCellContextIntf = this.generateCellContextIntf();
+      _builder.append(_generateCellContextIntf, "");
       _builder.newLineIfNotEmpty();
-      _builder.append("}");
       _builder.newLine();
+      CharSequence _generateAbstractCellContext = this.generateAbstractCellContext();
+      _builder.append(_generateAbstractCellContext, "");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      CharSequence _generateLocalCellContext = this.generateLocalCellContext();
+      _builder.append(_generateLocalCellContext, "");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      CharSequence _generateGlobalCellContext = this.generateGlobalCellContext();
+      _builder.append(_generateGlobalCellContext, "");
+      _builder.newLineIfNotEmpty();
       _xifexpression = _builder;
     }
     return _xifexpression;
   }
   
+  public CharSequence generateCellContextIntf() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public interface CellContext extends Iterable<CellContext.ContextElement> {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public interface ContextElement {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public Cell getCell();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public CellContext getContextHere();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public int getRow();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public int getCol();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("/*");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("* Not ideal, should really be defined in AbstractCellContext, but Java won\'t let me do that...");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("*/");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public interface ContextCreationStrategy {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public List<ContextElement> getContextElements(CellContext context);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    List<AtomicExpression> _contextExpInvocations = this.getContextExpInvocations(this.gg);
+    final Function1<AtomicExpression, String> _function = new Function1<AtomicExpression, String>() {
+      @Override
+      public String apply(final AtomicExpression e) {
+        CharSequence _generateSignature = CellContextGenerator.this.generateSignature(e);
+        return _generateSignature.toString();
+      }
+    };
+    List<String> _map = ListExtensions.<AtomicExpression, String>map(_contextExpInvocations, _function);
+    Set<String> _set = IterableExtensions.<String>toSet(_map);
+    String _join = IterableExtensions.join(_set, "\n");
+    _builder.append(_join, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateAbstractCellContext() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public abstract class AbstractCellContext implements CellContext {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("private List<CellContext.ContextElement> al;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public AbstractCellContext (ContextCreationStrategy ccs) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("this.al = ccs.getContextElements(this);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public Iterator<CellContext.ContextElement> iterator() {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return al.iterator();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    List<AtomicExpression> _contextExpInvocations = this.getContextExpInvocations(this.gg);
+    final Function1<AtomicExpression, String> _function = new Function1<AtomicExpression, String>() {
+      @Override
+      public String apply(final AtomicExpression e) {
+        CharSequence _generateImplementation = CellContextGenerator.this.generateImplementation(e);
+        return _generateImplementation.toString();
+      }
+    };
+    List<String> _map = ListExtensions.<AtomicExpression, String>map(_contextExpInvocations, _function);
+    Set<String> _set = IterableExtensions.<String>toSet(_map);
+    String _join = IterableExtensions.join(_set, " ");
+    _builder.append(_join, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateLocalCellContext() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public class LocalCellContext extends AbstractCellContext {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public class ContextElement implements CellContext.ContextElement {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("private Cell cell;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("private int x, y;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public ContextElement (int x, int y, Cell cell) {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("this.x = x; this.y = y;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("this.cell = cell;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public Cell getCell() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("return cell;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public CellContext getContextHere() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("return getContextAt (x, y);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public int getRow() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("return y;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public int getCol() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("return x;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public LocalCellContext (final int x, final int y) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("super (new ContextCreationStrategy() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("public List<CellContext.ContextElement> getContextElements(CellContext context) {");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("ArrayList<CellContext.ContextElement> al = new ArrayList<>(8);");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("for (int dx = -1; dx <= 1; dx ++) {");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("for (int dy = -1; dy <= 1; dy++) {");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t");
+    _builder.append("if (((dx != 0) || (dy != 0)) && ");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t    ");
+    _builder.append("((x + dx >= 0) && (x + dx < width)) &&");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t    ");
+    _builder.append("((y + dy >= 0) && (y + dy < height)) &&");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t    ");
+    _builder.append("(field[x + dx][y + dy] != null)) {");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t\t");
+    _builder.append("al.add (((LocalCellContext) context).new ContextElement (x + dx, y + dy, field[x + dx][y + dy]));");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("return al;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("});");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateGlobalCellContext() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public class GlobalCellContext extends AbstractCellContext {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public class ContextElement implements CellContext.ContextElement {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("private Cell cell;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("private int x, y;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public ContextElement (int x, int y, Cell cell) {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("this.x = x; this.y = y;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("this.cell = cell;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public Cell getCell() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("return cell;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public CellContext getContextHere() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("return getContextAt (x, y);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public int getRow() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("return y;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public int getCol() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("return x;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public GlobalCellContext() {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("super (new ContextCreationStrategy() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("public List<CellContext.ContextElement> getContextElements(CellContext context) {");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("ArrayList<CellContext.ContextElement> al = new ArrayList<>(width * height);");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("for (int x = 0; x < width; x ++) {");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("for (int y = 0; y < height; y++) {");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t");
+    _builder.append("al.add (((GlobalCellContext) context).new ContextElement (x, y, field[x][y]));");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("return al;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("});");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
   private boolean needContextGeneration() {
     boolean _or = false;
+    boolean _or_1 = false;
     EList<FieldSpecification> _fields = this.gg.getFields();
     final Function1<FieldSpecification, Boolean> _function = new Function1<FieldSpecification, Boolean>() {
       @Override
@@ -227,12 +510,20 @@ public class CellContextGenerator extends CommonGenerator {
     };
     boolean _exists = IterableExtensions.<FieldSpecification>exists(_fields, _function);
     if (_exists) {
-      _or = true;
+      _or_1 = true;
     } else {
       Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers = this.mpp.getAllStatesWithContextTriggers();
       boolean _isEmpty = IterableExtensions.isEmpty(_allStatesWithContextTriggers);
       boolean _not = (!_isEmpty);
-      _or = _not;
+      _or_1 = _not;
+    }
+    if (_or_1) {
+      _or = true;
+    } else {
+      EList<GlobalAction> _globalActions = this.gg.getGlobalActions();
+      boolean _isEmpty_1 = _globalActions.isEmpty();
+      boolean _not_1 = (!_isEmpty_1);
+      _or = _not_1;
     }
     return _or;
   }
@@ -307,6 +598,17 @@ public class CellContextGenerator extends CommonGenerator {
       Iterable<Iterable<AtomicExpression>> _map_1 = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Iterable<AtomicExpression>>map(_allCellStates, _function_1);
       Iterable<AtomicExpression> _flatten_1 = Iterables.<AtomicExpression>concat(_map_1);
       Iterables.<AtomicExpression>addAll(contextExpInvs, _flatten_1);
+      EList<GlobalAction> _globalActions = gg.getGlobalActions();
+      final Function1<GlobalAction, EList<AtomicExpression>> _function_2 = new Function1<GlobalAction, EList<AtomicExpression>>() {
+        @Override
+        public EList<AtomicExpression> apply(final GlobalAction ga) {
+          ContextExpression _trigger = ga.getTrigger();
+          return _trigger.getSub_exp();
+        }
+      };
+      List<EList<AtomicExpression>> _map_2 = ListExtensions.<GlobalAction, EList<AtomicExpression>>map(_globalActions, _function_2);
+      Iterable<AtomicExpression> _flatten_2 = Iterables.<AtomicExpression>concat(_map_2);
+      Iterables.<AtomicExpression>addAll(contextExpInvs, _flatten_2);
       _xblockexpression = contextExpInvs;
     }
     return _xblockexpression;
@@ -314,28 +616,39 @@ public class CellContextGenerator extends CommonGenerator {
   
   protected CharSequence _generateImplementation(final FilterExpression fe) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public CellContext filter");
-    CellSpecification _cell_type = fe.getCell_type();
-    String _name = _cell_type.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("public CellContext ");
+    CharSequence _generateMethodName = this.generateMethodName(fe);
+    _builder.append(_generateMethodName, "");
     _builder.append("() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("ArrayList<ContextElement> newAL = new ArrayList<>();");
+    _builder.append("ArrayList<CellContext.ContextElement> newAL = new ArrayList<>();");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("for (ContextElement c : al) {");
+    _builder.append("for (CellContext.ContextElement c : al) {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("if (c.getCell().is");
-    CellSpecification _cell_type_1 = fe.getCell_type();
-    String _name_1 = _cell_type_1.getName();
-    String _firstUpper_1 = StringExtensions.toFirstUpper(_name_1);
-    _builder.append(_firstUpper_1, "\t\t");
-    _builder.append("()) {");
+    _builder.append("if (");
+    EList<CellSpecification> _cell_type = fe.getCell_type();
+    final Function1<CellSpecification, CharSequence> _function = new Function1<CellSpecification, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellSpecification ct) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("(c.getCell().is");
+        String _name = ct.getName();
+        String _firstUpper = StringExtensions.toFirstUpper(_name);
+        _builder.append(_firstUpper, "");
+        _builder.append("())");
+        return _builder.toString();
+      }
+    };
+    String _join = IterableExtensions.<CellSpecification>join(_cell_type, "||", _function);
+    _builder.append(_join, "\t\t");
+    _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
     _builder.append("newAL.add (c);");
@@ -361,20 +674,20 @@ public class CellContextGenerator extends CommonGenerator {
   
   protected CharSequence _generateImplementation(final StateFilterExpression sfe) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public CellContext inState");
-    CellState _cell_state = sfe.getCell_state();
-    String _name = _cell_state.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("public CellContext ");
+    CharSequence _generateMethodName = this.generateMethodName(sfe);
+    _builder.append(_generateMethodName, "");
     _builder.append("() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("ArrayList<ContextElement> newAL = new ArrayList<>();");
+    _builder.append("ArrayList<CellContext.ContextElement> newAL = new ArrayList<>();");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("for (ContextElement c : al) {");
+    _builder.append("for (CellContext.ContextElement c : al) {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("switch (c.getCell().getState().getStateID()) {");
@@ -384,9 +697,9 @@ public class CellContextGenerator extends CommonGenerator {
     final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean> _function = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean>() {
       @Override
       public Boolean apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
+        EList<CellState> _cell_state = sfe.getCell_state();
         CellState _key = cpp.getKey();
-        CellState _cell_state = sfe.getCell_state();
-        return Boolean.valueOf(Objects.equal(_key, _cell_state));
+        return Boolean.valueOf(_cell_state.contains(_key));
       }
     };
     Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _filter = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>filter(_allCellStates, _function);
@@ -429,6 +742,8 @@ public class CellContextGenerator extends CommonGenerator {
   
   protected CharSequence _generateImplementation(final NotEmptyExpression nee) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("@Override");
+    _builder.newLine();
     _builder.append("public boolean notEmpty() {");
     _builder.newLine();
     _builder.append("\t");
@@ -439,8 +754,24 @@ public class CellContextGenerator extends CommonGenerator {
     return _builder;
   }
   
+  protected CharSequence _generateImplementation(final EmptyExpression nee) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("public boolean empty() {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("return al.size() == 0;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
   protected CharSequence _generateImplementation(final CountExpression ce) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("@Override");
+    _builder.newLine();
     _builder.append("public int size() {");
     _builder.newLine();
     _builder.append("\t");
@@ -448,6 +779,42 @@ public class CellContextGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
+    return _builder;
+  }
+  
+  protected CharSequence _generateSignature(final FilterExpression fe) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public CellContext ");
+    CharSequence _generateMethodName = this.generateMethodName(fe);
+    _builder.append(_generateMethodName, "");
+    _builder.append("();");
+    return _builder;
+  }
+  
+  protected CharSequence _generateSignature(final StateFilterExpression sfe) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public CellContext ");
+    CharSequence _generateMethodName = this.generateMethodName(sfe);
+    _builder.append(_generateMethodName, "");
+    _builder.append("();");
+    return _builder;
+  }
+  
+  protected CharSequence _generateSignature(final NotEmptyExpression nee) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public boolean notEmpty();");
+    return _builder;
+  }
+  
+  protected CharSequence _generateSignature(final EmptyExpression nee) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public boolean empty();");
+    return _builder;
+  }
+  
+  protected CharSequence _generateSignature(final CountExpression ce) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public int size();");
     return _builder;
   }
   
@@ -461,6 +828,7 @@ public class CellContextGenerator extends CommonGenerator {
       boolean _xblockexpression = false;
       {
         imports.add("java.util.ArrayList");
+        imports.add("java.util.List");
         _xblockexpression = imports.add("java.util.Iterator");
       }
       _xifexpression = _xblockexpression;
@@ -471,12 +839,31 @@ public class CellContextGenerator extends CommonGenerator {
   public CharSequence generateImplementation(final AtomicExpression ce) {
     if (ce instanceof CountExpression) {
       return _generateImplementation((CountExpression)ce);
+    } else if (ce instanceof EmptyExpression) {
+      return _generateImplementation((EmptyExpression)ce);
     } else if (ce instanceof FilterExpression) {
       return _generateImplementation((FilterExpression)ce);
     } else if (ce instanceof NotEmptyExpression) {
       return _generateImplementation((NotEmptyExpression)ce);
     } else if (ce instanceof StateFilterExpression) {
       return _generateImplementation((StateFilterExpression)ce);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(ce).toString());
+    }
+  }
+  
+  public CharSequence generateSignature(final AtomicExpression ce) {
+    if (ce instanceof CountExpression) {
+      return _generateSignature((CountExpression)ce);
+    } else if (ce instanceof EmptyExpression) {
+      return _generateSignature((EmptyExpression)ce);
+    } else if (ce instanceof FilterExpression) {
+      return _generateSignature((FilterExpression)ce);
+    } else if (ce instanceof NotEmptyExpression) {
+      return _generateSignature((NotEmptyExpression)ce);
+    } else if (ce instanceof StateFilterExpression) {
+      return _generateSignature((StateFilterExpression)ce);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(ce).toString());

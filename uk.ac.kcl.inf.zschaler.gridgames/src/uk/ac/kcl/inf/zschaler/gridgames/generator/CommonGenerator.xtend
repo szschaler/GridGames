@@ -4,6 +4,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
@@ -60,11 +61,17 @@ class CommonGenerator {
 	
 	def dispatch CharSequence generateFor(ContextExpression ce) '''context.«ce.sub_exp.join(".", [se | se.generateFor])»'''
 	
-	def dispatch CharSequence generateFor(FilterExpression fe) '''filter«fe.cell_type.name.toFirstUpper»()'''
+	def dispatch CharSequence generateFor(FilterExpression fe) '''«fe.generateMethodName»()'''
 	
-	def dispatch CharSequence generateFor(StateFilterExpression sfe) '''inState«sfe.cell_state.name.toFirstUpper»()'''
+	def CharSequence generateMethodName (FilterExpression fe) '''filter«fe.cell_type.join("Or", [ct | ct.name.toFirstUpper])»'''
+	
+	def dispatch CharSequence generateFor(StateFilterExpression sfe) '''«sfe.generateMethodName»()'''
+	
+	def CharSequence generateMethodName (StateFilterExpression sfe) '''inState«sfe.cell_state.join ("Or", [cs | cs.name.toFirstUpper])»'''
 
 	def dispatch CharSequence generateFor(CountExpression ce) '''size()«if (ce.op != null) {'''«ce.op» «ce.cmpVal»'''}»'''
 
 	def dispatch CharSequence generateFor(NotEmptyExpression nee) '''notEmpty()'''
+
+	def dispatch CharSequence generateFor(EmptyExpression nee) '''empty()'''
 }

@@ -2,6 +2,7 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,29 +23,19 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
 public interface FilterExpression extends AtomicExpression
 {
   /**
-   * Returns the value of the '<em><b>Cell type</b></em>' reference.
+   * Returns the value of the '<em><b>Cell type</b></em>' reference list.
+   * The list contents are of type {@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Cell type</em>' reference isn't clear,
+   * If the meaning of the '<em>Cell type</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cell type</em>' reference.
-   * @see #setCell_type(CellSpecification)
+   * @return the value of the '<em>Cell type</em>' reference list.
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getFilterExpression_Cell_type()
    * @model
    * @generated
    */
-  CellSpecification getCell_type();
-
-  /**
-   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression#getCell_type <em>Cell type</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cell type</em>' reference.
-   * @see #getCell_type()
-   * @generated
-   */
-  void setCell_type(CellSpecification value);
+  EList<CellSpecification> getCell_type();
 
 } // FilterExpression

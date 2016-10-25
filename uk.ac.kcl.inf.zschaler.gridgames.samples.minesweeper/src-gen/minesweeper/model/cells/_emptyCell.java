@@ -8,9 +8,9 @@ import java.awt.Color;
 
 import minesweeper.model.MinesweeperField;
 
-public class EmptyCell extends Cell {
+public class _emptyCell extends Cell {
 	
-	public EmptyCell() {
+	public _emptyCell() {
 		setState (new HiddenCellState(), 0, 0, null);
 		
 	}
@@ -38,7 +38,7 @@ public class EmptyCell extends Cell {
 		}
 	
 		public CellState getContextBasedFollowState (MinesweeperField.CellContext context) {
-			if (context.filterEmpty().inStateDiscovered().notEmpty()) {
+			if (context.filter_empty().inStateDiscovered().notEmpty()) {
 				return new DiscoveredCellState();
 			}
 			return this;
@@ -70,12 +70,21 @@ public class EmptyCell extends Cell {
 			return this;
 		}
 	}
-	 public static class DiscoveredCellState extends CellState {
+	 public static class QuestionCellState extends CellState {
 		@Override
 		public Component formatUIRepresentation(Cell cOwner, JButton jb, JLabel jl) {
-			jl.setOpaque (false);
-			jl.setText ("" + "");
-			return jl;
+			jb.setBackground (new Color(0xdfdfdf));
+			jb.setText ("?");
+			return jb;
+		}
+		public CellState getMouseBasedFollowState (boolean isLeft) {
+			if (isLeft) {
+				return new DiscoveredCellState();
+			}
+			 if (!isLeft) {
+				return new HiddenCellState();
+			}
+			return super.getMouseBasedFollowState (isLeft);
 		}
 		
 		@Override
@@ -87,9 +96,26 @@ public class EmptyCell extends Cell {
 			return this;
 		}
 	}
+	 public static class DiscoveredCellState extends CellState {
+		@Override
+		public Component formatUIRepresentation(Cell cOwner, JButton jb, JLabel jl) {
+			jl.setOpaque (false);
+			jl.setText ("" + "");
+			return jl;
+		}
+		
+		@Override
+		public int getStateID() {
+			return 3;
+		}
+	
+		public CellState getContextBasedFollowState (MinesweeperField.CellContext context) {
+			return this;
+		}
+	}
 	
 	@Override
-	public boolean isEmpty() {
+	public boolean is_empty() {
 		return true;
 	}
 	

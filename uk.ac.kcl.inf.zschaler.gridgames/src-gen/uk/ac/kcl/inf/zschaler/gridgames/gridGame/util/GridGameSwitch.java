@@ -260,6 +260,13 @@ public class GridGameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GridGamePackage.GLOBAL_ACTION:
+      {
+        GlobalAction globalAction = (GlobalAction)theEObject;
+        T result = caseGlobalAction(globalAction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GridGamePackage.FIELD_SPECIFICATION:
       {
         FieldSpecification fieldSpecification = (FieldSpecification)theEObject;
@@ -402,6 +409,14 @@ public class GridGameSwitch<T> extends Switch<T>
         NotEmptyExpression notEmptyExpression = (NotEmptyExpression)theEObject;
         T result = caseNotEmptyExpression(notEmptyExpression);
         if (result == null) result = caseAtomicExpression(notEmptyExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GridGamePackage.EMPTY_EXPRESSION:
+      {
+        EmptyExpression emptyExpression = (EmptyExpression)theEObject;
+        T result = caseEmptyExpression(emptyExpression);
+        if (result == null) result = caseAtomicExpression(emptyExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -804,6 +819,22 @@ public class GridGameSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Global Action</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Global Action</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGlobalAction(GlobalAction object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Field Specification</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1103,6 +1134,22 @@ public class GridGameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseNotEmptyExpression(NotEmptyExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Empty Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Empty Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEmptyExpression(EmptyExpression object)
   {
     return null;
   }

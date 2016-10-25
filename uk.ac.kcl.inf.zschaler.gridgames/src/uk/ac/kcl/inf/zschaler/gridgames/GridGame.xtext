@@ -17,6 +17,7 @@ GridGame :
 	"game" name=ID "{"
 		(states += GlobalCellStateSpec |
 		cells += CellSpecification |
+		globalActions += GlobalAction |
 		inits += GlobalFieldInitialisation |
 		fields += FieldSpecification |
 		options += OptionSpecification)+
@@ -151,6 +152,13 @@ NoOpBehaviour :
 	"nop"
 ;
 
+GlobalAction :
+	"action" name=ID "{" 
+		"when" trigger = ContextExpression
+		"do" behaviour = DirectBehaviour 
+	"}"
+;
+
 FieldSpecification :
 	"field" name=ID "{" 
 		"width" "=" width=INT  
@@ -221,15 +229,16 @@ AtomicExpression :
 	FilterExpression |
 	StateFilterExpression |
 	CountExpression |
-	NotEmptyExpression 
+	NotEmptyExpression | 
+	EmptyExpression 
 ;
 
 FilterExpression :
-	"filter" "(" cell_type = [CellSpecification]  ")"
+	"filter" "(" cell_type += [CellSpecification] ("|" cell_type += [CellSpecification])* ")"
 ;
 
 StateFilterExpression :
-	"inState" "(" cell_state = [CellState] ")"
+	"inState" "(" cell_state += [CellState] ("|" cell_state += [CellState])* ")"
 ;
 
 CountExpression :
@@ -238,4 +247,8 @@ CountExpression :
 
 NotEmptyExpression :
 	"notEmpty" "(" ")" {NotEmptyExpression}
+;
+
+EmptyExpression :
+	"empty" "(" ")" {EmptyExpression}
 ;

@@ -239,6 +239,15 @@ public interface GridGameFactory extends EFactory
   EndGameBehaviour createEndGameBehaviour();
 
   /**
+   * Returns a new object of class '<em>Global Action</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Global Action</em>'.
+   * @generated
+   */
+  GlobalAction createGlobalAction();
+
+  /**
    * Returns a new object of class '<em>Field Specification</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -408,6 +417,15 @@ public interface GridGameFactory extends EFactory
    * @generated
    */
   NotEmptyExpression createNotEmptyExpression();
+
+  /**
+   * Returns a new object of class '<em>Empty Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Empty Expression</em>'.
+   * @generated
+   */
+  EmptyExpression createEmptyExpression();
 
   /**
    * Returns a new object of class '<em>No Op Behaviour</em>'.

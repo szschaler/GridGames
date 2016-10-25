@@ -8,6 +8,8 @@
         eType="#//GlobalCellStateSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
         eType="#//CellSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="globalActions" upperBound="-1"
+        eType="#//GlobalAction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inits" upperBound="-1"
         eType="#//GlobalFieldInitialisation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
@@ -92,6 +94,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="EndGameBehaviour" eSuperTypes="#//DirectBehaviour">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//ContextExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="behaviour" eType="#//DirectBehaviour"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FieldSpecification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -142,15 +151,18 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="FilterExpression" eSuperTypes="#//AtomicExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cell_type" eType="#//CellSpecification"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cell_type" unique="false"
+        upperBound="-1" eType="#//CellSpecification"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateFilterExpression" eSuperTypes="#//AtomicExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cell_state" eType="#//CellState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cell_state" unique="false"
+        upperBound="-1" eType="#//CellState"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CountExpression" eSuperTypes="#//AtomicExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cmpVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NotEmptyExpression" eSuperTypes="#//AtomicExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EmptyExpression" eSuperTypes="#//AtomicExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="NoOpBehaviour" eSuperTypes="#//DirectBehaviour"/>
 </ecore:EPackage>

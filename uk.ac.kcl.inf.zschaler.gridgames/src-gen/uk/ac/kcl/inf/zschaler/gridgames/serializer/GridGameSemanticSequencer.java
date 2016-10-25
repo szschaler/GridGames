@@ -4,17 +4,15 @@
 package uk.ac.kcl.inf.zschaler.gridgames.serializer;
 
 import com.google.inject.Inject;
-import com.google.inject.Provider;
+import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.xtext.Action;
+import org.eclipse.xtext.Parameter;
+import org.eclipse.xtext.ParserRule;
+import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
-import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
-import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
-import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
-import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference;
@@ -28,11 +26,13 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DefaultInitialisation;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisationsRef;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GenerationalContexts;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalAction;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalCellStateSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalFieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
@@ -59,8 +59,13 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	private GridGameGrammarAccess grammarAccess;
 	
 	@Override
-	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == GridGamePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+	public void sequence(ISerializationContext context, EObject semanticObject) {
+		EPackage epackage = semanticObject.eClass().getEPackage();
+		ParserRule rule = context.getParserRule();
+		Action action = context.getAssignedAction();
+		Set<Parameter> parameters = context.getEnabledBooleanParameters();
+		if (epackage == GridGamePackage.eINSTANCE)
+			switch (semanticObject.eClass().getClassifierID()) {
 			case GridGamePackage.ALLOW_RESTART_MENU:
 				sequence_AllowRestartMenu(context, (AllowRestartMenu) semanticObject); 
 				return; 
@@ -97,6 +102,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case GridGamePackage.DEFAULT_INITIALISATION:
 				sequence_DefaultInitialisation(context, (DefaultInitialisation) semanticObject); 
 				return; 
+			case GridGamePackage.EMPTY_EXPRESSION:
+				sequence_EmptyExpression(context, (EmptyExpression) semanticObject); 
+				return; 
 			case GridGamePackage.END_GAME_BEHAVIOUR:
 				sequence_EndGameBehaviour(context, (EndGameBehaviour) semanticObject); 
 				return; 
@@ -111,6 +119,9 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case GridGamePackage.GENERATIONAL_CONTEXTS:
 				sequence_GenerationalContexts(context, (GenerationalContexts) semanticObject); 
+				return; 
+			case GridGamePackage.GLOBAL_ACTION:
+				sequence_GlobalAction(context, (GlobalAction) semanticObject); 
 				return; 
 			case GridGamePackage.GLOBAL_CELL_STATE_SPEC:
 				sequence_GlobalCellStateSpec(context, (GlobalCellStateSpec) semanticObject); 
@@ -161,35 +172,47 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				sequence_VarRefValue(context, (VarRefValue) semanticObject); 
 				return; 
 			}
-		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
+		if (errorAcceptor != null)
+			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
 	
 	/**
+	 * Contexts:
+	 *     OptionSpecification returns AllowRestartMenu
+	 *     AllowRestartMenu returns AllowRestartMenu
+	 *
 	 * Constraint:
 	 *     {AllowRestartMenu}
 	 */
-	protected void sequence_AllowRestartMenu(EObject context, AllowRestartMenu semanticObject) {
+	protected void sequence_AllowRestartMenu(ISerializationContext context, AllowRestartMenu semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     CellStateBehaviour returns BehaviourReference
+	 *     BehaviourReference returns BehaviourReference
+	 *
 	 * Constraint:
 	 *     ref=[VarSpec|ID]
 	 */
-	protected void sequence_BehaviourReference(EObject context, BehaviourReference semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.BEHAVIOUR_REFERENCE__REF) == ValueTransient.YES)
+	protected void sequence_BehaviourReference(ISerializationContext context, BehaviourReference semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.BEHAVIOUR_REFERENCE__REF) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.BEHAVIOUR_REFERENCE__REF));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getBehaviourReferenceAccess().getRefVarSpecIDTerminalRuleCall_0_1(), semanticObject.getRef());
 		feeder.finish();
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     CellMember returns CellDisplaySpec
+	 *     CellDisplaySpec returns CellDisplaySpec
+	 *
 	 * Constraint:
 	 *     (
 	 *         (display_type='label' | display_type='button') 
@@ -204,71 +227,93 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         )
 	 *     )
 	 */
-	protected void sequence_CellDisplaySpec(EObject context, CellDisplaySpec semanticObject) {
+	protected void sequence_CellDisplaySpec(ISerializationContext context, CellDisplaySpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     CellSpecification returns CellSpecification
+	 *
 	 * Constraint:
 	 *     (name=ID members+=CellMember*)
 	 */
-	protected void sequence_CellSpecification(EObject context, CellSpecification semanticObject) {
+	protected void sequence_CellSpecification(ISerializationContext context, CellSpecification semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     CellMember returns CellStateSpecReference
+	 *     CellStateSpec returns CellStateSpecReference
+	 *     CellStateSpecReference returns CellStateSpecReference
+	 *
 	 * Constraint:
 	 *     (stateSpec=[GlobalCellStateSpec|ID] (params+=Value params+=Value*)?)
 	 */
-	protected void sequence_CellStateSpecReference(EObject context, CellStateSpecReference semanticObject) {
+	protected void sequence_CellStateSpecReference(ISerializationContext context, CellStateSpecReference semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     CellState returns CellState
+	 *
 	 * Constraint:
 	 *     (name=ID display=CellDisplaySpec transitions+=TransitionSpec* (onEnter+=CellStateBehaviour onEnter+=CellStateBehaviour*)?)
 	 */
-	protected void sequence_CellState(EObject context, CellState semanticObject) {
+	protected void sequence_CellState(ISerializationContext context, CellState semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     CellMember returns CellVarSpec
+	 *     VarSpec returns CellVarSpec
+	 *     CellVarSpec returns CellVarSpec
+	 *
 	 * Constraint:
 	 *     ((type='int' | type='String') name=ID)
 	 */
-	protected void sequence_CellVarSpec(EObject context, CellVarSpec semanticObject) {
+	protected void sequence_CellVarSpec(ISerializationContext context, CellVarSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     ContextExpression returns ContextExpression
+	 *
 	 * Constraint:
 	 *     (sub_exp+=AtomicExpression sub_exp+=AtomicExpression*)
 	 */
-	protected void sequence_ContextExpression(EObject context, ContextExpression semanticObject) {
+	protected void sequence_ContextExpression(ISerializationContext context, ContextExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     FieldInitialisation returns ContextInitialisation
+	 *     ContextInitialisation returns ContextInitialisation
+	 *
 	 * Constraint:
 	 *     (cell=[CellSpecification|ID] check=ContextExpression exp=ContextExpression)
 	 */
-	protected void sequence_ContextInitialisation(EObject context, ContextInitialisation semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL) == ValueTransient.YES)
+	protected void sequence_ContextInitialisation(ISerializationContext context, ContextInitialisation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL));
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__CHECK) == ValueTransient.YES)
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__CHECK) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__CHECK));
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__EXP) == ValueTransient.YES)
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__EXP) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__EXP));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getContextInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell());
 		feeder.accept(grammarAccess.getContextInitialisationAccess().getCheckContextExpressionParserRuleCall_4_0(), semanticObject.getCheck());
 		feeder.accept(grammarAccess.getContextInitialisationAccess().getExpContextExpressionParserRuleCall_7_0(), semanticObject.getExp());
@@ -277,275 +322,389 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	
 	/**
+	 * Contexts:
+	 *     TransitionTriggerSpec returns ContextTrigger
+	 *     ContextTrigger returns ContextTrigger
+	 *
 	 * Constraint:
 	 *     exp=ContextExpression
 	 */
-	protected void sequence_ContextTrigger(EObject context, ContextTrigger semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.CONTEXT_TRIGGER__EXP) == ValueTransient.YES)
+	protected void sequence_ContextTrigger(ISerializationContext context, ContextTrigger semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.CONTEXT_TRIGGER__EXP) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.CONTEXT_TRIGGER__EXP));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getContextTriggerAccess().getExpContextExpressionParserRuleCall_2_0(), semanticObject.getExp());
 		feeder.finish();
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     AtomicExpression returns CountExpression
+	 *     CountExpression returns CountExpression
+	 *
 	 * Constraint:
-	 *     (((op='==' | op='>' | op='<') cmpVal=INT)?)
+	 *     ((op='==' | op='>' | op='<') cmpVal=INT)?
 	 */
-	protected void sequence_CountExpression(EObject context, CountExpression semanticObject) {
+	protected void sequence_CountExpression(ISerializationContext context, CountExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     FieldInitialisation returns DefaultInitialisation
+	 *     DefaultInitialisation returns DefaultInitialisation
+	 *
 	 * Constraint:
 	 *     cell=[CellSpecification|ID]
 	 */
-	protected void sequence_DefaultInitialisation(EObject context, DefaultInitialisation semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL) == ValueTransient.YES)
+	protected void sequence_DefaultInitialisation(ISerializationContext context, DefaultInitialisation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getDefaultInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell());
 		feeder.finish();
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     Value returns NoOpBehaviour
+	 *     CellStateBehaviour returns NoOpBehaviour
+	 *     DirectBehaviour returns NoOpBehaviour
+	 *
 	 * Constraint:
 	 *     {NoOpBehaviour}
 	 */
-	protected void sequence_DirectBehaviour(EObject context, NoOpBehaviour semanticObject) {
+	protected void sequence_DirectBehaviour(ISerializationContext context, NoOpBehaviour semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     AtomicExpression returns EmptyExpression
+	 *     EmptyExpression returns EmptyExpression
+	 *
+	 * Constraint:
+	 *     {EmptyExpression}
+	 */
+	protected void sequence_EmptyExpression(ISerializationContext context, EmptyExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Value returns EndGameBehaviour
+	 *     CellStateBehaviour returns EndGameBehaviour
+	 *     DirectBehaviour returns EndGameBehaviour
+	 *     EndGameBehaviour returns EndGameBehaviour
+	 *
 	 * Constraint:
 	 *     message=STRING
 	 */
-	protected void sequence_EndGameBehaviour(EObject context, EndGameBehaviour semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.END_GAME_BEHAVIOUR__MESSAGE) == ValueTransient.YES)
+	protected void sequence_EndGameBehaviour(ISerializationContext context, EndGameBehaviour semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.END_GAME_BEHAVIOUR__MESSAGE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.END_GAME_BEHAVIOUR__MESSAGE));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getEndGameBehaviourAccess().getMessageSTRINGTerminalRuleCall_2_0(), semanticObject.getMessage());
 		feeder.finish();
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     FieldInitialisations returns FieldInitialisationsRef
+	 *     FieldInitialisationsRef returns FieldInitialisationsRef
+	 *
 	 * Constraint:
 	 *     (ref=[GlobalFieldInitialisation|ID] (params+=Value params+=Value*)?)
 	 */
-	protected void sequence_FieldInitialisationsRef(EObject context, FieldInitialisationsRef semanticObject) {
+	protected void sequence_FieldInitialisationsRef(ISerializationContext context, FieldInitialisationsRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     FieldSpecification returns FieldSpecification
+	 *
 	 * Constraint:
 	 *     (name=ID width=INT height=INT field_initialisation=FieldInitialisations?)
 	 */
-	protected void sequence_FieldSpecification(EObject context, FieldSpecification semanticObject) {
+	protected void sequence_FieldSpecification(ISerializationContext context, FieldSpecification semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     AtomicExpression returns FilterExpression
+	 *     FilterExpression returns FilterExpression
+	 *
 	 * Constraint:
-	 *     cell_type=[CellSpecification|ID]
+	 *     (cell_type+=[CellSpecification|ID] cell_type+=[CellSpecification|ID]*)
 	 */
-	protected void sequence_FilterExpression(EObject context, FilterExpression semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.FILTER_EXPRESSION__CELL_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FILTER_EXPRESSION__CELL_TYPE));
+	protected void sequence_FilterExpression(ISerializationContext context, FilterExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     OptionSpecification returns GenerationalContexts
+	 *     GenerationalContexts returns GenerationalContexts
+	 *
+	 * Constraint:
+	 *     {GenerationalContexts}
+	 */
+	protected void sequence_GenerationalContexts(ISerializationContext context, GenerationalContexts semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GlobalAction returns GlobalAction
+	 *
+	 * Constraint:
+	 *     (name=ID trigger=ContextExpression behaviour=DirectBehaviour)
+	 */
+	protected void sequence_GlobalAction(ISerializationContext context, GlobalAction semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.GLOBAL_ACTION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.GLOBAL_ACTION__NAME));
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.GLOBAL_ACTION__TRIGGER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.GLOBAL_ACTION__TRIGGER));
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.GLOBAL_ACTION__BEHAVIOUR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.GLOBAL_ACTION__BEHAVIOUR));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell_type());
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getGlobalActionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getGlobalActionAccess().getTriggerContextExpressionParserRuleCall_4_0(), semanticObject.getTrigger());
+		feeder.accept(grammarAccess.getGlobalActionAccess().getBehaviourDirectBehaviourParserRuleCall_6_0(), semanticObject.getBehaviour());
 		feeder.finish();
 	}
 	
 	
 	/**
-	 * Constraint:
-	 *     {GenerationalContexts}
-	 */
-	protected void sequence_GenerationalContexts(EObject context, GenerationalContexts semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
+	 * Contexts:
+	 *     GlobalCellStateSpec returns GlobalCellStateSpec
+	 *
 	 * Constraint:
 	 *     (name=ID (params+=ParamSpec params+=ParamSpec*)? states+=CellState+ start=[CellState|ID])
 	 */
-	protected void sequence_GlobalCellStateSpec(EObject context, GlobalCellStateSpec semanticObject) {
+	protected void sequence_GlobalCellStateSpec(ISerializationContext context, GlobalCellStateSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     GlobalFieldInitialisation returns GlobalFieldInitialisation
+	 *
 	 * Constraint:
 	 *     (name=ID (params+=ParamSpec params+=ParamSpec*)? initialisations+=FieldInitialisation+)
 	 */
-	protected void sequence_GlobalFieldInitialisation(EObject context, GlobalFieldInitialisation semanticObject) {
+	protected void sequence_GlobalFieldInitialisation(ISerializationContext context, GlobalFieldInitialisation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     GridGame returns GridGame
+	 *
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         (states+=GlobalCellStateSpec | cells+=CellSpecification | inits+=GlobalFieldInitialisation | fields+=FieldSpecification | options+=OptionSpecification)+
+	 *         (
+	 *             states+=GlobalCellStateSpec | 
+	 *             cells+=CellSpecification | 
+	 *             globalActions+=GlobalAction | 
+	 *             inits+=GlobalFieldInitialisation | 
+	 *             fields+=FieldSpecification | 
+	 *             options+=OptionSpecification
+	 *         )+
 	 *     )
 	 */
-	protected void sequence_GridGame(EObject context, GridGame semanticObject) {
+	protected void sequence_GridGame(ISerializationContext context, GridGame semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     Value returns IntValue
+	 *     IntValue returns IntValue
+	 *
 	 * Constraint:
 	 *     value=INT
 	 */
-	protected void sequence_IntValue(EObject context, IntValue semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.INT_VALUE__VALUE) == ValueTransient.YES)
+	protected void sequence_IntValue(ISerializationContext context, IntValue semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.INT_VALUE__VALUE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.INT_VALUE__VALUE));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getIntValueAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     CellMember returns LocalCellStateSpec
+	 *     CellStateSpec returns LocalCellStateSpec
+	 *     LocalCellStateSpec returns LocalCellStateSpec
+	 *
 	 * Constraint:
 	 *     (states+=CellState+ start=[CellState|ID])
 	 */
-	protected void sequence_LocalCellStateSpec(EObject context, LocalCellStateSpec semanticObject) {
+	protected void sequence_LocalCellStateSpec(ISerializationContext context, LocalCellStateSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     FieldInitialisations returns LocalFieldInitialisations
+	 *     LocalFieldInitialisations returns LocalFieldInitialisations
+	 *
 	 * Constraint:
 	 *     initialisations+=FieldInitialisation+
 	 */
-	protected void sequence_LocalFieldInitialisations(EObject context, LocalFieldInitialisations semanticObject) {
+	protected void sequence_LocalFieldInitialisations(ISerializationContext context, LocalFieldInitialisations semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     TransitionTriggerSpec returns MouseTrigger
+	 *     MouseTrigger returns MouseTrigger
+	 *
 	 * Constraint:
-	 *     {MouseTrigger}
+	 *     left?='mouse-left'?
 	 */
-	protected void sequence_MouseTrigger(EObject context, MouseTrigger semanticObject) {
+	protected void sequence_MouseTrigger(ISerializationContext context, MouseTrigger semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     AtomicExpression returns NotEmptyExpression
+	 *     NotEmptyExpression returns NotEmptyExpression
+	 *
 	 * Constraint:
 	 *     {NotEmptyExpression}
 	 */
-	protected void sequence_NotEmptyExpression(EObject context, NotEmptyExpression semanticObject) {
+	protected void sequence_NotEmptyExpression(ISerializationContext context, NotEmptyExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     VarSpec returns ParamSpec
+	 *     ParamSpec returns ParamSpec
+	 *
 	 * Constraint:
 	 *     ((type='int' | type='String' | type='Behaviour') name=ID)
 	 */
-	protected void sequence_ParamSpec(EObject context, ParamSpec semanticObject) {
+	protected void sequence_ParamSpec(ISerializationContext context, ParamSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     FieldInitialisation returns RandomInitialisation
+	 *     RandomInitialisation returns RandomInitialisation
+	 *
 	 * Constraint:
 	 *     (cell=[CellSpecification|ID] (count=INT | var=[VarSpec|ID]))
 	 */
-	protected void sequence_RandomInitialisation(EObject context, RandomInitialisation semanticObject) {
+	protected void sequence_RandomInitialisation(ISerializationContext context, RandomInitialisation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     OptionSpecification returns StartFieldDeclaration
+	 *     StartFieldDeclaration returns StartFieldDeclaration
+	 *
 	 * Constraint:
 	 *     field=[FieldSpecification|ID]
 	 */
-	protected void sequence_StartFieldDeclaration(EObject context, StartFieldDeclaration semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.START_FIELD_DECLARATION__FIELD) == ValueTransient.YES)
+	protected void sequence_StartFieldDeclaration(ISerializationContext context, StartFieldDeclaration semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.START_FIELD_DECLARATION__FIELD) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.START_FIELD_DECLARATION__FIELD));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getField());
 		feeder.finish();
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     AtomicExpression returns StateFilterExpression
+	 *     StateFilterExpression returns StateFilterExpression
+	 *
 	 * Constraint:
-	 *     cell_state=[CellState|ID]
+	 *     (cell_state+=[CellState|ID] cell_state+=[CellState|ID]*)
 	 */
-	protected void sequence_StateFilterExpression(EObject context, StateFilterExpression semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.STATE_FILTER_EXPRESSION__CELL_STATE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.STATE_FILTER_EXPRESSION__CELL_STATE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getStateFilterExpressionAccess().getCell_stateCellStateIDTerminalRuleCall_2_0_1(), semanticObject.getCell_state());
-		feeder.finish();
+	protected void sequence_StateFilterExpression(ISerializationContext context, StateFilterExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     Value returns StringValue
+	 *     StringValue returns StringValue
+	 *
 	 * Constraint:
 	 *     value=STRING
 	 */
-	protected void sequence_StringValue(EObject context, StringValue semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.STRING_VALUE__VALUE) == ValueTransient.YES)
+	protected void sequence_StringValue(ISerializationContext context, StringValue semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.STRING_VALUE__VALUE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.STRING_VALUE__VALUE));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getStringValueAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     TransitionSpec returns TransitionSpec
+	 *
 	 * Constraint:
 	 *     (trigger=TransitionTriggerSpec target=[CellState|ID])
 	 */
-	protected void sequence_TransitionSpec(EObject context, TransitionSpec semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.TRANSITION_SPEC__TRIGGER) == ValueTransient.YES)
+	protected void sequence_TransitionSpec(ISerializationContext context, TransitionSpec semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.TRANSITION_SPEC__TRIGGER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.TRANSITION_SPEC__TRIGGER));
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.TRANSITION_SPEC__TARGET) == ValueTransient.YES)
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.TRANSITION_SPEC__TARGET) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.TRANSITION_SPEC__TARGET));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getTransitionSpecAccess().getTriggerTransitionTriggerSpecParserRuleCall_1_0(), semanticObject.getTrigger());
 		feeder.accept(grammarAccess.getTransitionSpecAccess().getTargetCellStateIDTerminalRuleCall_3_0_1(), semanticObject.getTarget());
 		feeder.finish();
@@ -553,17 +712,22 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	
 	/**
+	 * Contexts:
+	 *     Value returns VarRefValue
+	 *     VarRefValue returns VarRefValue
+	 *
 	 * Constraint:
 	 *     ref=[CellVarSpec|ID]
 	 */
-	protected void sequence_VarRefValue(EObject context, VarRefValue semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.VAR_REF_VALUE__REF) == ValueTransient.YES)
+	protected void sequence_VarRefValue(ISerializationContext context, VarRefValue semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.VAR_REF_VALUE__REF) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.VAR_REF_VALUE__REF));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getVarRefValueAccess().getRefCellVarSpecIDTerminalRuleCall_0_1(), semanticObject.getRef());
 		feeder.finish();
 	}
+	
+	
 }
