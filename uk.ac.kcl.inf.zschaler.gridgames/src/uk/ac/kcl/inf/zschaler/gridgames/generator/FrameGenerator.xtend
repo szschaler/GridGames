@@ -250,7 +250,11 @@ class FrameGenerator extends CommonGenerator {
 	'''
 	
 	def dispatch CharSequence generateCodeFor(EndGameBehaviour egb, Map<String, Value> symbols) '''
-		handlingInput = false;
+		«IF (!mpp.doGenerateGenerationalContexts)»
+			handlingInput = false;
+		«ELSE»
+			field.stopGenerationComputation();
+		«ENDIF»
 		JOptionPane.showMessageDialog(«generateFrameClassName».this, "«egb.message»");
 	'''
 	

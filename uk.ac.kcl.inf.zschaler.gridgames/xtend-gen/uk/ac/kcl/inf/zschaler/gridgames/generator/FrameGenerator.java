@@ -700,8 +700,17 @@ public class FrameGenerator extends CommonGenerator {
   
   protected CharSequence _generateCodeFor(final EndGameBehaviour egb, final Map<String, Value> symbols) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("handlingInput = false;");
-    _builder.newLine();
+    {
+      boolean _doGenerateGenerationalContexts = this.mpp.doGenerateGenerationalContexts();
+      boolean _not = (!_doGenerateGenerationalContexts);
+      if (_not) {
+        _builder.append("handlingInput = false;");
+        _builder.newLine();
+      } else {
+        _builder.append("field.stopGenerationComputation();");
+        _builder.newLine();
+      }
+    }
     _builder.append("JOptionPane.showMessageDialog(");
     CharSequence _generateFrameClassName = this.generateFrameClassName();
     _builder.append(_generateFrameClassName, "");

@@ -176,7 +176,7 @@ public class GameOfLifeFrame extends JFrame {
 			final GameOfLifeField.CellContext context = field.getGlobalContext();
 			
 			if (context.inStateAlive().empty()) {
-				handlingInput = false;
+				field.stopGenerationComputation();
 				JOptionPane.showMessageDialog(GameOfLifeFrame.this, "No living cells left");
 			}
 		}
