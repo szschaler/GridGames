@@ -2891,9 +2891,26 @@ ruleStateFilterExpression returns [EObject current=null]
 	}
 
 )
-)	otherlv_3=')' 
+)(	otherlv_3='|' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getStateFilterExpressionAccess().getRightParenthesisKeyword_3());
+    	newLeafNode(otherlv_3, grammarAccess.getStateFilterExpressionAccess().getVerticalLineKeyword_3_0());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStateFilterExpressionRule());
+	        }
+        }
+	otherlv_4=RULE_ID
+	{
+		newLeafNode(otherlv_4, grammarAccess.getStateFilterExpressionAccess().getCell_stateCellStateCrossReference_3_1_0()); 
+	}
+
+)
+))*	otherlv_5=')' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getStateFilterExpressionAccess().getRightParenthesisKeyword_4());
     }
 )
 ;

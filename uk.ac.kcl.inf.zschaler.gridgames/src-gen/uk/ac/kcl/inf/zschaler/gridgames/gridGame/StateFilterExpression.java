@@ -2,6 +2,7 @@
  */
 package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,29 +23,19 @@ package uk.ac.kcl.inf.zschaler.gridgames.gridGame;
 public interface StateFilterExpression extends AtomicExpression
 {
   /**
-   * Returns the value of the '<em><b>Cell state</b></em>' reference.
+   * Returns the value of the '<em><b>Cell state</b></em>' reference list.
+   * The list contents are of type {@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Cell state</em>' reference isn't clear,
+   * If the meaning of the '<em>Cell state</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cell state</em>' reference.
-   * @see #setCell_state(CellState)
+   * @return the value of the '<em>Cell state</em>' reference list.
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage#getStateFilterExpression_Cell_state()
    * @model
    * @generated
    */
-  CellState getCell_state();
-
-  /**
-   * Sets the value of the '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression#getCell_state <em>Cell state</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cell state</em>' reference.
-   * @see #getCell_state()
-   * @generated
-   */
-  void setCell_state(CellState value);
+  EList<CellState> getCell_state();
 
 } // StateFilterExpression

@@ -1817,13 +1817,18 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCell_stateAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cCell_stateCellStateCrossReference_2_0 = (CrossReference)cCell_stateAssignment_2.eContents().get(0);
 		private final RuleCall cCell_stateCellStateIDTerminalRuleCall_2_0_1 = (RuleCall)cCell_stateCellStateCrossReference_2_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cVerticalLineKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cCell_stateAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cCell_stateCellStateCrossReference_3_1_0 = (CrossReference)cCell_stateAssignment_3_1.eContents().get(0);
+		private final RuleCall cCell_stateCellStateIDTerminalRuleCall_3_1_0_1 = (RuleCall)cCell_stateCellStateCrossReference_3_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//StateFilterExpression:
-		//	"inState" "(" cell_state=[CellState] ")";
+		//	"inState" "(" cell_state+=[CellState] ("|" cell_state+=[CellState])* ")";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"inState" "(" cell_state=[CellState] ")"
+		//"inState" "(" cell_state+=[CellState] ("|" cell_state+=[CellState])* ")"
 		public Group getGroup() { return cGroup; }
 
 		//"inState"
@@ -1832,7 +1837,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
-		//cell_state=[CellState]
+		//cell_state+=[CellState]
 		public Assignment getCell_stateAssignment_2() { return cCell_stateAssignment_2; }
 
 		//[CellState]
@@ -1841,8 +1846,23 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getCell_stateCellStateIDTerminalRuleCall_2_0_1() { return cCell_stateCellStateIDTerminalRuleCall_2_0_1; }
 
+		//("|" cell_state+=[CellState])*
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"|"
+		public Keyword getVerticalLineKeyword_3_0() { return cVerticalLineKeyword_3_0; }
+
+		//cell_state+=[CellState]
+		public Assignment getCell_stateAssignment_3_1() { return cCell_stateAssignment_3_1; }
+
+		//[CellState]
+		public CrossReference getCell_stateCellStateCrossReference_3_1_0() { return cCell_stateCellStateCrossReference_3_1_0; }
+
+		//ID
+		public RuleCall getCell_stateCellStateIDTerminalRuleCall_3_1_0_1() { return cCell_stateCellStateIDTerminalRuleCall_3_1_0_1; }
+
 		//")"
-		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 
 	public class CountExpressionElements extends AbstractParserRuleElementFinder {
@@ -2550,7 +2570,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StateFilterExpression:
-	//	"inState" "(" cell_state=[CellState] ")";
+	//	"inState" "(" cell_state+=[CellState] ("|" cell_state+=[CellState])* ")";
 	public StateFilterExpressionElements getStateFilterExpressionAccess() {
 		return pStateFilterExpression;
 	}

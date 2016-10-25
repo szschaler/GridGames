@@ -64,7 +64,9 @@ class CommonGenerator {
 	
 	def CharSequence generateMethodName (FilterExpression fe) '''filter«fe.cell_type.join("Or", [ct | ct.name.toFirstUpper])»'''
 	
-	def dispatch CharSequence generateFor(StateFilterExpression sfe) '''inState«sfe.cell_state.name.toFirstUpper»()'''
+	def dispatch CharSequence generateFor(StateFilterExpression sfe) '''«sfe.generateMethodName»()'''
+	
+	def CharSequence generateMethodName (StateFilterExpression sfe) '''inState«sfe.cell_state.join ("Or", [cs | cs.name.toFirstUpper])»'''
 
 	def dispatch CharSequence generateFor(CountExpression ce) '''size()«if (ce.op != null) {'''«ce.op» «ce.cmpVal»'''}»'''
 

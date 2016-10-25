@@ -1,6 +1,5 @@
 package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.Arrays;
 import java.util.List;
@@ -371,11 +370,9 @@ public class CellContextGenerator extends CommonGenerator {
   
   protected CharSequence _generateImplementation(final StateFilterExpression sfe) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public CellContext inState");
-    CellState _cell_state = sfe.getCell_state();
-    String _name = _cell_state.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
+    _builder.append("public CellContext ");
+    CharSequence _generateMethodName = this.generateMethodName(sfe);
+    _builder.append(_generateMethodName, "");
     _builder.append("() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -394,9 +391,9 @@ public class CellContextGenerator extends CommonGenerator {
     final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean> _function = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean>() {
       @Override
       public Boolean apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
+        EList<CellState> _cell_state = sfe.getCell_state();
         CellState _key = cpp.getKey();
-        CellState _cell_state = sfe.getCell_state();
-        return Boolean.valueOf(Objects.equal(_key, _cell_state));
+        return Boolean.valueOf(_cell_state.contains(_key));
       }
     };
     Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _filter = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>filter(_allCellStates, _function);

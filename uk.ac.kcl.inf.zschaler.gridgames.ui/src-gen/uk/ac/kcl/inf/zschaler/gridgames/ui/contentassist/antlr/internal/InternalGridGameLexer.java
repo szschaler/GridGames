@@ -1325,10 +1325,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGridGame.g:9199:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalGridGame.g:9199:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGridGame.g:9312:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalGridGame.g:9312:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalGridGame.g:9199:11: ( '^' )?
+            // InternalGridGame.g:9312:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1337,7 +1337,7 @@ public class InternalGridGameLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalGridGame.g:9199:11: '^'
+                    // InternalGridGame.g:9312:11: '^'
                     {
                     match('^'); 
 
@@ -1355,7 +1355,7 @@ public class InternalGridGameLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalGridGame.g:9199:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGridGame.g:9312:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -1404,10 +1404,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGridGame.g:9201:10: ( ( '0' .. '9' )+ )
-            // InternalGridGame.g:9201:12: ( '0' .. '9' )+
+            // InternalGridGame.g:9314:10: ( ( '0' .. '9' )+ )
+            // InternalGridGame.g:9314:12: ( '0' .. '9' )+
             {
-            // InternalGridGame.g:9201:12: ( '0' .. '9' )+
+            // InternalGridGame.g:9314:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -1421,7 +1421,7 @@ public class InternalGridGameLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalGridGame.g:9201:13: '0' .. '9'
+            	    // InternalGridGame.g:9314:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1453,10 +1453,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGridGame.g:9203:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalGridGame.g:9203:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalGridGame.g:9316:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalGridGame.g:9316:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalGridGame.g:9203:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalGridGame.g:9316:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -1474,10 +1474,10 @@ public class InternalGridGameLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalGridGame.g:9203:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalGridGame.g:9316:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalGridGame.g:9203:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalGridGame.g:9316:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -1493,7 +1493,7 @@ public class InternalGridGameLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalGridGame.g:9203:21: '\\\\' .
+                    	    // InternalGridGame.g:9316:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1501,7 +1501,7 @@ public class InternalGridGameLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalGridGame.g:9203:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalGridGame.g:9316:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1526,10 +1526,10 @@ public class InternalGridGameLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalGridGame.g:9203:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalGridGame.g:9316:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalGridGame.g:9203:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalGridGame.g:9316:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1545,7 +1545,7 @@ public class InternalGridGameLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalGridGame.g:9203:54: '\\\\' .
+                    	    // InternalGridGame.g:9316:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1553,7 +1553,7 @@ public class InternalGridGameLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalGridGame.g:9203:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalGridGame.g:9316:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1596,12 +1596,12 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGridGame.g:9205:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalGridGame.g:9205:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalGridGame.g:9318:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalGridGame.g:9318:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalGridGame.g:9205:24: ( options {greedy=false; } : . )*
+            // InternalGridGame.g:9318:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -1626,7 +1626,7 @@ public class InternalGridGameLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalGridGame.g:9205:52: .
+            	    // InternalGridGame.g:9318:52: .
             	    {
             	    matchAny(); 
 
@@ -1656,12 +1656,12 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGridGame.g:9207:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalGridGame.g:9207:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalGridGame.g:9320:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalGridGame.g:9320:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalGridGame.g:9207:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalGridGame.g:9320:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1674,7 +1674,7 @@ public class InternalGridGameLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalGridGame.g:9207:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalGridGame.g:9320:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1694,7 +1694,7 @@ public class InternalGridGameLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalGridGame.g:9207:40: ( ( '\\r' )? '\\n' )?
+            // InternalGridGame.g:9320:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1703,9 +1703,9 @@ public class InternalGridGameLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalGridGame.g:9207:41: ( '\\r' )? '\\n'
+                    // InternalGridGame.g:9320:41: ( '\\r' )? '\\n'
                     {
-                    // InternalGridGame.g:9207:41: ( '\\r' )?
+                    // InternalGridGame.g:9320:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1714,7 +1714,7 @@ public class InternalGridGameLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalGridGame.g:9207:41: '\\r'
+                            // InternalGridGame.g:9320:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1746,10 +1746,10 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGridGame.g:9209:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalGridGame.g:9209:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalGridGame.g:9322:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalGridGame.g:9322:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalGridGame.g:9209:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalGridGame.g:9322:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1803,8 +1803,8 @@ public class InternalGridGameLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGridGame.g:9211:16: ( . )
-            // InternalGridGame.g:9211:18: .
+            // InternalGridGame.g:9324:16: ( . )
+            // InternalGridGame.g:9324:18: .
             {
             matchAny(); 
 

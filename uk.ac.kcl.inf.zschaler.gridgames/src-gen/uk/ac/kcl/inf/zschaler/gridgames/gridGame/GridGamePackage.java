@@ -1422,7 +1422,7 @@ public interface GridGamePackage extends EPackage
   int STATE_FILTER_EXPRESSION = 41;
 
   /**
-   * The feature id for the '<em><b>Cell state</b></em>' reference.
+   * The feature id for the '<em><b>Cell state</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2582,10 +2582,10 @@ public interface GridGamePackage extends EPackage
   EClass getStateFilterExpression();
 
   /**
-   * Returns the meta object for the reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression#getCell_state <em>Cell state</em>}'.
+   * Returns the meta object for the reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression#getCell_state <em>Cell state</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Cell state</em>'.
+   * @return the meta object for the reference list '<em>Cell state</em>'.
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression#getCell_state()
    * @see #getStateFilterExpression()
    * @generated
@@ -3554,7 +3554,7 @@ public interface GridGamePackage extends EPackage
     EClass STATE_FILTER_EXPRESSION = eINSTANCE.getStateFilterExpression();
 
     /**
-     * The meta object literal for the '<em><b>Cell state</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Cell state</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

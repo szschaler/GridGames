@@ -122,12 +122,12 @@ class CellContextGenerator extends CommonGenerator {
 	'''
 
 	def dispatch generateImplementation(StateFilterExpression sfe) '''
-		public CellContext inState«sfe.cell_state.name.toFirstUpper»() {
+		public CellContext «sfe.generateMethodName»() {
 			ArrayList<ContextElement> newAL = new ArrayList<>();
 			
 			for (ContextElement c : al) {
 				switch (c.getCell().getState().getStateID()) {
-					«mpp.allCellStates.filter[cpp | cpp.key == sfe.cell_state].join ("\n", [cpp | '''case «cpp.value.key»: '''])»
+					«mpp.allCellStates.filter[cpp | sfe.cell_state.contains(cpp.key)].join ("\n", [cpp | '''case «cpp.value.key»: '''])»
 						newAL.add (c);
 				}
 			}

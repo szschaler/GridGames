@@ -7200,7 +7200,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStateFilterExpression"
-    // InternalGridGame.g:2869:1: ruleStateFilterExpression returns [EObject current=null] : (otherlv_0= 'inState' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' ) ;
+    // InternalGridGame.g:2869:1: ruleStateFilterExpression returns [EObject current=null] : (otherlv_0= 'inState' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) (otherlv_3= '|' ( (otherlv_4= RULE_ID ) ) )* otherlv_5= ')' ) ;
     public final EObject ruleStateFilterExpression() throws RecognitionException {
         EObject current = null;
 
@@ -7208,15 +7208,17 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
         Token otherlv_1=null;
         Token otherlv_2=null;
         Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
 
          enterRule(); 
             
         try {
-            // InternalGridGame.g:2872:28: ( (otherlv_0= 'inState' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' ) )
-            // InternalGridGame.g:2873:1: (otherlv_0= 'inState' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' )
+            // InternalGridGame.g:2872:28: ( (otherlv_0= 'inState' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) (otherlv_3= '|' ( (otherlv_4= RULE_ID ) ) )* otherlv_5= ')' ) )
+            // InternalGridGame.g:2873:1: (otherlv_0= 'inState' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) (otherlv_3= '|' ( (otherlv_4= RULE_ID ) ) )* otherlv_5= ')' )
             {
-            // InternalGridGame.g:2873:1: (otherlv_0= 'inState' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')' )
-            // InternalGridGame.g:2873:3: otherlv_0= 'inState' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) otherlv_3= ')'
+            // InternalGridGame.g:2873:1: (otherlv_0= 'inState' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) (otherlv_3= '|' ( (otherlv_4= RULE_ID ) ) )* otherlv_5= ')' )
+            // InternalGridGame.g:2873:3: otherlv_0= 'inState' otherlv_1= '(' ( (otherlv_2= RULE_ID ) ) (otherlv_3= '|' ( (otherlv_4= RULE_ID ) ) )* otherlv_5= ')'
             {
             otherlv_0=(Token)match(input,63,FOLLOW_31); 
 
@@ -7237,7 +7239,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
             	            current = createModelElement(grammarAccess.getStateFilterExpressionRule());
             	        }
                     
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_33); 
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_49); 
 
             		newLeafNode(otherlv_2, grammarAccess.getStateFilterExpressionAccess().getCell_stateCellStateCrossReference_2_0()); 
             	
@@ -7247,9 +7249,58 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,32,FOLLOW_2); 
+            // InternalGridGame.g:2894:2: (otherlv_3= '|' ( (otherlv_4= RULE_ID ) ) )*
+            loop39:
+            do {
+                int alt39=2;
+                int LA39_0 = input.LA(1);
 
-                	newLeafNode(otherlv_3, grammarAccess.getStateFilterExpressionAccess().getRightParenthesisKeyword_3());
+                if ( (LA39_0==62) ) {
+                    alt39=1;
+                }
+
+
+                switch (alt39) {
+            	case 1 :
+            	    // InternalGridGame.g:2894:4: otherlv_3= '|' ( (otherlv_4= RULE_ID ) )
+            	    {
+            	    otherlv_3=(Token)match(input,62,FOLLOW_3); 
+
+            	        	newLeafNode(otherlv_3, grammarAccess.getStateFilterExpressionAccess().getVerticalLineKeyword_3_0());
+            	        
+            	    // InternalGridGame.g:2898:1: ( (otherlv_4= RULE_ID ) )
+            	    // InternalGridGame.g:2899:1: (otherlv_4= RULE_ID )
+            	    {
+            	    // InternalGridGame.g:2899:1: (otherlv_4= RULE_ID )
+            	    // InternalGridGame.g:2900:3: otherlv_4= RULE_ID
+            	    {
+
+            	    			if (current==null) {
+            	    	            current = createModelElement(grammarAccess.getStateFilterExpressionRule());
+            	    	        }
+            	            
+            	    otherlv_4=(Token)match(input,RULE_ID,FOLLOW_49); 
+
+            	    		newLeafNode(otherlv_4, grammarAccess.getStateFilterExpressionAccess().getCell_stateCellStateCrossReference_3_1_0()); 
+            	    	
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop39;
+                }
+            } while (true);
+
+            otherlv_5=(Token)match(input,32,FOLLOW_2); 
+
+                	newLeafNode(otherlv_5, grammarAccess.getStateFilterExpressionAccess().getRightParenthesisKeyword_4());
                 
 
             }
@@ -7272,7 +7323,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCountExpression"
-    // InternalGridGame.g:2906:1: entryRuleCountExpression returns [EObject current=null] : iv_ruleCountExpression= ruleCountExpression EOF ;
+    // InternalGridGame.g:2923:1: entryRuleCountExpression returns [EObject current=null] : iv_ruleCountExpression= ruleCountExpression EOF ;
     public final EObject entryRuleCountExpression() throws RecognitionException {
         EObject current = null;
 
@@ -7280,8 +7331,8 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGridGame.g:2907:2: (iv_ruleCountExpression= ruleCountExpression EOF )
-            // InternalGridGame.g:2908:2: iv_ruleCountExpression= ruleCountExpression EOF
+            // InternalGridGame.g:2924:2: (iv_ruleCountExpression= ruleCountExpression EOF )
+            // InternalGridGame.g:2925:2: iv_ruleCountExpression= ruleCountExpression EOF
             {
              newCompositeNode(grammarAccess.getCountExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -7308,7 +7359,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCountExpression"
-    // InternalGridGame.g:2915:1: ruleCountExpression returns [EObject current=null] : (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )? ) ;
+    // InternalGridGame.g:2932:1: ruleCountExpression returns [EObject current=null] : (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )? ) ;
     public final EObject ruleCountExpression() throws RecognitionException {
         EObject current = null;
 
@@ -7323,11 +7374,11 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // InternalGridGame.g:2918:28: ( (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )? ) )
-            // InternalGridGame.g:2919:1: (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )? )
+            // InternalGridGame.g:2935:28: ( (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )? ) )
+            // InternalGridGame.g:2936:1: (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )? )
             {
-            // InternalGridGame.g:2919:1: (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )? )
-            // InternalGridGame.g:2919:3: otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )?
+            // InternalGridGame.g:2936:1: (otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )? )
+            // InternalGridGame.g:2936:3: otherlv_0= 'count' otherlv_1= '(' otherlv_2= ')' () ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )?
             {
             otherlv_0=(Token)match(input,64,FOLLOW_31); 
 
@@ -7341,8 +7392,8 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_2, grammarAccess.getCountExpressionAccess().getRightParenthesisKeyword_2());
                 
-            // InternalGridGame.g:2931:1: ()
-            // InternalGridGame.g:2932:5: 
+            // InternalGridGame.g:2948:1: ()
+            // InternalGridGame.g:2949:5: 
             {
 
                     current = forceCreateModelElement(
@@ -7352,51 +7403,51 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGridGame.g:2937:2: ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )?
-            int alt40=2;
-            int LA40_0 = input.LA(1);
+            // InternalGridGame.g:2954:2: ( ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) ) )?
+            int alt41=2;
+            int LA41_0 = input.LA(1);
 
-            if ( ((LA40_0>=65 && LA40_0<=67)) ) {
-                alt40=1;
+            if ( ((LA41_0>=65 && LA41_0<=67)) ) {
+                alt41=1;
             }
-            switch (alt40) {
+            switch (alt41) {
                 case 1 :
-                    // InternalGridGame.g:2937:3: ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) )
+                    // InternalGridGame.g:2954:3: ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) ) ( (lv_cmpVal_5_0= RULE_INT ) )
                     {
-                    // InternalGridGame.g:2937:3: ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) )
-                    // InternalGridGame.g:2938:1: ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) )
+                    // InternalGridGame.g:2954:3: ( ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) ) )
+                    // InternalGridGame.g:2955:1: ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) )
                     {
-                    // InternalGridGame.g:2938:1: ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) )
-                    // InternalGridGame.g:2939:1: (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' )
+                    // InternalGridGame.g:2955:1: ( (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' ) )
+                    // InternalGridGame.g:2956:1: (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' )
                     {
-                    // InternalGridGame.g:2939:1: (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' )
-                    int alt39=3;
+                    // InternalGridGame.g:2956:1: (lv_op_4_1= '==' | lv_op_4_2= '>' | lv_op_4_3= '<' )
+                    int alt40=3;
                     switch ( input.LA(1) ) {
                     case 65:
                         {
-                        alt39=1;
+                        alt40=1;
                         }
                         break;
                     case 66:
                         {
-                        alt39=2;
+                        alt40=2;
                         }
                         break;
                     case 67:
                         {
-                        alt39=3;
+                        alt40=3;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 39, 0, input);
+                            new NoViableAltException("", 40, 0, input);
 
                         throw nvae;
                     }
 
-                    switch (alt39) {
+                    switch (alt40) {
                         case 1 :
-                            // InternalGridGame.g:2940:3: lv_op_4_1= '=='
+                            // InternalGridGame.g:2957:3: lv_op_4_1= '=='
                             {
                             lv_op_4_1=(Token)match(input,65,FOLLOW_38); 
 
@@ -7412,7 +7463,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalGridGame.g:2952:8: lv_op_4_2= '>'
+                            // InternalGridGame.g:2969:8: lv_op_4_2= '>'
                             {
                             lv_op_4_2=(Token)match(input,66,FOLLOW_38); 
 
@@ -7428,7 +7479,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 3 :
-                            // InternalGridGame.g:2964:8: lv_op_4_3= '<'
+                            // InternalGridGame.g:2981:8: lv_op_4_3= '<'
                             {
                             lv_op_4_3=(Token)match(input,67,FOLLOW_38); 
 
@@ -7452,11 +7503,11 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGridGame.g:2979:2: ( (lv_cmpVal_5_0= RULE_INT ) )
-                    // InternalGridGame.g:2980:1: (lv_cmpVal_5_0= RULE_INT )
+                    // InternalGridGame.g:2996:2: ( (lv_cmpVal_5_0= RULE_INT ) )
+                    // InternalGridGame.g:2997:1: (lv_cmpVal_5_0= RULE_INT )
                     {
-                    // InternalGridGame.g:2980:1: (lv_cmpVal_5_0= RULE_INT )
-                    // InternalGridGame.g:2981:3: lv_cmpVal_5_0= RULE_INT
+                    // InternalGridGame.g:2997:1: (lv_cmpVal_5_0= RULE_INT )
+                    // InternalGridGame.g:2998:3: lv_cmpVal_5_0= RULE_INT
                     {
                     lv_cmpVal_5_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -7505,7 +7556,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNotEmptyExpression"
-    // InternalGridGame.g:3005:1: entryRuleNotEmptyExpression returns [EObject current=null] : iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF ;
+    // InternalGridGame.g:3022:1: entryRuleNotEmptyExpression returns [EObject current=null] : iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF ;
     public final EObject entryRuleNotEmptyExpression() throws RecognitionException {
         EObject current = null;
 
@@ -7513,8 +7564,8 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGridGame.g:3006:2: (iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF )
-            // InternalGridGame.g:3007:2: iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF
+            // InternalGridGame.g:3023:2: (iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF )
+            // InternalGridGame.g:3024:2: iv_ruleNotEmptyExpression= ruleNotEmptyExpression EOF
             {
              newCompositeNode(grammarAccess.getNotEmptyExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -7541,7 +7592,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNotEmptyExpression"
-    // InternalGridGame.g:3014:1: ruleNotEmptyExpression returns [EObject current=null] : (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () ) ;
+    // InternalGridGame.g:3031:1: ruleNotEmptyExpression returns [EObject current=null] : (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () ) ;
     public final EObject ruleNotEmptyExpression() throws RecognitionException {
         EObject current = null;
 
@@ -7552,11 +7603,11 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // InternalGridGame.g:3017:28: ( (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () ) )
-            // InternalGridGame.g:3018:1: (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () )
+            // InternalGridGame.g:3034:28: ( (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () ) )
+            // InternalGridGame.g:3035:1: (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () )
             {
-            // InternalGridGame.g:3018:1: (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () )
-            // InternalGridGame.g:3018:3: otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' ()
+            // InternalGridGame.g:3035:1: (otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' () )
+            // InternalGridGame.g:3035:3: otherlv_0= 'notEmpty' otherlv_1= '(' otherlv_2= ')' ()
             {
             otherlv_0=(Token)match(input,68,FOLLOW_31); 
 
@@ -7570,8 +7621,8 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_2, grammarAccess.getNotEmptyExpressionAccess().getRightParenthesisKeyword_2());
                 
-            // InternalGridGame.g:3030:1: ()
-            // InternalGridGame.g:3031:5: 
+            // InternalGridGame.g:3047:1: ()
+            // InternalGridGame.g:3048:5: 
             {
 
                     current = forceCreateModelElement(
@@ -7602,7 +7653,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEmptyExpression"
-    // InternalGridGame.g:3044:1: entryRuleEmptyExpression returns [EObject current=null] : iv_ruleEmptyExpression= ruleEmptyExpression EOF ;
+    // InternalGridGame.g:3061:1: entryRuleEmptyExpression returns [EObject current=null] : iv_ruleEmptyExpression= ruleEmptyExpression EOF ;
     public final EObject entryRuleEmptyExpression() throws RecognitionException {
         EObject current = null;
 
@@ -7610,8 +7661,8 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGridGame.g:3045:2: (iv_ruleEmptyExpression= ruleEmptyExpression EOF )
-            // InternalGridGame.g:3046:2: iv_ruleEmptyExpression= ruleEmptyExpression EOF
+            // InternalGridGame.g:3062:2: (iv_ruleEmptyExpression= ruleEmptyExpression EOF )
+            // InternalGridGame.g:3063:2: iv_ruleEmptyExpression= ruleEmptyExpression EOF
             {
              newCompositeNode(grammarAccess.getEmptyExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -7638,7 +7689,7 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEmptyExpression"
-    // InternalGridGame.g:3053:1: ruleEmptyExpression returns [EObject current=null] : (otherlv_0= 'empty' otherlv_1= '(' otherlv_2= ')' () ) ;
+    // InternalGridGame.g:3070:1: ruleEmptyExpression returns [EObject current=null] : (otherlv_0= 'empty' otherlv_1= '(' otherlv_2= ')' () ) ;
     public final EObject ruleEmptyExpression() throws RecognitionException {
         EObject current = null;
 
@@ -7649,11 +7700,11 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // InternalGridGame.g:3056:28: ( (otherlv_0= 'empty' otherlv_1= '(' otherlv_2= ')' () ) )
-            // InternalGridGame.g:3057:1: (otherlv_0= 'empty' otherlv_1= '(' otherlv_2= ')' () )
+            // InternalGridGame.g:3073:28: ( (otherlv_0= 'empty' otherlv_1= '(' otherlv_2= ')' () ) )
+            // InternalGridGame.g:3074:1: (otherlv_0= 'empty' otherlv_1= '(' otherlv_2= ')' () )
             {
-            // InternalGridGame.g:3057:1: (otherlv_0= 'empty' otherlv_1= '(' otherlv_2= ')' () )
-            // InternalGridGame.g:3057:3: otherlv_0= 'empty' otherlv_1= '(' otherlv_2= ')' ()
+            // InternalGridGame.g:3074:1: (otherlv_0= 'empty' otherlv_1= '(' otherlv_2= ')' () )
+            // InternalGridGame.g:3074:3: otherlv_0= 'empty' otherlv_1= '(' otherlv_2= ')' ()
             {
             otherlv_0=(Token)match(input,69,FOLLOW_31); 
 
@@ -7667,8 +7718,8 @@ public class InternalGridGameParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_2, grammarAccess.getEmptyExpressionAccess().getRightParenthesisKeyword_2());
                 
-            // InternalGridGame.g:3069:1: ()
-            // InternalGridGame.g:3070:5: 
+            // InternalGridGame.g:3086:1: ()
+            // InternalGridGame.g:3087:5: 
             {
 
                     current = forceCreateModelElement(

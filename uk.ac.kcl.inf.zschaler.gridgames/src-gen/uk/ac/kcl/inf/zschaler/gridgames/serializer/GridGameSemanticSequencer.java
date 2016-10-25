@@ -664,16 +664,10 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     StateFilterExpression returns StateFilterExpression
 	 *
 	 * Constraint:
-	 *     cell_state=[CellState|ID]
+	 *     (cell_state+=[CellState|ID] cell_state+=[CellState|ID]*)
 	 */
 	protected void sequence_StateFilterExpression(ISerializationContext context, StateFilterExpression semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GridGamePackage.Literals.STATE_FILTER_EXPRESSION__CELL_STATE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.STATE_FILTER_EXPRESSION__CELL_STATE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStateFilterExpressionAccess().getCell_stateCellStateIDTerminalRuleCall_2_0_1(), semanticObject.getCell_state());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

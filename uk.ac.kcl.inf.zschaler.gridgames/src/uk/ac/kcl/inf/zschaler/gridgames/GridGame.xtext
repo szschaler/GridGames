@@ -238,7 +238,7 @@ FilterExpression :
 ;
 
 StateFilterExpression :
-	"inState" "(" cell_state = [CellState] ")"
+	"inState" "(" cell_state += [CellState] ("|" cell_state += [CellState])* ")"
 ;
 
 CountExpression :

@@ -155,7 +155,8 @@
         upperBound="-1" eType="#//CellSpecification"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateFilterExpression" eSuperTypes="#//AtomicExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cell_state" eType="#//CellState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cell_state" unique="false"
+        upperBound="-1" eType="#//CellState"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CountExpression" eSuperTypes="#//AtomicExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

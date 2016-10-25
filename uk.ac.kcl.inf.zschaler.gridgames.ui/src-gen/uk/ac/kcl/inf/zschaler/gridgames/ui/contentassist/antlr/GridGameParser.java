@@ -103,6 +103,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFilterExpressionAccess().getGroup(), "rule__FilterExpression__Group__0");
 					put(grammarAccess.getFilterExpressionAccess().getGroup_3(), "rule__FilterExpression__Group_3__0");
 					put(grammarAccess.getStateFilterExpressionAccess().getGroup(), "rule__StateFilterExpression__Group__0");
+					put(grammarAccess.getStateFilterExpressionAccess().getGroup_3(), "rule__StateFilterExpression__Group_3__0");
 					put(grammarAccess.getCountExpressionAccess().getGroup(), "rule__CountExpression__Group__0");
 					put(grammarAccess.getCountExpressionAccess().getGroup_4(), "rule__CountExpression__Group_4__0");
 					put(grammarAccess.getNotEmptyExpressionAccess().getGroup(), "rule__NotEmptyExpression__Group__0");
@@ -176,6 +177,7 @@ public class GridGameParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFilterExpressionAccess().getCell_typeAssignment_2(), "rule__FilterExpression__Cell_typeAssignment_2");
 					put(grammarAccess.getFilterExpressionAccess().getCell_typeAssignment_3_1(), "rule__FilterExpression__Cell_typeAssignment_3_1");
 					put(grammarAccess.getStateFilterExpressionAccess().getCell_stateAssignment_2(), "rule__StateFilterExpression__Cell_stateAssignment_2");
+					put(grammarAccess.getStateFilterExpressionAccess().getCell_stateAssignment_3_1(), "rule__StateFilterExpression__Cell_stateAssignment_3_1");
 					put(grammarAccess.getCountExpressionAccess().getOpAssignment_4_0(), "rule__CountExpression__OpAssignment_4_0");
 					put(grammarAccess.getCountExpressionAccess().getCmpValAssignment_4_1(), "rule__CountExpression__CmpValAssignment_4_1");
 				}

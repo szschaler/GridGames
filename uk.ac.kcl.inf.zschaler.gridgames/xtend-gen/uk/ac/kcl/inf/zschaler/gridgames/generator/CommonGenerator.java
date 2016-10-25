@@ -234,12 +234,25 @@ public class CommonGenerator {
   
   protected CharSequence _generateFor(final StateFilterExpression sfe) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("inState");
-    CellState _cell_state = sfe.getCell_state();
-    String _name = _cell_state.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
+    CharSequence _generateMethodName = this.generateMethodName(sfe);
+    _builder.append(_generateMethodName, "");
     _builder.append("()");
+    return _builder;
+  }
+  
+  public CharSequence generateMethodName(final StateFilterExpression sfe) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("inState");
+    EList<CellState> _cell_state = sfe.getCell_state();
+    final Function1<CellState, CharSequence> _function = new Function1<CellState, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellState cs) {
+        String _name = cs.getName();
+        return StringExtensions.toFirstUpper(_name);
+      }
+    };
+    String _join = IterableExtensions.<CellState>join(_cell_state, "Or", _function);
+    _builder.append(_join, "");
     return _builder;
   }
   
