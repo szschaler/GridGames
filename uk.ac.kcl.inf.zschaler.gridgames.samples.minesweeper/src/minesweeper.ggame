@@ -73,7 +73,7 @@ game minesweeper {
 				//on mouse-right goto question
 			}
 		}
-		/*
+		
 		question {
 			display {
 				as button
@@ -85,7 +85,7 @@ game minesweeper {
 				on mouse-right goto hidden
 			}
 		}
-		*/
+		
 		discovered {
 			display {
 				as label

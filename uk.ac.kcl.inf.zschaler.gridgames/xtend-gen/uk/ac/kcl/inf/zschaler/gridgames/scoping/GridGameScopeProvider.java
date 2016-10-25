@@ -13,7 +13,9 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGamePackage;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
 
 /**
  * This class contains custom scoping description.
@@ -34,5 +36,11 @@ public class GridGameScopeProvider extends AbstractDeclarativeScopeProvider {
     } else {
       return super.getScope(context, reference);
     }
+  }
+  
+  public IScope scope_StateFilterExpression_cell_state(final StateFilterExpression sfe, final EReference reference) {
+    EObject rootElement = EcoreUtil2.getRootContainer(sfe);
+    List<? extends EObject> candidates = EcoreUtil2.<CellState>getAllContentsOfType(rootElement, CellState.class);
+    return Scopes.scopeFor(candidates);
   }
 }
