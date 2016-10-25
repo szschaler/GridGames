@@ -24,11 +24,17 @@ class CellContextGenerator extends CommonGenerator {
 					return new LocalCellContext(x, y);
 				}
 				
+				private CellContext getGlobalContext() {
+					return new GlobalCellContext();
+				}
+				
 				«generateCellContextIntf»
 				
 				«generateAbstractCellContext»
 				
 				«generateLocalCellContext»
+				
+				«generateGlobalCellContext»
 			'''
 		}
 	}
@@ -119,6 +125,58 @@ class CellContextGenerator extends CommonGenerator {
 								    (field[x + dx][y + dy] != null)) {
 									al.add (((LocalCellContext) context).new ContextElement (x + dx, y + dy, field[x + dx][y + dy]));
 								}
+							}
+						}
+						
+						return al;
+					}
+				});
+			}
+		}
+	'''
+
+	def generateGlobalCellContext() '''
+		public class GlobalCellContext extends AbstractCellContext {
+			public class ContextElement implements CellContext.ContextElement {
+				private Cell cell;
+				private int x, y;
+				
+				public ContextElement (int x, int y, Cell cell) {
+					this.x = x; this.y = y;
+					this.cell = cell;
+				}
+				
+				@Override
+				public Cell getCell() {
+					return cell;
+				}
+				
+				@Override
+				public CellContext getContextHere() {
+					return getContextAt (x, y);
+				}
+				
+				@Override
+				public int getRow() {
+					return y;
+				}
+				
+				@Override
+				public int getCol() {
+					return x;
+				}
+			}
+			
+			public GlobalCellContext() {
+				super (new ContextCreationStrategy() {
+					
+					@Override
+					public List<CellContext.ContextElement> getContextElements(CellContext context) {
+						ArrayList<CellContext.ContextElement> al = new ArrayList<>(width * height);
+						
+						for (int x = 0; x < width; x ++) {
+							for (int y = 0; y < height; y++) {
+								al.add (((LocalCellContext) context).new ContextElement (x, y, field[x][y]));
 							}
 						}
 						
