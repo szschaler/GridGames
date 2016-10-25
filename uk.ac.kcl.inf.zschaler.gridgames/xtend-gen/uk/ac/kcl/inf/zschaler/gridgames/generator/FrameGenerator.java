@@ -293,7 +293,7 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append("if (col != TableModelEvent.ALL_COLUMNS) {");
     _builder.newLine();
     _builder.append("\t\t\t\t\t\t\t");
-    _builder.append("handleStateChange (field.getValueAt(row, col));");
+    _builder.append("handleStateChange (field.getValueAt(row, col), (row == firstRow));");
     _builder.newLine();
     _builder.append("\t\t\t\t\t\t");
     _builder.append("} else {");
@@ -302,7 +302,7 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append("for (col = 0; col < field.getColumnCount(); col++) {");
     _builder.newLine();
     _builder.append("\t\t\t\t\t\t\t\t");
-    _builder.append("handleStateChange (field.getValueAt(row, col));\t\t\t\t\t\t\t\t");
+    _builder.append("handleStateChange (field.getValueAt(row, col), ((row == firstRow) && (col == 0)));\t\t\t\t\t\t\t\t");
     _builder.newLine();
     _builder.append("\t\t\t\t\t\t\t");
     _builder.append("}");
@@ -566,7 +566,7 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("private void handleStateChange (Cell c) {");
+    _builder.append("private void handleStateChange (Cell c, boolean firstNotification) {");
     _builder.newLine();
     _builder.append("\t\t");
     final Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> states = this.mpp.getAllStatesWithEnterActions();
@@ -651,12 +651,17 @@ public class FrameGenerator extends CommonGenerator {
       boolean _isEmpty = _globalActions.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
+        _builder.append("if (firstNotification) {");
+        _builder.newLine();
+        _builder.append("\t");
         _builder.append("final ");
         CharSequence _generateFieldClassName = this.generateFieldClassName();
-        _builder.append(_generateFieldClassName, "");
+        _builder.append(_generateFieldClassName, "\t");
         _builder.append(".CellContext context = field.getGlobalContext();");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         _builder.newLine();
+        _builder.append("\t");
         EList<GlobalAction> _globalActions_1 = this.gg.getGlobalActions();
         final Function1<GlobalAction, CharSequence> _function = new Function1<GlobalAction, CharSequence>() {
           @Override
@@ -665,8 +670,10 @@ public class FrameGenerator extends CommonGenerator {
           }
         };
         String _join = IterableExtensions.<GlobalAction>join(_globalActions_1, "\n", _function);
-        _builder.append(_join, "");
+        _builder.append(_join, "\t");
         _builder.newLineIfNotEmpty();
+        _builder.append("}");
+        _builder.newLine();
       }
     }
     _builder.newLine();

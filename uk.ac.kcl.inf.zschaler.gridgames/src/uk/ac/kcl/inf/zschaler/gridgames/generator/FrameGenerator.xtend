@@ -113,10 +113,10 @@ class FrameGenerator extends CommonGenerator {
 
 							for (int row = firstRow; row <= lastRow; row++) {
 								if (col != TableModelEvent.ALL_COLUMNS) {
-									handleStateChange (field.getValueAt(row, col));
+									handleStateChange (field.getValueAt(row, col), (row == firstRow));
 								} else {
 									for (col = 0; col < field.getColumnCount(); col++) {
-										handleStateChange (field.getValueAt(row, col));								
+										handleStateChange (field.getValueAt(row, col), ((row == firstRow) && (col == 0)));								
 									}
 								}
 							}
@@ -208,7 +208,7 @@ class FrameGenerator extends CommonGenerator {
 				pack();
 			}
 			
-			private void handleStateChange (Cell c) {
+			private void handleStateChange (Cell c, boolean firstNotification) {
 				«val states = mpp.allStatesWithEnterActions»
 				«
 				if (! states.empty) {
@@ -234,9 +234,11 @@ class FrameGenerator extends CommonGenerator {
 
 	def generateGlobalActionsCode() '''
 		«IF (!gg.globalActions.empty)»
-			final «generateFieldClassName».CellContext context = field.getGlobalContext();
-			
-			«gg.globalActions.join("\n", [ga | ga.generateCodeFor])»
+			if (firstNotification) {
+				final «generateFieldClassName».CellContext context = field.getGlobalContext();
+				
+				«gg.globalActions.join("\n", [ga | ga.generateCodeFor])»
+			}
 		«ENDIF»
 		
 	'''
