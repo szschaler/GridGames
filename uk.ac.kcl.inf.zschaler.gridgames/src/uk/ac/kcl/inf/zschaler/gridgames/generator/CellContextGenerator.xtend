@@ -26,8 +26,9 @@ class CellContextGenerator extends CommonGenerator {
 				
 				«generateCellContextIntf»
 				
-				«generateLocalCellContext»
+				«generateAbstractCellContext»
 				
+				«generateLocalCellContext»
 			'''
 		}
 	}
@@ -41,20 +42,44 @@ class CellContextGenerator extends CommonGenerator {
 				public int getCol();
 			}
 			
+			/*
+			 * Not ideal, should really be defined in AbstractCellContext, but Java won't let me do that...
+			 */
+			public interface ContextCreationStrategy {
+				public List<ContextElement> getContextElements(CellContext context);
+			}
+			
 			«
 			// Need to convert to string so that comparison in toSet works correctly
 			gg.contextExpInvocations.map[e | e.generateSignature.toString].toSet.join("\n")»
 		}
 	'''
 	
+	def generateAbstractCellContext() '''
+		public abstract class AbstractCellContext implements CellContext {
+			private List<CellContext.ContextElement> al;
+			
+			public AbstractCellContext (ContextCreationStrategy ccs) {
+				this.al = ccs.getContextElements(this);
+			}
+			
+			public Iterator<CellContext.ContextElement> iterator() {
+				return al.iterator();
+			}
+			
+			«// Slightly annoyingly have to convert the CharSequences into Strings here to make sure the equality check in toSet works
+			 gg.contextExpInvocations.map[e | e.generateImplementation.toString].toSet.join(" ")»
+		}
+	'''
+	
 	def generateLocalCellContext() '''
-		public class LocalCellContext implements CellContext {
+		public class LocalCellContext extends AbstractCellContext {
 			public class ContextElement implements CellContext.ContextElement {
 				private Cell cell;
-				private int dx, dy;
+				private int x, y;
 				
-				public ContextElement (int dx, int dy, Cell cell) {
-					this.dx = dx; this.dy = dy;
+				public ContextElement (int x, int y, Cell cell) {
+					this.x = x; this.y = y;
 					this.cell = cell;
 				}
 				
@@ -65,48 +90,45 @@ class CellContextGenerator extends CommonGenerator {
 				
 				@Override
 				public CellContext getContextHere() {
-					return getContextAt (x + dx, y + dy);
+					return getContextAt (x, y);
 				}
 				
 				@Override
 				public int getRow() {
-					return y + dy;
+					return y;
 				}
 				
 				@Override
 				public int getCol() {
-					return x + dx;
+					return x;
 				}
 			}
 			
-			private ArrayList<CellContext.ContextElement> al = new ArrayList<> (8);
-			private int x, y; 
-			
-			public LocalCellContext (int x, int y) {
-				this.x = x; this.y = y;
-				
-				for (int dx = -1; dx <= 1; dx ++) {
-					for (int dy = -1; dy <= 1; dy++) {
-						if (((dx != 0) || (dy != 0)) && 
-						    ((x + dx >= 0) && (x + dx < width)) &&
-						    ((y + dy >= 0) && (y + dy < height)) &&
-						    (field[x + dx][y + dy] != null)) {
-							al.add (new ContextElement (dx, dy, field[x + dx][y + dy]));
+			public LocalCellContext (final int x, final int y) {
+				super (new ContextCreationStrategy() {
+					
+					@Override
+					public List<CellContext.ContextElement> getContextElements(CellContext context) {
+						ArrayList<CellContext.ContextElement> al = new ArrayList<>(8);
+						
+						for (int dx = -1; dx <= 1; dx ++) {
+							for (int dy = -1; dy <= 1; dy++) {
+								if (((dx != 0) || (dy != 0)) && 
+								    ((x + dx >= 0) && (x + dx < width)) &&
+								    ((y + dy >= 0) && (y + dy < height)) &&
+								    (field[x + dx][y + dy] != null)) {
+									al.add (((LocalCellContext) context).new ContextElement (x + dx, y + dy, field[x + dx][y + dy]));
+								}
+							}
 						}
+						
+						return al;
 					}
-				}
+				});
 			}
-			
-			public Iterator<CellContext.ContextElement> iterator() {
-				return al.iterator();
-			}
-			
-			«// Slightly annoyingly have to convert the CharSequences into Strings here to make
-					 // sure the equality check in toSet works
-			 gg.contextExpInvocations.map[e | e.generateImplementation.toString].toSet.join(" ")»
 		}
 	'''
-	
+
 	private def needContextGeneration() {
 		(gg.fields.exists[f|mpp.allInitialisations(f).exists[i|i.value instanceof ContextInitialisation]]) ||
 		(!mpp.allStatesWithContextTriggers.empty) ||
@@ -207,6 +229,7 @@ class CellContextGenerator extends CommonGenerator {
 	def addImports(Set<String> imports) {
 		if (needContextGeneration) {
 			imports.add("java.util.ArrayList")
+			imports.add("java.util.List")
 			imports.add("java.util.Iterator")
 		}
 	}
