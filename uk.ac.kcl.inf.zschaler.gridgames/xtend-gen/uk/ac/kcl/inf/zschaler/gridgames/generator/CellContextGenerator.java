@@ -25,6 +25,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalAction;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NotEmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.StateFilterExpression;
@@ -210,6 +211,7 @@ public class CellContextGenerator extends CommonGenerator {
   
   private boolean needContextGeneration() {
     boolean _or = false;
+    boolean _or_1 = false;
     EList<FieldSpecification> _fields = this.gg.getFields();
     final Function1<FieldSpecification, Boolean> _function = new Function1<FieldSpecification, Boolean>() {
       @Override
@@ -227,12 +229,20 @@ public class CellContextGenerator extends CommonGenerator {
     };
     boolean _exists = IterableExtensions.<FieldSpecification>exists(_fields, _function);
     if (_exists) {
-      _or = true;
+      _or_1 = true;
     } else {
       Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers = this.mpp.getAllStatesWithContextTriggers();
       boolean _isEmpty = IterableExtensions.isEmpty(_allStatesWithContextTriggers);
       boolean _not = (!_isEmpty);
-      _or = _not;
+      _or_1 = _not;
+    }
+    if (_or_1) {
+      _or = true;
+    } else {
+      EList<GlobalAction> _globalActions = this.gg.getGlobalActions();
+      boolean _isEmpty_1 = _globalActions.isEmpty();
+      boolean _not_1 = (!_isEmpty_1);
+      _or = _not_1;
     }
     return _or;
   }
@@ -307,6 +317,17 @@ public class CellContextGenerator extends CommonGenerator {
       Iterable<Iterable<AtomicExpression>> _map_1 = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Iterable<AtomicExpression>>map(_allCellStates, _function_1);
       Iterable<AtomicExpression> _flatten_1 = Iterables.<AtomicExpression>concat(_map_1);
       Iterables.<AtomicExpression>addAll(contextExpInvs, _flatten_1);
+      EList<GlobalAction> _globalActions = gg.getGlobalActions();
+      final Function1<GlobalAction, EList<AtomicExpression>> _function_2 = new Function1<GlobalAction, EList<AtomicExpression>>() {
+        @Override
+        public EList<AtomicExpression> apply(final GlobalAction ga) {
+          ContextExpression _trigger = ga.getTrigger();
+          return _trigger.getSub_exp();
+        }
+      };
+      List<EList<AtomicExpression>> _map_2 = ListExtensions.<GlobalAction, EList<AtomicExpression>>map(_globalActions, _function_2);
+      Iterable<AtomicExpression> _flatten_2 = Iterables.<AtomicExpression>concat(_map_2);
+      Iterables.<AtomicExpression>addAll(contextExpInvs, _flatten_2);
       _xblockexpression = contextExpInvs;
     }
     return _xblockexpression;

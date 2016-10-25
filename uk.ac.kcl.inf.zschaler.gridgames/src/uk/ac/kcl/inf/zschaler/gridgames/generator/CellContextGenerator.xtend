@@ -83,7 +83,8 @@ class CellContextGenerator extends CommonGenerator {
 	
 	private def needContextGeneration() {
 		(gg.fields.exists[f|mpp.allInitialisations(f).exists[i|i.value instanceof ContextInitialisation]]) ||
-		(!mpp.allStatesWithContextTriggers.empty)
+		(!mpp.allStatesWithContextTriggers.empty) ||
+		(!gg.globalActions.empty)
 	}
 
 	def getContextExpInvocations(GridGame gg) {
@@ -101,6 +102,10 @@ class CellContextGenerator extends CommonGenerator {
 			csp.key.transitions.filter[t|t.trigger instanceof ContextTrigger].map [t |
 				(t.trigger as ContextTrigger).exp.sub_exp
 			].flatten
+		].flatten)
+
+		contextExpInvs.addAll(gg.globalActions.map [ga | 
+			ga.trigger.sub_exp
 		].flatten)
 
 		contextExpInvs
