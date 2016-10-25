@@ -48,6 +48,6 @@ public abstract class Cell {
 		}
 	}
 	
-	public boolean isEmpty() { return false; } public boolean isBorderingMine() { return false; } public boolean isMine() { return false; }
+	public boolean is_empty() { return false; } public boolean isBorderingMine() { return false; } public boolean isMine() { return false; }
 	
 }

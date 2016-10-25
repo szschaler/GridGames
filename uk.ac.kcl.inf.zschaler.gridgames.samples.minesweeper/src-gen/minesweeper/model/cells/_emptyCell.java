@@ -8,9 +8,9 @@ import java.awt.Color;
 
 import minesweeper.model.MinesweeperField;
 
-public class EmptyCell extends Cell {
+public class _emptyCell extends Cell {
 	
-	public EmptyCell() {
+	public _emptyCell() {
 		setState (new HiddenCellState(), 0, 0, null);
 		
 	}
@@ -38,7 +38,7 @@ public class EmptyCell extends Cell {
 		}
 	
 		public CellState getContextBasedFollowState (MinesweeperField.CellContext context) {
-			if (context.filterEmpty().inStateDiscovered().notEmpty()) {
+			if (context.filter_empty().inStateDiscovered().notEmpty()) {
 				return new DiscoveredCellState();
 			}
 			return this;
@@ -89,7 +89,7 @@ public class EmptyCell extends Cell {
 	}
 	
 	@Override
-	public boolean isEmpty() {
+	public boolean is_empty() {
 		return true;
 	}
 	

@@ -24,7 +24,7 @@ game minesweeper {
 	// There are three different types of cells that make up the game field
 	
 	// Empty cells are where there is no mine 
-	cell empty {
+	cell _empty {
 		states mineStates ("", nop)
 	}
 	
@@ -43,7 +43,7 @@ game minesweeper {
 	init fill_field (int numMines) {
 		random: mine = numMines;
 		context: borderingMine check filter(mine).notEmpty() value=filter(mine).count();
-		default: empty;
+		default: _empty;
 	}
 
 	// Cells have states. The state machine is pretty much the same for all types of cells except for the label to be shown on discovered cells and the action to be triggered when a cell is discovered.	
@@ -58,7 +58,7 @@ game minesweeper {
 				on mouse-left goto discovered
 				on mouse-right goto flagged
 				// TODO Make this a parameter (should only happen for empty cells)
-				on context (filter(empty).inState(discovered).notEmpty()) goto discovered
+				on context (filter(_empty).inState(discovered).notEmpty()) goto discovered
 			}
 		}
 		flagged {

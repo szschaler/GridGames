@@ -38,7 +38,7 @@ public class MineCell extends Cell {
 		}
 	
 		public CellState getContextBasedFollowState (MinesweeperField.CellContext context) {
-			if (context.filterEmpty().inStateDiscovered().notEmpty()) {
+			if (context.filter_empty().inStateDiscovered().notEmpty()) {
 				return new DiscoveredCellState();
 			}
 			return this;
