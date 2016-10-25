@@ -91,10 +91,10 @@ public class GameOfLifeFrame extends JFrame {
 
 					for (int row = firstRow; row <= lastRow; row++) {
 						if (col != TableModelEvent.ALL_COLUMNS) {
-							handleStateChange (field.getValueAt(row, col));
+							handleStateChange (field.getValueAt(row, col), (row == firstRow));
 						} else {
 							for (col = 0; col < field.getColumnCount(); col++) {
-								handleStateChange (field.getValueAt(row, col));								
+								handleStateChange (field.getValueAt(row, col), ((row == firstRow) && (col == 0)));								
 							}
 						}
 					}
@@ -171,7 +171,16 @@ public class GameOfLifeFrame extends JFrame {
 		pack();
 	}
 	
-	private void handleStateChange (Cell c) {
+	private void handleStateChange (Cell c, boolean firstNotification) {
+		if (firstNotification) {
+			final GameOfLifeField.CellContext context = field.getGlobalContext();
+			
+			if (context.inStateAlive().empty()) {
+				handlingInput = false;
+				JOptionPane.showMessageDialog(GameOfLifeFrame.this, "No living cells left");
+			}
+		}
+		
 	}
 	
 	public static void main(String[] args) {
