@@ -1761,13 +1761,18 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCell_typeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cCell_typeCellSpecificationCrossReference_2_0 = (CrossReference)cCell_typeAssignment_2.eContents().get(0);
 		private final RuleCall cCell_typeCellSpecificationIDTerminalRuleCall_2_0_1 = (RuleCall)cCell_typeCellSpecificationCrossReference_2_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cVerticalLineKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cCell_typeAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cCell_typeCellSpecificationCrossReference_3_1_0 = (CrossReference)cCell_typeAssignment_3_1.eContents().get(0);
+		private final RuleCall cCell_typeCellSpecificationIDTerminalRuleCall_3_1_0_1 = (RuleCall)cCell_typeCellSpecificationCrossReference_3_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//FilterExpression:
-		//	"filter" "(" cell_type=[CellSpecification] ")";
+		//	"filter" "(" cell_type+=[CellSpecification] ("|" cell_type+=[CellSpecification])* ")";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"filter" "(" cell_type=[CellSpecification] ")"
+		//"filter" "(" cell_type+=[CellSpecification] ("|" cell_type+=[CellSpecification])* ")"
 		public Group getGroup() { return cGroup; }
 
 		//"filter"
@@ -1776,7 +1781,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
-		//cell_type=[CellSpecification]
+		//cell_type+=[CellSpecification]
 		public Assignment getCell_typeAssignment_2() { return cCell_typeAssignment_2; }
 
 		//[CellSpecification]
@@ -1785,8 +1790,23 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getCell_typeCellSpecificationIDTerminalRuleCall_2_0_1() { return cCell_typeCellSpecificationIDTerminalRuleCall_2_0_1; }
 
+		//("|" cell_type+=[CellSpecification])*
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"|"
+		public Keyword getVerticalLineKeyword_3_0() { return cVerticalLineKeyword_3_0; }
+
+		//cell_type+=[CellSpecification]
+		public Assignment getCell_typeAssignment_3_1() { return cCell_typeAssignment_3_1; }
+
+		//[CellSpecification]
+		public CrossReference getCell_typeCellSpecificationCrossReference_3_1_0() { return cCell_typeCellSpecificationCrossReference_3_1_0; }
+
+		//ID
+		public RuleCall getCell_typeCellSpecificationIDTerminalRuleCall_3_1_0_1() { return cCell_typeCellSpecificationIDTerminalRuleCall_3_1_0_1; }
+
 		//")"
-		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 
 	public class StateFilterExpressionElements extends AbstractParserRuleElementFinder {
@@ -2520,7 +2540,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FilterExpression:
-	//	"filter" "(" cell_type=[CellSpecification] ")";
+	//	"filter" "(" cell_type+=[CellSpecification] ("|" cell_type+=[CellSpecification])* ")";
 	public FilterExpressionElements getFilterExpressionAccess() {
 		return pFilterExpression;
 	}

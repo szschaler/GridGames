@@ -1394,7 +1394,7 @@ public interface GridGamePackage extends EPackage
   int FILTER_EXPRESSION = 40;
 
   /**
-   * The feature id for the '<em><b>Cell type</b></em>' reference.
+   * The feature id for the '<em><b>Cell type</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2561,10 +2561,10 @@ public interface GridGamePackage extends EPackage
   EClass getFilterExpression();
 
   /**
-   * Returns the meta object for the reference '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression#getCell_type <em>Cell type</em>}'.
+   * Returns the meta object for the reference list '{@link uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression#getCell_type <em>Cell type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Cell type</em>'.
+   * @return the meta object for the reference list '<em>Cell type</em>'.
    * @see uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression#getCell_type()
    * @see #getFilterExpression()
    * @generated
@@ -3536,7 +3536,7 @@ public interface GridGamePackage extends EPackage
     EClass FILTER_EXPRESSION = eINSTANCE.getFilterExpression();
 
     /**
-     * The meta object literal for the '<em><b>Cell type</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Cell type</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

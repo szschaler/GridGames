@@ -4,10 +4,10 @@
 '.'=60
 ':'=56
 ';'=54
-'<'=66
+'<'=67
 '='=34
-'=='=64
-'>'=65
+'=='=65
+'>'=66
 'Behaviour'=35
 'String'=28
 'action'=45
@@ -20,11 +20,11 @@
 'color'=21
 'context'=42
 'contextsTriggerGenerationally'=52
-'count'=63
+'count'=64
 'default'=55
 'display'=15
 'do'=47
-'empty'=68
+'empty'=69
 'end-game'=43
 'field'=48
 'filter'=61
@@ -32,14 +32,14 @@
 'goto'=39
 'green'=26
 'height'=50
-'inState'=62
+'inState'=63
 'init'=53
 'int'=27
 'label'=17
 'mouse-left'=40
 'mouse-right'=41
 'nop'=44
-'notEmpty'=67
+'notEmpty'=68
 'on'=38
 'onEnter'=37
 'random'=57
@@ -55,6 +55,7 @@
 'width'=49
 'yellow'=24
 '{'=12
+'|'=62
 '}'=13
 RULE_ANY_OTHER=10
 RULE_ID=4
@@ -121,3 +122,4 @@ T__65=65
 T__66=66
 T__67=67
 T__68=68
+T__69=69

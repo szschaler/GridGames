@@ -234,7 +234,7 @@ AtomicExpression :
 ;
 
 FilterExpression :
-	"filter" "(" cell_type = [CellSpecification]  ")"
+	"filter" "(" cell_type += [CellSpecification] ("|" cell_type += [CellSpecification])* ")"
 ;
 
 StateFilterExpression :

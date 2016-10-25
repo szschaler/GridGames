@@ -210,12 +210,25 @@ public class CommonGenerator {
   
   protected CharSequence _generateFor(final FilterExpression fe) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("filter");
-    CellSpecification _cell_type = fe.getCell_type();
-    String _name = _cell_type.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
+    CharSequence _generateMethodName = this.generateMethodName(fe);
+    _builder.append(_generateMethodName, "");
     _builder.append("()");
+    return _builder;
+  }
+  
+  public CharSequence generateMethodName(final FilterExpression fe) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("filter");
+    EList<CellSpecification> _cell_type = fe.getCell_type();
+    final Function1<CellSpecification, CharSequence> _function = new Function1<CellSpecification, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellSpecification ct) {
+        String _name = ct.getName();
+        return StringExtensions.toFirstUpper(_name);
+      }
+    };
+    String _join = IterableExtensions.<CellSpecification>join(_cell_type, "Or", _function);
+    _builder.append(_join, "");
     return _builder;
   }
   

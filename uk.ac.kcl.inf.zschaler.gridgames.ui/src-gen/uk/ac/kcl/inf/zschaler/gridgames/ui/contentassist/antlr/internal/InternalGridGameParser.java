@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalGridGameParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'nop'", "'label'", "'button'", "'black'", "'white'", "'yellow'", "'red'", "'green'", "'int'", "'String'", "'Behaviour'", "'=='", "'>'", "'<'", "'game'", "'{'", "'}'", "'cell'", "'display'", "'as'", "'text'", "'var'", "'color'", "'states'", "'start'", "'='", "'('", "')'", "','", "'transitions'", "'onEnter'", "'on'", "'goto'", "'mouse-right'", "'context'", "'end-game'", "'action'", "'when'", "'do'", "'field'", "'width'", "'height'", "'allow_restart'", "'contextsTriggerGenerationally'", "'init'", "';'", "'default'", "':'", "'random'", "'check'", "'value'", "'.'", "'filter'", "'inState'", "'count'", "'notEmpty'", "'empty'", "'mouse-left'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'nop'", "'label'", "'button'", "'black'", "'white'", "'yellow'", "'red'", "'green'", "'int'", "'String'", "'Behaviour'", "'=='", "'>'", "'<'", "'game'", "'{'", "'}'", "'cell'", "'display'", "'as'", "'text'", "'var'", "'color'", "'states'", "'start'", "'='", "'('", "')'", "','", "'transitions'", "'onEnter'", "'on'", "'goto'", "'mouse-right'", "'context'", "'end-game'", "'action'", "'when'", "'do'", "'field'", "'width'", "'height'", "'allow_restart'", "'contextsTriggerGenerationally'", "'init'", "';'", "'default'", "':'", "'random'", "'check'", "'value'", "'.'", "'filter'", "'|'", "'inState'", "'count'", "'notEmpty'", "'empty'", "'mouse-left'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -59,6 +59,7 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
     public static final int T__24=24;
     public static final int T__68=68;
     public static final int T__25=25;
+    public static final int T__69=69;
     public static final int T__62=62;
     public static final int T__63=63;
     public static final int T__20=20;
@@ -4636,7 +4637,7 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
             int alt10=2;
             int LA10_0 = input.LA(1);
 
-            if ( (LA10_0==44||LA10_0==68) ) {
+            if ( (LA10_0==44||LA10_0==69) ) {
                 alt10=1;
             }
             else if ( (LA10_0==45) ) {
@@ -4715,7 +4716,7 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( (LA11_0==68) ) {
+            if ( (LA11_0==69) ) {
                 alt11=1;
             }
             else if ( (LA11_0==44) ) {
@@ -5080,11 +5081,11 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
             if ( (LA15_0==55) ) {
                 int LA15_1 = input.LA(2);
 
-                if ( (LA15_1==RULE_ID) ) {
-                    alt15=2;
-                }
-                else if ( (LA15_1==26) ) {
+                if ( (LA15_1==26) ) {
                     alt15=1;
+                }
+                else if ( (LA15_1==RULE_ID) ) {
+                    alt15=2;
                 }
                 else {
                     NoViableAltException nvae =
@@ -5368,22 +5369,22 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
                 alt18=1;
                 }
                 break;
-            case 64:
+            case 65:
                 {
                 alt18=2;
                 }
                 break;
-            case 65:
+            case 66:
                 {
                 alt18=3;
                 }
                 break;
-            case 66:
+            case 67:
                 {
                 alt18=4;
                 }
                 break;
-            case 67:
+            case 68:
                 {
                 alt18=5;
                 }
@@ -19163,7 +19164,7 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
             // InternalGridGame.g:7284:1: ( rule__FilterExpression__Group__2__Impl rule__FilterExpression__Group__3 )
             // InternalGridGame.g:7285:2: rule__FilterExpression__Group__2__Impl rule__FilterExpression__Group__3
             {
-            pushFollow(FOLLOW_34);
+            pushFollow(FOLLOW_51);
             rule__FilterExpression__Group__2__Impl();
 
             state._fsp--;
@@ -19239,17 +19240,22 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__FilterExpression__Group__3"
-    // InternalGridGame.g:7309:1: rule__FilterExpression__Group__3 : rule__FilterExpression__Group__3__Impl ;
+    // InternalGridGame.g:7309:1: rule__FilterExpression__Group__3 : rule__FilterExpression__Group__3__Impl rule__FilterExpression__Group__4 ;
     public final void rule__FilterExpression__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7313:1: ( rule__FilterExpression__Group__3__Impl )
-            // InternalGridGame.g:7314:2: rule__FilterExpression__Group__3__Impl
+            // InternalGridGame.g:7313:1: ( rule__FilterExpression__Group__3__Impl rule__FilterExpression__Group__4 )
+            // InternalGridGame.g:7314:2: rule__FilterExpression__Group__3__Impl rule__FilterExpression__Group__4
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_51);
             rule__FilterExpression__Group__3__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__FilterExpression__Group__4();
 
             state._fsp--;
 
@@ -19272,21 +19278,49 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__FilterExpression__Group__3__Impl"
-    // InternalGridGame.g:7320:1: rule__FilterExpression__Group__3__Impl : ( ')' ) ;
+    // InternalGridGame.g:7321:1: rule__FilterExpression__Group__3__Impl : ( ( rule__FilterExpression__Group_3__0 )* ) ;
     public final void rule__FilterExpression__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7324:1: ( ( ')' ) )
-            // InternalGridGame.g:7325:1: ( ')' )
+            // InternalGridGame.g:7325:1: ( ( ( rule__FilterExpression__Group_3__0 )* ) )
+            // InternalGridGame.g:7326:1: ( ( rule__FilterExpression__Group_3__0 )* )
             {
-            // InternalGridGame.g:7325:1: ( ')' )
-            // InternalGridGame.g:7326:1: ')'
+            // InternalGridGame.g:7326:1: ( ( rule__FilterExpression__Group_3__0 )* )
+            // InternalGridGame.g:7327:1: ( rule__FilterExpression__Group_3__0 )*
             {
-             before(grammarAccess.getFilterExpressionAccess().getRightParenthesisKeyword_3()); 
-            match(input,38,FOLLOW_2); 
-             after(grammarAccess.getFilterExpressionAccess().getRightParenthesisKeyword_3()); 
+             before(grammarAccess.getFilterExpressionAccess().getGroup_3()); 
+            // InternalGridGame.g:7328:1: ( rule__FilterExpression__Group_3__0 )*
+            loop40:
+            do {
+                int alt40=2;
+                int LA40_0 = input.LA(1);
+
+                if ( (LA40_0==64) ) {
+                    alt40=1;
+                }
+
+
+                switch (alt40) {
+            	case 1 :
+            	    // InternalGridGame.g:7328:2: rule__FilterExpression__Group_3__0
+            	    {
+            	    pushFollow(FOLLOW_52);
+            	    rule__FilterExpression__Group_3__0();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop40;
+                }
+            } while (true);
+
+             after(grammarAccess.getFilterExpressionAccess().getGroup_3()); 
 
             }
 
@@ -19308,15 +19342,240 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__FilterExpression__Group__3__Impl"
 
 
+    // $ANTLR start "rule__FilterExpression__Group__4"
+    // InternalGridGame.g:7338:1: rule__FilterExpression__Group__4 : rule__FilterExpression__Group__4__Impl ;
+    public final void rule__FilterExpression__Group__4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // InternalGridGame.g:7342:1: ( rule__FilterExpression__Group__4__Impl )
+            // InternalGridGame.g:7343:2: rule__FilterExpression__Group__4__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__FilterExpression__Group__4__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__FilterExpression__Group__4"
+
+
+    // $ANTLR start "rule__FilterExpression__Group__4__Impl"
+    // InternalGridGame.g:7349:1: rule__FilterExpression__Group__4__Impl : ( ')' ) ;
+    public final void rule__FilterExpression__Group__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // InternalGridGame.g:7353:1: ( ( ')' ) )
+            // InternalGridGame.g:7354:1: ( ')' )
+            {
+            // InternalGridGame.g:7354:1: ( ')' )
+            // InternalGridGame.g:7355:1: ')'
+            {
+             before(grammarAccess.getFilterExpressionAccess().getRightParenthesisKeyword_4()); 
+            match(input,38,FOLLOW_2); 
+             after(grammarAccess.getFilterExpressionAccess().getRightParenthesisKeyword_4()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__FilterExpression__Group__4__Impl"
+
+
+    // $ANTLR start "rule__FilterExpression__Group_3__0"
+    // InternalGridGame.g:7378:1: rule__FilterExpression__Group_3__0 : rule__FilterExpression__Group_3__0__Impl rule__FilterExpression__Group_3__1 ;
+    public final void rule__FilterExpression__Group_3__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // InternalGridGame.g:7382:1: ( rule__FilterExpression__Group_3__0__Impl rule__FilterExpression__Group_3__1 )
+            // InternalGridGame.g:7383:2: rule__FilterExpression__Group_3__0__Impl rule__FilterExpression__Group_3__1
+            {
+            pushFollow(FOLLOW_3);
+            rule__FilterExpression__Group_3__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__FilterExpression__Group_3__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__FilterExpression__Group_3__0"
+
+
+    // $ANTLR start "rule__FilterExpression__Group_3__0__Impl"
+    // InternalGridGame.g:7390:1: rule__FilterExpression__Group_3__0__Impl : ( '|' ) ;
+    public final void rule__FilterExpression__Group_3__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // InternalGridGame.g:7394:1: ( ( '|' ) )
+            // InternalGridGame.g:7395:1: ( '|' )
+            {
+            // InternalGridGame.g:7395:1: ( '|' )
+            // InternalGridGame.g:7396:1: '|'
+            {
+             before(grammarAccess.getFilterExpressionAccess().getVerticalLineKeyword_3_0()); 
+            match(input,64,FOLLOW_2); 
+             after(grammarAccess.getFilterExpressionAccess().getVerticalLineKeyword_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__FilterExpression__Group_3__0__Impl"
+
+
+    // $ANTLR start "rule__FilterExpression__Group_3__1"
+    // InternalGridGame.g:7409:1: rule__FilterExpression__Group_3__1 : rule__FilterExpression__Group_3__1__Impl ;
+    public final void rule__FilterExpression__Group_3__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // InternalGridGame.g:7413:1: ( rule__FilterExpression__Group_3__1__Impl )
+            // InternalGridGame.g:7414:2: rule__FilterExpression__Group_3__1__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__FilterExpression__Group_3__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__FilterExpression__Group_3__1"
+
+
+    // $ANTLR start "rule__FilterExpression__Group_3__1__Impl"
+    // InternalGridGame.g:7420:1: rule__FilterExpression__Group_3__1__Impl : ( ( rule__FilterExpression__Cell_typeAssignment_3_1 ) ) ;
+    public final void rule__FilterExpression__Group_3__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // InternalGridGame.g:7424:1: ( ( ( rule__FilterExpression__Cell_typeAssignment_3_1 ) ) )
+            // InternalGridGame.g:7425:1: ( ( rule__FilterExpression__Cell_typeAssignment_3_1 ) )
+            {
+            // InternalGridGame.g:7425:1: ( ( rule__FilterExpression__Cell_typeAssignment_3_1 ) )
+            // InternalGridGame.g:7426:1: ( rule__FilterExpression__Cell_typeAssignment_3_1 )
+            {
+             before(grammarAccess.getFilterExpressionAccess().getCell_typeAssignment_3_1()); 
+            // InternalGridGame.g:7427:1: ( rule__FilterExpression__Cell_typeAssignment_3_1 )
+            // InternalGridGame.g:7427:2: rule__FilterExpression__Cell_typeAssignment_3_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__FilterExpression__Cell_typeAssignment_3_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getFilterExpressionAccess().getCell_typeAssignment_3_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__FilterExpression__Group_3__1__Impl"
+
+
     // $ANTLR start "rule__StateFilterExpression__Group__0"
-    // InternalGridGame.g:7347:1: rule__StateFilterExpression__Group__0 : rule__StateFilterExpression__Group__0__Impl rule__StateFilterExpression__Group__1 ;
+    // InternalGridGame.g:7441:1: rule__StateFilterExpression__Group__0 : rule__StateFilterExpression__Group__0__Impl rule__StateFilterExpression__Group__1 ;
     public final void rule__StateFilterExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7351:1: ( rule__StateFilterExpression__Group__0__Impl rule__StateFilterExpression__Group__1 )
-            // InternalGridGame.g:7352:2: rule__StateFilterExpression__Group__0__Impl rule__StateFilterExpression__Group__1
+            // InternalGridGame.g:7445:1: ( rule__StateFilterExpression__Group__0__Impl rule__StateFilterExpression__Group__1 )
+            // InternalGridGame.g:7446:2: rule__StateFilterExpression__Group__0__Impl rule__StateFilterExpression__Group__1
             {
             pushFollow(FOLLOW_23);
             rule__StateFilterExpression__Group__0__Impl();
@@ -19347,20 +19606,20 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__StateFilterExpression__Group__0__Impl"
-    // InternalGridGame.g:7359:1: rule__StateFilterExpression__Group__0__Impl : ( 'inState' ) ;
+    // InternalGridGame.g:7453:1: rule__StateFilterExpression__Group__0__Impl : ( 'inState' ) ;
     public final void rule__StateFilterExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7363:1: ( ( 'inState' ) )
-            // InternalGridGame.g:7364:1: ( 'inState' )
+            // InternalGridGame.g:7457:1: ( ( 'inState' ) )
+            // InternalGridGame.g:7458:1: ( 'inState' )
             {
-            // InternalGridGame.g:7364:1: ( 'inState' )
-            // InternalGridGame.g:7365:1: 'inState'
+            // InternalGridGame.g:7458:1: ( 'inState' )
+            // InternalGridGame.g:7459:1: 'inState'
             {
              before(grammarAccess.getStateFilterExpressionAccess().getInStateKeyword_0()); 
-            match(input,64,FOLLOW_2); 
+            match(input,65,FOLLOW_2); 
              after(grammarAccess.getStateFilterExpressionAccess().getInStateKeyword_0()); 
 
             }
@@ -19384,14 +19643,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__StateFilterExpression__Group__1"
-    // InternalGridGame.g:7378:1: rule__StateFilterExpression__Group__1 : rule__StateFilterExpression__Group__1__Impl rule__StateFilterExpression__Group__2 ;
+    // InternalGridGame.g:7472:1: rule__StateFilterExpression__Group__1 : rule__StateFilterExpression__Group__1__Impl rule__StateFilterExpression__Group__2 ;
     public final void rule__StateFilterExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7382:1: ( rule__StateFilterExpression__Group__1__Impl rule__StateFilterExpression__Group__2 )
-            // InternalGridGame.g:7383:2: rule__StateFilterExpression__Group__1__Impl rule__StateFilterExpression__Group__2
+            // InternalGridGame.g:7476:1: ( rule__StateFilterExpression__Group__1__Impl rule__StateFilterExpression__Group__2 )
+            // InternalGridGame.g:7477:2: rule__StateFilterExpression__Group__1__Impl rule__StateFilterExpression__Group__2
             {
             pushFollow(FOLLOW_3);
             rule__StateFilterExpression__Group__1__Impl();
@@ -19422,17 +19681,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__StateFilterExpression__Group__1__Impl"
-    // InternalGridGame.g:7390:1: rule__StateFilterExpression__Group__1__Impl : ( '(' ) ;
+    // InternalGridGame.g:7484:1: rule__StateFilterExpression__Group__1__Impl : ( '(' ) ;
     public final void rule__StateFilterExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7394:1: ( ( '(' ) )
-            // InternalGridGame.g:7395:1: ( '(' )
+            // InternalGridGame.g:7488:1: ( ( '(' ) )
+            // InternalGridGame.g:7489:1: ( '(' )
             {
-            // InternalGridGame.g:7395:1: ( '(' )
-            // InternalGridGame.g:7396:1: '('
+            // InternalGridGame.g:7489:1: ( '(' )
+            // InternalGridGame.g:7490:1: '('
             {
              before(grammarAccess.getStateFilterExpressionAccess().getLeftParenthesisKeyword_1()); 
             match(input,37,FOLLOW_2); 
@@ -19459,14 +19718,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__StateFilterExpression__Group__2"
-    // InternalGridGame.g:7409:1: rule__StateFilterExpression__Group__2 : rule__StateFilterExpression__Group__2__Impl rule__StateFilterExpression__Group__3 ;
+    // InternalGridGame.g:7503:1: rule__StateFilterExpression__Group__2 : rule__StateFilterExpression__Group__2__Impl rule__StateFilterExpression__Group__3 ;
     public final void rule__StateFilterExpression__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7413:1: ( rule__StateFilterExpression__Group__2__Impl rule__StateFilterExpression__Group__3 )
-            // InternalGridGame.g:7414:2: rule__StateFilterExpression__Group__2__Impl rule__StateFilterExpression__Group__3
+            // InternalGridGame.g:7507:1: ( rule__StateFilterExpression__Group__2__Impl rule__StateFilterExpression__Group__3 )
+            // InternalGridGame.g:7508:2: rule__StateFilterExpression__Group__2__Impl rule__StateFilterExpression__Group__3
             {
             pushFollow(FOLLOW_34);
             rule__StateFilterExpression__Group__2__Impl();
@@ -19497,21 +19756,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__StateFilterExpression__Group__2__Impl"
-    // InternalGridGame.g:7421:1: rule__StateFilterExpression__Group__2__Impl : ( ( rule__StateFilterExpression__Cell_stateAssignment_2 ) ) ;
+    // InternalGridGame.g:7515:1: rule__StateFilterExpression__Group__2__Impl : ( ( rule__StateFilterExpression__Cell_stateAssignment_2 ) ) ;
     public final void rule__StateFilterExpression__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7425:1: ( ( ( rule__StateFilterExpression__Cell_stateAssignment_2 ) ) )
-            // InternalGridGame.g:7426:1: ( ( rule__StateFilterExpression__Cell_stateAssignment_2 ) )
+            // InternalGridGame.g:7519:1: ( ( ( rule__StateFilterExpression__Cell_stateAssignment_2 ) ) )
+            // InternalGridGame.g:7520:1: ( ( rule__StateFilterExpression__Cell_stateAssignment_2 ) )
             {
-            // InternalGridGame.g:7426:1: ( ( rule__StateFilterExpression__Cell_stateAssignment_2 ) )
-            // InternalGridGame.g:7427:1: ( rule__StateFilterExpression__Cell_stateAssignment_2 )
+            // InternalGridGame.g:7520:1: ( ( rule__StateFilterExpression__Cell_stateAssignment_2 ) )
+            // InternalGridGame.g:7521:1: ( rule__StateFilterExpression__Cell_stateAssignment_2 )
             {
              before(grammarAccess.getStateFilterExpressionAccess().getCell_stateAssignment_2()); 
-            // InternalGridGame.g:7428:1: ( rule__StateFilterExpression__Cell_stateAssignment_2 )
-            // InternalGridGame.g:7428:2: rule__StateFilterExpression__Cell_stateAssignment_2
+            // InternalGridGame.g:7522:1: ( rule__StateFilterExpression__Cell_stateAssignment_2 )
+            // InternalGridGame.g:7522:2: rule__StateFilterExpression__Cell_stateAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__StateFilterExpression__Cell_stateAssignment_2();
@@ -19544,14 +19803,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__StateFilterExpression__Group__3"
-    // InternalGridGame.g:7438:1: rule__StateFilterExpression__Group__3 : rule__StateFilterExpression__Group__3__Impl ;
+    // InternalGridGame.g:7532:1: rule__StateFilterExpression__Group__3 : rule__StateFilterExpression__Group__3__Impl ;
     public final void rule__StateFilterExpression__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7442:1: ( rule__StateFilterExpression__Group__3__Impl )
-            // InternalGridGame.g:7443:2: rule__StateFilterExpression__Group__3__Impl
+            // InternalGridGame.g:7536:1: ( rule__StateFilterExpression__Group__3__Impl )
+            // InternalGridGame.g:7537:2: rule__StateFilterExpression__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__StateFilterExpression__Group__3__Impl();
@@ -19577,17 +19836,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__StateFilterExpression__Group__3__Impl"
-    // InternalGridGame.g:7449:1: rule__StateFilterExpression__Group__3__Impl : ( ')' ) ;
+    // InternalGridGame.g:7543:1: rule__StateFilterExpression__Group__3__Impl : ( ')' ) ;
     public final void rule__StateFilterExpression__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7453:1: ( ( ')' ) )
-            // InternalGridGame.g:7454:1: ( ')' )
+            // InternalGridGame.g:7547:1: ( ( ')' ) )
+            // InternalGridGame.g:7548:1: ( ')' )
             {
-            // InternalGridGame.g:7454:1: ( ')' )
-            // InternalGridGame.g:7455:1: ')'
+            // InternalGridGame.g:7548:1: ( ')' )
+            // InternalGridGame.g:7549:1: ')'
             {
              before(grammarAccess.getStateFilterExpressionAccess().getRightParenthesisKeyword_3()); 
             match(input,38,FOLLOW_2); 
@@ -19614,14 +19873,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group__0"
-    // InternalGridGame.g:7476:1: rule__CountExpression__Group__0 : rule__CountExpression__Group__0__Impl rule__CountExpression__Group__1 ;
+    // InternalGridGame.g:7570:1: rule__CountExpression__Group__0 : rule__CountExpression__Group__0__Impl rule__CountExpression__Group__1 ;
     public final void rule__CountExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7480:1: ( rule__CountExpression__Group__0__Impl rule__CountExpression__Group__1 )
-            // InternalGridGame.g:7481:2: rule__CountExpression__Group__0__Impl rule__CountExpression__Group__1
+            // InternalGridGame.g:7574:1: ( rule__CountExpression__Group__0__Impl rule__CountExpression__Group__1 )
+            // InternalGridGame.g:7575:2: rule__CountExpression__Group__0__Impl rule__CountExpression__Group__1
             {
             pushFollow(FOLLOW_23);
             rule__CountExpression__Group__0__Impl();
@@ -19652,20 +19911,20 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group__0__Impl"
-    // InternalGridGame.g:7488:1: rule__CountExpression__Group__0__Impl : ( 'count' ) ;
+    // InternalGridGame.g:7582:1: rule__CountExpression__Group__0__Impl : ( 'count' ) ;
     public final void rule__CountExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7492:1: ( ( 'count' ) )
-            // InternalGridGame.g:7493:1: ( 'count' )
+            // InternalGridGame.g:7586:1: ( ( 'count' ) )
+            // InternalGridGame.g:7587:1: ( 'count' )
             {
-            // InternalGridGame.g:7493:1: ( 'count' )
-            // InternalGridGame.g:7494:1: 'count'
+            // InternalGridGame.g:7587:1: ( 'count' )
+            // InternalGridGame.g:7588:1: 'count'
             {
              before(grammarAccess.getCountExpressionAccess().getCountKeyword_0()); 
-            match(input,65,FOLLOW_2); 
+            match(input,66,FOLLOW_2); 
              after(grammarAccess.getCountExpressionAccess().getCountKeyword_0()); 
 
             }
@@ -19689,14 +19948,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group__1"
-    // InternalGridGame.g:7507:1: rule__CountExpression__Group__1 : rule__CountExpression__Group__1__Impl rule__CountExpression__Group__2 ;
+    // InternalGridGame.g:7601:1: rule__CountExpression__Group__1 : rule__CountExpression__Group__1__Impl rule__CountExpression__Group__2 ;
     public final void rule__CountExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7511:1: ( rule__CountExpression__Group__1__Impl rule__CountExpression__Group__2 )
-            // InternalGridGame.g:7512:2: rule__CountExpression__Group__1__Impl rule__CountExpression__Group__2
+            // InternalGridGame.g:7605:1: ( rule__CountExpression__Group__1__Impl rule__CountExpression__Group__2 )
+            // InternalGridGame.g:7606:2: rule__CountExpression__Group__1__Impl rule__CountExpression__Group__2
             {
             pushFollow(FOLLOW_34);
             rule__CountExpression__Group__1__Impl();
@@ -19727,17 +19986,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group__1__Impl"
-    // InternalGridGame.g:7519:1: rule__CountExpression__Group__1__Impl : ( '(' ) ;
+    // InternalGridGame.g:7613:1: rule__CountExpression__Group__1__Impl : ( '(' ) ;
     public final void rule__CountExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7523:1: ( ( '(' ) )
-            // InternalGridGame.g:7524:1: ( '(' )
+            // InternalGridGame.g:7617:1: ( ( '(' ) )
+            // InternalGridGame.g:7618:1: ( '(' )
             {
-            // InternalGridGame.g:7524:1: ( '(' )
-            // InternalGridGame.g:7525:1: '('
+            // InternalGridGame.g:7618:1: ( '(' )
+            // InternalGridGame.g:7619:1: '('
             {
              before(grammarAccess.getCountExpressionAccess().getLeftParenthesisKeyword_1()); 
             match(input,37,FOLLOW_2); 
@@ -19764,16 +20023,16 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group__2"
-    // InternalGridGame.g:7538:1: rule__CountExpression__Group__2 : rule__CountExpression__Group__2__Impl rule__CountExpression__Group__3 ;
+    // InternalGridGame.g:7632:1: rule__CountExpression__Group__2 : rule__CountExpression__Group__2__Impl rule__CountExpression__Group__3 ;
     public final void rule__CountExpression__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7542:1: ( rule__CountExpression__Group__2__Impl rule__CountExpression__Group__3 )
-            // InternalGridGame.g:7543:2: rule__CountExpression__Group__2__Impl rule__CountExpression__Group__3
+            // InternalGridGame.g:7636:1: ( rule__CountExpression__Group__2__Impl rule__CountExpression__Group__3 )
+            // InternalGridGame.g:7637:2: rule__CountExpression__Group__2__Impl rule__CountExpression__Group__3
             {
-            pushFollow(FOLLOW_51);
+            pushFollow(FOLLOW_53);
             rule__CountExpression__Group__2__Impl();
 
             state._fsp--;
@@ -19802,17 +20061,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group__2__Impl"
-    // InternalGridGame.g:7550:1: rule__CountExpression__Group__2__Impl : ( ')' ) ;
+    // InternalGridGame.g:7644:1: rule__CountExpression__Group__2__Impl : ( ')' ) ;
     public final void rule__CountExpression__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7554:1: ( ( ')' ) )
-            // InternalGridGame.g:7555:1: ( ')' )
+            // InternalGridGame.g:7648:1: ( ( ')' ) )
+            // InternalGridGame.g:7649:1: ( ')' )
             {
-            // InternalGridGame.g:7555:1: ( ')' )
-            // InternalGridGame.g:7556:1: ')'
+            // InternalGridGame.g:7649:1: ( ')' )
+            // InternalGridGame.g:7650:1: ')'
             {
              before(grammarAccess.getCountExpressionAccess().getRightParenthesisKeyword_2()); 
             match(input,38,FOLLOW_2); 
@@ -19839,16 +20098,16 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group__3"
-    // InternalGridGame.g:7569:1: rule__CountExpression__Group__3 : rule__CountExpression__Group__3__Impl rule__CountExpression__Group__4 ;
+    // InternalGridGame.g:7663:1: rule__CountExpression__Group__3 : rule__CountExpression__Group__3__Impl rule__CountExpression__Group__4 ;
     public final void rule__CountExpression__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7573:1: ( rule__CountExpression__Group__3__Impl rule__CountExpression__Group__4 )
-            // InternalGridGame.g:7574:2: rule__CountExpression__Group__3__Impl rule__CountExpression__Group__4
+            // InternalGridGame.g:7667:1: ( rule__CountExpression__Group__3__Impl rule__CountExpression__Group__4 )
+            // InternalGridGame.g:7668:2: rule__CountExpression__Group__3__Impl rule__CountExpression__Group__4
             {
-            pushFollow(FOLLOW_51);
+            pushFollow(FOLLOW_53);
             rule__CountExpression__Group__3__Impl();
 
             state._fsp--;
@@ -19877,21 +20136,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group__3__Impl"
-    // InternalGridGame.g:7581:1: rule__CountExpression__Group__3__Impl : ( () ) ;
+    // InternalGridGame.g:7675:1: rule__CountExpression__Group__3__Impl : ( () ) ;
     public final void rule__CountExpression__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7585:1: ( ( () ) )
-            // InternalGridGame.g:7586:1: ( () )
+            // InternalGridGame.g:7679:1: ( ( () ) )
+            // InternalGridGame.g:7680:1: ( () )
             {
-            // InternalGridGame.g:7586:1: ( () )
-            // InternalGridGame.g:7587:1: ()
+            // InternalGridGame.g:7680:1: ( () )
+            // InternalGridGame.g:7681:1: ()
             {
              before(grammarAccess.getCountExpressionAccess().getCountExpressionAction_3()); 
-            // InternalGridGame.g:7588:1: ()
-            // InternalGridGame.g:7590:1: 
+            // InternalGridGame.g:7682:1: ()
+            // InternalGridGame.g:7684:1: 
             {
             }
 
@@ -19914,14 +20173,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group__4"
-    // InternalGridGame.g:7600:1: rule__CountExpression__Group__4 : rule__CountExpression__Group__4__Impl ;
+    // InternalGridGame.g:7694:1: rule__CountExpression__Group__4 : rule__CountExpression__Group__4__Impl ;
     public final void rule__CountExpression__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7604:1: ( rule__CountExpression__Group__4__Impl )
-            // InternalGridGame.g:7605:2: rule__CountExpression__Group__4__Impl
+            // InternalGridGame.g:7698:1: ( rule__CountExpression__Group__4__Impl )
+            // InternalGridGame.g:7699:2: rule__CountExpression__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__CountExpression__Group__4__Impl();
@@ -19947,29 +20206,29 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group__4__Impl"
-    // InternalGridGame.g:7611:1: rule__CountExpression__Group__4__Impl : ( ( rule__CountExpression__Group_4__0 )? ) ;
+    // InternalGridGame.g:7705:1: rule__CountExpression__Group__4__Impl : ( ( rule__CountExpression__Group_4__0 )? ) ;
     public final void rule__CountExpression__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7615:1: ( ( ( rule__CountExpression__Group_4__0 )? ) )
-            // InternalGridGame.g:7616:1: ( ( rule__CountExpression__Group_4__0 )? )
+            // InternalGridGame.g:7709:1: ( ( ( rule__CountExpression__Group_4__0 )? ) )
+            // InternalGridGame.g:7710:1: ( ( rule__CountExpression__Group_4__0 )? )
             {
-            // InternalGridGame.g:7616:1: ( ( rule__CountExpression__Group_4__0 )? )
-            // InternalGridGame.g:7617:1: ( rule__CountExpression__Group_4__0 )?
+            // InternalGridGame.g:7710:1: ( ( rule__CountExpression__Group_4__0 )? )
+            // InternalGridGame.g:7711:1: ( rule__CountExpression__Group_4__0 )?
             {
              before(grammarAccess.getCountExpressionAccess().getGroup_4()); 
-            // InternalGridGame.g:7618:1: ( rule__CountExpression__Group_4__0 )?
-            int alt40=2;
-            int LA40_0 = input.LA(1);
+            // InternalGridGame.g:7712:1: ( rule__CountExpression__Group_4__0 )?
+            int alt41=2;
+            int LA41_0 = input.LA(1);
 
-            if ( ((LA40_0>=22 && LA40_0<=24)) ) {
-                alt40=1;
+            if ( ((LA41_0>=22 && LA41_0<=24)) ) {
+                alt41=1;
             }
-            switch (alt40) {
+            switch (alt41) {
                 case 1 :
-                    // InternalGridGame.g:7618:2: rule__CountExpression__Group_4__0
+                    // InternalGridGame.g:7712:2: rule__CountExpression__Group_4__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__CountExpression__Group_4__0();
@@ -20005,14 +20264,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group_4__0"
-    // InternalGridGame.g:7638:1: rule__CountExpression__Group_4__0 : rule__CountExpression__Group_4__0__Impl rule__CountExpression__Group_4__1 ;
+    // InternalGridGame.g:7732:1: rule__CountExpression__Group_4__0 : rule__CountExpression__Group_4__0__Impl rule__CountExpression__Group_4__1 ;
     public final void rule__CountExpression__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7642:1: ( rule__CountExpression__Group_4__0__Impl rule__CountExpression__Group_4__1 )
-            // InternalGridGame.g:7643:2: rule__CountExpression__Group_4__0__Impl rule__CountExpression__Group_4__1
+            // InternalGridGame.g:7736:1: ( rule__CountExpression__Group_4__0__Impl rule__CountExpression__Group_4__1 )
+            // InternalGridGame.g:7737:2: rule__CountExpression__Group_4__0__Impl rule__CountExpression__Group_4__1
             {
             pushFollow(FOLLOW_39);
             rule__CountExpression__Group_4__0__Impl();
@@ -20043,21 +20302,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group_4__0__Impl"
-    // InternalGridGame.g:7650:1: rule__CountExpression__Group_4__0__Impl : ( ( rule__CountExpression__OpAssignment_4_0 ) ) ;
+    // InternalGridGame.g:7744:1: rule__CountExpression__Group_4__0__Impl : ( ( rule__CountExpression__OpAssignment_4_0 ) ) ;
     public final void rule__CountExpression__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7654:1: ( ( ( rule__CountExpression__OpAssignment_4_0 ) ) )
-            // InternalGridGame.g:7655:1: ( ( rule__CountExpression__OpAssignment_4_0 ) )
+            // InternalGridGame.g:7748:1: ( ( ( rule__CountExpression__OpAssignment_4_0 ) ) )
+            // InternalGridGame.g:7749:1: ( ( rule__CountExpression__OpAssignment_4_0 ) )
             {
-            // InternalGridGame.g:7655:1: ( ( rule__CountExpression__OpAssignment_4_0 ) )
-            // InternalGridGame.g:7656:1: ( rule__CountExpression__OpAssignment_4_0 )
+            // InternalGridGame.g:7749:1: ( ( rule__CountExpression__OpAssignment_4_0 ) )
+            // InternalGridGame.g:7750:1: ( rule__CountExpression__OpAssignment_4_0 )
             {
              before(grammarAccess.getCountExpressionAccess().getOpAssignment_4_0()); 
-            // InternalGridGame.g:7657:1: ( rule__CountExpression__OpAssignment_4_0 )
-            // InternalGridGame.g:7657:2: rule__CountExpression__OpAssignment_4_0
+            // InternalGridGame.g:7751:1: ( rule__CountExpression__OpAssignment_4_0 )
+            // InternalGridGame.g:7751:2: rule__CountExpression__OpAssignment_4_0
             {
             pushFollow(FOLLOW_2);
             rule__CountExpression__OpAssignment_4_0();
@@ -20090,14 +20349,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group_4__1"
-    // InternalGridGame.g:7667:1: rule__CountExpression__Group_4__1 : rule__CountExpression__Group_4__1__Impl ;
+    // InternalGridGame.g:7761:1: rule__CountExpression__Group_4__1 : rule__CountExpression__Group_4__1__Impl ;
     public final void rule__CountExpression__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7671:1: ( rule__CountExpression__Group_4__1__Impl )
-            // InternalGridGame.g:7672:2: rule__CountExpression__Group_4__1__Impl
+            // InternalGridGame.g:7765:1: ( rule__CountExpression__Group_4__1__Impl )
+            // InternalGridGame.g:7766:2: rule__CountExpression__Group_4__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__CountExpression__Group_4__1__Impl();
@@ -20123,21 +20382,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__Group_4__1__Impl"
-    // InternalGridGame.g:7678:1: rule__CountExpression__Group_4__1__Impl : ( ( rule__CountExpression__CmpValAssignment_4_1 ) ) ;
+    // InternalGridGame.g:7772:1: rule__CountExpression__Group_4__1__Impl : ( ( rule__CountExpression__CmpValAssignment_4_1 ) ) ;
     public final void rule__CountExpression__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7682:1: ( ( ( rule__CountExpression__CmpValAssignment_4_1 ) ) )
-            // InternalGridGame.g:7683:1: ( ( rule__CountExpression__CmpValAssignment_4_1 ) )
+            // InternalGridGame.g:7776:1: ( ( ( rule__CountExpression__CmpValAssignment_4_1 ) ) )
+            // InternalGridGame.g:7777:1: ( ( rule__CountExpression__CmpValAssignment_4_1 ) )
             {
-            // InternalGridGame.g:7683:1: ( ( rule__CountExpression__CmpValAssignment_4_1 ) )
-            // InternalGridGame.g:7684:1: ( rule__CountExpression__CmpValAssignment_4_1 )
+            // InternalGridGame.g:7777:1: ( ( rule__CountExpression__CmpValAssignment_4_1 ) )
+            // InternalGridGame.g:7778:1: ( rule__CountExpression__CmpValAssignment_4_1 )
             {
              before(grammarAccess.getCountExpressionAccess().getCmpValAssignment_4_1()); 
-            // InternalGridGame.g:7685:1: ( rule__CountExpression__CmpValAssignment_4_1 )
-            // InternalGridGame.g:7685:2: rule__CountExpression__CmpValAssignment_4_1
+            // InternalGridGame.g:7779:1: ( rule__CountExpression__CmpValAssignment_4_1 )
+            // InternalGridGame.g:7779:2: rule__CountExpression__CmpValAssignment_4_1
             {
             pushFollow(FOLLOW_2);
             rule__CountExpression__CmpValAssignment_4_1();
@@ -20170,14 +20429,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NotEmptyExpression__Group__0"
-    // InternalGridGame.g:7699:1: rule__NotEmptyExpression__Group__0 : rule__NotEmptyExpression__Group__0__Impl rule__NotEmptyExpression__Group__1 ;
+    // InternalGridGame.g:7793:1: rule__NotEmptyExpression__Group__0 : rule__NotEmptyExpression__Group__0__Impl rule__NotEmptyExpression__Group__1 ;
     public final void rule__NotEmptyExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7703:1: ( rule__NotEmptyExpression__Group__0__Impl rule__NotEmptyExpression__Group__1 )
-            // InternalGridGame.g:7704:2: rule__NotEmptyExpression__Group__0__Impl rule__NotEmptyExpression__Group__1
+            // InternalGridGame.g:7797:1: ( rule__NotEmptyExpression__Group__0__Impl rule__NotEmptyExpression__Group__1 )
+            // InternalGridGame.g:7798:2: rule__NotEmptyExpression__Group__0__Impl rule__NotEmptyExpression__Group__1
             {
             pushFollow(FOLLOW_23);
             rule__NotEmptyExpression__Group__0__Impl();
@@ -20208,20 +20467,20 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NotEmptyExpression__Group__0__Impl"
-    // InternalGridGame.g:7711:1: rule__NotEmptyExpression__Group__0__Impl : ( 'notEmpty' ) ;
+    // InternalGridGame.g:7805:1: rule__NotEmptyExpression__Group__0__Impl : ( 'notEmpty' ) ;
     public final void rule__NotEmptyExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7715:1: ( ( 'notEmpty' ) )
-            // InternalGridGame.g:7716:1: ( 'notEmpty' )
+            // InternalGridGame.g:7809:1: ( ( 'notEmpty' ) )
+            // InternalGridGame.g:7810:1: ( 'notEmpty' )
             {
-            // InternalGridGame.g:7716:1: ( 'notEmpty' )
-            // InternalGridGame.g:7717:1: 'notEmpty'
+            // InternalGridGame.g:7810:1: ( 'notEmpty' )
+            // InternalGridGame.g:7811:1: 'notEmpty'
             {
              before(grammarAccess.getNotEmptyExpressionAccess().getNotEmptyKeyword_0()); 
-            match(input,66,FOLLOW_2); 
+            match(input,67,FOLLOW_2); 
              after(grammarAccess.getNotEmptyExpressionAccess().getNotEmptyKeyword_0()); 
 
             }
@@ -20245,14 +20504,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NotEmptyExpression__Group__1"
-    // InternalGridGame.g:7730:1: rule__NotEmptyExpression__Group__1 : rule__NotEmptyExpression__Group__1__Impl rule__NotEmptyExpression__Group__2 ;
+    // InternalGridGame.g:7824:1: rule__NotEmptyExpression__Group__1 : rule__NotEmptyExpression__Group__1__Impl rule__NotEmptyExpression__Group__2 ;
     public final void rule__NotEmptyExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7734:1: ( rule__NotEmptyExpression__Group__1__Impl rule__NotEmptyExpression__Group__2 )
-            // InternalGridGame.g:7735:2: rule__NotEmptyExpression__Group__1__Impl rule__NotEmptyExpression__Group__2
+            // InternalGridGame.g:7828:1: ( rule__NotEmptyExpression__Group__1__Impl rule__NotEmptyExpression__Group__2 )
+            // InternalGridGame.g:7829:2: rule__NotEmptyExpression__Group__1__Impl rule__NotEmptyExpression__Group__2
             {
             pushFollow(FOLLOW_34);
             rule__NotEmptyExpression__Group__1__Impl();
@@ -20283,17 +20542,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NotEmptyExpression__Group__1__Impl"
-    // InternalGridGame.g:7742:1: rule__NotEmptyExpression__Group__1__Impl : ( '(' ) ;
+    // InternalGridGame.g:7836:1: rule__NotEmptyExpression__Group__1__Impl : ( '(' ) ;
     public final void rule__NotEmptyExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7746:1: ( ( '(' ) )
-            // InternalGridGame.g:7747:1: ( '(' )
+            // InternalGridGame.g:7840:1: ( ( '(' ) )
+            // InternalGridGame.g:7841:1: ( '(' )
             {
-            // InternalGridGame.g:7747:1: ( '(' )
-            // InternalGridGame.g:7748:1: '('
+            // InternalGridGame.g:7841:1: ( '(' )
+            // InternalGridGame.g:7842:1: '('
             {
              before(grammarAccess.getNotEmptyExpressionAccess().getLeftParenthesisKeyword_1()); 
             match(input,37,FOLLOW_2); 
@@ -20320,14 +20579,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NotEmptyExpression__Group__2"
-    // InternalGridGame.g:7761:1: rule__NotEmptyExpression__Group__2 : rule__NotEmptyExpression__Group__2__Impl rule__NotEmptyExpression__Group__3 ;
+    // InternalGridGame.g:7855:1: rule__NotEmptyExpression__Group__2 : rule__NotEmptyExpression__Group__2__Impl rule__NotEmptyExpression__Group__3 ;
     public final void rule__NotEmptyExpression__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7765:1: ( rule__NotEmptyExpression__Group__2__Impl rule__NotEmptyExpression__Group__3 )
-            // InternalGridGame.g:7766:2: rule__NotEmptyExpression__Group__2__Impl rule__NotEmptyExpression__Group__3
+            // InternalGridGame.g:7859:1: ( rule__NotEmptyExpression__Group__2__Impl rule__NotEmptyExpression__Group__3 )
+            // InternalGridGame.g:7860:2: rule__NotEmptyExpression__Group__2__Impl rule__NotEmptyExpression__Group__3
             {
             pushFollow(FOLLOW_1);
             rule__NotEmptyExpression__Group__2__Impl();
@@ -20358,17 +20617,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NotEmptyExpression__Group__2__Impl"
-    // InternalGridGame.g:7773:1: rule__NotEmptyExpression__Group__2__Impl : ( ')' ) ;
+    // InternalGridGame.g:7867:1: rule__NotEmptyExpression__Group__2__Impl : ( ')' ) ;
     public final void rule__NotEmptyExpression__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7777:1: ( ( ')' ) )
-            // InternalGridGame.g:7778:1: ( ')' )
+            // InternalGridGame.g:7871:1: ( ( ')' ) )
+            // InternalGridGame.g:7872:1: ( ')' )
             {
-            // InternalGridGame.g:7778:1: ( ')' )
-            // InternalGridGame.g:7779:1: ')'
+            // InternalGridGame.g:7872:1: ( ')' )
+            // InternalGridGame.g:7873:1: ')'
             {
              before(grammarAccess.getNotEmptyExpressionAccess().getRightParenthesisKeyword_2()); 
             match(input,38,FOLLOW_2); 
@@ -20395,14 +20654,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NotEmptyExpression__Group__3"
-    // InternalGridGame.g:7792:1: rule__NotEmptyExpression__Group__3 : rule__NotEmptyExpression__Group__3__Impl ;
+    // InternalGridGame.g:7886:1: rule__NotEmptyExpression__Group__3 : rule__NotEmptyExpression__Group__3__Impl ;
     public final void rule__NotEmptyExpression__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7796:1: ( rule__NotEmptyExpression__Group__3__Impl )
-            // InternalGridGame.g:7797:2: rule__NotEmptyExpression__Group__3__Impl
+            // InternalGridGame.g:7890:1: ( rule__NotEmptyExpression__Group__3__Impl )
+            // InternalGridGame.g:7891:2: rule__NotEmptyExpression__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__NotEmptyExpression__Group__3__Impl();
@@ -20428,21 +20687,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NotEmptyExpression__Group__3__Impl"
-    // InternalGridGame.g:7803:1: rule__NotEmptyExpression__Group__3__Impl : ( () ) ;
+    // InternalGridGame.g:7897:1: rule__NotEmptyExpression__Group__3__Impl : ( () ) ;
     public final void rule__NotEmptyExpression__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7807:1: ( ( () ) )
-            // InternalGridGame.g:7808:1: ( () )
+            // InternalGridGame.g:7901:1: ( ( () ) )
+            // InternalGridGame.g:7902:1: ( () )
             {
-            // InternalGridGame.g:7808:1: ( () )
-            // InternalGridGame.g:7809:1: ()
+            // InternalGridGame.g:7902:1: ( () )
+            // InternalGridGame.g:7903:1: ()
             {
              before(grammarAccess.getNotEmptyExpressionAccess().getNotEmptyExpressionAction_3()); 
-            // InternalGridGame.g:7810:1: ()
-            // InternalGridGame.g:7812:1: 
+            // InternalGridGame.g:7904:1: ()
+            // InternalGridGame.g:7906:1: 
             {
             }
 
@@ -20465,14 +20724,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EmptyExpression__Group__0"
-    // InternalGridGame.g:7830:1: rule__EmptyExpression__Group__0 : rule__EmptyExpression__Group__0__Impl rule__EmptyExpression__Group__1 ;
+    // InternalGridGame.g:7924:1: rule__EmptyExpression__Group__0 : rule__EmptyExpression__Group__0__Impl rule__EmptyExpression__Group__1 ;
     public final void rule__EmptyExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7834:1: ( rule__EmptyExpression__Group__0__Impl rule__EmptyExpression__Group__1 )
-            // InternalGridGame.g:7835:2: rule__EmptyExpression__Group__0__Impl rule__EmptyExpression__Group__1
+            // InternalGridGame.g:7928:1: ( rule__EmptyExpression__Group__0__Impl rule__EmptyExpression__Group__1 )
+            // InternalGridGame.g:7929:2: rule__EmptyExpression__Group__0__Impl rule__EmptyExpression__Group__1
             {
             pushFollow(FOLLOW_23);
             rule__EmptyExpression__Group__0__Impl();
@@ -20503,20 +20762,20 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EmptyExpression__Group__0__Impl"
-    // InternalGridGame.g:7842:1: rule__EmptyExpression__Group__0__Impl : ( 'empty' ) ;
+    // InternalGridGame.g:7936:1: rule__EmptyExpression__Group__0__Impl : ( 'empty' ) ;
     public final void rule__EmptyExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7846:1: ( ( 'empty' ) )
-            // InternalGridGame.g:7847:1: ( 'empty' )
+            // InternalGridGame.g:7940:1: ( ( 'empty' ) )
+            // InternalGridGame.g:7941:1: ( 'empty' )
             {
-            // InternalGridGame.g:7847:1: ( 'empty' )
-            // InternalGridGame.g:7848:1: 'empty'
+            // InternalGridGame.g:7941:1: ( 'empty' )
+            // InternalGridGame.g:7942:1: 'empty'
             {
              before(grammarAccess.getEmptyExpressionAccess().getEmptyKeyword_0()); 
-            match(input,67,FOLLOW_2); 
+            match(input,68,FOLLOW_2); 
              after(grammarAccess.getEmptyExpressionAccess().getEmptyKeyword_0()); 
 
             }
@@ -20540,14 +20799,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EmptyExpression__Group__1"
-    // InternalGridGame.g:7861:1: rule__EmptyExpression__Group__1 : rule__EmptyExpression__Group__1__Impl rule__EmptyExpression__Group__2 ;
+    // InternalGridGame.g:7955:1: rule__EmptyExpression__Group__1 : rule__EmptyExpression__Group__1__Impl rule__EmptyExpression__Group__2 ;
     public final void rule__EmptyExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7865:1: ( rule__EmptyExpression__Group__1__Impl rule__EmptyExpression__Group__2 )
-            // InternalGridGame.g:7866:2: rule__EmptyExpression__Group__1__Impl rule__EmptyExpression__Group__2
+            // InternalGridGame.g:7959:1: ( rule__EmptyExpression__Group__1__Impl rule__EmptyExpression__Group__2 )
+            // InternalGridGame.g:7960:2: rule__EmptyExpression__Group__1__Impl rule__EmptyExpression__Group__2
             {
             pushFollow(FOLLOW_34);
             rule__EmptyExpression__Group__1__Impl();
@@ -20578,17 +20837,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EmptyExpression__Group__1__Impl"
-    // InternalGridGame.g:7873:1: rule__EmptyExpression__Group__1__Impl : ( '(' ) ;
+    // InternalGridGame.g:7967:1: rule__EmptyExpression__Group__1__Impl : ( '(' ) ;
     public final void rule__EmptyExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7877:1: ( ( '(' ) )
-            // InternalGridGame.g:7878:1: ( '(' )
+            // InternalGridGame.g:7971:1: ( ( '(' ) )
+            // InternalGridGame.g:7972:1: ( '(' )
             {
-            // InternalGridGame.g:7878:1: ( '(' )
-            // InternalGridGame.g:7879:1: '('
+            // InternalGridGame.g:7972:1: ( '(' )
+            // InternalGridGame.g:7973:1: '('
             {
              before(grammarAccess.getEmptyExpressionAccess().getLeftParenthesisKeyword_1()); 
             match(input,37,FOLLOW_2); 
@@ -20615,14 +20874,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EmptyExpression__Group__2"
-    // InternalGridGame.g:7892:1: rule__EmptyExpression__Group__2 : rule__EmptyExpression__Group__2__Impl rule__EmptyExpression__Group__3 ;
+    // InternalGridGame.g:7986:1: rule__EmptyExpression__Group__2 : rule__EmptyExpression__Group__2__Impl rule__EmptyExpression__Group__3 ;
     public final void rule__EmptyExpression__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7896:1: ( rule__EmptyExpression__Group__2__Impl rule__EmptyExpression__Group__3 )
-            // InternalGridGame.g:7897:2: rule__EmptyExpression__Group__2__Impl rule__EmptyExpression__Group__3
+            // InternalGridGame.g:7990:1: ( rule__EmptyExpression__Group__2__Impl rule__EmptyExpression__Group__3 )
+            // InternalGridGame.g:7991:2: rule__EmptyExpression__Group__2__Impl rule__EmptyExpression__Group__3
             {
             pushFollow(FOLLOW_1);
             rule__EmptyExpression__Group__2__Impl();
@@ -20653,17 +20912,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EmptyExpression__Group__2__Impl"
-    // InternalGridGame.g:7904:1: rule__EmptyExpression__Group__2__Impl : ( ')' ) ;
+    // InternalGridGame.g:7998:1: rule__EmptyExpression__Group__2__Impl : ( ')' ) ;
     public final void rule__EmptyExpression__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7908:1: ( ( ')' ) )
-            // InternalGridGame.g:7909:1: ( ')' )
+            // InternalGridGame.g:8002:1: ( ( ')' ) )
+            // InternalGridGame.g:8003:1: ( ')' )
             {
-            // InternalGridGame.g:7909:1: ( ')' )
-            // InternalGridGame.g:7910:1: ')'
+            // InternalGridGame.g:8003:1: ( ')' )
+            // InternalGridGame.g:8004:1: ')'
             {
              before(grammarAccess.getEmptyExpressionAccess().getRightParenthesisKeyword_2()); 
             match(input,38,FOLLOW_2); 
@@ -20690,14 +20949,14 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EmptyExpression__Group__3"
-    // InternalGridGame.g:7923:1: rule__EmptyExpression__Group__3 : rule__EmptyExpression__Group__3__Impl ;
+    // InternalGridGame.g:8017:1: rule__EmptyExpression__Group__3 : rule__EmptyExpression__Group__3__Impl ;
     public final void rule__EmptyExpression__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7927:1: ( rule__EmptyExpression__Group__3__Impl )
-            // InternalGridGame.g:7928:2: rule__EmptyExpression__Group__3__Impl
+            // InternalGridGame.g:8021:1: ( rule__EmptyExpression__Group__3__Impl )
+            // InternalGridGame.g:8022:2: rule__EmptyExpression__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__EmptyExpression__Group__3__Impl();
@@ -20723,21 +20982,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EmptyExpression__Group__3__Impl"
-    // InternalGridGame.g:7934:1: rule__EmptyExpression__Group__3__Impl : ( () ) ;
+    // InternalGridGame.g:8028:1: rule__EmptyExpression__Group__3__Impl : ( () ) ;
     public final void rule__EmptyExpression__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7938:1: ( ( () ) )
-            // InternalGridGame.g:7939:1: ( () )
+            // InternalGridGame.g:8032:1: ( ( () ) )
+            // InternalGridGame.g:8033:1: ( () )
             {
-            // InternalGridGame.g:7939:1: ( () )
-            // InternalGridGame.g:7940:1: ()
+            // InternalGridGame.g:8033:1: ( () )
+            // InternalGridGame.g:8034:1: ()
             {
              before(grammarAccess.getEmptyExpressionAccess().getEmptyExpressionAction_3()); 
-            // InternalGridGame.g:7941:1: ()
-            // InternalGridGame.g:7943:1: 
+            // InternalGridGame.g:8035:1: ()
+            // InternalGridGame.g:8037:1: 
             {
             }
 
@@ -20760,17 +21019,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GridGame__NameAssignment_1"
-    // InternalGridGame.g:7962:1: rule__GridGame__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalGridGame.g:8056:1: rule__GridGame__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__GridGame__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7966:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:7967:1: ( RULE_ID )
+            // InternalGridGame.g:8060:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8061:1: ( RULE_ID )
             {
-            // InternalGridGame.g:7967:1: ( RULE_ID )
-            // InternalGridGame.g:7968:1: RULE_ID
+            // InternalGridGame.g:8061:1: ( RULE_ID )
+            // InternalGridGame.g:8062:1: RULE_ID
             {
              before(grammarAccess.getGridGameAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -20797,17 +21056,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GridGame__StatesAssignment_3_0"
-    // InternalGridGame.g:7977:1: rule__GridGame__StatesAssignment_3_0 : ( ruleGlobalCellStateSpec ) ;
+    // InternalGridGame.g:8071:1: rule__GridGame__StatesAssignment_3_0 : ( ruleGlobalCellStateSpec ) ;
     public final void rule__GridGame__StatesAssignment_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7981:1: ( ( ruleGlobalCellStateSpec ) )
-            // InternalGridGame.g:7982:1: ( ruleGlobalCellStateSpec )
+            // InternalGridGame.g:8075:1: ( ( ruleGlobalCellStateSpec ) )
+            // InternalGridGame.g:8076:1: ( ruleGlobalCellStateSpec )
             {
-            // InternalGridGame.g:7982:1: ( ruleGlobalCellStateSpec )
-            // InternalGridGame.g:7983:1: ruleGlobalCellStateSpec
+            // InternalGridGame.g:8076:1: ( ruleGlobalCellStateSpec )
+            // InternalGridGame.g:8077:1: ruleGlobalCellStateSpec
             {
              before(grammarAccess.getGridGameAccess().getStatesGlobalCellStateSpecParserRuleCall_3_0_0()); 
             pushFollow(FOLLOW_2);
@@ -20838,17 +21097,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GridGame__CellsAssignment_3_1"
-    // InternalGridGame.g:7992:1: rule__GridGame__CellsAssignment_3_1 : ( ruleCellSpecification ) ;
+    // InternalGridGame.g:8086:1: rule__GridGame__CellsAssignment_3_1 : ( ruleCellSpecification ) ;
     public final void rule__GridGame__CellsAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:7996:1: ( ( ruleCellSpecification ) )
-            // InternalGridGame.g:7997:1: ( ruleCellSpecification )
+            // InternalGridGame.g:8090:1: ( ( ruleCellSpecification ) )
+            // InternalGridGame.g:8091:1: ( ruleCellSpecification )
             {
-            // InternalGridGame.g:7997:1: ( ruleCellSpecification )
-            // InternalGridGame.g:7998:1: ruleCellSpecification
+            // InternalGridGame.g:8091:1: ( ruleCellSpecification )
+            // InternalGridGame.g:8092:1: ruleCellSpecification
             {
              before(grammarAccess.getGridGameAccess().getCellsCellSpecificationParserRuleCall_3_1_0()); 
             pushFollow(FOLLOW_2);
@@ -20879,17 +21138,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GridGame__GlobalActionsAssignment_3_2"
-    // InternalGridGame.g:8007:1: rule__GridGame__GlobalActionsAssignment_3_2 : ( ruleGlobalAction ) ;
+    // InternalGridGame.g:8101:1: rule__GridGame__GlobalActionsAssignment_3_2 : ( ruleGlobalAction ) ;
     public final void rule__GridGame__GlobalActionsAssignment_3_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8011:1: ( ( ruleGlobalAction ) )
-            // InternalGridGame.g:8012:1: ( ruleGlobalAction )
+            // InternalGridGame.g:8105:1: ( ( ruleGlobalAction ) )
+            // InternalGridGame.g:8106:1: ( ruleGlobalAction )
             {
-            // InternalGridGame.g:8012:1: ( ruleGlobalAction )
-            // InternalGridGame.g:8013:1: ruleGlobalAction
+            // InternalGridGame.g:8106:1: ( ruleGlobalAction )
+            // InternalGridGame.g:8107:1: ruleGlobalAction
             {
              before(grammarAccess.getGridGameAccess().getGlobalActionsGlobalActionParserRuleCall_3_2_0()); 
             pushFollow(FOLLOW_2);
@@ -20920,17 +21179,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GridGame__InitsAssignment_3_3"
-    // InternalGridGame.g:8022:1: rule__GridGame__InitsAssignment_3_3 : ( ruleGlobalFieldInitialisation ) ;
+    // InternalGridGame.g:8116:1: rule__GridGame__InitsAssignment_3_3 : ( ruleGlobalFieldInitialisation ) ;
     public final void rule__GridGame__InitsAssignment_3_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8026:1: ( ( ruleGlobalFieldInitialisation ) )
-            // InternalGridGame.g:8027:1: ( ruleGlobalFieldInitialisation )
+            // InternalGridGame.g:8120:1: ( ( ruleGlobalFieldInitialisation ) )
+            // InternalGridGame.g:8121:1: ( ruleGlobalFieldInitialisation )
             {
-            // InternalGridGame.g:8027:1: ( ruleGlobalFieldInitialisation )
-            // InternalGridGame.g:8028:1: ruleGlobalFieldInitialisation
+            // InternalGridGame.g:8121:1: ( ruleGlobalFieldInitialisation )
+            // InternalGridGame.g:8122:1: ruleGlobalFieldInitialisation
             {
              before(grammarAccess.getGridGameAccess().getInitsGlobalFieldInitialisationParserRuleCall_3_3_0()); 
             pushFollow(FOLLOW_2);
@@ -20961,17 +21220,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GridGame__FieldsAssignment_3_4"
-    // InternalGridGame.g:8037:1: rule__GridGame__FieldsAssignment_3_4 : ( ruleFieldSpecification ) ;
+    // InternalGridGame.g:8131:1: rule__GridGame__FieldsAssignment_3_4 : ( ruleFieldSpecification ) ;
     public final void rule__GridGame__FieldsAssignment_3_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8041:1: ( ( ruleFieldSpecification ) )
-            // InternalGridGame.g:8042:1: ( ruleFieldSpecification )
+            // InternalGridGame.g:8135:1: ( ( ruleFieldSpecification ) )
+            // InternalGridGame.g:8136:1: ( ruleFieldSpecification )
             {
-            // InternalGridGame.g:8042:1: ( ruleFieldSpecification )
-            // InternalGridGame.g:8043:1: ruleFieldSpecification
+            // InternalGridGame.g:8136:1: ( ruleFieldSpecification )
+            // InternalGridGame.g:8137:1: ruleFieldSpecification
             {
              before(grammarAccess.getGridGameAccess().getFieldsFieldSpecificationParserRuleCall_3_4_0()); 
             pushFollow(FOLLOW_2);
@@ -21002,17 +21261,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GridGame__OptionsAssignment_3_5"
-    // InternalGridGame.g:8052:1: rule__GridGame__OptionsAssignment_3_5 : ( ruleOptionSpecification ) ;
+    // InternalGridGame.g:8146:1: rule__GridGame__OptionsAssignment_3_5 : ( ruleOptionSpecification ) ;
     public final void rule__GridGame__OptionsAssignment_3_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8056:1: ( ( ruleOptionSpecification ) )
-            // InternalGridGame.g:8057:1: ( ruleOptionSpecification )
+            // InternalGridGame.g:8150:1: ( ( ruleOptionSpecification ) )
+            // InternalGridGame.g:8151:1: ( ruleOptionSpecification )
             {
-            // InternalGridGame.g:8057:1: ( ruleOptionSpecification )
-            // InternalGridGame.g:8058:1: ruleOptionSpecification
+            // InternalGridGame.g:8151:1: ( ruleOptionSpecification )
+            // InternalGridGame.g:8152:1: ruleOptionSpecification
             {
              before(grammarAccess.getGridGameAccess().getOptionsOptionSpecificationParserRuleCall_3_5_0()); 
             pushFollow(FOLLOW_2);
@@ -21043,17 +21302,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellSpecification__NameAssignment_1"
-    // InternalGridGame.g:8067:1: rule__CellSpecification__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalGridGame.g:8161:1: rule__CellSpecification__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__CellSpecification__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8071:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8072:1: ( RULE_ID )
+            // InternalGridGame.g:8165:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8166:1: ( RULE_ID )
             {
-            // InternalGridGame.g:8072:1: ( RULE_ID )
-            // InternalGridGame.g:8073:1: RULE_ID
+            // InternalGridGame.g:8166:1: ( RULE_ID )
+            // InternalGridGame.g:8167:1: RULE_ID
             {
              before(grammarAccess.getCellSpecificationAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -21080,17 +21339,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellSpecification__MembersAssignment_3"
-    // InternalGridGame.g:8082:1: rule__CellSpecification__MembersAssignment_3 : ( ruleCellMember ) ;
+    // InternalGridGame.g:8176:1: rule__CellSpecification__MembersAssignment_3 : ( ruleCellMember ) ;
     public final void rule__CellSpecification__MembersAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8086:1: ( ( ruleCellMember ) )
-            // InternalGridGame.g:8087:1: ( ruleCellMember )
+            // InternalGridGame.g:8180:1: ( ( ruleCellMember ) )
+            // InternalGridGame.g:8181:1: ( ruleCellMember )
             {
-            // InternalGridGame.g:8087:1: ( ruleCellMember )
-            // InternalGridGame.g:8088:1: ruleCellMember
+            // InternalGridGame.g:8181:1: ( ruleCellMember )
+            // InternalGridGame.g:8182:1: ruleCellMember
             {
              before(grammarAccess.getCellSpecificationAccess().getMembersCellMemberParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -21121,21 +21380,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellDisplaySpec__Display_typeAssignment_3"
-    // InternalGridGame.g:8097:1: rule__CellDisplaySpec__Display_typeAssignment_3 : ( ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 ) ) ;
+    // InternalGridGame.g:8191:1: rule__CellDisplaySpec__Display_typeAssignment_3 : ( ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 ) ) ;
     public final void rule__CellDisplaySpec__Display_typeAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8101:1: ( ( ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 ) ) )
-            // InternalGridGame.g:8102:1: ( ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 ) )
+            // InternalGridGame.g:8195:1: ( ( ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 ) ) )
+            // InternalGridGame.g:8196:1: ( ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 ) )
             {
-            // InternalGridGame.g:8102:1: ( ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 ) )
-            // InternalGridGame.g:8103:1: ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 )
+            // InternalGridGame.g:8196:1: ( ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 ) )
+            // InternalGridGame.g:8197:1: ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 )
             {
              before(grammarAccess.getCellDisplaySpecAccess().getDisplay_typeAlternatives_3_0()); 
-            // InternalGridGame.g:8104:1: ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 )
-            // InternalGridGame.g:8104:2: rule__CellDisplaySpec__Display_typeAlternatives_3_0
+            // InternalGridGame.g:8198:1: ( rule__CellDisplaySpec__Display_typeAlternatives_3_0 )
+            // InternalGridGame.g:8198:2: rule__CellDisplaySpec__Display_typeAlternatives_3_0
             {
             pushFollow(FOLLOW_2);
             rule__CellDisplaySpec__Display_typeAlternatives_3_0();
@@ -21168,17 +21427,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellDisplaySpec__TextAssignment_4_0_1"
-    // InternalGridGame.g:8113:1: rule__CellDisplaySpec__TextAssignment_4_0_1 : ( RULE_STRING ) ;
+    // InternalGridGame.g:8207:1: rule__CellDisplaySpec__TextAssignment_4_0_1 : ( RULE_STRING ) ;
     public final void rule__CellDisplaySpec__TextAssignment_4_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8117:1: ( ( RULE_STRING ) )
-            // InternalGridGame.g:8118:1: ( RULE_STRING )
+            // InternalGridGame.g:8211:1: ( ( RULE_STRING ) )
+            // InternalGridGame.g:8212:1: ( RULE_STRING )
             {
-            // InternalGridGame.g:8118:1: ( RULE_STRING )
-            // InternalGridGame.g:8119:1: RULE_STRING
+            // InternalGridGame.g:8212:1: ( RULE_STRING )
+            // InternalGridGame.g:8213:1: RULE_STRING
             {
              before(grammarAccess.getCellDisplaySpecAccess().getTextSTRINGTerminalRuleCall_4_0_1_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -21205,21 +21464,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellDisplaySpec__VarAssignment_4_1_1"
-    // InternalGridGame.g:8128:1: rule__CellDisplaySpec__VarAssignment_4_1_1 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:8222:1: rule__CellDisplaySpec__VarAssignment_4_1_1 : ( ( RULE_ID ) ) ;
     public final void rule__CellDisplaySpec__VarAssignment_4_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8132:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8133:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8226:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:8227:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8133:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8134:1: ( RULE_ID )
+            // InternalGridGame.g:8227:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8228:1: ( RULE_ID )
             {
              before(grammarAccess.getCellDisplaySpecAccess().getVarVarSpecCrossReference_4_1_1_0()); 
-            // InternalGridGame.g:8135:1: ( RULE_ID )
-            // InternalGridGame.g:8136:1: RULE_ID
+            // InternalGridGame.g:8229:1: ( RULE_ID )
+            // InternalGridGame.g:8230:1: RULE_ID
             {
              before(grammarAccess.getCellDisplaySpecAccess().getVarVarSpecIDTerminalRuleCall_4_1_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -21250,21 +21509,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellDisplaySpec__ColorAssignment_4_2_1"
-    // InternalGridGame.g:8147:1: rule__CellDisplaySpec__ColorAssignment_4_2_1 : ( ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 ) ) ;
+    // InternalGridGame.g:8241:1: rule__CellDisplaySpec__ColorAssignment_4_2_1 : ( ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 ) ) ;
     public final void rule__CellDisplaySpec__ColorAssignment_4_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8151:1: ( ( ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 ) ) )
-            // InternalGridGame.g:8152:1: ( ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 ) )
+            // InternalGridGame.g:8245:1: ( ( ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 ) ) )
+            // InternalGridGame.g:8246:1: ( ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 ) )
             {
-            // InternalGridGame.g:8152:1: ( ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 ) )
-            // InternalGridGame.g:8153:1: ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 )
+            // InternalGridGame.g:8246:1: ( ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 ) )
+            // InternalGridGame.g:8247:1: ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 )
             {
              before(grammarAccess.getCellDisplaySpecAccess().getColorAlternatives_4_2_1_0()); 
-            // InternalGridGame.g:8154:1: ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 )
-            // InternalGridGame.g:8154:2: rule__CellDisplaySpec__ColorAlternatives_4_2_1_0
+            // InternalGridGame.g:8248:1: ( rule__CellDisplaySpec__ColorAlternatives_4_2_1_0 )
+            // InternalGridGame.g:8248:2: rule__CellDisplaySpec__ColorAlternatives_4_2_1_0
             {
             pushFollow(FOLLOW_2);
             rule__CellDisplaySpec__ColorAlternatives_4_2_1_0();
@@ -21297,21 +21556,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellVarSpec__TypeAssignment_1"
-    // InternalGridGame.g:8163:1: rule__CellVarSpec__TypeAssignment_1 : ( ( rule__CellVarSpec__TypeAlternatives_1_0 ) ) ;
+    // InternalGridGame.g:8257:1: rule__CellVarSpec__TypeAssignment_1 : ( ( rule__CellVarSpec__TypeAlternatives_1_0 ) ) ;
     public final void rule__CellVarSpec__TypeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8167:1: ( ( ( rule__CellVarSpec__TypeAlternatives_1_0 ) ) )
-            // InternalGridGame.g:8168:1: ( ( rule__CellVarSpec__TypeAlternatives_1_0 ) )
+            // InternalGridGame.g:8261:1: ( ( ( rule__CellVarSpec__TypeAlternatives_1_0 ) ) )
+            // InternalGridGame.g:8262:1: ( ( rule__CellVarSpec__TypeAlternatives_1_0 ) )
             {
-            // InternalGridGame.g:8168:1: ( ( rule__CellVarSpec__TypeAlternatives_1_0 ) )
-            // InternalGridGame.g:8169:1: ( rule__CellVarSpec__TypeAlternatives_1_0 )
+            // InternalGridGame.g:8262:1: ( ( rule__CellVarSpec__TypeAlternatives_1_0 ) )
+            // InternalGridGame.g:8263:1: ( rule__CellVarSpec__TypeAlternatives_1_0 )
             {
              before(grammarAccess.getCellVarSpecAccess().getTypeAlternatives_1_0()); 
-            // InternalGridGame.g:8170:1: ( rule__CellVarSpec__TypeAlternatives_1_0 )
-            // InternalGridGame.g:8170:2: rule__CellVarSpec__TypeAlternatives_1_0
+            // InternalGridGame.g:8264:1: ( rule__CellVarSpec__TypeAlternatives_1_0 )
+            // InternalGridGame.g:8264:2: rule__CellVarSpec__TypeAlternatives_1_0
             {
             pushFollow(FOLLOW_2);
             rule__CellVarSpec__TypeAlternatives_1_0();
@@ -21344,17 +21603,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellVarSpec__NameAssignment_2"
-    // InternalGridGame.g:8179:1: rule__CellVarSpec__NameAssignment_2 : ( RULE_ID ) ;
+    // InternalGridGame.g:8273:1: rule__CellVarSpec__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__CellVarSpec__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8183:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8184:1: ( RULE_ID )
+            // InternalGridGame.g:8277:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8278:1: ( RULE_ID )
             {
-            // InternalGridGame.g:8184:1: ( RULE_ID )
-            // InternalGridGame.g:8185:1: RULE_ID
+            // InternalGridGame.g:8278:1: ( RULE_ID )
+            // InternalGridGame.g:8279:1: RULE_ID
             {
              before(grammarAccess.getCellVarSpecAccess().getNameIDTerminalRuleCall_2_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -21381,17 +21640,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalCellStateSpec__NameAssignment_1"
-    // InternalGridGame.g:8194:1: rule__GlobalCellStateSpec__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalGridGame.g:8288:1: rule__GlobalCellStateSpec__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__GlobalCellStateSpec__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8198:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8199:1: ( RULE_ID )
+            // InternalGridGame.g:8292:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8293:1: ( RULE_ID )
             {
-            // InternalGridGame.g:8199:1: ( RULE_ID )
-            // InternalGridGame.g:8200:1: RULE_ID
+            // InternalGridGame.g:8293:1: ( RULE_ID )
+            // InternalGridGame.g:8294:1: RULE_ID
             {
              before(grammarAccess.getGlobalCellStateSpecAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -21418,17 +21677,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalCellStateSpec__ParamsAssignment_2_1"
-    // InternalGridGame.g:8209:1: rule__GlobalCellStateSpec__ParamsAssignment_2_1 : ( ruleParamSpec ) ;
+    // InternalGridGame.g:8303:1: rule__GlobalCellStateSpec__ParamsAssignment_2_1 : ( ruleParamSpec ) ;
     public final void rule__GlobalCellStateSpec__ParamsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8213:1: ( ( ruleParamSpec ) )
-            // InternalGridGame.g:8214:1: ( ruleParamSpec )
+            // InternalGridGame.g:8307:1: ( ( ruleParamSpec ) )
+            // InternalGridGame.g:8308:1: ( ruleParamSpec )
             {
-            // InternalGridGame.g:8214:1: ( ruleParamSpec )
-            // InternalGridGame.g:8215:1: ruleParamSpec
+            // InternalGridGame.g:8308:1: ( ruleParamSpec )
+            // InternalGridGame.g:8309:1: ruleParamSpec
             {
              before(grammarAccess.getGlobalCellStateSpecAccess().getParamsParamSpecParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -21459,17 +21718,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalCellStateSpec__ParamsAssignment_2_2_1"
-    // InternalGridGame.g:8224:1: rule__GlobalCellStateSpec__ParamsAssignment_2_2_1 : ( ruleParamSpec ) ;
+    // InternalGridGame.g:8318:1: rule__GlobalCellStateSpec__ParamsAssignment_2_2_1 : ( ruleParamSpec ) ;
     public final void rule__GlobalCellStateSpec__ParamsAssignment_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8228:1: ( ( ruleParamSpec ) )
-            // InternalGridGame.g:8229:1: ( ruleParamSpec )
+            // InternalGridGame.g:8322:1: ( ( ruleParamSpec ) )
+            // InternalGridGame.g:8323:1: ( ruleParamSpec )
             {
-            // InternalGridGame.g:8229:1: ( ruleParamSpec )
-            // InternalGridGame.g:8230:1: ruleParamSpec
+            // InternalGridGame.g:8323:1: ( ruleParamSpec )
+            // InternalGridGame.g:8324:1: ruleParamSpec
             {
              before(grammarAccess.getGlobalCellStateSpecAccess().getParamsParamSpecParserRuleCall_2_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -21500,17 +21759,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalCellStateSpec__StatesAssignment_4"
-    // InternalGridGame.g:8239:1: rule__GlobalCellStateSpec__StatesAssignment_4 : ( ruleCellState ) ;
+    // InternalGridGame.g:8333:1: rule__GlobalCellStateSpec__StatesAssignment_4 : ( ruleCellState ) ;
     public final void rule__GlobalCellStateSpec__StatesAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8243:1: ( ( ruleCellState ) )
-            // InternalGridGame.g:8244:1: ( ruleCellState )
+            // InternalGridGame.g:8337:1: ( ( ruleCellState ) )
+            // InternalGridGame.g:8338:1: ( ruleCellState )
             {
-            // InternalGridGame.g:8244:1: ( ruleCellState )
-            // InternalGridGame.g:8245:1: ruleCellState
+            // InternalGridGame.g:8338:1: ( ruleCellState )
+            // InternalGridGame.g:8339:1: ruleCellState
             {
              before(grammarAccess.getGlobalCellStateSpecAccess().getStatesCellStateParserRuleCall_4_0()); 
             pushFollow(FOLLOW_2);
@@ -21541,21 +21800,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalCellStateSpec__StartAssignment_7"
-    // InternalGridGame.g:8254:1: rule__GlobalCellStateSpec__StartAssignment_7 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:8348:1: rule__GlobalCellStateSpec__StartAssignment_7 : ( ( RULE_ID ) ) ;
     public final void rule__GlobalCellStateSpec__StartAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8258:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8259:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8352:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:8353:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8259:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8260:1: ( RULE_ID )
+            // InternalGridGame.g:8353:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8354:1: ( RULE_ID )
             {
              before(grammarAccess.getGlobalCellStateSpecAccess().getStartCellStateCrossReference_7_0()); 
-            // InternalGridGame.g:8261:1: ( RULE_ID )
-            // InternalGridGame.g:8262:1: RULE_ID
+            // InternalGridGame.g:8355:1: ( RULE_ID )
+            // InternalGridGame.g:8356:1: RULE_ID
             {
              before(grammarAccess.getGlobalCellStateSpecAccess().getStartCellStateIDTerminalRuleCall_7_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -21586,21 +21845,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ParamSpec__TypeAssignment_0"
-    // InternalGridGame.g:8273:1: rule__ParamSpec__TypeAssignment_0 : ( ( rule__ParamSpec__TypeAlternatives_0_0 ) ) ;
+    // InternalGridGame.g:8367:1: rule__ParamSpec__TypeAssignment_0 : ( ( rule__ParamSpec__TypeAlternatives_0_0 ) ) ;
     public final void rule__ParamSpec__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8277:1: ( ( ( rule__ParamSpec__TypeAlternatives_0_0 ) ) )
-            // InternalGridGame.g:8278:1: ( ( rule__ParamSpec__TypeAlternatives_0_0 ) )
+            // InternalGridGame.g:8371:1: ( ( ( rule__ParamSpec__TypeAlternatives_0_0 ) ) )
+            // InternalGridGame.g:8372:1: ( ( rule__ParamSpec__TypeAlternatives_0_0 ) )
             {
-            // InternalGridGame.g:8278:1: ( ( rule__ParamSpec__TypeAlternatives_0_0 ) )
-            // InternalGridGame.g:8279:1: ( rule__ParamSpec__TypeAlternatives_0_0 )
+            // InternalGridGame.g:8372:1: ( ( rule__ParamSpec__TypeAlternatives_0_0 ) )
+            // InternalGridGame.g:8373:1: ( rule__ParamSpec__TypeAlternatives_0_0 )
             {
              before(grammarAccess.getParamSpecAccess().getTypeAlternatives_0_0()); 
-            // InternalGridGame.g:8280:1: ( rule__ParamSpec__TypeAlternatives_0_0 )
-            // InternalGridGame.g:8280:2: rule__ParamSpec__TypeAlternatives_0_0
+            // InternalGridGame.g:8374:1: ( rule__ParamSpec__TypeAlternatives_0_0 )
+            // InternalGridGame.g:8374:2: rule__ParamSpec__TypeAlternatives_0_0
             {
             pushFollow(FOLLOW_2);
             rule__ParamSpec__TypeAlternatives_0_0();
@@ -21633,17 +21892,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ParamSpec__NameAssignment_1"
-    // InternalGridGame.g:8289:1: rule__ParamSpec__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalGridGame.g:8383:1: rule__ParamSpec__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__ParamSpec__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8293:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8294:1: ( RULE_ID )
+            // InternalGridGame.g:8387:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8388:1: ( RULE_ID )
             {
-            // InternalGridGame.g:8294:1: ( RULE_ID )
-            // InternalGridGame.g:8295:1: RULE_ID
+            // InternalGridGame.g:8388:1: ( RULE_ID )
+            // InternalGridGame.g:8389:1: RULE_ID
             {
              before(grammarAccess.getParamSpecAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -21670,17 +21929,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__LocalCellStateSpec__StatesAssignment_2"
-    // InternalGridGame.g:8304:1: rule__LocalCellStateSpec__StatesAssignment_2 : ( ruleCellState ) ;
+    // InternalGridGame.g:8398:1: rule__LocalCellStateSpec__StatesAssignment_2 : ( ruleCellState ) ;
     public final void rule__LocalCellStateSpec__StatesAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8308:1: ( ( ruleCellState ) )
-            // InternalGridGame.g:8309:1: ( ruleCellState )
+            // InternalGridGame.g:8402:1: ( ( ruleCellState ) )
+            // InternalGridGame.g:8403:1: ( ruleCellState )
             {
-            // InternalGridGame.g:8309:1: ( ruleCellState )
-            // InternalGridGame.g:8310:1: ruleCellState
+            // InternalGridGame.g:8403:1: ( ruleCellState )
+            // InternalGridGame.g:8404:1: ruleCellState
             {
              before(grammarAccess.getLocalCellStateSpecAccess().getStatesCellStateParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -21711,21 +21970,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__LocalCellStateSpec__StartAssignment_5"
-    // InternalGridGame.g:8319:1: rule__LocalCellStateSpec__StartAssignment_5 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:8413:1: rule__LocalCellStateSpec__StartAssignment_5 : ( ( RULE_ID ) ) ;
     public final void rule__LocalCellStateSpec__StartAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8323:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8324:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8417:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:8418:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8324:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8325:1: ( RULE_ID )
+            // InternalGridGame.g:8418:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8419:1: ( RULE_ID )
             {
              before(grammarAccess.getLocalCellStateSpecAccess().getStartCellStateCrossReference_5_0()); 
-            // InternalGridGame.g:8326:1: ( RULE_ID )
-            // InternalGridGame.g:8327:1: RULE_ID
+            // InternalGridGame.g:8420:1: ( RULE_ID )
+            // InternalGridGame.g:8421:1: RULE_ID
             {
              before(grammarAccess.getLocalCellStateSpecAccess().getStartCellStateIDTerminalRuleCall_5_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -21756,21 +22015,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellStateSpecReference__StateSpecAssignment_1"
-    // InternalGridGame.g:8338:1: rule__CellStateSpecReference__StateSpecAssignment_1 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:8432:1: rule__CellStateSpecReference__StateSpecAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__CellStateSpecReference__StateSpecAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8342:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8343:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8436:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:8437:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8343:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8344:1: ( RULE_ID )
+            // InternalGridGame.g:8437:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8438:1: ( RULE_ID )
             {
              before(grammarAccess.getCellStateSpecReferenceAccess().getStateSpecGlobalCellStateSpecCrossReference_1_0()); 
-            // InternalGridGame.g:8345:1: ( RULE_ID )
-            // InternalGridGame.g:8346:1: RULE_ID
+            // InternalGridGame.g:8439:1: ( RULE_ID )
+            // InternalGridGame.g:8440:1: RULE_ID
             {
              before(grammarAccess.getCellStateSpecReferenceAccess().getStateSpecGlobalCellStateSpecIDTerminalRuleCall_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -21801,17 +22060,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellStateSpecReference__ParamsAssignment_2_1"
-    // InternalGridGame.g:8357:1: rule__CellStateSpecReference__ParamsAssignment_2_1 : ( ruleValue ) ;
+    // InternalGridGame.g:8451:1: rule__CellStateSpecReference__ParamsAssignment_2_1 : ( ruleValue ) ;
     public final void rule__CellStateSpecReference__ParamsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8361:1: ( ( ruleValue ) )
-            // InternalGridGame.g:8362:1: ( ruleValue )
+            // InternalGridGame.g:8455:1: ( ( ruleValue ) )
+            // InternalGridGame.g:8456:1: ( ruleValue )
             {
-            // InternalGridGame.g:8362:1: ( ruleValue )
-            // InternalGridGame.g:8363:1: ruleValue
+            // InternalGridGame.g:8456:1: ( ruleValue )
+            // InternalGridGame.g:8457:1: ruleValue
             {
              before(grammarAccess.getCellStateSpecReferenceAccess().getParamsValueParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -21842,17 +22101,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellStateSpecReference__ParamsAssignment_2_2_1"
-    // InternalGridGame.g:8372:1: rule__CellStateSpecReference__ParamsAssignment_2_2_1 : ( ruleValue ) ;
+    // InternalGridGame.g:8466:1: rule__CellStateSpecReference__ParamsAssignment_2_2_1 : ( ruleValue ) ;
     public final void rule__CellStateSpecReference__ParamsAssignment_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8376:1: ( ( ruleValue ) )
-            // InternalGridGame.g:8377:1: ( ruleValue )
+            // InternalGridGame.g:8470:1: ( ( ruleValue ) )
+            // InternalGridGame.g:8471:1: ( ruleValue )
             {
-            // InternalGridGame.g:8377:1: ( ruleValue )
-            // InternalGridGame.g:8378:1: ruleValue
+            // InternalGridGame.g:8471:1: ( ruleValue )
+            // InternalGridGame.g:8472:1: ruleValue
             {
              before(grammarAccess.getCellStateSpecReferenceAccess().getParamsValueParserRuleCall_2_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -21883,17 +22142,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__StringValue__ValueAssignment"
-    // InternalGridGame.g:8387:1: rule__StringValue__ValueAssignment : ( RULE_STRING ) ;
+    // InternalGridGame.g:8481:1: rule__StringValue__ValueAssignment : ( RULE_STRING ) ;
     public final void rule__StringValue__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8391:1: ( ( RULE_STRING ) )
-            // InternalGridGame.g:8392:1: ( RULE_STRING )
+            // InternalGridGame.g:8485:1: ( ( RULE_STRING ) )
+            // InternalGridGame.g:8486:1: ( RULE_STRING )
             {
-            // InternalGridGame.g:8392:1: ( RULE_STRING )
-            // InternalGridGame.g:8393:1: RULE_STRING
+            // InternalGridGame.g:8486:1: ( RULE_STRING )
+            // InternalGridGame.g:8487:1: RULE_STRING
             {
              before(grammarAccess.getStringValueAccess().getValueSTRINGTerminalRuleCall_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -21920,17 +22179,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__IntValue__ValueAssignment"
-    // InternalGridGame.g:8402:1: rule__IntValue__ValueAssignment : ( RULE_INT ) ;
+    // InternalGridGame.g:8496:1: rule__IntValue__ValueAssignment : ( RULE_INT ) ;
     public final void rule__IntValue__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8406:1: ( ( RULE_INT ) )
-            // InternalGridGame.g:8407:1: ( RULE_INT )
+            // InternalGridGame.g:8500:1: ( ( RULE_INT ) )
+            // InternalGridGame.g:8501:1: ( RULE_INT )
             {
-            // InternalGridGame.g:8407:1: ( RULE_INT )
-            // InternalGridGame.g:8408:1: RULE_INT
+            // InternalGridGame.g:8501:1: ( RULE_INT )
+            // InternalGridGame.g:8502:1: RULE_INT
             {
              before(grammarAccess.getIntValueAccess().getValueINTTerminalRuleCall_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -21957,21 +22216,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__VarRefValue__RefAssignment"
-    // InternalGridGame.g:8417:1: rule__VarRefValue__RefAssignment : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:8511:1: rule__VarRefValue__RefAssignment : ( ( RULE_ID ) ) ;
     public final void rule__VarRefValue__RefAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8421:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8422:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8515:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:8516:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8422:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8423:1: ( RULE_ID )
+            // InternalGridGame.g:8516:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8517:1: ( RULE_ID )
             {
              before(grammarAccess.getVarRefValueAccess().getRefCellVarSpecCrossReference_0()); 
-            // InternalGridGame.g:8424:1: ( RULE_ID )
-            // InternalGridGame.g:8425:1: RULE_ID
+            // InternalGridGame.g:8518:1: ( RULE_ID )
+            // InternalGridGame.g:8519:1: RULE_ID
             {
              before(grammarAccess.getVarRefValueAccess().getRefCellVarSpecIDTerminalRuleCall_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -22002,17 +22261,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellState__NameAssignment_0"
-    // InternalGridGame.g:8436:1: rule__CellState__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalGridGame.g:8530:1: rule__CellState__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__CellState__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8440:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8441:1: ( RULE_ID )
+            // InternalGridGame.g:8534:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8535:1: ( RULE_ID )
             {
-            // InternalGridGame.g:8441:1: ( RULE_ID )
-            // InternalGridGame.g:8442:1: RULE_ID
+            // InternalGridGame.g:8535:1: ( RULE_ID )
+            // InternalGridGame.g:8536:1: RULE_ID
             {
              before(grammarAccess.getCellStateAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -22039,17 +22298,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellState__DisplayAssignment_2"
-    // InternalGridGame.g:8451:1: rule__CellState__DisplayAssignment_2 : ( ruleCellDisplaySpec ) ;
+    // InternalGridGame.g:8545:1: rule__CellState__DisplayAssignment_2 : ( ruleCellDisplaySpec ) ;
     public final void rule__CellState__DisplayAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8455:1: ( ( ruleCellDisplaySpec ) )
-            // InternalGridGame.g:8456:1: ( ruleCellDisplaySpec )
+            // InternalGridGame.g:8549:1: ( ( ruleCellDisplaySpec ) )
+            // InternalGridGame.g:8550:1: ( ruleCellDisplaySpec )
             {
-            // InternalGridGame.g:8456:1: ( ruleCellDisplaySpec )
-            // InternalGridGame.g:8457:1: ruleCellDisplaySpec
+            // InternalGridGame.g:8550:1: ( ruleCellDisplaySpec )
+            // InternalGridGame.g:8551:1: ruleCellDisplaySpec
             {
              before(grammarAccess.getCellStateAccess().getDisplayCellDisplaySpecParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -22080,17 +22339,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellState__TransitionsAssignment_3_2"
-    // InternalGridGame.g:8466:1: rule__CellState__TransitionsAssignment_3_2 : ( ruleTransitionSpec ) ;
+    // InternalGridGame.g:8560:1: rule__CellState__TransitionsAssignment_3_2 : ( ruleTransitionSpec ) ;
     public final void rule__CellState__TransitionsAssignment_3_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8470:1: ( ( ruleTransitionSpec ) )
-            // InternalGridGame.g:8471:1: ( ruleTransitionSpec )
+            // InternalGridGame.g:8564:1: ( ( ruleTransitionSpec ) )
+            // InternalGridGame.g:8565:1: ( ruleTransitionSpec )
             {
-            // InternalGridGame.g:8471:1: ( ruleTransitionSpec )
-            // InternalGridGame.g:8472:1: ruleTransitionSpec
+            // InternalGridGame.g:8565:1: ( ruleTransitionSpec )
+            // InternalGridGame.g:8566:1: ruleTransitionSpec
             {
              before(grammarAccess.getCellStateAccess().getTransitionsTransitionSpecParserRuleCall_3_2_0()); 
             pushFollow(FOLLOW_2);
@@ -22121,17 +22380,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellState__OnEnterAssignment_4_2"
-    // InternalGridGame.g:8481:1: rule__CellState__OnEnterAssignment_4_2 : ( ruleCellStateBehaviour ) ;
+    // InternalGridGame.g:8575:1: rule__CellState__OnEnterAssignment_4_2 : ( ruleCellStateBehaviour ) ;
     public final void rule__CellState__OnEnterAssignment_4_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8485:1: ( ( ruleCellStateBehaviour ) )
-            // InternalGridGame.g:8486:1: ( ruleCellStateBehaviour )
+            // InternalGridGame.g:8579:1: ( ( ruleCellStateBehaviour ) )
+            // InternalGridGame.g:8580:1: ( ruleCellStateBehaviour )
             {
-            // InternalGridGame.g:8486:1: ( ruleCellStateBehaviour )
-            // InternalGridGame.g:8487:1: ruleCellStateBehaviour
+            // InternalGridGame.g:8580:1: ( ruleCellStateBehaviour )
+            // InternalGridGame.g:8581:1: ruleCellStateBehaviour
             {
              before(grammarAccess.getCellStateAccess().getOnEnterCellStateBehaviourParserRuleCall_4_2_0()); 
             pushFollow(FOLLOW_2);
@@ -22162,17 +22421,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CellState__OnEnterAssignment_4_3_1"
-    // InternalGridGame.g:8496:1: rule__CellState__OnEnterAssignment_4_3_1 : ( ruleCellStateBehaviour ) ;
+    // InternalGridGame.g:8590:1: rule__CellState__OnEnterAssignment_4_3_1 : ( ruleCellStateBehaviour ) ;
     public final void rule__CellState__OnEnterAssignment_4_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8500:1: ( ( ruleCellStateBehaviour ) )
-            // InternalGridGame.g:8501:1: ( ruleCellStateBehaviour )
+            // InternalGridGame.g:8594:1: ( ( ruleCellStateBehaviour ) )
+            // InternalGridGame.g:8595:1: ( ruleCellStateBehaviour )
             {
-            // InternalGridGame.g:8501:1: ( ruleCellStateBehaviour )
-            // InternalGridGame.g:8502:1: ruleCellStateBehaviour
+            // InternalGridGame.g:8595:1: ( ruleCellStateBehaviour )
+            // InternalGridGame.g:8596:1: ruleCellStateBehaviour
             {
              before(grammarAccess.getCellStateAccess().getOnEnterCellStateBehaviourParserRuleCall_4_3_1_0()); 
             pushFollow(FOLLOW_2);
@@ -22203,17 +22462,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__TransitionSpec__TriggerAssignment_1"
-    // InternalGridGame.g:8511:1: rule__TransitionSpec__TriggerAssignment_1 : ( ruleTransitionTriggerSpec ) ;
+    // InternalGridGame.g:8605:1: rule__TransitionSpec__TriggerAssignment_1 : ( ruleTransitionTriggerSpec ) ;
     public final void rule__TransitionSpec__TriggerAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8515:1: ( ( ruleTransitionTriggerSpec ) )
-            // InternalGridGame.g:8516:1: ( ruleTransitionTriggerSpec )
+            // InternalGridGame.g:8609:1: ( ( ruleTransitionTriggerSpec ) )
+            // InternalGridGame.g:8610:1: ( ruleTransitionTriggerSpec )
             {
-            // InternalGridGame.g:8516:1: ( ruleTransitionTriggerSpec )
-            // InternalGridGame.g:8517:1: ruleTransitionTriggerSpec
+            // InternalGridGame.g:8610:1: ( ruleTransitionTriggerSpec )
+            // InternalGridGame.g:8611:1: ruleTransitionTriggerSpec
             {
              before(grammarAccess.getTransitionSpecAccess().getTriggerTransitionTriggerSpecParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -22244,21 +22503,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__TransitionSpec__TargetAssignment_3"
-    // InternalGridGame.g:8526:1: rule__TransitionSpec__TargetAssignment_3 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:8620:1: rule__TransitionSpec__TargetAssignment_3 : ( ( RULE_ID ) ) ;
     public final void rule__TransitionSpec__TargetAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8530:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8531:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8624:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:8625:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8531:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8532:1: ( RULE_ID )
+            // InternalGridGame.g:8625:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8626:1: ( RULE_ID )
             {
              before(grammarAccess.getTransitionSpecAccess().getTargetCellStateCrossReference_3_0()); 
-            // InternalGridGame.g:8533:1: ( RULE_ID )
-            // InternalGridGame.g:8534:1: RULE_ID
+            // InternalGridGame.g:8627:1: ( RULE_ID )
+            // InternalGridGame.g:8628:1: RULE_ID
             {
              before(grammarAccess.getTransitionSpecAccess().getTargetCellStateIDTerminalRuleCall_3_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -22289,24 +22548,24 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__MouseTrigger__LeftAssignment_0"
-    // InternalGridGame.g:8545:1: rule__MouseTrigger__LeftAssignment_0 : ( ( 'mouse-left' ) ) ;
+    // InternalGridGame.g:8639:1: rule__MouseTrigger__LeftAssignment_0 : ( ( 'mouse-left' ) ) ;
     public final void rule__MouseTrigger__LeftAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8549:1: ( ( ( 'mouse-left' ) ) )
-            // InternalGridGame.g:8550:1: ( ( 'mouse-left' ) )
+            // InternalGridGame.g:8643:1: ( ( ( 'mouse-left' ) ) )
+            // InternalGridGame.g:8644:1: ( ( 'mouse-left' ) )
             {
-            // InternalGridGame.g:8550:1: ( ( 'mouse-left' ) )
-            // InternalGridGame.g:8551:1: ( 'mouse-left' )
-            {
-             before(grammarAccess.getMouseTriggerAccess().getLeftMouseLeftKeyword_0_0()); 
-            // InternalGridGame.g:8552:1: ( 'mouse-left' )
-            // InternalGridGame.g:8553:1: 'mouse-left'
+            // InternalGridGame.g:8644:1: ( ( 'mouse-left' ) )
+            // InternalGridGame.g:8645:1: ( 'mouse-left' )
             {
              before(grammarAccess.getMouseTriggerAccess().getLeftMouseLeftKeyword_0_0()); 
-            match(input,68,FOLLOW_2); 
+            // InternalGridGame.g:8646:1: ( 'mouse-left' )
+            // InternalGridGame.g:8647:1: 'mouse-left'
+            {
+             before(grammarAccess.getMouseTriggerAccess().getLeftMouseLeftKeyword_0_0()); 
+            match(input,69,FOLLOW_2); 
              after(grammarAccess.getMouseTriggerAccess().getLeftMouseLeftKeyword_0_0()); 
 
             }
@@ -22334,17 +22593,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ContextTrigger__ExpAssignment_2"
-    // InternalGridGame.g:8568:1: rule__ContextTrigger__ExpAssignment_2 : ( ruleContextExpression ) ;
+    // InternalGridGame.g:8662:1: rule__ContextTrigger__ExpAssignment_2 : ( ruleContextExpression ) ;
     public final void rule__ContextTrigger__ExpAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8572:1: ( ( ruleContextExpression ) )
-            // InternalGridGame.g:8573:1: ( ruleContextExpression )
+            // InternalGridGame.g:8666:1: ( ( ruleContextExpression ) )
+            // InternalGridGame.g:8667:1: ( ruleContextExpression )
             {
-            // InternalGridGame.g:8573:1: ( ruleContextExpression )
-            // InternalGridGame.g:8574:1: ruleContextExpression
+            // InternalGridGame.g:8667:1: ( ruleContextExpression )
+            // InternalGridGame.g:8668:1: ruleContextExpression
             {
              before(grammarAccess.getContextTriggerAccess().getExpContextExpressionParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -22375,21 +22634,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__BehaviourReference__RefAssignment"
-    // InternalGridGame.g:8583:1: rule__BehaviourReference__RefAssignment : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:8677:1: rule__BehaviourReference__RefAssignment : ( ( RULE_ID ) ) ;
     public final void rule__BehaviourReference__RefAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8587:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8588:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8681:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:8682:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8588:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8589:1: ( RULE_ID )
+            // InternalGridGame.g:8682:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8683:1: ( RULE_ID )
             {
              before(grammarAccess.getBehaviourReferenceAccess().getRefVarSpecCrossReference_0()); 
-            // InternalGridGame.g:8590:1: ( RULE_ID )
-            // InternalGridGame.g:8591:1: RULE_ID
+            // InternalGridGame.g:8684:1: ( RULE_ID )
+            // InternalGridGame.g:8685:1: RULE_ID
             {
              before(grammarAccess.getBehaviourReferenceAccess().getRefVarSpecIDTerminalRuleCall_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -22420,17 +22679,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EndGameBehaviour__MessageAssignment_2"
-    // InternalGridGame.g:8602:1: rule__EndGameBehaviour__MessageAssignment_2 : ( RULE_STRING ) ;
+    // InternalGridGame.g:8696:1: rule__EndGameBehaviour__MessageAssignment_2 : ( RULE_STRING ) ;
     public final void rule__EndGameBehaviour__MessageAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8606:1: ( ( RULE_STRING ) )
-            // InternalGridGame.g:8607:1: ( RULE_STRING )
+            // InternalGridGame.g:8700:1: ( ( RULE_STRING ) )
+            // InternalGridGame.g:8701:1: ( RULE_STRING )
             {
-            // InternalGridGame.g:8607:1: ( RULE_STRING )
-            // InternalGridGame.g:8608:1: RULE_STRING
+            // InternalGridGame.g:8701:1: ( RULE_STRING )
+            // InternalGridGame.g:8702:1: RULE_STRING
             {
              before(grammarAccess.getEndGameBehaviourAccess().getMessageSTRINGTerminalRuleCall_2_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -22457,17 +22716,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalAction__NameAssignment_1"
-    // InternalGridGame.g:8617:1: rule__GlobalAction__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalGridGame.g:8711:1: rule__GlobalAction__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__GlobalAction__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8621:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8622:1: ( RULE_ID )
+            // InternalGridGame.g:8715:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8716:1: ( RULE_ID )
             {
-            // InternalGridGame.g:8622:1: ( RULE_ID )
-            // InternalGridGame.g:8623:1: RULE_ID
+            // InternalGridGame.g:8716:1: ( RULE_ID )
+            // InternalGridGame.g:8717:1: RULE_ID
             {
              before(grammarAccess.getGlobalActionAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -22494,17 +22753,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalAction__TriggerAssignment_4"
-    // InternalGridGame.g:8632:1: rule__GlobalAction__TriggerAssignment_4 : ( ruleContextExpression ) ;
+    // InternalGridGame.g:8726:1: rule__GlobalAction__TriggerAssignment_4 : ( ruleContextExpression ) ;
     public final void rule__GlobalAction__TriggerAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8636:1: ( ( ruleContextExpression ) )
-            // InternalGridGame.g:8637:1: ( ruleContextExpression )
+            // InternalGridGame.g:8730:1: ( ( ruleContextExpression ) )
+            // InternalGridGame.g:8731:1: ( ruleContextExpression )
             {
-            // InternalGridGame.g:8637:1: ( ruleContextExpression )
-            // InternalGridGame.g:8638:1: ruleContextExpression
+            // InternalGridGame.g:8731:1: ( ruleContextExpression )
+            // InternalGridGame.g:8732:1: ruleContextExpression
             {
              before(grammarAccess.getGlobalActionAccess().getTriggerContextExpressionParserRuleCall_4_0()); 
             pushFollow(FOLLOW_2);
@@ -22535,17 +22794,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalAction__BehaviourAssignment_6"
-    // InternalGridGame.g:8647:1: rule__GlobalAction__BehaviourAssignment_6 : ( ruleDirectBehaviour ) ;
+    // InternalGridGame.g:8741:1: rule__GlobalAction__BehaviourAssignment_6 : ( ruleDirectBehaviour ) ;
     public final void rule__GlobalAction__BehaviourAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8651:1: ( ( ruleDirectBehaviour ) )
-            // InternalGridGame.g:8652:1: ( ruleDirectBehaviour )
+            // InternalGridGame.g:8745:1: ( ( ruleDirectBehaviour ) )
+            // InternalGridGame.g:8746:1: ( ruleDirectBehaviour )
             {
-            // InternalGridGame.g:8652:1: ( ruleDirectBehaviour )
-            // InternalGridGame.g:8653:1: ruleDirectBehaviour
+            // InternalGridGame.g:8746:1: ( ruleDirectBehaviour )
+            // InternalGridGame.g:8747:1: ruleDirectBehaviour
             {
              before(grammarAccess.getGlobalActionAccess().getBehaviourDirectBehaviourParserRuleCall_6_0()); 
             pushFollow(FOLLOW_2);
@@ -22576,17 +22835,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__FieldSpecification__NameAssignment_1"
-    // InternalGridGame.g:8662:1: rule__FieldSpecification__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalGridGame.g:8756:1: rule__FieldSpecification__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__FieldSpecification__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8666:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8667:1: ( RULE_ID )
+            // InternalGridGame.g:8760:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8761:1: ( RULE_ID )
             {
-            // InternalGridGame.g:8667:1: ( RULE_ID )
-            // InternalGridGame.g:8668:1: RULE_ID
+            // InternalGridGame.g:8761:1: ( RULE_ID )
+            // InternalGridGame.g:8762:1: RULE_ID
             {
              before(grammarAccess.getFieldSpecificationAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -22613,17 +22872,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__FieldSpecification__WidthAssignment_5"
-    // InternalGridGame.g:8677:1: rule__FieldSpecification__WidthAssignment_5 : ( RULE_INT ) ;
+    // InternalGridGame.g:8771:1: rule__FieldSpecification__WidthAssignment_5 : ( RULE_INT ) ;
     public final void rule__FieldSpecification__WidthAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8681:1: ( ( RULE_INT ) )
-            // InternalGridGame.g:8682:1: ( RULE_INT )
+            // InternalGridGame.g:8775:1: ( ( RULE_INT ) )
+            // InternalGridGame.g:8776:1: ( RULE_INT )
             {
-            // InternalGridGame.g:8682:1: ( RULE_INT )
-            // InternalGridGame.g:8683:1: RULE_INT
+            // InternalGridGame.g:8776:1: ( RULE_INT )
+            // InternalGridGame.g:8777:1: RULE_INT
             {
              before(grammarAccess.getFieldSpecificationAccess().getWidthINTTerminalRuleCall_5_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -22650,17 +22909,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__FieldSpecification__HeightAssignment_8"
-    // InternalGridGame.g:8692:1: rule__FieldSpecification__HeightAssignment_8 : ( RULE_INT ) ;
+    // InternalGridGame.g:8786:1: rule__FieldSpecification__HeightAssignment_8 : ( RULE_INT ) ;
     public final void rule__FieldSpecification__HeightAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8696:1: ( ( RULE_INT ) )
-            // InternalGridGame.g:8697:1: ( RULE_INT )
+            // InternalGridGame.g:8790:1: ( ( RULE_INT ) )
+            // InternalGridGame.g:8791:1: ( RULE_INT )
             {
-            // InternalGridGame.g:8697:1: ( RULE_INT )
-            // InternalGridGame.g:8698:1: RULE_INT
+            // InternalGridGame.g:8791:1: ( RULE_INT )
+            // InternalGridGame.g:8792:1: RULE_INT
             {
              before(grammarAccess.getFieldSpecificationAccess().getHeightINTTerminalRuleCall_8_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -22687,17 +22946,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__FieldSpecification__Field_initialisationAssignment_9"
-    // InternalGridGame.g:8707:1: rule__FieldSpecification__Field_initialisationAssignment_9 : ( ruleFieldInitialisations ) ;
+    // InternalGridGame.g:8801:1: rule__FieldSpecification__Field_initialisationAssignment_9 : ( ruleFieldInitialisations ) ;
     public final void rule__FieldSpecification__Field_initialisationAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8711:1: ( ( ruleFieldInitialisations ) )
-            // InternalGridGame.g:8712:1: ( ruleFieldInitialisations )
+            // InternalGridGame.g:8805:1: ( ( ruleFieldInitialisations ) )
+            // InternalGridGame.g:8806:1: ( ruleFieldInitialisations )
             {
-            // InternalGridGame.g:8712:1: ( ruleFieldInitialisations )
-            // InternalGridGame.g:8713:1: ruleFieldInitialisations
+            // InternalGridGame.g:8806:1: ( ruleFieldInitialisations )
+            // InternalGridGame.g:8807:1: ruleFieldInitialisations
             {
              before(grammarAccess.getFieldSpecificationAccess().getField_initialisationFieldInitialisationsParserRuleCall_9_0()); 
             pushFollow(FOLLOW_2);
@@ -22728,21 +22987,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__StartFieldDeclaration__FieldAssignment_2"
-    // InternalGridGame.g:8722:1: rule__StartFieldDeclaration__FieldAssignment_2 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:8816:1: rule__StartFieldDeclaration__FieldAssignment_2 : ( ( RULE_ID ) ) ;
     public final void rule__StartFieldDeclaration__FieldAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8726:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8727:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8820:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:8821:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8727:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8728:1: ( RULE_ID )
+            // InternalGridGame.g:8821:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8822:1: ( RULE_ID )
             {
              before(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationCrossReference_2_0()); 
-            // InternalGridGame.g:8729:1: ( RULE_ID )
-            // InternalGridGame.g:8730:1: RULE_ID
+            // InternalGridGame.g:8823:1: ( RULE_ID )
+            // InternalGridGame.g:8824:1: RULE_ID
             {
              before(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationIDTerminalRuleCall_2_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -22773,17 +23032,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalFieldInitialisation__NameAssignment_1"
-    // InternalGridGame.g:8741:1: rule__GlobalFieldInitialisation__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalGridGame.g:8835:1: rule__GlobalFieldInitialisation__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__GlobalFieldInitialisation__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8745:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8746:1: ( RULE_ID )
+            // InternalGridGame.g:8839:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8840:1: ( RULE_ID )
             {
-            // InternalGridGame.g:8746:1: ( RULE_ID )
-            // InternalGridGame.g:8747:1: RULE_ID
+            // InternalGridGame.g:8840:1: ( RULE_ID )
+            // InternalGridGame.g:8841:1: RULE_ID
             {
              before(grammarAccess.getGlobalFieldInitialisationAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -22810,17 +23069,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalFieldInitialisation__ParamsAssignment_2_1"
-    // InternalGridGame.g:8756:1: rule__GlobalFieldInitialisation__ParamsAssignment_2_1 : ( ruleParamSpec ) ;
+    // InternalGridGame.g:8850:1: rule__GlobalFieldInitialisation__ParamsAssignment_2_1 : ( ruleParamSpec ) ;
     public final void rule__GlobalFieldInitialisation__ParamsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8760:1: ( ( ruleParamSpec ) )
-            // InternalGridGame.g:8761:1: ( ruleParamSpec )
+            // InternalGridGame.g:8854:1: ( ( ruleParamSpec ) )
+            // InternalGridGame.g:8855:1: ( ruleParamSpec )
             {
-            // InternalGridGame.g:8761:1: ( ruleParamSpec )
-            // InternalGridGame.g:8762:1: ruleParamSpec
+            // InternalGridGame.g:8855:1: ( ruleParamSpec )
+            // InternalGridGame.g:8856:1: ruleParamSpec
             {
              before(grammarAccess.getGlobalFieldInitialisationAccess().getParamsParamSpecParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -22851,17 +23110,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalFieldInitialisation__ParamsAssignment_2_2_1"
-    // InternalGridGame.g:8771:1: rule__GlobalFieldInitialisation__ParamsAssignment_2_2_1 : ( ruleParamSpec ) ;
+    // InternalGridGame.g:8865:1: rule__GlobalFieldInitialisation__ParamsAssignment_2_2_1 : ( ruleParamSpec ) ;
     public final void rule__GlobalFieldInitialisation__ParamsAssignment_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8775:1: ( ( ruleParamSpec ) )
-            // InternalGridGame.g:8776:1: ( ruleParamSpec )
+            // InternalGridGame.g:8869:1: ( ( ruleParamSpec ) )
+            // InternalGridGame.g:8870:1: ( ruleParamSpec )
             {
-            // InternalGridGame.g:8776:1: ( ruleParamSpec )
-            // InternalGridGame.g:8777:1: ruleParamSpec
+            // InternalGridGame.g:8870:1: ( ruleParamSpec )
+            // InternalGridGame.g:8871:1: ruleParamSpec
             {
              before(grammarAccess.getGlobalFieldInitialisationAccess().getParamsParamSpecParserRuleCall_2_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -22892,17 +23151,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GlobalFieldInitialisation__InitialisationsAssignment_4_0"
-    // InternalGridGame.g:8786:1: rule__GlobalFieldInitialisation__InitialisationsAssignment_4_0 : ( ruleFieldInitialisation ) ;
+    // InternalGridGame.g:8880:1: rule__GlobalFieldInitialisation__InitialisationsAssignment_4_0 : ( ruleFieldInitialisation ) ;
     public final void rule__GlobalFieldInitialisation__InitialisationsAssignment_4_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8790:1: ( ( ruleFieldInitialisation ) )
-            // InternalGridGame.g:8791:1: ( ruleFieldInitialisation )
+            // InternalGridGame.g:8884:1: ( ( ruleFieldInitialisation ) )
+            // InternalGridGame.g:8885:1: ( ruleFieldInitialisation )
             {
-            // InternalGridGame.g:8791:1: ( ruleFieldInitialisation )
-            // InternalGridGame.g:8792:1: ruleFieldInitialisation
+            // InternalGridGame.g:8885:1: ( ruleFieldInitialisation )
+            // InternalGridGame.g:8886:1: ruleFieldInitialisation
             {
              before(grammarAccess.getGlobalFieldInitialisationAccess().getInitialisationsFieldInitialisationParserRuleCall_4_0_0()); 
             pushFollow(FOLLOW_2);
@@ -22933,21 +23192,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__FieldInitialisationsRef__RefAssignment_1"
-    // InternalGridGame.g:8801:1: rule__FieldInitialisationsRef__RefAssignment_1 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:8895:1: rule__FieldInitialisationsRef__RefAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__FieldInitialisationsRef__RefAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8805:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8806:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8899:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:8900:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8806:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8807:1: ( RULE_ID )
+            // InternalGridGame.g:8900:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8901:1: ( RULE_ID )
             {
              before(grammarAccess.getFieldInitialisationsRefAccess().getRefGlobalFieldInitialisationCrossReference_1_0()); 
-            // InternalGridGame.g:8808:1: ( RULE_ID )
-            // InternalGridGame.g:8809:1: RULE_ID
+            // InternalGridGame.g:8902:1: ( RULE_ID )
+            // InternalGridGame.g:8903:1: RULE_ID
             {
              before(grammarAccess.getFieldInitialisationsRefAccess().getRefGlobalFieldInitialisationIDTerminalRuleCall_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -22978,17 +23237,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__FieldInitialisationsRef__ParamsAssignment_2_1"
-    // InternalGridGame.g:8820:1: rule__FieldInitialisationsRef__ParamsAssignment_2_1 : ( ruleValue ) ;
+    // InternalGridGame.g:8914:1: rule__FieldInitialisationsRef__ParamsAssignment_2_1 : ( ruleValue ) ;
     public final void rule__FieldInitialisationsRef__ParamsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8824:1: ( ( ruleValue ) )
-            // InternalGridGame.g:8825:1: ( ruleValue )
+            // InternalGridGame.g:8918:1: ( ( ruleValue ) )
+            // InternalGridGame.g:8919:1: ( ruleValue )
             {
-            // InternalGridGame.g:8825:1: ( ruleValue )
-            // InternalGridGame.g:8826:1: ruleValue
+            // InternalGridGame.g:8919:1: ( ruleValue )
+            // InternalGridGame.g:8920:1: ruleValue
             {
              before(grammarAccess.getFieldInitialisationsRefAccess().getParamsValueParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -23019,17 +23278,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__FieldInitialisationsRef__ParamsAssignment_2_2_1"
-    // InternalGridGame.g:8835:1: rule__FieldInitialisationsRef__ParamsAssignment_2_2_1 : ( ruleValue ) ;
+    // InternalGridGame.g:8929:1: rule__FieldInitialisationsRef__ParamsAssignment_2_2_1 : ( ruleValue ) ;
     public final void rule__FieldInitialisationsRef__ParamsAssignment_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8839:1: ( ( ruleValue ) )
-            // InternalGridGame.g:8840:1: ( ruleValue )
+            // InternalGridGame.g:8933:1: ( ( ruleValue ) )
+            // InternalGridGame.g:8934:1: ( ruleValue )
             {
-            // InternalGridGame.g:8840:1: ( ruleValue )
-            // InternalGridGame.g:8841:1: ruleValue
+            // InternalGridGame.g:8934:1: ( ruleValue )
+            // InternalGridGame.g:8935:1: ruleValue
             {
              before(grammarAccess.getFieldInitialisationsRefAccess().getParamsValueParserRuleCall_2_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -23060,17 +23319,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__LocalFieldInitialisations__InitialisationsAssignment_2_0"
-    // InternalGridGame.g:8850:1: rule__LocalFieldInitialisations__InitialisationsAssignment_2_0 : ( ruleFieldInitialisation ) ;
+    // InternalGridGame.g:8944:1: rule__LocalFieldInitialisations__InitialisationsAssignment_2_0 : ( ruleFieldInitialisation ) ;
     public final void rule__LocalFieldInitialisations__InitialisationsAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8854:1: ( ( ruleFieldInitialisation ) )
-            // InternalGridGame.g:8855:1: ( ruleFieldInitialisation )
+            // InternalGridGame.g:8948:1: ( ( ruleFieldInitialisation ) )
+            // InternalGridGame.g:8949:1: ( ruleFieldInitialisation )
             {
-            // InternalGridGame.g:8855:1: ( ruleFieldInitialisation )
-            // InternalGridGame.g:8856:1: ruleFieldInitialisation
+            // InternalGridGame.g:8949:1: ( ruleFieldInitialisation )
+            // InternalGridGame.g:8950:1: ruleFieldInitialisation
             {
              before(grammarAccess.getLocalFieldInitialisationsAccess().getInitialisationsFieldInitialisationParserRuleCall_2_0_0()); 
             pushFollow(FOLLOW_2);
@@ -23101,21 +23360,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__DefaultInitialisation__CellAssignment_2"
-    // InternalGridGame.g:8865:1: rule__DefaultInitialisation__CellAssignment_2 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:8959:1: rule__DefaultInitialisation__CellAssignment_2 : ( ( RULE_ID ) ) ;
     public final void rule__DefaultInitialisation__CellAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8869:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8870:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8963:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:8964:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8870:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8871:1: ( RULE_ID )
+            // InternalGridGame.g:8964:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8965:1: ( RULE_ID )
             {
              before(grammarAccess.getDefaultInitialisationAccess().getCellCellSpecificationCrossReference_2_0()); 
-            // InternalGridGame.g:8872:1: ( RULE_ID )
-            // InternalGridGame.g:8873:1: RULE_ID
+            // InternalGridGame.g:8966:1: ( RULE_ID )
+            // InternalGridGame.g:8967:1: RULE_ID
             {
              before(grammarAccess.getDefaultInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -23146,21 +23405,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__RandomInitialisation__CellAssignment_2"
-    // InternalGridGame.g:8884:1: rule__RandomInitialisation__CellAssignment_2 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:8978:1: rule__RandomInitialisation__CellAssignment_2 : ( ( RULE_ID ) ) ;
     public final void rule__RandomInitialisation__CellAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8888:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8889:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8982:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:8983:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8889:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8890:1: ( RULE_ID )
+            // InternalGridGame.g:8983:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:8984:1: ( RULE_ID )
             {
              before(grammarAccess.getRandomInitialisationAccess().getCellCellSpecificationCrossReference_2_0()); 
-            // InternalGridGame.g:8891:1: ( RULE_ID )
-            // InternalGridGame.g:8892:1: RULE_ID
+            // InternalGridGame.g:8985:1: ( RULE_ID )
+            // InternalGridGame.g:8986:1: RULE_ID
             {
              before(grammarAccess.getRandomInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -23191,17 +23450,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__RandomInitialisation__CountAssignment_4_0"
-    // InternalGridGame.g:8903:1: rule__RandomInitialisation__CountAssignment_4_0 : ( RULE_INT ) ;
+    // InternalGridGame.g:8997:1: rule__RandomInitialisation__CountAssignment_4_0 : ( RULE_INT ) ;
     public final void rule__RandomInitialisation__CountAssignment_4_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8907:1: ( ( RULE_INT ) )
-            // InternalGridGame.g:8908:1: ( RULE_INT )
+            // InternalGridGame.g:9001:1: ( ( RULE_INT ) )
+            // InternalGridGame.g:9002:1: ( RULE_INT )
             {
-            // InternalGridGame.g:8908:1: ( RULE_INT )
-            // InternalGridGame.g:8909:1: RULE_INT
+            // InternalGridGame.g:9002:1: ( RULE_INT )
+            // InternalGridGame.g:9003:1: RULE_INT
             {
              before(grammarAccess.getRandomInitialisationAccess().getCountINTTerminalRuleCall_4_0_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -23228,21 +23487,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__RandomInitialisation__VarAssignment_4_1"
-    // InternalGridGame.g:8918:1: rule__RandomInitialisation__VarAssignment_4_1 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:9012:1: rule__RandomInitialisation__VarAssignment_4_1 : ( ( RULE_ID ) ) ;
     public final void rule__RandomInitialisation__VarAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8922:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8923:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:9016:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:9017:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8923:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8924:1: ( RULE_ID )
+            // InternalGridGame.g:9017:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:9018:1: ( RULE_ID )
             {
              before(grammarAccess.getRandomInitialisationAccess().getVarVarSpecCrossReference_4_1_0()); 
-            // InternalGridGame.g:8925:1: ( RULE_ID )
-            // InternalGridGame.g:8926:1: RULE_ID
+            // InternalGridGame.g:9019:1: ( RULE_ID )
+            // InternalGridGame.g:9020:1: RULE_ID
             {
              before(grammarAccess.getRandomInitialisationAccess().getVarVarSpecIDTerminalRuleCall_4_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -23273,21 +23532,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ContextInitialisation__CellAssignment_2"
-    // InternalGridGame.g:8937:1: rule__ContextInitialisation__CellAssignment_2 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:9031:1: rule__ContextInitialisation__CellAssignment_2 : ( ( RULE_ID ) ) ;
     public final void rule__ContextInitialisation__CellAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8941:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:8942:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:9035:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:9036:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:8942:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:8943:1: ( RULE_ID )
+            // InternalGridGame.g:9036:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:9037:1: ( RULE_ID )
             {
              before(grammarAccess.getContextInitialisationAccess().getCellCellSpecificationCrossReference_2_0()); 
-            // InternalGridGame.g:8944:1: ( RULE_ID )
-            // InternalGridGame.g:8945:1: RULE_ID
+            // InternalGridGame.g:9038:1: ( RULE_ID )
+            // InternalGridGame.g:9039:1: RULE_ID
             {
              before(grammarAccess.getContextInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -23318,17 +23577,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ContextInitialisation__CheckAssignment_4"
-    // InternalGridGame.g:8956:1: rule__ContextInitialisation__CheckAssignment_4 : ( ruleContextExpression ) ;
+    // InternalGridGame.g:9050:1: rule__ContextInitialisation__CheckAssignment_4 : ( ruleContextExpression ) ;
     public final void rule__ContextInitialisation__CheckAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8960:1: ( ( ruleContextExpression ) )
-            // InternalGridGame.g:8961:1: ( ruleContextExpression )
+            // InternalGridGame.g:9054:1: ( ( ruleContextExpression ) )
+            // InternalGridGame.g:9055:1: ( ruleContextExpression )
             {
-            // InternalGridGame.g:8961:1: ( ruleContextExpression )
-            // InternalGridGame.g:8962:1: ruleContextExpression
+            // InternalGridGame.g:9055:1: ( ruleContextExpression )
+            // InternalGridGame.g:9056:1: ruleContextExpression
             {
              before(grammarAccess.getContextInitialisationAccess().getCheckContextExpressionParserRuleCall_4_0()); 
             pushFollow(FOLLOW_2);
@@ -23359,17 +23618,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ContextInitialisation__ExpAssignment_7"
-    // InternalGridGame.g:8971:1: rule__ContextInitialisation__ExpAssignment_7 : ( ruleContextExpression ) ;
+    // InternalGridGame.g:9065:1: rule__ContextInitialisation__ExpAssignment_7 : ( ruleContextExpression ) ;
     public final void rule__ContextInitialisation__ExpAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8975:1: ( ( ruleContextExpression ) )
-            // InternalGridGame.g:8976:1: ( ruleContextExpression )
+            // InternalGridGame.g:9069:1: ( ( ruleContextExpression ) )
+            // InternalGridGame.g:9070:1: ( ruleContextExpression )
             {
-            // InternalGridGame.g:8976:1: ( ruleContextExpression )
-            // InternalGridGame.g:8977:1: ruleContextExpression
+            // InternalGridGame.g:9070:1: ( ruleContextExpression )
+            // InternalGridGame.g:9071:1: ruleContextExpression
             {
              before(grammarAccess.getContextInitialisationAccess().getExpContextExpressionParserRuleCall_7_0()); 
             pushFollow(FOLLOW_2);
@@ -23400,17 +23659,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ContextExpression__Sub_expAssignment_0"
-    // InternalGridGame.g:8986:1: rule__ContextExpression__Sub_expAssignment_0 : ( ruleAtomicExpression ) ;
+    // InternalGridGame.g:9080:1: rule__ContextExpression__Sub_expAssignment_0 : ( ruleAtomicExpression ) ;
     public final void rule__ContextExpression__Sub_expAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:8990:1: ( ( ruleAtomicExpression ) )
-            // InternalGridGame.g:8991:1: ( ruleAtomicExpression )
+            // InternalGridGame.g:9084:1: ( ( ruleAtomicExpression ) )
+            // InternalGridGame.g:9085:1: ( ruleAtomicExpression )
             {
-            // InternalGridGame.g:8991:1: ( ruleAtomicExpression )
-            // InternalGridGame.g:8992:1: ruleAtomicExpression
+            // InternalGridGame.g:9085:1: ( ruleAtomicExpression )
+            // InternalGridGame.g:9086:1: ruleAtomicExpression
             {
              before(grammarAccess.getContextExpressionAccess().getSub_expAtomicExpressionParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -23441,17 +23700,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ContextExpression__Sub_expAssignment_1_1"
-    // InternalGridGame.g:9001:1: rule__ContextExpression__Sub_expAssignment_1_1 : ( ruleAtomicExpression ) ;
+    // InternalGridGame.g:9095:1: rule__ContextExpression__Sub_expAssignment_1_1 : ( ruleAtomicExpression ) ;
     public final void rule__ContextExpression__Sub_expAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:9005:1: ( ( ruleAtomicExpression ) )
-            // InternalGridGame.g:9006:1: ( ruleAtomicExpression )
+            // InternalGridGame.g:9099:1: ( ( ruleAtomicExpression ) )
+            // InternalGridGame.g:9100:1: ( ruleAtomicExpression )
             {
-            // InternalGridGame.g:9006:1: ( ruleAtomicExpression )
-            // InternalGridGame.g:9007:1: ruleAtomicExpression
+            // InternalGridGame.g:9100:1: ( ruleAtomicExpression )
+            // InternalGridGame.g:9101:1: ruleAtomicExpression
             {
              before(grammarAccess.getContextExpressionAccess().getSub_expAtomicExpressionParserRuleCall_1_1_0()); 
             pushFollow(FOLLOW_2);
@@ -23482,21 +23741,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__FilterExpression__Cell_typeAssignment_2"
-    // InternalGridGame.g:9016:1: rule__FilterExpression__Cell_typeAssignment_2 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:9110:1: rule__FilterExpression__Cell_typeAssignment_2 : ( ( RULE_ID ) ) ;
     public final void rule__FilterExpression__Cell_typeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:9020:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:9021:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:9114:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:9115:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:9021:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:9022:1: ( RULE_ID )
+            // InternalGridGame.g:9115:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:9116:1: ( RULE_ID )
             {
              before(grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationCrossReference_2_0()); 
-            // InternalGridGame.g:9023:1: ( RULE_ID )
-            // InternalGridGame.g:9024:1: RULE_ID
+            // InternalGridGame.g:9117:1: ( RULE_ID )
+            // InternalGridGame.g:9118:1: RULE_ID
             {
              before(grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationIDTerminalRuleCall_2_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -23526,22 +23785,67 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__FilterExpression__Cell_typeAssignment_2"
 
 
+    // $ANTLR start "rule__FilterExpression__Cell_typeAssignment_3_1"
+    // InternalGridGame.g:9129:1: rule__FilterExpression__Cell_typeAssignment_3_1 : ( ( RULE_ID ) ) ;
+    public final void rule__FilterExpression__Cell_typeAssignment_3_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // InternalGridGame.g:9133:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:9134:1: ( ( RULE_ID ) )
+            {
+            // InternalGridGame.g:9134:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:9135:1: ( RULE_ID )
+            {
+             before(grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationCrossReference_3_1_0()); 
+            // InternalGridGame.g:9136:1: ( RULE_ID )
+            // InternalGridGame.g:9137:1: RULE_ID
+            {
+             before(grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationIDTerminalRuleCall_3_1_0_1()); 
+            match(input,RULE_ID,FOLLOW_2); 
+             after(grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationIDTerminalRuleCall_3_1_0_1()); 
+
+            }
+
+             after(grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationCrossReference_3_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__FilterExpression__Cell_typeAssignment_3_1"
+
+
     // $ANTLR start "rule__StateFilterExpression__Cell_stateAssignment_2"
-    // InternalGridGame.g:9035:1: rule__StateFilterExpression__Cell_stateAssignment_2 : ( ( RULE_ID ) ) ;
+    // InternalGridGame.g:9148:1: rule__StateFilterExpression__Cell_stateAssignment_2 : ( ( RULE_ID ) ) ;
     public final void rule__StateFilterExpression__Cell_stateAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:9039:1: ( ( ( RULE_ID ) ) )
-            // InternalGridGame.g:9040:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:9152:1: ( ( ( RULE_ID ) ) )
+            // InternalGridGame.g:9153:1: ( ( RULE_ID ) )
             {
-            // InternalGridGame.g:9040:1: ( ( RULE_ID ) )
-            // InternalGridGame.g:9041:1: ( RULE_ID )
+            // InternalGridGame.g:9153:1: ( ( RULE_ID ) )
+            // InternalGridGame.g:9154:1: ( RULE_ID )
             {
              before(grammarAccess.getStateFilterExpressionAccess().getCell_stateCellStateCrossReference_2_0()); 
-            // InternalGridGame.g:9042:1: ( RULE_ID )
-            // InternalGridGame.g:9043:1: RULE_ID
+            // InternalGridGame.g:9155:1: ( RULE_ID )
+            // InternalGridGame.g:9156:1: RULE_ID
             {
              before(grammarAccess.getStateFilterExpressionAccess().getCell_stateCellStateIDTerminalRuleCall_2_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -23572,21 +23876,21 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__OpAssignment_4_0"
-    // InternalGridGame.g:9054:1: rule__CountExpression__OpAssignment_4_0 : ( ( rule__CountExpression__OpAlternatives_4_0_0 ) ) ;
+    // InternalGridGame.g:9167:1: rule__CountExpression__OpAssignment_4_0 : ( ( rule__CountExpression__OpAlternatives_4_0_0 ) ) ;
     public final void rule__CountExpression__OpAssignment_4_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:9058:1: ( ( ( rule__CountExpression__OpAlternatives_4_0_0 ) ) )
-            // InternalGridGame.g:9059:1: ( ( rule__CountExpression__OpAlternatives_4_0_0 ) )
+            // InternalGridGame.g:9171:1: ( ( ( rule__CountExpression__OpAlternatives_4_0_0 ) ) )
+            // InternalGridGame.g:9172:1: ( ( rule__CountExpression__OpAlternatives_4_0_0 ) )
             {
-            // InternalGridGame.g:9059:1: ( ( rule__CountExpression__OpAlternatives_4_0_0 ) )
-            // InternalGridGame.g:9060:1: ( rule__CountExpression__OpAlternatives_4_0_0 )
+            // InternalGridGame.g:9172:1: ( ( rule__CountExpression__OpAlternatives_4_0_0 ) )
+            // InternalGridGame.g:9173:1: ( rule__CountExpression__OpAlternatives_4_0_0 )
             {
              before(grammarAccess.getCountExpressionAccess().getOpAlternatives_4_0_0()); 
-            // InternalGridGame.g:9061:1: ( rule__CountExpression__OpAlternatives_4_0_0 )
-            // InternalGridGame.g:9061:2: rule__CountExpression__OpAlternatives_4_0_0
+            // InternalGridGame.g:9174:1: ( rule__CountExpression__OpAlternatives_4_0_0 )
+            // InternalGridGame.g:9174:2: rule__CountExpression__OpAlternatives_4_0_0
             {
             pushFollow(FOLLOW_2);
             rule__CountExpression__OpAlternatives_4_0_0();
@@ -23619,17 +23923,17 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CountExpression__CmpValAssignment_4_1"
-    // InternalGridGame.g:9070:1: rule__CountExpression__CmpValAssignment_4_1 : ( RULE_INT ) ;
+    // InternalGridGame.g:9183:1: rule__CountExpression__CmpValAssignment_4_1 : ( RULE_INT ) ;
     public final void rule__CountExpression__CmpValAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalGridGame.g:9074:1: ( ( RULE_INT ) )
-            // InternalGridGame.g:9075:1: ( RULE_INT )
+            // InternalGridGame.g:9187:1: ( ( RULE_INT ) )
+            // InternalGridGame.g:9188:1: ( RULE_INT )
             {
-            // InternalGridGame.g:9075:1: ( RULE_INT )
-            // InternalGridGame.g:9076:1: RULE_INT
+            // InternalGridGame.g:9188:1: ( RULE_INT )
+            // InternalGridGame.g:9189:1: RULE_INT
             {
              before(grammarAccess.getCountExpressionAccess().getCmpValINTTerminalRuleCall_4_1_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -23689,9 +23993,9 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000040000000002L});
     public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000400000000810L});
     public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000008008000000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000300000000000L,0x0000000000000010L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000300000000000L,0x0000000000000020L});
     public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x8000000000000000L,0x000000000000000FL});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x8000000000000000L,0x000000000000001EL});
     public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000004000000000L});
     public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0001000000000000L});
     public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0002000000000000L});
@@ -23709,6 +24013,8 @@ public class InternalGridGameParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x2000000000000000L});
     public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x4000000000000000L});
     public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x4000000000000002L});
-    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000001C00000L});
+    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000004000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
+    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000001C00000L});
 
 }

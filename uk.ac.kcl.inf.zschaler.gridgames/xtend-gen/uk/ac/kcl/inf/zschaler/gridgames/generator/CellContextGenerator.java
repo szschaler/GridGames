@@ -316,10 +316,8 @@ public class CellContextGenerator extends CommonGenerator {
   protected CharSequence _generateImplementation(final FilterExpression fe) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public CellContext filter");
-    CellSpecification _cell_type = fe.getCell_type();
-    String _name = _cell_type.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
+    CharSequence _generateMethodName = this.generateMethodName(fe);
+    _builder.append(_generateMethodName, "");
     _builder.append("() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -331,12 +329,23 @@ public class CellContextGenerator extends CommonGenerator {
     _builder.append("for (ContextElement c : al) {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("if (c.getCell().is");
-    CellSpecification _cell_type_1 = fe.getCell_type();
-    String _name_1 = _cell_type_1.getName();
-    String _firstUpper_1 = StringExtensions.toFirstUpper(_name_1);
-    _builder.append(_firstUpper_1, "\t\t");
-    _builder.append("()) {");
+    _builder.append("if (");
+    EList<CellSpecification> _cell_type = fe.getCell_type();
+    final Function1<CellSpecification, CharSequence> _function = new Function1<CellSpecification, CharSequence>() {
+      @Override
+      public CharSequence apply(final CellSpecification ct) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("(c.getCell().is");
+        String _name = ct.getName();
+        String _firstUpper = StringExtensions.toFirstUpper(_name);
+        _builder.append(_firstUpper, "");
+        _builder.append("())");
+        return _builder.toString();
+      }
+    };
+    String _join = IterableExtensions.<CellSpecification>join(_cell_type, "||", _function);
+    _builder.append(_join, "\t\t");
+    _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
     _builder.append("newAL.add (c);");

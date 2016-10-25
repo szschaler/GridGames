@@ -151,7 +151,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="FilterExpression" eSuperTypes="#//AtomicExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cell_type" eType="#//CellSpecification"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cell_type" unique="false"
+        upperBound="-1" eType="#//CellSpecification"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateFilterExpression" eSuperTypes="#//AtomicExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cell_state" eType="#//CellState"/>

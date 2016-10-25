@@ -2828,9 +2828,26 @@ ruleFilterExpression returns [EObject current=null]
 	}
 
 )
-)	otherlv_3=')' 
+)(	otherlv_3='|' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getFilterExpressionAccess().getRightParenthesisKeyword_3());
+    	newLeafNode(otherlv_3, grammarAccess.getFilterExpressionAccess().getVerticalLineKeyword_3_0());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFilterExpressionRule());
+	        }
+        }
+	otherlv_4=RULE_ID
+	{
+		newLeafNode(otherlv_4, grammarAccess.getFilterExpressionAccess().getCell_typeCellSpecificationCrossReference_3_1_0()); 
+	}
+
+)
+))*	otherlv_5=')' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getFilterExpressionAccess().getRightParenthesisKeyword_4());
     }
 )
 ;

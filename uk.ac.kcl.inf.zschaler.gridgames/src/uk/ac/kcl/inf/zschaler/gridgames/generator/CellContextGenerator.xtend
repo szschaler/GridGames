@@ -107,11 +107,11 @@ class CellContextGenerator extends CommonGenerator {
 	}
 	
 	def dispatch generateImplementation(FilterExpression fe) '''
-		public CellContext filter«fe.cell_type.name.toFirstUpper»() {
+		public CellContext filter«fe.generateMethodName»() {
 			ArrayList<ContextElement> newAL = new ArrayList<>();
 			
 			for (ContextElement c : al) {
-				if (c.getCell().is«fe.cell_type.name.toFirstUpper»()) {
+				if («fe.cell_type.join ("||", [ct | '''(c.getCell().is«ct.name.toFirstUpper»())'''])») {
 					newAL.add (c);
 				}
 			}
