@@ -52,7 +52,7 @@ public class CellContextGenerator extends CommonGenerator {
       _builder.append("}");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("private CellContext getGlobalContext() {");
+      _builder.append("public CellContext getGlobalContext() {");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("return new GlobalCellContext();");
@@ -463,7 +463,7 @@ public class CellContextGenerator extends CommonGenerator {
     _builder.append("for (int y = 0; y < height; y++) {");
     _builder.newLine();
     _builder.append("\t\t\t\t\t\t");
-    _builder.append("al.add (((LocalCellContext) context).new ContextElement (x, y, field[x][y]));");
+    _builder.append("al.add (((GlobalCellContext) context).new ContextElement (x, y, field[x][y]));");
     _builder.newLine();
     _builder.append("\t\t\t\t\t");
     _builder.append("}");

@@ -24,7 +24,7 @@ class CellContextGenerator extends CommonGenerator {
 					return new LocalCellContext(x, y);
 				}
 				
-				private CellContext getGlobalContext() {
+				public CellContext getGlobalContext() {
 					return new GlobalCellContext();
 				}
 				
@@ -176,7 +176,7 @@ class CellContextGenerator extends CommonGenerator {
 						
 						for (int x = 0; x < width; x ++) {
 							for (int y = 0; y < height; y++) {
-								al.add (((LocalCellContext) context).new ContextElement (x, y, field[x][y]));
+								al.add (((GlobalCellContext) context).new ContextElement (x, y, field[x][y]));
 							}
 						}
 						

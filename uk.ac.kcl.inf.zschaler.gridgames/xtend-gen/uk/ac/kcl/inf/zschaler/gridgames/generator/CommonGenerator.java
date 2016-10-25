@@ -15,6 +15,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame;
@@ -281,9 +282,17 @@ public class CommonGenerator {
     return _builder;
   }
   
+  protected CharSequence _generateFor(final EmptyExpression nee) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("empty()");
+    return _builder;
+  }
+  
   public CharSequence generateFor(final EObject ce) {
     if (ce instanceof CountExpression) {
       return _generateFor((CountExpression)ce);
+    } else if (ce instanceof EmptyExpression) {
+      return _generateFor((EmptyExpression)ce);
     } else if (ce instanceof FilterExpression) {
       return _generateFor((FilterExpression)ce);
     } else if (ce instanceof NotEmptyExpression) {

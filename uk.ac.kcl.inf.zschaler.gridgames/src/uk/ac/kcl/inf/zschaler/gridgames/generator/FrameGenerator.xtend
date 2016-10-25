@@ -6,6 +6,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DirectBehaviour
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalAction
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value
 
@@ -222,11 +223,27 @@ class FrameGenerator extends CommonGenerator {
 					'''
 				}
 				»
+				«generateGlobalActionsCode»
 			}
 			
 			public static void main(String[] args) {
 				new «generateFrameClassName»(new CellFactory()).setVisible(true);
 			}
+		}
+	'''
+
+	def generateGlobalActionsCode() '''
+		«IF (!gg.globalActions.empty)»
+			final «generateFieldClassName».CellContext context = field.getGlobalContext();
+			
+			«gg.globalActions.join("\n", [ga | ga.generateCodeFor])»
+		«ENDIF»
+		
+	'''
+		
+	def generateCodeFor (GlobalAction ga) '''
+		if («ga.trigger.generateFor») {
+			«ga.behaviour.generateCodeFor(null)»
 		}
 	'''
 	

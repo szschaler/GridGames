@@ -4,6 +4,7 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EmptyExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FilterExpression
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GridGame
@@ -71,4 +72,6 @@ class CommonGenerator {
 	def dispatch CharSequence generateFor(CountExpression ce) '''size()«if (ce.op != null) {'''«ce.op» «ce.cmpVal»'''}»'''
 
 	def dispatch CharSequence generateFor(NotEmptyExpression nee) '''notEmpty()'''
+
+	def dispatch CharSequence generateFor(EmptyExpression nee) '''empty()'''
 }

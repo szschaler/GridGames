@@ -15,9 +15,11 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DirectBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
+import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalAction;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
@@ -616,6 +618,10 @@ public class FrameGenerator extends CommonGenerator {
     }
     _builder.append(_xifexpression_2, "\t\t");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    CharSequence _generateGlobalActionsCode = this.generateGlobalActionsCode();
+    _builder.append(_generateGlobalActionsCode, "\t\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
@@ -633,6 +639,53 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateGlobalActionsCode() {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      EList<GlobalAction> _globalActions = this.gg.getGlobalActions();
+      boolean _isEmpty = _globalActions.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        _builder.append("final ");
+        CharSequence _generateFieldClassName = this.generateFieldClassName();
+        _builder.append(_generateFieldClassName, "");
+        _builder.append(".CellContext context = field.getGlobalContext();");
+        _builder.newLineIfNotEmpty();
+        _builder.newLine();
+        EList<GlobalAction> _globalActions_1 = this.gg.getGlobalActions();
+        final Function1<GlobalAction, CharSequence> _function = new Function1<GlobalAction, CharSequence>() {
+          @Override
+          public CharSequence apply(final GlobalAction ga) {
+            return FrameGenerator.this.generateCodeFor(ga);
+          }
+        };
+        String _join = IterableExtensions.<GlobalAction>join(_globalActions_1, "\n", _function);
+        _builder.append(_join, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateCodeFor(final GlobalAction ga) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if (");
+    ContextExpression _trigger = ga.getTrigger();
+    CharSequence _generateFor = this.generateFor(_trigger);
+    _builder.append(_generateFor, "");
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    DirectBehaviour _behaviour = ga.getBehaviour();
+    CharSequence _generateCodeFor = this.generateCodeFor(_behaviour, null);
+    _builder.append(_generateCodeFor, "\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
     return _builder;
