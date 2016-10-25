@@ -315,7 +315,7 @@ public class CellContextGenerator extends CommonGenerator {
   
   protected CharSequence _generateImplementation(final FilterExpression fe) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public CellContext filter");
+    _builder.append("public CellContext ");
     CharSequence _generateMethodName = this.generateMethodName(fe);
     _builder.append(_generateMethodName, "");
     _builder.append("() {");

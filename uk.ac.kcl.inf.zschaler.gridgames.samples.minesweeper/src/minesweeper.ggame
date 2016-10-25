@@ -98,12 +98,12 @@ game minesweeper {
 		start=hidden
 	}
 
-	
+	/*
 	action all_mines_found {
 		when filter(mine).inState(hidden | question).empty()
 		do end-game ("You've found all the mines!")
 	}
-	
+	 */
 	
 	allow_restart 
 	start = easy 

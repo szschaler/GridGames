@@ -107,7 +107,7 @@ class CellContextGenerator extends CommonGenerator {
 	}
 	
 	def dispatch generateImplementation(FilterExpression fe) '''
-		public CellContext filter«fe.generateMethodName»() {
+		public CellContext «fe.generateMethodName»() {
 			ArrayList<ContextElement> newAL = new ArrayList<>();
 			
 			for (ContextElement c : al) {
