@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "http://www.ac.uk/kcl/inf/szschaler/gridgames/GridGame"
+			class = "uk.ac.kcl.inf.szschaler.gridgames.gridGame.GridGamePackage"
+			genModel = "model/generated/GridGame.genmodel" />
+	</extension>
+</plugin>
