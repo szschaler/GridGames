@@ -37,7 +37,7 @@ class FrameGenerator extends CommonGenerator {
 		import javax.swing.JButton;
 		import javax.swing.SwingUtilities;
 		import javax.swing.JOptionPane;
-
+		
 		import javax.swing.table.TableCellRenderer;
 		
 		import java.awt.event.ActionEvent;
@@ -49,7 +49,7 @@ class FrameGenerator extends CommonGenerator {
 		import java.awt.Point;
 		
 		import java.util.Enumeration;
-
+		
 		import «generateModelPackage».«generateFieldClassName»;
 		
 		import «generateCellPackage».CellFactory;
@@ -110,15 +110,15 @@ class FrameGenerator extends CommonGenerator {
 							}
 							
 							int col = e.getColumn();
-
+		
 							for (int row = firstRow; row <= lastRow; row++) {
-								if (col != TableModelEvent.ALL_COLUMNS) {
-									handleStateChange (field.getValueAt(row, col), (row == firstRow));
-								} else {
-									for (col = 0; col < field.getColumnCount(); col++) {
-										handleStateChange (field.getValueAt(row, col), ((row == firstRow) && (col == 0)));								
-									}
-								}
+			if (col != TableModelEvent.ALL_COLUMNS) {
+				handleStateChange (field.getValueAt(row, col), (row == firstRow));
+			} else {
+				for (col = 0; col < field.getColumnCount(); col++) {
+					handleStateChange (field.getValueAt(row, col), ((row == firstRow) && (col == 0)));								
+				}
+			}
 							}
 						}
 					}

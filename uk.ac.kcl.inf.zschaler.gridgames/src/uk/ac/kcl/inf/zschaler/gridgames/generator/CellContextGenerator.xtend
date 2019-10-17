@@ -73,7 +73,7 @@ class CellContextGenerator extends CommonGenerator {
 				return al.iterator();
 			}
 			
-			«// Slightly annoyingly have to convert the CharSequences into Strings here to make sure the equality check in toSet works
+			« // Slightly annoyingly have to convert the CharSequences into Strings here to make sure the equality check in toSet works
 			 gg.contextExpInvocations.map[e | e.generateImplementation.toString].toSet.join(" ")»
 		}
 	'''

@@ -192,16 +192,16 @@ class CellGenerator extends CommonGenerator {
 			public int getStateID() {
 				return «idAndSymbolTable.key»;
 			}
-
+		
 			public CellState getContextBasedFollowState («generateFieldClassName».CellContext context) {
-				«cs.transitions.filter[t | t.trigger instanceof ContextTrigger].join ("\n", [t |
+			«cs.transitions.filter[t | t.trigger instanceof ContextTrigger].join ("\n", [t |
 					var tr = t.trigger as ContextTrigger
 					'''
 					if («tr.exp.generateFor») {
 						return new «t.target.name.toFirstUpper»CellState();
 					}
 					'''])»
-				return this;
+			return this;
 			}
 		}
 	'''
@@ -211,7 +211,7 @@ class CellGenerator extends CommonGenerator {
 	}
 
 	def dispatch CharSequence generateAccessCode (CellVarSpec cvs, Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) '''
-		((«(cvs.eContainer as CellSpecification).generateCellClassName») cOwner).«cvs.generateVariableName»'''
+	((«(cvs.eContainer as CellSpecification).generateCellClassName») cOwner).«cvs.generateVariableName»'''
 
 	def dispatch CharSequence generateAccessCode (ParamSpec sps, Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
 		idAndSymbolTable.value.get (sps.name).generateAccessCode(idAndSymbolTable)

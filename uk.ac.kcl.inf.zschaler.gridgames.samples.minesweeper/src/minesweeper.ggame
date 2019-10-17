@@ -70,7 +70,7 @@ game minesweeper {
 			transitions {
 				on mouse-left goto discovered
 				on mouse-right goto hidden
-				//on mouse-right goto question
+//				on mouse-right goto question
 			}
 		}
 		
@@ -91,9 +91,10 @@ game minesweeper {
 				as label
 				var discoveredLabel
 			}
+			
 			onEnter {
 				discoveredBehaviour
-			}
+			}			
 		}
 		start=hidden
 	}

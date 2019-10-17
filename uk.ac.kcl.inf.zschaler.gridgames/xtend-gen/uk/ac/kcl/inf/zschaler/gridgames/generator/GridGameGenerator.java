@@ -21,11 +21,8 @@ public class GridGameGenerator implements IGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     final ModelPreprocessor processedModel = new ModelPreprocessor(resource);
-    CellGenerator _cellGenerator = new CellGenerator(processedModel);
-    _cellGenerator.generate(fsa);
-    FieldGenerator _fieldGenerator = new FieldGenerator(processedModel);
-    _fieldGenerator.generate(fsa);
-    FrameGenerator _frameGenerator = new FrameGenerator(processedModel);
-    _frameGenerator.generate(fsa);
+    new CellGenerator(processedModel).generate(fsa);
+    new FieldGenerator(processedModel).generate(fsa);
+    new FrameGenerator(processedModel).generate(fsa);
   }
 }

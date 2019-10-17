@@ -17,7 +17,6 @@ import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AtomicExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextInitialisation;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CountExpression;
@@ -61,19 +60,19 @@ public class CellContextGenerator extends CommonGenerator {
       _builder.newLine();
       _builder.newLine();
       CharSequence _generateCellContextIntf = this.generateCellContextIntf();
-      _builder.append(_generateCellContextIntf, "");
+      _builder.append(_generateCellContextIntf);
       _builder.newLineIfNotEmpty();
       _builder.newLine();
       CharSequence _generateAbstractCellContext = this.generateAbstractCellContext();
-      _builder.append(_generateAbstractCellContext, "");
+      _builder.append(_generateAbstractCellContext);
       _builder.newLineIfNotEmpty();
       _builder.newLine();
       CharSequence _generateLocalCellContext = this.generateLocalCellContext();
-      _builder.append(_generateLocalCellContext, "");
+      _builder.append(_generateLocalCellContext);
       _builder.newLineIfNotEmpty();
       _builder.newLine();
       CharSequence _generateGlobalCellContext = this.generateGlobalCellContext();
-      _builder.append(_generateGlobalCellContext, "");
+      _builder.append(_generateGlobalCellContext);
       _builder.newLineIfNotEmpty();
       _xifexpression = _builder;
     }
@@ -125,17 +124,13 @@ public class CellContextGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    List<AtomicExpression> _contextExpInvocations = this.getContextExpInvocations(this.gg);
     final Function1<AtomicExpression, String> _function = new Function1<AtomicExpression, String>() {
       @Override
       public String apply(final AtomicExpression e) {
-        CharSequence _generateSignature = CellContextGenerator.this.generateSignature(e);
-        return _generateSignature.toString();
+        return CellContextGenerator.this.generateSignature(e).toString();
       }
     };
-    List<String> _map = ListExtensions.<AtomicExpression, String>map(_contextExpInvocations, _function);
-    Set<String> _set = IterableExtensions.<String>toSet(_map);
-    String _join = IterableExtensions.join(_set, "\n");
+    String _join = IterableExtensions.join(IterableExtensions.<String>toSet(ListExtensions.<AtomicExpression, String>map(this.getContextExpInvocations(this.gg), _function)), "\n");
     _builder.append(_join, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
@@ -175,17 +170,13 @@ public class CellContextGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    List<AtomicExpression> _contextExpInvocations = this.getContextExpInvocations(this.gg);
     final Function1<AtomicExpression, String> _function = new Function1<AtomicExpression, String>() {
       @Override
       public String apply(final AtomicExpression e) {
-        CharSequence _generateImplementation = CellContextGenerator.this.generateImplementation(e);
-        return _generateImplementation.toString();
+        return CellContextGenerator.this.generateImplementation(e).toString();
       }
     };
-    List<String> _map = ListExtensions.<AtomicExpression, String>map(_contextExpInvocations, _function);
-    Set<String> _set = IterableExtensions.<String>toSet(_map);
-    String _join = IterableExtensions.join(_set, " ");
+    String _join = IterableExtensions.join(IterableExtensions.<String>toSet(ListExtensions.<AtomicExpression, String>map(this.getContextExpInvocations(this.gg), _function)), " ");
     _builder.append(_join, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
@@ -491,13 +482,9 @@ public class CellContextGenerator extends CommonGenerator {
   }
   
   private boolean needContextGeneration() {
-    boolean _or = false;
-    boolean _or_1 = false;
-    EList<FieldSpecification> _fields = this.gg.getFields();
-    final Function1<FieldSpecification, Boolean> _function = new Function1<FieldSpecification, Boolean>() {
+    return ((IterableExtensions.<FieldSpecification>exists(this.gg.getFields(), new Function1<FieldSpecification, Boolean>() {
       @Override
       public Boolean apply(final FieldSpecification f) {
-        List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = CellContextGenerator.this.mpp.allInitialisations(f);
         final Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean>() {
           @Override
           public Boolean apply(final Pair<Map<String, Value>, FieldInitialisation> i) {
@@ -505,37 +492,17 @@ public class CellContextGenerator extends CommonGenerator {
             return Boolean.valueOf((_value instanceof ContextInitialisation));
           }
         };
-        return Boolean.valueOf(IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>exists(_allInitialisations, _function));
+        return Boolean.valueOf(IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>exists(CellContextGenerator.this.mpp.allInitialisations(f), _function));
       }
-    };
-    boolean _exists = IterableExtensions.<FieldSpecification>exists(_fields, _function);
-    if (_exists) {
-      _or_1 = true;
-    } else {
-      Iterable<Pair<CellSpecification, Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>> _allStatesWithContextTriggers = this.mpp.getAllStatesWithContextTriggers();
-      boolean _isEmpty = IterableExtensions.isEmpty(_allStatesWithContextTriggers);
-      boolean _not = (!_isEmpty);
-      _or_1 = _not;
-    }
-    if (_or_1) {
-      _or = true;
-    } else {
-      EList<GlobalAction> _globalActions = this.gg.getGlobalActions();
-      boolean _isEmpty_1 = _globalActions.isEmpty();
-      boolean _not_1 = (!_isEmpty_1);
-      _or = _not_1;
-    }
-    return _or;
+    }) || (!IterableExtensions.isEmpty(this.mpp.getAllStatesWithContextTriggers()))) || (!this.gg.getGlobalActions().isEmpty()));
   }
   
   public List<AtomicExpression> getContextExpInvocations(final GridGame gg) {
     List<AtomicExpression> _xblockexpression = null;
     {
-      EList<FieldSpecification> _fields = gg.getFields();
       final Function1<FieldSpecification, Iterable<AtomicExpression>> _function = new Function1<FieldSpecification, Iterable<AtomicExpression>>() {
         @Override
         public Iterable<AtomicExpression> apply(final FieldSpecification f) {
-          List<Pair<Map<String, Value>, FieldInitialisation>> _allInitialisations = CellContextGenerator.this.mpp.allInitialisations(f);
           final Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean> _function = new Function1<Pair<Map<String, Value>, FieldInitialisation>, Boolean>() {
             @Override
             public Boolean apply(final Pair<Map<String, Value>, FieldInitialisation> p) {
@@ -543,7 +510,6 @@ public class CellContextGenerator extends CommonGenerator {
               return Boolean.valueOf((_value instanceof ContextInitialisation));
             }
           };
-          Iterable<Pair<Map<String, Value>, FieldInitialisation>> _filter = IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>filter(_allInitialisations, _function);
           final Function1<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>> _function_1 = new Function1<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>>() {
             @Override
             public EList<AtomicExpression> apply(final Pair<Map<String, Value>, FieldInitialisation> cip) {
@@ -551,30 +517,21 @@ public class CellContextGenerator extends CommonGenerator {
               {
                 FieldInitialisation _value = cip.getValue();
                 final ContextInitialisation ci = ((ContextInitialisation) _value);
-                ContextExpression _check = ci.getCheck();
-                EList<AtomicExpression> checkExps = _check.getSub_exp();
-                ContextExpression _exp = ci.getExp();
-                EList<AtomicExpression> valExps = _exp.getSub_exp();
-                List<AtomicExpression> _list = IterableExtensions.<AtomicExpression>toList(checkExps);
-                _list.addAll(valExps);
+                EList<AtomicExpression> checkExps = ci.getCheck().getSub_exp();
+                EList<AtomicExpression> valExps = ci.getExp().getSub_exp();
+                IterableExtensions.<AtomicExpression>toList(checkExps).addAll(valExps);
                 _xblockexpression = checkExps;
               }
               return _xblockexpression;
             }
           };
-          Iterable<EList<AtomicExpression>> _map = IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>>map(_filter, _function_1);
-          return Iterables.<AtomicExpression>concat(_map);
+          return Iterables.<AtomicExpression>concat(IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>, EList<AtomicExpression>>map(IterableExtensions.<Pair<Map<String, Value>, FieldInitialisation>>filter(CellContextGenerator.this.mpp.allInitialisations(f), _function), _function_1));
         }
       };
-      List<Iterable<AtomicExpression>> _map = ListExtensions.<FieldSpecification, Iterable<AtomicExpression>>map(_fields, _function);
-      Iterable<AtomicExpression> _flatten = Iterables.<AtomicExpression>concat(_map);
-      List<AtomicExpression> contextExpInvs = IterableExtensions.<AtomicExpression>toList(_flatten);
-      Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _allCellStates = this.mpp.getAllCellStates();
+      List<AtomicExpression> contextExpInvs = IterableExtensions.<AtomicExpression>toList(Iterables.<AtomicExpression>concat(ListExtensions.<FieldSpecification, Iterable<AtomicExpression>>map(gg.getFields(), _function)));
       final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Iterable<AtomicExpression>> _function_1 = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Iterable<AtomicExpression>>() {
         @Override
         public Iterable<AtomicExpression> apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> csp) {
-          CellState _key = csp.getKey();
-          EList<TransitionSpec> _transitions = _key.getTransitions();
           final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
             @Override
             public Boolean apply(final TransitionSpec t) {
@@ -582,33 +539,24 @@ public class CellContextGenerator extends CommonGenerator {
               return Boolean.valueOf((_trigger instanceof ContextTrigger));
             }
           };
-          Iterable<TransitionSpec> _filter = IterableExtensions.<TransitionSpec>filter(_transitions, _function);
           final Function1<TransitionSpec, EList<AtomicExpression>> _function_1 = new Function1<TransitionSpec, EList<AtomicExpression>>() {
             @Override
             public EList<AtomicExpression> apply(final TransitionSpec t) {
               TransitionTriggerSpec _trigger = t.getTrigger();
-              ContextExpression _exp = ((ContextTrigger) _trigger).getExp();
-              return _exp.getSub_exp();
+              return ((ContextTrigger) _trigger).getExp().getSub_exp();
             }
           };
-          Iterable<EList<AtomicExpression>> _map = IterableExtensions.<TransitionSpec, EList<AtomicExpression>>map(_filter, _function_1);
-          return Iterables.<AtomicExpression>concat(_map);
+          return Iterables.<AtomicExpression>concat(IterableExtensions.<TransitionSpec, EList<AtomicExpression>>map(IterableExtensions.<TransitionSpec>filter(csp.getKey().getTransitions(), _function), _function_1));
         }
       };
-      Iterable<Iterable<AtomicExpression>> _map_1 = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Iterable<AtomicExpression>>map(_allCellStates, _function_1);
-      Iterable<AtomicExpression> _flatten_1 = Iterables.<AtomicExpression>concat(_map_1);
-      Iterables.<AtomicExpression>addAll(contextExpInvs, _flatten_1);
-      EList<GlobalAction> _globalActions = gg.getGlobalActions();
+      Iterables.<AtomicExpression>addAll(contextExpInvs, Iterables.<AtomicExpression>concat(IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Iterable<AtomicExpression>>map(this.mpp.getAllCellStates(), _function_1)));
       final Function1<GlobalAction, EList<AtomicExpression>> _function_2 = new Function1<GlobalAction, EList<AtomicExpression>>() {
         @Override
         public EList<AtomicExpression> apply(final GlobalAction ga) {
-          ContextExpression _trigger = ga.getTrigger();
-          return _trigger.getSub_exp();
+          return ga.getTrigger().getSub_exp();
         }
       };
-      List<EList<AtomicExpression>> _map_2 = ListExtensions.<GlobalAction, EList<AtomicExpression>>map(_globalActions, _function_2);
-      Iterable<AtomicExpression> _flatten_2 = Iterables.<AtomicExpression>concat(_map_2);
-      Iterables.<AtomicExpression>addAll(contextExpInvs, _flatten_2);
+      Iterables.<AtomicExpression>addAll(contextExpInvs, Iterables.<AtomicExpression>concat(ListExtensions.<GlobalAction, EList<AtomicExpression>>map(gg.getGlobalActions(), _function_2)));
       _xblockexpression = contextExpInvs;
     }
     return _xblockexpression;
@@ -620,7 +568,7 @@ public class CellContextGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("public CellContext ");
     CharSequence _generateMethodName = this.generateMethodName(fe);
-    _builder.append(_generateMethodName, "");
+    _builder.append(_generateMethodName);
     _builder.append("() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -633,20 +581,18 @@ public class CellContextGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("if (");
-    EList<CellSpecification> _cell_type = fe.getCell_type();
     final Function1<CellSpecification, CharSequence> _function = new Function1<CellSpecification, CharSequence>() {
       @Override
       public CharSequence apply(final CellSpecification ct) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("(c.getCell().is");
-        String _name = ct.getName();
-        String _firstUpper = StringExtensions.toFirstUpper(_name);
-        _builder.append(_firstUpper, "");
+        String _firstUpper = StringExtensions.toFirstUpper(ct.getName());
+        _builder.append(_firstUpper);
         _builder.append("())");
         return _builder.toString();
       }
     };
-    String _join = IterableExtensions.<CellSpecification>join(_cell_type, "||", _function);
+    String _join = IterableExtensions.<CellSpecification>join(fe.getCell_type(), "||", _function);
     _builder.append(_join, "\t\t");
     _builder.append(") {");
     _builder.newLineIfNotEmpty();
@@ -678,7 +624,7 @@ public class CellContextGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("public CellContext ");
     CharSequence _generateMethodName = this.generateMethodName(sfe);
-    _builder.append(_generateMethodName, "");
+    _builder.append(_generateMethodName);
     _builder.append("() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -693,29 +639,24 @@ public class CellContextGenerator extends CommonGenerator {
     _builder.append("switch (c.getCell().getState().getStateID()) {");
     _builder.newLine();
     _builder.append("\t\t\t");
-    Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _allCellStates = this.mpp.getAllCellStates();
     final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean> _function = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, Boolean>() {
       @Override
       public Boolean apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
-        EList<CellState> _cell_state = sfe.getCell_state();
-        CellState _key = cpp.getKey();
-        return Boolean.valueOf(_cell_state.contains(_key));
+        return Boolean.valueOf(sfe.getCell_state().contains(cpp.getKey()));
       }
     };
-    Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _filter = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>filter(_allCellStates, _function);
     final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence> _function_1 = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence>() {
       @Override
       public CharSequence apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("case ");
-        Pair<Integer, ? extends Map<String, Value>> _value = cpp.getValue();
-        Integer _key = _value.getKey();
-        _builder.append(_key, "");
+        Integer _key = cpp.getValue().getKey();
+        _builder.append(_key);
         _builder.append(": ");
         return _builder.toString();
       }
     };
-    String _join = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>join(_filter, "\n", _function_1);
+    String _join = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>join(IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>filter(this.mpp.getAllCellStates(), _function), "\n", _function_1);
     _builder.append(_join, "\t\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t");
@@ -786,7 +727,7 @@ public class CellContextGenerator extends CommonGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public CellContext ");
     CharSequence _generateMethodName = this.generateMethodName(fe);
-    _builder.append(_generateMethodName, "");
+    _builder.append(_generateMethodName);
     _builder.append("();");
     return _builder;
   }
@@ -795,7 +736,7 @@ public class CellContextGenerator extends CommonGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public CellContext ");
     CharSequence _generateMethodName = this.generateMethodName(sfe);
-    _builder.append(_generateMethodName, "");
+    _builder.append(_generateMethodName);
     _builder.append("();");
     return _builder;
   }

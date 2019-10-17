@@ -109,58 +109,58 @@ class FieldGenerator extends CommonGenerator {
 	def generateGenerationalContextTriggers() {
 		if ((mpp.doGenerateGenerationalContexts) && (!mpp.allStatesWithContextTriggers.empty)) {
 			'''
-			private class GenerationUpdater extends Thread {
-				private boolean doRun = false;
-				private long sleepTime = 1000;
-				
-				public GenerationUpdater() {
-					start();
-				}
-				
-				public void run() {
-					try {
-						while (true) {
-							if (doRun) {
-								// Compute a new generation
-								Cell[][] newGeneration = new Cell[width][height];
-								
-								for (int x = 0; x < width; x++) {
-									for (int y = 0; y < height; y++) {
-										CellContext context = getContextAt(x, y);
-										
-										newGeneration[x][y] = field[x][y].computeNewGeneration (context);
+				private class GenerationUpdater extends Thread {
+					private boolean doRun = false;
+					private long sleepTime = 1000;
+					
+					public GenerationUpdater() {
+						start();
+					}
+					
+					public void run() {
+						try {
+							while (true) {
+								if (doRun) {
+									// Compute a new generation
+									Cell[][] newGeneration = new Cell[width][height];
+									
+									for (int x = 0; x < width; x++) {
+										for (int y = 0; y < height; y++) {
+											CellContext context = getContextAt(x, y);
+											
+											newGeneration[x][y] = field[x][y].computeNewGeneration (context);
+										}
 									}
+									
+									// Set the new generation
+									field = newGeneration;
+									fireTableDataChanged();
 								}
 								
-								// Set the new generation
-								field = newGeneration;
-								fireTableDataChanged();
+								sleep(sleepTime);
 							}
-							
-							sleep(sleepTime);
 						}
+						catch (InterruptedException ie) { }
 					}
-					catch (InterruptedException ie) { }
+					
+					public void doStart() {
+						doRun = true;
+					}
+					
+					public void doStop() {
+						doRun = false;
+					}
 				}
 				
-				public void doStart() {
-					doRun = true;
+				private GenerationUpdater updater = new GenerationUpdater();
+				
+				public void startGenerationComputation() {
+					updater.doStart();
 				}
 				
-				public void doStop() {
-					doRun = false;
+				public void stopGenerationComputation() {
+					updater.doStop();
 				}
-			}
-			
-			private GenerationUpdater updater = new GenerationUpdater();
-			
-			public void startGenerationComputation() {
-				updater.doStart();
-			}
-
-			public void stopGenerationComputation() {
-				updater.doStop();
-			}
 			'''
 		}
 	}
@@ -168,31 +168,31 @@ class FieldGenerator extends CommonGenerator {
 	def generateIncrementalContextTriggerListener() {
 		if ((!mpp.doGenerateGenerationalContexts) && (!mpp.allStatesWithContextTriggers.empty)) {
 			'''
-			addTableModelListener(new TableModelListener() {
-				@Override
-				public void tableChanged(TableModelEvent e) {
-					if ((e.getFirstRow() != TableModelEvent.HEADER_ROW) && (e.getType() == TableModelEvent.UPDATE)) {
-						// React to updates to a given cell by checking whether any context triggers need activating
-						int firstRow = e.getFirstRow();
-						int lastRow = e.getLastRow();
-						int col = e.getColumn();
-		
-						for (int row = firstRow; row <= lastRow; row++) {
-							if (col != TableModelEvent.ALL_COLUMNS) {
-								handleStateChange (row, col);
-							} else {
-								for (col = 0; col < «generateFieldClassName()».this.getColumnCount(); col++) {
-									handleStateChange (row, col);
+					addTableModelListener(new TableModelListener() {
+					@Override
+					public void tableChanged(TableModelEvent e) {
+						if ((e.getFirstRow() != TableModelEvent.HEADER_ROW) && (e.getType() == TableModelEvent.UPDATE)) {
+							// React to updates to a given cell by checking whether any context triggers need activating
+							int firstRow = e.getFirstRow();
+							int lastRow = e.getLastRow();
+							int col = e.getColumn();
+				
+								for (int row = firstRow; row <= lastRow; row++) {
+									if (col != TableModelEvent.ALL_COLUMNS) {
+										handleStateChange (row, col);
+									} else {
+										for (col = 0; col < «generateFieldClassName()».this.getColumnCount(); col++) {
+											handleStateChange (row, col);
+										}
+									}
 								}
 							}
 						}
-					}
-				}
-				
-				private void handleStateChange (int row, int col) {
-					«/* TODO Figure out how to deal with recursion (esp. where multiple sequential states have context triggers */»
-					«val states = mpp.allStatesWithContextTriggers»
-					«if (!states.empty) {
+						
+						private void handleStateChange (int row, int col) {
+							«/* TODO Figure out how to deal with recursion (esp. where multiple sequential states have context triggers */»
+					«v			states = mpp.allStatesWithContextTriggers»
+							«if (!states.empty) {
 						'''
 						for (CellContext.ContextElement ce : getContextAt(col, row)) {
 							CellContext context = ce.getContextHere(); 
@@ -208,9 +208,9 @@ class FieldGenerator extends CommonGenerator {
 						}
 						'''
 					}»
-				}
-			});
-			'''
+						}
+					});
+				'''
 		}
 	}
 	
@@ -226,12 +226,12 @@ class FieldGenerator extends CommonGenerator {
 	def CharSequence generateCodeForContextTrigger(TransitionSpec t, CellSpecification cs, Map<String, Value> symbols) {
 		val trigger = t.trigger as ContextTrigger
 		'''
-		if («trigger.exp.generateFor») {
-			ce.getCell().setState (
-				((«cs.generateCellClassName») ce.getCell()).new «t.target.name.toFirstUpper»CellState(),
-				ce.getRow(), ce.getCol(), 
-				«generateFieldClassName».this);
-		}
+			if («trigger.exp.generateFor») {
+				ce.getCell().setState (
+					((«cs.generateCellClassName») ce.getCell()).new «t.target.name.toFirstUpper»CellState(),
+					ce.getRow(), ce.getCol(), 
+					«generateFieldClassName».this);
+			}
 		'''
 	}
 

@@ -5,7 +5,6 @@ import com.google.common.collect.Iterables;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.function.Consumer;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
@@ -16,11 +15,9 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.CommonGenerator;
 import uk.ac.kcl.inf.zschaler.gridgames.generator.ModelPreprocessor;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellDisplaySpec;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellMember;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellVarSpec;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextTrigger;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.IntValue;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.MouseTrigger;
@@ -30,7 +27,6 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.TransitionTriggerSpec;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarRefValue;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
 
 /**
  * Generates all stuff to do with handling cells.
@@ -47,26 +43,22 @@ public class CellGenerator extends CommonGenerator {
   public void generate(final IFileSystemAccess fsa) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _generateCellClassFileName = this.generateCellClassFileName();
-    _builder.append(_generateCellClassFileName, "");
-    CharSequence _generateCellClass = this.generateCellClass();
-    fsa.generateFile(_builder.toString(), _generateCellClass);
-    EList<CellSpecification> _cells = this.gg.getCells();
+    _builder.append(_generateCellClassFileName);
+    fsa.generateFile(_builder.toString(), this.generateCellClass());
     final Consumer<CellSpecification> _function = new Consumer<CellSpecification>() {
       @Override
       public void accept(final CellSpecification c) {
         StringConcatenation _builder = new StringConcatenation();
         CharSequence _generateCellClassFileName = CellGenerator.this.generateCellClassFileName(c);
-        _builder.append(_generateCellClassFileName, "");
-        CharSequence _generateCellClass = CellGenerator.this.generateCellClass(c);
-        fsa.generateFile(_builder.toString(), _generateCellClass);
+        _builder.append(_generateCellClassFileName);
+        fsa.generateFile(_builder.toString(), CellGenerator.this.generateCellClass(c));
       }
     };
-    _cells.forEach(_function);
+    this.gg.getCells().forEach(_function);
     StringConcatenation _builder_1 = new StringConcatenation();
     CharSequence _generateFactoryClassFileName = this.generateFactoryClassFileName();
-    _builder_1.append(_generateFactoryClassFileName, "");
-    CharSequence _generateFactory = this.generateFactory();
-    fsa.generateFile(_builder_1.toString(), _generateFactory);
+    _builder_1.append(_generateFactoryClassFileName);
+    fsa.generateFile(_builder_1.toString(), this.generateFactory());
   }
   
   /**
@@ -76,7 +68,7 @@ public class CellGenerator extends CommonGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
     CharSequence _generateCellPackage = this.generateCellPackage();
-    _builder.append(_generateCellPackage, "");
+    _builder.append(_generateCellPackage);
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -90,10 +82,10 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("import ");
     CharSequence _generateModelPackage = this.generateModelPackage();
-    _builder.append(_generateModelPackage, "");
+    _builder.append(_generateModelPackage);
     _builder.append(".");
     CharSequence _generateFieldClassName = this.generateFieldClassName();
-    _builder.append(_generateFieldClassName, "");
+    _builder.append(_generateFieldClassName);
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -221,20 +213,18 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    EList<CellSpecification> _cells = this.gg.getCells();
     final Function1<CellSpecification, CharSequence> _function = new Function1<CellSpecification, CharSequence>() {
       @Override
       public CharSequence apply(final CellSpecification c) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("public boolean is");
-        String _name = c.getName();
-        String _firstUpper = StringExtensions.toFirstUpper(_name);
-        _builder.append(_firstUpper, "");
+        String _firstUpper = StringExtensions.toFirstUpper(c.getName());
+        _builder.append(_firstUpper);
         _builder.append("() { return false; }");
         return _builder.toString();
       }
     };
-    String _join = IterableExtensions.<CellSpecification>join(_cells, " ", _function);
+    String _join = IterableExtensions.<CellSpecification>join(this.gg.getCells(), " ", _function);
     _builder.append(_join, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -246,7 +236,7 @@ public class CellGenerator extends CommonGenerator {
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("public abstract Cell computeNewGeneration(");
       CharSequence _generateFieldClassName_4 = this.generateFieldClassName();
-      _builder_1.append(_generateFieldClassName_4, "");
+      _builder_1.append(_generateFieldClassName_4);
       _builder_1.append(".CellContext context);");
       _xifexpression = _builder_1;
     }
@@ -264,7 +254,7 @@ public class CellGenerator extends CommonGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
     CharSequence _generateCellPackage = this.generateCellPackage();
-    _builder.append(_generateCellPackage, "");
+    _builder.append(_generateCellPackage);
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -280,36 +270,34 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("import ");
     CharSequence _generateModelPackage = this.generateModelPackage();
-    _builder.append(_generateModelPackage, "");
+    _builder.append(_generateModelPackage);
     _builder.append(".");
     CharSequence _generateFieldClassName = this.generateFieldClassName();
-    _builder.append(_generateFieldClassName, "");
+    _builder.append(_generateFieldClassName);
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("public class ");
     CharSequence _generateCellClassName = this.generateCellClassName(c);
-    _builder.append(_generateCellClassName, "");
+    _builder.append(_generateCellClassName);
     _builder.append(" extends Cell {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    EList<CellMember> _members = c.getMembers();
-    Iterable<CellVarSpec> _filter = Iterables.<CellVarSpec>filter(_members, CellVarSpec.class);
     final Function1<CellVarSpec, CharSequence> _function = new Function1<CellVarSpec, CharSequence>() {
       @Override
       public CharSequence apply(final CellVarSpec v) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("private ");
         String _type = v.getType();
-        _builder.append(_type, "");
+        _builder.append(_type);
         _builder.append(" ");
         CharSequence _generateVariableName = CellGenerator.this.generateVariableName(v);
-        _builder.append(_generateVariableName, "");
+        _builder.append(_generateVariableName);
         _builder.append(";");
         return _builder.toString();
       }
     };
-    String _join = IterableExtensions.<CellVarSpec>join(_filter, " ", _function);
+    String _join = IterableExtensions.<CellVarSpec>join(Iterables.<CellVarSpec>filter(c.getMembers(), CellVarSpec.class), " ", _function);
     _builder.append(_join, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -319,53 +307,45 @@ public class CellGenerator extends CommonGenerator {
     CharSequence _generateCellClassName_1 = this.generateCellClassName(c);
     _builder.append(_generateCellClassName_1, "\t");
     _builder.append("(");
-    EList<CellMember> _members_1 = c.getMembers();
-    Iterable<CellVarSpec> _filter_1 = Iterables.<CellVarSpec>filter(_members_1, CellVarSpec.class);
     final Function1<CellVarSpec, CharSequence> _function_1 = new Function1<CellVarSpec, CharSequence>() {
       @Override
       public CharSequence apply(final CellVarSpec v) {
         StringConcatenation _builder = new StringConcatenation();
         String _type = v.getType();
-        _builder.append(_type, "");
+        _builder.append(_type);
         _builder.append(" ");
-        String _name = v.getName();
-        String _firstLower = StringExtensions.toFirstLower(_name);
-        _builder.append(_firstLower, "");
+        String _firstLower = StringExtensions.toFirstLower(v.getName());
+        _builder.append(_firstLower);
         return _builder.toString();
       }
     };
-    String _join_1 = IterableExtensions.<CellVarSpec>join(_filter_1, ", ", _function_1);
+    String _join_1 = IterableExtensions.<CellVarSpec>join(Iterables.<CellVarSpec>filter(c.getMembers(), CellVarSpec.class), ", ", _function_1);
     _builder.append(_join_1, "\t");
     _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("setState (new ");
-    CellState _startState = this.mpp.getStartState(c);
-    String _name = _startState.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    String _firstUpper = StringExtensions.toFirstUpper(this.mpp.getStartState(c).getName());
     _builder.append(_firstUpper, "\t\t");
     _builder.append("CellState(), 0, 0, null);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    EList<CellMember> _members_2 = c.getMembers();
-    Iterable<CellVarSpec> _filter_2 = Iterables.<CellVarSpec>filter(_members_2, CellVarSpec.class);
     final Function1<CellVarSpec, CharSequence> _function_2 = new Function1<CellVarSpec, CharSequence>() {
       @Override
       public CharSequence apply(final CellVarSpec v) {
         StringConcatenation _builder = new StringConcatenation();
         CharSequence _generateVariableName = CellGenerator.this.generateVariableName(v);
-        _builder.append(_generateVariableName, "");
+        _builder.append(_generateVariableName);
         _builder.append(" = ");
-        String _name = v.getName();
-        String _firstLower = StringExtensions.toFirstLower(_name);
-        _builder.append(_firstLower, "");
+        String _firstLower = StringExtensions.toFirstLower(v.getName());
+        _builder.append(_firstLower);
         _builder.append(";");
         return _builder.toString();
       }
     };
-    String _join_2 = IterableExtensions.<CellVarSpec>join(_filter_2, "; ", _function_2);
+    String _join_2 = IterableExtensions.<CellVarSpec>join(Iterables.<CellVarSpec>filter(c.getMembers(), CellVarSpec.class), "; ", _function_2);
     _builder.append(_join_2, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -374,16 +354,13 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    Iterable<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>> _cellStates = this.mpp.getCellStates(c);
     final Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence> _function_3 = new Function1<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>, CharSequence>() {
       @Override
       public CharSequence apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> stateWithIDAndSymbols) {
-        CellState _key = stateWithIDAndSymbols.getKey();
-        Pair<Integer, ? extends Map<String, Value>> _value = stateWithIDAndSymbols.getValue();
-        return CellGenerator.this.generateStateSpec(_key, _value);
+        return CellGenerator.this.generateStateSpec(stateWithIDAndSymbols.getKey(), stateWithIDAndSymbols.getValue());
       }
     };
-    String _join_3 = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>join(_cellStates, " ", _function_3);
+    String _join_3 = IterableExtensions.<Pair<CellState, Pair<Integer, ? extends Map<String, Value>>>>join(this.mpp.getCellStates(c), " ", _function_3);
     _builder.append(_join_3, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -393,8 +370,7 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public boolean is");
-    String _name_1 = c.getName();
-    String _firstUpper_1 = StringExtensions.toFirstUpper(_name_1);
+    String _firstUpper_1 = StringExtensions.toFirstUpper(c.getName());
     _builder.append(_firstUpper_1, "\t");
     _builder.append("() {");
     _builder.newLineIfNotEmpty();
@@ -413,7 +389,7 @@ public class CellGenerator extends CommonGenerator {
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("private ");
       CharSequence _generateCellClassName_2 = this.generateCellClassName(c);
-      _builder_1.append(_generateCellClassName_2, "");
+      _builder_1.append(_generateCellClassName_2);
       _builder_1.append(" (CellState startAt) {");
       _builder_1.newLineIfNotEmpty();
       _builder_1.append("\t");
@@ -426,7 +402,7 @@ public class CellGenerator extends CommonGenerator {
       _builder_1.newLine();
       _builder_1.append("public Cell computeNewGeneration(");
       CharSequence _generateFieldClassName_1 = this.generateFieldClassName();
-      _builder_1.append(_generateFieldClassName_1, "");
+      _builder_1.append(_generateFieldClassName_1);
       _builder_1.append(".CellContext context) {");
       _builder_1.newLineIfNotEmpty();
       _builder_1.append("\t");
@@ -448,9 +424,8 @@ public class CellGenerator extends CommonGenerator {
   public CharSequence generateStateSpec(final CellState cs, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public static class ");
-    String _name = cs.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    _builder.append(_firstUpper, "");
+    String _firstUpper = StringExtensions.toFirstUpper(cs.getName());
+    _builder.append(_firstUpper);
     _builder.append("CellState extends CellState {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -461,20 +436,16 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _xifexpression = null;
-    CellDisplaySpec _display = cs.getDisplay();
-    String _color = _display.getColor();
+    String _color = cs.getDisplay().getColor();
     boolean _notEquals = (!Objects.equal(_color, null));
     if (_notEquals) {
       CharSequence _xifexpression_1 = null;
-      CellDisplaySpec _display_1 = cs.getDisplay();
-      String _display_type = _display_1.getDisplay_type();
-      boolean _equals = _display_type.equals("button");
+      boolean _equals = cs.getDisplay().getDisplay_type().equals("button");
       if (_equals) {
         StringConcatenation _builder_1 = new StringConcatenation();
         _builder_1.append("jb.setBackground (Color.");
-        CellDisplaySpec _display_2 = cs.getDisplay();
-        String _color_1 = _display_2.getColor();
-        _builder_1.append(_color_1, "");
+        String _color_1 = cs.getDisplay().getColor();
+        _builder_1.append(_color_1);
         _builder_1.append(");");
         _builder_1.newLineIfNotEmpty();
         _builder_1.append("return jb;");
@@ -485,9 +456,8 @@ public class CellGenerator extends CommonGenerator {
         _builder_2.append("jl.setOpaque (true);");
         _builder_2.newLine();
         _builder_2.append("jl.setBackground (Color.");
-        CellDisplaySpec _display_3 = cs.getDisplay();
-        String _color_2 = _display_3.getColor();
-        _builder_2.append(_color_2, "");
+        String _color_2 = cs.getDisplay().getColor();
+        _builder_2.append(_color_2);
         _builder_2.append(");");
         _builder_2.newLineIfNotEmpty();
         _builder_2.append("return jl;");
@@ -497,17 +467,14 @@ public class CellGenerator extends CommonGenerator {
       _xifexpression = _xifexpression_1;
     } else {
       CharSequence _xifexpression_2 = null;
-      CellDisplaySpec _display_4 = cs.getDisplay();
-      String _display_type_1 = _display_4.getDisplay_type();
-      boolean _equals_1 = _display_type_1.equals("button");
+      boolean _equals_1 = cs.getDisplay().getDisplay_type().equals("button");
       if (_equals_1) {
         StringConcatenation _builder_3 = new StringConcatenation();
         _builder_3.append("jb.setBackground (new Color(0xdfdfdf));");
         _builder_3.newLine();
         _builder_3.append("jb.setText (");
-        CellDisplaySpec _display_5 = cs.getDisplay();
-        CharSequence _generateTextCalculation = this.generateTextCalculation(_display_5, idAndSymbolTable);
-        _builder_3.append(_generateTextCalculation, "");
+        CharSequence _generateTextCalculation = this.generateTextCalculation(cs.getDisplay(), idAndSymbolTable);
+        _builder_3.append(_generateTextCalculation);
         _builder_3.append(");");
         _builder_3.newLineIfNotEmpty();
         _builder_3.append("return jb;");
@@ -518,9 +485,8 @@ public class CellGenerator extends CommonGenerator {
         _builder_4.append("jl.setOpaque (false);");
         _builder_4.newLine();
         _builder_4.append("jl.setText (");
-        CellDisplaySpec _display_6 = cs.getDisplay();
-        CharSequence _generateTextCalculation_1 = this.generateTextCalculation(_display_6, idAndSymbolTable);
-        _builder_4.append(_generateTextCalculation_1, "");
+        CharSequence _generateTextCalculation_1 = this.generateTextCalculation(cs.getDisplay(), idAndSymbolTable);
+        _builder_4.append(_generateTextCalculation_1);
         _builder_4.append(");");
         _builder_4.newLineIfNotEmpty();
         _builder_4.append("return jl;");
@@ -536,7 +502,6 @@ public class CellGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t");
     CharSequence _xifexpression_3 = null;
-    EList<TransitionSpec> _transitions = cs.getTransitions();
     final Function1<TransitionSpec, Boolean> _function = new Function1<TransitionSpec, Boolean>() {
       @Override
       public Boolean apply(final TransitionSpec t) {
@@ -544,15 +509,13 @@ public class CellGenerator extends CommonGenerator {
         return Boolean.valueOf((_trigger instanceof MouseTrigger));
       }
     };
-    Iterable<TransitionSpec> _filter = IterableExtensions.<TransitionSpec>filter(_transitions, _function);
-    boolean _isEmpty = IterableExtensions.isEmpty(_filter);
+    boolean _isEmpty = IterableExtensions.isEmpty(IterableExtensions.<TransitionSpec>filter(cs.getTransitions(), _function));
     boolean _not = (!_isEmpty);
     if (_not) {
       StringConcatenation _builder_5 = new StringConcatenation();
       _builder_5.append("public CellState getMouseBasedFollowState (boolean isLeft) {");
       _builder_5.newLine();
       _builder_5.append("\t");
-      EList<TransitionSpec> _transitions_1 = cs.getTransitions();
       final Function1<TransitionSpec, Boolean> _function_1 = new Function1<TransitionSpec, Boolean>() {
         @Override
         public Boolean apply(final TransitionSpec t) {
@@ -560,7 +523,6 @@ public class CellGenerator extends CommonGenerator {
           return Boolean.valueOf((_trigger instanceof MouseTrigger));
         }
       };
-      Iterable<TransitionSpec> _filter_1 = IterableExtensions.<TransitionSpec>filter(_transitions_1, _function_1);
       final Function1<TransitionSpec, CharSequence> _function_2 = new Function1<TransitionSpec, CharSequence>() {
         @Override
         public CharSequence apply(final TransitionSpec t) {
@@ -578,14 +540,12 @@ public class CellGenerator extends CommonGenerator {
             _builder_2.append("!isLeft");
             _xifexpression = _builder_2;
           }
-          _builder.append(_xifexpression, "");
+          _builder.append(_xifexpression);
           _builder.append(") {");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("return new ");
-          CellState _target = t.getTarget();
-          String _name = _target.getName();
-          String _firstUpper = StringExtensions.toFirstUpper(_name);
+          String _firstUpper = StringExtensions.toFirstUpper(t.getTarget().getName());
           _builder.append(_firstUpper, "\t");
           _builder.append("CellState();");
           _builder.newLineIfNotEmpty();
@@ -594,7 +554,7 @@ public class CellGenerator extends CommonGenerator {
           return _builder.toString();
         }
       };
-      String _join = IterableExtensions.<TransitionSpec>join(_filter_1, " ", _function_2);
+      String _join = IterableExtensions.<TransitionSpec>join(IterableExtensions.<TransitionSpec>filter(cs.getTransitions(), _function_1), " ", _function_2);
       _builder_5.append(_join, "\t");
       _builder_5.newLineIfNotEmpty();
       _builder_5.append("\t");
@@ -630,8 +590,7 @@ public class CellGenerator extends CommonGenerator {
     _builder.append(_generateFieldClassName, "\t");
     _builder.append(".CellContext context) {");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    EList<TransitionSpec> _transitions_2 = cs.getTransitions();
+    _builder.append("\t");
     final Function1<TransitionSpec, Boolean> _function_3 = new Function1<TransitionSpec, Boolean>() {
       @Override
       public Boolean apply(final TransitionSpec t) {
@@ -639,7 +598,6 @@ public class CellGenerator extends CommonGenerator {
         return Boolean.valueOf((_trigger instanceof ContextTrigger));
       }
     };
-    Iterable<TransitionSpec> _filter_2 = IterableExtensions.<TransitionSpec>filter(_transitions_2, _function_3);
     final Function1<TransitionSpec, CharSequence> _function_4 = new Function1<TransitionSpec, CharSequence>() {
       @Override
       public CharSequence apply(final TransitionSpec t) {
@@ -649,16 +607,13 @@ public class CellGenerator extends CommonGenerator {
           ContextTrigger tr = ((ContextTrigger) _trigger);
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("if (");
-          ContextExpression _exp = tr.getExp();
-          CharSequence _generateFor = CellGenerator.this.generateFor(_exp);
-          _builder.append(_generateFor, "");
+          CharSequence _generateFor = CellGenerator.this.generateFor(tr.getExp());
+          _builder.append(_generateFor);
           _builder.append(") {");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("return new ");
-          CellState _target = t.getTarget();
-          String _name = _target.getName();
-          String _firstUpper = StringExtensions.toFirstUpper(_name);
+          String _firstUpper = StringExtensions.toFirstUpper(t.getTarget().getName());
           _builder.append(_firstUpper, "\t");
           _builder.append("CellState();");
           _builder.newLineIfNotEmpty();
@@ -669,10 +624,10 @@ public class CellGenerator extends CommonGenerator {
         return _xblockexpression;
       }
     };
-    String _join_1 = IterableExtensions.<TransitionSpec>join(_filter_2, "\n", _function_4);
-    _builder.append(_join_1, "\t\t");
+    String _join_1 = IterableExtensions.<TransitionSpec>join(IterableExtensions.<TransitionSpec>filter(cs.getTransitions(), _function_3), "\n", _function_4);
+    _builder.append(_join_1, "\t");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
+    _builder.append("\t");
     _builder.append("return this;");
     _builder.newLine();
     _builder.append("\t");
@@ -691,15 +646,14 @@ public class CellGenerator extends CommonGenerator {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("\"");
       String _text_1 = cds.getText();
-      _builder.append(_text_1, "");
+      _builder.append(_text_1);
       _builder.append("\"");
       _xifexpression = _builder;
     } else {
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("\"\" + ");
-      VarSpec _var = cds.getVar();
-      CharSequence _generateAccessCode = this.generateAccessCode(_var, idAndSymbolTable);
-      _builder_1.append(_generateAccessCode, "");
+      CharSequence _generateAccessCode = this.generateAccessCode(cds.getVar(), idAndSymbolTable);
+      _builder_1.append(_generateAccessCode);
       _xifexpression = _builder_1;
     }
     return _xifexpression;
@@ -710,25 +664,22 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("((");
     EObject _eContainer = cvs.eContainer();
     CharSequence _generateCellClassName = this.generateCellClassName(((CellSpecification) _eContainer));
-    _builder.append(_generateCellClassName, "");
+    _builder.append(_generateCellClassName);
     _builder.append(") cOwner).");
     CharSequence _generateVariableName = this.generateVariableName(cvs);
-    _builder.append(_generateVariableName, "");
+    _builder.append(_generateVariableName);
     return _builder;
   }
   
   protected CharSequence _generateAccessCode(final ParamSpec sps, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
-    Map<String, Value> _value = idAndSymbolTable.getValue();
-    String _name = sps.getName();
-    Value _get = _value.get(_name);
-    return this.generateAccessCode(_get, idAndSymbolTable);
+    return this.generateAccessCode(idAndSymbolTable.getValue().get(sps.getName()), idAndSymbolTable);
   }
   
   protected CharSequence _generateAccessCode(final StringValue v, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("\"");
     String _value = v.getValue();
-    _builder.append(_value, "");
+    _builder.append(_value);
     _builder.append("\"");
     return _builder;
   }
@@ -736,20 +687,19 @@ public class CellGenerator extends CommonGenerator {
   protected CharSequence _generateAccessCode(final IntValue v, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
     StringConcatenation _builder = new StringConcatenation();
     int _value = v.getValue();
-    _builder.append(_value, "");
+    _builder.append(_value);
     return _builder;
   }
   
   protected CharSequence _generateAccessCode(final VarRefValue v, final Pair<Integer, ? extends Map<String, Value>> idAndSymbolTable) {
-    CellVarSpec _ref = v.getRef();
-    return this.generateAccessCode(_ref, idAndSymbolTable);
+    return this.generateAccessCode(v.getRef(), idAndSymbolTable);
   }
   
   public CharSequence generateFactory() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
     CharSequence _generateCellPackage = this.generateCellPackage();
-    _builder.append(_generateCellPackage, "");
+    _builder.append(_generateCellPackage);
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -757,14 +707,13 @@ public class CellGenerator extends CommonGenerator {
     _builder.append("public class CellFactory {");
     _builder.newLine();
     _builder.append("\t");
-    EList<CellSpecification> _cells = this.gg.getCells();
     final Function1<CellSpecification, CharSequence> _function = new Function1<CellSpecification, CharSequence>() {
       @Override
       public CharSequence apply(final CellSpecification c) {
         return CellGenerator.this.generateFactoryMethod(c);
       }
     };
-    String _join = IterableExtensions.<CellSpecification>join(_cells, " ", _function);
+    String _join = IterableExtensions.<CellSpecification>join(this.gg.getCells(), " ", _function);
     _builder.append(_join, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
@@ -776,24 +725,22 @@ public class CellGenerator extends CommonGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public Cell ");
     CharSequence _generateCellFactoryMethodName = this.generateCellFactoryMethodName(cs);
-    _builder.append(_generateCellFactoryMethodName, "");
+    _builder.append(_generateCellFactoryMethodName);
     _builder.append("(");
-    EList<CellMember> _members = cs.getMembers();
-    Iterable<CellVarSpec> _filter = Iterables.<CellVarSpec>filter(_members, CellVarSpec.class);
     final Function1<CellVarSpec, CharSequence> _function = new Function1<CellVarSpec, CharSequence>() {
       @Override
       public CharSequence apply(final CellVarSpec v) {
         StringConcatenation _builder = new StringConcatenation();
         String _type = v.getType();
-        _builder.append(_type, "");
+        _builder.append(_type);
         _builder.append(" ");
         String _name = v.getName();
-        _builder.append(_name, "");
+        _builder.append(_name);
         return _builder.toString();
       }
     };
-    String _join = IterableExtensions.<CellVarSpec>join(_filter, ", ", _function);
-    _builder.append(_join, "");
+    String _join = IterableExtensions.<CellVarSpec>join(Iterables.<CellVarSpec>filter(cs.getMembers(), CellVarSpec.class), ", ", _function);
+    _builder.append(_join);
     _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -801,15 +748,13 @@ public class CellGenerator extends CommonGenerator {
     CharSequence _generateCellClassName = this.generateCellClassName(cs);
     _builder.append(_generateCellClassName, "\t");
     _builder.append("(");
-    EList<CellMember> _members_1 = cs.getMembers();
-    Iterable<CellVarSpec> _filter_1 = Iterables.<CellVarSpec>filter(_members_1, CellVarSpec.class);
     final Function1<CellVarSpec, CharSequence> _function_1 = new Function1<CellVarSpec, CharSequence>() {
       @Override
       public CharSequence apply(final CellVarSpec v) {
         return v.getName();
       }
     };
-    String _join_1 = IterableExtensions.<CellVarSpec>join(_filter_1, ", ", _function_1);
+    String _join_1 = IterableExtensions.<CellVarSpec>join(Iterables.<CellVarSpec>filter(cs.getMembers(), CellVarSpec.class), ", ", _function_1);
     _builder.append(_join_1, "\t");
     _builder.append(");");
     _builder.newLineIfNotEmpty();

@@ -203,7 +203,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.BEHAVIOUR_REFERENCE__REF));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBehaviourReferenceAccess().getRefVarSpecIDTerminalRuleCall_0_1(), semanticObject.getRef());
+		feeder.accept(grammarAccess.getBehaviourReferenceAccess().getRefVarSpecIDTerminalRuleCall_0_1(), semanticObject.eGet(GridGamePackage.Literals.BEHAVIOUR_REFERENCE__REF, false));
 		feeder.finish();
 	}
 	
@@ -314,7 +314,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.CONTEXT_INITIALISATION__EXP));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getContextInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell());
+		feeder.accept(grammarAccess.getContextInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.eGet(GridGamePackage.Literals.FIELD_INITIALISATION__CELL, false));
 		feeder.accept(grammarAccess.getContextInitialisationAccess().getCheckContextExpressionParserRuleCall_4_0(), semanticObject.getCheck());
 		feeder.accept(grammarAccess.getContextInitialisationAccess().getExpContextExpressionParserRuleCall_7_0(), semanticObject.getExp());
 		feeder.finish();
@@ -367,7 +367,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.FIELD_INITIALISATION__CELL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDefaultInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getCell());
+		feeder.accept(grammarAccess.getDefaultInitialisationAccess().getCellCellSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.eGet(GridGamePackage.Literals.FIELD_INITIALISATION__CELL, false));
 		feeder.finish();
 	}
 	
@@ -653,7 +653,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.START_FIELD_DECLARATION__FIELD));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.getField());
+		feeder.accept(grammarAccess.getStartFieldDeclarationAccess().getFieldFieldSpecificationIDTerminalRuleCall_2_0_1(), semanticObject.eGet(GridGamePackage.Literals.START_FIELD_DECLARATION__FIELD, false));
 		feeder.finish();
 	}
 	
@@ -706,7 +706,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getTransitionSpecAccess().getTriggerTransitionTriggerSpecParserRuleCall_1_0(), semanticObject.getTrigger());
-		feeder.accept(grammarAccess.getTransitionSpecAccess().getTargetCellStateIDTerminalRuleCall_3_0_1(), semanticObject.getTarget());
+		feeder.accept(grammarAccess.getTransitionSpecAccess().getTargetCellStateIDTerminalRuleCall_3_0_1(), semanticObject.eGet(GridGamePackage.Literals.TRANSITION_SPEC__TARGET, false));
 		feeder.finish();
 	}
 	
@@ -725,7 +725,7 @@ public class GridGameSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GridGamePackage.Literals.VAR_REF_VALUE__REF));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getVarRefValueAccess().getRefCellVarSpecIDTerminalRuleCall_0_1(), semanticObject.getRef());
+		feeder.accept(grammarAccess.getVarRefValueAccess().getRefCellVarSpecIDTerminalRuleCall_0_1(), semanticObject.eGet(GridGamePackage.Literals.VAR_REF_VALUE__REF, false));
 		feeder.finish();
 	}
 	

@@ -2,7 +2,6 @@ package uk.ac.kcl.inf.zschaler.gridgames.generator;
 
 import java.util.Arrays;
 import java.util.Map;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -15,7 +14,6 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.AllowRestartMenu;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.BehaviourReference;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellState;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.CellStateBehaviour;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.ContextExpression;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.DirectBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.EndGameBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.FieldSpecification;
@@ -23,7 +21,6 @@ import uk.ac.kcl.inf.zschaler.gridgames.gridGame.GlobalAction;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.NoOpBehaviour;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.OptionSpecification;
 import uk.ac.kcl.inf.zschaler.gridgames.gridGame.Value;
-import uk.ac.kcl.inf.zschaler.gridgames.gridGame.VarSpec;
 
 @SuppressWarnings("all")
 public class FrameGenerator extends CommonGenerator {
@@ -34,16 +31,15 @@ public class FrameGenerator extends CommonGenerator {
   public void generate(final IFileSystemAccess fsa) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _generateFrameClassFileName = this.generateFrameClassFileName();
-    _builder.append(_generateFrameClassFileName, "");
-    CharSequence _generateFrame = this.generateFrame();
-    fsa.generateFile(_builder.toString(), _generateFrame);
+    _builder.append(_generateFrameClassFileName);
+    fsa.generateFile(_builder.toString(), this.generateFrame());
   }
   
   public CharSequence generateFrame() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
     CharSequence _generateViewPackage = this.generateViewPackage();
-    _builder.append(_generateViewPackage, "");
+    _builder.append(_generateViewPackage);
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -101,27 +97,27 @@ public class FrameGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("import ");
     CharSequence _generateModelPackage = this.generateModelPackage();
-    _builder.append(_generateModelPackage, "");
+    _builder.append(_generateModelPackage);
     _builder.append(".");
     CharSequence _generateFieldClassName = this.generateFieldClassName();
-    _builder.append(_generateFieldClassName, "");
+    _builder.append(_generateFieldClassName);
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("import ");
     CharSequence _generateCellPackage = this.generateCellPackage();
-    _builder.append(_generateCellPackage, "");
+    _builder.append(_generateCellPackage);
     _builder.append(".CellFactory;");
     _builder.newLineIfNotEmpty();
     _builder.append("import ");
     CharSequence _generateCellPackage_1 = this.generateCellPackage();
-    _builder.append(_generateCellPackage_1, "");
+    _builder.append(_generateCellPackage_1);
     _builder.append(".Cell;");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("public class ");
     CharSequence _generateFrameClassName = this.generateFrameClassName();
-    _builder.append(_generateFrameClassName, "");
+    _builder.append(_generateFrameClassName);
     _builder.append(" extends JFrame {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -208,8 +204,7 @@ public class FrameGenerator extends CommonGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("super(\"");
-    String _name = this.gg.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    String _firstUpper = StringExtensions.toFirstUpper(this.gg.getName());
     _builder.append(_firstUpper, "\t\t");
     _builder.append("\");");
     _builder.newLineIfNotEmpty();
@@ -289,25 +284,25 @@ public class FrameGenerator extends CommonGenerator {
     _builder.append("\t\t\t\t\t");
     _builder.append("for (int row = firstRow; row <= lastRow; row++) {");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t\t");
+    _builder.append("\t");
     _builder.append("if (col != TableModelEvent.ALL_COLUMNS) {");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t\t\t");
+    _builder.append("\t\t");
     _builder.append("handleStateChange (field.getValueAt(row, col), (row == firstRow));");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t\t");
+    _builder.append("\t");
     _builder.append("} else {");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t\t\t");
+    _builder.append("\t\t");
     _builder.append("for (col = 0; col < field.getColumnCount(); col++) {");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t\t\t\t");
+    _builder.append("\t\t\t");
     _builder.append("handleStateChange (field.getValueAt(row, col), ((row == firstRow) && (col == 0)));\t\t\t\t\t\t\t\t");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t\t\t");
+    _builder.append("\t\t");
     _builder.append("}");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t\t");
+    _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
     _builder.append("\t\t\t\t\t");
@@ -403,24 +398,21 @@ public class FrameGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     String _xifexpression = null;
-    EList<OptionSpecification> _options = this.gg.getOptions();
     final Function1<OptionSpecification, Boolean> _function = new Function1<OptionSpecification, Boolean>() {
       @Override
       public Boolean apply(final OptionSpecification o) {
         return Boolean.valueOf((o instanceof AllowRestartMenu));
       }
     };
-    boolean _exists = IterableExtensions.<OptionSpecification>exists(_options, _function);
+    boolean _exists = IterableExtensions.<OptionSpecification>exists(this.gg.getOptions(), _function);
     if (_exists) {
-      EList<FieldSpecification> _fields = this.gg.getFields();
       final Function1<FieldSpecification, CharSequence> _function_1 = new Function1<FieldSpecification, CharSequence>() {
         @Override
         public CharSequence apply(final FieldSpecification f) {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("jmFile.add(new JMenuItem(new AbstractAction(\"");
-          String _name = f.getName();
-          String _firstUpper = StringExtensions.toFirstUpper(_name);
-          _builder.append(_firstUpper, "");
+          String _firstUpper = StringExtensions.toFirstUpper(f.getName());
+          _builder.append(_firstUpper);
           _builder.append("\") {");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
@@ -446,7 +438,7 @@ public class FrameGenerator extends CommonGenerator {
           return _builder.toString();
         }
       };
-      _xifexpression = IterableExtensions.<FieldSpecification>join(_fields, " ", _function_1);
+      _xifexpression = IterableExtensions.<FieldSpecification>join(this.gg.getFields(), " ", _function_1);
     }
     _builder.append(_xifexpression, "\t\t");
     _builder.newLineIfNotEmpty();
@@ -585,23 +577,18 @@ public class FrameGenerator extends CommonGenerator {
         public CharSequence apply(final Pair<CellState, Pair<Integer, ? extends Map<String, Value>>> cpp) {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("case ");
-          Pair<Integer, ? extends Map<String, Value>> _value = cpp.getValue();
-          Integer _key = _value.getKey();
-          _builder.append(_key, "");
+          Integer _key = cpp.getValue().getKey();
+          _builder.append(_key);
           _builder.append(":");
           _builder.newLineIfNotEmpty();
           _builder.append("\t\t\t\t\t\t\t\t\t");
-          CellState _key_1 = cpp.getKey();
-          EList<CellStateBehaviour> _onEnter = _key_1.getOnEnter();
           final Function1<CellStateBehaviour, CharSequence> _function = new Function1<CellStateBehaviour, CharSequence>() {
             @Override
             public CharSequence apply(final CellStateBehaviour oe) {
-              Pair<Integer, ? extends Map<String, Value>> _value = cpp.getValue();
-              Map<String, Value> _value_1 = _value.getValue();
-              return FrameGenerator.this.generateCodeFor(oe, _value_1);
+              return FrameGenerator.this.generateCodeFor(oe, cpp.getValue().getValue());
             }
           };
-          String _join = IterableExtensions.<CellStateBehaviour>join(_onEnter, " ", _function);
+          String _join = IterableExtensions.<CellStateBehaviour>join(cpp.getKey().getOnEnter(), " ", _function);
           _builder.append(_join, "\t\t\t\t\t\t\t\t\t");
           _builder.newLineIfNotEmpty();
           _builder.append("\t\t\t\t\t\t\t\t\t");
@@ -647,8 +634,7 @@ public class FrameGenerator extends CommonGenerator {
   public CharSequence generateGlobalActionsCode() {
     StringConcatenation _builder = new StringConcatenation();
     {
-      EList<GlobalAction> _globalActions = this.gg.getGlobalActions();
-      boolean _isEmpty = _globalActions.isEmpty();
+      boolean _isEmpty = this.gg.getGlobalActions().isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
         _builder.append("if (firstNotification) {");
@@ -662,14 +648,13 @@ public class FrameGenerator extends CommonGenerator {
         _builder.append("\t");
         _builder.newLine();
         _builder.append("\t");
-        EList<GlobalAction> _globalActions_1 = this.gg.getGlobalActions();
         final Function1<GlobalAction, CharSequence> _function = new Function1<GlobalAction, CharSequence>() {
           @Override
           public CharSequence apply(final GlobalAction ga) {
             return FrameGenerator.this.generateCodeFor(ga);
           }
         };
-        String _join = IterableExtensions.<GlobalAction>join(_globalActions_1, "\n", _function);
+        String _join = IterableExtensions.<GlobalAction>join(this.gg.getGlobalActions(), "\n", _function);
         _builder.append(_join, "\t");
         _builder.newLineIfNotEmpty();
         _builder.append("}");
@@ -683,14 +668,12 @@ public class FrameGenerator extends CommonGenerator {
   public CharSequence generateCodeFor(final GlobalAction ga) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if (");
-    ContextExpression _trigger = ga.getTrigger();
-    CharSequence _generateFor = this.generateFor(_trigger);
-    _builder.append(_generateFor, "");
+    CharSequence _generateFor = this.generateFor(ga.getTrigger());
+    _builder.append(_generateFor);
     _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    DirectBehaviour _behaviour = ga.getBehaviour();
-    CharSequence _generateCodeFor = this.generateCodeFor(_behaviour, null);
+    CharSequence _generateCodeFor = this.generateCodeFor(ga.getBehaviour(), null);
     _builder.append(_generateCodeFor, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
@@ -713,10 +696,10 @@ public class FrameGenerator extends CommonGenerator {
     }
     _builder.append("JOptionPane.showMessageDialog(");
     CharSequence _generateFrameClassName = this.generateFrameClassName();
-    _builder.append(_generateFrameClassName, "");
+    _builder.append(_generateFrameClassName);
     _builder.append(".this, \"");
     String _message = egb.getMessage();
-    _builder.append(_message, "");
+    _builder.append(_message);
     _builder.append("\");");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -728,9 +711,7 @@ public class FrameGenerator extends CommonGenerator {
   }
   
   protected CharSequence _generateCodeFor(final BehaviourReference br, final Map<String, Value> symbols) {
-    VarSpec _ref = br.getRef();
-    String _name = _ref.getName();
-    Value _get = symbols.get(_name);
+    Value _get = symbols.get(br.getRef().getName());
     return this.generateCodeFor(((DirectBehaviour) _get), symbols);
   }
   

@@ -40,7 +40,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOptionsOptionSpecificationParserRuleCall_3_5_0 = (RuleCall)cOptionsAssignment_3_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		/// * 
+		///* 
 		// * This language is meant to serve as a high-level modelling language for arcade-style games with a grid playing field
 		// * 
 		// * Just a bit of fun, really :-)
@@ -49,7 +49,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		// * 
 		// * TODO Enable keyboard triggers
 		// * TODO Enable cell movement as an alternative behaviour (to support games like Tetris and Breakout), possibly of cell groups rather than just individual cells
-		// * / GridGame:
+		// */ GridGame:
 		//	"game" name=ID "{" (states+=GlobalCellStateSpec | cells+=CellSpecification | globalActions+=GlobalAction |
 		//	inits+=GlobalFieldInitialisation | fields+=FieldSpecification | options+=OptionSpecification)+
 		//	"}";
@@ -244,7 +244,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"button"
 		public Keyword getDisplay_typeButtonKeyword_3_0_1() { return cDisplay_typeButtonKeyword_3_0_1; }
 
-		//("text" text=STRING | "var" var=[VarSpec] | "color" color=("black" | "white" | "yellow" | "red" | "green"))
+		//"text" text=STRING | "var" var=[VarSpec] | "color" color=("black" | "white" | "yellow" | "red" | "green")
 		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 
 		//"text" text=STRING
@@ -1605,7 +1605,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 
-		//(count=INT | var=[VarSpec])
+		//count=INT | var=[VarSpec]
 		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 
 		//count=INT
@@ -2113,7 +2113,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	/// * 
+	///* 
 	// * This language is meant to serve as a high-level modelling language for arcade-style games with a grid playing field
 	// * 
 	// * Just a bit of fun, really :-)
@@ -2122,7 +2122,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	// * 
 	// * TODO Enable keyboard triggers
 	// * TODO Enable cell movement as an alternative behaviour (to support games like Tetris and Breakout), possibly of cell groups rather than just individual cells
-	// * / GridGame:
+	// */ GridGame:
 	//	"game" name=ID "{" (states+=GlobalCellStateSpec | cells+=CellSpecification | globalActions+=GlobalAction |
 	//	inits+=GlobalFieldInitialisation | fields+=FieldSpecification | options+=OptionSpecification)+
 	//	"}";
@@ -2628,7 +2628,7 @@ public class GridGameGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal ML_COMMENT:
-	//	'/ *'->'* /';
+	//	'/*'->'*/';
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 
