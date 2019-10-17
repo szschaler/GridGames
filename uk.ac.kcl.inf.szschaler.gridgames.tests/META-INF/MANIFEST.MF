@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: uk.ac.kcl.inf.szschaler.gridgames.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: uk.ac.kcl.inf.szschaler.gridgames.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: uk.ac.kcl.inf.szschaler.gridgames.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: uk.ac.kcl.inf.szschaler.gridgames,
+ org.junit;bundle-version="4.12.0",
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: uk.ac.kcl.inf.szschaler.gridgames.tests;x-internal=true

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gridGame" nsURI="http://www.ac.uk/kcl/inf/szschaler/gridgames/GridGame"
+    nsPrefix="gridGame">
+  <eClassifiers xsi:type="ecore:EClass" name="GridGame">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//GlobalCellStateSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
+        eType="#//CellSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="globalActions" upperBound="-1"
+        eType="#//GlobalAction" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inits" upperBound="-1"
+        eType="#//GlobalFieldInitialisation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
+        eType="#//FieldSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="options" upperBound="-1"
+        eType="#//OptionSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CellSpecification">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+        eType="#//CellMember" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CellMember"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CellDisplaySpec" eSuperTypes="#//CellMember">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="display_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//VarSpec"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VarSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CellVarSpec" eSuperTypes="#//CellMember #//VarSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalCellStateSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//ParamSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//CellState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//CellState"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamSpec" eSuperTypes="#//VarSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CellStateSpec" eSuperTypes="#//CellMember"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LocalCellStateSpec" eSuperTypes="#//CellStateSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//CellState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//CellState"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CellStateSpecReference" eSuperTypes="#//CellStateSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stateSpec" eType="#//GlobalCellStateSpec"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//Value" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Value"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntValue" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VarRefValue" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//CellVarSpec"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CellState">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="display" eType="#//CellDisplaySpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
+        eType="#//TransitionSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onEnter" upperBound="-1"
+        eType="#//CellStateBehaviour" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransitionSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//TransitionTriggerSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//CellState"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransitionTriggerSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MouseTrigger" eSuperTypes="#//TransitionTriggerSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="left" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextTrigger" eSuperTypes="#//TransitionTriggerSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" eType="#//ContextExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CellStateBehaviour"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BehaviourReference" eSuperTypes="#//CellStateBehaviour">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//VarSpec"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DirectBehaviour" eSuperTypes="#//Value #//CellStateBehaviour"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EndGameBehaviour" eSuperTypes="#//DirectBehaviour">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//ContextExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="behaviour" eType="#//DirectBehaviour"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FieldSpecification">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="field_initialisation" eType="#//FieldInitialisations"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OptionSpecification"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AllowRestartMenu" eSuperTypes="#//OptionSpecification"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StartFieldDeclaration" eSuperTypes="#//OptionSpecification">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="field" eType="#//FieldSpecification"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GenerationalContexts" eSuperTypes="#//OptionSpecification"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalFieldInitialisation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//ParamSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialisations" upperBound="-1"
+        eType="#//FieldInitialisation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FieldInitialisations"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FieldInitialisationsRef" eSuperTypes="#//FieldInitialisations">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//GlobalFieldInitialisation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//Value" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocalFieldInitialisations" eSuperTypes="#//FieldInitialisations">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialisations" upperBound="-1"
+        eType="#//FieldInitialisation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FieldInitialisation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cell" eType="#//CellSpecification"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DefaultInitialisation" eSuperTypes="#//FieldInitialisation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RandomInitialisation" eSuperTypes="#//FieldInitialisation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//VarSpec"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextInitialisation" eSuperTypes="#//FieldInitialisation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="check" eType="#//ContextExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" eType="#//ContextExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_exp" upperBound="-1"
+        eType="#//AtomicExpression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AtomicExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FilterExpression" eSuperTypes="#//AtomicExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cell_type" unique="false"
+        upperBound="-1" eType="#//CellSpecification"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateFilterExpression" eSuperTypes="#//AtomicExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cell_state" unique="false"
+        upperBound="-1" eType="#//CellState"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CountExpression" eSuperTypes="#//AtomicExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cmpVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NotEmptyExpression" eSuperTypes="#//AtomicExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EmptyExpression" eSuperTypes="#//AtomicExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NoOpBehaviour" eSuperTypes="#//DirectBehaviour"/>
+</ecore:EPackage>
