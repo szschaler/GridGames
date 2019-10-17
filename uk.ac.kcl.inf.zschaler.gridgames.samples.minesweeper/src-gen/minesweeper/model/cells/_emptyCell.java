@@ -38,10 +38,10 @@ public class _emptyCell extends Cell {
 		}
 	
 		public CellState getContextBasedFollowState (MinesweeperField.CellContext context) {
-			if (context.filter_empty().inStateDiscovered().notEmpty()) {
-				return new DiscoveredCellState();
-			}
-			return this;
+		if (context.filter_empty().inStateDiscovered().notEmpty()) {
+			return new DiscoveredCellState();
+		}
+		return this;
 		}
 	}
 	 public static class FlaggedCellState extends CellState {
@@ -67,7 +67,7 @@ public class _emptyCell extends Cell {
 		}
 	
 		public CellState getContextBasedFollowState (MinesweeperField.CellContext context) {
-			return this;
+		return this;
 		}
 	}
 	 public static class QuestionCellState extends CellState {
@@ -93,7 +93,7 @@ public class _emptyCell extends Cell {
 		}
 	
 		public CellState getContextBasedFollowState (MinesweeperField.CellContext context) {
-			return this;
+		return this;
 		}
 	}
 	 public static class DiscoveredCellState extends CellState {
@@ -110,7 +110,7 @@ public class _emptyCell extends Cell {
 		}
 	
 		public CellState getContextBasedFollowState (MinesweeperField.CellContext context) {
-			return this;
+		return this;
 		}
 	}
 	

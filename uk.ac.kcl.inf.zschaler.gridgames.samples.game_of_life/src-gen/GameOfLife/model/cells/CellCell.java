@@ -35,10 +35,10 @@ public class CellCell extends Cell {
 		}
 	
 		public CellState getContextBasedFollowState (GameOfLifeField.CellContext context) {
-			if (context.inStateAlive().size()== 3) {
-				return new AliveCellState();
-			}
-			return this;
+		if (context.inStateAlive().size()== 3) {
+			return new AliveCellState();
+		}
+		return this;
 		}
 	}
 	 public static class AliveCellState extends CellState {
@@ -61,14 +61,14 @@ public class CellCell extends Cell {
 		}
 	
 		public CellState getContextBasedFollowState (GameOfLifeField.CellContext context) {
-			if (context.inStateAlive().size()< 2) {
-				return new DeadCellState();
-			}
-			
-			if (context.inStateAlive().size()> 3) {
-				return new DeadCellState();
-			}
-			return this;
+		if (context.inStateAlive().size()< 2) {
+			return new DeadCellState();
+		}
+		
+		if (context.inStateAlive().size()> 3) {
+			return new DeadCellState();
+		}
+		return this;
 		}
 	}
 	

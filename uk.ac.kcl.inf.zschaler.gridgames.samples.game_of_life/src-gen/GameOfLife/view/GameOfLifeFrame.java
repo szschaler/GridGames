@@ -90,13 +90,13 @@ public class GameOfLifeFrame extends JFrame {
 					int col = e.getColumn();
 
 					for (int row = firstRow; row <= lastRow; row++) {
-						if (col != TableModelEvent.ALL_COLUMNS) {
-							handleStateChange (field.getValueAt(row, col), (row == firstRow));
-						} else {
-							for (col = 0; col < field.getColumnCount(); col++) {
-								handleStateChange (field.getValueAt(row, col), ((row == firstRow) && (col == 0)));								
-							}
-						}
+	if (col != TableModelEvent.ALL_COLUMNS) {
+		handleStateChange (field.getValueAt(row, col), (row == firstRow));
+	} else {
+		for (col = 0; col < field.getColumnCount(); col++) {
+			handleStateChange (field.getValueAt(row, col), ((row == firstRow) && (col == 0)));								
+		}
+	}
 					}
 				}
 			}
