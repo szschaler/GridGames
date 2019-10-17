@@ -17,6 +17,7 @@ hs_err_pid*
 
 # Generated sources
 src-gen/
+xtend-gen/
 
 # Example binaries (generated sources are automatically ignored)
 /uk.ac.kcl.inf.zschaler.gridgames.samples.minesweeper/bin

@@ -3,23 +3,34 @@
  */
 package uk.ac.kcl.inf.szschaler.gridgames.validation
 
+import org.eclipse.xtext.validation.Check
+import uk.ac.kcl.inf.szschaler.gridgames.gridGame.CellState
+import uk.ac.kcl.inf.szschaler.gridgames.gridGame.ContextTrigger
+import uk.ac.kcl.inf.szschaler.gridgames.gridGame.GenerationalContexts
+import uk.ac.kcl.inf.szschaler.gridgames.gridGame.GridGamePackage
+import uk.ac.kcl.inf.szschaler.gridgames.gridGame.TransitionSpec
 
 /**
  * This class contains custom validation rules. 
- *
+ * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class GridGameValidator extends AbstractGridGameValidator {
-	
-//	public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					GridGamePackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
-	
+
+	@Check
+	def checkRecursiveContextTriggers(TransitionSpec ts) {
+		if (!ts.eResource.allContents.exists[o|o instanceof GenerationalContexts]) {
+			// Check for potential recursive transitions
+			// TODO This is a very simplistic heuristic. Really should do full transitive closure cycle analysis
+			// TODO This doesn't work well with parametrised states
+			if (ts.trigger instanceof ContextTrigger) {
+				if (ts.target.transitions.exists [ t |
+					(t.trigger instanceof ContextTrigger) && (t.target == (ts.eContainer as CellState))
+				]) {
+					warning("You may need to check for potential recursive context triggers.",
+						GridGamePackage.Literals.TRANSITION_SPEC__TRIGGER, "recursiveContextTrigger")
+				}
+			}
+		}
+	}
 }

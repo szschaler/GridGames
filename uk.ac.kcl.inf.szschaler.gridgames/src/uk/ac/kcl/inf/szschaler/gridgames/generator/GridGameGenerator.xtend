@@ -15,11 +15,12 @@ import org.eclipse.xtext.generator.IGeneratorContext
  */
 class GridGameGenerator extends AbstractGenerator {
 
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+	override doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		val processedModel = new ModelPreprocessor (resource)
+		
+		new CellGenerator (processedModel).generate (fsa);
+		new FieldGenerator (processedModel).generate(fsa);
+		new FrameGenerator(processedModel).generate(fsa);
 	}
+	
 }
