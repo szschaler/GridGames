@@ -3,11 +3,6 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
-*.jar
-*.war
-*.ear
-
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /bin
@@ -23,3 +18,4 @@ bin/
 # Example binaries (generated sources are automatically ignored)
 /uk.ac.kcl.inf.zschaler.gridgames.samples.minesweeper/bin
 /uk.ac.kcl.inf.zschaler.gridgames.samples.game_of_life/bin
+/uk.ac.kcl.inf.szschaler.gridgames/.antlr-generator-3.2.0-patch.jar
