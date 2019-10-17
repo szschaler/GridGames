@@ -26,5 +26,6 @@ Export-Package: uk.ac.kcl.inf.szschaler.gridgames.parser.antlr,
  uk.ac.kcl.inf.szschaler.gridgames.gridGame.util,
  uk.ac.kcl.inf.szschaler.gridgames.serializer,
  uk.ac.kcl.inf.szschaler.gridgames.generator,
- uk.ac.kcl.inf.szschaler.gridgames.parser.antlr.internal
+ uk.ac.kcl.inf.szschaler.gridgames.parser.antlr.internal,
+ uk.ac.kcl.inf.szschaler.gridgames.formatting2
 Import-Package: org.apache.log4j
