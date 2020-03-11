@@ -3,7 +3,7 @@ Automatic-Module-Name: uk.ac.kcl.inf.szschaler.gridgames
 Bundle-ManifestVersion: 2
 Bundle-Name: uk.ac.kcl.inf.szschaler.gridgames
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-SymbolicName: uk.ac.kcl.inf.szschaler.gridgames; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,

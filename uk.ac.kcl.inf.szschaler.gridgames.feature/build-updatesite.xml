@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="feature_export" name="build">
 	<target name="feature_export">
-		<pde.exportFeatures destination="C:\git\GridGames\doc\updatesite" exportSource="true" exportSourceBundle="true" exportType="directory" features="uk.ac.kcl.inf.szschaler.gridgames.feature" useJARFormat="true"/>
+		<pde.exportFeatures destination="C:\git\GridGames\docs\updatesite" exportSource="true" exportSourceBundle="true" exportType="directory" features="uk.ac.kcl.inf.szschaler.gridgames.feature" useJARFormat="true"/>
 	</target>
 </project>
