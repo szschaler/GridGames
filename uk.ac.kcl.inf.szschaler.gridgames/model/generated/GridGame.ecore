@@ -150,6 +150,7 @@
         eType="#//AtomicExpression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AlwaysExpression" eSuperTypes="#//AtomicExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="FilterExpression" eSuperTypes="#//AtomicExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cell_type" unique="false"
         upperBound="-1" eType="#//CellSpecification"/>

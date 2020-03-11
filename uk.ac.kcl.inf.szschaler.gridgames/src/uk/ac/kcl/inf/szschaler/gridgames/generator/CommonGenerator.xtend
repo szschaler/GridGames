@@ -1,5 +1,6 @@
 package uk.ac.kcl.inf.szschaler.gridgames.generator
 
+import uk.ac.kcl.inf.szschaler.gridgames.gridGame.AlwaysExpression
 import uk.ac.kcl.inf.szschaler.gridgames.gridGame.CellSpecification
 import uk.ac.kcl.inf.szschaler.gridgames.gridGame.CellVarSpec
 import uk.ac.kcl.inf.szschaler.gridgames.gridGame.ContextExpression
@@ -73,5 +74,7 @@ class CommonGenerator {
 
 	def dispatch CharSequence generateFor(NotEmptyExpression nee) '''notEmpty()'''
 
-	def dispatch CharSequence generateFor(EmptyExpression nee) '''empty()'''
+	def dispatch CharSequence generateFor(EmptyExpression ee) '''empty()'''
+
+	def dispatch CharSequence generateFor(AlwaysExpression ae) '''always()'''
 }

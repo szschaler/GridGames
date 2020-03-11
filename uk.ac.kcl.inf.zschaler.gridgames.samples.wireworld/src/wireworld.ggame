@@ -1,0 +1,72 @@
+// Wireworld, see https://en.wikipedia.org/wiki/Wireworld
+game WireWorld {
+	contextsTriggerGenerationally
+	
+	states cellStates {
+		substrate {
+			display {
+				as label
+				color green
+			}
+			
+			transitions {
+				on mouse-left goto wire
+			}
+		}
+		
+		wire {
+			display {
+				as label
+				color yellow
+			}
+			
+			transitions {
+				on context (inState(head).count() == 1) goto head
+				on context (inState(head).count() == 2) goto head
+				
+				on mouse-left goto head
+			}
+		}
+		
+		// electron head
+		head {
+			display {
+				as label
+				color blue
+			}
+			
+			transitions {
+				on context (new generation) goto tail
+				
+				on mouse-left goto tail
+			}
+		}
+		
+		tail {
+			display {
+				as label
+				color red
+			}
+			
+			transitions {
+				on context (new generation) goto wire
+				
+				on mouse-left goto substrate
+			}
+		}
+		
+		start = substrate
+	}
+
+	cell Cell {
+		states cellStates
+	}
+
+	field dflt {
+		width  = 50
+		height = 50
+		init {default: Cell;}
+	}
+
+	start = dflt
+}

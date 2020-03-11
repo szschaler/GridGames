@@ -55,11 +55,11 @@ class GridGameValidator extends AbstractGridGameValidator {
 		var current = reachableFrom
 
 		do {
+			current = new HashMap(result)
 			val cur = current
 			result.values.forEach [ srcSet |
 				srcSet.addAll(new HashSet(srcSet.flatMap[s2|cur.get(s2)].toSet))
 			]
-			current = result
 		} while (!current.equals(result))
 
 		result

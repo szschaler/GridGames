@@ -1,6 +1,7 @@
 package uk.ac.kcl.inf.szschaler.gridgames.generator
 
 import java.util.Set
+import uk.ac.kcl.inf.szschaler.gridgames.gridGame.AlwaysExpression
 import uk.ac.kcl.inf.szschaler.gridgames.gridGame.ContextInitialisation
 import uk.ac.kcl.inf.szschaler.gridgames.gridGame.ContextTrigger
 import uk.ac.kcl.inf.szschaler.gridgames.gridGame.CountExpression
@@ -271,6 +272,13 @@ class CellContextGenerator extends CommonGenerator {
 		}
 	'''
 	
+	def dispatch generateImplementation(AlwaysExpression ae) '''
+		@Override
+		public boolean always() {
+			return true;
+		}
+	'''
+
 	def dispatch generateSignature(FilterExpression fe) '''public CellContext «fe.generateMethodName»();'''
 
 	def dispatch generateSignature(StateFilterExpression sfe) '''public CellContext «sfe.generateMethodName»();'''
@@ -280,6 +288,8 @@ class CellContextGenerator extends CommonGenerator {
 	def dispatch generateSignature(EmptyExpression nee) '''public boolean empty();'''
 
 	def dispatch generateSignature(CountExpression ce) '''public int size();'''
+
+	def dispatch generateSignature(AlwaysExpression ae) '''public boolean always();'''
 
 	/**
 	 * Add required imports to the set given
