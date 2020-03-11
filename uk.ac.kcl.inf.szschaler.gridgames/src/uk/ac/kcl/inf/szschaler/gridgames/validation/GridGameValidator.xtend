@@ -4,6 +4,7 @@
 package uk.ac.kcl.inf.szschaler.gridgames.validation
 
 import java.util.HashMap
+import java.util.HashSet
 import java.util.List
 import java.util.Map
 import java.util.Set
@@ -56,8 +57,9 @@ class GridGameValidator extends AbstractGridGameValidator {
 		do {
 			val cur = current
 			result.values.forEach [ srcSet |
-				srcSet.addAll(srcSet.flatMap[s2|cur.get(s2)])
+				srcSet.addAll(new HashSet(srcSet.flatMap[s2|cur.get(s2)].toSet))
 			]
+			current = result
 		} while (!current.equals(result))
 
 		result
