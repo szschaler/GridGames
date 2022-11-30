@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:gridGame="http://www.ac.uk/kcl/inf/szschaler/gridgames/GridGame" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_CTwn0HDMEe2ep6TM7ggcow" selectedViews="_bGaCEHDMEe2ep6TM7ggcow" version="15.0.0.202209061200">
+    <semanticResources>minesweeper.ggame</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_C6c0YHDMEe2ep6TM7ggcow">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='MyViewpoint']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_C6yLkHDMEe2ep6TM7ggcow" name="GlobalCellStateSpecDiagram" repPath="#_C6l-UHDMEe2ep6TM7ggcow" changeId="db6d2efc-c70e-41f8-8236-bd422b735312">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']"/>
+        <target xmi:type="gridGame:GlobalCellStateSpec" href="minesweeper.ggame#//@states.0"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_bGaCEHDMEe2ep6TM7ggcow">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_bGb3QHDMEe2ep6TM7ggcow" name="GlobalCellStateSpecDiagram" repPath="#_bGaCEXDMEe2ep6TM7ggcow" changeId="76e03523-b676-4278-9c66-40ca9b674197">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']"/>
+        <target xmi:type="gridGame:GlobalCellStateSpec" href="minesweeper.ggame#//@states.0"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_bWiv0nDMEe2ep6TM7ggcow" name="new GlobalCellStateSpecDiagram" repPath="#_bWiv0HDMEe2ep6TM7ggcow" changeId="871c9a2e-9b84-4874-9b49-122e24b09a98">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']"/>
+        <target xmi:type="gridGame:GlobalCellStateSpec" href="minesweeper.ggame#//@states.0"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_C6l-UHDMEe2ep6TM7ggcow">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_C7CDMHDMEe2ep6TM7ggcow" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_C7CDMXDMEe2ep6TM7ggcow" type="Sirius" element="_C6l-UHDMEe2ep6TM7ggcow" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_C7CDMnDMEe2ep6TM7ggcow"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_C7FtkHDMEe2ep6TM7ggcow" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_C7FtkXDMEe2ep6TM7ggcow"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_C6ssAHDMEe2ep6TM7ggcow"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer"/>
+    <target xmi:type="gridGame:GlobalCellStateSpec" href="minesweeper.ggame#//@states.0"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_bGaCEXDMEe2ep6TM7ggcow">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_bGceUHDMEe2ep6TM7ggcow" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_bGceUXDMEe2ep6TM7ggcow" type="Sirius" element="_bGaCEXDMEe2ep6TM7ggcow" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_bGzqsHDMEe2ep6TM7ggcow" type="2001" element="_bGoEgHDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_bG2G8HDMEe2ep6TM7ggcow" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_bG2G8XDMEe2ep6TM7ggcow" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bG5KQHDMEe2ep6TM7ggcow" type="3004" element="_bGs9AHDMEe2ep6TM7ggcow">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bG5KQXDMEe2ep6TM7ggcow" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bG5KQnDMEe2ep6TM7ggcow"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bGzqsXDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bGzqsnDMEe2ep6TM7ggcow" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_bG3VEHDMEe2ep6TM7ggcow" type="2001" element="_bGvZQHDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_bG3VE3DMEe2ep6TM7ggcow" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_bG3VFHDMEe2ep6TM7ggcow" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bG5KQ3DMEe2ep6TM7ggcow" type="3004" element="_bGvZQXDMEe2ep6TM7ggcow">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bG5KRHDMEe2ep6TM7ggcow" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bG5KRXDMEe2ep6TM7ggcow"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bG3VEXDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bG3VEnDMEe2ep6TM7ggcow" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_bG38IHDMEe2ep6TM7ggcow" type="2001" element="_bGvZQ3DMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_bG38I3DMEe2ep6TM7ggcow" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_bG38JHDMEe2ep6TM7ggcow" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bG5xUHDMEe2ep6TM7ggcow" type="3004" element="_bGvZRHDMEe2ep6TM7ggcow">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bG5xUXDMEe2ep6TM7ggcow" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bG5xUnDMEe2ep6TM7ggcow"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bG38IXDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bG38InDMEe2ep6TM7ggcow" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_bG4jMHDMEe2ep6TM7ggcow" type="2001" element="_bGvZRnDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_bG4jM3DMEe2ep6TM7ggcow" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_bG4jNHDMEe2ep6TM7ggcow" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bG5xU3DMEe2ep6TM7ggcow" type="3004" element="_bGwAUHDMEe2ep6TM7ggcow">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bG5xVHDMEe2ep6TM7ggcow" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bG5xVXDMEe2ep6TM7ggcow"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bG4jMXDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bG4jMnDMEe2ep6TM7ggcow" width="30" height="30"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_bGceUnDMEe2ep6TM7ggcow"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_bGwAUnDMEe2ep6TM7ggcow" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_bGwAU3DMEe2ep6TM7ggcow"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_bGoEgHDMEe2ep6TM7ggcow" name="hidden" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.0"/>
+      <semanticElements xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.0"/>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_bGs9AHDMEe2ep6TM7ggcow" labelSize="12" showIcon="false" labelPosition="node">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_bGvZQHDMEe2ep6TM7ggcow" name="flagged" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.1"/>
+      <semanticElements xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.1"/>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_bGvZQXDMEe2ep6TM7ggcow" labelSize="12" showIcon="false" labelPosition="node">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_bGvZQ3DMEe2ep6TM7ggcow" name="question" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.2"/>
+      <semanticElements xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.2"/>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_bGvZRHDMEe2ep6TM7ggcow" labelSize="12" showIcon="false" labelPosition="node">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_bGvZRnDMEe2ep6TM7ggcow" name="discovered" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.3"/>
+      <semanticElements xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.3"/>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_bGwAUHDMEe2ep6TM7ggcow" labelSize="12" showIcon="false" labelPosition="node">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_bGaCEnDMEe2ep6TM7ggcow"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer"/>
+    <target xmi:type="gridGame:GlobalCellStateSpec" href="minesweeper.ggame#//@states.0"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_bWiv0HDMEe2ep6TM7ggcow">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_bWjW4HDMEe2ep6TM7ggcow" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_bWjW4XDMEe2ep6TM7ggcow" type="Sirius" element="_bWiv0HDMEe2ep6TM7ggcow" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_bWlMEHDMEe2ep6TM7ggcow" type="2001" element="_bWj98HDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_bWlME3DMEe2ep6TM7ggcow" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_bWlMFHDMEe2ep6TM7ggcow" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bWmaOnDMEe2ep6TM7ggcow" type="3004" element="_bWj98XDMEe2ep6TM7ggcow">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bWmaO3DMEe2ep6TM7ggcow" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bWmaPHDMEe2ep6TM7ggcow"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bWlMEXDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bWlMEnDMEe2ep6TM7ggcow" x="45" y="325" width="216" height="211"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_bWlMFXDMEe2ep6TM7ggcow" type="2001" element="_bWklAHDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_bWlzIHDMEe2ep6TM7ggcow" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_bWlzIXDMEe2ep6TM7ggcow" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bWmaPXDMEe2ep6TM7ggcow" type="3004" element="_bWklAXDMEe2ep6TM7ggcow">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bWmaPnDMEe2ep6TM7ggcow" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bWmaP3DMEe2ep6TM7ggcow"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bWlMFnDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bWlMF3DMEe2ep6TM7ggcow" x="105" y="63" width="126" height="146"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_bWmaMHDMEe2ep6TM7ggcow" type="2001" element="_bWklA3DMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_bWmaM3DMEe2ep6TM7ggcow" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_bWmaNHDMEe2ep6TM7ggcow" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bWnBQHDMEe2ep6TM7ggcow" type="3004" element="_bWklBHDMEe2ep6TM7ggcow">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bWnBQXDMEe2ep6TM7ggcow" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bWnBQnDMEe2ep6TM7ggcow"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bWmaMXDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bWmaMnDMEe2ep6TM7ggcow" x="620" y="350" width="131" height="141"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_bWmaNXDMEe2ep6TM7ggcow" type="2001" element="_bWklBnDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_bWmaOHDMEe2ep6TM7ggcow" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_bWmaOXDMEe2ep6TM7ggcow" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bWnoUHDMEe2ep6TM7ggcow" type="3004" element="_bWklB3DMEe2ep6TM7ggcow">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bWnoUXDMEe2ep6TM7ggcow" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bWnoUnDMEe2ep6TM7ggcow"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bWmaNnDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bWmaN3DMEe2ep6TM7ggcow" x="620" y="70" width="151" height="131"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_bWjW4nDMEe2ep6TM7ggcow"/>
+        <edges xmi:type="notation:Edge" xmi:id="_7YhekHDMEe2ep6TM7ggcow" type="4001" element="_7YC9cHDMEe2ep6TM7ggcow" source="_bWlMEHDMEe2ep6TM7ggcow" target="_bWmaNXDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_7YiFoHDMEe2ep6TM7ggcow" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YiFoXDMEe2ep6TM7ggcow" x="-4" y="-11"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7Yj60HDMEe2ep6TM7ggcow" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7Yj60XDMEe2ep6TM7ggcow" x="1" y="9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7Yj60nDMEe2ep6TM7ggcow" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7Yj603DMEe2ep6TM7ggcow" x="3" y="9"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7YhekXDMEe2ep6TM7ggcow"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_7YheknDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7Yhek3DMEe2ep6TM7ggcow" points="[101, -54, -439, 234]$[460, -246, -80, 42]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YnlMHDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YnlMXDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_7YnlMnDMEe2ep6TM7ggcow" type="4001" element="_7YLgUHDMEe2ep6TM7ggcow" source="_bWlMEHDMEe2ep6TM7ggcow" target="_bWlMFXDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_7YnlNnDMEe2ep6TM7ggcow" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YnlN3DMEe2ep6TM7ggcow" x="-28" y="3"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YnlOHDMEe2ep6TM7ggcow" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YnlOXDMEe2ep6TM7ggcow" x="1" y="9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YnlOnDMEe2ep6TM7ggcow" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YnlO3DMEe2ep6TM7ggcow" x="1" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7YnlM3DMEe2ep6TM7ggcow"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_7YnlNHDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7YnlNXDMEe2ep6TM7ggcow" points="[3, -89, -9, 200]$[8, -205, -4, 84]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YoMQHDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YoMQXDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_7YoMQnDMEe2ep6TM7ggcow" type="4001" element="_7YN8kHDMEe2ep6TM7ggcow" source="_bWlMEHDMEe2ep6TM7ggcow" target="_bWmaNXDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_7YoMRnDMEe2ep6TM7ggcow" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YoMR3DMEe2ep6TM7ggcow" x="2" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YoMSHDMEe2ep6TM7ggcow" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YoMSXDMEe2ep6TM7ggcow" x="-26" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YoMSnDMEe2ep6TM7ggcow" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YoMS3DMEe2ep6TM7ggcow" x="-26" y="8"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7YoMQ3DMEe2ep6TM7ggcow"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_7YoMRHDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7YoMRXDMEe2ep6TM7ggcow" points="[67, -89, -473, 199]$[149, -197, -391, 91]$[460, -270, -80, 18]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YoMTHDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YoMTXDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_7YoMTnDMEe2ep6TM7ggcow" type="4001" element="_7YPKsHDMEe2ep6TM7ggcow" source="_bWlMFXDMEe2ep6TM7ggcow" target="_bWmaNXDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_7YoMUnDMEe2ep6TM7ggcow" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YoMU3DMEe2ep6TM7ggcow" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YoMVHDMEe2ep6TM7ggcow" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YoMVXDMEe2ep6TM7ggcow" x="-1" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YoMVnDMEe2ep6TM7ggcow" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YoMV3DMEe2ep6TM7ggcow" x="-2" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7YoMT3DMEe2ep6TM7ggcow"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_7YoMUHDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7YoMUXDMEe2ep6TM7ggcow" points="[59, 0, -469, -1]$[448, 0, -80, -1]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YoMWHDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YoMWXDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_7YoMWnDMEe2ep6TM7ggcow" type="4001" element="_7YRm8HDMEe2ep6TM7ggcow" source="_bWlMFXDMEe2ep6TM7ggcow" target="_bWlMEHDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_7YozUHDMEe2ep6TM7ggcow" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YozUXDMEe2ep6TM7ggcow" x="43" y="14"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YozUnDMEe2ep6TM7ggcow" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YozU3DMEe2ep6TM7ggcow" x="-7" y="-3"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YozVHDMEe2ep6TM7ggcow" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YozVXDMEe2ep6TM7ggcow" x="4" y="2"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7YoMW3DMEe2ep6TM7ggcow"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_7YoMXHDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7YoMXXDMEe2ep6TM7ggcow" points="[-67, 0, 15, -228]$[-82, 0, 0, -228]$[-82, 200, 0, -28]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YozVnDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YozV3DMEe2ep6TM7ggcow" id="(0.0787037037037037,0.0947867298578199)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_7YozWHDMEe2ep6TM7ggcow" type="4001" element="_7YTcIHDMEe2ep6TM7ggcow" source="_bWmaMHDMEe2ep6TM7ggcow" target="_bWmaNXDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_7YozXHDMEe2ep6TM7ggcow" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YozXXDMEe2ep6TM7ggcow" x="10" y="-6"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YozXnDMEe2ep6TM7ggcow" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YozX3DMEe2ep6TM7ggcow" x="-12" y="4"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YozYHDMEe2ep6TM7ggcow" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YozYXDMEe2ep6TM7ggcow" x="-8" y="3"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7YozWXDMEe2ep6TM7ggcow"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_7YozWnDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7YozW3DMEe2ep6TM7ggcow" points="[2, -59, -8, 224]$[7, -208, -3, 75]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YozYnDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YozY3DMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_7YozZHDMEe2ep6TM7ggcow" type="4001" element="_7YUDMHDMEe2ep6TM7ggcow" source="_bWmaMHDMEe2ep6TM7ggcow" target="_bWlMEHDMEe2ep6TM7ggcow">
+          <children xmi:type="notation:Node" xmi:id="_7YozaHDMEe2ep6TM7ggcow" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YozaXDMEe2ep6TM7ggcow" x="-18" y="-3"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YpaYHDMEe2ep6TM7ggcow" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YpaYXDMEe2ep6TM7ggcow" x="21" y="7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_7YpaYnDMEe2ep6TM7ggcow" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YpaY3DMEe2ep6TM7ggcow" x="8" y="4"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7YozZXDMEe2ep6TM7ggcow"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_7YozZnDMEe2ep6TM7ggcow" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7YozZ3DMEe2ep6TM7ggcow" points="[-70, 0, 460, -5]$[-429, 4, 101, -1]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YpaZHDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7YpaZXDMEe2ep6TM7ggcow" id="(0.5,0.5)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_bWklCXDMEe2ep6TM7ggcow" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_bWklCnDMEe2ep6TM7ggcow"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_bWj98HDMEe2ep6TM7ggcow" name="hidden" outgoingEdges="_7YC9cHDMEe2ep6TM7ggcow _7YLgUHDMEe2ep6TM7ggcow _7YN8kHDMEe2ep6TM7ggcow" incomingEdges="_7YRm8HDMEe2ep6TM7ggcow _7YUDMHDMEe2ep6TM7ggcow" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.0"/>
+      <semanticElements xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_bWj98XDMEe2ep6TM7ggcow" labelSize="12" showIcon="false" labelPosition="node" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_bWklAHDMEe2ep6TM7ggcow" name="flagged" outgoingEdges="_7YPKsHDMEe2ep6TM7ggcow _7YRm8HDMEe2ep6TM7ggcow" incomingEdges="_7YLgUHDMEe2ep6TM7ggcow" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.1"/>
+      <semanticElements xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.1"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_bWklAXDMEe2ep6TM7ggcow" labelSize="12" showIcon="false" labelPosition="node" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_bWklA3DMEe2ep6TM7ggcow" name="question" outgoingEdges="_7YTcIHDMEe2ep6TM7ggcow _7YUDMHDMEe2ep6TM7ggcow" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.2"/>
+      <semanticElements xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.2"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_bWklBHDMEe2ep6TM7ggcow" labelSize="12" showIcon="false" labelPosition="node" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_bWklBnDMEe2ep6TM7ggcow" name="discovered" incomingEdges="_7YC9cHDMEe2ep6TM7ggcow _7YN8kHDMEe2ep6TM7ggcow _7YPKsHDMEe2ep6TM7ggcow _7YTcIHDMEe2ep6TM7ggcow" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.3"/>
+      <semanticElements xmi:type="gridGame:CellState" href="minesweeper.ggame#//@states.0/@states.3"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:BundledImage" uid="_bWklB3DMEe2ep6TM7ggcow" labelSize="12" showIcon="false" labelPosition="node" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@nodeMappings[name='State']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7YC9cHDMEe2ep6TM7ggcow" name="on mouse left" sourceNode="_bWj98HDMEe2ep6TM7ggcow" targetNode="_bWklBnDMEe2ep6TM7ggcow">
+      <target xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.0/@transitions.0"/>
+      <semanticElements xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.0/@transitions.0"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7YEyoHDMEe2ep6TM7ggcow" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_7YGAwHDMEe2ep6TM7ggcow" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7YLgUHDMEe2ep6TM7ggcow" name="on mouse right" sourceNode="_bWj98HDMEe2ep6TM7ggcow" targetNode="_bWklAHDMEe2ep6TM7ggcow">
+      <target xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.0/@transitions.1"/>
+      <semanticElements xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.0/@transitions.1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7YLgUXDMEe2ep6TM7ggcow" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_7YLgUnDMEe2ep6TM7ggcow" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7YN8kHDMEe2ep6TM7ggcow" name="on contextual change" sourceNode="_bWj98HDMEe2ep6TM7ggcow" targetNode="_bWklBnDMEe2ep6TM7ggcow">
+      <target xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.0/@transitions.2"/>
+      <semanticElements xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.0/@transitions.2"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7YN8kXDMEe2ep6TM7ggcow" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_7YN8knDMEe2ep6TM7ggcow" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7YPKsHDMEe2ep6TM7ggcow" name="on mouse left" sourceNode="_bWklAHDMEe2ep6TM7ggcow" targetNode="_bWklBnDMEe2ep6TM7ggcow">
+      <target xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.1/@transitions.0"/>
+      <semanticElements xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.1/@transitions.0"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7YPxwHDMEe2ep6TM7ggcow" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_7YPxwXDMEe2ep6TM7ggcow" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7YRm8HDMEe2ep6TM7ggcow" name="on mouse right" sourceNode="_bWklAHDMEe2ep6TM7ggcow" targetNode="_bWj98HDMEe2ep6TM7ggcow">
+      <target xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.1/@transitions.1"/>
+      <semanticElements xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.1/@transitions.1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7YSOAHDMEe2ep6TM7ggcow" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_7YSOAXDMEe2ep6TM7ggcow" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7YTcIHDMEe2ep6TM7ggcow" name="on mouse left" sourceNode="_bWklA3DMEe2ep6TM7ggcow" targetNode="_bWklBnDMEe2ep6TM7ggcow">
+      <target xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.2/@transitions.0"/>
+      <semanticElements xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.2/@transitions.0"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7YTcIXDMEe2ep6TM7ggcow" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_7YTcInDMEe2ep6TM7ggcow" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7YUDMHDMEe2ep6TM7ggcow" name="on mouse right" sourceNode="_bWklA3DMEe2ep6TM7ggcow" targetNode="_bWj98HDMEe2ep6TM7ggcow">
+      <target xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.2/@transitions.1"/>
+      <semanticElements xmi:type="gridGame:TransitionSpec" href="minesweeper.ggame#//@states.0/@states.2/@transitions.1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7YUqQHDMEe2ep6TM7ggcow" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_7YUqQXDMEe2ep6TM7ggcow" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer/@edgeMappings[name='Transition']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_bWiv0XDMEe2ep6TM7ggcow"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/uk.ac.kcl.inf.szschaler.gridgrames.sirius/description/gridgames.odesign#//@ownedViewpoints[name='GlobalCellStateViewpoint']/@ownedRepresentations[name='GlobalCellStateSpecDiagram']/@defaultLayer"/>
+    <target xmi:type="gridGame:GlobalCellStateSpec" href="minesweeper.ggame#//@states.0"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>
