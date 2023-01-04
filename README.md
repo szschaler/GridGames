@@ -3,7 +3,7 @@ A DSL for developing grid-based arcade-style games. Because, .... fun!
 
 Depends on latest Xtext and Sirius.
 
-Install from update site here: https://szschaler.github.io/GridGames/updatesite
+Install from update site here: https://szschaler.github.io/GridGames/updatesite (following, for example, the steps in https://marketplace.eclipse.org/content/swt-win32-extension/help.)
 
 Then import the sample projects to explore.
 
